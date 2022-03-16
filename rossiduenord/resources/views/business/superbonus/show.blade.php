@@ -11,7 +11,7 @@
                 <span @click="showpage3" :class="[showInterventi2 ? 'frame' : ''] ">Interventi trainanti +</span>
                 <span @click="showpage4" :class="[showState ? 'frame' : ''] ">Dati stato finale</span>
                 <span @click="showFeesPage" :class="[showFees ? 'frame' : ''] " >Tot. Spese e Dichiarazioni</span>
-                <span>Varianti</span>
+                <span @click="showVariantsPage" :class="[showVariants ? 'frame' : ''] ">Varianti</span>
             </div>
 
             <div v-if="showDati">
@@ -32,6 +32,10 @@
 
             <div v-if="showFees" >
                 @include('business.layouts.partials.fees_declarations')
+            </div>
+
+            <div v-if="showVariants">
+                @include('business.layouts.partials.variants')
             </div>
 
         </div>{{-- chiusura div box praticeNav--}}

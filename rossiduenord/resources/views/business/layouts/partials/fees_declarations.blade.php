@@ -128,7 +128,7 @@
             {{-- first row --}}
             <div class="row">
                 <div class="col-12 d-flex">
-                    <b>L'importo degli interventi trainati di progetto ammonata a </b>
+                    <b>L'importo degli interventi trainati di progetto ammonta a </b>
                     <label for="" class=" m-0 mr-4 black">
                         <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                         €

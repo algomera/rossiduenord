@@ -49804,6 +49804,7 @@ var app = new Vue({
     showInterventi2: false,
     showState: true,
     showFees: false,
+    showVariants: false,
     active: true
   },
   methods: {
@@ -49813,6 +49814,7 @@ var app = new Vue({
       this.showInterventi2 = false;
       this.showState = false;
       this.showFees = false;
+      this.showVariants = false;
     },
     showpage2: function showpage2() {
       this.showDati = false;
@@ -49820,6 +49822,7 @@ var app = new Vue({
       this.showInterventi2 = false;
       this.showState = false;
       this.showFees = false;
+      this.showVariants = false;
     },
     showpage3: function showpage3() {
       this.showDati = false;
@@ -49827,6 +49830,7 @@ var app = new Vue({
       this.showInterventi2 = true;
       this.showState = false;
       this.showFees = false;
+      this.showVariants = false;
     },
     showpage4: function showpage4() {
       this.showDati = false;
@@ -49834,6 +49838,7 @@ var app = new Vue({
       this.showInterventi2 = false;
       this.showState = true;
       this.showFees = false;
+      this.showVariants = false;
     },
     showFeesPage: function showFeesPage() {
       this.showDati = false;
@@ -49841,6 +49846,15 @@ var app = new Vue({
       this.showInterventi2 = false;
       this.showState = false;
       this.showFees = true;
+      this.showVariants = false;
+    },
+    showVariantsPage: function showVariantsPage() {
+      this.showDati = false;
+      this.showInterventi = false;
+      this.showInterventi2 = false;
+      this.showState = false;
+      this.showFees = false;
+      this.showVariants = true;
     }
   }
 });
