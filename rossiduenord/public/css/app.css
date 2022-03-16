@@ -336,7 +336,7 @@ label {
 
 .nav_bonus {
   border-bottom: #bbbcbc 1px solid;
-  margin-bottom: 20px;
+  margin: 0 20px 20px;
   padding: 0 20px;
 }
 .nav_bonus span {
