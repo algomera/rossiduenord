@@ -1,7 +1,7 @@
 @extends('business.layouts.business')
 
 @section('content')
-
+      <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>   
       <script>
             $(document).ready(function(){
             $("#searchFolder").on("keyup", function() {
@@ -11,6 +11,17 @@
                 });
             });
             });
+
+            $(document).ready(function() {
+                
+             $('.checkall').click(function() {
+                 $(":checkbox").attr("checked", true);
+             });
+             
+             $('.uncheckall').click(function() {
+                 $(":checkbox").attr("checked", false);
+             });
+         });
         </script>
 
 
@@ -34,8 +45,8 @@
                             <span class="text-sm grey">Elementi visualizzati</span>
                             <input class="type-number" type="number" value="100" name="" id="">
                         </div>
-                        <button id="select-all" class="btn-custom bg-black white">Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white">Deseleziona tutto</button>
+                        <button id="select-all" class="btn-custom bg-black white checkall">Seleziona tutto</button>
+                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall">Deseleziona tutto</button>
                         <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
                         <button id="select-delete" class="btn-custom bg-red white">Elimina selezionato</button>
                     </div>

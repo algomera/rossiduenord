@@ -2,7 +2,8 @@
 
 @section('content')
 
-    <script>
+    <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
+    <script type='text/javascript'>
         $(document).ready(function(){
         $("#searchUser").on("keyup", function() {
             var value = $(this).val().toLowerCase();
@@ -11,6 +12,18 @@
             });
         });
         });
+
+        $(document).ready(function() {
+             
+             $('.checkall').click(function() {
+                 $(":checkbox").attr("checked", true);
+             });
+             
+             $('.uncheckall').click(function() {
+                 $(":checkbox").attr("checked", false);
+             });
+         });
+
     </script>
 
     <div class="content-main">
@@ -33,10 +46,11 @@
                             <span class="text-sm grey">Elementi visualizzati</span>
                             <input class="type-number" type="number" value="100" name="" id="">
                         </div>
-                        <button id="select-all" class="btn-custom bg-black white">Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white">Deseleziona tutto</buttonhref=>
+
+                        <button id="select-all" class="btn-custom bg-black white checkall"  >Seleziona tutto</button>
+                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall"  >Deseleziona tutto</buttonhref=>
                         <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
-                        <button id="select-delete" class="btn-custom bg-red white">Elimina selezionato</button>
+                        <button id="select-delete" class="btn-custom bg-red white" data-toggle="modal" >Elimina selezionato</button>
                     </div>
                     <div class="position-relative w-25">
                         <input class="search" type="search" placeholder="Cerca" name="" id="searchUser">
@@ -58,10 +72,10 @@
                             </tr>
                         </thead>
                         <tbody id="table_ContentList" >
-                            @foreach($users as $user)
+                            @foreach($users as $user) 
                             <tr>
                                 <td style="border-left: 1px solid #707070">
-                                    <input class="ceck" type="checkbox" name="id" id="id">
+                                    <input class="ceck" type="checkbox"  name="id" > <!-- #checbox item to handle by function  -->
                                 </td>
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
@@ -87,13 +101,13 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina cartella</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Sei sicuro di volere eliminare l'utente: {{$user->name}}
+                                                    Sei sicuro di volere eliminare l'utente: {{$user->name}} ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>

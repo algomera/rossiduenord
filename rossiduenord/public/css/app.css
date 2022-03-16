@@ -79,13 +79,13 @@ a:hover {
   height: 27px;
   border: none;
   font-weight: 600;
-  background-color: #E4003C;
+  background-color: #e4003c;
   color: white;
 }
 .btn-delete:hover {
   background-color: white;
-  color: #E4003C;
-  border: 1px solid #E4003C;
+  color: #e4003c;
+  border: 1px solid #e4003c;
 }
 
 #select-all:hover {
@@ -201,7 +201,7 @@ tbody tr:nth-child(odd) {
   border: 1px solid #f2f2f2 !important;
 }
 .table_bonus thead tr {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 .table_bonus thead tr td {
   border-right: 1px solid white !important;
@@ -218,7 +218,7 @@ tbody tr:nth-child(odd) {
   color: #211e16 !important;
 }
 .table_bonus tbody tr td a:hover {
-  color: #2196F3 !important;
+  color: #2196f3 !important;
 }
 
 .sfondo {
@@ -288,7 +288,7 @@ tbody tr:nth-child(odd) {
   top: 0px;
   width: 5px;
   height: 10px;
-  border: solid #2196F3;
+  border: solid #2196f3;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
   display: none;
@@ -296,14 +296,19 @@ tbody tr:nth-child(odd) {
 
 .menu {
   padding: 0 20px;
-  border-bottom: 1px solid #BBBCBC;
+  border-bottom: 1px solid #bbbcbc;
 }
 .menu a {
-  color: #BBBCBC;
+  color: #bbbcbc;
   font-weight: 700;
 }
 .menu a:hover {
-  color: #BBBCBC !important;
+  color: #bbbcbc !important;
+}
+
+.divider {
+  background-color: #f2f2f2;
+  padding-top: 5px;
 }
 
 .submenu {
@@ -326,22 +331,22 @@ tbody tr:nth-child(odd) {
 
 label {
   font-weight: 500;
-  color: #BBBCBC !important;
+  color: #bbbcbc !important;
 }
 
 .nav_bonus {
-  border-bottom: #BBBCBC 1px solid;
+  border-bottom: #bbbcbc 1px solid;
   margin-bottom: 20px;
   padding: 0 20px;
 }
 .nav_bonus span {
   font-weight: 600;
-  color: #BBBCBC;
+  color: #bbbcbc;
   padding: 0 25px;
   cursor: pointer;
 }
 .nav_bonus .frame {
-  border: 1px solid #BBBCBC;
+  border: 1px solid #bbbcbc;
   border-bottom: 0;
   background-color: white;
   padding: 10px 20px 3px !important;
@@ -375,7 +380,7 @@ label {
 }
 
 .frame {
-  border: 1px solid #BBBCBC !important;
+  border: 1px solid #bbbcbc !important;
   border-bottom: 0 !important;
   background-color: white;
   padding: 10px 20px 7px !important;

@@ -30,7 +30,7 @@
                 @include('business.layouts.partials.final_state_date')
             </div>
 
-            <div v-if="showFees">
+            <div v-if="showFees" >
                 @include('business.layouts.partials.fees_declarations')
             </div>
 
