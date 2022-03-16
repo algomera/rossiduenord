@@ -213,7 +213,41 @@
     </div>
     {{-- divider --}}
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-
+    {{--  --}}
+    <div class="px-20 mt-5">
+        <p class="font-500" style="text-decoration: underline;">APE DC. Dati Climatici</p>
+        <div class="d-flex align-items-center">
+            <p class="m-0">Temperatura di progetto</p>
+            <label for="" class=" m-0 mr-4 black">
+                <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                c°
+            </label>
+        </div>
+        <div class="mt-5">
+            <p class="font-500" style="text-decoration: underline;">APE TR. Tecnologie di utilizzo delle fonti rinnovabili, ove presenti</p>
+            <div class="d-flex align-items-center my-2">
+                <p class="m-0">Fotovoltaico potenza di picco</p>
+                <label for="" class=" m-0 mr-4 black">
+                    <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                    kW
+                </label>
+            </div>
+            <div class="d-flex align-items-center my-2">
+                    <p class="m-0">Eolico potenza nominale</p>
+                    <label for="" class=" m-0 mr-4 black">
+                        <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                        kW
+                    </label>
+            </div>
+            <div class="d-flex align-items-center my-2">
+                <p class="m-0">Solare termico superficie dei collettori</p>
+                <label for="" class=" m-0 mr-4 black">
+                    <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                    m²
+                </label>
+            </div>
+        </div>
+    </div>
 </div>
 
 
