@@ -214,7 +214,7 @@
     {{-- divider --}}
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{--  --}}
-    <div class="px-20 mt-5">
+    <div class="px-20">
         <p class="font-500" style="text-decoration: underline;">APE DC. Dati Climatici</p>
         <div class="d-flex align-items-center">
             <p class="m-0">Temperatura di progetto</p>
@@ -223,7 +223,7 @@
                 c°
             </label>
         </div>
-        <div class="mt-5">
+        <div class="mt-3">
             <p class="font-500" style="text-decoration: underline;">APE TR. Tecnologie di utilizzo delle fonti rinnovabili, ove presenti</p>
             <div class="d-flex align-items-center my-2">
                 <p class="m-0">Fotovoltaico potenza di picco</p>
@@ -248,6 +248,128 @@
             </div>
         </div>
     </div>
+
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+    {{-- divider --}}
+
+    <div class="px-20 w-80">
+        <b class="m-0 mt-3 black">Risultati della valutazione energetica</b>
+        <p class="font-500" style="text-decoration: underline;">APE NM: Norme e Metodologie</p>
+        <div>
+            <p>Riferimento alle norme tecniche utilizzate</p>
+            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+        </div>
+        <div class="my-3">
+            <p>Metodo di valutazione della prestazione energetica utilizzato</p>
+            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+        </div>
+    </div>
+
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+    {{-- divider --}}
+
+    <div class="px-20 w-80">
+        <p class="font-500" style="text-decoration: underline;">APE DE: Descrizione edificio</p>
+        <div class="my-3">
+            <p>Descrizione dell'edificio e della sua localizzazione e destinazione d'uso</p>
+            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+        </div>
+    </div>
+
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+    {{-- divider --}}
+
+    <div class="px-20">
+        <p class="font-500" style="text-decoration: underline;">APE I: Indici di presentrazione energetica </p>
+        <div class="d-flex align-items-center">
+            <p class="m-0">Indice di prestazione energetica non rinnovabile per le climatizazzione invernale proprio dell'edificio EPH,nren</p>
+            <label for="" class=" m-0 mr-4 black">
+                <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                kW/m² anno
+            </label>
+        </div>
+        <div class="d-flex align-items-center my-3">
+            <p class="m-0">Indice di prestazione energetica rinnovabile per le climatizazzione invernale proprio dell'edificio EPH,nren</p>
+            <label for="" class=" m-0 mr-4 black">
+                <input type="text" value="" style="width: 120px;" class="border ml-2 px-2 text-right">
+                kW/m² anno
+            </label>
+        </div>
+    </div>
+
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+    {{-- divider --}}
+
+    <div class="px-20">
+        <p class="font-500" style="text-decoration: underline;">APE Q: Qualità invernale ed estiva dell'involucro</p>
+        <div class="d-flex">
+            <label for="" class=" m-0 mr-4 black">EPH,nd
+                <input type="text" value="" class="border ml-2 px-2" style="width: 120px;" >
+                kW/kW/m² anno
+            </label>
+            <label for="" class=" m-0 mr-4 black">Asol,est/Asup utile
+                <input type="text" value="" class="border ml-2 px-2" style="width: 120px;">
+            </label>
+        </div>
+        <div class="my-3">
+            <label for="" class=" m-0 mr-4">
+                <span class="black">YIE</span>
+                <input type="text" value="" class="border ml-2 px-2" style="width: 120px;">
+            </label>
+        </div>
+        {{--  --}}
+        <div class="d-flex">
+            <p>
+                Indice di prestaziione energetica globale dell'edificio espresso in energia primaria non rinnovabile EPgl,nren
+            </p> 
+            <label for="" class=" m-0 mr-4 black">
+                <input type="text" value="" class="border ml-2 px-2" style="width: 120px;">
+                kW/kW/m² anno
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <span class="mr-2">Qualità invernale dell'involucro</span>
+            </div>
+            <div class="col-9">
+                <select name="" id="" style="width: 200px; background-color: #dbdcdb; border: none;">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="col-3">
+                <span class="mr-2">Qualità estiva dell'involucro</span>
+            </div>
+            <div class="col-9">
+                <select name="" id="" style="width: 200px; background-color: #dbdcdb; border: none;">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="col-3">
+                <span class="mr-2">Classe energetica</span>
+            </div>
+            <div class="col-9">
+                <select name="" id="" style="width: 50px; background-color: #dbdcdb; border: none;">
+                    <option value=""></option>
+                </select>
+            </div>
+    </div>
+
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+    {{-- divider --}}
+
+    <div class=" w-80">
+        <p class="font-500" style="text-decoration: underline;">APE LC: Lista delle raccomandazioni</p>
+        <div class="my-3">
+            <p>Possibili interventi di miglioramento</p>
+            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+        </div>
+    </div>
+    {{-- end page --}}
 </div>
 
 
