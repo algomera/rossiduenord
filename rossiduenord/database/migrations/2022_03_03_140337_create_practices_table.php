@@ -17,6 +17,9 @@ class CreatePracticesTable extends Migration
             $table->id();
             $table->bigInteger('applicant_id')->unsigned();
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->decimal('import', 10, 2, true )->nullable();
+            $table->string('practical_phase')->nullable();
+            $table->string('real_estate_type')->nullable();
             $table->string('month')->nullable();
             $table->string('year')->nullable();
             $table->string('policy_name')->nullable();
@@ -34,8 +37,11 @@ class CreatePracticesTable extends Migration
             $table->string('name')->nullable();
             $table->string('policy')->nullable();
             $table->string('request_policy')->nullable();
+            $table->string('referent_email')->nullable();
             $table->text('description')->nullable();
             $table->string('bonus')->nullable();
+            $table->text('note')->nullable();
+            $table->string('practice_ok');
             $table->timestamps();
         });
     }

@@ -39,7 +39,10 @@ class PracticeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'applicant_id' => 'required | integer | exists:applicants,id',
+            'applicant_id' => ' integer | exists:applicants,id',
+            'import' => 'nullable | numeric',
+            'practical_phase' => 'nullable | string',
+            'real_estate_type' => 'nullable | string',
             'month' => 'nullable | string',
             'year' => 'nullable | numeric',
             'policy_name' => 'nullable | string',
@@ -57,14 +60,17 @@ class PracticeController extends Controller
             'name' => 'nullable | string | min:3 | max:50',
             'policy' => 'nullable | boolean',
             'request_policy' => 'nullable | string',
+            'referent_email' => 'nullable | email',
             'description' => 'nullable | string',
             'bonus' => 'nullable | string',
+            'note' => 'nullable | string',
+            'practice_ok' => 'nullable | string',
         ]);
 
         //$applicant = $validated['applicant_id'];
         //dd($validated);
         //dd($validated);
-        $validated['applicant_id'] = 1;
+        $validated['applicant_id'] = '1';
         Practice::create($validated);
         return redirect()->route('business.practice.create');
     }

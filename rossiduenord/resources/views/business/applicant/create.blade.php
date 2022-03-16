@@ -8,7 +8,7 @@
             <form class="px-20 pb-20" action="{{ route('business.applicant.store') }}" method="POST">
                 @csrf
                 <div class="d-flex align-items-center">
-                    <h6 style="color: #61a4d7; text-decoration:underline;">Richiedente</h6>
+                    <h6 style="color: #61a4d7; text-decoration:underline;">Richiedente*</h6>
                     <div style="margin-left: 30px">
                         <input type="radio" name="applicant" id="applicant" value="privato">
                         <label for="applicant">Privato/Proprietario</label>
@@ -108,7 +108,7 @@
                 </div>
                 
                 <div style="width: 65%" class="d-flex align-items-center justify-content-between">
-                    <h6>Ruolo nella pratica</h6>
+                    <h6>Ruolo nella pratica*</h6>
                     <label class="checkbox-wrapper d-flex">
                         <span>Persona fisica</span>
                         <input type="radio" name="role" value="persona fisica">     

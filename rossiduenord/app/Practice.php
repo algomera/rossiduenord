@@ -8,6 +8,9 @@ class Practice extends Model
 {
     protected $fillable = [
         'applicant_id',
+        'import',
+        'practical_phase',
+        'real_estate_type',
         'month',
         'year',
         'policy_name',
@@ -25,8 +28,11 @@ class Practice extends Model
         'name',
         'policy',
         'request_policy',
+        'referent_email',
         'description',
         'bonus',
+        'note',
+        'practice_ok',
     ];
 
     public function applicant()
