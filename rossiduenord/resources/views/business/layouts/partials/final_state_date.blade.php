@@ -173,6 +173,47 @@
         </div>
     </div>
 
+    {{-- divider --}}
+
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
+
+    {{--  --}}
+    <div class=" mt-5 px-20">
+        <p class="font-500" style="text-decoration: underline;">APE IR. Impianto di Riscaldamento nella situazione post intervento</p>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Climatizzazione invernale</span>
+        </label>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Produzione acqua calda sanitaria</span>
+        </label>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Ventilazione meccanica</span>
+        </label>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Climatizzazione estiva</span>
+        </label>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Illuminazione</span>
+        </label>
+        <label class="checkbox-wrapper d-flex">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Trasporto di persone o cose</span>
+        </label>
+    </div>
+    {{-- divider --}}
+    <hr style="background-color: #f2f2f2; height:3px; border:none;">
+
 </div>
+
 
