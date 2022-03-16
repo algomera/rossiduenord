@@ -106,6 +106,10 @@ a:hover {
   color: #e4003c;
 }
 
+.w-80 {
+  width: 80%;
+}
+
 .bg-body {
   background-color: #F2F2F2 !important;
 }
