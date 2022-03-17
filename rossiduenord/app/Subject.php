@@ -30,4 +30,10 @@ class Subject extends Model
         'project_manager',
         'responsible_technician'
     ];
+
+    // relations
+    public function practice(){
+        return $this->hasOne(Practice::class);
+    }
+
 }

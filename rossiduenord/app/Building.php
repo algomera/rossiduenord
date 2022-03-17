@@ -53,4 +53,9 @@ class Building extends Model
         'administrator_cellphone',
         'administrator_email'
     ];
+
+    //todo     relations
+    public function practice(){
+        return $this->hasOne(Practice::class);
+    }
 }
