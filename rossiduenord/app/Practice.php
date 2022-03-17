@@ -40,4 +40,12 @@ class Practice extends Model
         return $this->belongsTo(Applicant::class);
     }
 
+    public function subject(){
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function building(){
+        return $this->belongsTo(Building::class);
+    }
+
 }
