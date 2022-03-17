@@ -38,8 +38,6 @@ class CreateSubjectsTable extends Migration
             // assicuratore
             $table->string('insurer')->nullable();
             // consulente
-            $table->string('technical_assev')->nullable();
-            // consulente
             $table->string('consultant')->nullable();
             // segnalatore
             $table->string('signaler')->nullable();
