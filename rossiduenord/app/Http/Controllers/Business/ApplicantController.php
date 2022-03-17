@@ -43,9 +43,17 @@ class ApplicantController extends Controller
 
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
+
+        //new applicant creation
+        $applicant = Applicant::create($validated);
+        //takig the id of new applicant
+        $applicant_id = $applicant['id'];
+        //insert into new practice
+        $practice_data= ['applicant_id'=> $applicant_id];
+        //new practice creation
+        $new_practice = Practice::create($practice_data);
         
-        Applicant::create($validated);
-        return redirect()->route('business.practice.create');
+        return redirect()->route('business.practice.create', compact('new_practice',$new_practice));
     }
 
     /**
