@@ -5,23 +5,23 @@
     <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
     <script type='text/javascript'>
         $(document).ready(function(){
-        $("#searchUser").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#table_ContentList tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            $("#searchUser").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#table_ContentList tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
-        });
         });
 
         $(document).ready(function() {
              
-             $('.checkall').click(function() {
-                 $(":checkbox").attr("checked", true);
-             });
-             
-             $('.uncheckall').click(function() {
-                 $(":checkbox").attr("checked", false);
-             });
+            $('.checkall').click(function() {
+                $(":checkbox").attr("checked", true);
+            });
+            
+            $('.uncheckall').click(function() {
+                $(":checkbox").attr("checked", false);
+            });
          });
 
     </script>
@@ -48,7 +48,7 @@
                         </div>
 
                         <button id="select-all" class="btn-custom bg-black white checkall"  >Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall"  >Deseleziona tutto</buttonhref=>
+                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall"  >Deseleziona tutto</button>
                         <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
                         <button id="select-delete" class="btn-custom bg-red white" data-toggle="modal" >Elimina selezionato</button>
                     </div>

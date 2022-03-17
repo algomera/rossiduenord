@@ -177,8 +177,8 @@
 
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
 
-    {{--  --}}
-    <div class=" mt-5 px-20">
+    
+    <div class=" mt-5 px-20">{{-- APE IR. Impianto di Riscaldamento nella situazione post intervento --}}
         <p class="font-500" style="text-decoration: underline;">APE IR. Impianto di Riscaldamento nella situazione post intervento</p>
         <label class="checkbox-wrapper d-flex">
             <input type="checkbox" name="" value="">     
@@ -211,10 +211,11 @@
             <span class="black" >Trasporto di persone o cose</span>
         </label>
     </div>
+
     {{-- divider --}}
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-    {{--  --}}
-    <div class="px-20">
+    
+    <div class="px-20">{{-- APE DC. Dati Climatici --}}
         <p class="font-500" style="text-decoration: underline;">APE DC. Dati Climatici</p>
         <div class="d-flex align-items-center">
             <p class="m-0">Temperatura di progetto</p>
@@ -253,7 +254,7 @@
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{-- divider --}}
 
-    <div class="px-20 w-80">
+    <div class="px-20 w-80">{{-- Risultati della valutazione energetica --}}
         <b class="m-0 mt-3 black">Risultati della valutazione energetica</b>
         <p class="font-500" style="text-decoration: underline;">APE NM: Norme e Metodologie</p>
         <div>
@@ -270,7 +271,7 @@
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{-- divider --}}
 
-    <div class="px-20 w-80">
+    <div class="px-20 w-80">{{-- APE DE: Descrizione edificio --}}
         <p class="font-500" style="text-decoration: underline;">APE DE: Descrizione edificio</p>
         <div class="my-3">
             <p>Descrizione dell'edificio e della sua localizzazione e destinazione d'uso</p>
@@ -282,7 +283,7 @@
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{-- divider --}}
 
-    <div class="px-20">
+    <div class="px-20">{{-- APE I: Indici di presentrazione energetica --}}
         <p class="font-500" style="text-decoration: underline;">APE I: Indici di presentrazione energetica </p>
         <div class="d-flex align-items-center">
             <p class="m-0">Indice di prestazione energetica non rinnovabile per le climatizazzione invernale proprio dell'edificio EPH,nren</p>
@@ -304,7 +305,7 @@
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{-- divider --}}
 
-    <div class="px-20">
+    <div class="px-20">{{-- APE Q: Qualità invernale ed estiva dell'involucro --}}
         <p class="font-500" style="text-decoration: underline;">APE Q: Qualità invernale ed estiva dell'involucro</p>
         <div class="d-flex">
             <label for="" class=" m-0 mr-4 black">EPH,nd
@@ -321,7 +322,7 @@
                 <input type="text" value="" class="border ml-2 px-2" style="width: 120px;">
             </label>
         </div>
-        {{--  --}}
+
         <div class="d-flex">
             <p>
                 Indice di prestaziione energetica globale dell'edificio espresso in energia primaria non rinnovabile EPgl,nren
@@ -356,13 +357,19 @@
                     <option value=""></option>
                 </select>
             </div>
+        </div>
+        <label class="checkbox-wrapper d-flex mt-3">
+            <input type="checkbox" name="" value="">     
+            <span class="checkmark"></span> 
+            <span class="black" >Trasporto di persone o cose</span>
+        </label>
     </div>
 
     {{-- divider --}}
     <hr style="background-color: #f2f2f2; height:3px; border:none;">
     {{-- divider --}}
 
-    <div class=" w-80">
+    <div class=" w-80 px-20">
         <p class="font-500" style="text-decoration: underline;">APE LC: Lista delle raccomandazioni</p>
         <div class="my-3">
             <p>Possibili interventi di miglioramento</p>

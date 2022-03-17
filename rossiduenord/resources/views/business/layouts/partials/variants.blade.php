@@ -69,24 +69,24 @@
         {{-- variations description --}}
         <div class="w-80">
             {{-- title --}}
-            <p class="black">descrizione DETTAGLIATA delle variazioni:</p>
+            <p class="black"><b>Descrizione DETTAGLIATA delle variazioni:</b></p>
             {{-- text area --}}
             <div class="my-2">
-                <span>Interventi trainanti</span>
+                <span class="font-500">Interventi trainanti</span>
                 <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                    
                 </div>
             </div>
             {{--  --}}
             <div class="my-2">
-                <span>Interventi trainati</span>
+                <span class="font-500">Interventi trainati</span>
                 <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                    
                 </div>
             </div>
             {{--  --}}
             <div class="my-2">
-                <span>Computo metrico</span>
+                <span class="font-500">Computo metrico</span>
                 <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                    
                 </div>
@@ -164,21 +164,21 @@
                 <p class="black">descrizione DETTAGLIATA delle variazioni:</p>
                 {{-- text area --}}
                 <div class="my-2">
-                    <span>Interventi trainanti</span>
+                    <span class="font-500">Interventi trainanti</span>
                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                        
                     </div>
                 </div>
                 {{--  --}}
                 <div class="my-2">
-                    <span>Interventi trainati</span>
+                    <span class="font-500">Interventi trainati</span>
                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                        
                     </div>
                 </div>
                 {{--  --}}
                 <div class="my-2">
-                    <span>Computo metrico</span>
+                    <span class="font-500">Computo metrico</span>
                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
                        
                     </div>
@@ -190,9 +190,7 @@
                     </label>
                 </div>
             </div>
-        </section>
-        <hr class="divider">
-        
+        </section>        
     </section>
 
     

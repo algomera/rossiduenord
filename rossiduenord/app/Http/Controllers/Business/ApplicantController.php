@@ -44,7 +44,8 @@ class ApplicantController extends Controller
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
         
-        Applicant::create($validated);
+        $aplicat = Applicant::create($validated);
+        dd($aplicat);
         return redirect()->route('business.practice.create');
     }
 

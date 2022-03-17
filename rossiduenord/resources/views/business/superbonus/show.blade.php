@@ -8,7 +8,7 @@
             <div class="nav_bonus">
                 <span @click="showpage1" :class="[showDati ? 'frame' : ''] ">Dati di Progetto</span>
                 <span @click="showpage2" :class="[showInterventi ? 'frame' : ''] ">Interventi trainanti</span>
-                <span @click="showpage3" :class="[showInterventi2 ? 'frame' : ''] ">Interventi trainanti +</span>
+                <span @click="showpage3" :class="[showInterventi2 ? 'frame' : ''] ">Interventi trainati</span>
                 <span @click="showpage4" :class="[showState ? 'frame' : ''] ">Dati stato finale</span>
                 <span @click="showFeesPage" :class="[showFees ? 'frame' : ''] " >Tot. Spese e Dichiarazioni</span>
                 <span @click="showVariantsPage" :class="[showVariants ? 'frame' : ''] ">Varianti</span>
