@@ -41,7 +41,7 @@ class CreatePracticesTable extends Migration
             $table->text('description')->nullable();
             $table->string('bonus')->nullable();
             $table->text('note')->nullable();
-            $table->string('practice_ok');
+            $table->string('practice_ok')->nullable();
             $table->timestamps();
         });
     }
