@@ -3,7 +3,6 @@
 @section('content')
     @include('business.layouts.partials.error')
     @include('business.layouts.partials.message')
-
     <div style="padding: 10px 165px 10px 30px; border-bottom: 2px solid #DBDCDB" class="d-flex align-items-center justify-content-between mb-2">
         <h2 class="light-grey">Pratiche</h2>
         <form class="position-relative" style="width: 600px" action="">

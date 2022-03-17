@@ -67,6 +67,8 @@ class PracticeController extends Controller
             'practice_ok' => 'nullable | string',
         ]);
 
+        
+
         //$applicant = $validated['applicant_id'];
         //dd($validated);
         //dd($validated);
@@ -94,7 +96,7 @@ class PracticeController extends Controller
      */
     public function edit(Practice $practice)
     {
-        //
+        
     }
 
     /**
@@ -106,7 +108,39 @@ class PracticeController extends Controller
      */
     public function update(Request $request, Practice $practice)
     {
-        //
+        $validated = $request->validate([
+            'applicant_id' => ' integer | exists:applicants,id',
+            'import' => 'nullable | numeric',
+            'practical_phase' => 'nullable | string',
+            'real_estate_type' => 'nullable | string',
+            'month' => 'nullable | string',
+            'year' => 'nullable | numeric',
+            'policy_name' => 'nullable | string',
+            'address' => 'nullable | string',
+            'civic' => 'nullable | numeric',
+            'common' => 'nullable | string',
+            'province' => 'nullable | string | min:2 | max:2',
+            'region' => 'nullable | string',
+            'cap' => 'nullable | string | min:5 | max:5',
+            'work_start' => 'nullable | string',
+            'c_m' => 'nullable | numeric',
+            'assev_tecnica' => 'nullable | numeric',
+            'nominative' => 'nullable | string',
+            'lastName' => 'nullable | string | min:3 | max:50',
+            'name' => 'nullable | string | min:3 | max:50',
+            'policy' => 'nullable | string',
+            'request_policy' => 'nullable | string',
+            'referent_email' => 'nullable | email',
+            'description' => 'nullable | string',
+            'bonus' => 'nullable | string',
+            'note' => 'nullable | string',
+            'practice_ok' => 'nullable | string',
+        ]);
+
+        // dd($practice); 
+        $practice->update($validated);
+        $practices = Practice::all();
+        return view('business.practice.index', compact('practices')); 
     }
 
     /**
