@@ -53,7 +53,10 @@ class ApplicantController extends Controller
         //new practice creation
         $new_practice = Practice::create($practice_data);
 
-        return redirect()->route('business.practice.create', compact('new_practice'));
+        $string = 'string';
+
+        // return redirect()->route('business.practice.index', ['practice'=> $new_practice]);
+        return view('business.practice.edit', compact('new_practice'));
     }
 
     /**
