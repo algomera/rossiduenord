@@ -4,14 +4,14 @@
     @include('business.layouts.partials.error')
     @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
-
-            <form class="px-20 pb-20" action="{{ route('business.practice.store') }}" method="POST">
+            
+            <form class="px-20 pb-20" action="{{ route('business.practice.store', $new_practice->id) }}" method="POST">
                 @csrf
                 <div class="d-flex">
                     <div style="width: 10%; margin-right: 20px;" class="form-group ">
                         <label for="id" class="text">{{ __('Numero pratica') }}</label>
                         <div>
-                            <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" autocomplete="id" autofocus>
+                            <input id="id" value="{{}}" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" autocomplete="id" autofocus>
                             
                             @error('id')
                             <span class="invalid-feedback" role="alert">
