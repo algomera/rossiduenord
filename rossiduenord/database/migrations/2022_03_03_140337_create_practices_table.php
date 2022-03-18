@@ -40,6 +40,10 @@ class CreatePracticesTable extends Migration
             $table->string('referent_email')->nullable();
             $table->text('description')->nullable();
             $table->string('bonus')->nullable();
+            $table->string('month_processing')->nullable();
+            $table->string('year_processing')->nullable();
+            $table->string('sal')->nullable();
+            $table->string('import_sal')->nullable();
             $table->text('note')->nullable();
             $table->string('practice_ok')->nullable();
             $table->timestamps();

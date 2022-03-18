@@ -8,7 +8,7 @@ use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
 {
@@ -32,7 +32,7 @@ class ApplicantController extends Controller
     public function store(Request $request, Practice $practice, Applicant $applicant)
     {
         $validated = $request->validate([
-            'applicant' => 'required | string',
+            'applicant' => 'nullable | string',
             'name' => 'nullable | string | min:3 | max:100',
             'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 ',
@@ -49,13 +49,15 @@ class ApplicantController extends Controller
         $applicant = Applicant::create($validated);
         //takig the id of new applicant
         $applicant_id = $applicant['id'];
-        // taking all the practice
-        $practice = Practice::all();
-        // verify the id of the last practice and adding 1
-        $practice_number = $practice->last()->id + 1;
-        // return the data 
-        $practice_data = Carbon::today()->format('d/m/Y');
-        return view('business.practice.create', compact('applicant_id','practice_number','practice_data'));
+        //insert into new practice
+        $practice_data= ['applicant_id'=> $applicant_id];
+        //new practice creation
+        $new_practice = Practice::create($practice_data);
+
+        $string = 'string';
+
+        // return redirect()->route('business.practice.index', ['practice'=> $new_practice]);
+        return view('business.applicant.edit', compact('applicant'));
     }
 
     /**
@@ -89,7 +91,28 @@ class ApplicantController extends Controller
      */
     public function update(Request $request, Applicant $applicant)
     {
-        //
+        $validated = $request->validate([
+            'applicant' => 'nullable | string',
+            'name' => 'nullable | string | min:3 | max:100',
+            'lastName' => 'nullable | string | min:3 | max:100',
+            'c_f' => 'nullable | string | min:16 | max:16 ',
+            'phone' => 'nullable | numeric',
+            'mobile_phone' => 'nullable | numeric | min:10',
+            'email' => 'nullable | email',
+            'role' => 'nullable | string',
+        ]);
+
+        //$practice = Practice::all()->where('applicant_id', '=', $applicant->id);
+    
+        $practices = DB::table('practices')
+                ->where('applicant_id', '=', $applicant->id)
+                ->get();
+
+        $practice = $practices[0];
+        //dd($practice);
+        $applicant->update($validated);
+        return view('business.practice.edit', compact('practice'));
+
     }
 
     /**

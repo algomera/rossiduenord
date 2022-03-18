@@ -12,7 +12,7 @@
                     <div style="width: 10%; margin-right: 20px;" class="form-group ">
                         <label for="id" class="text">{{ __('Numero pratica') }}</label>
                         <div>
-                            <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ $practice_number ??  old('id') }}" autocomplete="id" autofocus>
+                            <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ $new_practice->id ??  old('id') }}" autocomplete="id" autofocus>
                             
                             @error('id')
                             <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                     <div style="width: 15%; margin-right: 20px;" class="form-group">
                         <label for="created_at" class="text">{{ __('Data pratica') }}</label>
                         <div>
-                            <input id="created_at" type="text" style="height: 47px!important" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{$practice_data ?? old('created_at') }}" autocomplete="created_at" autofocus>
+                            <input id="created_at" type="text" style="height: 47px!important" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{$practice_data->created_at ?? old('created_at') }}" autocomplete="created_at" autofocus>
                             
                             @error('created_at')
                             <span class="invalid-feedback" role="alert">

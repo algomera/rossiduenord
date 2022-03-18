@@ -5,19 +5,21 @@
     @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
 
-            <form class="px-20 pb-20" action="{{ route('business.applicant.store') }}" method="POST">
+            <form class="px-20 pb-20" action="{{ route('business.applicant.update', $applicant->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="d-flex align-items-center">
                     <h6 style="color: #61a4d7; text-decoration:underline;">Richiedente*</h6>
                     <div style="margin-left: 30px">
-                        <input type="radio" name="applicant" id="applicant" value="privato">
+                        <input type="radio" name="applicant" id="applicant" value="privato" checked>
                         <label for="applicant">Privato/Proprietario</label>
                     </div>
-                    <div style="margin-left: 50px">
+
+{{--                     <div style="margin-left: 50px">
                         <input type="radio" name="applicant" id="applicant" value="impresa">
                         <label for="applicant">Impresa/General Contractor</label>
                     </div>
-
+ --}}
                     @error('applicant')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -111,7 +113,7 @@
                     <h6>Ruolo nella pratica*</h6>
                     <label class="checkbox-wrapper d-flex">
                         <span>Persona fisica</span>
-                        <input type="radio" name="role" value="persona fisica">     
+                        <input type="radio" name="role" value="persona fisica" checked>     
                         <span class="checkmark"></span> 
                     </label>
                     <label class="checkbox-wrapper d-flex">
