@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Business;
 
 use App\Practice;
 use App\Http\Controllers\Controller;
+use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class PracticeController extends Controller
@@ -41,34 +42,6 @@ class PracticeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'applicant_id' => ' integer | exists:applicants,id',
-            'import' => 'nullable | numeric',
-            'practical_phase' => 'nullable | string',
-            'real_estate_type' => 'nullable | string',
-            'month' => 'nullable | string',
-            'year' => 'nullable | numeric',
-            'policy_name' => 'nullable | string',
-            'address' => 'nullable | string',
-            'civic' => 'nullable | numeric',
-            'common' => 'nullable | string',
-            'province' => 'nullable | string | min:2 | max:2',
-            'region' => 'nullable | string',
-            'cap' => 'nullable | string | min:5 | max:5',
-            'work_start' => 'nullable | string',
-            'c_m' => 'nullable | numeric',
-            'assev_tecnica' => 'nullable | numeric',
-            'nominative' => 'nullable | string',
-            'lastName' => 'nullable | string | min:3 | max:50',
-            'name' => 'nullable | string | min:3 | max:50',
-            'policy' => 'nullable | boolean',
-            'request_policy' => 'nullable | string',
-            'referent_email' => 'nullable | email',
-            'description' => 'nullable | string',
-            'bonus' => 'nullable | string',
-            'note' => 'nullable | string',
-            'practice_ok' => 'nullable | string',
-        ]);
 
         Practice::create($validated);
         return view('business.subject.show');
@@ -134,10 +107,11 @@ class PracticeController extends Controller
             'practice_ok' => 'nullable | string',
         ]);
 
-        // dd($practice); 
         $practice->update($validated);
-        $practices = Practice::all();
-        return view('business.practice.index', compact('practices')); 
+        $id = ['practice_id' => $practice->id];
+        $subject = Subject::create($id);
+        
+        return view('business.subject.edit', compact('subject')); 
     }
 
     /**
