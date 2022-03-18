@@ -53,10 +53,7 @@ class ApplicantController extends Controller
         $practice_data= ['applicant_id'=> $applicant_id];
         //new practice creation
         $new_practice = Practice::create($practice_data);
-
-        $string = 'string';
-
-        // return redirect()->route('business.practice.index', ['practice'=> $new_practice]);
+        
         return view('business.applicant.edit', compact('applicant'));
     }
 
@@ -101,15 +98,12 @@ class ApplicantController extends Controller
             'email' => 'nullable | email',
             'role' => 'nullable | string',
         ]);
-
-        //$practice = Practice::all()->where('applicant_id', '=', $applicant->id);
     
         $practices = DB::table('practices')
-                ->where('applicant_id', '=', $applicant->id)
-                ->get();
-
+        ->where('applicant_id', '=', $applicant->id)
+        ->get();
         $practice = $practices[0];
-        //dd($practice);
+
         $applicant->update($validated);
         return view('business.practice.edit', compact('practice'));
 
