@@ -71,7 +71,7 @@ class PracticeController extends Controller
         ]);
 
         Practice::create($validated);
-        return view('business.soggetti.show');
+        return view('business.subject.show');
     }
 
     /**
