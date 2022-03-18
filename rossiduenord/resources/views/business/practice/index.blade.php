@@ -15,7 +15,7 @@
 
     <div class="content-main" style="padding-top: 0px;">
 
-        <div class="box px-20 pt-20" >
+        <div class="box px-20 pt-20"  style=" margin-bottom:0;">
             <span style="margin-right: 20px" class="black text-md {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
                 Lista Pratiche
             </span>
@@ -120,37 +120,73 @@
             </div>
         </div>
 
-        <div class="box">
+        <div class="box px-20 pt-20 pb-20">
             <div class="table mt-2">
-                <table style="width: 100%">
+                <table class="table_bonus" style="width: 100%">
                     <thead>
                         <tr style="border-top: 1px solid #707070">
                             <th style="width: 10%">Piattaforma</th>
-                            <th style="width: 10%">Pratica</th>
+                            <th style="width: 5%">Pratica</th>
                             <th style="width: 10%">Data Pratica</th>
-                            <th style="width: 10%">Descrizione</th>
+                            <th style="width: 15%">Descrizione</th>
                             <th style="width: 10%">Fase</th>
                             <th style="width: 10%">Mese lav.110%</th>
                             <th style="width: 10%">Lista incentivi</th>
-                            <th style="width: 10%">Richiedente</th>
-                            <th style="width: 10%">Proprietario</th>
-                            <th style="width: 10%">Notifiche</th>
+                            <th style="width: 15%">Richiedente</th>
+                            <th style="width: 5%">Notifiche</th>
+                            <th style="width: 10%"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($practices as $practice)
                             <tr>
-                                <td style="border-left: 1px solid #707070">
+                                <td style="border-left: 1px solid #707070">{{$practice->nominative}}</td>
+                                <td>{{$practice->id}}</td>
+                                <td>{{$practice->created_at}}</td>
+                                <td>{{$practice->description}}</td>
+                                <td>{{$practice->practical_phase}}</td>
+                                <td>{{$practice->month}}</td>
+                                <td>{{$practice->bonus}}</td>
+                                <td>{{$practice->name}} {{$practice->lastName}}</td>
+                                <td></td>
+                                <td class="d-flex align-items-center">
+                                    <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                        <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
+                                        <p class="m-0" style="color: #818387">Modifica</p>
+                                    </a>
+
+                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                        <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                        <p class="m-0" style="color: #818387">Cancella</p>
+                                    </button>
+
+                                    <div class="modal fade" id="del{{$practice->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina pratica {{$practice->id}}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Sei sicuro di volere eliminare la pratica e tutto il suo contenuto!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
+                                                    {{-- {{ Route('business.practice.destroy', $practice->id) }} --}}
+                                                    <form action="{{ Route('business.practice.destroy', $practice->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn-custom white bg-red mr-0">
+                                                            Conferma
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                         @endforeach
                     </tbody>

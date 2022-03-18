@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Business;
 use App\Practice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PracticeController extends Controller
 {
     /**
@@ -15,8 +15,11 @@ class PracticeController extends Controller
      */
     public function index()
     {   
-        $practices = Practice::all();
-        //ddd($practices);
+        $practices = DB::table('practices')
+            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
+            ->select('practices.*', 'applicants.*')
+            ->get();
+        //dd($practices);
         return view('business/practice.index', compact('practices'));
     }
 
@@ -96,7 +99,7 @@ class PracticeController extends Controller
      */
     public function edit(Practice $practice)
     {
-        
+        return view('business.practice.edit', compact('practice'));
     }
 
     /**
@@ -149,8 +152,11 @@ class PracticeController extends Controller
      * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Practice $practice)
+    public function destroy($id)
     {
-        //
+        $practice = Practice::find($id);
+        $practice->delete();
+        return redirect()->back()->with('message', "La pratica: $practice->id e stata eliminata!");
+
     }
 }

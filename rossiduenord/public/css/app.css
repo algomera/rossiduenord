@@ -216,7 +216,13 @@ tbody tr:nth-child(odd) {
 }
 .table_bonus tbody tr td {
   border-bottom: none !important;
-  border-right: none !important;
+  border-right: 1px solid #f2f2f2 !important;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  padding: 10px !important;
+  text-align: center;
+  vertical-align: middle;
 }
 .table_bonus tbody tr td a {
   color: #211e16 !important;
