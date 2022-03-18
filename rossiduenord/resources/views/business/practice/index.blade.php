@@ -76,7 +76,7 @@
                     <div class="d-flex align-items-center" action="">
                         <form action="{{route('business.applicant.store') }}" method="post">
                             @csrf
-                            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center mr-3">
+                            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
                                 <img src="{{ asset('/img/icon/icona_nuovo.svg') }}" alt="">
                                 <p style="color: #818387">Nuovo</p>
                             </button>
@@ -140,7 +140,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
-                                                    {{-- {{ Route('business.practice.destroy', $practice->id) }} --}}
+                                                    
                                                     <form action="{{ Route('business.practice.destroy', $practice->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')

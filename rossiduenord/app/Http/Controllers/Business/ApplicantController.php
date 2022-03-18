@@ -53,7 +53,7 @@ class ApplicantController extends Controller
         $practice_data= ['applicant_id'=> $applicant_id];
         //new practice creation
         $new_practice = Practice::create($practice_data);
-        
+
         return view('business.applicant.edit', compact('applicant'));
     }
 
@@ -76,7 +76,7 @@ class ApplicantController extends Controller
      */
     public function edit(Applicant $applicant)
     {
-        //
+        return view('business.applicant.edit', compact('applicant'));
     }
 
     /**
