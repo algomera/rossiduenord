@@ -43,6 +43,8 @@ class PracticeController extends Controller
     public function store(Request $request)
     {
 
+        Practice::create($validated);
+        return view('business.subject.show');
     }
 
     /**

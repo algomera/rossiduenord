@@ -25,7 +25,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('business.subject.create');
     }
 
     /**
