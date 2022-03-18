@@ -7,6 +7,7 @@ use App\Applicant;
 use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class ApplicantController extends Controller
@@ -48,15 +49,13 @@ class ApplicantController extends Controller
         $applicant = Applicant::create($validated);
         //takig the id of new applicant
         $applicant_id = $applicant['id'];
-        //insert into new practice
-        $practice_data= ['applicant_id'=> $applicant_id];
-        //new practice creation
-        $new_practice = Practice::create($practice_data);
-
-        $string = 'string';
-
-        // return redirect()->route('business.practice.index', ['practice'=> $new_practice]);
-        return view('business.practice.edit', compact('new_practice'));
+        // taking all the practice
+        $practice = Practice::all();
+        // verify the id of the last practice and adding 1
+        $practice_number = $practice->last()->id + 1;
+        // return the data 
+        $practice_data = Carbon::today()->format('d/m/Y');
+        return view('business.practice.create', compact('applicant_id','practice_number','practice_data'));
     }
 
     /**

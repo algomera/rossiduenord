@@ -70,14 +70,8 @@ class PracticeController extends Controller
             'practice_ok' => 'nullable | string',
         ]);
 
-        
-
-        //$applicant = $validated['applicant_id'];
-        //dd($validated);
-        //dd($validated);
-        $validated['applicant_id'] = '1';
         Practice::create($validated);
-        return redirect()->route('business.practice.create');
+        return view('business.soggetti.show');
     }
 
     /**
