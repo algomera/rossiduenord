@@ -4,14 +4,15 @@
     @include('business.layouts.partials.error')
     @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
-            <form class="px-20 pb-20" action="{{ route('business.practice.update',$practice->id) }}" method="POST">
+            <form class="px-20 pb-20" action="{{ route('business.practice.store') }}" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="d-flex">
+                    {{-- hidden input of the applicant id --}}
+                    <input type="hidden" name="applicant_id" value="{{$applicant_id ?? ''}}">
                     <div style="width: 10%; margin-right: 20px;" class="form-group ">
                         <label for="id" class="text">{{ __('Numero pratica') }}</label>
                         <div>
-                            <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ $practice->id}}" autocomplete="id" autofocus>
+                            <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{ $practice_number ??  old('id') }}" autocomplete="id" autofocus>
                             
                             @error('id')
                             <span class="invalid-feedback" role="alert">
@@ -24,7 +25,7 @@
                     <div style="width: 15%; margin-right: 20px;" class="form-group">
                         <label for="created_at" class="text">{{ __('Data pratica') }}</label>
                         <div>
-                            <input id="created_at" type="text" style="height: 47px!important" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{$practice->created_at }}" autocomplete="created_at" autofocus>
+                            <input id="created_at" type="text" style="height: 47px!important" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{$practice_data ?? old('created_at') }}" autocomplete="created_at" autofocus>
                             
                             @error('created_at')
                             <span class="invalid-feedback" role="alert">
@@ -37,7 +38,7 @@
                     <div style="width: 15%;" class="form-group">
                         <label for="import" class="text">{{ __('Importo stimato ') }}</label>
                         <div>
-                            <input id="import" type="number" step="0.01" pattern="[0-9]" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{ $practice->import }}" autocomplete="import" autofocus>
+                            <input id="import" type="number" step="0.01" pattern="[0-9]" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{ old('import') }}" autocomplete="import" autofocus>
                             
                             @error('import')
                             <span class="invalid-feedback" role="alert">
