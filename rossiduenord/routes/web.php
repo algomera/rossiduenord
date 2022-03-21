@@ -68,12 +68,10 @@ Route::middleware('business')
     Route::resource('file', 'FileController');
     Route::resource('applicant', 'ApplicantController');
     Route::resource('practice', 'PracticeController');
+    Route::resource('subject', 'SubjectController');
     Route::resource('superbonus', 'SuperBonusController');
     Route::get('superbonus/1', 'SuperBonusController@test')->name('test');
-    Route::get('immobile/1', 'ImmobileController@test')->name('test2');
-    Route::resource('immobile', 'ImmobileController');
-    Route::get('praticeSoggetti/1', 'PraticeSoggettiController@test')->name('test3');
-    Route::resource('praticeSoggetti', 'PraticeSoggettiController');
+    Route::resource('building', 'BuildingController');
 });
 
 

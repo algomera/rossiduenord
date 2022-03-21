@@ -28,10 +28,10 @@
                 <a href="{{route('business.practice.create') }}" class="{{Route::currentRouteName() == 'business.practice.edit' ? 'visited' : ''}}">
                     PRATICA
                 </a>
-                <a href="{{route('business.test3') }}" class="{{Route::currentRouteName() == 'business.test3' ? 'visited' : ''}}">
+                <a href="{{route('business.subject.create') }}" class="{{Route::currentRouteName() == 'business.subject.edit' ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.test2') }}" class="{{Route::currentRouteName() == 'business.test2' ? 'visited' : ''}}">
+                <a href="{{route('business.building.create') }}" class="{{Route::currentRouteName() == 'business.building.edit' ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
