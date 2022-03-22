@@ -25,7 +25,7 @@
                     <div style="width: 15%; margin-right: 20px;" class="form-group">
                         <label for="created_at" class="text">{{ __('Data pratica') }}</label>
                         <div>
-                            <input id="created_at" type="text" style="height: 47px!important" class="form-control" name="created_at" value="{{$practice_data ?? old('created_at') }}" autocomplete="created_at" autofocus>
+                            <input id="created_at" type="text" style="height: 47px!important" class="form-control" name="created_at" value="{{$practice->created_at }}" autocomplete="created_at" autofocus>
                             
                             @error('created_at')
                             <span class="invalid-feedback" role="alert">

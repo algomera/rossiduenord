@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'pageController@index');
+//Route::get('/', 'pageController@index');
 
 //Route Admin
 Route::middleware('admin')
