@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers\Bank;
 
-use App\Bonus;
-use App\Building;
 use App\Http\Controllers\Controller;
+use App\Practice;
 use Illuminate\Http\Request;
-
-class SuperBonusController extends Controller
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+class PracticeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +16,15 @@ class SuperBonusController extends Controller
      */
     public function index()
     {
-        $buildings = Building::all(); 
-        return view('business.superbonus.index', compact('buildings'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function test()
-    {
-        return view('business.superbonus.show');
+        $practices = DB::table('practices')
+        ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
+        ->select('practices.*', 'applicants.*')
+        ->get();
+        //dd($practices->created_at);
+        //$createdAt = Carbon::parse($practices[0]->created_at->format('d/m/Y'));
+        //dd($createdAt);
+        //$practice_data = Carbon::today()->format('d/m/Y');
+        return view('bank/practice.index', compact('practices'));
     }
 
     /**
@@ -54,21 +51,21 @@ class SuperBonusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bonus  $bonus
+     * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function show(Bonus $bonus)
+    public function show(Practice $practice)
     {
-        return view('business.superbonus.show', $bonus);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bonus  $bonus
+     * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bonus $bonus)
+    public function edit(Practice $practice)
     {
         //
     }
@@ -77,10 +74,10 @@ class SuperBonusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bonus  $bonus
+     * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bonus $bonus)
+    public function update(Request $request, Practice $practice)
     {
         //
     }
@@ -88,10 +85,10 @@ class SuperBonusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bonus  $bonus
+     * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bonus $bonus)
+    public function destroy(Practice $practice)
     {
         //
     }

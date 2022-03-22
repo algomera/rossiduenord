@@ -9,16 +9,36 @@
         <table class="table_bonus">
             <thead>
                 <tr>
-                    <td style="width:50%;"><b>Immobile</b></td>
-                    <td style="width:50%;"><b>Data inserimento</b></td>
+                    <th style="width:50%; height:50px; text-align: left;"><b>Immobile</b></th>
+                    <th style="width:50%; height:50px; text-align: left;"><b>Data inserimento</b></th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($buildings as $building)
                 <tr>
-                    <td>
-                        <a href="{{route('business.test') }}">Condominio Camelia Via Piave 15, 36060 Romano D'ezzelino VI</a>
+                    <td style="text-align: left;">
+                        <a href="{{route('business.test') }}">
+                            {{$building->intervention_name}} <br>
+                            {{$building->build_address}} 
+                            {{$building->build_civic_number}} 
+                            {{$building->cap}} <br>
+                            {{$building->region}} 
+                            {{$building->common}} 
+                            {{$building->province}} 
+                        </a>
                     </td>
-                    <td><a href="{{route('business.test') }}">09/08/2021</a></td>
+                    <td style="text-align: left;">
+                        <a href="{{route('business.test') }}">{{$building->created_at}}</a>
+                    </td>
+                </tr>
+                @endforeach
+                <tr>
+                    <td style="text-align: left;">
+                        <a href="{{route('business.test') }}">Camelia Via Piave 15 36060 Romano D'ezzelino VI</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <a href="{{route('business.test') }}">09/03/2022</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

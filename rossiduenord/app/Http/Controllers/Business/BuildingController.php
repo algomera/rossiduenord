@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\Bonus;
+use App\{Practice, Subject, Applicant, Building, Bonus};
 use App\Http\Controllers\Controller;
-use App\building;
 use Illuminate\Http\Request;
 
 class BuildingController extends Controller
@@ -16,7 +15,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -26,7 +25,7 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        //
+        return view('business.building.create');
     }
 
     /**
@@ -123,7 +122,7 @@ class BuildingController extends Controller
         //$id = ['practice_id' => $building->id];
         //$bonus = Bonus::create($id);
         //dd($bonus);
-        return view('business.superbonus.index');
+        return route('business.superbonus.index');
 
     }
 

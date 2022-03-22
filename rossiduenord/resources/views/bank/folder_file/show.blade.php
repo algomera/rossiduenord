@@ -10,7 +10,7 @@
 
         <a href="{{route('bank.file.create')}}" class="add-button">+ Aggiungi file</a>
 
-        <div class="box">
+        <div class="box px-20 pb-20 pt-20">
             <div style="margin-bottom: 20px">
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
                 <a href="{{ route('bank.folder.index') }}">Torna indietro</a>

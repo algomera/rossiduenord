@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-main">
-        <div class="box">
+        <div class="box px-20 pb-20 pt-20">
             <span class="black text-md"><b>Modifica utente:</b> {{ $user->name }}</span>
             <hr class="bg-black">
 

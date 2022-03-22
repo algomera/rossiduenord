@@ -34,6 +34,6 @@ class Applicant extends Model
 
     public function practice()
     {
-        return $this->hasOne(Practice::class);
+        return $this->hasMany(Practice::class);
     }
 }

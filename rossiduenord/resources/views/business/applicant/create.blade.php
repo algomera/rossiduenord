@@ -5,7 +5,7 @@
     @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
 
-            <form class="px-20 pb-20" action="{{ route('business.applicant.update', $applicant->id) }}" method="POST">
+            <form class="px-20 pb-20" action="" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="d-flex align-items-center">

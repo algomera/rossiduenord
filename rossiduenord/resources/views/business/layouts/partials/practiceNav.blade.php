@@ -22,21 +22,21 @@
             <hr class="bg-black" style="margin-top: 5px;">
     
             <div class="d-flex justify-content-between menu mb-4">
-                <a href="{{route('business.applicant.create') }}" class="{{Route::currentRouteName() == 'business.applicant.create' ? 'visited' : ''}}">
+                <a href="{{route('business.applicant.create') }}" class="{{Route::currentRouteName() == 'business.applicant.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.store' ? 'visited' : ''}}">
                     RICHIEDENTE
                 </a>
-                <a href="{{route('business.practice.create') }}" class="{{Route::currentRouteName() == 'business.practice.edit' ? 'visited' : ''}}">
+                <a href="{{route('business.practice.create') }}" class="{{Route::currentRouteName() == 'business.practice.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.update' ? 'visited' : ''}}">
                     PRATICA
                 </a>
-                <a href="{{route('business.subject.create') }}" class="{{Route::currentRouteName() == 'business.subject.edit' ? 'visited' : ''}}">
+                <a href="{{route('business.subject.create') }}" class="{{Route::currentRouteName() == 'business.subject.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.practice.update' ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.building.create') }}" class="{{Route::currentRouteName() == 'business.building.edit' ? 'visited' : ''}}">
+                <a href="{{route('business.building.create') }}" class="{{Route::currentRouteName() == 'business.building.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.subject.update' ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
                 <a href="">DOCUMENTI RICHIESTI</a>
-                <a href="{{route('business.superbonus.index') }}" class="{{Route::currentRouteName() == 'business.superbonus.index' ? 'visited' : ''}}">
+                <a href="{{route('business.superbonus.index') }}" class="{{Route::currentRouteName() == 'business.superbonus.index' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.superbonus.show' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.building.update' ? 'visited' : ''}} ">
                     SUPERBONUS 110%
                 </a>
                 <a href="">CONTRATTI</a>

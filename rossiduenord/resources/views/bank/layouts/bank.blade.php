@@ -38,7 +38,7 @@
                         <a class="nav-link {{Route::currentRouteName() == 'bank.folder.index' ? 'activ' : ''}}" href="{{route('bank.folder.index')}}" href="#">Gestione Cartelle/File</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Gestione Pratiche</a>
+                        <a class="nav-link {{Route::currentRouteName() == 'bank.practice.index ' ? 'activ' : ''}}" href="{{route('bank.practice.index')}}">Gestione Pratiche</a>
                     </li>
                 </ul>
             </nav>
@@ -52,5 +52,29 @@
             </div>
         </div>       
     </div>
+    
+    <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>   
+    <script>
+        $(document).ready(function(){
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table_ContentListFolder tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
+
+        $(document).ready(function() {
+            
+        $('.checkall').click(function() {
+            $(":checkbox").attr("checked", true);
+        });
+        
+        $('.uncheckall').click(function() {
+            $(":checkbox").attr("checked", false);
+        });
+    });
+    </script>
+
 </body>
 </html>

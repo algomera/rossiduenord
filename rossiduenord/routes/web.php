@@ -51,6 +51,7 @@ Route::middleware('bank')
     Route::resource('users', 'UserController');
     Route::resource('folder', 'FolderController');
     Route::resource('file', 'FileController');
+    Route::resource('practice', 'PracticeController');
 });
 
 
@@ -69,9 +70,9 @@ Route::middleware('business')
     Route::resource('applicant', 'ApplicantController');
     Route::resource('practice', 'PracticeController');
     Route::resource('subject', 'SubjectController');
+    Route::resource('building', 'BuildingController');
     Route::resource('superbonus', 'SuperBonusController');
     Route::get('superbonus/1', 'SuperBonusController@test')->name('test');
-    Route::resource('building', 'BuildingController');
 });
 
 

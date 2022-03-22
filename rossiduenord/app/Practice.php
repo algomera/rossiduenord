@@ -41,11 +41,11 @@ class Practice extends Model
     }
 
     public function subject(){
-        return $this->belongsTo(Subject::class);
+        return $this->hasOne(Subject::class);
     }
 
     public function building(){
-        return $this->belongsTo(Building::class);
+        return $this->hasOne(Building::class);
     }
 
 }

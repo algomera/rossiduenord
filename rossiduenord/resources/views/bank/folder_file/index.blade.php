@@ -10,7 +10,7 @@
 
         <a href="{{route('bank.folder.create')}}" class="add-button">+ Aggiungi cartella</a>
         
-        <div class="box">
+        <div class="box px-20 pb-20 pt-20">
             <span class="black text-md"><b>Elenco cartelle</b></span>
             <hr class="bg-black">
 

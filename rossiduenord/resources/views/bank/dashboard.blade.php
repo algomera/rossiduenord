@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('Sei un utente Banka!') }}
+                    {{ __('Sei un utente Banca!') }}
                 </div>
             </div>
         </div>

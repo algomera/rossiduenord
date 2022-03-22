@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-
+use App\{Practice, Subject, Applicant, Building, Bonus};
 use App\Http\Controllers\Controller;
-use App\Applicant;
-use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -74,9 +72,9 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Applicant $applicant)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
-        return view('business.applicant.edit', compact('applicant'));
+        return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
     }
 
     /**

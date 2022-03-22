@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\Building;
+use App\{Practice, Subject, Applicant, Building, Bonus};
 use App\Http\Controllers\Controller;
-use App\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -57,9 +56,9 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
-        return view('business.subject.edit');
+        return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
     }
 
     /**
@@ -94,10 +93,9 @@ class SubjectController extends Controller
             'project_manager' => 'nullable | string',
             'responsible_technician' => 'nullable | string',
         ]);
-        //dd($validated);
+        
         $subject->update($validated);
-        $id = ['practice_id' => $subject->id ];
-        //dd($id);
+        $id = ['practice_id' => $subject->practice_id ];
         $building = Building::create($id);
 
         return view('business.building.edit', compact('building'));

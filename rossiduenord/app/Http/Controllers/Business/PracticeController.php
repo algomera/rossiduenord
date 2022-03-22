@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\Practice;
+use App\{Practice, Subject, Applicant, Building, Bonus};
 use App\Http\Controllers\Controller;
-use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 class PracticeController extends Controller
 {
     /**
@@ -64,9 +65,11 @@ class PracticeController extends Controller
      * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Practice $practice)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
-        return view('business.practice.edit', compact('practice'));
+        $practice_data = Carbon::today()->format('d/m/Y');
+        dd($practice_data);
+        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus', 'practice_data'));
     }
 
     /**

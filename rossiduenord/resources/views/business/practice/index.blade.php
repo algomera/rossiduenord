@@ -3,11 +3,34 @@
 @section('content')
     @include('business.layouts.partials.error')
     @include('business.layouts.partials.message')
+    <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>   
+    <script>
+          $(document).ready(function(){
+          $("#search").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#table_ContentListFolder tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+          });
+          });
+
+          $(document).ready(function() {
+              
+           $('.checkall').click(function() {
+               $(":checkbox").attr("checked", true);
+           });
+           
+           $('.uncheckall').click(function() {
+               $(":checkbox").attr("checked", false);
+           });
+       });
+      </script>
+
     <div style="padding: 10px 165px 10px 30px; border-bottom: 2px solid #DBDCDB" class="d-flex align-items-center justify-content-between mb-2">
         <h2 class="light-grey">Pratiche</h2>
         <form class="position-relative" style="width: 600px" action="">
             <div>
-                <input class="input_search" type="text" placeholder="Cerca">
+                <input class="input_search" type="text" placeholder="Cerca" id="search">
                 <img class="position-absolute" style="right: 25px; top: 15px;" src="{{ asset('/img/icon/ICONA-CERCA.svg') }}" alt="">
             </div>
         </form>
@@ -62,13 +85,6 @@
                             <span class="text-sm grey">N. Pratica</span>
                             <input style="width: 50%"type="number">
                         </div>
-                
-                        <div style="width: 15%; margin-left: 35px;">
-                            <span class="text-sm grey">Ruolo</span>
-                            <select style="width: 80%" name="" id="">
-                                <option value="">Tutti</option>
-                            </select>
-                        </div>                        
                     </div>        
                 </form>
 
@@ -103,10 +119,10 @@
                             <th style="width: 10%"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table_ContentListFolder">
                         @foreach ($practices as $practice)
                             <tr>
-                                <td style="border-left: 1px solid #707070">{{$practice->nominative}}</td>
+                                <td>{{$practice->nominative}}</td>
                                 <td>{{$practice->id}}</td>
                                 <td>{{$practice->created_at}}</td>
                                 <td>{{$practice->description}}</td>

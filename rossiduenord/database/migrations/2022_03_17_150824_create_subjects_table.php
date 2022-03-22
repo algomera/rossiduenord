@@ -16,7 +16,7 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
-            $table->foreign('practice_id')->references('id')->on('practices');
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             // general contractor
             $table->string('general_contractor')->nullable();
             $table->string('construction_company')->nullable();
@@ -55,6 +55,11 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropForeign(['practice_id']);
+            $table->dropColumn('practice_id');
+        });
+
         Schema::dropIfExists('subjects');
     }
 }

@@ -33,7 +33,7 @@ class Subject extends Model
 
     // relations
     public function practice(){
-        return $this->hasOne(Practice::class);
+        return $this->belongsTo(Practice::class);
     }
 
 }

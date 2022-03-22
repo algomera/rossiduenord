@@ -207,9 +207,11 @@ tbody tr:nth-child(odd) {
 .table_bonus thead tr {
   background-color: #f2f2f2;
 }
-.table_bonus thead tr td {
+.table_bonus thead tr th {
+  text-align: center;
   border-right: 1px solid white !important;
   border-bottom: none !important;
+  padding: 10px !important;
 }
 .table_bonus tbody tr {
   background-color: transparent;

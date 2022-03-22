@@ -35,13 +35,13 @@ Vue.component(
 const app = new Vue({
     el: "#app",
     data: {
-        showDati: false,
+        showDati: true,
         showInterventi: false,
         showInterventi2: false,
-        showState: true,
+        showState: false,
         showFees: false,
         showVariants: false,
-        active: true,
+        active: false,
     },
 
     methods: {
