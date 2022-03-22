@@ -455,9 +455,9 @@ main {
   border-bottom: 1px solid white;
   border-right: 1px solid white;
   padding: 20px 10px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
 }
 
 .box-fixed {
