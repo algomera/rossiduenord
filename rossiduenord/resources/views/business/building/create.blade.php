@@ -450,31 +450,31 @@
                                         <thead>
                                             <tr>
                                                 <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                                <td style="width:20%;"><b>Nome/Ragione soc…</b></td>
-                                                <td style="width:13%;"><b>Cognome</b></td>
+                                                <td style="width:15%;" class="text-center"><b>Nome/Ragione soc…</b></td>
+                                                <td style="width:10%;"><b>Cognome</b></td>
                                                 <td style="width:10%;"><b>Telefono </b></td>
-                                                <td style="width:10%;"><b>Email</b></td>
-                                                <td style="width:15%;"><b>Codice fiscale/Pa…</b></td>
-                                                <td style="width:15%;"><b>Mille…</b></td>
-                                                <td style="width:15%;"><b>Foglio</b></td>
-                                                <td style="width:10%;"><b>Part.</b></td>
-                                                <td style="width:15%;"><b>sub</b></td>
-                                                <td style="width:15%;"><b>Cate…</b></td>
-                                                <td style="width:15%;"><b>sub…</b></td>
+                                                <td style="width:13%;"><b>Email</b></td>
+                                                <td style="width:12%;"><b>Codice fiscale/Pa…</b></td>
+                                                <td style="width:10%;" class="text-center"><b>Mille…</b></td>
+                                                <td style="width:5%;" class="text-center"><b>Foglio</b></td>
+                                                <td style="width:5%;"><b>Part.</b></td>
+                                                <td style="width:5%;"><b>sub</b></td>
+                                                <td style="width:5%;"><b>Cate…</b></td>
+                                                <td style="width:5%;"><b>sub…</b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td class="text-center">1</td>
                                                 <td class="text-center">Company test</td>
-                                                <td class="text-right">Mario</td>
-                                                <td class="text-right">3281000000</td>
-                                                <td class="text-right">mario.rossi@gmail.com</td>
-                                                <td class="text-right">HHTOKD9836UEHEOKS</td>
+                                                <td class="text-left">Mario</td>
+                                                <td class="text-left">3281000000</td>
+                                                <td class="text-left">mario.rossi@gmail.com</td>
+                                                <td class="text-left">HHTOKD9836UEHEOKS</td>
                                                 <td class="text-center">60,240</td>
                                                 <td class="text-center">18</td>
-                                                <td class="text-right">1212</td>
-                                                <td class="text-right">28</td>
+                                                <td class="text-left">1212</td>
+                                                <td class="text-left">28</td>
                                                 <td class="text-center">A/3</td>
                                                 <td class="text-center">0,00</td>
                                             </tr>
@@ -482,14 +482,14 @@
                                             <tr>
                                                 <td class="text-center">2</td>
                                                 <td class="text-center">Company test2</td>
-                                                <td class="text-right">Mario</td>
-                                                <td class="text-right">3281000000</td>
-                                                <td class="text-right">mario.rossi@gmail.com</td>
-                                                <td class="text-right">HHTOKD9836UEHEOKS</td>
+                                                <td class="text-left">Mario</td>
+                                                <td class="text-left">3281000000</td>
+                                                <td class="text-left">mario.rossi@gmail.com</td>
+                                                <td class="text-left">HHTOKD9836UEHEOKS</td>
                                                 <td class="text-center">60,240</td>
                                                 <td class="text-center">18</td>
-                                                <td class="text-right">1212</td>
-                                                <td class="text-right">28</td>
+                                                <td class="text-left">1212</td>
+                                                <td class="text-left">28</td>
                                                 <td class="text-center">A/3</td>
                                                 <td class="text-center">0,00</td>
                                             </tr>
