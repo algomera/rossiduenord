@@ -131,7 +131,7 @@
                                 <td>{{$practice->bonus}}</td>
                                 <td>{{$practice->name}} {{$practice->lastName}}</td>
                                 <td></td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center" style="height: fit-content">
                                     <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387">Modifica</p>
