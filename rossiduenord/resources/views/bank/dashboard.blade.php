@@ -1,7 +1,16 @@
 @extends('bank.layouts.bank')
 
 @section('content')
-    <div class="pt-4">
+    <div>
+        <div style="padding: 10px 165px 10px 30px; border-bottom: 2px solid #DBDCDB" class="d-flex align-items-center justify-content-between mb-4">
+            <h2 class="light-grey">Pannello Controllo</h2>
+            <form class="position-relative" style="width: 600px" action="">
+                <div>
+                    <input class="input_search" type="text" placeholder="Cerca" id="search">
+                    <img class="position-absolute" style="right: 25px; top: 15px;" src="{{ asset('/img/icon/ICONA-CERCA.svg') }}" alt="">
+                </div>
+            </form>
+        </div>
         <div class="col-12">
             <div class="card mb-4 p-3">
                 <table class="table_bonus">
@@ -81,7 +90,7 @@
             align: 'left'
         },
         xAxis: {
-            categories: ['Rossidue', 'Banca ValSabina', 'Bianchi 1'],
+            categories: ['Rossidue', 'Banca ValSabina', 'Bianchi1'],
             title: {
             text: null
             }
