@@ -9,6 +9,10 @@ input {
   font-weight: 600;
 }
 
+.card {
+  box-shadow: grey 0px 0px 10px -5px !important;
+}
+
 nav {
   width: 15%;
   height: 100vh;
@@ -425,6 +429,7 @@ main {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 80px;
+  box-shadow: grey 0px 0px 10px -5px !important;
 }
 .content-main .box .type-number {
   width: 60px;

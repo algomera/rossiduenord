@@ -10,7 +10,8 @@
 
             <form action="{{ route('business.update.data', $business->id) }}" method="POST">
                 @csrf
-
+                @method('PUT')
+                
                 <div class="form-group">
                     <label for="type" class="text">{{ __('Ragione sociale') }}</label>
                     <div>

@@ -63,7 +63,7 @@ Route::middleware('business')
 ->group(function () {
     Route::get('/dashboard', 'HomeController@businessHome')->name('dashboard');
     Route::get('/data', 'HomeController@editbusinessData')->name('edit.data');
-    Route::post('/data', 'HomeController@updatebusinessData')->name('update.data');
+    Route::put('/data', 'HomeController@updatebusinessData')->name('update.data');
     Route::resource('users', 'UserController');
     Route::resource('folder', 'FolderController');
     Route::resource('file', 'FileController');
