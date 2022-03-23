@@ -40,8 +40,6 @@
                     SUPERBONUS 110%
                 </a>
                 <a href="">CONTRATTI</a>
-                <a href="">POLIZZE ASSICURATIVE</a>
-                <a href="">BONUS CASA 50%</a>
                 <a href="">AUDITOR</a>
             </div>
     
