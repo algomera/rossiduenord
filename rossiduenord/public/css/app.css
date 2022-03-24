@@ -323,7 +323,7 @@ tbody tr:nth-child(odd) {
   font-weight: 700;
 }
 .menu a:hover {
-  color: #bbbcbc !important;
+  color: #61a4d7 !important;
 }
 
 .divider {
@@ -359,11 +359,14 @@ label {
   margin: 0 20px 20px;
   padding: 0 20px;
 }
-.nav_bonus span {
+.nav_bonus a {
   font-weight: 600;
-  color: #bbbcbc;
+  color: #bbbcbc !important;
   padding: 0 25px;
   cursor: pointer;
+}
+.nav_bonus a:hover {
+  color: #61a4d7 !important;
 }
 .nav_bonus .frame {
   border: 1px solid #bbbcbc;
@@ -429,7 +432,6 @@ main {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 80px;
-  box-shadow: grey 0px 0px 10px -5px !important;
 }
 .content-main .box .type-number {
   width: 60px;
