@@ -1,8 +1,6 @@
 @extends('business.layouts.business')
 
 @section('content')
-    @include('business.layouts.partials.error')
-    @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
 
             <div class="nav_bonus">

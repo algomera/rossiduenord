@@ -53,6 +53,8 @@
                 @include('business.layouts.partials.header')
                 
                 <main>
+                    @include('business.layouts.partials.error')
+                    @include('business.layouts.partials.message')                
                     @yield('content')
                 </main>    
 

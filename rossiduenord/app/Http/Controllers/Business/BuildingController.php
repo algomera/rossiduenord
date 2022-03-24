@@ -122,7 +122,8 @@ class BuildingController extends Controller
         //$id = ['practice_id' => $building->id];
         //$bonus = Bonus::create($id);
         //dd($bonus);
-        return route('business.superbonus.index');
+        //dd($building);
+        return redirect()->route('business.superbonus.index');
 
     }
 

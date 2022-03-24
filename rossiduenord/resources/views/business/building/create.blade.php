@@ -1,15 +1,12 @@
 @extends('business.layouts.business')
 
 @section('content')
-    @include('business.layouts.partials.error')
-    @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
 
             <div class="scroll">
 
-                <form action="" method="POST">
+                <form action="{{ route('business.superbonus.index')}}" method="POST">
                     @csrf
-                    @method('PUT')
 
                     <div class="px-20">
                         <h6><b>Dati Immobile</b></h6>

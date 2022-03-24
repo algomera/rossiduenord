@@ -87,14 +87,14 @@ class ApplicantController extends Controller
     public function update(Request $request, Applicant $applicant)
     {
         $validated = $request->validate([
-            'applicant' => 'nullable | string',
-            'name' => 'nullable | string | min:3 | max:100',
-            'lastName' => 'nullable | string | min:3 | max:100',
-            'c_f' => 'nullable | string | min:16 | max:16 ',
-            'phone' => 'nullable | numeric',
-            'mobile_phone' => 'nullable | numeric | min:10',
-            'email' => 'nullable | email',
-            'role' => 'nullable | string',
+            'applicant' => 'required | string',
+            'name' => 'required | string | min:3 | max:100',
+            'lastName' => 'required | string | min:3 | max:100',
+            'c_f' => 'required | string | min:16 | max:16 ',
+            'phone' => 'required | numeric',
+            'mobile_phone' => 'required | numeric | min:10',
+            'email' => 'required | email',
+            'role' => 'required | string',
         ]);
     
         $practices = DB::table('practices')

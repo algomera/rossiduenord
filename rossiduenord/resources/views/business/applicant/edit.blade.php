@@ -1,8 +1,6 @@
 @extends('business.layouts.business')
 
 @section('content')
-    @include('business.layouts.partials.error')
-    @include('business.layouts.partials.message')
     @include('business.layouts.partials.practiceNav')
 
             <form class="px-20 pb-20" action="{{ route('business.applicant.update', $applicant->id) }}" method="POST">
@@ -61,7 +59,7 @@
                 <div class="form-group">
                     <label for="c_f" class="text">{{ __('Codice Fiscale') }}</label>
                     <div>
-                        <input id="c_f" type="text" style="height: 47px!important" class="form-control @error('c_f') is-invalid @enderror" name="c_f" value="{{ old('c_f') }}" required autocomplete="c_f" autofocus>
+                        <input id="c_f" type="text" minlength="16" maxlength="16" style="height: 47px!important" class="form-control @error('c_f') is-invalid @enderror" name="c_f" value="{{ old('c_f') }}" required autocomplete="c_f" autofocus>
 
                         @error('c_f')
                             <span class="invalid-feedback" role="alert">
@@ -102,7 +100,7 @@
                 <div class="form-group">
                     <label for="email" class="text">{{ __('Email') }}</label>
                     <div>
-                        <input id="email" type="text" style="height: 47px!important;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" style="height: 47px!important;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">

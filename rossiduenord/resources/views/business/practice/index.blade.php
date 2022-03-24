@@ -1,31 +1,7 @@
 @extends('business.layouts.business')
 
 @section('content')
-    @include('business.layouts.partials.error')
-    @include('business.layouts.partials.message')
-    <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>   
-    <script>
-          $(document).ready(function(){
-          $("#search").on("keyup", function() {
-              var value = $(this).val().toLowerCase();
-              $("#table_ContentListFolder tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-          });
-          });
-
-          $(document).ready(function() {
-              
-           $('.checkall').click(function() {
-               $(":checkbox").attr("checked", true);
-           });
-           
-           $('.uncheckall').click(function() {
-               $(":checkbox").attr("checked", false);
-           });
-       });
-      </script>
-
+@include('business.layouts.partials.search')
     <div style="padding: 10px 165px 10px 30px; border-bottom: 2px solid #DBDCDB" class="d-flex align-items-center justify-content-between mb-2">
         <h2 class="light-grey">Pratiche</h2>
         <form class="position-relative" style="width: 600px" action="">
@@ -119,7 +95,7 @@
                             <th style="width: 10%"></th>
                         </tr>
                     </thead>
-                    <tbody id="table_ContentListFolder">
+                    <tbody id="table_ContentList">
                         @foreach ($practices as $practice)
                             <tr>
                                 <td>{{$practice->nominative}}</td>
