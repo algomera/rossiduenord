@@ -68,6 +68,9 @@ class PracticeController extends Controller
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
         $practice_data = Carbon::today()->format('d/m/Y');
+        $subject = $practice->subject;
+        $applicant = $practice->applicant;
+        $building = $practice->building;
         return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus', 'practice_data'));
     }
 

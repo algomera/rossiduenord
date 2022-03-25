@@ -95,10 +95,6 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('EBA_cost_1')->nullable();
             $table->string('EBA_cost_2')->nullable();
             $table->string('EBA_max_cost')->nullable();
-
-
-
-
             $table->timestamps();
         });
     }
