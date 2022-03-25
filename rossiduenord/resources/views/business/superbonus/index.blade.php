@@ -15,7 +15,7 @@
                 @foreach ($buildings as $building)
                 <tr>
                     <td style="text-align: left;">
-                        <a href="{{route('business.test') }}">
+                        <a href="{{route('business.superbonus.show', $building->id) }}">
                             {{$building->intervention_name}} <br>
                             {{$building->build_address}} 
                             {{$building->build_civic_number}} 
@@ -26,19 +26,19 @@
                         </a>
                     </td>
                     <td style="text-align: left;">
-                        <a href="{{route('business.test') }}">{{$building->created_at}}</a>
+                        <a href="{{route('business.superbonus.show', $building->id) }}">{{$building->created_at}}</a>
                     </td>
                 </tr>
                 @endforeach
-                <tr>
+{{--                 <tr>
                     <td style="text-align: left;">
-                        <a href="{{route('business.test') }}">Camelia Via Piave 15 36060 Romano D'ezzelino VI</a>
+                        <a href="{{route('business.superbonus.show', $buildings->id) }}">Camelia Via Piave 15 36060 Romano D'ezzelino VI</a>
                     </td>
                     <td style="text-align: left;">
-                        <a href="{{route('business.test') }}">09/03/2022</a>
+                        <a href="{{route('business.superbonus.show', $buildings->id) }}">09/03/2022</a>
                     </td>
                 </tr>
-            </tbody>
+ --}}            </tbody>
         </table>
     </div>
 @endsection

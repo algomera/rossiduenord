@@ -15,6 +15,8 @@ class CreateVertcalwallsTable extends Migration
     {
         Schema::create('vertcalwalls', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             // thermical isolation intervention
             $table->string('thermical_isolation_intervention')->nullable();
             // data
@@ -27,7 +29,7 @@ class CreateVertcalwallsTable extends Migration
             $table->string('max_possible_cost')->nullable();
             // after realization
             $table->string('total_isolation_cost_1')->nullable();
-            $table->string('total_isolation_cost_1')->nullable();
+            $table->string('total_isolation_cost_2')->nullable();
             $table->string('final_isolation_cost')->nullable();
             $table->string('dispersing_covers')->nullable();
             $table->string('isolation_energetic_savings')->nullable();
@@ -64,6 +66,11 @@ class CreateVertcalwallsTable extends Migration
      */
     public function down()
     {
+        Schema::table('vertcalwalls', function (Blueprint $table) {
+            $table->dropForeign(['practice_id']);
+            $table->dropColumn('practice_id');
+        });
+
         Schema::dropIfExists('vertcalwalls');
     }
 }

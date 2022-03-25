@@ -15,6 +15,9 @@ class CreateFinalstatedataTable extends Migration
     {
         Schema::create('finalstatedata', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+
             $table->string('plant_type')->nullable();
             $table->string('heat_terminals')->nullable();
             $table->string('distribution_type')->nullable();
@@ -81,6 +84,11 @@ class CreateFinalstatedataTable extends Migration
      */
     public function down()
     {
+        Schema::table('finalstatedata', function (Blueprint $table) {
+            $table->dropForeign(['practice_id']);
+            $table->dropColumn('practice_id');
+        });
+
         Schema::dropIfExists('finalstatedata');
     }
 }

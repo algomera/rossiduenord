@@ -15,6 +15,9 @@ class CreateProjectdataTable extends Migration
     {
         Schema::create('projectdata', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+
             $table->string('depositated_relation')->nullable();
             $table->string('common')->nullable();
             $table->string('province')->nullable();
@@ -43,6 +46,11 @@ class CreateProjectdataTable extends Migration
      */
     public function down()
     {
+        Schema::table('projectdata', function (Blueprint $table) {
+            $table->dropForeign(['practice_id']);
+            $table->dropColumn('practice_id');
+        });
+
         Schema::dropIfExists('projectdata');
     }
 }

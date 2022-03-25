@@ -21,14 +21,28 @@ class SuperBonusController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
+     * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function test()
+    public function show(Bonus $bonus)
     {
-        return view('business.superbonus.show');
+        return view('business.superbonus.variant.var_computation', $bonus);
     }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Bonus  $bonus
+     * @return \Illuminate\Http\Response
+     */
+    public function update_data_project(Request $request, Bonus $bonus)
+    {
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,17 +63,6 @@ class SuperBonusController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Bonus  $bonus
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bonus $bonus)
-    {
-        return view('business.superbonus.show', $bonus);
     }
 
     /**
