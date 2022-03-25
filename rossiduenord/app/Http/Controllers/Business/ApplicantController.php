@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{Practice, Subject, Applicant, Building, Bonus};
+use App\{Practice, Subject, Applicant, Building, Bonus, Data_project};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +57,9 @@ class ApplicantController extends Controller
         $subject = Subject::create($data);
         // building creation
         $building = Building::create($data);
+        // $new_project = new Data_project($data);
+        // $new_project->practice()->associate($practice)->save();
+        Data_project::create($data);
 
         return view('business.applicant.edit', compact('applicant','practice','subject','building'));
     }

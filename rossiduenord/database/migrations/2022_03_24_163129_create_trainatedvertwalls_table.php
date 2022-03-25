@@ -25,7 +25,7 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('expected_project_cost')->nullable();
             // fixture replacing intervention
             $table->string('fixture_replacing_intervention')->nullable();
-            $table->string('expected_project_cost')->nullable();
+            $table->string('fixture_expected_cost')->nullable();
             $table->string('work_expected_cost')->nullable();
             $table->string('max_possible_cost')->nullable();
             $table->string('fixture_energetic_savings')->nullable();

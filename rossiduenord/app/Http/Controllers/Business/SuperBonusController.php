@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-
-use App\Bonus;
-use App\Building;
+use App\{Practice, Subject, Applicant, Building, Bonus, Data_project};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,10 +12,10 @@ class SuperBonusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Applicant $applicant, Practice $practice, Subject $subject, Building $building, Data_project $data_project)
     {
-        $buildings = Building::all(); 
-        return view('business.superbonus.index', compact('buildings'));
+        
+        return view('business.superbonus.index', compact('building','practice', 'applicant','subject'));
     }
 
     /**
@@ -28,6 +26,7 @@ class SuperBonusController extends Controller
      */
     public function show(Bonus $bonus)
     {
+
         return view('business.superbonus.variant.var_computation', $bonus);
     }
 

@@ -30,7 +30,7 @@ class Data_project extends Model
 
     public function practice()
     {
-        return $this->belongsTo(practice::class);
+        return $this->belongsTo(Practice::class);
     }
 
 

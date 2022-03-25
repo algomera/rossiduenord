@@ -121,13 +121,11 @@ class BuildingController extends Controller
         ]);
 
         $building->update($validated);
-        //dd($building);
-        //$id = ['practice_id' => $building->id];
-        //$bonus = Bonus::create($id);
-        //dd($bonus);
-        //dd($building);
-        return redirect()->route('business.superbonus.index');
+        $practice = $building->practice;
+        $applicant = $practice->applicant;
+        $subject = $practice->subject;
 
+        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
     }
 
     /**

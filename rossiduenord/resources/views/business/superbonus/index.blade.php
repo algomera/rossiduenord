@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($buildings as $building)
+                {{-- @foreach ($buildings as $building) --}}
                 <tr>
                     <td style="text-align: left;">
                         <a href="{{route('business.superbonus.show', $building->id) }}">
@@ -29,7 +29,7 @@
                         <a href="{{route('business.superbonus.show', $building->id) }}">{{$building->created_at}}</a>
                     </td>
                 </tr>
-                @endforeach
+                {{-- @endforeach --}}
 {{--                 <tr>
                     <td style="text-align: left;">
                         <a href="{{route('business.superbonus.show', $buildings->id) }}">Camelia Via Piave 15 36060 Romano D'ezzelino VI</a>
