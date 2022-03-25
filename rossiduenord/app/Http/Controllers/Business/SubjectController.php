@@ -58,6 +58,9 @@ class SubjectController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
+        $practice = $subject->practice;
+        $applicant = $practice->applicant;
+        $building = $practice->building;
         return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
     }
 

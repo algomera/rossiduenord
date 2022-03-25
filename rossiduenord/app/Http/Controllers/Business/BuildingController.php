@@ -58,7 +58,10 @@ class BuildingController extends Controller
      */
     public function edit(building $building)
     {
-        //
+        $practice = $building->practice;
+        $applicant = $practice->applicant;
+        $subject = $practice->subject;
+        return view('business.building.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**

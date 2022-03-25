@@ -5,7 +5,6 @@
 
 <div class="content-main" style="padding-top: 0px;">
     <div class="box">
-
         <div class="px-20 pt-20">
             <span style="margin-right: 20px" class="black text-md {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
                 Lista Pratiche
@@ -16,16 +15,16 @@
             <hr class="bg-black" style="margin-top: 5px;">
     
             <div class="d-flex justify-content-between menu mb-4">
-                <a href="{{route('business.applicant.create') }}" class="{{Route::currentRouteName() == 'business.applicant.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.store' ? 'visited' : ''}}">
+                <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{Route::currentRouteName() == 'business.applicant.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.store' ? 'visited' : ''}}">
                     RICHIEDENTE
                 </a>
-                <a href="{{route('business.practice.create') }}" class="{{Route::currentRouteName() == 'business.practice.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.update' ? 'visited' : ''}}">
+                <a href="{{route('business.practice.edit', $practice->id) }}" class="{{Route::currentRouteName() == 'business.practice.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.practice.edit' ? 'visited' : ''}}">
                     PRATICA
                 </a>
-                <a href="{{route('business.subject.create') }}" class="{{Route::currentRouteName() == 'business.subject.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.practice.update' ? 'visited' : ''}}">
+                <a href="{{route('business.subject.edit', $subject->id) }}" class="{{Route::currentRouteName() == 'business.subject.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.practice.update' ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.building.create') }}" class="{{Route::currentRouteName() == 'business.building.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.subject.update' ? 'visited' : ''}}">
+                <a href="{{route('business.building.edit',$building->id) }}" class="{{Route::currentRouteName() == 'business.building.create' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.subject.update' ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
