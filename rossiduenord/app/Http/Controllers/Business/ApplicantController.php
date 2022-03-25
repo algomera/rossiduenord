@@ -50,9 +50,15 @@ class ApplicantController extends Controller
         //insert into new practice
         $practice_data= ['applicant_id'=> $applicant_id];
         //new practice creation
-        $new_practice = Practice::create($practice_data);
+        $practice = Practice::create($practice_data);
+        $practice_id = $practice['id'];
+        $data = ['practice_id'=> $practice_id];
+        // subject creation
+        $subject = Subject::create($data);
+        // building creation
+        $building = Building::create($data);
 
-        return view('business.applicant.edit', compact('applicant'));
+        return view('business.applicant.edit', compact('applicant','practice','subject','building'));
     }
 
     /**
@@ -101,13 +107,17 @@ class ApplicantController extends Controller
             'role' => 'required | string',
         ]);
     
-        $practices = DB::table('practices')
-        ->where('applicant_id', '=', $applicant->id)
-        ->get();
-        $practice = $practices[0];
+        // $practices = DB::table('practices')
+        // ->where('applicant_id', '=', $applicant->id)
+        // ->get();
+        // $practice = $practices[0];
 
         $applicant->update($validated);
-        return view('business.practice.edit', compact('practice'));
+        $practice =$applicant->practice[0];
+        $subject = $practice->subject;
+        $building = $practice->building;
+
+        return view('business.practice.edit', compact('practice','applicant','building','subject'));
 
     }
 

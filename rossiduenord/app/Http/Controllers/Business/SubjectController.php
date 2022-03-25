@@ -58,6 +58,7 @@ class SubjectController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
+
         $practice = $subject->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
@@ -99,9 +100,13 @@ class SubjectController extends Controller
         
         $subject->update($validated);
         $id = ['practice_id' => $subject->practice_id ];
-        $building = Building::create($id);
+        // $building = Building::create($id);
 
-        return view('business.building.edit', compact('building'));
+        $practice = $subject->practice;
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+
+        return view('business.building.edit', compact('practice','applicant', 'building', 'subject'));
     }
 
     /**
