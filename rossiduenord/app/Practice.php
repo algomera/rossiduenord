@@ -48,4 +48,8 @@ class Practice extends Model
         return $this->hasOne(Building::class);
     }
 
+    public function data_project(){
+        return $this->hasOne(Data_project::class);
+    }
+
 }
