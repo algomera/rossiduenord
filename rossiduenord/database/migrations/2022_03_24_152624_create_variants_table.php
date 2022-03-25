@@ -15,6 +15,9 @@ class CreateVariantsTable extends Migration
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+
             $table->string('sai2_variant_request')->nullable();
             $table->string('technical_relation')->nullable();
             $table->string('sai2_common')->nullable();
@@ -52,6 +55,11 @@ class CreateVariantsTable extends Migration
      */
     public function down()
     {
+        Schema::table('variants', function (Blueprint $table) {
+            $table->dropForeign(['practice_id']);
+            $table->dropColumn('practice_id');
+        });
+
         Schema::dropIfExists('variants');
     }
 }
