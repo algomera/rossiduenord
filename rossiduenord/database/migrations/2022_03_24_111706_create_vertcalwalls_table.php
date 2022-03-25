@@ -49,7 +49,7 @@ class CreateVertcalwallsTable extends Migration
             $table->string('total_acs_project_cost')->nullable();
             // effective cost
             $table->string('total_replacing_cost_1')->nullable();
-            $table->string('total_replacing_cost_1')->nullable();
+            $table->string('total_replacing_cost_2')->nullable();
             $table->string('final_replacing_cost')->nullable();
             $table->string('replacing_energetic_savings')->nullable();
             // date
