@@ -75,6 +75,8 @@ Route::middleware('business')
     Route::get('/superbonus/{practice}/{building}', 'SuperBonusController@show')->name('superbonus.show');
     Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')->name('update_data_project');
     Route::put('/superbonus/driving_intervention/{practice}/update', 'SuperBonusController@update_vertical_wall')->name('update_vertical_wall');
+    Route::put('/superbonus/towed_intervention/{practice}/update', 'SuperBonusController@update_towed_vertical_wall')->name('update_towed_vertical_wall');
+    Route::put('/superbonus/final_state/{practice}/update', 'SuperBonusController@update_final_state')->name('update_final_state');
     Route::resource('/verticalwall', 'VerticalWallController');
 });
 

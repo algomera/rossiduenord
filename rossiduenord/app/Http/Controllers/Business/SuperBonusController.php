@@ -135,6 +135,36 @@ class SuperBonusController extends Controller
         return view('business.superbonus.towed_intervention.vertical_wall', compact('towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
+    public function update_towed_vertical_wall(Request $request, Practice $practice) {
+        // Validazione form
+
+        // Update data
+        $practice->trainated_vert_wall()->update($request->except(['_token', '_method']));
+
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+
+        $final_state = $practice->final_state;
+        return view('business.superbonus.final_state_data', compact('final_state','applicant', 'practice', 'building', 'subject'));
+    }
+
+    public function update_final_state(Request $request, Practice $practice) {
+        // Validazione form
+
+        // Update data
+        $practice->final_state()->update($request->except(['_token', '_method']));
+
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+
+//        $final_state = $practice->final_state;
+        return view('business.superbonus.fees_declaration', compact('applicant', 'practice', 'building', 'subject'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

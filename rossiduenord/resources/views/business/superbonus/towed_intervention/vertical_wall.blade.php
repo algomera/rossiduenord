@@ -12,7 +12,7 @@
                 <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Varianti</a>
             </div>
 
-            <form action="" method="POST">
+            <form action="{{ route('business.update_towed_vertical_wall', ['practice' => $practice]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -783,7 +783,7 @@
                                     al comma 4 dell’art.119 del D.L. 34/2020 e successive modificazioni e ad altri interventi di cui all’art. 16 bis
                                     del DPR 917/86, pari a
                                     <label for="" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->EBA_sismic_costs}}" name="EBA_sismic_costs" style="width: 120px;" class="border mr-2 px-2 text-right">
+                                        <input type="text" value="{{$towed_vw->EBA_sismic_cost}}" name="EBA_sismic_cost" style="width: 120px;" class="border mr-2 px-2 text-right">
                                         €
                                     </label>
                                 </p>

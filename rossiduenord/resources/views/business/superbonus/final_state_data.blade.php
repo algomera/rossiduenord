@@ -12,7 +12,7 @@
                 <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Varianti</a>
             </div>
 
-            <form action="" method="POST">
+            <form action="{{ route('business.update_final_state', ['practice' => $practice]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -20,10 +20,10 @@
                     <h6>Dati stato finale</h6>
                     <hr style="margin-top: 5px; background-color: #211e16;">
                 </div>
-                
+
                 <div class="scroll" style="font-weight: 500">
                     <p class="font-500 px-20" style="text-decoration: underline;">Impianto termico esistente nella situazione ante intervento:</p>
-                    
+
                     <div class="px-20" style="width: 80%">{{-- select pre intervento --}}
                         <div class="form-group">
                             <label for="" class="grey">Tipo di impianto</label>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class=" mt-5 px-20">{{-- Tipo e numero di generatori presenti prima dell’intervento --}}
                         <p class="ml-3"><b>Tipo e numero di generatori presenti prima dell’intervento</b></p>
                         <div class="py-2 px-3" style="width: 80%; height: 150px; background-color: #f2f2f2; position: relative; ">
@@ -97,7 +97,7 @@
                             <button class="btn-delete" style="position: absolute; bottom:10px; right:10px">Elimina</button>
                         </div>
                     </div>
-                
+
                     <div class="mt-5 px-20" style="width: 80%">{{-- Potenza nominale complessiva --}}
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
@@ -118,16 +118,16 @@
                             </div>
                         </div>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="summer_acs_presence" value="true" {{$final_state->summer_acs_presence = 'true' ? 'checked' : ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="summer_acs_presence" value="true" {{$final_state->summer_acs_presence = 'true' ? 'checked' : ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Presenza dell’impianto di condizionamento estivo</span>
                         </label>
                         <p class="m-0">Eventuali interventi di manutenzione straordinaria</p>
                         <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
-                
+
                         </div>
                     </div>
-                
+
                     <div class="mt-5 px-20" style="width: 80%">{{-- APE IE. Involucro Edilizio: --}}
                         <p class="font-500" style="text-decoration: underline;">APE IE. Involucro Edilizio:</p>
                         <div class="form-group mt-2">
@@ -157,7 +157,7 @@
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Rapporto S/V</p>
                                 <label for="" class=" m-0 mr-4 black">
-                                    <input type="text" value="{{$final_state->S/V_report}}" name="S/V_report" style="width: 120px;" class="border ml-2 px-2 text-right">
+                                    <input type="text" value="{{$final_state->SV_report}}" name="SV_report" style="width: 120px;" class="border ml-2 px-2 text-right">
                                     m²
                                 </label>
                             </div>
@@ -169,7 +169,7 @@
                                 </label>
                             </div>
                         </div>
-                
+
                         <div class="d-flex mt-3">
                             <div class="d-flex align-items-center">
                                 <p class="m-0">Superficie utile raffrescata</p>
@@ -187,51 +187,51 @@
                         </div>
                         <p class="m-0 mt-3">Eventuali interventi di manutenzione straordinaria o ristrutturazione</p>
                         <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
-                
+
                         </div>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
-                    
+
+
                     <div class=" mt-5 px-20">{{-- APE IR. Impianto di Riscaldamento nella situazione post intervento --}}
                         <p class="font-500" style="text-decoration: underline;">APE IR. Impianto di Riscaldamento nella situazione post intervento</p>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="winter_acs" value="true" {{$final_state->winter_acs == 'true' ? 'checked' : ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="winter_acs" value="true" {{$final_state->winter_acs == 'true' ? 'checked' : ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Climatizzazione invernale</span>
                         </label>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="hot_water_production" value="true" {{$final_state->hot_water_production == 'true' ? 'checked' : ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="hot_water_production" value="true" {{$final_state->hot_water_production == 'true' ? 'checked' : ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Produzione acqua calda sanitaria</span>
                         </label>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="mechanic_ventilaion" value="true" {{$final_state->mechanic_ventilaion == 'true' ? 'checked' : ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="mechanic_ventilaion" value="true" {{$final_state->mechanic_ventilaion == 'true' ? 'checked' : ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Ventilazione meccanica</span>
                         </label>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="summer_acs" value="true" {{$final_state->summer_acs == 'true' ? 'checked': ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="summer_acs" value="true" {{$final_state->summer_acs == 'true' ? 'checked': ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Climatizzazione estiva</span>
                         </label>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="lighting" value="true" {{$final_state->lighting == 'true' ? 'checked': ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="lighting" value="true" {{$final_state->lighting == 'true' ? 'checked': ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Illuminazione</span>
                         </label>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="transport" value="true" {{$final_state->transport == 'true' ? 'checked': ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="transport" value="true" {{$final_state->transport == 'true' ? 'checked': ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Trasporto di persone o cose</span>
                         </label>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                    
+
                     <div class="px-20">{{-- APE DC. Dati Climatici --}}
                         <p class="font-500" style="text-decoration: underline;">APE DC. Dati Climatici</p>
                         <div class="d-flex align-items-center">
@@ -266,10 +266,10 @@
                             </div>
                         </div>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
+
                     <div class="px-20 w-80">{{-- Risultati della valutazione energetica --}}
                         <b class="m-0 mt-3 black">Risultati della valutazione energetica</b>
                         <p class="font-500" style="text-decoration: underline;">APE NM: Norme e Metodologie</p>
@@ -282,10 +282,10 @@
                             <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
                         </div>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
+
                     <div class="px-20 w-80">{{-- APE DE: Descrizione edificio --}}
                         <p class="font-500" style="text-decoration: underline;">APE DE: Descrizione edificio</p>
                         <div class="my-3">
@@ -293,10 +293,10 @@
                             <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
                         </div>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
+
                     <div class="px-20">{{-- APE I: Indici di presentrazione energetica --}}
                         <p class="font-500" style="text-decoration: underline;">APE I: Indici di presentrazione energetica </p>
                         <div class="d-flex align-items-center">
@@ -314,10 +314,10 @@
                             </label>
                         </div>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
+
                     <div class="px-20">{{-- APE Q: Qualità invernale ed estiva dell'involucro --}}
                         <p class="font-500" style="text-decoration: underline;">APE Q: Qualità invernale ed estiva dell'involucro</p>
                         <div class="d-flex">
@@ -335,11 +335,11 @@
                                 <input type="text" value="{{$final_state->YIE}}" name="YIE" class="border ml-2 px-2" style="width: 120px;">
                             </label>
                         </div>
-                
+
                         <div class="d-flex">
                             <p>
                                 Indice di prestaziione energetica globale dell'edificio espresso in energia primaria non rinnovabile EPgl,nren
-                            </p> 
+                            </p>
                             <label for="" class=" m-0 mr-4 black">
                                 <input type="text" value="{{$final_state->EPgl_nren}}" name="EPgl_nren" class="border ml-2 px-2" style="width: 120px;">
                                 kW/kW/m² anno
@@ -372,15 +372,15 @@
                             </div>
                         </div>
                         <label class="checkbox-wrapper d-flex mt-3">
-                            <input type="checkbox" name="people_transport" value="true" {{$final_state->people_transport == ' true' ? 'checked' : ''}}>     
-                            <span class="checkmark"></span> 
+                            <input type="checkbox" name="people_transport" value="true" {{$final_state->people_transport == ' true' ? 'checked' : ''}}>
+                            <span class="checkmark"></span>
                             <span class="black" >Trasporto di persone o cose</span>
                         </label>
                     </div>
-                
+
                     {{-- divider --}}
                     <hr style="background-color: #f2f2f2; height:3px; border:none;">
-                
+
                     <div class=" w-80 px-20">
                         <p class="font-500" style="text-decoration: underline;">APE LC: Lista delle raccomandazioni</p>
                         <div class="my-3">
@@ -390,7 +390,7 @@
                     </div>
                     {{-- end page --}}
                 </div>
-                
+
                 <div class="box-fixed">
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}

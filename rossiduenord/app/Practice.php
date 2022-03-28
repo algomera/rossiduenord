@@ -59,4 +59,8 @@ class Practice extends Model
     public function trainated_vert_wall() {
         return $this->hasOne(TrainatedVertWall::class);
     }
+
+    public function final_state() {
+        return $this->hasOne(FinalState::class);
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{Practice, Subject, Applicant, Building, Bonus, Data_project, TrainatedVertWall, VerticalWall};
+use App\{FinalState, Practice, Subject, Applicant, Building, Bonus, Data_project, TrainatedVertWall, VerticalWall};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +64,8 @@ class ApplicantController extends Controller
         VerticalWall::create($data);
 
         TrainatedVertWall::create($data);
+
+        FinalState::create($data);
 
         return view('business.applicant.edit', compact('applicant','practice','subject','building'));
     }
