@@ -1,16 +1,9 @@
 @extends('business.layouts.business')
 
 @section('content')
-@include('business.layouts.partials.practiceNav')
+    @include('business.layouts.partials.practiceNav')
+    @include('business.layouts.partials.nav_superbonus')
 
-            <div class="nav_bonus">
-                <a class="{{Route::currentRouteName() == 'business.superbonus.show' ? 'frame' : ''}}">Dati di Progetto</a>
-                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainanti</a>
-                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainati</a>
-                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Dati stato finale</a>
-                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Tot. Spese e Dichiarazioni</a>
-                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Varianti</a>
-            </div>
 
             <form action="{{route('business.update_data_project', ['practice' => $practice])}}" method="POST">
                 @csrf

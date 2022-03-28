@@ -1,16 +1,9 @@
 @extends('business.layouts.business')
 
 @section('content')
-@include('business.layouts.partials.practiceNav')
+    @include('business.layouts.partials.practiceNav')
+    @include('business.layouts.partials.nav_superbonus')
 
-            <div class="nav_bonus">
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == 'business.superbonus.show' ? 'frame' : ''}}">Dati di Progetto</a>
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Interventi trainanti</a>
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Interventi trainati</a>
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Dati stato finale</a>
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Tot. Spese e Dichiarazioni</a>
-                <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Varianti</a>
-            </div>
 
             <form action="{{ route('business.update_vertical_wall', ['practice' => $practice]) }}" method="POST">
                 @csrf
