@@ -14,7 +14,7 @@ class SuperBonusController extends Controller
      */
     public function index(Applicant $applicant, Practice $practice, Subject $subject, Building $building, Data_project $data_project)
     {
-        
+
         return view('business.superbonus.index', compact('building','practice', 'applicant','subject'));
     }
 
@@ -24,10 +24,15 @@ class SuperBonusController extends Controller
      * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function show(Bonus $bonus)
+    public function show($id)
     {
+        $practice = Practice::findOrFail($id);
 
-        return view('business.superbonus.show', $bonus);
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $data_project = $practice->data_project;
+        return view('business.superbonus.data_project', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
         /**
@@ -37,9 +42,9 @@ class SuperBonusController extends Controller
      * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function update_data_project(Request $request, Bonus $bonus)
+    public function update_data_project(Request $request, Practice $practice)
     {
-        
+        dd($request, $practice);
     }
 
 

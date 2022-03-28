@@ -72,7 +72,7 @@ Route::middleware('business')
     Route::resource('/subject', 'SubjectController');
     Route::resource('/building', 'BuildingController');
     Route::resource('/superbonus', 'SuperBonusController');
-    Route::put('/superbonus/data_project/{bonus}/update', 'SuperBonusController@update_data_project')->name('update_data_project');
+    Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')->name('update_data_project');
 });
 
 
