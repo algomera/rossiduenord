@@ -15,6 +15,8 @@ class CreateTrainatedvertwallsTable extends Migration
     {
         Schema::create('trainatedvertwalls', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             // thermical isolation intervention
             $table->string('thermical_isolation_intervention')->nullable();
             // data
@@ -35,7 +37,7 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('ss_energetic_savings')->nullable();
             // winter air conditioning sistem replacement
             $table->string('wacs_replacement')->nullable();
-            //with 
+            //with
             $table->string('condensing_boiler')->nullable();
             $table->string('condensing_generator')->nullable();
             $table->string('absorption_heat_pumps')->nullable();

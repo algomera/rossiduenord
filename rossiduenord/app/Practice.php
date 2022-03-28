@@ -56,4 +56,7 @@ class Practice extends Model
         return $this->hasOne(VerticalWall::class);
     }
 
+    public function trainated_vert_wall() {
+        return $this->hasOne(TrainatedVertWall::class);
+    }
 }
