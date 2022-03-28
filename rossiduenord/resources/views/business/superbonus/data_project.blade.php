@@ -12,7 +12,7 @@
                 <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Varianti</span>
             </div>
 
-            <form action="{{route('business.update_data_project')}}" method="POST">
+            <form action="{{route('business.update_data_project', ['practice' => $practice])}}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -20,7 +20,7 @@
                     <h6>Dati di Progetti</h6>
                     <hr style="margin-top: 5px; background-color: #211e16;">
                 </div>
-                
+
                 <div class="dati_progetto px-20 pb-20">
                     <div class="d-flex">
                         <p>È stata depositata la relazione tecnica prevista dall’art. 28 della legge 10/91 e dall’art. 8 comma 1 del D.lgs 192/05 e successive modificazioni</p>
@@ -29,7 +29,7 @@
                             N.D.
                         </label>
                         <label for="technical_report" style="margin-left: 20px">
-                            <input {{ $data_project->technical_report == 'no' ? 'checked' : ''}} type="radio" value="no" name="technical_report" id="technical_report"> 
+                            <input {{ $data_project->technical_report == 'no' ? 'checked' : ''}} type="radio" value="no" name="technical_report" id="technical_report">
                             No
                         </label>
                         <label for="technical_report" style="margin-left: 20px">
@@ -58,7 +58,7 @@
                         <p class="m-0 ml-2">Non è stata depositata la relazione tecnica in quanto si ricade nei casi di esclusione previsti dal comma 1 dell’art. 8 del del D.lgs 192/05 e dal punto 2,
                             paragrafo 2.2. dell’allegato 1 del decreto 26/06/2015</p>
                     </div>
-                
+
                     <div class="mt-5">
                         <label for="work_start">
                             - gli stessi lavori sono iniziati in data
@@ -69,7 +69,7 @@
                             <input type="date" value="{{$data_project->end_of_works}}" name="end_of_works" id="end_of_works" class="text-center border">
                         </label>
                     </div>
-                
+
                     <div>
                         <p class="m-0 mt-2">- i lavori sono eseguiti su:</p>
                         <div>
@@ -94,13 +94,13 @@
                             Unità immobiliari situate in edifici plurifamiliari
                         </label>
                     </div>
-                
+
                     <div class="d-flex align-items-center mt-4">
                         <p class="m-0">- la superficie lorda ante lavori complessiva disperdente è pari a</p>
                         <input type="number" value="{{$data_project->gross_surface_area}}" name="gross_surface_area" id="gross_surface_area" class="text-center ml-2 mr-2 border">
                         <span>m²</span>
                     </div>
-                
+
                     <div class="mt-5">
                         <b>Informazioni relative ai nuovi prezzi utilizzati nel computo metrico</b>
                         <hr style="margin-top: 5px; background-color: #211e16;">
