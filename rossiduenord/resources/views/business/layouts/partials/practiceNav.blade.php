@@ -24,12 +24,12 @@
                 <a href="{{route('business.subject.edit', $subject->id) }}" class="{{Route::currentRouteName() == 'business.subject.edit' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.practice.update' ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.building.edit',$building->id) }}" class="{{Route::currentRouteName() == 'business.building.edit' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.subject.update' ? 'visited' : ''}}">
+                <a href="{{route('business.building.edit', $building->id) }}" class="{{Route::currentRouteName() == 'business.building.edit' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.subject.update' ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
                 <a href="">DOCUMENTI RICHIESTI</a>
-                <a href="{{route('business.superbonus.update',$building->id) }}" class="{{Route::currentRouteName() == 'business.superbonus.index' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.superbonus.show' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.building.update' ? 'visited' : ''}} ">
+                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{Route::currentRouteName() == 'business.superbonus.index' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.superbonus.show' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.building.update' ? 'visited' : ''}} ">
                     SUPERBONUS 110%
                 </a>
                 <a href="">CONTRATTI</a>

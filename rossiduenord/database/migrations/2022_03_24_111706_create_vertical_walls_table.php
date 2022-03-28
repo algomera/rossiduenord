@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVertcalwallsTable extends Migration
+class CreateVerticalWallsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVertcalwallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vertcalwalls', function (Blueprint $table) {
+        Schema::create('vertical_walls', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
@@ -70,11 +70,11 @@ class CreateVertcalwallsTable extends Migration
      */
     public function down()
     {
-        Schema::table('vertcalwalls', function (Blueprint $table) {
+        Schema::table('vertical_walls', function (Blueprint $table) {
             $table->dropForeign(['practice_id']);
             $table->dropColumn('practice_id');
         });
 
-        Schema::dropIfExists('vertcalwalls');
+        Schema::dropIfExists('vertical_walls');
     }
 }

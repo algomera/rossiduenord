@@ -71,8 +71,10 @@ Route::middleware('business')
     Route::resource('/practice', 'PracticeController');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/building', 'BuildingController');
-    Route::resource('/superbonus', 'SuperBonusController');
+    Route::get('/superbonus/{practice}', 'SuperBonusController@index')->name('superbonus.index');
+    Route::get('/superbonus/{practice}/{building}', 'SuperBonusController@show')->name('superbonus.show');
     Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')->name('update_data_project');
+    Route::resource('/verticalwall', 'VerticalWallController');
 });
 
 
