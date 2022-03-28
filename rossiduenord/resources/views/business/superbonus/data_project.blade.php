@@ -4,12 +4,12 @@
 @include('business.layouts.partials.practiceNav')
 
             <div class="nav_bonus">
-                <span class="{{Route::currentRouteName() == 'business.superbonus.show' ? 'frame' : ''}}">Dati di Progetto</span>
-                <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainanti</span>
-                <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainati</span>
-                <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Dati stato finale</span>
-                <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Tot. Spese e Dichiarazioni</span>
-                <span class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Varianti</span>
+                <a class="{{Route::currentRouteName() == 'business.superbonus.show' ? 'frame' : ''}}">Dati di Progetto</a>
+                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainanti</a>
+                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Interventi trainati</a>
+                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Dati stato finale</a>
+                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Tot. Spese e Dichiarazioni</a>
+                <a class="{{Route::currentRouteName() == 'business.practice.index' ? 'frame' : ''}}">Varianti</a>
             </div>
 
             <form action="{{route('business.update_data_project', ['practice' => $practice])}}" method="POST">

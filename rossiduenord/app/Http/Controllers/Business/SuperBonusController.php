@@ -26,8 +26,8 @@ class SuperBonusController extends Controller
      */
     public function show($id)
     {
-        $practice = Practice::findOrFail($id);
-
+        $data_project = Data_project::findOrFail($id);
+        $practice = $data_project->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
         $subject = $practice->subject;
