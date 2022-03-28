@@ -63,8 +63,8 @@ class CreateFinalstatedataTable extends Migration
             $table->string('r_energy_perf_index')->nullable();  //renewable endergy performance index
             //APE Q
             $table->string('EPH')->nullable();
-            $table->string('YIE')->nullable();
             $table->string('Asup')->nullable();
+            $table->string('YIE')->nullable();
             $table->string('EPgl_nren')->nullable();  //energia globale dell'edificio espresso in energia primaria non rinnovabile
             $table->string('invernal_case_quality')->nullable();
             $table->string('summer_case_quality')->nullable();
