@@ -75,7 +75,7 @@ class SuperBonusController extends Controller
      * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bonus $bonus)
+    public function edit(Practice $practice)
     {
         //
     }
@@ -87,7 +87,7 @@ class SuperBonusController extends Controller
      * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bonus $bonus)
+    public function update(Request $request, Practice $practice)
     {
         //
     }
@@ -98,7 +98,7 @@ class SuperBonusController extends Controller
      * @param  \App\Bonus  $bonus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bonus $bonus)
+    public function destroy(Practice $practice)
     {
         //
     }
