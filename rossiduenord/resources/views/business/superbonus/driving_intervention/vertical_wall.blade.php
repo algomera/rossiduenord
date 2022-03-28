@@ -12,27 +12,27 @@
                 <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Varianti</a>
             </div>
 
-            <form action="" method="POST">
+            <form action="{{ route('business.update_vertical_wall', ['practice' => $practice]) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="px-20">
                     <h6>Interventi trainanti</h6>
                     <hr style="margin-top: 5px; background-color: #211e16;">
-                    
+
                     <p class="m-0">Interventi trainanti oggetto dei lavori</p>
                     <hr style="margin-top: 5px; background-color: #818387;">
                 </div>
-                
+
                 <div class="px-20">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                     <label class="checkbox-wrapper d-flex">
-                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} type="checkbox" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">     
-                        <span class="checkmark"></span> 
+                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} type="checkbox" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
+                        <span class="checkmark"></span>
                         <span class="black" ><b>1. Intervento di isolamento termico delle superfici opache verticali e orizzontali</b></span>
                     </label>
-                    
+
                     <p style="font-weight: 500">Le superfici oggetto dell’intervento sono:</p>
-                    
+
                     <div class="nav_bonus d-flex align-items-center">
                         <a class="frame">(PV) Pareti Verticali</a>
                         <a>(PO) Coperture</a>
@@ -50,19 +50,19 @@
                                 <td style="width:10%;">
                                     <b>
                                         Trasm. ante
-                                        (W/m2k)    
+                                        (W/m2k)
                                     </b>
                                 </td>
                                 <td style="width:10%;">
                                     <b>
                                         Trasm. post
-                                        (W/m2k)    
+                                        (W/m2k)
                                     </b>
                                 </td>
                                 <td style="width:15%;">
                                     <b>
                                         Trasm. Term.
-                                        Period. YIE (W/m2k)    
+                                        Period. YIE (W/m2k)
                                     </b>
                                 </td>
                                 <td style="width:15%;"><b>Confine</b></td>
@@ -82,7 +82,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <div class="d-flex mt-2" style="background-color: #f2f2f2; width:80%; padding:5px 10px">
                         <div class="d-flex mr-4">
                             <p class="m-0">Totale “pareti verticali”</p>
@@ -113,7 +113,7 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="d-flex align-items-center mt-3" style="width:80%;">
                         <p class="m-0">Superficie totale oggetto dell’intervento</p>
                         <label for="total_intervention_surface" class=" m-0 mr-4 black">
@@ -122,7 +122,7 @@
                         </label>
                         <p class="m-0 font-weight-light" style="font-size: 13px">* Il POND non viene considerato nel calcolo per l’ammisibilità dell’intervento trainante sull’involucro (maggiore del 25% della sup. disperdente)</p>
                     </div>
-                    
+
                     <div class="d-flex align-items-center justify-content-between mt-3" style="width:80%;">
                         <div class="d-flex align-items-center">
                             <p class="m-0">Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a*</p>
@@ -133,9 +133,9 @@
                         </div>
                         <button class="add-button">Computo metrico</button>
                     </div>
-                    
+
                     <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                    
+
                     <div class="d-flex align-items-center mt-3" style="width:80%;">
                         <p class="m-0">La spesa massima ammissibile dei lavori sulle parti opache è pari a</p>
                         <label for="max_possible_cost" class=" m-0 mr-4 black">
@@ -143,9 +143,9 @@
                             €
                         </label>
                     </div>
-                    
+
                     <p class="m-0 mt-3" style="font-weight: 500;">Il costo dei lavori realizzati è pari a</p>
-                    
+
                     <div class="d-flex" style="width: 80%">
                         <div class="d-flex align-items-center">
                             <span>SAL. n.1</span>
@@ -185,7 +185,7 @@
                             <span>€</span>
                         </div>
                     </div>
-                    
+
                     <div class="d-flex align-items-center mt-2" style="width:80%;">
                         <p class="m-0">Di cui per coperture non disperdenti</p>
                         <label for="dispersing_covers" class=" m-0 mr-4 black">
@@ -193,7 +193,7 @@
                             €
                         </label>
                     </div>
-                    
+
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                         <label for="isolation_energetic_savings" class=" m-0 mr-4 black">
@@ -202,14 +202,14 @@
                         </label>
                     </div>
                 </div>
-                
+
                 <div class="px-20 pb-20">{{-- Intervento di sostituzione degli impianti di climatizzazione invernale esistenti --}}
                     <label class="checkbox-wrapper d-flex">
-                        <input {{$vertwall->winter_acs_replacing == 'true' ? 'checked' : ''}} type="checkbox" name="winter_acs_replacing" id="winter_acs_replacing" value="true">     
-                        <span class="checkmark"></span> 
+                        <input {{$vertwall->winter_acs_replacing == 'true' ? 'checked' : ''}} type="checkbox" name="winter_acs_replacing" id="winter_acs_replacing" value="true">
+                        <span class="checkmark"></span>
                         <span class="black" ><b>Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</b></span>
                     </label>
-                    
+
                     <div class="d-flex">
                         <div class="d-flex align-items-center ml-4">
                             <span>Potenza utile complessiva pari a</span>
@@ -226,119 +226,119 @@
                             <span>generatori di calore</span>
                         </div>
                     </div>
-                    
+
                     <p>con impianti centralizzati dotati di:</p>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} type="checkbox" name="condensing_boiler" id="condensing_boiler" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} type="checkbox" name="condensing_boiler" id="condensing_boiler" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>CC. Caldaie a condensazione</b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} type="checkbox" name="heat_pumps" id="heat_pumps" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} type="checkbox" name="heat_pumps" id="heat_pumps" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>PC. Pompe di calore (P… </b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->absorption_heat_pumps == 'true' ? 'checked' : ''}} type="checkbox" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->absorption_heat_pumps == 'true' ? 'checked' : ''}} type="checkbox" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>PCA. Pompe di calore ad assorbimento a…</b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} type="checkbox" name="hybrid_system" id="hybrid_system" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} type="checkbox" name="hybrid_system" id="hybrid_system" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>SI. Sistemi ibridi</b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>SA. Installazione di scaldacqua a pompa di c…</b></span>
                         </label>
                         <p style="width: 70%;">In sostituzione di un sistema di produzione di acqua calda quando avviene con lo stesso generatore di calore destinato alla climatizzazione invernale ai sensi delle lettre b) e c) del comma 1 dell’articolo 119 del Decreto Rilancio</p>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->biome_generators == 'true' ? 'checked' : ''}} type="checkbox" name="biome_generators" id="biome_generators" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->biome_generators == 'true' ? 'checked' : ''}} type="checkbox" name="biome_generators" id="biome_generators" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>IB. Generatori a bioma…</b></span>
                         </label>
                         <p style="width: 70%;">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="mt-5">
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel" id="solar_panel" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel" id="solar_panel" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" ><b>Collettori solari</b></span>
                         </label>
                         <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="d-flex mt-3">
                         <span>Destinati a</span>
-                    
+
                         <label for="solar_panel_use_winter" class="checkbox-wrapper d-flex ml-4">
-                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_winter" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_winter" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" >Climatizzazione invernale</span>
                         </label>
                         <label for="solar_panel_use_summer" class="checkbox-wrapper d-flex  ml-4">
-                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_summer" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_summer" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" >Climatizzazione estiva</span>
                         </label>
                         <label for="solar_panel_use_water" class="checkbox-wrapper d-flex  ml-4">
-                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_water" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_water" value="true">
+                            <span class="checkmark"></span>
                             <span class="black" >Produzione di acqua calda sanitaria</span>
-                        </label>      
+                        </label>
                     </div>
-                    
+
                     <div class="d-flex align-items-center justify-content-between mt-3" style="width:80%;">
                         <div class="d-flex align-items-center">
                             <p class="m-0">Il costo complessivo di progetto degli interventi sull’impianto ammonta a *</p>
@@ -349,9 +349,9 @@
                         </div>
                         <button class="add-button">Computo metrico</button>
                     </div>
-                    
+
                     <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                    
+
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0">L'ammontare massimo dei lavori per la sostituzione degli impianti è pari a</p>
                         <label for="total_cost_installations" class=" m-0 mr-4 black">
@@ -359,7 +359,7 @@
                             €
                         </label>
                     </div>
-                    
+
                     <div class="d-flex justify-content-between" style="width: 80%">
                         <p class="m-0 mt-2 font-weight-bold">Sono stati conclusi i seguenti lavori</p>
                         <table class="table_bonus" style="width: 70%">
@@ -377,9 +377,9 @@
                                     <td class="text-right"></td>
                                 </tr>
                             </tbody>
-                        </table>    
+                        </table>
                     </div>
-                    
+
                     <p class="font-weight-bold m-0 mt-5">per un ammontare pari a</p>
                     <div class="d-flex" style="width: 80%">
                         <div class="d-flex align-items-center">
@@ -420,7 +420,7 @@
                             <span>€</span>
                         </div>
                     </div>
-                    
+
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0 font-weight-bold">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                         <label for="replacing_energetic_savings" class=" m-0 mr-4 black">
@@ -428,7 +428,7 @@
                             KWh/anno
                         </label>
                     </div>
-                </div>  
+                </div>
                 <div class="box-fixed">
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}

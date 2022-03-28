@@ -52,4 +52,8 @@ class Practice extends Model
         return $this->hasOne(Data_project::class);
     }
 
+    public function verical_wall() {
+        return $this->hasOne(VerticalWall::class);
+    }
+
 }
