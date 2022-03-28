@@ -60,6 +60,7 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('BA_winter_acs')->nullable();
             $table->string('BA_summer_acs')->nullable();
             $table->string('BA_hot_water_production')->nullable();
+            $table->string('BA_usable_area')->nullable();
             $table->string('BA_expected_cost')->nullable();
             $table->string('BA_max_cost')->nullable();
             $table->string('BA_nr_savings')->nullable();
@@ -92,9 +93,10 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('EBA')->nullable();
             $table->string('EBA_expected_cost')->nullable();
             $table->string('EBA_sismic_cost')->nullable();
+            $table->string('EBA_barr_deleting_cost')->nullable();
+            $table->string('EBA_max_cost')->nullable();
             $table->string('EBA_cost_1')->nullable();
             $table->string('EBA_cost_2')->nullable();
-            $table->string('EBA_max_cost')->nullable();
             $table->timestamps();
         });
     }
