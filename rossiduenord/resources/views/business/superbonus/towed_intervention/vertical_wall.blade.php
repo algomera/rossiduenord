@@ -19,13 +19,13 @@
                 <div class="px-20">
                     <h6>Interventi trainati</h6>
                     <hr style="margin-top: 5px; background-color: #211e16;">
-                    
+
                     <p class="m-0">Interventi trainanti oggetto dei lavori</p>
                     <hr style="margin-top: 5px; background-color: #818387;">
                 </div>
-                
+
                 <div class="d-flex" style="font-weight: 500">
-                
+
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
                         <div class="d-flex align-items-center pb-2 pt-0">
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
@@ -64,23 +64,23 @@
                             <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
                         </div>
                     </div>
-                
+
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
-                
+
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>1. Intervento di isolamento termico delle superfici opache verticali e orizzontali</b></span>
                             </label>
                             <p>Le superfici oggetto dell'intervento sono:</p>
-                            
+
                             <div class="nav_bonus d-flex align-items-center">
                                 <a class="frame">(PV) Pareti Verticali</a>
                                 <a>(PO) Coperture</a>
                                 <a>(PS) Pavimenti</a>
                             </div>
-                
+
                             <table class="table_bonus" style="width: 100%">
                                 <thead>
                                     <tr>
@@ -90,19 +90,19 @@
                                         <td style="width:10%;">
                                             <b>
                                                 Trasm. ante
-                                                (W/m2k)    
+                                                (W/m2k)
                                             </b>
                                         </td>
                                         <td style="width:10%;">
                                             <b>
                                                 Trasm. post
-                                                (W/m2k)    
+                                                (W/m2k)
                                             </b>
                                         </td>
                                         <td style="width:15%;">
                                             <b>
                                                 Trasm. Term.
-                                                Period. YIE (W/m2k)    
+                                                Period. YIE (W/m2k)
                                             </b>
                                         </td>
                                         <td style="width:15%;"><b>Confine</b></td>
@@ -122,7 +122,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                
+
                             <div class="d-flex mt-5" style="background-color: #f2f2f2; width:100%; padding:5px 10px">
                                 <div class="d-flex mr-4">
                                     <p class="m-0">Totale “pareti verticali”</p>
@@ -172,16 +172,16 @@
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                         </div>
-                        
+
                         <div>{{-- IN. Sostituzione degli infissi --}}
                             <label class="checkbox-wrapper d-flex mt-5">
-                                <input type="checkbox" name="fixture_replacing_intervention" value="true" {{$towed_vw->fixture_replacing_intervention == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="fixture_replacing_intervention" value="true" {{$towed_vw->fixture_replacing_intervention == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>IN. Sostituzione degli infissi</b></span>
                             </label>
-                    
+
                             <p>Le superfici oggetto dell'intervento sono:</p>
-                    
+
                             <table class="table_bonus" style="width: 100%">
                                 <thead>
                                     <tr>
@@ -191,13 +191,13 @@
                                         <td style="width:10%;">
                                             <b>
                                                 Trasm. ante
-                                                (W/m2k)    
+                                                (W/m2k)
                                             </b>
                                         </td>
                                         <td style="width:10%;">
                                             <b>
                                                 Trasm. post
-                                                (W/m2k)    
+                                                (W/m2k)
                                             </b>
                                         </td>
                                         <td style="width:10%;">
@@ -224,7 +224,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                    
+
                             <div class="d-flex align-items-center justify-content-between mt-5" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Le spese previste in progetto dei lavori al punto IN ammontano a*</p>
@@ -236,7 +236,7 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                            
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa prevista per gli interventi di cui ai punti PV, PO, PS e IN ammonta a*</p>
@@ -247,7 +247,7 @@
                                 </div>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                    
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile è pari a</p>
@@ -257,7 +257,7 @@
                                     </label>
                                 </div>
                             </div>
-                    
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
@@ -268,15 +268,15 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- SS. Schermate solari e chiusure oscuranti --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="SS" value="true" {{$towed_vw->SS == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="SS" value="true" {{$towed_vw->SS == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>SS. Schermate solari e chiusure oscuranti</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
                                 <div class="d-flex align-items-center">
@@ -288,7 +288,7 @@
                                 </div>
                                 <button class="add-button">Computo metrico</button>
                             </div>
-                    
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile è pari a</p>
@@ -298,7 +298,7 @@
                                     </label>
                                 </div>
                             </div>
-                    
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
@@ -309,71 +309,71 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- 2 sezione inpianti --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="wacs_replacement" value="{{$towed_vw->}}">     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="wacs_replacement" value="{{$towed_vw->wacs_replacement}}">
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>2.Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</b></span>
                             </label>
                             <p>Con impianti dotati di:</p>
                             <hr>
                         </div>
-                
+
                         <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="condensing_boiler" value="true" {{$towed_vw->condensing_boiler == 'true' ? 'checked': ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="condensing_boiler" value="true" {{$towed_vw->condensing_boiler == 'true' ? 'checked': ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>CC. Caldaie a condensazione</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- GA. Generatori di aria calda a condensazione --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="condensing_generator" value="true" {{$towed_vw->condensing_generator == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="condensing_generator" value="true" {{$towed_vw->condensing_generator == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>GA. Generatori di aria calda a condensazione</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- PCA. Pompe di calore ad assorbimento a… --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="absorption_heat_pumps" value="true" {{$towed->absorption_heat_pumps == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="absorption_heat_pumps" value="true" {{$towed_vw->absorption_heat_pumps == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>PCA. Pompe di calore ad assorbimento a…</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- SI. Sistemi ibridi --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="hybrid_system" value="true" {{$towed->hybrid_system == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="hybrid_system" value="true" {{$towed_vw->hybrid_system == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>SI. Sistemi ibridi</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                         </div>
-                
+
                         <div>{{-- SA. Installazione di scaldacqua a pompa di c… --}}
                             <div class="mt-5">
                                 <label class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="water_heatpumps_installation" value="true" {{$towed->water_heatpumps_installation == ' true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="water_heatpumps_installation" value="true" {{$towed_vw->water_heatpumps_installation == ' true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" ><b>SA. Installazione di scaldacqua a pompa di c…</b></span>
                                 </label>
                                 <p class="font-italic">In sostituzione di scaldacqua tradizionali con scaldacqua a pompa di calore dedicati alla produzione di acqua calda sanitaria</p>
                                 <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                            
+
                                 </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
@@ -387,7 +387,7 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile per la sostituzione degli impianti è pari a</p>
@@ -397,7 +397,7 @@
                                     </label>
                                 </div>
                             </div>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
@@ -408,16 +408,16 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div>{{-- CO. Sistemi di microgenerazione --}}
                             <div class="mt-5">
                                 <label class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="microgeneration_system" value="true" {{$towed_vw->microgeneration_system == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="microgeneration_system" value="true" {{$towed_vw->microgeneration_system == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
                                 </label>
                                 <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                            
+
                                 </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
@@ -431,17 +431,17 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
                                     <label for="" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->}}CO_max_cost" name="CO_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="text" value="{{$towed_vw->CO_max_cost}}" name="CO_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         €
                                     </label>
                                 </div>
                             </div>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
@@ -452,17 +452,17 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div>{{-- IB. Generatori a bioma… --}}
                             <div class="mt-5">
                                 <label class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="biome_generators" value="true" {{$towed_vw->biome_generators == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="biome_generators" value="true" {{$towed_vw->biome_generators == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" ><b>IB. Generatori a bioma…</b></span>
                                 </label>
                                 <p class="font-italic">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
                                 <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                            
+
                                 </div>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
@@ -476,7 +476,7 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
@@ -486,7 +486,7 @@
                                     </label>
                                 </div>
                             </div>
-                
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
@@ -497,12 +497,12 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div>{{-- BA. Bullding automation --}}
                             <div class="mt-5">
                                 <label class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="building_automation" value="true" {{$towed_vr->building_automation == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="building_automation" value="true" {{$towed_vw->building_automation == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" ><b>BA. Bullding automation</b></span>
                                 </label>
                             </div>
@@ -576,36 +576,36 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div>{{-- Gli impianti sopra indicati sono destinati a: --}}
                             <p class="font-weight-bold">Gli impianti sopra indicati sono destinati a:</p>
                             <div class="d-flex">
                                 <label class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="winter_acs" value="true" {{$towed_vw->winter_acs == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="winter_acs" value="true" {{$towed_vw->winter_acs == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" >Climatizzazione invernale</span>
                                 </label>
                                 <label class="checkbox-wrapper d-flex ml-5">
-                                    <input type="checkbox" name="summer_acs" value="true" {{$towed_vw->summer_acs == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="summer_acs" value="true" {{$towed_vw->summer_acs == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" >Climatizzazione estiva</span>
                                 </label>
                                 <label class="checkbox-wrapper d-flex ml-5">
-                                    <input type="checkbox" name="hot_water_production" value="true" {{$towed_vw->hot_water_production == 'true' ? 'checked' : ''}}>     
-                                    <span class="checkmark"></span> 
+                                    <input type="checkbox" name="hot_water_production" value="true" {{$towed_vw->hot_water_production == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
                                     <span class="black" >Produzione di acqua calda sanitaria</span>
                                 </label>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- ST. Collettori solari --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="TS" value="true" {{$towed_vw->TS == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="TS" value="true" {{$towed_vw->TS == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>ST. Collettori solari</b></span>
                             </label>
                             <div style="width: 100%; height: 200px; background-color: #f2f2f2 ">
-                        
+
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
                                 <div class="d-flex align-items-center">
@@ -618,7 +618,7 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                            
+
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">La spesa massima ammissibile è pari a</p>
@@ -638,11 +638,11 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- FV. Fotovoltaico --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="FV" value="true" {{$towed_vw->FV == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="FV" value="true" {{$towed_vw->FV == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>FV. Fotovoltaico</b></span>
                             </label>
                             <div class="d-flex">
@@ -683,11 +683,11 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- AC. Sistema di accumulo --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="AC" value="true" {{$towed_vw->AC == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="AC" value="true" {{$towed_vw->AC == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>AC. Sistema di accumulo</b></span>
                             </label>
                             <div class="d-flex">
@@ -719,11 +719,11 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="mt-5">{{-- CR. Infrastrutture per la ricarica di veicoli elettrici --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="CR" value="true" {{$towed_vw->CR == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="CR" value="true" {{$towed_vw->CR == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>CR. Infrastrutture per la ricarica di veicoli elettrici</b></span>
                             </label>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
@@ -737,7 +737,7 @@
                                 <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-                            
+
                             <div class="d-flex">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center">
@@ -756,18 +756,18 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="mt-5">{{-- EBA. Eliminazione delle barriere architettoniche --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="EBA" value="true" {{$towed_vw->EBA == 'true' ? 'checked' : ''}}>     
-                                <span class="checkmark"></span> 
+                                <input type="checkbox" name="EBA" value="true" {{$towed_vw->EBA == 'true' ? 'checked' : ''}}>
+                                <span class="checkmark"></span>
                                 <span class="black" ><b>EBA. Eliminazione delle barriere architettoniche</b></span>
                             </label>
                             <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
                                 <div class="d-flex align-items-end" style="width: 65%">
                                     <p class="m-0">
-                                        a) Il costo omnicomprensivo previsto in progetto dell’intervento di cui all’articolo 16-bis, comma 1, lettera e), 
-                                        del testo unico di cui al decreto del Presidente della Repubblica 22 dicembre 1986, n.917 anche ove effettuati in 
+                                        a) Il costo omnicomprensivo previsto in progetto dell’intervento di cui all’articolo 16-bis, comma 1, lettera e),
+                                        del testo unico di cui al decreto del Presidente della Repubblica 22 dicembre 1986, n.917 anche ove effettuati in
                                         favore di persone di età superiore a sessantacinque anni è di
                                         <label for="" class=" m-0 mr-4 black">
                                             <input type="text" value="{{$towed_vw->EBA_expected_cost}}" name="EBA_expected_cost" style="width: 120px;" class="border mr-2 px-2 text-right">
@@ -779,8 +779,8 @@
                             </div>
                             <div class="d-flex align-items-end mt-4" style="width: 65%">
                                 <p class="m-0">
-                                    b) Per le stesse unità immobiliari sono previste spese complessive relative ad interventi antisismici di cui 
-                                    al comma 4 dell’art.119 del D.L. 34/2020 e successive modificazioni e ad altri interventi di cui all’art. 16 bis 
+                                    b) Per le stesse unità immobiliari sono previste spese complessive relative ad interventi antisismici di cui
+                                    al comma 4 dell’art.119 del D.L. 34/2020 e successive modificazioni e ad altri interventi di cui all’art. 16 bis
                                     del DPR 917/86, pari a
                                     <label for="" class=" m-0 mr-4 black">
                                         <input type="text" value="{{$towed_vw->EBA_sismic_costs}}" name="EBA_sismic_costs" style="width: 120px;" class="border mr-2 px-2 text-right">
@@ -790,8 +790,8 @@
                             </div>
                             <div class="d-flex align-items-end mt-4" style="width: 65%">
                                 <p class="m-0">
-                                    Fermo restando che la spesa massima ammissibile per tutti gli interventi di cui ai precedenti punti a) e b) 
-                                    non può superare 96.000 € per unità immobiliare, la spesa massima ammissibile disponibile per l’eliminazione 
+                                    Fermo restando che la spesa massima ammissibile per tutti gli interventi di cui ai precedenti punti a) e b)
+                                    non può superare 96.000 € per unità immobiliare, la spesa massima ammissibile disponibile per l’eliminazione
                                     delle barriere architettoniche è pertanto pari a
                                     <label for="" class=" m-0 black">
                                         <input type="text" value="{{$towed_vw->EBA_barr_deleting_cost}}" name="EBA_barr_deleting_cost" style="width: 120px; background-color: #f2f2f2" class="border px-2 text-right">
@@ -808,7 +808,7 @@
                                     </label>
                                 </p>
                             </div>
-                
+
                             <div class="d-flex justify-content-between mt-4" style="width: 100%">
                                 <p class="m-0 mt-2 font-500">Avanzamento lavori trainanti</p>
                                 <table class="table_bonus" style="width: 70%">
@@ -834,9 +834,9 @@
                                             <td class="text-right"></td>
                                         </tr>
                                     </tbody>
-                                </table>    
+                                </table>
                             </div>
-                            
+
                             <div class="d-flex align-items-center mt-5" style="width: 80%">
                                 <p class="m-0 font-500">per un ammontare pari a</p>
                                 <div class="d-flex align-items-center ml-5">
@@ -861,7 +861,7 @@
                                     <span>€</span>
                                 </div>
                             </div>
-                            
+
                             <div class="d-flex align-items-center mt-3" style="width: 80%">
                                 <p class="m-0"><b>La spesa ammessa è pari </b></p>
                                 <label for="" class="d-flex align-items-end black m-0 mr-1 ml-5">
