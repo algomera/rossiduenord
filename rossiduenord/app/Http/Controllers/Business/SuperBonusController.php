@@ -27,7 +27,7 @@ class SuperBonusController extends Controller
     public function show(Bonus $bonus)
     {
 
-        return view('business.superbonus.variant.var_computation', $bonus);
+        return view('business.superbonus.show', $bonus);
     }
 
         /**

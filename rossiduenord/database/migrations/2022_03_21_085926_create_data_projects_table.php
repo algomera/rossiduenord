@@ -25,12 +25,10 @@ class CreateDataProjectsTable extends Migration
             $table->string('technical_report_exclusion')->nullable();
             $table->string('work_start')->nullable();
             $table->string('end_of_works')->nullable();
-            $table->string('condominium_building')->nullable();
+            $table->string('type_building')->nullable();
             $table->string('building_unit')->nullable();
             $table->string('relevance')->nullable();
             $table->string('centralized_system')->nullable();
-            $table->string('single_family_property')->nullable();
-            $table->string('multi_family_property')->nullable();
             $table->string('gross_surface_area')->nullable();
             $table->string('np')->nullable();
             $table->string('np_validated')->nullable();

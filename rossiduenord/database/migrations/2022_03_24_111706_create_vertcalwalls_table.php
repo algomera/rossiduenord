@@ -23,6 +23,7 @@ class CreateVertcalwallsTable extends Migration
             $table->string('total_vertical_walls')->nullable();
             $table->string('vw_realized_1')->nullable();
             $table->string('vw_realized_2')->nullable();
+            $table->string('vw_sal_f')->nullable();
             $table->string('total_intervention_surface')->nullable();
             // before realization
             $table->string('total_expected_cost')->nullable();
@@ -46,9 +47,12 @@ class CreateVertcalwallsTable extends Migration
             $table->string('water_heatpumps_installation')->nullable();
             $table->string('biome_generators')->nullable();
             $table->string('solar_panel')->nullable();
-            $table->string('solar_panel_use')->nullable();
+            $table->string('solar_panel_use_winter')->nullable();
+            $table->string('solar_panel_use_summer')->nullable();
+            $table->string('solar_panel_use_water')->nullable();
             // project cost
             $table->string('total_acs_project_cost')->nullable();
+            $table->string('total_cost_installations')->nullable();
             // effective cost
             $table->string('total_replacing_cost_1')->nullable();
             $table->string('total_replacing_cost_2')->nullable();

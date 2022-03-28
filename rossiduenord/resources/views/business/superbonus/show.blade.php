@@ -1,8 +1,8 @@
 @extends('business.layouts.business')
 
 @section('content')
-    @include('business.layouts.partials.practiceNav')
-
+{{--     @include('business.layouts.partials.practiceNav')
+ --}}
             <div class="nav_bonus">
                 <span @click="showpage1" :class="[showDati ? 'frame' : ''] ">Dati di Progetto</span>
                 <span @click="showpage2" :class="[showInterventi ? 'frame' : ''] ">Interventi trainanti</span>
