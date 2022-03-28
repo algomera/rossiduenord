@@ -30,6 +30,7 @@ class CreateTrainatedvertwallsTable extends Migration
             $table->string('max_possible_cost')->nullable();
             $table->string('fixture_energetic_savings')->nullable();
             //SS
+            $table->string('SS')->nullable();
             $table->string('ss_project_cost')->nullable();
             $table->string('ss_max_cost')->nullable();
             $table->string('ss_energetic_savings')->nullable();
