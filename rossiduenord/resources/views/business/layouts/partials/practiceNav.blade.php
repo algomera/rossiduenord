@@ -13,7 +13,7 @@
                 Scheda pratica
             </span>
             <hr class="bg-black" style="margin-top: 5px;">
-    
+
             <div class="d-flex justify-content-between menu mb-4">
                 <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{Route::currentRouteName() == 'business.applicant.edit' ? 'visited' : ''}} {{Route::currentRouteName() == 'business.applicant.store' ? 'visited' : ''}}">
                     RICHIEDENTE
@@ -35,20 +35,22 @@
                 <a href="">CONTRATTI</a>
                 <a href="">AUDITOR</a>
             </div>
-    
+
             @if (Route::currentRouteName() == 'business.applicant.create')
             <div class="submenu">
                 <h6>Dati richiedente</h6>
-            </div>    
+            </div>
             @endif
             @if (Route::currentRouteName() == 'business.practice.create')
             <div class="submenu">
                 <h6>Dati pratica</h6>
-            </div>   
+            </div>
             @endif
             @if (Route::currentRouteName() == 'business.superbonus.index')
             <div class="submenu">
                 <h6>Lista dati progetto</h6>
-            </div>    
+            </div>
             @endif
         </div>
+    </div>
+</div>
