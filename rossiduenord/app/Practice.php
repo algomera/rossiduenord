@@ -63,4 +63,8 @@ class Practice extends Model
     public function final_state() {
         return $this->hasOne(FinalState::class);
     }
+
+    public function variant() {
+        return $this->hasOne(Variant::class);
+    }
 }

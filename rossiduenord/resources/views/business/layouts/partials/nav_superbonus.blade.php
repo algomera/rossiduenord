@@ -4,5 +4,5 @@
     <a href="{{ route('business.towed_intervention', [$practice]) }}" class="{{Route::currentRouteName() == 'business.towed_intervention' ? 'frame' : ''}}">Interventi trainati</a>
     <a href="{{ route('business.final_state', [$practice]) }}" class="{{Route::currentRouteName() == 'business.final_state' ? 'frame' : ''}}">Dati stato finale</a>
     <a href="{{ route('business.fees_declaration', [$practice]) }}" class="{{Route::currentRouteName() == 'business.fees_declaration' ? 'frame' : ''}}">Tot. Spese e Dichiarazioni</a>
-    <a href="{{ route('business.practice.index') }}" class="{{Route::currentRouteName() == '' ? 'frame' : ''}}">Varianti</a>
+    <a href="{{ route('business.var_computation', [$practice]) }}" class="{{Route::currentRouteName() == 'business.var_computation' ? 'frame' : ''}}">Varianti</a>
 </div>

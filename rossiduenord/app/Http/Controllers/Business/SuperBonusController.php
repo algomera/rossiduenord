@@ -98,6 +98,21 @@ class SuperBonusController extends Controller
     }
 
     /**
+     * Display final_state view.
+     *
+     * @param Practice $practice
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function var_computation(Practice $practice) {
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $variant = $practice->variant;
+        return view('business.superbonus.variant.var_computation', compact('variant', 'applicant', 'practice', 'building', 'subject'));
+    }
+
+    /**
      * Update the specified resource in storage.
      * @param Request $request
      * @param Practice $practice
@@ -220,5 +235,22 @@ class SuperBonusController extends Controller
 
         // Redirect to next tab
         return redirect()->route('business.fees_declaration', [$practice]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Practice $practice
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update_var_computation(Request $request, Practice $practice) {
+        // Validazione form
+
+        // Update data
+        $practice->variant()->update($request->except(['_token', '_method']));
+
+        // Redirect to next tab
+        $building = $practice->building;
+        return redirect()->route('business.superbonus.show', [$practice, $building])->with('message', 'Dati inseriti correttamente');
     }
 }

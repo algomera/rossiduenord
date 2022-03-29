@@ -105,6 +105,12 @@ Route::middleware('business')
     Route::get('/superbonus/fees_declaration/{practice}', 'SuperBonusController@fees_declaration')
         ->where('practice', '[0-9]+')
         ->name('fees_declaration');
+    Route::get('/superbonus/var_computation/{practice}', 'SuperBonusController@var_computation')
+        ->where('practice', '[0-9]+')
+        ->name('var_computation');
+    Route::put('/superbonus/var_computation/{practice}/update', 'SuperBonusController@update_var_computation')
+        ->where('practice', '[0-9]+')
+        ->name('update_var_computation');
     Route::resource('/verticalwall', 'VerticalWallController');
 });
 

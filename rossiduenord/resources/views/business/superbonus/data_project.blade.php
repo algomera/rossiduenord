@@ -4,7 +4,6 @@
     @include('business.layouts.partials.practiceNav')
     @include('business.layouts.partials.nav_superbonus')
 
-
             <form action="{{route('business.update_data_project', ['practice' => $practice])}}" method="POST">
                 @csrf
                 @method('PUT')
