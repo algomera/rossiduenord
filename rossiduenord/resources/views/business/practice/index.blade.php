@@ -115,7 +115,7 @@
                         </tr>
                     </thead>
                     <tbody id="table_ContentList">
-                        @foreach ($practices as $practice)
+                        @forelse ($practices as $practice)
                             <tr>
                                 <td>{{$practice->nominative}}</td>
                                 <td>{{$practice->id}}</td>
@@ -165,7 +165,11 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="10">Nessun risultato</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
