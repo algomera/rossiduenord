@@ -1,7 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{Practice, Subject, Applicant, Building, Bonus, Data_project};
+use App\{FinalState,
+    Practice,
+    Subject,
+    Applicant,
+    Building,
+    Bonus,
+    Data_project,
+    TrainatedVertWall,
+    Variant,
+    VerticalWall};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +70,14 @@ class ApplicantController extends Controller
         // $new_project->practice()->associate($practice)->save();
         Data_project::create($data);
 
+        VerticalWall::create($data);
+
+        TrainatedVertWall::create($data);
+
+        FinalState::create($data);
+
+        Variant::create($data);
+
         return view('business.applicant.edit', compact('applicant','practice','subject','building'));
     }
 
@@ -109,7 +126,7 @@ class ApplicantController extends Controller
             'email' => 'required | email',
             'role' => 'required | string',
         ]);
-    
+
         // $practices = DB::table('practices')
         // ->where('applicant_id', '=', $applicant->id)
         // ->get();

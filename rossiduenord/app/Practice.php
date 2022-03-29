@@ -52,4 +52,19 @@ class Practice extends Model
         return $this->hasOne(Data_project::class);
     }
 
+    public function verical_wall() {
+        return $this->hasOne(VerticalWall::class);
+    }
+
+    public function trainated_vert_wall() {
+        return $this->hasOne(TrainatedVertWall::class);
+    }
+
+    public function final_state() {
+        return $this->hasOne(FinalState::class);
+    }
+
+    public function variant() {
+        return $this->hasOne(Variant::class);
+    }
 }

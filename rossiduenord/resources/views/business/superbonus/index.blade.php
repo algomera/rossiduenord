@@ -15,18 +15,18 @@
                 {{-- @foreach ($buildings as $building) --}}
                 <tr>
                     <td style="text-align: left;">
-                        <a href="{{route('business.superbonus.show', $building->id) }}">
+                        <a href="{{route('business.superbonus.show', [$practice->id, $building->id]) }}">
                             {{$building->intervention_name}} <br>
-                            {{$building->build_address}} 
-                            {{$building->build_civic_number}} 
+                            {{$building->build_address}}
+                            {{$building->build_civic_number}}
                             {{$building->cap}} <br>
-                            {{$building->region}} 
-                            {{$building->common}} 
-                            {{$building->province}} 
+                            {{$building->region}}
+                            {{$building->common}}
+                            {{$building->province}}
                         </a>
                     </td>
                     <td style="text-align: left;">
-                        <a href="{{route('business.superbonus.show', $building->id) }}">{{$building->created_at}}</a>
+                        <a href="{{route('business.superbonus.show', [$practice->id, $building->id]) }}">{{$building->created_at}}</a>
                     </td>
                 </tr>
                 {{-- @endforeach --}}

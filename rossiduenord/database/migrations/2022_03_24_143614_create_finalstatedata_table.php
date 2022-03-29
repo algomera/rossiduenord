@@ -37,7 +37,7 @@ class CreateFinalstatedataTable extends Migration
             $table->string('dispersing_surface')->nullable();
             $table->string('useful_cooled_surface')->nullable();
             $table->string('useful_heated_surface')->nullable();
-            $table->string('S/V_report')->nullable();
+            $table->string('SV_report')->nullable();
             $table->string('generator_inst_date')->nullable();
             $table->string('extra_maintenance')->nullable();
             // APE IR post intervention
@@ -45,13 +45,13 @@ class CreateFinalstatedataTable extends Migration
             $table->string('hot_water_production')->nullable();
             $table->string('mechanic_ventilaion')->nullable();
             $table->string('summer_acs')->nullable();  //air conditioning system
-            $table->string('lighting')->nullable();  
-            $table->string('transport')->nullable();  
+            $table->string('lighting')->nullable();
+            $table->string('transport')->nullable();
             // APE DC
-            $table->string('project_temperature')->nullable();  
+            $table->string('project_temperature')->nullable();
             //APE TR
-            $table->string('fotovoltaic_max_power')->nullable();  
-            $table->string('eolic_nominal_power')->nullable();  
+            $table->string('fotovoltaic_max_power')->nullable();
+            $table->string('eolic_nominal_power')->nullable();
             $table->string('collector_surface')->nullable();
             // APE NM
             $table->longText('technical_standard')->nullable();
@@ -73,7 +73,7 @@ class CreateFinalstatedataTable extends Migration
             //APE LC
             $table->longText('possible_improvements')->nullable();
 
-
+            $table->timestamps();
         });
     }
 

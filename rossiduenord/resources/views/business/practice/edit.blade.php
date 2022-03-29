@@ -350,7 +350,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex">
                         <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
-                        <label class="checkbox-wrapper d-flex">
+                        <label for="bonus" class="checkbox-wrapper d-flex">
                             <input {{ $practice->policy == '110%' ? 'checked' : ''}} type="checkbox" name="bonus" value="110%">     
                             <span class="checkmark"></span> 
                             <span>Super Bonus 110%</span>
