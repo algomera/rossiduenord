@@ -15,13 +15,34 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
-        $practices = DB::table('practices')
-            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
-            ->select('practices.*', 'applicants.*')
-            ->get();
-        //dd($practices);
+    public function index(Request $request)
+    {
+//        $practices = DB::table('practices')
+//            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
+//            ->select('practices.*', 'applicants.*')
+//            ->get();
+
+        $q = Practice::query();
+
+        if($request->get('practical_month') !== null) {
+            $q->where('month', '=', $request->get('practical_month'));
+        }
+
+        if($request->get('practical_phase') !== null) {
+            $q->where('practical_phase', '=', $request->get('practical_phase'));
+        }
+
+        if($request->get('practical_description') !== null) {
+            $q->where('description', 'LIKE', '%' . $request->get('practical_description') . '%');
+        }
+
+        if($request->get('practical_number') !== null) {
+            $q->where('id', '=', $request->get('practical_number'));
+        }
+
+        $practices = $q->get();
+
+//        dd($practices);
         return view('business/practice.index', compact('practices'));
     }
 
@@ -114,7 +135,7 @@ class PracticeController extends Controller
 
         $practice->update($validated);
 
-        return redirect()->route('business.subject_edit', $practice); 
+        return redirect()->route('business.subject_edit', $practice);
     }
 
     /**
