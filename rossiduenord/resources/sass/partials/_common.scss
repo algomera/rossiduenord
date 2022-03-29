@@ -417,3 +417,31 @@ label {
     z-index: 1;
     margin-bottom: -1px !important;
 }
+
+.box_input{
+    row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    input,
+    select{
+        border: none;
+        border-radius: 3px;
+        text-align: center;
+    }
+
+    .row_input{
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+    }
+
+    .input_small{
+        width: 80px;
+    }
+
+}
