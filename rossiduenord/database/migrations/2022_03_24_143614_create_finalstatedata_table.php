@@ -31,6 +31,7 @@ class CreateFinalstatedataTable extends Migration
             $table->string('energetic_vector')->nullable();
             //summer air conditioning system
             $table->string('summer_acs_presence')->nullable();
+            $table->longText('summer_acs_renovation')->nullable();
             // APE IE
             $table->string('construction_tipology')->nullable();
             $table->string('heated_volume')->nullable();
@@ -39,7 +40,7 @@ class CreateFinalstatedataTable extends Migration
             $table->string('useful_heated_surface')->nullable();
             $table->string('SV_report')->nullable();
             $table->string('generator_inst_date')->nullable();
-            $table->string('extra_maintenance')->nullable();
+            $table->longText('extra_maintenance')->nullable();
             // APE IR post intervention
             $table->string('winter_acs')->nullable();
             $table->string('hot_water_production')->nullable();
