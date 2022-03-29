@@ -15,7 +15,7 @@
                     </div>
 
                     <input type="hidden" id="practice_id" name="practice_id" value="{{ $building->practice_id}}">
-                    
+
                     <div class="px-20 pb-20">{{-- form di compilazione --}}
                         <div style="margin-bottom:20px;" >
                             <div class="form-group">
@@ -36,94 +36,94 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row" style="margin-bottom:25px;" >{{-- Tipologia Intervento: --}}
                             <div class="col-md-2" style="text-align:left;">
                                 <p>Tipologia Intervento:</p>
                             </div>
                             <div class="col-md-10">
 
-    {{--                             
+    {{--
                                 <div class="row sec2checkbelements">
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Ecobonus 50%</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Bonus Ristrutturazione edilizia 50%</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Ecobonus 65%</span>
                                         </label>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="row sec2checkbelements">
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">70% Sismabonus (Miglioramento 1 classe sismica)</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">75% Sismabonus (Miglioramento 1 classe sismica per Condominio)</span>
                                         </label>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="row sec2checkbelements">
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">80% Sismabonus (Miglioramento 2 classi sismiche)</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey"> 85% Sismabonus (Miglioramento 2 classi sismiche per Condominio)</span>
                                         </label>
-                                    </div>                    
-                                </div> 
+                                    </div>
+                                </div>
 
     --}}
                                 <div class="row sec2checkbelements">
 
-                                    
+
     {{--                                 <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Bonus facciate 90%</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Cappotto 90%</span>
                                         </label>
                                     </div>
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Super SismaBonus 110%</span>
                                         </label>
                                     </div>
@@ -131,38 +131,38 @@
     --}}
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label for="intervention_tipology" class="checkbox-wrapper d-flex mr-3">
-                                            <input {{ $building->intervention_tipologye == 'tre' ? 'checked' : ''}} type="checkbox" id="intervention_tipology" name="intervention_tipology" value="true">     
-                                            <span class="checkmark"></span> 
+                                            <input {{ $building->intervention_tipologye == 'tre' ? 'checked' : ''}} type="checkbox" id="intervention_tipology" name="intervention_tipology" value="true">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Super Ecobonus 110%</span>
                                         </label>
                                     </div>
 
-    {{-- 
+    {{--
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label class="checkbox-wrapper d-flex mr-3">
-                                            <input type="checkbox" name="" value="">     
-                                            <span class="checkmark"></span> 
+                                            <input type="checkbox" name="" value="">
+                                            <span class="checkmark"></span>
                                             <span class="grey">Acquisto di case antisismiche 110%</span>
                                         </label>
                                     </div>
 
-    --}}                                
-                                </div> 
+    --}}
+                                </div>
                             </div>
                         </div>
 
                         <div class="row" style="margin-top:30px;">{{-- section form description 1 --}}
-                            
+
                             <div class="col-md">
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <label for="build_address">Indirizzo</label><br/>
                                     <input class="col-md" type="text" name="build_address" id="build_address" value="{{$building->build_address}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <label for="fiscal_code">Codice fiscale</label><br/>
                                     <input class="col-md" type="text" name="fiscal_code" id="fiscal_code" value="{{$building->fiscal_code}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <label for="build_type" style="display:inline-block;" >Tipo condominio</label>
                                     <div class="position-relative">
                                         <div class="select"></div>
@@ -177,9 +177,9 @@
 
 
                             <div class="col-md">
-                                <div class="form-group"> 
-                                    <div class="d-flex justify-content-between" style="column-gap: 10px;"> 
-                                        <div style="width: 50px"> 
+                                <div class="form-group">
+                                    <div class="d-flex justify-content-between" style="column-gap: 10px;">
+                                        <div style="width: 50px">
                                             <label for="build_civic_number">N.</label><br/>
                                             <input class="col-md" value="{{$building->build_civic_number}}" type="text" name="build_civic_number" id="build_civic_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                         </div>
@@ -221,17 +221,17 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div style="width: 150px"> 
+                                        <div style="width: 150px">
                                             <label for="cap">CAP</label>
                                             <input class="col-md" value="{{$building->cap}}" type="text" name="cap" id="cap" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <label for="iban">IBAN</label><br/>
                                     <input class="col-md" type="text" name="iban" id="iban" value="{{$building->iban}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <label for="zone" style="display:inline-block;" >Zona</label>
                                     <div class="position-relative">
                                         <div class="select"></div>
@@ -245,43 +245,43 @@
                             </div>
                         </div>
 
-                        <div class="row">{{-- section form description 2 --}} 
+                        <div class="row">{{-- section form description 2 --}}
                             <div class="col-md" >
-                                <div class="row" > 
-                                    <div class="col-md"> 
+                                <div class="row" >
+                                    <div class="col-md">
                                         <label for="section">Sezione</label><br/>
                                         <input class="col-md" type="text" name="section" id="section" value="{{$building->section}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="foil">Foglio</label><br/>
                                         <input class="col-md" type="text" name="foil" id="foil" value="{{$building->foil}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="particle">Particella</label><br/>
                                         <input class="col-md" type="text" name="particle" id="particle" value="{{$building->particle}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="subaltern">Subalterno</label><br/>
                                         <input class="col-md" type="text" name="subaltern" id="subaltern" value="{{$building->subaltern}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="unit_builidg_number">N. unità immobiliari</label><br/>
                                         <input class="col-md" value="{{$building->unit_builidg_number}}" type="text" name="unit_builidg_number" id="unit_builidg_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="pertinence_number">N. pertinenze</label><br/>
                                         <input class="col-md" value="{{$building->pertinence_number}}" type="text" name="pertinence_number" id="pertinence_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                    <div class="col-md"> 
+                                    <div class="col-md">
                                         <label for="resolution_stairs">Scale per delibere..</label><br/>
                                         <input class="col-md" value="{{$building->resolution_stairs}}" type="text" name="resolution_stairs" id="resolution_stairs" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">{{-- note --}} 
-                            <div class="col-md" > 
+                        <div class="row">{{-- note --}}
+                            <div class="col-md" >
                                 <label for="note">Note</label>
                                 <input class="col-md" value="{{$building->note}}" type="text" name="note" id="note" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                             </div>
@@ -290,7 +290,7 @@
                         <div>{{-- section input radio --}}
                             <div class="row" style="margin-top:5%;">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L'edificio è sottoposto a vincoli previsti dal codice dei beni culturali e del paesaggio</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L'edificio è sottoposto a vincoli previsti dal codice dei beni culturali e del paesaggio</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -303,10 +303,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Interventi trainanti al 110% sono vietati dai regolamenti edilizi, urbanistici e ambientali</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Interventi trainanti al 110% sono vietati dai regolamenti edilizi, urbanistici e ambientali</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -319,10 +319,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune montano</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune montano</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -335,10 +335,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune interessato da procedura di infrazione comunitaria</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune interessato da procedura di infrazione comunitaria</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -351,10 +351,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in una zona colpita da eventi sismici</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in una zona colpita da eventi sismici</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -367,10 +367,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in fase di ristrutturazione Art. 3, Com. 1, lettere d), e), f), del D.P.R. 380/2001</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in fase di ristrutturazione Art. 3, Com. 1, lettere d), e), f), del D.P.R. 380/2001</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -383,10 +383,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in un’area non metanizzata</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in un’area non metanizzata</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -399,10 +399,10 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="row">
                                 <div class="col-md-3">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Autorizzazione edilizia</p> 
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Autorizzazione edilizia</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -420,7 +420,7 @@
 
                             <div class="row" >
                                 <div class="col-md">
-                                    <div class="row"> 
+                                    <div class="row">
                                         <div class="col-md">
                                             <label for="license_number">Num. licenza/titolo</label><br/>
                                             <input class="col-md" value="{{$building->license_number}}" type="text" name="license_number" id="license_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
@@ -437,20 +437,23 @@
                                 </div>
                                 <div class="col-md"></div>
                             </div>
-                        </div> 
+                        </div>
 
-                        
-                        <div class="mt-5">{{-- table list condomini --}} 
-                            <h6>Lista condomini</h6>
+
+                        <div class="mt-5">{{-- table list condomini --}}
+                            <div class="d-flex align-items-center mb-3">
+                                <h6 class="mb-0">Lista condomini</h6>
+                                <div class="btn btn-primary ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
+                            </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
-                                    <table class="table_bonus" style="width: 100%">
+                                    <table id="condominis_table" class="table_bonus" style="width: 100%">
                                         <thead>
                                             <tr>
                                                 <td class="text-center" style="width:5%;"><b>N.</b></td>
                                                 <td style="width:15%;" class="text-center"><b>Nome/Ragione soc…</b></td>
                                                 <td style="width:10%;"><b>Cognome</b></td>
-                                                <td style="width:10%;"><b>Telefono </b></td>
+                                                <td style="width:10%;"><b>Telefono</b></td>
                                                 <td style="width:13%;"><b>Email</b></td>
                                                 <td style="width:12%;"><b>Codice fiscale/Pa…</b></td>
                                                 <td style="width:10%;" class="text-center"><b>Mille…</b></td>
@@ -462,42 +465,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @forelse($condomini as $i => $condomino)
                                             <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">Company test</td>
-                                                <td class="text-left">Mario</td>
-                                                <td class="text-left">3281000000</td>
-                                                <td class="text-left">mario.rossi@gmail.com</td>
-                                                <td class="text-left">HHTOKD9836UEHEOKS</td>
-                                                <td class="text-center">60,240</td>
-                                                <td class="text-center">18</td>
-                                                <td class="text-left">1212</td>
-                                                <td class="text-left">28</td>
-                                                <td class="text-center">A/3</td>
-                                                <td class="text-center">0,00</td>
+                                                <td class="text-center">{{ $i + 1 }}</td>
+                                                <td class="text-center">{{ $condomino->name }}</td>
+                                                <td class="text-left">{{ $condomino->surname }}</td>
+                                                <td class="text-left">{{ $condomino->phone }}</td>
+                                                <td class="text-left">{{ $condomino->email }}</td>
+                                                <td class="text-left">{{ $condomino->cf }}</td>
+                                                <td class="text-center">{{ $condomino->millesimi }}</td>
+                                                <td class="text-center">{{ $condomino->foglio }}</td>
+                                                <td class="text-left">{{ $condomino->part }}</td>
+                                                <td class="text-left">{{ $condomino->sub }}</td>
+                                                <td class="text-center">{{ $condomino->categ_catastale }}</td>
+                                                <td class="text-center">{{ $condomino->sup_catastale }}</td>
                                             </tr>
-
-                                            <tr>
-                                                <td class="text-center">2</td>
-                                                <td class="text-center">Company test2</td>
-                                                <td class="text-left">Mario</td>
-                                                <td class="text-left">3281000000</td>
-                                                <td class="text-left">mario.rossi@gmail.com</td>
-                                                <td class="text-left">HHTOKD9836UEHEOKS</td>
-                                                <td class="text-center">60,240</td>
-                                                <td class="text-center">18</td>
-                                                <td class="text-left">1212</td>
-                                                <td class="text-left">28</td>
-                                                <td class="text-center">A/3</td>
-                                                <td class="text-center">0,00</td>
+                                        @empty
+                                            <tr id="no_data_row">
+                                                <td colspan="12">Nessun dato disponibile</td>
                                             </tr>
+                                        @endforelse
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-    {{--                     
+    {{--
                         <div class="row mt-5">
                             <div class="col-md">
                                 <h6>Num. licenza/titolo</h6>
@@ -519,16 +513,16 @@
 
                     <hr style="background-color: #f2f2f2; height:20px; border:none;">
 
-                    
+
                     <div style="padding:20px;" ><!-- Dati Amministrazione -->
                         <h6>Dati Amministrazione</h6>
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_fullname" style="display:inline-block;" >Nominativo</label><br/>
                                 <input type="text" class="col-md-12" value="{{$building->administrator_fullname}}" name="administrator_fullname" id="administrator_fullname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;"  />
                             </div>
-                        </div> 
-                        <div class="row">  
+                        </div>
+                        <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_surname" style="display:inline-block;" >Cognome</label><br/>
                                 <input type="text" class="col-md" value="{{$building->administrator_surname}}" name="administrator_surname" id="administrator_surname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
@@ -542,8 +536,8 @@
                                 <input type="text" class="col-md" value="{{$building->administrator_fiscalcode}}" name="administrator_fiscalcode" id="administrator_fiscalcode" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                             </div>
                         </div>
-        
-                        <div class="row">  
+
+                        <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_address" style="display:inline-block;" >Indirizzo</label><br/>
                                 <input type="text" class="col-md" value="{{$building->administrator_address}}" name="administrator_address" id="administrator_address" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
@@ -565,8 +559,8 @@
                                 </div>
                             </div>
                         </div>
-        
-                        <div class="row"> 
+
+                        <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_telephone" style="display:inline-block;" >Telefono</label><br/>
                                 <input type="text" class="col-md" value="{{$building->administrator_telephone}}" name="administrator_telephone" id="administrator_telephone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
@@ -590,13 +584,74 @@
                             {{ __('Conferma') }}
                         </button>
                     </div>
-                
+
                 </form>
             </div>
-            
+
         </div> <!-- chiusura div box praticeNav -->
 
     </div>{{-- chiusura div content-main praticeNav --}}
 
+    @push('scripts')
+        <script type="text/javascript">
+            let i = 0;
+            function addRows(e){
+                e.preventDefault()
+                if($('#no_data_row')) {
+                    $('#no_data_row').remove();
+                }
+                i++;
+                $("#condominis_table tbody").append(`
+                    <tr>
+                        <td class="text-center">${$("#condominis_table tbody tr").length + 1 }</td>
+                        <td id="col1" class="text-center">
+                            <input name="condomini[${i}][name]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][surname]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][phone]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][email]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][cf]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][millesimi]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][foglio]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][part]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-left">
+                            <input name="condomini[${i}][sub]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][categ_catastale]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][sup_catastale]" type="text" style="border:none; width: 100%;">
+                        </td>
+                        </tr>
+                    `)
+
+
+                // let rowCount = table.rows.length;
+                // let cellCount = table.rows[0].cells.length;
+                // let row = table.insertRow(rowCount);
+                // for(let i = 0; i <= cellCount; i++){
+                //     let cell = 'cell' + i;
+                //     cell = row.insertCell(i);
+                //     let copycel = document.getElementById('col' + i).innerHTML;
+                //     cell.innerHTML = copycel;
+                // }
+            }
+        </script>
+    @endpush
 
 @endsection

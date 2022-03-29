@@ -133,10 +133,12 @@
                         <span class="checkmark"></span> 
                     </label>
 
+                    {{-- role error modal --}}
                     @error('role')
-                        <span class="invalid-feedback" role="alert">
+                        {{-- <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
-                        </span>
+                        </span> --}}
+                        @include('business.layouts.partials.modal')
                     @enderror
                 </div>
 

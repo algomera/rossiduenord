@@ -15,7 +15,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -61,7 +61,8 @@ class BuildingController extends Controller
         $practice = $building->practice;
         $applicant = $practice->applicant;
         $subject = $practice->subject;
-        return view('business.building.edit', compact('practice', 'subject', 'applicant', 'building'));
+        $condomini = $practice->condomini;
+        return view('business.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building'));
     }
 
     /**
@@ -122,10 +123,13 @@ class BuildingController extends Controller
 
         $building->update($validated);
         $practice = $building->practice;
-        $applicant = $practice->applicant;
-        $subject = $practice->subject;
 
-        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
+        if($request->get('condomini')) {
+            $building->practice->condomini()->createMany($request->get('condomini'));
+        }
+
+        return redirect()->route('business.superbonus.index', [$practice]);
+//        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
     }
 
     /**

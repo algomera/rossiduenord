@@ -42,6 +42,7 @@ const app = new Vue({
         showFees: false,
         showVariants: false,
         active: false,
+        isModalVisible: true,
     },
 
     methods: {
@@ -92,6 +93,9 @@ const app = new Vue({
             this.showState = false;
             this.showFees = false;
             this.showVariants = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
         },
     },
 });

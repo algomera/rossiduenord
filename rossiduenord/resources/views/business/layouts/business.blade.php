@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- jQuerry -->
+    <!-- jQuery -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -27,7 +27,6 @@
 </head>
 <body>
     <div id="app">
-
         <div class="container-custom d-flex">
             <nav class="navbar">
                 <div class="my-4 ml-4">
@@ -51,15 +50,14 @@
 
             <div class="big-container">
                 @include('business.layouts.partials.header')
-                
                 <main>
                     @include('business.layouts.partials.error')
-                    @include('business.layouts.partials.message')                
+                    @include('business.layouts.partials.message')
                     @yield('content')
-                </main>    
-
+                </main>
             </div>
-        </div>       
+        </div>
     </div>
+@stack('scripts')
 </body>
 </html>

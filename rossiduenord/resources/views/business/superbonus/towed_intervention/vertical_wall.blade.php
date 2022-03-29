@@ -24,38 +24,21 @@
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
                             <p class="m-0 ml-2 font-weight-bold">Parti comuni</p>
                         </div>
+                        {{-- loop condomini --}}
+                        @forelse($condomini as $condomino)
                         <div class="d-flex align-items-center py-2">
                             <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
+                            <p class="m-0 ml-2">
+                                {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
+                                {{ $condomino->part }} {{ $condomino->sub }}
+                            </p>
                         </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
-                        <div class="d-flex align-items-center py-2">
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">Nome Cognome -Fog Part.Sub</p>
-                        </div>
+                        @empty
+                            <div class="d-flex align-items-center py-2">
+                                <p class="m-0 ml-2">Nessun dato</p>
+                            </div>
+                        @endforelse
+                        {{-- loop condomini --}}
                     </div>
 
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
