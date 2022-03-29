@@ -264,7 +264,7 @@
 
                         <div class="mt-5">{{-- SS. Schermate solari e chiusure oscuranti --}}
                             <label for="SS" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="SS" value="true" {{$towed_vw->SS == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="SS" id="SS" value="true" {{$towed_vw->SS == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>SS. Schermate solari e chiusure oscuranti</b></span>
                             </label>
@@ -305,7 +305,7 @@
 
                         <div class="mt-5">{{-- 2 sezione inpianti --}}
                             <label for="wacs_replacement" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="wacs_replacement" value="{{$towed_vw->wacs_replacement}}">
+                                <input type="checkbox" {{$towed_vw->wacs_replacement == 'true' ? 'checked' : ''}} name="wacs_replacement" id="wacs_replacement" value="true">
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>2.Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</b></span>
                             </label>
@@ -315,7 +315,7 @@
 
                         <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
                             <label for="condensing_boiler" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="condensing_boiler" value="true" {{$towed_vw->condensing_boiler == 'true' ? 'checked': ''}}>
+                                <input type="checkbox" name="condensing_boiler" id="condensing_boiler" value="true" {{$towed_vw->condensing_boiler == 'true' ? 'checked': ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>CC. Caldaie a condensazione</b></span>
                             </label>
@@ -326,7 +326,7 @@
 
                         <div class="mt-5">{{-- GA. Generatori di aria calda a condensazione --}}
                             <label for="condensing_generator" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="condensing_generator" value="true" {{$towed_vw->condensing_generator == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="condensing_generator" id="condensing_generator" value="true" {{$towed_vw->condensing_generator == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>GA. Generatori di aria calda a condensazione</b></span>
                             </label>
@@ -337,7 +337,7 @@
 
                         <div class="mt-5">{{-- PCA. Pompe di calore ad assorbimento a… --}}
                             <label for="absorption_heat_pumps" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="absorption_heat_pumps" value="true" {{$towed_vw->absorption_heat_pumps == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true" {{$towed_vw->absorption_heat_pumps == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>PCA. Pompe di calore ad assorbimento a…</b></span>
                             </label>
@@ -348,7 +348,7 @@
 
                         <div class="mt-5">{{-- SI. Sistemi ibridi --}}
                             <label for="hybrid_system" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="hybrid_system" value="true" {{$towed_vw->hybrid_system == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="hybrid_system" id="hybrid_system" value="true" {{$towed_vw->hybrid_system == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>SI. Sistemi ibridi</b></span>
                             </label>
@@ -360,7 +360,7 @@
                         <div>{{-- SA. Installazione di scaldacqua a pompa di c… --}}
                             <div class="mt-5">
                                 <label for="water_heatpumps_installation" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="water_heatpumps_installation" value="true" {{$towed_vw->water_heatpumps_installation == ' true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true" {{$towed_vw->water_heatpumps_installation == ' true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" ><b>SA. Installazione di scaldacqua a pompa di c…</b></span>
                                 </label>
@@ -405,7 +405,7 @@
                         <div>{{-- CO. Sistemi di microgenerazione --}}
                             <div class="mt-5">
                                 <label for="microgeneration_system" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="microgeneration_system" value="true" {{$towed_vw->microgeneration_system == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true" {{$towed_vw->microgeneration_system == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
                                 </label>
@@ -449,7 +449,7 @@
                         <div>{{-- IB. Generatori a bioma… --}}
                             <div class="mt-5">
                                 <label for="biome_generators" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="biome_generators" value="true" {{$towed_vw->biome_generators == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="biome_generators" id="biome_generators" value="true" {{$towed_vw->biome_generators == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" ><b>IB. Generatori a bioma…</b></span>
                                 </label>
@@ -494,7 +494,7 @@
                         <div>{{-- BA. Bullding automation --}}
                             <div class="mt-5">
                                 <label for="building_automation" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="building_automation" value="true" {{$towed_vw->building_automation == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="building_automation" id="building_automation" value="true" {{$towed_vw->building_automation == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" ><b>BA. Bullding automation</b></span>
                                 </label>
@@ -512,7 +512,7 @@
                                 </div>
                                 <div class="mr-5">
                                     <p class="m-0">Climatizzazione estiva</p>
-                                    <input type="radio" name="BA_summer_acs" id="" value="N.D" {{$towed_vw->BA_summer_acs == 'N:D' ? 'checked' : ''}}>
+                                    <input type="radio" name="BA_summer_acs" id="" value="N.D" {{$towed_vw->BA_summer_acs == 'N.D' ? 'checked' : ''}}>
                                     <label for="BA_summer_acs" class="mr-3 black">N.D</label>
                                     <input type="radio" name="BA_summer_acs" id="" value="NO" {{$towed_vw->BA_summer_acs == 'NO' ? 'checked' : ''}}>
                                     <label for="BA_summer_acs" class="mr-3 black">No</label>
@@ -521,7 +521,7 @@
                                 </div>
                                 <div class="mr-5">
                                     <p class="m-0">Produzione di acqua calda sanitaria</p>
-                                    <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'N:D' ? 'cchecked' : ''}}>
+                                    <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'N.D' ? 'cchecked' : ''}}>
                                     <label for="BA_hot_water_production" class="mr-3 black">N.D</label>
                                     <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'NO' ? 'cchecked' : ''}}>
                                     <label for="BA_hot_water_production" class="mr-3 black">No</label>
@@ -574,17 +574,17 @@
                             <p class="font-weight-bold">Gli impianti sopra indicati sono destinati a:</p>
                             <div class="d-flex">
                                 <label for="winter_acs" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="winter_acs" value="true" {{$towed_vw->winter_acs == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="winter_acs" id="winter_acs" value="true" {{$towed_vw->winter_acs == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" >Climatizzazione invernale</span>
                                 </label>
                                 <label for="summer_acs" class="checkbox-wrapper d-flex ml-5">
-                                    <input type="checkbox" name="summer_acs" value="true" {{$towed_vw->summer_acs == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="summer_acs" id="summer_acs" value="true" {{$towed_vw->summer_acs == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" >Climatizzazione estiva</span>
                                 </label>
                                 <label for="hot_water_production" class="checkbox-wrapper d-flex ml-5">
-                                    <input type="checkbox" name="hot_water_production" value="true" {{$towed_vw->hot_water_production == 'true' ? 'checked' : ''}}>
+                                    <input type="checkbox" name="hot_water_production" id="hot_water_production" value="true" {{$towed_vw->hot_water_production == 'true' ? 'checked' : ''}}>
                                     <span class="checkmark"></span>
                                     <span class="black" >Produzione di acqua calda sanitaria</span>
                                 </label>
@@ -593,7 +593,7 @@
 
                         <div class="mt-5">{{-- ST. Collettori solari --}}
                             <label for="TS" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="TS" value="true" {{$towed_vw->TS == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="TS" id="TS" value="true" {{$towed_vw->TS == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>ST. Collettori solari</b></span>
                             </label>
@@ -634,7 +634,7 @@
 
                         <div class="mt-5">{{-- FV. Fotovoltaico --}}
                             <label class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="FV" value="true" {{$towed_vw->FV == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="FV" id="FV" value="true" {{$towed_vw->FV == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>FV. Fotovoltaico</b></span>
                             </label>
@@ -679,7 +679,7 @@
 
                         <div class="mt-5">{{-- AC. Sistema di accumulo --}}
                             <label for="AC" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="AC" value="true" {{$towed_vw->AC == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="AC" id="AC" value="true" {{$towed_vw->AC == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>AC. Sistema di accumulo</b></span>
                             </label>
@@ -715,7 +715,7 @@
 
                         <div class="mt-5">{{-- CR. Infrastrutture per la ricarica di veicoli elettrici --}}
                             <label for="CR" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="CR" value="true" {{$towed_vw->CR == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="CR" id="CR" value="true" {{$towed_vw->CR == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>CR. Infrastrutture per la ricarica di veicoli elettrici</b></span>
                             </label>
@@ -752,7 +752,7 @@
 
                         <div class="mt-5">{{-- EBA. Eliminazione delle barriere architettoniche --}}
                             <label for="EBA" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="EBA" value="true" {{$towed_vw->EBA == 'true' ? 'checked' : ''}}>
+                                <input type="checkbox" name="EBA" id="EBA" value="true" {{$towed_vw->EBA == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>EBA. Eliminazione delle barriere architettoniche</b></span>
                             </label>

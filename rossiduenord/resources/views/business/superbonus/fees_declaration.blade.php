@@ -5,9 +5,7 @@
     @include('business.layouts.partials.nav_superbonus')
 
 
-            <form action="" method="POST">
-                @csrf
-                @method('PUT')
+            <form action="{{ route('business.var_computation', [$practice])}}" method="GET">
 
                 <div class="px-20">
                     <h6>Spese complessive e dichiarazioni</h6>
@@ -24,7 +22,7 @@
                             <div class="col-12 d-flex">
                                 <p>Costo complessivo degli interventi trainanti di progetto ammontano a <br>  (compreso impoprto trainati parti comuni) </p>
                                 <label for="" class=" m-0 mr-4 black">
-                                    <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                     <span>€</span>
                                 </label>
                             </div>
@@ -39,21 +37,21 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
@@ -62,14 +60,14 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
@@ -86,7 +84,7 @@
                             <div class="col-12 d-flex">
                                 <p>Costo complessivo degli interventi trainanti di progetto ammonta a</p>
                                 <label for="" class=" m-0 mr-4 black">
-                                    <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                     €
                                 </label>
                             </div>
@@ -101,21 +99,21 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
@@ -124,14 +122,14 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
@@ -146,7 +144,7 @@
                             <div class="col-12 d-flex">
                                 <b>L'importo degli interventi trainati di progetto ammonta a </b>
                                 <label for="" class=" m-0 mr-4 black">
-                                    <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                     €
                                 </label>
                             </div>
@@ -161,21 +159,21 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.1</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.2</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div> 
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.F</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div>
@@ -184,14 +182,14 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
@@ -209,7 +207,7 @@
                             <div class="col-12 d-flex">
                                 <b>L'importo degli interventi di progetto ammonta a</b>
                                 <label for="" class=" m-0 mr-4 black">
-                                    <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                     €
                                 </label>
                             </div>  
@@ -224,21 +222,21 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.1</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.2</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <b>Sal n.F</b>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <b>€</b>
                                     </label>
                                 </div>
@@ -247,14 +245,14 @@
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>
                                 <div class="m-1">
                                     <label for="" class=" m-0 black">
                                         <span>Sal n.1+2n.F</span>
-                                        <input type="text" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                        <input type="number" value="" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                                         <span>€</span>
                                     </label>
                                 </div>

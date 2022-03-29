@@ -316,17 +316,17 @@
                         <span>Destinati a</span>
 
                         <label for="solar_panel_use_winter" class="checkbox-wrapper d-flex ml-4">
-                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_winter" value="true">
+                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_winter" id="solar_panel_use_winter" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione invernale</span>
                         </label>
                         <label for="solar_panel_use_summer" class="checkbox-wrapper d-flex  ml-4">
-                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_summer" value="true">
+                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_summer" id="solar_panel_use_summer" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione estiva</span>
                         </label>
                         <label for="solar_panel_use_water" class="checkbox-wrapper d-flex  ml-4">
-                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_water" value="true">
+                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel_use_water" id="solar_panel_use_water" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Produzione di acqua calda sanitaria</span>
                         </label>

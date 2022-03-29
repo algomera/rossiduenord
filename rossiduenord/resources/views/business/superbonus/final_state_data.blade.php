@@ -149,7 +149,7 @@
                         </label>
                         <p class="m-0">Eventuali interventi di manutenzione straordinaria</p>
                         <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
-                            <textarea  class="w-100 px-1" name="summer_acs_renovation" id="" cols="30" rows="10">{{$final_state->summer_acs_renovation}}</textarea>
+                            <textarea  class="w-100 px-1" name="summer_acs_renovation" id="" cols="30" rows="7">{{$final_state->summer_acs_renovation}}</textarea>
                         </div>
                     </div>
 
@@ -227,32 +227,32 @@
                     <div class=" mt-5 px-20">{{-- APE IR. Impianto di Riscaldamento nella situazione post intervento --}}
                         <p class="font-500" style="text-decoration: underline;">APE IR. Impianto di Riscaldamento nella situazione post intervento</p>
                         <label for="winter_acs" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="winter_acs" value="true" {{$final_state->winter_acs == 'true' ? 'checked' : ''}}>
+                            <input type="checkbox" name="winter_acs" id="winter_acs" value="true" {{$final_state->winter_acs == 'true' ? 'checked' : ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione invernale</span>
                         </label>
                         <label for="hot_water_production" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="hot_water_production" value="true" {{$final_state->hot_water_production == 'true' ? 'checked' : ''}}>
+                            <input type="checkbox" name="hot_water_production" id="hot_water_production" value="true" {{$final_state->hot_water_production == 'true' ? 'checked' : ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Produzione acqua calda sanitaria</span>
                         </label>
                         <label for="mechanic_ventilaion" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="mechanic_ventilaion" value="true" {{$final_state->mechanic_ventilaion == 'true' ? 'checked' : ''}}>
+                            <input type="checkbox" name="mechanic_ventilaion" id="mechanic_ventilaion" value="true" {{$final_state->mechanic_ventilaion == 'true' ? 'checked' : ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Ventilazione meccanica</span>
                         </label>
                         <label for="summer_acs" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="summer_acs" value="true" {{$final_state->summer_acs == 'true' ? 'checked': ''}}>
+                            <input type="checkbox" name="summer_acs" id="summer_acs" value="true" {{$final_state->summer_acs == 'true' ? 'checked': ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione estiva</span>
                         </label>
                         <label for="lighting" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="lighting" value="true" {{$final_state->lighting == 'true' ? 'checked': ''}}>
+                            <input type="checkbox" name="lighting" id="lighting" value="true" {{$final_state->lighting == 'true' ? 'checked': ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Illuminazione</span>
                         </label>
                         <label for="transport" class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="transport" value="true" {{$final_state->transport == 'true' ? 'checked': ''}}>
+                            <input type="checkbox" name="transport" id="transport" value="true" {{$final_state->transport == 'true' ? 'checked': ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Trasporto di persone o cose</span>
                         </label>
@@ -420,7 +420,7 @@
                             </div>
                         </div>
                         <label for="people_transport" class="checkbox-wrapper d-flex mt-3">
-                            <input type="checkbox" name="people_transport" value="true" {{$final_state->people_transport == ' true' ? 'checked' : ''}}>
+                            <input type="checkbox" name="people_transport" id="people_transport" value="true" {{$final_state->people_transport == ' true' ? 'checked' : ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Trasporto di persone o cose</span>
                         </label>
