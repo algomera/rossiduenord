@@ -67,4 +67,8 @@ class Practice extends Model
     public function variant() {
         return $this->hasOne(Variant::class);
     }
+
+    public function condomini() {
+        return $this->hasMany(Condomini::class);
+    }
 }
