@@ -71,12 +71,40 @@ Route::middleware('business')
     Route::resource('/practice', 'PracticeController');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/building', 'BuildingController');
-    Route::get('/superbonus/{practice}', 'SuperBonusController@index')->name('superbonus.index');
-    Route::get('/superbonus/{practice}/{building}', 'SuperBonusController@show')->name('superbonus.show');
-    Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')->name('update_data_project');
-    Route::put('/superbonus/driving_intervention/{practice}/update', 'SuperBonusController@update_vertical_wall')->name('update_vertical_wall');
-    Route::put('/superbonus/towed_intervention/{practice}/update', 'SuperBonusController@update_towed_vertical_wall')->name('update_towed_vertical_wall');
-    Route::put('/superbonus/final_state/{practice}/update', 'SuperBonusController@update_final_state')->name('update_final_state');
+    Route::get('/superbonus/{practice}', 'SuperBonusController@index')
+        ->where('practice', '[0-9]+')
+        ->name('superbonus.index');
+    Route::get('/superbonus/{practice}/{building}', 'SuperBonusController@show')
+        ->where('practice', '[0-9]+')
+        ->where('building', '[0-9]+')
+        ->name('superbonus.show');
+    Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')
+        ->where('practice', '[0-9]+')
+        ->name('update_data_project');
+    Route::get('/superbonus/driving_intervention/{practice}', 'SuperBonusController@driving_intervention')
+        ->where('practice', '[0-9]+')
+        ->name('driving_intervention');
+    Route::put('/superbonus/driving_intervention/{practice}/update', 'SuperBonusController@update_driving_intervention')
+        ->where('practice', '[0-9]+')
+        ->name('update_vertical_wall');
+    Route::get('/superbonus/towed_intervention/{practice}', 'SuperBonusController@towed_intervention')
+        ->where('practice', '[0-9]+')
+        ->name('towed_intervention');
+    Route::put('/superbonus/towed_intervention/{practice}/update', 'SuperBonusController@update_towed_intervention')
+        ->where('practice', '[0-9]+')
+        ->name('update_towed_vertical_wall');
+    Route::get('/superbonus/final_state/{practice}', 'SuperBonusController@final_state')
+        ->where('practice', '[0-9]+')
+        ->name('final_state');
+    Route::put('/superbonus/final_state/{practice}/update', 'SuperBonusController@update_final_state')
+        ->where('practice', '[0-9]+')
+        ->name('update_final_state');
+    Route::get('/superbonus/final_state/{practice}', 'SuperBonusController@final_state')
+        ->where('practice', '[0-9]+')
+        ->name('final_state');
+    Route::get('/superbonus/fees_declaration/{practice}', 'SuperBonusController@fees_declaration')
+        ->where('practice', '[0-9]+')
+        ->name('fees_declaration');
     Route::resource('/verticalwall', 'VerticalWallController');
 });
 

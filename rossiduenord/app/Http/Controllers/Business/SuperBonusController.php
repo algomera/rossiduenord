@@ -37,12 +37,71 @@ class SuperBonusController extends Controller
         return view('business.superbonus.data_project', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
-        /**
-     * Update the specified resource in storage.
+    /**
+     * Display driving_intervention view.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bonus  $bonus
-     * @return \Illuminate\Http\Response
+     * @param Practice $practice
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function driving_intervention(Practice $practice) {
+        // Redirect to next tab
+        $data_project = $practice->data_project;
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $vertwall = $practice->verical_wall;
+        return view('business.superbonus.driving_intervention.vertical_wall', compact('vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
+    }
+
+    /**
+     * Display towed_intervention view.
+     *
+     * @param Practice $practice
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function towed_intervention(Practice $practice) {
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $towed_vw = $practice->trainated_vert_wall;
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('towed_vw','applicant', 'practice', 'building', 'subject'));
+    }
+
+    /**
+     * Display final_state view.
+     *
+     * @param Practice $practice
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function final_state(Practice $practice) {
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $final_state = $practice->final_state;
+        return view('business.superbonus.final_state_data', compact('final_state','applicant', 'practice', 'building', 'subject'));
+    }
+
+    /**
+     * Display fees_declaration view.
+     *
+     * @param Practice $practice
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function fees_declaration(Practice $practice) {
+        // Redirect to next tab
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+        $subject = $practice->subject;
+        return view('business.superbonus.fees_declaration', compact('applicant', 'practice', 'building', 'subject'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Practice $practice
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update_data_project(Request $request, Practice $practice)
     {
@@ -75,14 +134,16 @@ class SuperBonusController extends Controller
 
         // Redirect to next tab
         $practice = $data_project->practice;
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $subject = $practice->subject;
-        $vertwall = $practice->verical_wall;
-        return view('business.superbonus.driving_intervention.vertical_wall', compact('vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
+        return redirect()->route('business.driving_intervention', [$practice]);
     }
 
-    public function update_vertical_wall(Request $request, Practice $practice)
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Practice $practice
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update_driving_intervention(Request $request, Practice $practice)
     {
         // Form Validation
         $validated = $request->validate([
@@ -126,30 +187,31 @@ class SuperBonusController extends Controller
         $practice->verical_wall()->update($validated);
 
         // Redirect to next tab
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $subject = $practice->subject;
-
-        $towed_vw = $practice->trainated_vert_wall;
-
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('towed_vw','applicant', 'practice', 'building', 'subject'));
+        return redirect()->route('business.towed_intervention', [$practice]);
     }
 
-    public function update_towed_vertical_wall(Request $request, Practice $practice) {
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Practice $practice
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update_towed_intervention(Request $request, Practice $practice) {
         // Validazione form
 
         // Update data
         $practice->trainated_vert_wall()->update($request->except(['_token', '_method']));
 
         // Redirect to next tab
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $subject = $practice->subject;
-
-        $final_state = $practice->final_state;
-        return view('business.superbonus.final_state_data', compact('final_state','applicant', 'practice', 'building', 'subject'));
+        return redirect()->route('business.final_state', [$practice]);
     }
 
+    /**
+     * Update the specified resource in storage.
+     * @param Request $request
+     * @param Practice $practice
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update_final_state(Request $request, Practice $practice) {
         // Validazione form
 
@@ -157,67 +219,6 @@ class SuperBonusController extends Controller
         $practice->final_state()->update($request->except(['_token', '_method']));
 
         // Redirect to next tab
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $subject = $practice->subject;
-
-//        $final_state = $practice->final_state;
-        return view('business.superbonus.fees_declaration', compact('applicant', 'practice', 'building', 'subject'));
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Bonus  $bonus
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Practice $practice)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bonus  $bonus
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Practice $practice)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Bonus  $bonus
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Practice $practice)
-    {
-        //
+        return redirect()->route('business.fees_declaration', [$practice]);
     }
 }
