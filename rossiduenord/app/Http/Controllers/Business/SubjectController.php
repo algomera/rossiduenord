@@ -114,8 +114,9 @@ class SubjectController extends Controller
         $practice = $subject->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
+        $condomini = $practice->condomini;
 
-        return view('business.building.edit', compact('practice','applicant', 'building', 'subject'));
+        return view('business.building.edit', compact('condomini','practice','applicant', 'building', 'subject'));
     }
 
     /**
