@@ -6,8 +6,7 @@
             <span class="black text-md"><b>Completa il tuo Profilo</b></span>
             <hr class="bg-black">
 
-            @include('business.layouts.partials.error')    
-
+            @include('business.layouts.partials.error')  
             <form action="{{ route('business.update.data', $business->id) }}" method="POST">
                 @csrf
                 @method('PUT')
