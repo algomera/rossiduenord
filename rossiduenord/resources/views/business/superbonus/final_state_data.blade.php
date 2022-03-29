@@ -149,7 +149,7 @@
                         </label>
                         <p class="m-0">Eventuali interventi di manutenzione straordinaria</p>
                         <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
-
+                            <textarea  class="w-100 px-1" name="summer_acs_renovation" id="" cols="30" rows="10">{{$final_state->summer_acs_renovation}}</textarea>
                         </div>
                     </div>
 
@@ -216,7 +216,7 @@
                         </div>
                         <p class="m-0 mt-3">Eventuali interventi di manutenzione straordinaria o ristrutturazione</p>
                         <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
-
+                            <textarea class="w-100 h-100 px-1" name="extra_maintenance" id="" cols="30" rows="10">{{$final_state->extra_maintenance}}</textarea>
                         </div>
                     </div>
 
@@ -304,11 +304,15 @@
                         <p class="font-500" style="text-decoration: underline;">APE NM: Norme e Metodologie</p>
                         <div>
                             <p>Riferimento alle norme tecniche utilizzate</p>
-                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
+                             <textarea  class="w-100 h-100 px-1" name="technical_standard" id="" cols="30" rows="10">{{$final_state->technical_standard}}</textarea>
+                            </div>
                         </div>
                         <div class="my-3">
                             <p>Metodo di valutazione della prestazione energetica utilizzato</p>
-                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
+                             <textarea  class="w-100 h-100 px-1" name="energetic_evaluation_method" id="" cols="30" rows="10">{{$final_state->energetic_evaluation_method}}</textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -319,7 +323,9 @@
                         <p class="font-500" style="text-decoration: underline;">APE DE: Descrizione edificio</p>
                         <div class="my-3">
                             <p>Descrizione dell'edificio e della sua localizzazione e destinazione d'uso</p>
-                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
+                               <textarea  class="w-100 h-100 px-1" name="building_description" id="" cols="30" rows="10">{{$final_state->building_description}}</textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -427,7 +433,9 @@
                         <p class="font-500" style="text-decoration: underline;">APE LC: Lista delle raccomandazioni</p>
                         <div class="my-3">
                             <p>Possibili interventi di miglioramento</p>
-                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; "></div>
+                            <div style="width: 100%; height: 150px; border:#f2f2f2 1px solid; border-radius: 5px; ">
+                             <textarea  class="w-100 h-100 px-1" name="possible_improvements" id="" cols="30" rows="10">{{$final_state->possible_improvements}}</textarea>
+                            </div>
                         </div>
                     </div>
                     {{-- end page --}}

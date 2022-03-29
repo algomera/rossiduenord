@@ -81,21 +81,21 @@
                                 <div class="my-2">
                                     <span class="font-500">Interventi trainanti</span>
                                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
-
+                                        <textarea  class="w-100 h-100 px-1" name="driving_interventions" id="" cols="30" rows="10">{{$final_state->driving_interventions}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="my-2">{{-- Interventi trainati --}}
                                     <span class="font-500">Interventi trainati</span>
-                                    <textarea style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
-
-                                    </textarea>
+                                    <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
+                                        <textarea  class="w-100 h-100 px-1" name="towed_interventions" id="" cols="30" rows="10">{{$final_state->towed_interventions}}</textarea>
+                                    </div>
                                 </div>
 
                                 <div class="my-2">{{-- Computo metrico --}}
                                     <span class="font-500">Computo metrico</span>
                                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
-
+                                        <textarea  class="w-100 h-100 px-1" name="metric_calc" id="" cols="30" rows="10">{{$final_state->metric_calc}}</textarea>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center m-0">{{-- Variante approvata --}}
@@ -171,13 +171,14 @@
                                 <div class="my-2">{{-- Interventi trainanti --}}
                                     <span class="font-500">Interventi trainanti</span>
                                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
-
+                                        <textarea  class="w-100 h-100 px-1" name="final_driving_interventions" id="" cols="30" rows="10">{{$final_state->final_driving_interventions}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="my-2">{{-- Interventi trainati --}}
                                     <span class="font-500">Interventi trainati</span>
                                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
+                                        <textarea  class="w-100 h-100 px-1" name="final_towed_interventions" id="" cols="30" rows="10">{{$final_state->final_towed_interventions}}</textarea>
 
                                     </div>
                                 </div>
@@ -185,6 +186,7 @@
                                 <div class="my-2">{{-- Computo metrico --}}
                                     <span class="font-500">Computo metrico</span>
                                     <div style="width: 100%; height: 150px; border: 1px solid rgb(242, 242, 242); border-radius: 5px;">
+                                        <textarea  class="w-100 h-100 px-1" name="final_metric_calc" id="" cols="30" rows="10">{{$final_state->final_metric_calc}}</textarea>
 
                                     </div>
                                 </div>
