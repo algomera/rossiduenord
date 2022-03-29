@@ -49805,7 +49805,8 @@ var app = new Vue({
     showState: false,
     showFees: false,
     showVariants: false,
-    active: false
+    active: false,
+    isModalVisible: true
   },
   methods: {
     showpage1: function showpage1() {
@@ -49855,6 +49856,9 @@ var app = new Vue({
       this.showState = false;
       this.showFees = false;
       this.showVariants = true;
+    },
+    closeModal: function closeModal() {
+      this.isModalVisible = false;
     }
   }
 });
