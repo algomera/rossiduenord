@@ -65,6 +65,15 @@ class SubjectController extends Controller
         return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
     }
 
+    public function subject_edit(Practice $practice)
+    {
+        $building = $practice->building;
+        $subject = $practice->subject;
+        $applicant = $practice->applicant;
+
+        return view('business.subject.edit', compact('practice','subject','building','applicant'));
+    }
+
     /**
      * Update the specified resource in storage.
      *

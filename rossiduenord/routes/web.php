@@ -69,6 +69,8 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
+    Route::get('/subject/{practice}', 'SubjectController@subject_edit')
+        ->where('practice', '[0-9]+')->name('subject_edit');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/building', 'BuildingController');
     Route::get('/superbonus/{practice}', 'SuperBonusController@index')

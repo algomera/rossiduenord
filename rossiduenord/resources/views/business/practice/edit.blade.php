@@ -351,7 +351,7 @@
                     <div class="d-flex">
                         <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
                         <label for="bonus" class="checkbox-wrapper d-flex">
-                            <input {{ $practice->policy == '110%' ? 'checked' : ''}} type="checkbox" name="bonus" value="110%">     
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} type="checkbox" name="bonus" id="bonus" value="110%">     
                             <span class="checkmark"></span> 
                             <span>Super Bonus 110%</span>
                         </label>

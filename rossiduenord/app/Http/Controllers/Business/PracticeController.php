@@ -113,12 +113,8 @@ class PracticeController extends Controller
         ]);
 
         $practice->update($validated);
-        $id = ['practice_id' => $practice->id];
 
-        $building = $practice->building;
-        $subject = $practice->subject;
-        $applicant = $practice->applicant;
-        return view('business.subject.edit', compact('practice','subject','building','applicant')); 
+        return redirect()->route('business.subject_edit', $practice); 
     }
 
     /**
