@@ -8,7 +8,7 @@
             <p>Per salvare la pratica è necessario inserire il ruolo del richiedente</p>
         </div>
         <div>
-            <a class="add-button px-5 py-1" @click="closeModal()">Ok</a>
+            <a class="add-button px-5 py-1 clickable" @click="closeModal()">Ok</a>
         </div>
     </div>  
 </div>

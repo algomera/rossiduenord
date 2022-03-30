@@ -187,6 +187,10 @@ a:hover {
   width: 100%;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .activ {
   font-weight: 700;
 }
