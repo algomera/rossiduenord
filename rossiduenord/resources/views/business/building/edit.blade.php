@@ -443,7 +443,7 @@
                         <div class="mt-5">{{-- table list condomini --}}
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
-                                <div class="btn btn-primary ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
+                                <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
@@ -639,19 +639,7 @@
                         </td>
                         </tr>
                     `)
-
-
-                // let rowCount = table.rows.length;
-                // let cellCount = table.rows[0].cells.length;
-                // let row = table.insertRow(rowCount);
-                // for(let i = 0; i <= cellCount; i++){
-                //     let cell = 'cell' + i;
-                //     cell = row.insertCell(i);
-                //     let copycel = document.getElementById('col' + i).innerHTML;
-                //     cell.innerHTML = copycel;
-                // }
             }
         </script>
     @endpush
-
 @endsection

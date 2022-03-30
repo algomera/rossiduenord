@@ -15,21 +15,21 @@
             <hr class="bg-black" style="margin-top: 5px;">
 
             <div class="d-flex justify-content-between menu mb-4">
-                <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{request()->is('business/applicant/*') ? 'visited' : ''}}">
+                <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{request()->is('business/applicant*') ? 'visited' : ''}}">
                     RICHIEDENTE
                 </a>
-                <a href="{{route('business.practice.edit', $practice->id) }}" class="{{request()->is('business/practice/*') ? 'visited' : ''}}">
+                <a href="{{route('business.practice.edit', $practice->id) }}" class="{{request()->is('business/practice*') ? 'visited' : ''}}">
                     PRATICA
                 </a>
-                <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject/*') ? 'visited' : ''}}">
+                <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject*') ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}}">
+                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building*') ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
                 <a href="">DOCUMENTI RICHIESTI</a>
-                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus/*') ? 'visited' : ''}}">
+                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
                     SUPERBONUS 110%
                 </a>
                 <a href="">CONTRATTI</a>

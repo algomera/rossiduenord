@@ -138,8 +138,12 @@ a:hover {
   background-color: #00cfb4;
 }
 
+.bg-blue {
+  background-color: #61a4d7 !important;
+}
+
 .white {
-  color: white;
+  color: white !important;
 }
 
 .black {

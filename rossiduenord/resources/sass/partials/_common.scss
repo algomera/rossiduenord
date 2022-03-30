@@ -137,8 +137,11 @@ a {
 .bg-green {
     background-color: $bg-bt-green;
 }
+.bg-blue {
+    background-color: $bg-bt-blue !important;
+}
 .white {
-    color: white;
+    color: white !important;
 }
 .black {
     color: $bg-bt-black !important;
