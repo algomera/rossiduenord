@@ -32,24 +32,14 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             $d = new User;
             $d->created_by =  'financial';
             $d->name = $name[$i]['name'];
             $d->referent = $faker->name();
-            $d->email = $faker->email();
+            $d->email = 'impresa@mail.com';
             $d->password = 'password';
             $d->role = 'bank';
-            $d->save();
-        }
-        for ($i = 0; $i < 5; $i++) {
-            $d = new User;
-            $d->created_by =  'Mps';
-            $d->name = $name[$i]['name'];
-            $d->referent = $faker->name();
-            $d->email = $faker->email();
-            $d->password = 'password';
-            $d->role = 'business';
             $d->save();
         }
     }    

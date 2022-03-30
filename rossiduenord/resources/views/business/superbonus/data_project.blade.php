@@ -33,9 +33,9 @@
                         <p style="margin: 0">è stata depositata nell’ufficio competente del Comune di</p>
                         <input type="text" value="{{$data_project->filed_common}}" name="filed_common" id="filed_common" style="margin-left: 20px;" class="text-center border @error('filed_common') is-invalid @enderror">
                         @error('filed_common')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
                         <label for="filed_province" style="margin: 0; padding-left: 20px;">
                             Prov.
@@ -103,7 +103,7 @@
                             <span>n.pertinenza</span>
                             <input type="number" value="{{$data_project->relevance}}" name="relevance" id="relevance" class="mr-4 text-center border @error('relevance') is-invalid @enderror">
                             <label for="centralized_system">
-                                <input {{ $data_project->centralized_system == 'true' ? 'checked' : ''}} type="checkbox" value="true" name="centralized_system" id="centralized_system" class="@error('centralized_system') is-invalid@enderror">
+                                <input {{ $data_project->centralized_system == 'true' ? 'checked' : ''}} type="checkbox" value="true" name="centralized_system" id="centralized_system" class="@error('centralized_system') is-invalid @enderror">
                                 con impianto termico centralizzato
                             </label>
                         </div>
@@ -121,10 +121,10 @@
                         <p class="m-0">- la superficie lorda ante lavori complessiva disperdente è pari a</p>
                         <input type="number" value="{{$data_project->gross_surface_area}}" name="gross_surface_area" id="gross_surface_area" class="text-center ml-2 mr-2 border @error('gross_surface_area') is-invalid @enderror">
                         @error('gross_surface_area')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         <span>m²</span>
                     </div>
 

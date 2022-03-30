@@ -441,6 +441,36 @@ label {
   width: 80px;
 }
 
+.box_date_condomino {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid #f2f2f2;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.box_date_condomino input,
+.box_date_condomino select {
+  border: 1px solid gray;
+  border-radius: 3px;
+  text-align: center;
+}
+.box_date_condomino select {
+  background-color: #f2f2f2;
+}
+.box_date_condomino .row_input {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+}
+.box_date_condomino .input_small {
+  width: 80px;
+}
+.box_date_condomino .input_large {
+  width: 300px;
+}
+
 header {
   background-color: #615f5f;
   color: white;

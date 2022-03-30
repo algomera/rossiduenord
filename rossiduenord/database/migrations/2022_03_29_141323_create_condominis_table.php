@@ -42,9 +42,6 @@ class CreateCondominisTable extends Migration
             $table->string('common')->nullable();
             $table->string('prov')->nullable();
             $table->string('country')->nullable();
-            $table->string('phone')->nullable();
-
-
             $table->timestamps();
         });
     }
