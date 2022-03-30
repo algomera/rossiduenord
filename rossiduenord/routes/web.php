@@ -114,6 +114,7 @@ Route::middleware('business')
         ->where('practice', '[0-9]+')
         ->name('update_var_computation');
     Route::resource('/verticalwall', 'VerticalWallController');
+    Route::resource('/condensing_boilers', 'CondensingBoilerController');
 });
 
 

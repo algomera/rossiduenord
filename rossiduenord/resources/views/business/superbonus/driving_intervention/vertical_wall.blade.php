@@ -237,7 +237,8 @@
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
                             <div id="condensing_boiler_wrapper">
                                 @forelse($condensing_boilers as $i => $condensing_boiler)
-                                <div class="box_input">
+                                <div class="box_input" data-id="{{$practice->id}}-{{$condensing_boiler->id}}">
+                                    {{ $i + 1 }}
                                     <div class="row_input">
                                         <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
                                             Tipo sostituito
@@ -271,7 +272,7 @@
                                             %
                                         </label>
                                         <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
-                                            <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination>
+                                            <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
                                                 <option {{ $condensing_boiler->use_destination === 'Riscaldameto ambiente' ? 'selected' : ''}} value="Riscaldameto ambiente">Riscaldameto ambiente</option>
                                                 <option {{ $condensing_boiler->use_destination === 'Risc. ambiente + prod.ACS' ? 'selected' : ''}} value="Risc. ambiente + prod.ACS">Risc. ambiente + prod.ACS</option>
                                             </select>
@@ -307,14 +308,14 @@
                                                 </select>
                                             </label>
                                         </div>
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                        <div onclick="deleteCondensingBoiler({{$practice->id}}, {{$condensing_boiler->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                             <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
+                                        </div>
                                     </div>
                                 </div>
                                 @empty
-                                    Nessun dato
+                                    <p id="no_data_row">Nessun dato</p>
                                 @endforelse
                                 {{-- end loop --}}
                             </div>
@@ -1042,7 +1043,7 @@
             }
             i++;
             $("#condensing_boiler_wrapper").append(`
-                <div class="box_input">
+                <div class="box_input" data-id="${i}">
                     <div class="row_input">
                         <label for="condensing_boilers[${i}][tipo_sostituito]">
                             Tipo sostituito
@@ -1112,13 +1113,26 @@
                                             </select>
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <button onclick="removeCondensingBoiler(${i})" type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                        <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                        <p class="m-0" style="color: #818387; font-size: 12px">Rimuovi</p>
                                     </button>
                                 </div>
                             </div>
                     `)
+        }
+
+        function deleteCondensingBoiler(pid, cid) {
+            console.log(pid, cid)
+            axios.delete(`/business/condensing_boilers/${cid}`)
+                .then(() => {
+                    $(`div[data-id=${pid}-${cid}]`).remove();
+                })
+        }
+
+        function removeCondensingBoiler(id) {
+            console.log("Remove:", id)
+            $(`div[data-id=${id}]`).remove();
         }
     </script>
 @endpush

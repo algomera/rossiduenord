@@ -79,8 +79,9 @@ class CondensingBoilerController extends Controller
      * @param  \App\CondensingBoiler  $condensingBoiler
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CondensingBoiler $condensingBoiler)
+    public function destroy($id)
     {
-        //
+        $condensingBoiler = CondensingBoiler::find($id);
+        $condensingBoiler->delete();
     }
 }
