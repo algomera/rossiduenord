@@ -50,7 +50,7 @@
                 <div class="d-flex">
                     <div class="form-group" style="width: 25%; margin-right: 20px;">
                         <label for="practical_phase" class="text">Fase pratica</label>
-                        <select style="height: 47px!important" class="form-control bg-body" name="practical_phase" id="practical_phase" value="{{ $practice->practical_phase}}">
+                        <select style="height: 47px!important" class="form-control bg-body @error('practical_phase') is-invalid @enderror" name="practical_phase" id="practical_phase" value="{{ $practice->practical_phase}}">
                             <optgroup label="seleziona fase pratica">
                                 <option {{ $practice->practical_phase == 'Nessuna' ? 'selected' : ''}} value="Nessuna">Nessuna</option>
                                 <option {{ $practice->practical_phase == 'In istruttoria' ? 'selected' : ''}} value="In istruttoria">In istruttoria</option>
@@ -65,17 +65,29 @@
                                 <option {{ $practice->practical_phase == 'Operazione rinunciata' ? 'selected' : ''}} value="Operazione rinunciata">Operazione rinunciata</option>
                             </optgroup>
                         </select>
+
+                        @error('practical_phase')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
                     </div>
 
                     <div class="form-group" style="width: 15%;">
                         <label for="real_estate_type" class="text">Tipo immobile</label>
-                        <select style="height: 47px!important" class="form-control bg-body" name="real_estate_type" id="real_estate_type">
+                        <select style="height: 47px!important" class="form-control bg-body @error('real_estate_type') is-invalid @enderror" name="real_estate_type" id="real_estate_type">
                             <optgroup label="seleziona tipo immobile">
                                 <option {{ $practice->real_estate_type == 'Condominio' ? 'selected' : ''}} value="Condominio">Condominio</option>
                                 <option {{ $practice->real_estate_type == 'Unifamiliare' ? 'selected' : ''}} value="Unifamiliare">Unifamiliare</option>
                                 <option {{ $practice->real_estate_type == 'Fabbricato industriale' ? 'selected' : ''}} value="Fabbricato industriale">Fabbricato industriale</option>
                             </optgroup>
                         </select>
+                        @error('real_estate_type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
@@ -84,7 +96,7 @@
 
                     <div class="form-group" style="width: 15%;">
                         <label for="month" class="text">Mese</label>
-                        <select style="height: 47px!important" class="form-control bg-body" name="month" id="month">
+                        <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month">
                             <optgroup label="seleziona mese">
                                 <option {{ $practice->month == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>
                                 <option {{ $practice->month == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>
@@ -100,6 +112,11 @@
                                 <option {{ $practice->month == 'dicembre' ? 'selected' : ''}} value="dicembre">dicembre</option>
                             </optgroup>
                         </select>
+                        @error('month')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
             
                     <div class="form-group" style="width: 10%;">
@@ -184,30 +201,35 @@
 
                     <div class="form-group" style="width: 15%;">
                         <label for="region" class="text">Regione</label>
-                        <select style="height: 47px!important" class="form-control bg-body" name="region" id="region">
-                        <optgroup label="seleziona regione">
-                            <option {{ $practice->region == 'Abruzzo' ? 'selected' : ''}} value="Abruzzo">Abruzzo</option>
-                            <option {{ $practice->region == 'Basilicata' ? 'selected' : ''}} value="Basilicata">Basilicata</option>
-                            <option {{ $practice->region == 'Calabria' ? 'selected' : ''}} value="Calabria">Calabria</option>
-                            <option {{ $practice->region == 'Campania' ? 'selected' : ''}} value="Campania">Campania</option>
-                            <option {{ $practice->region == 'Emilia-Romagna' ? 'selected' : ''}} value="Emilia-Romagna">Emilia-Romagna</option>
-                            <option {{ $practice->region == 'Friuli Venezia Giulia' ? 'selected' : ''}} value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
-                            <option {{ $practice->region == 'Lazio' ? 'selected' : ''}} value="Lazio">Lazio</option>
-                            <option {{ $practice->region == 'Liguria' ? 'selected' : ''}} value="Liguria">Liguria</option>
-                            <option {{ $practice->region == 'Lombardia' ? 'selected' : ''}} value="Lombardia">Lombardia</option>
-                            <option {{ $practice->region == 'Marche' ? 'selected' : ''}} value="Marche">Marche</option>
-                            <option {{ $practice->region == 'Molise' ? 'selected' : ''}} value="Molise">Molise</option>
-                            <option {{ $practice->region == 'Piemonte' ? 'selected' : ''}} value="Piemonte">Piemonte</option>
-                            <option {{ $practice->region == 'Puglia' ? 'selected' : ''}} value="Puglia">Puglia</option>
-                            <option {{ $practice->region == 'Sardegna' ? 'selected' : ''}} value="Sardegna">Sardegna</option>
-                            <option {{ $practice->region == 'sicilia' ? 'selected' : ''}} value="sicilia">Sicilia</option>
-                            <option {{ $practice->region == 'Toscana' ? 'selected' : ''}} value="Toscana">Toscana</option>
-                            <option {{ $practice->region == 'Trentino-Alto Adige' ? 'selected' : ''}} value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-                            <option {{ $practice->region == 'Umbria' ? 'selected' : ''}} value="Umbria">Umbria</option>
-                            <option {{ $practice->region == 'Valle d\'Aosta' ? 'selected' : ''}} value="Valle d'Aosta">Valle d'Aosta</option>
-                            <option {{ $practice->region == 'Veneto' ? 'selected' : ''}} value="Veneto">Veneto</option>
-                        </optgroup>
+                        <select style="height: 47px!important" class="form-control bg-body @error('region') is-invalid @enderror" name="region" id="region">
+                            <optgroup label="seleziona regione">
+                                <option {{ $practice->region == 'Abruzzo' ? 'selected' : ''}} value="Abruzzo">Abruzzo</option>
+                                <option {{ $practice->region == 'Basilicata' ? 'selected' : ''}} value="Basilicata">Basilicata</option>
+                                <option {{ $practice->region == 'Calabria' ? 'selected' : ''}} value="Calabria">Calabria</option>
+                                <option {{ $practice->region == 'Campania' ? 'selected' : ''}} value="Campania">Campania</option>
+                                <option {{ $practice->region == 'Emilia-Romagna' ? 'selected' : ''}} value="Emilia-Romagna">Emilia-Romagna</option>
+                                <option {{ $practice->region == 'Friuli Venezia Giulia' ? 'selected' : ''}} value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
+                                <option {{ $practice->region == 'Lazio' ? 'selected' : ''}} value="Lazio">Lazio</option>
+                                <option {{ $practice->region == 'Liguria' ? 'selected' : ''}} value="Liguria">Liguria</option>
+                                <option {{ $practice->region == 'Lombardia' ? 'selected' : ''}} value="Lombardia">Lombardia</option>
+                                <option {{ $practice->region == 'Marche' ? 'selected' : ''}} value="Marche">Marche</option>
+                                <option {{ $practice->region == 'Molise' ? 'selected' : ''}} value="Molise">Molise</option>
+                                <option {{ $practice->region == 'Piemonte' ? 'selected' : ''}} value="Piemonte">Piemonte</option>
+                                <option {{ $practice->region == 'Puglia' ? 'selected' : ''}} value="Puglia">Puglia</option>
+                                <option {{ $practice->region == 'Sardegna' ? 'selected' : ''}} value="Sardegna">Sardegna</option>
+                                <option {{ $practice->region == 'sicilia' ? 'selected' : ''}} value="sicilia">Sicilia</option>
+                                <option {{ $practice->region == 'Toscana' ? 'selected' : ''}} value="Toscana">Toscana</option>
+                                <option {{ $practice->region == 'Trentino-Alto Adige' ? 'selected' : ''}} value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                <option {{ $practice->region == 'Umbria' ? 'selected' : ''}} value="Umbria">Umbria</option>
+                                <option {{ $practice->region == 'Valle d\'Aosta' ? 'selected' : ''}} value="Valle d'Aosta">Valle d'Aosta</option>
+                                <option {{ $practice->region == 'Veneto' ? 'selected' : ''}} value="Veneto">Veneto</option>
+                            </optgroup>
                         </select>
+                        @error('region')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group" style="width: 10%;">
@@ -225,10 +247,10 @@
                 </div>
 
                 <div class="d-flex">
-                    <div class="form-group" style="width: 10%; margin-right: 20px;">
+                    <div class="form-group" style="width: 15%; margin-right: 20px;">
                         <label for="work_start" class="text">{{ __('Inizio lavori') }}</label>
                         <div>
-                            <input id="work_start" type="text" style="height: 47px!important" class="form-control @error('work_start') is-invalid @enderror" name="work_start" value="{{ $practice->work_start }}" autocomplete="work_start" autofocus>
+                            <input id="work_start" type="date" style="height: 47px!important" class="form-control @error('work_start') is-invalid @enderror" name="work_start" value="{{ $practice->work_start }}" autocomplete="work_start" autofocus>
 
                             @error('work_start')
                                 <span class="invalid-feedback" role="alert">
@@ -241,7 +263,7 @@
                     <div class="form-group" style="width: 20%; margin-right: 20px;">
                         <label for="c_m" class="text">{{ __('Importo C.M') }}</label>
                         <div>
-                            <input id="c_m" type="text" style="height: 47px!important" class="form-control @error('c_m') is-invalid @enderror" name="c_m" value="{{ $practice->c_m }}" autocomplete="c_m" autofocus>
+                            <input id="c_m" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('c_m') is-invalid @enderror" name="c_m" value="{{ $practice->c_m }}" autocomplete="c_m" autofocus>
 
                             @error('c_m')
                                 <span class="invalid-feedback" role="alert">
@@ -254,7 +276,7 @@
                     <div class="form-group" style="width: 20%;">
                         <label for="assev_tecnica" class="text">{{ __('Assev. Tecnica(no IVA)') }}</label>
                         <div>
-                            <input id="assev_tecnica" type="text" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus>
+                            <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus>
 
                             @error('assev_tecnica')
                                 <span class="invalid-feedback" role="alert">
@@ -351,7 +373,7 @@
                     <div class="d-flex">
                         <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
                         <label for="bonus" class="checkbox-wrapper d-flex">
-                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} type="checkbox" name="bonus" id="bonus" value="110%">     
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} type="checkbox" class="@error(bonus) is-invalid @enderror" name="bonus" id="bonus" value="110%">     
                             <span class="checkmark"></span> 
                             <span>Super Bonus 110%</span>
                         </label>
@@ -359,7 +381,7 @@
                     <div class="d-flex align-items-center">
                         <div class="form-group mr-2" style="width: 30%">
                             <label for="month_processing" class="text">Mese di lavorazione</label>
-                            <select style="height: 47px!important" class="form-control bg-body" name="month_processing" id="month_processing">
+                            <select style="height: 47px!important" class="form-control bg-body @error('month_processing') is-invalid @enderror" name="month_processing" id="month_processing">
                                 <optgroup label="seleziona mese">
                                     <option {{ $practice->month_processing == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>
                                     <option {{ $practice->month_processing == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>
@@ -373,8 +395,13 @@
                                     <option {{ $practice->month_processing == 'ottobre' ? 'selected' : ''}} value="ottobre">ottobre</option>
                                     <option {{ $practice->month_processing == 'novembre' ? 'selected' : ''}} value="novembre">novembre</option>
                                     <option {{ $practice->month_processing == 'dicembre' ? 'selected' : ''}} value="dicembre">dicembre</option>
-                                    </optgroup>
+                                </optgroup>
                             </select>
+                            @error('month_processing')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-2 mr-2" style="width: 20%;">
                             <label for="year_processing" class="text"></label>
@@ -403,7 +430,7 @@
                     <label for="note" class="text">{{ __('note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{ $practice->note }}</textarea>
                     <label class="checkbox-wrapper d-flex mt-2">
-                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}}  type="checkbox" name="practice_ok" value="true">     
+                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}}  type="checkbox" class="@error(practice_ok) is-invalid @enderror" name="practice_ok" value="true">     
                         <span class="checkmark"></span> 
                         <span>Pratica in regola</span>
                     </label>
