@@ -604,7 +604,7 @@
                 $("#condominis_table tbody").append(`
                     <tr>
                         <td class="text-center">${$("#condominis_table tbody tr").length + 1 }</td>
-                        <td id="col1" class="text-center">
+                        <td class="text-center">
                             <input name="condomini[${i}][name]" type="text" style="border:none; width: 100%;">
                         </td>
                         <td class="text-left">

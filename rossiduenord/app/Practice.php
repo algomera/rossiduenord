@@ -71,4 +71,8 @@ class Practice extends Model
     public function condomini() {
         return $this->hasMany(Condomini::class);
     }
+
+    public function condensing_boilers() {
+        return $this->hasMany(CondensingBoiler::class);
+    }
 }

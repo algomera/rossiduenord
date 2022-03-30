@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{Practice, Subject, Applicant, Building, Bonus, Data_project};
+use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Bonus, Data_project};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -50,7 +50,8 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $vertwall = $practice->verical_wall;
-        return view('business.superbonus.driving_intervention.vertical_wall', compact('vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
+        $condensing_boilers = $practice->condensing_boilers;
+        return view('business.superbonus.driving_intervention.vertical_wall', compact('condensing_boilers', 'vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
     /**
@@ -199,6 +200,21 @@ class SuperBonusController extends Controller
 
         // Update data
         $practice->verical_wall()->update($validated);
+
+        if($request->get('condensing_boilers')) {
+            foreach ($request->get('condensing_boilers') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->condensing_boilers()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->condensing_boilers()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], $item);
+                }
+            }
+        }
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);

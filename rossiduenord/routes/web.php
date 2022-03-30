@@ -88,7 +88,7 @@ Route::middleware('business')
         ->name('driving_intervention');
     Route::put('/superbonus/driving_intervention/{practice}/update', 'SuperBonusController@update_driving_intervention')
         ->where('practice', '[0-9]+')
-        ->name('update_vertical_wall');
+        ->name('update_driving_intervention');
     Route::get('/superbonus/towed_intervention/{practice}', 'SuperBonusController@towed_intervention')
         ->where('practice', '[0-9]+')
         ->name('towed_intervention');
