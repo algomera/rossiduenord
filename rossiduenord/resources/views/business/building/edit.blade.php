@@ -20,19 +20,29 @@
                         <div style="margin-bottom:20px;" >
                             <div class="form-group">
                             <label for="intervention_name" style="display:inline-block;" >Nome intervento</label>
-                            <input type="text" class="col-md" name="intervention_name" id="intervention_name" value="{{$building->intervention_name}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                            <input type="text" class="col-md @error('intervention_name') is-invalid @enderror" name="intervention_name" id="intervention_name" value="{{$building->intervention_name}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                            @error('intervention_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="company_role" style="display:inline-block;" >Ruolo dell'impresa</label>
                                 <div class="position-relative">
                                     <div class="select"></div>
-                                    <select id="company_role" class="col-md" name="company_role" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;">
+                                    <select id="company_role" class="col-md @error('company_role') is-invalid @enderror" name="company_role" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;">
                                         <option {{ $building->company_role == 'General Contractor/Coordinatore' ? 'selected' : ''}} value="General Contractor/Coordinatore">General Contractor/Coordinatore</option>
                                         <option {{ $building->company_role == 'Responsabile di un intervento trainante' ? 'selected' : ''}} value="Responsabile di un intervento trainante">Responsabile di un intervento trainante</option>
                                         <option {{ $building->company_role == 'Responsabile di un intervento trainato' ? 'selected' : ''}} value="Responsabile di un intervento trainato">Responsabile di un intervento trainato</option>
                                         <option {{ $building->company_role == 'Società beneficiaria dell_intervento' ? 'selected' : ''}} value="Società beneficiaria dell_intervento">Società beneficiaria dell'intervento</option>
                                     </select>
+                                    @error('company_role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -131,10 +141,16 @@
     --}}
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label for="intervention_tipology" class="checkbox-wrapper d-flex mr-3">
-                                            <input {{ $building->intervention_tipologye == 'tre' ? 'checked' : ''}} type="checkbox" id="intervention_tipology" name="intervention_tipology" value="true">
+                                            <input {{ $building->intervention_tipology == 'tre' ? 'checked' : ''}} type="checkbox" class="@error('intervention_tipology') is-invalid @enderror" id="intervention_tipology" name="intervention_tipology" value="true">
                                             <span class="checkmark"></span>
                                             <span class="grey">Super Ecobonus 110%</span>
                                         </label>
+                                        @error('intervention_tipology')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
                                     </div>
 
     {{--
@@ -156,21 +172,36 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="build_address">Indirizzo</label><br/>
-                                    <input class="col-md" type="text" name="build_address" id="build_address" value="{{$building->build_address}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    <input class="col-md" class="@error('build_address') is-invalid @enderror" type="text" name="build_address" id="build_address" value="{{$building->build_address}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    @error('build_address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="fiscal_code">Codice fiscale</label><br/>
-                                    <input class="col-md" type="text" name="fiscal_code" id="fiscal_code" value="{{$building->fiscal_code}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    <input class="col-md" type="text" class="@error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{$building->fiscal_code}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    @error('fiscal_code')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="build_type" style="display:inline-block;" >Tipo condominio</label>
                                     <div class="position-relative">
                                         <div class="select"></div>
-                                        <select id="build_type" class="col-md" name="build_type" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
+                                        <select id="build_type" class="col-md @error('build_type') is-invalid @enderror" name="build_type" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
                                             <option {{ $building->build_type == 'Standard' ? 'selected' : ''}} value="Standard">Standard</option>
                                             <option {{ $building->build_type == 'Popolare' ? 'selected' : ''}} value="Popolare">Popolare</option>
                                             <option {{ $building->build_type == 'Lusso' ? 'selected' : ''}} value="Lusso">Lusso</option>
                                         </select>
+                                        @error('build_type')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -181,21 +212,36 @@
                                     <div class="d-flex justify-content-between" style="column-gap: 10px;">
                                         <div style="width: 50px">
                                             <label for="build_civic_number">N.</label><br/>
-                                            <input class="col-md" value="{{$building->build_civic_number}}" type="text" name="build_civic_number" id="build_civic_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md" value="{{$building->build_civic_number}}"  class="@error('build_civic_number') is-invalid @enderror"type="text" name="build_civic_number" id="build_civic_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('build_civic_number')
+                                             <span class="invalid-feedback" role="alert">
+                                                 <strong>{{ $message }}</strong>
+                                             </span>
+                                            @enderror
                                         </div>
                                         <div style="width: 200px">
                                             <label for="common">Comune</label><br/>
-                                            <input class="col-md" value="{{$building->common}}" type="text" name="common" id="common" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md" value="{{$building->common}}" type="text" class="@error('common') is-invalid @enderror" name="common" id="common" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('common')
+                                             <span class="invalid-feedback" role="alert">
+                                                 <strong>{{ $message }}</strong>
+                                             </span>
+                                            @enderror
                                         </div>
                                         <div style="width: 50px">
                                             <label for="province">Provincia</label><br/>
-                                            <input class="col-md" value="{{$building->province}}" type="text" name="province" id="province" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md" value="{{$building->province}}" type="text" class="@error('province') is-invalid @enderror" name="province" id="province" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('province')
+                                             <span class="invalid-feedback" role="alert">
+                                                 <strong>{{ $message }}</strong>
+                                             </span>
+                                            @enderror
                                         </div>
                                         <div style="width: 200px">
                                             <label for="region">Regione</label>
                                             <div class="position-relative">
                                                 <div class="select"></div>
-                                                <select id="region" class="col-md" name="region" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
+                                                <select id="region" class="col-md" class="@error('region') is-invalid @enderror" name="region" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
                                                     <optgroup label="seleziona regione">
                                                         <option {{ $building->region == 'Abruzzo' ? 'selected' : ''}} value="Abruzzo">Abruzzo</option>
                                                         <option {{ $building->region == 'Basilicata' ? 'selected' : ''}} value="Basilicata">Basilicata</option>
@@ -219,27 +265,47 @@
                                                         <option {{ $building->region == 'Veneto' ? 'selected' : ''}} value="Veneto">Veneto</option>
                                                     </optgroup>
                                                 </select>
+                                            @error('region')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div style="width: 150px">
                                             <label for="cap">CAP</label>
-                                            <input class="col-md" value="{{$building->cap}}" type="text" name="cap" id="cap" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md @error('cap') is-invalid @enderror" value="{{$building->cap}}" type="number" name="cap" id="cap" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('cap')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="iban">IBAN</label><br/>
-                                    <input class="col-md" type="text" name="iban" id="iban" value="{{$building->iban}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    <input class="col-md @error('iban') is-invalid @enderror" type="text" name="iban" id="iban" value="{{$building->iban}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                    @error('iban')
+                                        <span class="invalid-feedback" role="alert">
+                                             <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="zone" style="display:inline-block;" >Zona</label>
                                     <div class="position-relative">
                                         <div class="select"></div>
-                                            <select id="zone" class="col-md" name="zone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
-                                            <option {{ $building->region == 'Centrale' ? 'selected' : ''}} value="Centrale">Centrale</option>
-                                            <option {{ $building->region == 'Periferica' ? 'selected' : ''}} value="Periferica">Periferica</option>
-                                            <option {{ $building->region == 'Pregio' ? 'selected' : ''}} value="Pregio">Pregio</option>
+                                            <select id="zone" class="col-md @error('zone') is-invalid @enderror" name="zone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" >
+                                            <option {{ $building->zone == 'Centrale' ? 'selected' : ''}} value="Centrale">Centrale</option>
+                                            <option {{ $building->zone == 'Periferica' ? 'selected' : ''}} value="Periferica">Periferica</option>
+                                            <option {{ $building->zone == 'Pregio' ? 'selected' : ''}} value="Pregio">Pregio</option>
                                         </select>
+                                        @error('zone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -250,31 +316,66 @@
                                 <div class="row" >
                                     <div class="col-md">
                                         <label for="section">Sezione</label><br/>
-                                        <input class="col-md" type="text" name="section" id="section" value="{{$building->section}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('section') is-invalid @enderror" type="text" name="section" id="section" value="{{$building->section}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('section')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="foil">Foglio</label><br/>
-                                        <input class="col-md" type="text" name="foil" id="foil" value="{{$building->foil}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('foil') is-invalid @enderror" type="text" name="foil" id="foil" value="{{$building->foil}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('foil')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="particle">Particella</label><br/>
-                                        <input class="col-md" type="text" name="particle" id="particle" value="{{$building->particle}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('particle') is-invalid @enderror" type="text" name="particle" id="particle" value="{{$building->particle}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('particle')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="subaltern">Subalterno</label><br/>
-                                        <input class="col-md" type="text" name="subaltern" id="subaltern" value="{{$building->subaltern}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('subaltern') is-invalid @enderror" type="text" name="subaltern" id="subaltern" value="{{$building->subaltern}}" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('subaltern')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="unit_builidg_number">N. unità immobiliari</label><br/>
-                                        <input class="col-md" value="{{$building->unit_builidg_number}}" type="text" name="unit_builidg_number" id="unit_builidg_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('unit_builidg_number') is-invalid @enderror" value="{{$building->unit_builidg_number}}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('unit_builidg_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="pertinence_number">N. pertinenze</label><br/>
-                                        <input class="col-md" value="{{$building->pertinence_number}}" type="text" name="pertinence_number" id="pertinence_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('pertinence_number') is-invalid @enderror" value="{{$building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('pertinence_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md">
                                         <label for="resolution_stairs">Scale per delibere..</label><br/>
-                                        <input class="col-md" value="{{$building->resolution_stairs}}" type="text" name="resolution_stairs" id="resolution_stairs" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input class="col-md  @error('resolution_stairs') is-invalid @enderror" value="{{$building->resolution_stairs}}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('resolution_stairs')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +384,12 @@
                         <div class="row">{{-- note --}}
                             <div class="col-md" >
                                 <label for="note">Note</label>
-                                <input class="col-md" value="{{$building->note}}" type="text" name="note" id="note" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input class="col-md @error('note') is-invalid @enderror" value="{{$building->note}}" type="text" name="note" id="note" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('note')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -301,6 +407,11 @@
                                         <input {{ $building->cultural_constraints == 'yes' ? 'checked' : ''}} type="radio" name="cultural_constraints" id="cultural_constraints" value="yes">
                                         <label style="margin-right:15px;" for="cultural_constraints">Sì</label>
                                     </div>
+                                    @error('cultural_constraints')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -317,6 +428,11 @@
                                         <input {{ $building->denied_intervents == 'yes' ? 'checked' : ''}} type="radio" id="denied_intervents" name="denied_intervents" value="yes">
                                         <label style="margin-right:15px;" for="denied_intervents">Sì</label>
                                     </div>
+                                    @error('denied_intervents')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -333,6 +449,11 @@
                                         <input {{ $building->mountain_common == 'yes' ? 'checked' : ''}} type="radio" id="mountain_common" name="mountain_common" value="yes">
                                         <label style="margin-right:15px;" for="mountain_common">Sì</label>
                                     </div>
+                                    @error('mountain_common')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -349,6 +470,11 @@
                                         <input {{ $building->infringment_common == 'yes' ? 'checked' : ''}} type="radio" id="infringment_common" name="infringment_common" value="yes">
                                         <label style="margin-right:15px;" for="infringment_common">Sì</label>
                                     </div>
+                                    @error('infringment_common')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -365,6 +491,11 @@
                                         <input {{ $building->sismic_events_zone == 'yes' ? 'checked' : ''}} type="radio" id="sismic_events_zone" name="sismic_events_zone" value="yes">
                                         <label style="margin-right:15px;" for="">Sì</label>
                                     </div>
+                                    @error('sismic_events_zone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -381,6 +512,11 @@
                                         <input {{ $building->isUnderRenovation == 'yes' ? 'checked' : ''}} type="radio" id="isUnderRenovation" name="isUnderRenovation" value="yes">
                                         <label style="margin-right:15px;" for="isUnderRenovation">Sì</label>
                                     </div>
+                                    @error('isUnderRenovation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -397,6 +533,11 @@
                                         <input {{ $building->nonMetan_area == 'yes' ? 'checked' : ''}} type="radio" id="nonMetan_area" name="nonMetan_area" value="yes">
                                         <label style="margin-right:15px;" for="nonMetan_area">Sì</label>
                                     </div>
+                                    @error('nonMetan_area')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -415,6 +556,11 @@
                                         <input {{ $building->building_authorization == 'Edificio storico senza tit. edilizio' ? 'checked' : ''}} type="radio" id="building_authorization" name="building_authorization" value="Edificio storico senza tit. edilizio">
                                         <label style="margin-right:15px;" for="building_authorization">Edificio storico senza tit. edilizio</label>
                                     </div>
+                                    @error('building_authorization')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                     </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -423,15 +569,30 @@
                                     <div class="row">
                                         <div class="col-md">
                                             <label for="license_number">Num. licenza/titolo</label><br/>
-                                            <input class="col-md" value="{{$building->license_number}}" type="text" name="license_number" id="license_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md @error('license_number') is-invalid @enderror" value="{{$building->license_number}}" type="number" name="license_number" id="license_number" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('license_number')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="col-md">
                                             <label for="license_date">Data licenza/titolo</label><br/>
-                                            <input class="col-md" value="{{$building->license_date}}" type="text" name="license_date" id="license_date" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md @error('license_date') is-invalid @enderror" value="{{$building->license_date}}" type="date" name="license_date" id="license_date" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('license_date')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="col-md">
                                             <label for="construction_date">Anno costruzione</label><br/>
-                                            <input class="col-md" value="{{$building->construction_date}}" type="text" name="construction_date" id="construction_date" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md @error('construction_date') is-invalid @enderror" value="{{$building->construction_date}}" type="number" placeholder="YYYY" name="construction_date" id="construction_date" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            @error('construction_date')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -519,42 +680,82 @@
                         <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_fullname" style="display:inline-block;" >Nominativo</label><br/>
-                                <input type="text" class="col-md-12" value="{{$building->administrator_fullname}}" name="administrator_fullname" id="administrator_fullname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;"  />
+                                <input type="text" class="col-md-12   @error('administrator_fullname') is-invalid @enderror" value="{{$building->administrator_fullname}}" name="administrator_fullname" id="administrator_fullname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;"  />
+                                @error('administrator_fullname')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_surname" style="display:inline-block;" >Cognome</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_surname}}" name="administrator_surname" id="administrator_surname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="text" class="col-md   @error('administrator_surname') is-invalid @enderror" value="{{$building->administrator_surname}}" name="administrator_surname" id="administrator_surname" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_surname')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                             <div class="col-md form-group">
                                 <label for="administrator_name" style="display:inline-block;" >Nome</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_name}}" name="administrator_name" id="administrator_name" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="text" class="col-md   @error('administrator_name') is-invalid @enderror" value="{{$building->administrator_name}}" name="administrator_name" id="administrator_name" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_name')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                             <div class="col-md form-group">
                                 <label for="administrator_fiscalcode" style="display:inline-block;" >Codice fiscale</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_fiscalcode}}" name="administrator_fiscalcode" id="administrator_fiscalcode" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="text" class="col-md   @error('administrator_fiscalcode') is-invalid @enderror" value="{{$building->administrator_fiscalcode}}" name="administrator_fiscalcode" id="administrator_fiscalcode" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_fiscalcode')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_address" style="display:inline-block;" >Indirizzo</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_address}}" name="administrator_address" id="administrator_address" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="text" class="col-md  @error('administrator_address') is-invalid @enderror" value="{{$building->administrator_address}}" name="administrator_address" id="administrator_address" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_address')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                             <div class="col-md">
                                 <div class="row">
                                     <div class="col-md form-group">
                                         <label for="administrator_city" style="display:inline-block;" >Città</label><br/>
-                                        <input type="text" class="col-md" value="{{$building->administrator_city}}" name="administrator_city" id="administrator_city" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input type="text" class="col-md  @error('administrator_city') is-invalid @enderror" value="{{$building->administrator_city}}" name="administrator_city" id="administrator_city" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('administrator_city')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md form-group">
                                         <label for="administrator_province" style="display:inline-block;" >Provincia</label><br/>
-                                        <input type="text" class="col-md" value="{{$building->administrator_province}}" name="administrator_province" id="administrator_province" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input type="text" class="col-md  @error('administrator_province') is-invalid @enderror" value="{{$building->administrator_province}}" name="administrator_province" id="administrator_province" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('administrator_province')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="col-md form-group">
                                         <label for="administrator_cap" style="display:inline-block;" >CAP</label><br/>
-                                        <input type="text" class="col-md" value="{{$building->administrator_cap}}" name="administrator_cap" id="administrator_cap" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        <input type="number" class="col-md  @error('administrator_cap') is-invalid @enderror" value="{{$building->administrator_cap}}" name="administrator_cap" id="administrator_cap" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                        @error('administrator_cap')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -563,15 +764,30 @@
                         <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_telephone" style="display:inline-block;" >Telefono</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_telephone}}" name="administrator_telephone" id="administrator_telephone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="number" class="col-md @error('administrator_telephone') is-invalid @enderror" value="{{$building->administrator_telephone}}" name="administrator_telephone" id="administrator_telephone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_telephone')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                             <div class="col-md form-group">
                                 <label for="administrator_cellphone" style="display:inline-block;" >Cellulare</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_cellphone}}" name="administrator_cellphone" id="administrator_cellphone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="number" class="col-md @error('administrator_cellphone') is-invalid @enderror" value="{{$building->administrator_cellphone}}" name="administrator_cellphone" id="administrator_cellphone" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_cellphone')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                             <div class="col-md form-group">
                                 <label for="administrator_email" style="display:inline-block;" >Email</label><br/>
-                                <input type="text" class="col-md" value="{{$building->administrator_email}}" name="administrator_email" id="administrator_email" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                <input type="email" class="col-md @error('administrator_email') is-invalid @enderror" value="{{$building->administrator_email}}" name="administrator_email" id="administrator_email" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                @error('administrator_email')
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                     </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
