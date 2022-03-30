@@ -49799,64 +49799,9 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: "#app",
   data: {
-    showDati: true,
-    showInterventi: false,
-    showInterventi2: false,
-    showState: false,
-    showFees: false,
-    showVariants: false,
-    active: false,
     isModalVisible: true
   },
   methods: {
-    showpage1: function showpage1() {
-      this.showDati = true;
-      this.showInterventi = false;
-      this.showInterventi2 = false;
-      this.showState = false;
-      this.showFees = false;
-      this.showVariants = false;
-    },
-    showpage2: function showpage2() {
-      this.showDati = false;
-      this.showInterventi = true;
-      this.showInterventi2 = false;
-      this.showState = false;
-      this.showFees = false;
-      this.showVariants = false;
-    },
-    showpage3: function showpage3() {
-      this.showDati = false;
-      this.showInterventi = false;
-      this.showInterventi2 = true;
-      this.showState = false;
-      this.showFees = false;
-      this.showVariants = false;
-    },
-    showpage4: function showpage4() {
-      this.showDati = false;
-      this.showInterventi = false;
-      this.showInterventi2 = false;
-      this.showState = true;
-      this.showFees = false;
-      this.showVariants = false;
-    },
-    showFeesPage: function showFeesPage() {
-      this.showDati = false;
-      this.showInterventi = false;
-      this.showInterventi2 = false;
-      this.showState = false;
-      this.showFees = true;
-      this.showVariants = false;
-    },
-    showVariantsPage: function showVariantsPage() {
-      this.showDati = false;
-      this.showInterventi = false;
-      this.showInterventi2 = false;
-      this.showState = false;
-      this.showFees = false;
-      this.showVariants = true;
-    },
     closeModal: function closeModal() {
       this.isModalVisible = false;
     }

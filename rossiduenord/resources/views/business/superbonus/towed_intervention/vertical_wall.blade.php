@@ -35,7 +35,7 @@
                         </div>
                         @empty
                             <div class="d-flex align-items-center py-2">
-                                <p class="m-0 ml-2">Nessun dato</p>
+                                <p class="m-0 ml-2">Nessun codomino</p>
                             </div>
                         @endforelse
                         {{-- loop condomini --}}
@@ -202,7 +202,7 @@
                             </label>
                             <p>Le superfici oggetto dell'intervento sono:</p>
 
-                            <div class="nav_bonus d-flex align-items-center">
+                            <div class="nav_bonus d-flex align-items-center" style="padding-right: 0px; margin:0;margin-bottom: 5px;">
                                 <a class="frame">(PV) Pareti Verticali</a>
                                 <a>(PO) Coperture</a>
                                 <a>(PS) Pavimenti</a>
@@ -250,7 +250,7 @@
                                 </tbody>
                             </table>
 
-                            <div class="d-flex mt-5" style="background-color: #f2f2f2; width:100%; padding:5px 10px">
+                            <div class="d-flex mt-1" style="background-color: #f2f2f2; width:100%; padding:5px 10px">
                                 <div class="d-flex mr-4">
                                     <p class="m-0">Totale “pareti verticali”</p>
                                     <label for="total_vertical_walls" class="m-0 black">
@@ -312,28 +312,28 @@
                             <table class="table_bonus" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                        <td style="width:15%;"><b>Descrizione</b></td>
-                                        <td style="width:10%;"><b>Superficie (m2)</b></td>
-                                        <td style="width:10%;">
+                                        <th class="text-center" style="width:5%;"><b>N.</b></th>
+                                        <th style="width:15%;"><b>Descrizione</b></th>
+                                        <th style="width:10%;"><b>Superficie (m2)</b></th>
+                                        <th style="width:10%;">
                                             <b>
                                                 Trasm. ante
                                                 (W/m2k)
                                             </b>
-                                        </td>
-                                        <td style="width:10%;">
+                                        </th>
+                                        <th style="width:10%;">
                                             <b>
                                                 Trasm. post
                                                 (W/m2k)
                                             </b>
-                                        </td>
-                                        <td style="width:10%;">
+                                        </th>
+                                        <th style="width:10%;">
                                             <b>Telaio prima</b>
-                                        </td>
-                                        <td style="width:10%;"><b>Vetro prima</b></td>
-                                        <td style="width:10%;"><b>Telaio dopo</b></td>
-                                        <td style="width:10%;"><b>Vetro dopo</b></td>
-                                        <td style="width:10%;"><b>Oscurante</b></td>
+                                        </th>
+                                        <th style="width:10%;"><b>Vetro prima</b></th>
+                                        <th style="width:10%;"><b>Telaio dopo</b></th>
+                                        <th style="width:10%;"><b>Vetro dopo</b></th>
+                                        <th style="width:10%;"><b>Oscurante</b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -352,7 +352,7 @@
                                 </tbody>
                             </table>
 
-                            <div class="d-flex align-items-center justify-content-between mt-5" style="width:100%;">
+                            <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
                                 <div class="d-flex align-items-center">
                                     <p class="m-0">Le spese previste in progetto dei lavori al punto IN ammontano a*</p>
                                     <label for="fixture_expected_cost" class=" m-0 mr-4 black">

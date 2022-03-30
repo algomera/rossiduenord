@@ -84,7 +84,7 @@ class BuildingController extends Controller
             'common' => 'nullable | string |min:2 |max:100',
             'province' => 'nullable | string |min:2|max:2',
             'region' => 'nullable | string',
-            'cap' => 'nullable | integer | min:5 | max:5',
+            'cap' => 'nullable | integer',
             'fiscal_code' => 'nullable | string |min:16|max:16',
             'iban' => 'nullable | string |min:27 |max:27',
             'build_type' => 'nullable | string',

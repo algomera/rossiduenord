@@ -26,13 +26,13 @@
 
                     <p style="font-weight: 500">Le superfici oggetto dell’intervento sono:</p>
 
-                    <div class="nav_bonus d-flex align-items-center">
+                    <div class="nav_bonus d-flex align-items-center" style="width: 80%; padding-right: 0px; margin:0;margin-bottom: 5px;">
                         <a class="frame">(PV) Pareti Verticali</a>
                         <a>(PO) Coperture</a>
                         <a>(PS) Pavimenti</a>
                         <a>(POND) Cop. non disperdenti</a>
                         <p class="m-0">Data inizio pagamento coperture non disperdenti</p>
-                        <input class="border ml-2" style="width: 100px" type="text">
+                        <input value="{{$vertwall->start_date_payment}}" name="start_date_payment" id="start_date_payment" class="border ml-2" style="width: 150px; padding:0 5px" type="date">
                     </div>
                     <table class="table_bonus" style="width: 80%">
                         <thead>

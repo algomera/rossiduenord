@@ -35,65 +35,10 @@ Vue.component(
 const app = new Vue({
     el: "#app",
     data: {
-        showDati: true,
-        showInterventi: false,
-        showInterventi2: false,
-        showState: false,
-        showFees: false,
-        showVariants: false,
-        active: false,
         isModalVisible: true,
     },
 
     methods: {
-        showpage1() {
-            this.showDati = true;
-            this.showInterventi = false;
-            this.showInterventi2 = false;
-            this.showState = false;
-            this.showFees = false;
-            this.showVariants = false;
-        },
-        showpage2() {
-            this.showDati = false;
-            this.showInterventi = true;
-            this.showInterventi2 = false;
-            this.showState = false;
-            this.showFees = false;
-            this.showVariants = false;
-        },
-        showpage3() {
-            this.showDati = false;
-            this.showInterventi = false;
-            this.showInterventi2 = true;
-            this.showState = false;
-            this.showFees = false;
-            this.showVariants = false;
-        },
-        showpage4() {
-            this.showDati = false;
-            this.showInterventi = false;
-            this.showInterventi2 = false;
-            this.showState = true;
-            this.showFees = false;
-            this.showVariants = false;
-        },
-        showFeesPage() {
-            this.showDati = false;
-            this.showInterventi = false;
-            this.showInterventi2 = false;
-            this.showState = false;
-            this.showFees = true;
-            this.showVariants = false;
-        },
-        showVariantsPage() {
-            this.showDati = false;
-            this.showInterventi = false;
-            this.showInterventi2 = false;
-            this.showState = false;
-            this.showFees = false;
-            this.showVariants = true;
-        },
         closeModal() {
             this.isModalVisible = false;
         },

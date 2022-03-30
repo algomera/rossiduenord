@@ -274,7 +274,7 @@
                                         </div>
                                         <div style="width: 150px">
                                             <label for="cap">CAP</label>
-                                            <input class="col-md @error('cap') is-invalid @enderror" value="{{$building->cap}}" type="number" name="cap" id="cap" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
+                                            <input class="col-md @error('cap') is-invalid @enderror" value="{{$building->cap}}" minlength="5" maxlength="5" type="number" name="cap" id="cap" width="100%" style="height:40px; border-radius:2px; border:1px solid #DBDCDB;" />
                                             @error('cap')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

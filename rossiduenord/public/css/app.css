@@ -225,6 +225,11 @@ tbody tr:nth-child(odd) {
   border-bottom: none !important;
   padding: 10px !important;
 }
+.table_bonus thead tr td {
+  border-right: 1px solid white !important;
+  border-bottom: none !important;
+  padding: 10px !important;
+}
 .table_bonus tbody tr {
   background-color: transparent;
 }
