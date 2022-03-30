@@ -19,6 +19,7 @@ class CreateVerticalWallsTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             // thermical isolation intervention
             $table->string('thermical_isolation_intervention')->nullable();
+            $table->string('start_date_payment')->nullable();
             // data
             $table->string('total_vertical_walls')->nullable();
             $table->string('vw_realized_1')->nullable();
