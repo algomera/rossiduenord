@@ -28,6 +28,23 @@ class CreateCondominisTable extends Migration
             $table->string('sub')->nullable();
             $table->string('categ_catastale')->nullable();
             $table->decimal('sup_catastale', 10, 2, true)->nullable();
+            // date beneficiary
+            $table->string('type_beneficiary')->nullable();
+            $table->string('possession_title')->nullable();
+            $table->string('sex')->nullable()->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->string('nation_of_birth')->nullable();
+            $table->string('common_of_birth')->nullable();
+            $table->string('P_IVA')->nullable();
+            // residence
+            $table->string('address')->nullable();
+            $table->string('CAP')->nullable();
+            $table->string('common')->nullable();
+            $table->string('prov')->nullable();
+            $table->string('country')->nullable();
+            $table->string('phone')->nullable();
+
+
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{Practice, Subject, Applicant, Building, Bonus, Data_project};
+use App\{Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -66,7 +66,8 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        $countries = Country::all();
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
     /**

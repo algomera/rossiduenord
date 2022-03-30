@@ -43,6 +43,157 @@
 
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
 
+                        <div style="width: 100%; margin-bottom: 30px;">{{-- Date condomino --}}
+                            <div class="box_date_condomino">
+                                <div class="row_input">
+                                    <label for="">
+                                        Foglio
+                                        <input type="number" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Particella
+                                        <input type="number" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Subalterno
+                                        <input type="number" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        <select name="" id="">
+                                            <option value="A/2">A/2</option>
+                                            <option value="A/3">A/3</option>
+                                            <option value="A/4">A/4</option>
+                                            <option value="A/5">A/5</option>
+                                            <option value="A/6">A/6</option>
+                                            <option value="A/7">A/7</option>
+                                            <option value="A/11">A/11</option>
+                                            <option value="C/4">C/4 solo spogliatoi</option>
+                                            <option value="D/6">D/6 solo spogliatoi</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="row_input" style="margin-bottom: 20px;">
+                                    <label for="">
+                                        Quota millesimi involucro
+                                        <input type="number" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Quota millesimi impianti
+                                        <input type="number" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Superfice catastale
+                                        <input type="number" name="" id="">
+                                        m²
+                                    </label>
+                                </div>
+
+                                <h6>Dati beneficiario</h6>
+                                <div class="row_input">
+                                    <label for="">
+                                        Tipo beneficiario
+                                        <select name="" id="">
+                                            <option value="Persona fisica">Persona fisica</option>
+                                            <option value="IACP">IACP</option>
+                                            <option value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
+                                            <option value="ONLUS">ONLUS</option>
+                                            <option value="Ass. we società sportive">Ass. we società sportive</option>
+                                            <option value="Altri soggetti">Altri soggetti</option>
+                                        </select>
+                                    </label>
+                                    <label for="">
+                                        Titolo di possesso
+                                        <select name="" id="">
+                                            <option value="Proprietario o comproprietario">Proprietario o comproprietario</option>
+                                            <option value="Detentore o co-detentore">Detentore o co-detentore</option>
+                                            <option value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="row_input">
+                                    <label for="">
+                                        Cognome
+                                        <input type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Nome
+                                        <input type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Titolo di possesso
+                                        <select name="" id="">
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="row_input">
+                                    <label for="">
+                                        Data di nascita
+                                        <input type="date" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Nazione di nascita
+                                        <select name="" id="">
+                                            @foreach ($countries as $country)
+                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                    <label for="">
+                                        Comune di nascita
+                                        <input type="text" name="" id="">
+                                    </label>
+                                </div>
+                                <div class="row_input">
+                                    <label for="">
+                                        Cod. fiscale
+                                        <input class="input_large" type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Partita IVA
+                                        <input class="input_large" type="text" name="" id="">
+                                    </label>
+                                </div>
+
+                                <h6>Residenza</h6>
+                                <div class="row_input">
+                                    <label for="">
+                                        Nazione
+                                        <select name="" id="">
+                                            @foreach ($countries as $country)
+                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="row_input">
+                                    <label for="">
+                                        Indirizzo
+                                        <input class="input_large" type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        CAP
+                                        <input class="input_small" type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Comune
+                                        <input class="input_large" type="text" name="" id="">
+                                    </label>
+                                    <label for="">
+                                        Prov.
+                                        <input class="input_small" type="text" name="" id="">
+                                    </label> 
+                                </div>
+                                <div class="row_input">
+                                    <label for="">
+                                        Telefono
+                                        <input class="input_large" type="text" name="" id="">
+                                    </label> 
+                                </div>
+                            </div>
+                        </div>
+
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
@@ -1191,27 +1342,27 @@
                                     <p class="m-0">Climatizzazione invernale</p>
                                     <input type="radio" name="BA_winter_acs" value="N.D" {{$towed_vw->BA_winter_acs == 'N.D' ? 'checked' : ''}} id="">
                                     <label for="BA_winter_acs" class="mr-3 black" >N.D</label>
-                                    <input type="radio" name="BA_winter_acs" name="NO" {{$towed_vw->BA_winter_acs == 'NO' ? 'checked' : ''}} id="">
+                                    <input type="radio" name="BA_winter_acs" value="NO" {{$towed_vw->BA_winter_acs == 'NO' ? 'checked' : ''}} id="">
                                     <label for="BA_winter_acs" class="mr-3 black">No</label>
-                                    <input type="radio" name="BA_winter_acs" name="SI" {{$towed_vw->BA_winter_acs == 'SI' ? 'checked' : ''}} id="">
+                                    <input type="radio" name="BA_winter_acs" value="SI" {{$towed_vw->BA_winter_acs == 'SI' ? 'checked' : ''}} id="">
                                     <label for="BA_winter_acs" class="mr-3 black">Si</label>
                                 </div>
                                 <div class="mr-5">
                                     <p class="m-0">Climatizzazione estiva</p>
-                                    <input type="radio" name="BA_summer_acs" id="" value="N.D" {{$towed_vw->BA_summer_acs == 'N.D' ? 'checked' : ''}}>
+                                    <input type="radio" name="BA_summer_acs" value="N.D" {{$towed_vw->BA_summer_acs == 'N.D' ? 'checked' : ''}}>
                                     <label for="BA_summer_acs" class="mr-3 black">N.D</label>
-                                    <input type="radio" name="BA_summer_acs" id="" value="NO" {{$towed_vw->BA_summer_acs == 'NO' ? 'checked' : ''}}>
+                                    <input type="radio" name="BA_summer_acs" value="NO" {{$towed_vw->BA_summer_acs == 'NO' ? 'checked' : ''}}>
                                     <label for="BA_summer_acs" class="mr-3 black">No</label>
-                                    <input type="radio" name="BA_summer_acs" id="" value="SI" {{$towed_vw->BA_summer_acs == 'SI' ? 'checked' : ''}}>
+                                    <input type="radio" name="BA_summer_acs" value="SI" {{$towed_vw->BA_summer_acs == 'SI' ? 'checked' : ''}}>
                                     <label for="BA_summer_acs" class="mr-3 black">Si</label>
                                 </div>
                                 <div class="mr-5">
                                     <p class="m-0">Produzione di acqua calda sanitaria</p>
-                                    <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'N.D' ? 'cchecked' : ''}}>
+                                    <input type="radio" name="BA_hot_water_production" value="N.D" {{$towed_vw->BA_hot_water_production == 'N.D' ? 'checked' : ''}}>
                                     <label for="BA_hot_water_production" class="mr-3 black">N.D</label>
-                                    <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'NO' ? 'cchecked' : ''}}>
+                                    <input type="radio" name="BA_hot_water_production" value="NO" {{$towed_vw->BA_hot_water_production == 'NO' ? 'checked' : ''}}>
                                     <label for="BA_hot_water_production" class="mr-3 black">No</label>
-                                    <input type="radio" name="BA_hot_water_production" id="" name="" {{$towed_vw->BA_hot_water_production == 'SI' ? 'cchecked' : ''}}>
+                                    <input type="radio" name="BA_hot_water_production" value="SI" {{$towed_vw->BA_hot_water_production == 'SI' ? 'checked' : ''}}>
                                     <label for="BA_hot_water_production" class="mr-3 black">Si</label>
                                 </div>
                             </div>
