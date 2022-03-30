@@ -373,7 +373,7 @@
                     <div class="d-flex">
                         <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
                         <label for="bonus" class="checkbox-wrapper d-flex">
-                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} type="checkbox" class="@error(bonus) is-invalid @enderror" name="bonus" id="bonus" value="110%">     
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} type="checkbox" class="@error('bonus') is-invalid @enderror" name="bonus" id="bonus" value="110%">     
                             <span class="checkmark"></span> 
                             <span>Super Bonus 110%</span>
                         </label>
@@ -430,7 +430,7 @@
                     <label for="note" class="text">{{ __('note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{ $practice->note }}</textarea>
                     <label class="checkbox-wrapper d-flex mt-2">
-                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}}  type="checkbox" class="@error(practice_ok) is-invalid @enderror" name="practice_ok" value="true">     
+                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">     
                         <span class="checkmark"></span> 
                         <span>Pratica in regola</span>
                     </label>
