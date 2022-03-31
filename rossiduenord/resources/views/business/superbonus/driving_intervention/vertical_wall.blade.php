@@ -19,7 +19,7 @@
 
                 <div class="px-20">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                     <label class="checkbox-wrapper d-flex">
-                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} type="checkbox" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
+                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} type="checkbox" class="@error('thermical_isolation_intervention') is-invalid @enderror" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
                         <span class="checkmark"></span>
                         <span class="black" ><b>1. Intervento di isolamento termico delle superfici opache verticali e orizzontali</b></span>
                     </label>
@@ -80,39 +80,64 @@
                         <div class="d-flex mr-4">
                             <p class="m-0">Totale “pareti verticali”</p>
                             <label for="total_vertical_walls" class="m-0 black">
-                                <input type="number" value="{{$vertwall->total_vertical_walls}}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right" style="width: 80px">
+                                <input type="number" value="{{$vertwall->total_vertical_walls}}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right @error('total_vertical_walls') is-invalid @enderror" style="width: 80px">
                                 m²
                             </label>
+                            @error('total_vertical_walls')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="d-flex mr-4">
                             <p class="m-0">di cui realizzati SAL n. 1</p>
                             <label for="vw_realized_1" class="m-0  black">
-                                <input type="number" value="{{$vertwall->vw_realized_1}}" name="vw_realized_1" id="vw_realized_1" class="border ml-2 px-2 text-right" style="width: 80px">
+                                <input type="number" value="{{$vertwall->vw_realized_1}}" name="vw_realized_1" id="vw_realized_1" class="border ml-2 px-2 text-right @error('vw_realized_1') is-invalid @enderror" style="width: 80px">
                                 m²
                             </label>
+                            @error('vw_realized_1')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="d-flex mr-4">
                             <p class="m-0">SAL n. 2</p>
                             <label for="vw_realized_2" class="m-0  black">
-                                <input type="number" value="{{$vertwall->vw_realized_2}}" name="vw_realized_2" id="vw_realized_2" class="border ml-2 px-2 text-right" style="width: 80px">
+                                <input type="number" value="{{$vertwall->vw_realized_2}}" name="vw_realized_2" id="vw_realized_2" class="border ml-2 px-2 text-right @error('vw_realized_2') is-invalid @enderror" style="width: 80px">
                                 m²
                             </label>
+                            @error('vw_realized_2')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="d-flex mr-4">
                             <p class="m-0">SAL F.</p>
                             <label for="vw_sal_f" class="m-0  black">
-                                <input type="number" value="{{$vertwall->vw_sal_f}}" name="vw_sal_f" id="vw_sal_f" class="border ml-2 px-2 text-right" style="width: 80px">
+                                <input type="number" value="{{$vertwall->vw_sal_f}}" name="vw_sal_f" id="vw_sal_f" class="border ml-2 px-2 text-right @error('vw_sal_f') is-invalid @enderror" style="width: 80px">
                                 m²
                             </label>
+                            @error('vw_sal_f')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="d-flex align-items-center mt-3" style="width:80%;">
                         <p class="m-0">Superficie totale oggetto dell’intervento</p>
                         <label for="total_intervention_surface" class=" m-0 mr-4 black">
-                            <input type="number" value="{{$vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                            <input type="number" value="{{$vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid @enderror">
                             m²
                         </label>
+                        @error('total_intervention_surface')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         <p class="m-0 font-weight-light" style="font-size: 13px">* Il POND non viene considerato nel calcolo per l’ammisibilità dell’intervento trainante sull’involucro (maggiore del 25% della sup. disperdente)</p>
                     </div>
 
@@ -120,9 +145,14 @@
                         <div class="d-flex align-items-center">
                             <p class="m-0">Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a*</p>
                             <label for="total_expected_cost" class=" m-0 mr-4 black">
-                                <input type="number" value="{{$vertwall->total_expected_cost}}" name="total_expected_cost" id="total_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                <input type="number" value="{{$vertwall->total_expected_cost}}" name="total_expected_cost" id="total_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_expected_cost') is-invalid @enderror">
                                 €
                             </label>
+                            @error('total_expected_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <button class="add-button">Computo metrico</button>
                     </div>
@@ -135,6 +165,11 @@
                             <input type="number" value="{{$vertwall->max_possible_cost}}" name="max_possible_cost" id="max_possible_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
                             €
                         </label>
+                        @error('max_possible_cost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                        @enderror
                     </div>
 
                     <p class="m-0 mt-3" style="font-weight: 500;">Il costo dei lavori realizzati è pari a</p>

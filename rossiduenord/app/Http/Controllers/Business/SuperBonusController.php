@@ -138,9 +138,9 @@ class SuperBonusController extends Controller
             'relevance' => 'nullable |integer',
             'centralized_system' => 'nullable|string',
             'gross_surface_area' => 'nullable',
-            'np' => 'nullable',
-            'np_validated' => 'nullable',
-            'np_not_validated' => 'nullable',
+            'np' => 'nullable |integer',
+            'np_validated' => 'nullable |integer',
+            'np_not_validated' => 'nullable |integer',
         ]);
 
         // Update data
@@ -162,12 +162,12 @@ class SuperBonusController extends Controller
         // Form Validation
         $validated = $request->validate([
             'practice_id' => 'nullable',
-            'thermical_isolation_intervention' => 'nullable',
-            'total_vertical_walls' => 'nullable',
-            'vw_realized_1' => 'nullable',
-            'vw_realized_2' => 'nullable',
-            'vw_sal_f' => 'nullable',
-            'total_intervention_surface' => 'nullable',
+            'thermical_isolation_intervention' => 'required',
+            'total_vertical_walls' => 'required |integer',
+            'vw_realized_1' => 'nullable |integer |min:2',
+            'vw_realized_2' => 'nullable |integer |min:2',
+            'vw_sal_f' => 'nullable |integer |min:2',
+            'total_intervention_surface' => 'nullable |integer |min:2',
             'total_expected_cost' => 'nullable',
             'max_possible_cost' => 'nullable',
             'total_isolation_cost_1' => 'nullable',
