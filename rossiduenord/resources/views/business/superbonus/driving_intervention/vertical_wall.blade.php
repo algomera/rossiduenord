@@ -224,7 +224,7 @@
 
                     <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
                         <div class="d-flex align-items-center mb-3">
-                            <label for="condensing_boiler" class="checkbox-wrapper d-flex align-items-center" style="margin-bottom: 0;">
+                            <label for="condensing_boiler" class="checkbox-wrapper d-flex align-items-center mb-0">
                                 <div>
                                     <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} type="checkbox" name="condensing_boiler" id="condensing_boiler" value="true">
                                     <span class="checkmark"></span>
@@ -237,7 +237,7 @@
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
                             <div id="condensing_boiler_wrapper">
                                 @forelse($condensing_boilers as $i => $condensing_boiler)
-                                <div class="box_input" data-id="{{$practice->id}}-{{$condensing_boiler->id}}">
+                                <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$condensing_boiler->id}}">
                                     {{ $i + 1 }}
                                     <div class="row_input">
                                         <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
@@ -315,7 +315,7 @@
                                     </div>
                                 </div>
                                 @empty
-                                    <p id="no_data_row">Nessun dato</p>
+                                    <p id="consensing_boilers_no_data_row">Nessun dato</p>
                                 @endforelse
                                 {{-- end loop --}}
                             </div>
@@ -323,98 +323,109 @@
                     </div>
 
                     <div class="mt-5">{{-- PC. Pompe di calore (PDC) --}}
-                        <label for="heat_pumps" class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} type="checkbox" name="heat_pumps" id="heat_pumps" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
-                        </label>
+                        <div class="d-flex align-items-center mb-3">
+                            <label for="heat_pump" class="checkbox-wrapper d-flex align-items-center mb-0">
+                                <input {{$vertwall->heat_pump == 'true' ? 'checked' : ''}} type="checkbox" name="heat_pump" id="heat_pump" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
+                            </label>
+                            <div class="btn bg-blue white ml-3 mr-3" id="add_condensing_boiler_btn" onclick="addHeatPump(event)">+</div>
+                            <span><strong>(n. {{ $heat_pumps->count() }} Pompa/e di calore)</strong></span>
+                        </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input" id="">
-                                <div class="row_input">
-                                    <label for="">
-                                        Tipo sostituito
-                                        <select name="" id="">
-                                            <option value="Caldaia standard">Caldaia standard</option>
-                                            <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                            <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                            <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                            <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                            <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                            <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                            <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                            <option value="Altro">Altro</option>
-                                        </select>
-                                    </label>
-                                    <label for="">
-                                        P. nom. sostituito
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                    <label for="">
-                                        Tipo di PDC
-                                        <select name="" id="">
-                                            <option value="Aria/Aria">Aria/Aria</option>
-                                            <option value="Aria/Acqua">Aria/Acqua</option>
-                                            <option value="Salamoia/Aria">Salamoia/Aria</option>
-                                            <option value="Salamoia/Acqua">Salamoia/Acqua</option>
-                                            <option value="Acqua/Aria">Acqua/Aria</option>
-                                            <option value="Acqua/Acqua">Acqua/Acqua</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="row_input">
-                                    <label for="" class="checkbox-wrapper d-flex">
-                                        <input type="checkbox" name="" id="" value="true">
-                                        <span class="checkmark"></span>
-                                        Tipo Roof Top
-                                    </label>
-                                    <label for="">
-                                        P. nom.
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                    <label for="">
-                                        P. Elettrica assorbita
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                    <label for="" class="checkbox-wrapper d-flex">
-                                        <input type="checkbox" name="" id="" value="true">
-                                        <span class="checkmark"></span>
-                                        inverter
-                                    </label>
-                                    <label for="">
-                                        COP
-                                        <input class="input_small" type="number" name="" id="">
-                                    </label>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
+                            <div id="heat_pump_wrapper">
+                                @forelse($heat_pumps as $i => $heat_pump)
+                                <div class="box_input" data-id="heat_pump-{{$practice->id}}-{{$heat_pump->id}}">
+                                    {{ $i + 1 }}
                                     <div class="row_input">
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            E' reversibile
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]">
+                                            Tipo sostituito
+                                            <select name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]">
+                                                <option {{ $heat_pump->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
+                                                <option {{ $heat_pump->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
+                                            </select>
                                         </label>
-                                        <label for="">
-                                            EER
-                                            <input class="input_small" type="number" name="" id="">
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_nom_sostituito]">
+                                            P. nom. sostituito
+                                            <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_nom_sostituito]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_nom_sostituito]">
+                                            kW
                                         </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Sonde geotermiche
-                                        </label>
-                                        <label for="">
-                                            Sup. riscaldata dalla PDC
-                                            <input class="input_small" type="number" name="" id="">
-                                            m²
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_di_pdc]">
+                                            Tipo di PDC
+                                            <select name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_di_pdc]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_di_pdc]">
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Aria/Aria' ? 'selected' : ''}} value="Aria/Aria">Aria/Aria</option>
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Aria/Acqua' ? 'selected' : ''}} value="Aria/Acqua">Aria/Acqua</option>
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Salamoia/Aria' ? 'selected' : ''}} value="Salamoia/Aria">Salamoia/Aria</option>
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Salamoia/Acqua' ? 'selected' : ''}} value="Salamoia/Acqua">Salamoia/Acqua</option>
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Acqua/Aria' ? 'selected' : ''}} value="Acqua/Aria">Acqua/Aria</option>
+                                                <option {{ $heat_pump->tipo_di_pdc === 'Acqua/Acqua' ? 'selected' : ''}} value="Acqua/Acqua">Acqua/Acqua</option>
+                                            </select>
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                        <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                        <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                    </button>
+                                    <div class="row_input">
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_roof_top]" class="checkbox-wrapper d-flex">
+                                            <input type="checkbox" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_roof_top]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_roof_top]" value="true">
+                                            <span class="checkmark"></span>
+                                            Tipo Roof Top
+                                        </label>
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][potenza_nominale]">
+                                            Potenza Nominale
+                                            <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][potenza_nominale]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][potenza_nominale]">
+                                            kW
+                                        </label>
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_elettrica_assorbita]">
+                                            P. Elettrica assorbita
+                                            <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_elettrica_assorbita]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][p_elettrica_assorbita]">
+                                            kW
+                                        </label>
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][inverter]" class="checkbox-wrapper d-flex">
+                                            <input type="checkbox" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][inverter]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][inverter]" value="true">
+                                            <span class="checkmark"></span>
+                                            Inverter
+                                        </label>
+                                        <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][cop]">
+                                            COP
+                                            <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][cop]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][cop]">
+                                        </label>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="row_input">
+                                            <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][reversibile]" class="checkbox-wrapper d-flex">
+                                                <input type="checkbox" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][reversibile]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][reversibile]" value="true">
+                                                <span class="checkmark"></span>
+                                                E' reversibile
+                                            </label>
+                                            <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][eer]">
+                                                EER
+                                                <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][eer]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][eer]">
+                                            </label>
+                                            <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sonde_geotermiche]" class="checkbox-wrapper d-flex">
+                                                <input type="checkbox" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sonde_geotermiche]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sonde_geotermiche]" value="true">
+                                                <span class="checkmark"></span>
+                                                Sonde geotermiche
+                                            </label>
+                                            <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sup_riscaldata_dalla_pdc]">
+                                                Sup. riscaldata dalla PDC
+                                                <input class="input_small" type="number" name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sup_riscaldata_dalla_pdc]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][sup_riscaldata_dalla_pdc]">
+                                                m²
+                                            </label>
+                                        </div>
+                                        <div onclick="deleteHeatPump({{$practice->id}}, {{$heat_pump->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                        </div>
+                                    </div>
                                 </div>
+                                @empty
+                                    <p id="heat_pumps_no_data_row">Nessun dato</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -1035,4 +1046,5 @@
 
 @push('scripts')
     @include('business.scripts.condensing_boiler')
+    @include('business.scripts.heat_pump')
 @endpush

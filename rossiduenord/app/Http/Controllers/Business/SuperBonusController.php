@@ -51,7 +51,8 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $vertwall = $practice->verical_wall;
         $condensing_boilers = $practice->condensing_boilers;
-        return view('business.superbonus.driving_intervention.vertical_wall', compact('condensing_boilers', 'vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
+        $heat_pumps = $practice->heat_pumps;
+        return view('business.superbonus.driving_intervention.vertical_wall', compact('heat_pumps', 'condensing_boilers', 'vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
     /**
@@ -180,7 +181,7 @@ class SuperBonusController extends Controller
             'total_power' => 'nullable',
             'generators' => 'nullable',
             'condensing_boiler' => 'nullable',
-            'heat_pumps' => 'nullable',
+            'heat_pump' => 'nullable',
             'absorption_heat_pumps' => 'nullable',
             'hybrid_system' => 'nullable',
             'microgeneration_system' => 'nullable',
@@ -201,6 +202,7 @@ class SuperBonusController extends Controller
         // Update data
         $practice->verical_wall()->update($validated);
 
+        // Add Condensing Boiler
         if($request->get('condensing_boilers')) {
             foreach ($request->get('condensing_boilers') as $i => $item) {
                 if(is_numeric($i)) {
@@ -209,6 +211,22 @@ class SuperBonusController extends Controller
                     $pn = explode('-', $i)[0];
                     $cn = explode('-', $i)[1];
                     $practice->condensing_boilers()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], $item);
+                }
+            }
+        }
+
+        // Add Heat Pump
+        if($request->get('heat_pumps')) {
+            foreach ($request->get('heat_pumps') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->heat_pumps()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->heat_pumps()->updateOrCreate([
                         'id' => $cn,
                         'practice_id' => $pn
                     ], $item);

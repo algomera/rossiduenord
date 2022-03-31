@@ -1,12 +1,11 @@
 <script type="text/javascript">
     let i = 0;
-    function addCondensingBoiler(e){
-    e.preventDefault()
-    if($('#no_data_row')) {
-    $('#no_data_row').remove();
-}
-    i++;
-    $("#condensing_boiler_wrapper").append(`
+    function addCondensingBoiler(e) {
+        e.preventDefault()
+        if ($('#consensing_boilers_no_data_row')) {
+            $('#consensing_boilers_no_data_row').remove();
+            i++;
+            $("#condensing_boiler_wrapper").append(`
                 <div class="box_input" data-id="${i}">
                     <div class="row_input">
                         <label for="condensing_boilers[${i}][tipo_sostituito]">
@@ -84,18 +83,17 @@
                                 </div>
                             </div>
                     `)
-}
+        }
+    }
 
     function deleteCondensingBoiler(pid, cid) {
-    console.log(pid, cid)
-    axios.delete(`/business/condensing_boilers/${cid}`)
-    .then(() => {
-    $(`div[data-id=${pid}-${cid}]`).remove();
-})
-}
+        axios.delete(`/business/condensing_boilers/${cid}/delete`)
+        .then(() => {
+            $(`div[data-id=condensing_boiler-${pid}-${cid}]`).remove();
+        })
+    }
 
     function removeCondensingBoiler(id) {
-    console.log("Remove:", id)
     $(`div[data-id=${id}]`).remove();
 }
 </script>

@@ -114,7 +114,9 @@ Route::middleware('business')
         ->where('practice', '[0-9]+')
         ->name('update_var_computation');
     Route::resource('/verticalwall', 'VerticalWallController');
-    Route::resource('/condensing_boilers', 'CondensingBoilerController');
+
+    Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
+    Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
 });
 
 

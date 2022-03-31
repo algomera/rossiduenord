@@ -40,7 +40,7 @@ class CreateVerticalWallsTable extends Migration
             $table->string('generators')->nullable();
             // equipment
             $table->string('condensing_boiler')->nullable();
-            $table->string('heat_pumps')->nullable();
+            $table->string('heat_pump')->nullable();
             $table->string('absorption_heat_pumps')->nullable();
             $table->string('hybrid_system')->nullable();
             $table->string('microgeneration_system')->nullable();
