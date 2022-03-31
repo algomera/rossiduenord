@@ -138,7 +138,6 @@ class ApplicantController extends Controller
         $building = $practice->building;
 
         return view('business.practice.edit', compact('practice','applicant','building','subject'));
-
     }
 
     /**
