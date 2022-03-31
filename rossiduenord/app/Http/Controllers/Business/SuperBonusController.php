@@ -204,36 +204,10 @@ class SuperBonusController extends Controller
         $practice->verical_wall()->update($validated);
 
         // Add Condensing Boiler
-        if($request->get('condensing_boilers')) {
-            foreach ($request->get('condensing_boilers') as $i => $item) {
-                if(is_numeric($i)) {
-                    $practice->condensing_boilers()->create($item);
-                } else if(is_string($i)) {
-                    $pn = explode('-', $i)[0];
-                    $cn = explode('-', $i)[1];
-                    $practice->condensing_boilers()->updateOrCreate([
-                        'id' => $cn,
-                        'practice_id' => $pn
-                    ], $item);
-                }
-            }
-        }
+        $this->addCondensingBoiler($practice, $request);
 
         // Add Heat Pump
-        if($request->get('heat_pumps')) {
-            foreach ($request->get('heat_pumps') as $i => $item) {
-                if(is_numeric($i)) {
-                    $practice->heat_pumps()->create($item);
-                } else if(is_string($i)) {
-                    $pn = explode('-', $i)[0];
-                    $cn = explode('-', $i)[1];
-                    $practice->heat_pumps()->updateOrCreate([
-                        'id' => $cn,
-                        'practice_id' => $pn
-                    ], $item);
-                }
-            }
-        }
+        $this->addHeatPump($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -286,5 +260,39 @@ class SuperBonusController extends Controller
         // Redirect to next tab
         $building = $practice->building;
         return redirect()->route('business.superbonus.show', [$practice, $building])->with('message', 'Dati inseriti correttamente');
+    }
+
+    public function addCondensingBoiler($practice, $request) {
+        if($request->get('condensing_boilers')) {
+            foreach ($request->get('condensing_boilers') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->condensing_boilers()->create(['condomino_id' => $item['condomino_id']], $item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->condensing_boilers()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], $item);
+                }
+            }
+        }
+    }
+
+    public function addHeatPump($practice, $request) {
+        if($request->get('heat_pumps')) {
+            foreach ($request->get('heat_pumps') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->heat_pumps()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->heat_pumps()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], $item);
+                }
+            }
+        }
     }
 }

@@ -17,12 +17,12 @@ class PracticeController extends Controller
      */
     public function index(Request $request)
     {
-//        $practices = DB::table('practices')
-//            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
-//            ->select('practices.*', 'applicants.*')
-//            ->get();
+        $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
-        $q = Practice::query();
+        $q = DB::table('practices')
+            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
+            ->whereIn('applicant_id', $applicants)
+            ->select('practices.*', 'applicants.*');
 
         if($request->get('practical_month') !== null) {
             $q->where('month', '=', $request->get('practical_month'));

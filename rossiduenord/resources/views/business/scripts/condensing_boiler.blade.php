@@ -7,6 +7,7 @@
             i++;
             $("#condensing_boiler_wrapper").append(`
                 <div class="box_input" data-id="${i}">
+                <input type="hidden" name="condensing_boilers[${i}][condomino_id]" id="condensing_boilers[${i}][condomino_id]" value="">
                     <div class="row_input">
                         <label for="condensing_boilers[${i}][tipo_sostituito]">
                             Tipo sostituito
