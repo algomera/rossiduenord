@@ -231,7 +231,7 @@
                                     <span class="black"><b>CC. Caldaie a condensazione</b></span>
                                 </div>
                             </label>
-                            <div class="btn bg-blue white ml-3 mr-3" id="add_condensing_boiler_btn" onclick="addCondensingBoiler(event)">+</div>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addCondensingBoiler(event)">+</div>
                             <span><strong>(n. {{ $condensing_boilers->count() }} Caldaia/e)</strong></span>
                         </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
@@ -330,7 +330,7 @@
                                 <span class="checkmark"></span>
                                 <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
                             </label>
-                            <div class="btn bg-blue white ml-3 mr-3" id="add_condensing_boiler_btn" onclick="addHeatPump(event)">+</div>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addHeatPump(event)">+</div>
                             <span><strong>(n. {{ $heat_pumps->count() }} Pompa/e di calore)</strong></span>
                         </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
