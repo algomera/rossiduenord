@@ -731,7 +731,7 @@
                                 <div class="row">
                                     <div class="col-md form-group">
                                         <label for="administrator_city" style="display:inline-block;" >Città</label><br/>
-                                        <input type="text" class="col-md form-control credit-input  @error('administrator_city') is-invalid @enderror" value="{{ old('administrator_city') ?? $building->administrator_city ?}}" name="administrator_city" id="administrator_city"  />
+                                        <input type="text" class="col-md form-control credit-input  @error('administrator_city') is-invalid @enderror" value="{{ old('administrator_city') ?? $building->administrator_city }}" name="administrator_city" id="administrator_city"  />
                                         @error('administrator_city')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
