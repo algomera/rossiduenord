@@ -106,7 +106,7 @@ class PracticeController extends Controller
     {
         $validated = $request->validate([
             'applicant_id' => ' integer | exists:applicants,id',
-            'import' => 'nullable | numeric | min:3',
+            'import' => 'nullable | numeric | min:2',
             'practical_phase' => 'required | string',
             'real_estate_type' => 'required | string',
             'month' => 'nullable | string',
@@ -121,9 +121,9 @@ class PracticeController extends Controller
             'work_start' => 'nullable | string',
             'c_m' => 'nullable | numeric |min:2',
             'assev_tecnica' => 'nullable | numeric |min:2',
-            'nominative' => 'nullable | string |min:3 |max:80',
-            'lastName' => 'nullable | string | min:3 | max:30',
-            'name' => 'nullable | string | min:3 | max:30',
+            'nominative' => 'nullable | string |min:3 |max:150',
+            'lastName' => 'nullable | string | min:3 | max:50',
+            'name' => 'nullable | string | min:3 | max:50',
             'policy' => 'nullable | string',
             'request_policy' => 'nullable | string | min:3 |max:30',
             'referent_email' => 'nullable | email ',
