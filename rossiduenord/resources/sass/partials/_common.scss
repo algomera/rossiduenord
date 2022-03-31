@@ -7,6 +7,12 @@
 input {
     font-weight: 600;
 }
+//input number -arrows removed-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .card {
     box-shadow: grey 0px 0px 10px -5px !important;
@@ -116,6 +122,10 @@ a {
 
 .w-80 {
     width: 80%;
+}
+
+.w-10 {
+    width: 10% !important;
 }
 
 //color
