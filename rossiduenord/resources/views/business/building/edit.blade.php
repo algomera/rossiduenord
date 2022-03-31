@@ -604,7 +604,7 @@
                         <div class="mt-5">{{-- table list condomini --}}
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
-                                <div class="btn btn-primary ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
+                                <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
@@ -809,65 +809,6 @@
     </div>{{-- chiusura div content-main praticeNav --}}
 
     @push('scripts')
-        <script type="text/javascript">
-            let i = 0;
-            function addRows(e){
-                e.preventDefault()
-                if($('#no_data_row')) {
-                    $('#no_data_row').remove();
-                }
-                i++;
-                $("#condominis_table tbody").append(`
-                    <tr>
-                        <td class="text-center">${$("#condominis_table tbody tr").length + 1 }</td>
-                        <td id="col1" class="text-center">
-                            <input name="condomini[${i}][name]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][surname]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][phone]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][email]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][cf]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-center">
-                            <input name="condomini[${i}][millesimi]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-center">
-                            <input name="condomini[${i}][foglio]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][part]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][sub]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-center">
-                            <input name="condomini[${i}][categ_catastale]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-center">
-                            <input name="condomini[${i}][sup_catastale]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        </tr>
-                    `)
-
-
-                // let rowCount = table.rows.length;
-                // let cellCount = table.rows[0].cells.length;
-                // let row = table.insertRow(rowCount);
-                // for(let i = 0; i <= cellCount; i++){
-                //     let cell = 'cell' + i;
-                //     cell = row.insertCell(i);
-                //     let copycel = document.getElementById('col' + i).innerHTML;
-                //     cell.innerHTML = copycel;
-                // }
-            }
-        </script>
+        @include('business.scripts.condomini')
     @endpush
-
 @endsection
