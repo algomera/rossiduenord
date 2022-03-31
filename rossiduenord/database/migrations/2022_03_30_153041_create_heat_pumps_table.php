@@ -17,6 +17,8 @@ class CreateHeatPumpsTable extends Migration
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+            $table->bigInteger('condomino_id')->unsigned()->nullable();
+            $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
             $table->text('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->text('tipo_di_pdc')->nullable();

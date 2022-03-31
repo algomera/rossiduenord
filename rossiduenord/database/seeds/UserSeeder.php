@@ -34,13 +34,13 @@ class UserSeeder extends Seeder
 
         for ($i = 0; $i < 1; $i++) {
             $d = new User;
-            $d->created_by =  'financial';
+            $d->created_by = 'financial';
             $d->name = $name[$i]['name'];
             $d->referent = $faker->name();
-            $d->email = 'impresa@mail.com';
-            $d->password = 'password';
-            $d->role = 'bank';
+            $d->email = 'impresa@example.test';
+            $d->password = bcrypt('password');
+            $d->role = 'business';
             $d->save();
         }
-    }    
+    }
 }

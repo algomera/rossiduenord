@@ -240,6 +240,7 @@
                                 <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$condensing_boiler->id}}">
                                     {{ $i + 1 }}
                                     <div class="row_input">
+                                        <input type="hidden" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" value="">
                                         <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
                                             Tipo sostituito
                                             <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
@@ -338,6 +339,7 @@
                                 <div class="box_input" data-id="heat_pump-{{$practice->id}}-{{$heat_pump->id}}">
                                     {{ $i + 1 }}
                                     <div class="row_input">
+                                        <input type="hidden" name="heat_pumps[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" id="heat_pumps[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" value="">
                                         <label for="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]">
                                             Tipo sostituito
                                             <select name="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]" id="heat_pumps[{{$practice->id}}-{{$heat_pump->id}}][tipo_sostituito]">
