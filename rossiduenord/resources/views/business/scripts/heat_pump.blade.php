@@ -6,7 +6,7 @@
             $('#heat_pumps_no_data_row').remove();
             h++;
             $("#heat_pump_wrapper").append(`
-        <div class="box_input" data-id="${h}">
+        <div class="box_input" data-id="heat_pumps-${h}">
         <div class="row_input">
         <input type="hidden" name="heat_pumps[${h}][condomino_id]" id="heat_pumps[${h}][condomino_id]" value="">
             <label for="heat_pumps[${h}][tipo_sostituito]">
@@ -88,7 +88,7 @@
                     m²
                 </label>
             </div>
-            <div onclick="deleteHeatPump(${h})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+            <div onclick="removeHeatPump(${h})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                 <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                 <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
             </div>
@@ -106,6 +106,6 @@
     }
 
     function removeHeatPump(id) {
-        $(`div[data-id=${id}]`).remove();
+        $(`div[data-id=heat_pumps-${id}]`).remove();
     }
 </script>

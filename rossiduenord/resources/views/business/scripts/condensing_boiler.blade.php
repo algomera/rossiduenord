@@ -6,7 +6,7 @@
             $('#consensing_boilers_no_data_row').remove();
             i++;
             $("#condensing_boiler_wrapper").append(`
-                <div class="box_input" data-id="${i}">
+                <div class="box_input" data-id="condensing_boilers-${i}">
                 <input type="hidden" name="condensing_boilers[${i}][condomino_id]" id="condensing_boilers[${i}][condomino_id]" value="">
                     <div class="row_input">
                         <label for="condensing_boilers[${i}][tipo_sostituito]">
@@ -95,6 +95,6 @@
     }
 
     function removeCondensingBoiler(id) {
-    $(`div[data-id=${id}]`).remove();
+    $(`div[data-id=condensing_boilers-${id}]`).remove();
 }
 </script>

@@ -32,7 +32,7 @@
                     <div style="width: 48%;" class="form-group">
                         <label for="name" class="text">{{ __('Nome') }}</label>
                         <div>
-                            <input id="name" type="text" style="height: 47px!important" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $applicant->name }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" style="height: 47px!important" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $applicant->name   }}" required autocomplete="name" autofocus>
                             
                             @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                     <div style="width: 50%;" class="form-group">
                         <label for="lastName" class="text">{{ __('Cognome') }}</label>
                         <div>
-                            <input id="lastName" type="text" style="height: 47px!important" class="form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ $applicant->lastName }}" required autocomplete="lastName" autofocus>
+                            <input id="lastName" type="text" style="height: 47px!important" class="form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') ?? $applicant->lastName  }}" required autocomplete="lastName" autofocus>
                             
                             @error('lastName')
                             <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label for="c_f" class="text">{{ __('Codice Fiscale') }}</label>
                     <div>
-                        <input id="c_f" type="text" minlength="16" maxlength="16" style="height: 47px!important" class="form-control @error('c_f') is-invalid @enderror" name="c_f" value="{{ $applicant->c_f }}" required autocomplete="c_f" autofocus>
+                        <input id="c_f" type="text"  style="height: 47px!important" class="form-control @error('c_f') is-invalid @enderror" name="c_f" value="{{ old('c_f') ?? $applicant->c_f   }}"  autocomplete="c_f" autofocus>
 
                         @error('c_f')
                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                     <div class="form-group" style="width: 48%;">
                         <label for="phone" class="text">{{ __('Telefono') }}</label>
                         <div>
-                            <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $applicant->phone }}" required autocomplete="phone" autofocus>
+                            <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $applicant->phone   }}"  autocomplete="phone" autofocus>
                             
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                     <div class="form-group" style="width: 50%;">
                         <label for="mobile_phone" class="text">{{ __('Cellulare') }}</label>
                         <div>
-                            <input id="mobile_phone" type="text" style="height: 47px!important" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{ $applicant->mobile_phone }}" required autocomplete="mobile_phone" autofocus>
+                            <input id="mobile_phone" type="text" style="height: 47px!important" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{  old('mobile_phone') ?? $applicant->mobile_phone  }}"  autocomplete="mobile_phone" autofocus>
                             
                             @error('mobile_phone')
                             <span class="invalid-feedback" role="alert">
@@ -100,7 +100,7 @@
                 <div class="form-group">
                     <label for="email" class="text">{{ __('Email') }}</label>
                     <div>
-                        <input id="email" type="email" style="height: 47px!important;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $applicant->email }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" style="height: 47px!important;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $applicant->email }}" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -114,22 +114,22 @@
                     <h6>Ruolo nella pratica*</h6>
                     <label class="checkbox-wrapper d-flex">
                         <span>Persona fisica</span>
-                        <input {{$applicant->role == 'persona fisica' ? 'checked' : ''}} type="radio" name="role" value="persona fisica">     
+                        <input {{$applicant->role == 'persona fisica' ? 'checked' : ''}} {{old('role') == 'persona fisica' ? 'checked' : ''}}  type="radio" name="role" value="persona fisica">     
                         <span class="checkmark"></span> 
                     </label>
                     <label class="checkbox-wrapper d-flex">
                         <span>Amministratore di condominio</span>
-                        <input {{$applicant->role == 'amministratore di condominio' ? 'checked' : ''}} type="radio" name="role" value="amministratore di condominio">     
+                        <input {{$applicant->role == 'amministratore di condominio' ? 'checked' : ''}} {{old('role') == 'amministratore di condominio' ? 'checked' : ''}}  type="radio" name="role" value="amministratore di condominio">     
                         <span class="checkmark"></span> 
                     </label>
                     <label class="checkbox-wrapper d-flex">
                         <span>Condominio incaricato</span>
-                        <input  {{$applicant->role == 'condominio incaricato' ? 'checked' : ''}}type="radio" name="role" value="condominio incaricato">     
+                        <input  {{$applicant->role == 'condominio incaricato' ? 'checked' : ''}} {{old('role') == 'condominio incaricato' ? 'checked' : ''}} type="radio" name="role" value="condominio incaricato">     
                         <span class="checkmark"></span> 
                     </label>
                     <label class="checkbox-wrapper d-flex">
                         <span>Unico proprietario di condominio</span>
-                        <input {{$applicant->role == 'unico proprietario di condominio' ? 'checked' : ''}} type="radio" name="role" value="unico proprietario di condominio">     
+                        <input {{$applicant->role == 'unico proprietario di condominio' ? 'checked' : ''}} {{old('role') == 'unico proprietario di condominio' ? 'checked' : ''}}  type="radio" name="role" value="unico proprietario di condominio">     
                         <span class="checkmark"></span> 
                     </label>
 

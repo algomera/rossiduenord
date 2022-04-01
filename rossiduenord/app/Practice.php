@@ -79,4 +79,28 @@ class Practice extends Model
     public function heat_pumps() {
         return $this->hasMany(HeatPump::class);
     }
+
+    public function absorption_heat_pumps() {
+        return $this->hasMany(AbsorptionHeatPump::class);
+    }
+
+    public function hybrid_systems() {
+        return $this->hasMany(HybridSystem::class);
+    }
+
+    public function microgeneration_systems() {
+        return $this->hasMany(MicrogenerationSystem::class);
+    }
+
+    public function water_heatpumps_installations() {
+        return $this->hasMany(WaterHeatpumpsInstallation::class);
+    }
+
+    public function biome_generators() {
+        return $this->hasMany(BiomeGenerator::class);
+    }
+
+    public function solar_panels() {
+        return $this->hasMany(SolarPanel::class);
+    }
 }
