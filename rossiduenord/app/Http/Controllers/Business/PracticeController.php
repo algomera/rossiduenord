@@ -107,8 +107,8 @@ class PracticeController extends Controller
         $validated = $request->validate([
             'applicant_id' => ' integer | exists:applicants,id',
             'import' => 'nullable | numeric | min:2',
-            'practical_phase' => 'required | string',
-            'real_estate_type' => 'required | string',
+            'practical_phase' => 'nullable | string',
+            'real_estate_type' => 'nullable | string',
             'month' => 'nullable | string',
             'year' => 'nullable | numeric | min:2',
             'policy_name' => 'nullable | string | min:3',

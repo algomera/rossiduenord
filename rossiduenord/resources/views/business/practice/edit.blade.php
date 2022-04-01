@@ -330,7 +330,12 @@
 
                 <div class="form-group">
                     <label for="description" class="text">{{ __('Descrizione') }}</label>
-                    <textarea class="p-2 border" style="width: 100%" name="description" id="description" cols="30" rows="3">{{ old('description') ??  $practice->description }}</textarea>
+                    <textarea class="p-2 border form-control @error('description') is-invalid @enderror" style="width: 100%" name="description" id="description" cols="30" rows="3">{{ old('description') ??  $practice->description }}</textarea>
+                    @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                    @enderror
                 </div>
 
                 <div class="form-group" style="width: 30%;">
@@ -348,13 +353,18 @@
 
                 <div class="d-flex">
                     <div class="d-flex align-items-center" style="margin-right: 20px;">
-                        <label class="checkbox-wrapper d-flex mt-2">
-                            <input {{ $practice->policy == 'true' ? 'checked' : ''}} {{old('policy') == 'true' ? 'checked' : ''}}  type="checkbox" name="policy" id="policy" value="true">     
+                        <label class="checkbox-wrapper mt-2">
+                            <input {{ $practice->policy == 'true' ? 'checked' : ''}} {{old('policy') == 'true' ? 'checked' : ''}} class="form-check-input @error('policy') is-invalid @enderror"  type="checkbox" name="policy" id="policy" value="true">     
                             <span class="checkmark"></span> 
                             <span>Richiedi polizza</span>
+                            @error('policy')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </label>
-                    </div>
 
+                    </div>
                     <div class="form-group" style="width: 30%; margin-right: 20px;">
                         <label for="request_policy" class="text">{{ __('Richiesta da') }}</label>
                         <div>
@@ -372,10 +382,15 @@
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex">
                         <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
-                        <label for="bonus" class="checkbox-wrapper d-flex">
+                        <label for="bonus" class="checkbox-wrapper ">
                             <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox" class="@error('bonus') is-invalid @enderror" name="bonus" id="bonus" value="110%">     
                             <span class="checkmark"></span> 
                             <span>Super Bonus 110%</span>
+                            @error('bonus')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </label>
                     </div>
                     <div class="d-flex align-items-center">
@@ -429,10 +444,15 @@
                 <div class="form-group mb-5">
                     <label for="note" class="text">{{ __('note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{old('note') ?? $practice->note }}</textarea>
-                    <label class="checkbox-wrapper d-flex mt-2">
+                    <label class="checkbox-wrapper mt-2">
                         <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}} {{old('practice_ok') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">     
                         <span class="checkmark"></span> 
                         <span>Pratica in regola</span>
+                        @error('practice_ok')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                        @enderror
                     </label>
                 </div>
 
