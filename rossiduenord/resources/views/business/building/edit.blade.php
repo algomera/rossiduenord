@@ -140,7 +140,7 @@
 
     --}}
                                     <div class="form-group m-0" style="display:inline-block;" >
-                                        <label for="intervention_tipology" class="checkbox-wrapper d-flex mr-3">
+                                        <label for="intervention_tipology" class="checkbox-wrapper mr-3">
                                             <input {{ $building->intervention_tipology == 'true' ? 'checked' : ''}} {{old('intervention_tipology') == 'true' ? 'checked' : ''}} type="checkbox" class="form-control credit-input @error('intervention_tipology') is-invalid @enderror" id="intervention_tipology" name="intervention_tipology" value="true">
                                             <span class="checkmark"></span>
                                             <span class="grey">Super Ecobonus 110%</span>
@@ -211,7 +211,7 @@
                                     <div class="d-flex justify-content-between" style="column-gap: 10px;">
                                         <div style="width: 80px">
                                             <label for="build_civic_number">N.</label><br/>
-                                            <input class="col-md form-control credit-input @error('build_civic_number') is-invalid @enderror" value="{{old('build_civic_number') ?? $building->build_civic_number }}"  type="text" name="build_civic_number" id="build_civic_number" width="100%"  />
+                                            <input class="col-md form-control credit-input @error('build_civic_number') is-invalid @enderror" value="{{old('build_civic_number') ?? $building->build_civic_number }}"  type="text" name="build_civic_number" maxlength="4" id="build_civic_number" width="100%"  />
                                             @error('build_civic_number')
                                              <span class="invalid-feedback" role="alert">
                                                  <strong>{{ $message }}</strong>
@@ -273,7 +273,7 @@
                                         </div>
                                         <div style="width: 150px">
                                             <label for="cap">CAP</label>
-                                            <input class="col-md form-control credit-input @error('cap') is-invalid @enderror" value="{{ old('cap') ?? $building->cap }}" type="number" name="cap" id="cap" width="100%"  />
+                                            <input class="col-md form-control credit-input @error('cap') is-invalid @enderror" value="{{ old('cap') ?? $building->cap }}" type="number" name="cap" maxlength="5" minlength="5" id="cap" width="100%"  />
                                             @error('cap')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -395,28 +395,33 @@
                         <div>{{-- section input radio --}}
                             <div class="row" style="margin-top:5%;">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L'edificio è sottoposto a vincoli previsti dal codice dei beni culturali e del paesaggio</p>
+                                  <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('cultural_constraints') is-invalid @enderror m-0">L'edificio è sottoposto a vincoli previsti dal codice dei beni culturali e del paesaggio</p>
+                                  @error('cultural_constraints')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
-                                        <input {{ $building->cultural_constraints == 'notDefine' ? 'checked' : ''}} {{old('cultural_constraints') == 'notDefine' ? 'checked' : ''}} type="radio" name="cultural_constraints" id="cultural_constraints" value="notDefine">
+                                        <input {{ $building->cultural_constraints == 'notDefine' ? 'checked' : ''}} {{old('cultural_constraints') == 'notDefine' ? 'checked' : ''}} type="radio"  name="cultural_constraints" id="cultural_constraints" value="notDefine">
                                         <label style="margin-right:15px;" for="cultural_constraints">N.D.</label>
                                         <input {{ $building->cultural_constraints == 'no' ? 'checked' : ''}} {{old('cultural_constraints') == 'no' ? 'checked' : ''}} type="radio" name="cultural_constraints" id="cultural_constraints" value="no">
                                         <label style="margin-right:15px;" for="cultural_constraints">No</label>
                                         <input {{ $building->cultural_constraints == 'yes' ? 'checked' : ''}} {{old('cultural_constraints') == 'yes' ? 'checked' : ''}} type="radio" name="cultural_constraints" id="cultural_constraints" value="yes">
                                         <label style="margin-right:15px;" for="cultural_constraints">Sì</label>
                                     </div>
-                                    @error('cultural_constraints')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Interventi trainanti al 110% sono vietati dai regolamenti edilizi, urbanistici e ambientali</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;"  class="@error('denied_intervents') is-invalid @enderror m-0">Interventi trainanti al 110% sono vietati dai regolamenti edilizi, urbanistici e ambientali</p>
+                                @error('cultural_constraints')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -437,7 +442,7 @@
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune montano</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('mountain_common') is-invalid @enderror m-0">L’edificio è situato in un comune montano</p>
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -458,7 +463,12 @@
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è situato in un comune interessato da procedura di infrazione comunitaria</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('infringment_common') is-invalid @enderror m-0">L’edificio è situato in un comune interessato da procedura di infrazione comunitaria</p>
+                                @error('cultural_constraints')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -479,7 +489,12 @@
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in una zona colpita da eventi sismici</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('sismic_events_zone') is-invalid @enderror m-0">L’edificio è in una zona colpita da eventi sismici</p>
+                                @error('sismic_events_zone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -500,7 +515,12 @@
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in fase di ristrutturazione Art. 3, Com. 1, lettere d), e), f), del D.P.R. 380/2001</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('isUnderRenovation') is-invalid @enderror m-0">L’edificio è in fase di ristrutturazione Art. 3, Com. 1, lettere d), e), f), del D.P.R. 380/2001</p>
+                                @error('isUnderRenovation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -521,7 +541,12 @@
 
                             <div class="row">
                                 <div class="col-md-7">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">L’edificio è in un’area non metanizzata</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('nonMetan_area') is-invalid @enderror m-0">L’edificio è in un’area non metanizzata</p>
+                                @error('nonMetan_area')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -542,7 +567,12 @@
 
                             <div class="row">
                                 <div class="col-md-3">
-                                <p style="display:inline-block; margin-right:25px; font-weight:500;">Autorizzazione edilizia</p>
+                                <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('building_authorization') is-invalid @enderror m-0">Autorizzazione edilizia</p>
+                                @error('building_authorization')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                   @enderror
                                 </div>
                                 <div class="col-md">
                                     <div style="display:inline-block; ">
@@ -749,7 +779,7 @@
                                     </div>
                                     <div class="col-md form-group">
                                         <label for="administrator_cap" style="display:inline-block;" >CAP</label><br/>
-                                        <input type="number" class="col-md form-control credit-input  @error('administrator_cap') is-invalid @enderror" value="{{ old('administrator_cap' ?? $building->administrator_cap )}}" name="administrator_cap" id="administrator_cap"  />
+                                        <input type="number" class="col-md form-control credit-input  @error('administrator_cap') is-invalid @enderror" value="{{ old('administrator_cap') ?? $building->administrator_cap }}" minlength="5" maxlength="5" name="administrator_cap" id="administrator_cap"  />
                                         @error('administrator_cap')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -763,7 +793,7 @@
                         <div class="row">
                             <div class="col-md form-group">
                                 <label for="administrator_telephone" style="display:inline-block;" >Telefono</label><br/>
-                                <input type="number" class="col-md form-control credit-input @error('administrator_telephone') is-invalid @enderror" value="{{ old('administrator_telephone') ?? $building->administrator_telephone }}" name="administrator_telephone" id="administrator_telephone"  />
+                                <input type="number" class="col-md form-control credit-input @error('administrator_telephone') is-invalid @enderror" value="{{ old('administrator_telephone') ?? $building->administrator_telephone }}" maxlength="10" minlength="10" name="administrator_telephone" id="administrator_telephone"  />
                                 @error('administrator_telephone')
                                      <span class="invalid-feedback" role="alert">
                                          <strong>{{ $message }}</strong>
@@ -772,7 +802,7 @@
                             </div>
                             <div class="col-md form-group">
                                 <label for="administrator_cellphone" style="display:inline-block;" >Cellulare</label><br/>
-                                <input type="number" class="col-md form-control credit-input @error('administrator_cellphone') is-invalid @enderror" value="{{ old('administrator_cellphone') ?? $building->administrator_cellphone }}" name="administrator_cellphone" id="administrator_cellphone"  />
+                                <input type="number" class="col-md form-control credit-input @error('administrator_cellphone') is-invalid @enderror" value="{{ old('administrator_cellphone') ?? $building->administrator_cellphone }}" maxlength="10" minlength="10" name="administrator_cellphone" id="administrator_cellphone"  />
                                 @error('administrator_cellphone')
                                      <span class="invalid-feedback" role="alert">
                                          <strong>{{ $message }}</strong>
