@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PracticeController extends Controller
 {
@@ -88,10 +89,13 @@ class PracticeController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
+        $this->authorize('edit-practice', [$practice, $applicant]);
+
         $practice_data = Carbon::today()->format('d/m/Y');
         $subject = $practice->subject;
         $applicant = $practice->applicant;
         $building = $practice->building;
+
         return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus', 'practice_data'));
     }
 

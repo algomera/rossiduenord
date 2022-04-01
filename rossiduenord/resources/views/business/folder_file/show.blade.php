@@ -28,7 +28,7 @@
                             <input class="type-number" type="number" value="100" name="" id="">
                         </div>
                         <button id="select-all" class="btn-custom bg-black white">Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white">Deseleziona tutto</buttonhref=>
+                        <button id="deselect-all" class="btn-custom bg-grey white">Deseleziona tutto</button>
                         <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
                         <button id="select-delete" class="btn-custom bg-red white">Elimina selezionato</button>
                     </div>

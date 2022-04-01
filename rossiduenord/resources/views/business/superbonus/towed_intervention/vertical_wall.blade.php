@@ -43,157 +43,161 @@
 
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
 
-                        <div style="width: 100%; margin-bottom: 30px;">{{-- Date condomino --}}
+                        {{-- Date condomino --}}
+{{--                         
+                        <div style="width: 100%; margin-bottom: 30px;">
                             <div class="box_date_condomino">
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->foglio}}">
                                         Foglio
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="foglio" id="foglio" value="{{$condomino->foglio}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->part}}">
                                         Particella
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="part" id="part" value="{{$condomino->part}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->sub}}">
                                         Subalterno
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="sub" id="sub" value="{{$condomino->sub}}">
                                     </label>
-                                    <label for="">
-                                        <select name="" id="">
-                                            <option value="A/2">A/2</option>
-                                            <option value="A/3">A/3</option>
-                                            <option value="A/4">A/4</option>
-                                            <option value="A/5">A/5</option>
-                                            <option value="A/6">A/6</option>
-                                            <option value="A/7">A/7</option>
-                                            <option value="A/11">A/11</option>
-                                            <option value="C/4">C/4 solo spogliatoi</option>
-                                            <option value="D/6">D/6 solo spogliatoi</option>
+                                    <label for="{{$condomino->categ_catastale}}">
+                                        categ. catastale
+                                        <select name="categ_catastale" id="categ_catastale">
+                                            <option {{$condomino->categ_catastale == 'A/2' ? 'selected' : ''}} value="A/2">A/2</option>
+                                            <option {{$condomino->categ_catastale == 'A/3' ? 'selected' : ''}} value="A/3">A/3</option>
+                                            <option {{$condomino->categ_catastale == 'A/4' ? 'selected' : ''}} value="A/4">A/4</option>
+                                            <option {{$condomino->categ_catastale == 'A/5' ? 'selected' : ''}} value="A/5">A/5</option>
+                                            <option {{$condomino->categ_catastale == 'A/6' ? 'selected' : ''}} value="A/6">A/6</option>
+                                            <option {{$condomino->categ_catastale == 'A/7' ? 'selected' : ''}} value="A/7">A/7</option>
+                                            <option {{$condomino->categ_catastale == 'A/11' ? 'selected' : ''}} value="A/11">A/11</option>
+                                            <option {{$condomino->categ_catastale == 'C/4' ? 'selected' : ''}} value="C/4">C/4 solo spogliatoi</option>
+                                            <option {{$condomino->categ_catastale == 'D/6' ? 'selected' : ''}} value="D/6">D/6 solo spogliatoi</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input" style="margin-bottom: 20px;">
-                                    <label for="">
+                                    <label for="{{$condomino->millesimi_inv}}">
                                         Quota millesimi involucro
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="millesimi" id="millesimi" value="{{$condomino->millesimi}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->millesimi_imp}}">
                                         Quota millesimi impianti
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="millesimi_imp" id="millesimi_imp" value="{{$condomino->millesimi_imp}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->sup_catastale}}">
                                         Superfice catastale
-                                        <input type="number" name="" id="">
+                                        <input type="number" name="sup_catastale" id="sup_catastale" value="{{$condomino->sup_catastale}}">
                                         m²
                                     </label>
                                 </div>
 
                                 <h6>Dati beneficiario</h6>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->type_beneficiary}}">
                                         Tipo beneficiario
-                                        <select name="" id="">
-                                            <option value="Persona fisica">Persona fisica</option>
-                                            <option value="IACP">IACP</option>
-                                            <option value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
-                                            <option value="ONLUS">ONLUS</option>
-                                            <option value="Ass. we società sportive">Ass. we società sportive</option>
-                                            <option value="Altri soggetti">Altri soggetti</option>
+                                        <select name="type_beneficiary" id="type_beneficiary">
+                                            <option {{$condomino->type_beneficiary == 'Persona fisica' ? 'selected' : ''}} value="Persona fisica">Persona fisica</option>
+                                            <option {{$condomino->type_beneficiary == 'IACP' ? 'selected' : ''}} value="IACP">IACP</option>
+                                            <option {{$condomino->type_beneficiary == 'Coop. Abit a prop. Indivisa' ? 'selected' : ''}} value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
+                                            <option {{$condomino->type_beneficiary == 'ONLUS' ? 'selected' : ''}} value="ONLUS">ONLUS</option>
+                                            <option {{$condomino->type_beneficiary == 'Ass. we società sportive' ? 'selected' : ''}} value="Ass. we società sportive">Ass. we società sportive</option>
+                                            <option {{$condomino->type_beneficiary == 'Altri soggetti' ? 'selected' : ''}} value="Altri soggetti">Altri soggetti</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->possession_title}}">
                                         Titolo di possesso
-                                        <select name="" id="">
-                                            <option value="Proprietario o comproprietario">Proprietario o comproprietario</option>
-                                            <option value="Detentore o co-detentore">Detentore o co-detentore</option>
-                                            <option value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
+                                        <select name="possession_title" id="possession_title">
+                                            <option {{$condomino->possession_title == 'Proprietario o comproprietario' ? 'selected' : ''}} value="Proprietario o comproprietario">Proprietario o comproprietario</option>
+                                            <option {{$condomino->possession_title == 'Detentore o co-detentore' ? 'selected' : ''}} value="Detentore o co-detentore">Detentore o co-detentore</option>
+                                            <option {{$condomino->possession_title == 'Familiare convivente con il possessore o con il detentore' ? 'selected' : ''}} value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->surname}}">
                                         Cognome
-                                        <input type="text" name="" id="">
+                                        <input type="text" name="surname" id="surname" value="{{$condomino->surname}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->name}}">
                                         Nome
-                                        <input type="text" name="" id="">
+                                        <input type="text" name="name" id="name" value="{{$condomino->name}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->sex}}">
                                         Titolo di possesso
-                                        <select name="" id="">
-                                            <option value="M">M</option>
-                                            <option value="F">F</option>
+                                        <select name="sex" id="sex">
+                                            <option {{$condomino->sex == 'M' ? 'selected' : ''}} value="M">M</option>
+                                            <option {{$condomino->sex == 'F' ? 'selected' : ''}} value="F">F</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->date_of_birth}}">
                                         Data di nascita
-                                        <input type="date" name="" id="">
+                                        <input type="date" name="date_of_birth" id="date_of_birth" value="{{$condomino->date_of_birth}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->nation_of_birth}}">
                                         Nazione di nascita
-                                        <select name="" id="">
+                                        <select name="nation_of_birth" id="nation_of_birth">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                                <option value="{{$country->id}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->common_of_birth}}">
                                         Comune di nascita
-                                        <input type="text" name="" id="">
+                                        <input type="text" name="common_of_birth" id="common_of_birth" value="{{$condomino->common_of_birth}}">
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->cf}}">
                                         Cod. fiscale
-                                        <input class="input_large" type="text" name="" id="">
+                                        <input class="input_large" type="text" name="cf" id="cf" value="{{$condomino->cf}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->P_IVA}}">
                                         Partita IVA
-                                        <input class="input_large" type="text" name="" id="">
+                                        <input class="input_large" type="text" name="P_IVA" id="P_IVA" value="{{$condomino->P_IVA}}">
                                     </label>
                                 </div>
 
                                 <h6>Residenza</h6>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->country}}">
                                         Nazione
-                                        <select name="" id="">
+                                        <select name="country" id="country">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                                <option value="{{$country->id}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->address}}">
                                         Indirizzo
-                                        <input class="input_large" type="text" name="" id="">
+                                        <input class="input_large" type="text" name="address" id="address" value="{{$condomino->address}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->CAP}}">
                                         CAP
-                                        <input class="input_small" type="text" name="" id="">
+                                        <input class="input_small" type="text" name="CAP" id="CAP" value="{{$condomino->CAP}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->common}}">
                                         Comune
-                                        <input class="input_large" type="text" name="" id="">
+                                        <input class="input_large" type="text" name="common" id="common" value="{{$condomino->common}}">
                                     </label>
-                                    <label for="">
+                                    <label for="{{$condomino->prov}}">
                                         Prov.
-                                        <input class="input_small" type="text" name="" id="">
+                                        <input class="input_small" type="text" name="prov" id="prov" value="{{$condomino->prov}}">
                                     </label> 
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="{{$condomino->phone}}">
                                         Telefono
-                                        <input class="input_large" type="text" name="" id="">
+                                        <input class="input_large" type="text" name="phone" id="phone" value="{{$condomino->phone}}">
                                     </label> 
                                 </div>
                             </div>
                         </div>
 
+ --}}                        
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
@@ -1832,4 +1836,7 @@
 
     </div>{{-- chiusura div content-main praticeNav --}}
 
-@endsection
+{{--     @push('scripts')
+        @include('business.scripts.select_country')
+    @endpush
+ --}}@endsection

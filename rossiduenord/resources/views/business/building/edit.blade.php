@@ -141,7 +141,7 @@
     --}}
                                     <div class="form-group m-0" style="display:inline-block;" >
                                         <label for="intervention_tipology" class="checkbox-wrapper d-flex mr-3">
-                                            <input {{ $building->intervention_tipology == 'tre' ? 'checked' : ''}} type="checkbox" class="@error('intervention_tipology') is-invalid @enderror" id="intervention_tipology" name="intervention_tipology" value="true">
+                                            <input {{ $building->intervention_tipology == 'true' ? 'checked' : ''}} type="checkbox" class="@error('intervention_tipology') is-invalid @enderror" id="intervention_tipology" name="intervention_tipology" value="true">
                                             <span class="checkmark"></span>
                                             <span class="grey">Super Ecobonus 110%</span>
                                         </label>
