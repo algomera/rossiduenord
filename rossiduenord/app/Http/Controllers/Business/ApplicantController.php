@@ -120,7 +120,7 @@ class ApplicantController extends Controller
             'applicant' => 'required | string',
             'name' => 'required | string | min:3 | max:100',
             'lastName' => 'required | string | min:3 | max:100',
-            'c_f' => 'required | string | min:16 | max:16 ',
+            'c_f' => 'required | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i ',
             'phone' => 'required | numeric',
             'mobile_phone' => 'required | numeric | min:10',
             'email' => 'required | email',

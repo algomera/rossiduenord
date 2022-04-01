@@ -32,7 +32,7 @@
                     <div style="width: 48%;" class="form-group">
                         <label for="name" class="text">{{ __('Nome') }}</label>
                         <div>
-                            <input id="name" type="text" style="height: 47px!important" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('applicant_name') ?? $applicant->name   }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" style="height: 47px!important" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $applicant->name   }}" required autocomplete="name" autofocus>
                             
                             @error('name')
                             <span class="invalid-feedback" role="alert">

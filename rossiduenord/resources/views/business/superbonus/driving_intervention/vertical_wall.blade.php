@@ -19,7 +19,7 @@
 
                 <div class="px-20">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                     <label class="checkbox-wrapper">
-                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} {{old('thermical_isolation_intervention') == 'true' ? 'checked' : ''}} type="checkbox" class="@error('thermical_isolation_intervention') is-invalid @enderror" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
+                        <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} {{old('thermical_isolation_intervention') == 'true' ? 'checked' : ''}} type="checkbox" class="@error('thermical_isolation_intervention') is-invalid error @enderror" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
                         <span class="checkmark"></span>
                         <span class="black" ><b>1. Intervento di isolamento termico delle superfici opache verticali e orizzontali</b></span>
                         @error('thermical_isolation_intervention')
@@ -85,7 +85,7 @@
                         <div class="d-flex mr-4">
                             <p class="m-0">Totale “pareti verticali”</p>
                             <label for="total_vertical_walls" class="m-0 black">
-                                <input type="number" value="{{old('total_vertical_walls') ?? $vertwall->total_vertical_walls}}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right  @error('total_vertical_walls') is-invalid @enderror" style="width: 80px">
+                                <input type="number" value="{{old('total_vertical_walls') ?? $vertwall->total_vertical_walls}}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right  @error('total_vertical_walls') is-invalid error @enderror" style="width: 80px">
                                 m²
                                 @error('total_vertical_walls')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -97,7 +97,7 @@
                         <div class="d-flex mr-4">
                             <p class="m-0">di cui realizzati SAL n. 1</p>
                             <label for="vw_realized_1" class="m-0  black">
-                                <input type="number" value="{{old('vw_realized_1') ?? $vertwall->vw_realized_1}}" name="vw_realized_1" id="vw_realized_1" class="border ml-2 px-2 text-right @error('vw_realized_1') is-invalid @enderror" style="width: 80px">
+                                <input type="number" value="{{old('vw_realized_1') ?? $vertwall->vw_realized_1}}" name="vw_realized_1" id="vw_realized_1" class="border ml-2 px-2 text-right @error('vw_realized_1') is-invalid error @enderror" style="width: 80px">
                                 m²
                                 @error('vw_realized_1')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -109,7 +109,7 @@
                         <div class="d-flex mr-4">
                             <p class="m-0">SAL n. 2</p>
                             <label for="vw_realized_2" class="m-0  black">
-                                <input type="number" value="{{old('vw_realized_2') ?? $vertwall->vw_realized_2}}" name="vw_realized_2" id="vw_realized_2" class="border ml-2 px-2 text-right @error('vw_realized_2') is-invalid @enderror" style="width: 80px">
+                                <input type="number" value="{{old('vw_realized_2') ?? $vertwall->vw_realized_2}}" name="vw_realized_2" id="vw_realized_2" class="border ml-2 px-2 text-right @error('vw_realized_2') is-invalid error @enderror" style="width: 80px">
                                 m²
                                 @error('vw_realized_2')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -121,7 +121,7 @@
                         <div class="d-flex mr-4">
                             <p class="m-0">SAL F.</p>
                             <label for="vw_sal_f" class="m-0  black">
-                                <input type="number" value="{{old('vw_sal_f') ?? $vertwall->vw_sal_f}}" name="vw_sal_f" id="vw_sal_f" class="border ml-2 px-2 text-right @error('vw_sal_f') is-invalid @enderror" style="width: 80px">
+                                <input type="number" value="{{old('vw_sal_f') ?? $vertwall->vw_sal_f}}" name="vw_sal_f" id="vw_sal_f" class="border ml-2 px-2 text-right @error('vw_sal_f') is-invalid error @enderror" style="width: 80px">
                                 m²
                                 @error('vw_sal_f')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -135,7 +135,7 @@
                     <div class="d-flex align-items-center mt-3" style="width:80%;">
                         <p class="m-0">Superficie totale oggetto dell’intervento</p>
                         <label for="total_intervention_surface" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('total_intervention_surface') ?? $vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid @enderror">
+                            <input type="number" value="{{old('total_intervention_surface') ?? $vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid error @enderror">
                             m²
                             @error('total_intervention_surface')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -150,7 +150,7 @@
                         <div class="d-flex align-items-center">
                             <p class="m-0">Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a*</p>
                             <label for="total_expected_cost" class=" m-0 mr-4 black">
-                                <input type="number" value="{{old('total_expected_cost') ?? $vertwall->total_expected_cost}}" name="total_expected_cost" id="total_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_expected_cost') is-invalid @enderror">
+                                <input type="number" value="{{old('total_expected_cost') ?? $vertwall->total_expected_cost}}" name="total_expected_cost" id="total_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_expected_cost') is-invalid error @enderror">
                                 €
                                 @error('total_expected_cost')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -167,7 +167,7 @@
                     <div class="d-flex align-items-center mt-3" style="width:80%;">
                         <p class="m-0">La spesa massima ammissibile dei lavori sulle parti opache è pari a</p>
                         <label for="max_possible_cost" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('max_possible_cost') ?? $vertwall->max_possible_cost}}" name="max_possible_cost" id="max_possible_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('max_possible_cost') is-invalid @enderror">
+                            <input type="number" value="{{old('max_possible_cost') ?? $vertwall->max_possible_cost}}" name="max_possible_cost" id="max_possible_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('max_possible_cost') is-invalid error @enderror">
                             €
                             @error('max_possible_cost')
                                     <span class="invalid-feedback pl-3" role="alert">
@@ -187,7 +187,7 @@
                                     <small class="black ">almeno al 30%</small>
                                 </div>
                                 <div>
-                                    <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1}}" name="total_isolation_cost_1" id="total_isolation_cost_1" class="ml-2 px-2 border @error('total_isolation_cost_1') is-invalid @enderror" style="width:120px">
+                                    <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1}}" name="total_isolation_cost_1" id="total_isolation_cost_1" class="ml-2 px-2 border @error('total_isolation_cost_1') is-invalid error @enderror" style="width:120px">
                                     €
                                     @error('total_isolation_cost_1')
                                         <span class="invalid-feedback pl-3" role="alert">
@@ -204,7 +204,7 @@
                                     <small class="black ">almeno al 60%</small>
                                 </div>
                                 <div>
-                                    <input type="number" value="{{old('total_isolation_cost_2') ?? $vertwall->total_isolation_cost_2}}" name="total_isolation_cost_2" id="total_isolation_cost_2" class="ml-2 text-right px-2 border @error('total_isolation_cost_2') is-invalid @enderror" style="width:120px">
+                                    <input type="number" value="{{old('total_isolation_cost_2') ?? $vertwall->total_isolation_cost_2}}" name="total_isolation_cost_2" id="total_isolation_cost_2" class="ml-2 text-right px-2 border @error('total_isolation_cost_2') is-invalid error @enderror" style="width:120px">
                                      €
                                      @error('total_isolation_cost_2')
                                         <span class="invalid-feedback pl-3" role="alert">
@@ -219,7 +219,7 @@
                             <span>SAL.F</span>
                             <label for="final_isolation_cost" class="d-flex flex-column align-items-end mr-1 mb-0">
                                 <div>
-                                    <input type="number" value="{{old('final_isolation_cost') ?? $vertwall->final_isolation_cost}}" name="final_isolation_cost" id="final_isolation_cost" class="ml-2 border text-right px-2 @error('final_isolation_cost') is-invalid @enderror" style="width:120px;">
+                                    <input type="number" value="{{old('final_isolation_cost') ?? $vertwall->final_isolation_cost}}" name="final_isolation_cost" id="final_isolation_cost" class="ml-2 border text-right px-2 @error('final_isolation_cost') is-invalid error @enderror" style="width:120px;">
                                      €
                                      @error('final_isolation_cost')
                                          <span class="invalid-feedback pl-3" role="alert">
@@ -262,7 +262,7 @@
                     <div class="d-flex align-items-center mt-2" style="width:80%;">
                         <p class="m-0">Di cui per coperture non disperdenti</p>
                         <label for="dispersing_covers" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('dispersing_covers') ?? $vertwall->dispersing_covers}}" name="dispersing_covers" id="dispersing_covers" style="width: 120px;" class="border ml-2 px-2 text-right @error('dispersing_covers') is-invalid @enderror">
+                            <input type="number" value="{{old('dispersing_covers') ?? $vertwall->dispersing_covers}}" name="dispersing_covers" id="dispersing_covers" style="width: 120px;" class="border ml-2 px-2 text-right @error('dispersing_covers') is-invalid error @enderror">
                             €
                             @error('dispersing_covers')
                                          <span class="invalid-feedback pl-3" role="alert">
@@ -275,7 +275,7 @@
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                         <label for="isolation_energetic_savings" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('isolation_energetic_savings') ?? $vertwall->isolation_energetic_savings}}" name="isolation_energetic_savings" id="isolation_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('isolation_energetic_savings') is-invalid @enderror">
+                            <input type="number" value="{{old('isolation_energetic_savings') ?? $vertwall->isolation_energetic_savings}}" name="isolation_energetic_savings" id="isolation_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('isolation_energetic_savings') is-invalid error @enderror">
                             KWh/anno
                             @error('isolation_energetic_savings')
                                 <span class="invalid-feedback pl-3" role="alert">
@@ -288,7 +288,7 @@
 
                 <div class="px-20 pb-20">{{-- Intervento di sostituzione degli impianti di climatizzazione invernale esistenti --}}
                     <label class="checkbox-wrapper">
-                        <input {{$vertwall->winter_acs_replacing == 'true' ? 'checked' : ''}} {{old('winter_acs_replacing') == 'true' ? 'checked' : ''}} type="checkbox" name="winter_acs_replacing" class="@error('winter_acs_replacing') is-invalid @enderror" id="winter_acs_replacing" value="true">
+                        <input {{$vertwall->winter_acs_replacing == 'true' ? 'checked' : ''}} {{old('winter_acs_replacing') == 'true' ? 'checked' : ''}} type="checkbox" name="winter_acs_replacing" class="@error('winter_acs_replacing') is-invalid error @enderror" id="winter_acs_replacing" value="true">
                         <span class="checkmark"></span>
                         <span class="black" ><b>Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</b></span>
                         @error('winter_acs_replacing')
@@ -302,7 +302,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>Potenza utile complessiva pari a</span>
                             <label for="total_power" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <input type="number" value="{{old('total_power') ?? $vertwall->total_power}}" name="total_power" id="total_power" class="ml-2 border text-right px-2 @error('total_power') is-invalid @enderror" style="width:120px;">
+                                <input type="number" value="{{old('total_power') ?? $vertwall->total_power}}" name="total_power" id="total_power" class="ml-2 border text-right px-2 @error('total_power') is-invalid error @enderror" style="width:120px;">
                                 @error('total_power')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
                                     <strong>{{ 'incorrect' }}</strong>
@@ -314,7 +314,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>composto da n.</span>
                             <label for="generators" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <input type="number" value="{{old('generators') ?? $vertwall->generators}}" name="generators" id="generators" class="ml-2 border text-right px-2 @error('generators') is-invalid @enderror" style="width:120px;">
+                                <input type="number" value="{{old('generators') ?? $vertwall->generators}}" name="generators" id="generators" class="ml-2 border text-right px-2 @error('generators') is-invalid error @enderror" style="width:120px;">
                                 @error('generators')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
                                     <strong>{{ 'incorrect' }}</strong>
@@ -329,7 +329,7 @@
 
                     <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
                         <label for="condensing_boiler" class="checkbox-wrapper ">
-                            <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} {{old('condensing_boiler') == 'true' ? 'checked' : '' }} type="checkbox" class="@error('condensing_boiler') is-invalid @enderror" name="condensing_boiler" id="condensing_boiler" value="true">
+                            <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} {{old('condensing_boiler') == 'true' ? 'checked' : '' }} type="checkbox" class="@error('condensing_boiler') is-invalid error @enderror" name="condensing_boiler" id="condensing_boiler" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>CC. Caldaie a condensazione</b></span>
                             @error('condensing_boiler')
@@ -420,7 +420,7 @@
 
                     <div class="mt-5">{{-- PC. Pompe di calore (PDC) --}}
                         <label for="heat_pumps" class="checkbox-wrapper">
-                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} {{old('heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('heat_pumps') is-invalid @enderror" name="heat_pumps" id="heat_pumps" value="true">
+                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} {{old('heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('heat_pumps') is-invalid error @enderror" name="heat_pumps" id="heat_pumps" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
                             @error('heat_pumps')
@@ -522,7 +522,7 @@
 
                     <div class="mt-5">{{-- PCA. Pompe di calore ad assorbimento a gas --}}
                         <label for="absorption_heat_pumps" class="checkbox-wrapper ">
-                            <input {{$vertwall->absorption_heat_pumps == 'true' ? 'checked' : ''}} {{old('absorption_heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('absorption_heat_pumps') is-invalid @enderror" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true">
+                            <input {{$vertwall->absorption_heat_pumps == 'true' ? 'checked' : ''}} {{old('absorption_heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('absorption_heat_pumps') is-invalid error @enderror" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>PCA. Pompe di calore ad assorbimento a gas</b></span>
                             @error('absorption_heat_pumps')
@@ -609,7 +609,7 @@
 
                     <div class="mt-5">{{-- SI. Sistemi ibridi --}}
                         <label for="hybrid_system" class="checkbox-wrapper">
-                            <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} {{old('hybrid_system') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('hybrid_system') is-invalid @enderror" name="hybrid_system" id="hybrid_system" value="true">
+                            <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} {{old('hybrid_system') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('hybrid_system') is-invalid error @enderror" name="hybrid_system" id="hybrid_system" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>SI. Sistemi ibridi</b></span>
                             @error('hybrid_system')
@@ -724,7 +724,7 @@
 
                     <div class="mt-5">{{-- CO. Sistemi di microgenerazione --}}
                         <label class="checkbox-wrapper">
-                            <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} {{old('microgeneration_system') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('microgeneration_system') is-invalid @enderror" name="microgeneration_system" id="microgeneration_system" value="true">
+                            <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} {{old('microgeneration_system') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('microgeneration_system') is-invalid error @enderror" name="microgeneration_system" id="microgeneration_system" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
                             @error('microgeneration_system')
@@ -837,7 +837,7 @@
 
                     <div class="mt-5">{{--SA. Installazione di scaldacqua a pompa di calore  --}}
                         <label class="checkbox-wrapper">
-                            <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} {{old('water_heatpumps_installation') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('water_heatpumps_installation') is-invalid @enderror" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">
+                            <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} {{old('water_heatpumps_installation') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('water_heatpumps_installation') is-invalid error @enderror" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>SA. Installazione di scaldacqua a pompa di calore</b></span>
                             @error('water_heatpumps_installation')
@@ -892,7 +892,7 @@
 
                     <div class="mt-5">{{-- IB. Generatori a biomamassa --}}
                         <label class="checkbox-wrapper">
-                            <input {{$vertwall->biome_generators == 'true' ? 'checked' : ''}} {{old('biome_generators') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('biome_generators') is-invalid @enderror" name="biome_generators" id="biome_generators" value="true">
+                            <input {{$vertwall->biome_generators == 'true' ? 'checked' : ''}} {{old('biome_generators') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('biome_generators') is-invalid error @enderror" name="biome_generators" id="biome_generators" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>IB. Generatori a biomassa</b></span>
                             @error('biome_generators')
@@ -909,7 +909,7 @@
 
                     <div class="mt-5">{{-- Collettori solari --}}
                         <label class="checkbox-wrapper">
-                            <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} {{old('solar_panel') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('solar_panel') is-invalid @enderror" name="solar_panel" id="solar_panel" value="true">
+                            <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} {{old('solar_panel') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('solar_panel') is-invalid error @enderror" name="solar_panel" id="solar_panel" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>Collettori solari</b></span>
                             @error('solar_panel')
@@ -1042,7 +1042,7 @@
                         <span>Destinati a</span>
 
                         <label for="solar_panel_use_winter" class="checkbox-wrapper ml-4">
-                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} {{old('solar_panel_use_winter') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('solar_panel_use_winter') is-invalid @enderror" name="solar_panel_use_winter" id="solar_panel_use_winter" value="true">
+                            <input {{$vertwall->solar_panel_use_winter == 'true' ? 'checked' : ''}} {{old('solar_panel_use_winter') == 'true' ? 'checked' : ''}}  type="checkbox"  class="@error('solar_panel_use_winter') is-invalid error @enderror" name="solar_panel_use_winter" id="solar_panel_use_winter" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione invernale</span>
                             @error('solar_panel_use_winter')
@@ -1052,7 +1052,7 @@
                             @enderror
                         </label>
                         <label for="solar_panel_use_summer" class="checkbox-wrapper  ml-4">
-                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} {{old('solar_panel_use_summer') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('solar_panel_use_summer') is-invalid @enderror" name="solar_panel_use_summer" id="solar_panel_use_summer" value="true">
+                            <input {{$vertwall->solar_panel_use_summer == 'true' ? 'checked' : ''}} {{old('solar_panel_use_summer') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('solar_panel_use_summer') is-invalid error @enderror" name="solar_panel_use_summer" id="solar_panel_use_summer" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Climatizzazione estiva</span>
                             @error('solar_panel_use_winter')
@@ -1062,7 +1062,7 @@
                             @enderror
                         </label>
                         <label for="solar_panel_use_water" class="checkbox-wrapper  ml-4">
-                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} {{old('solar_panel_use_water') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('solar_panel_use_water') is-invalid @enderror" name="solar_panel_use_water" id="solar_panel_use_water" value="true">
+                            <input {{$vertwall->solar_panel_use_water == 'true' ? 'checked' : ''}} {{old('solar_panel_use_water') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('solar_panel_use_water') is-invalid error @enderror" name="solar_panel_use_water" id="solar_panel_use_water" value="true">
                             <span class="checkmark"></span>
                             <span class="black" >Produzione di acqua calda sanitaria</span>
                             @error('solar_panel_use_winter')
@@ -1077,7 +1077,7 @@
                         <div class="d-flex align-items-center">
                             <p class="m-0">Il costo complessivo di progetto degli interventi sull’impianto ammonta a *</p>
                             <label for="total_acs_project_cost" class=" m-0 mr-4 black">
-                                <input type="number" value="{{old('total_acs_project_cost') ?? $vertwall->total_acs_project_cost}}" name="total_acs_project_cost" id="total_acs_project_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_acs_project_cost') is-invalid @enderror">
+                                <input type="number" value="{{old('total_acs_project_cost') ?? $vertwall->total_acs_project_cost}}" name="total_acs_project_cost" id="total_acs_project_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_acs_project_cost') is-invalid error @enderror">
                                 €
                                 @error('total_acs_project_cost')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
@@ -1094,7 +1094,7 @@
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0">L'ammontare massimo dei lavori per la sostituzione degli impianti è pari a</p>
                         <label for="total_cost_installations" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('total_cost_installations') ?? $vertwall->total_cost_installations}}" name="total_cost_installations" id="total_cost_installations" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_cost_installations') is-invalid @enderror">
+                            <input type="number" value="{{old('total_cost_installations') ?? $vertwall->total_cost_installations}}" name="total_cost_installations" id="total_cost_installations" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_cost_installations') is-invalid error @enderror">
                             €
                             @error('total_cost_installations')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
@@ -1130,7 +1130,7 @@
                             <span>SAL. n.1</span>
                             <label for="total_replacing_cost_1" class="d-flex flex-column align-items-end mb-3 mr-1">
                                 <small class="black">almeno al 30%</small>
-                                <input type="number" value="{{old('total_replacing_cost_1') ?? $vertwall->total_replacing_cost_1}}" name="total_replacing_cost_1" id="total_replacing_cost_1" class="ml-2 text-right px-2 border @error('total_replacing_cost_1') is-invalid @enderror" style="width:120px">
+                                <input type="number" value="{{old('total_replacing_cost_1') ?? $vertwall->total_replacing_cost_1}}" name="total_replacing_cost_1" id="total_replacing_cost_1" class="ml-2 text-right px-2 border @error('total_replacing_cost_1') is-invalid error @enderror" style="width:120px">
                                 @error('total_replacing_cost_1')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
                                     <strong>{{ 'incorrect' }}</strong>
@@ -1143,7 +1143,7 @@
                             <span>SAL. n.2</span>
                             <label for="total_replacing_cost_2" class="d-flex flex-column align-items-end mb-3 mr-1">
                                 <small class="black">almeno al 60%</small>
-                                <input type="number" value="{{old('total_replacing_cost_2') ?? $vertwall->total_replacing_cost_2}}" name="total_replacing_cost_2" id="total_replacing_cost_2" class="ml-2 text-right px-2 border @error('total_replacing_cost_2') is-invalid @enderror" style="width:120px">
+                                <input type="number" value="{{old('total_replacing_cost_2') ?? $vertwall->total_replacing_cost_2}}" name="total_replacing_cost_2" id="total_replacing_cost_2" class="ml-2 text-right px-2 border @error('total_replacing_cost_2') is-invalid error @enderror" style="width:120px">
                                 @error('total_replacing_cost_2')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
                                     <strong>{{ 'incorrect' }}</strong>
@@ -1155,7 +1155,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>SAL.F</span>
                             <label for="final_replacing_cost" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <input type="number" value="{{old('final_replacing_cost') ?? $vertwall->final_replacing_cost}}" name="final_replacing_cost" id="final_replacing_cost" class="ml-2 border text-right px-2 @error('final_replacing_cost') is-invalid @enderror" style="width:120px;">
+                                <input type="number" value="{{old('final_replacing_cost') ?? $vertwall->final_replacing_cost}}" name="final_replacing_cost" id="final_replacing_cost" class="ml-2 border text-right px-2 @error('final_replacing_cost') is-invalid error @enderror" style="width:120px;">
                                 @error('total_acs_project_cost')
                                   <span class="invalid-feedback pl-3 m-0" role="alert">
                                     <strong>{{ 'incorrect' }}</strong>
@@ -1183,7 +1183,7 @@
                     <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
                         <p class="m-0 font-weight-bold">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                         <label for="replacing_energetic_savings" class=" m-0 mr-4 black">
-                            <input type="number" value="{{old('replacing_energetic_savings') ?? $vertwall->replacing_energetic_savings}}" name="replacing_energetic_savings" id="replacing_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('replacing_energetic_savings') is-invalid @enderror">
+                            <input type="number" value="{{old('replacing_energetic_savings') ?? $vertwall->replacing_energetic_savings}}" name="replacing_energetic_savings" id="replacing_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('replacing_energetic_savings') is-invalid error @enderror">
                             KWh/anno
                         </label>
                     </div>
