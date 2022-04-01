@@ -117,6 +117,12 @@ Route::middleware('business')
 
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
+    Route::delete('/absorption_heat_pumps/{id}/delete', 'InterventionController@deleteAbsorptionHeatPumps');
+    Route::delete('/hybrid_systems/{id}/delete', 'InterventionController@deleteHybridSystems');
+    Route::delete('/microgeneration_systems/{id}/delete', 'InterventionController@deleteMicrogenerationSystems');
+    Route::delete('/water_heatpumps_installations/{id}/delete', 'InterventionController@deleteWaterHeatpumpsInstallations');
+    Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
+    Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 });
 
 
