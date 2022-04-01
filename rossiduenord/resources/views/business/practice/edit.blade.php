@@ -341,7 +341,7 @@
                 <div class="form-group" style="width: 30%;">
                     <label for="referent_email" class="text">{{ __('Email di riferimento') }}</label>
                     <div>
-                        <input id="referent_email" type="text" style="height: 47px!important" class="form-control @error('referent_email') is-invalid @enderror" name="referent_email" value="{{ old('referent_email') ?? $practice->referent_email }}" autocomplete="referent_email" autofocus>
+                        <input id="referent_email" type="email" style="height: 47px!important" class="form-control @error('referent_email') is-invalid @enderror" name="referent_email" value="{{ old('referent_email') ?? $practice->referent_email }}" autocomplete="referent_email" autofocus>
 
                         @error('referent_email')
                             <span class="invalid-feedback" role="alert">

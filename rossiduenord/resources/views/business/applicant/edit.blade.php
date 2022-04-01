@@ -73,7 +73,7 @@
                     <div class="form-group" style="width: 48%;">
                         <label for="phone" class="text">{{ __('Telefono') }}</label>
                         <div>
-                            <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $applicant->phone   }}" required autocomplete="phone" autofocus>
+                            <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $applicant->phone   }}"  autocomplete="phone" autofocus>
                             
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                     <div class="form-group" style="width: 50%;">
                         <label for="mobile_phone" class="text">{{ __('Cellulare') }}</label>
                         <div>
-                            <input id="mobile_phone" type="text" style="height: 47px!important" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{  old('mobile_phone') ?? $applicant->mobile_phone  }}" required autocomplete="mobile_phone" autofocus>
+                            <input id="mobile_phone" type="text" style="height: 47px!important" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{  old('mobile_phone') ?? $applicant->mobile_phone  }}"  autocomplete="mobile_phone" autofocus>
                             
                             @error('mobile_phone')
                             <span class="invalid-feedback" role="alert">
@@ -114,7 +114,7 @@
                     <h6>Ruolo nella pratica*</h6>
                     <label class="checkbox-wrapper d-flex">
                         <span>Persona fisica</span>
-                        <input {{$applicant->role == 'persona fisica' ? 'checked' : ''}} {{old('role') == '' ? 'checked' : 'persona fisica'}}  type="radio" name="role" value="persona fisica">     
+                        <input {{$applicant->role == 'persona fisica' ? 'checked' : ''}} {{old('role') == 'persona fisica' ? 'checked' : ''}}  type="radio" name="role" value="persona fisica">     
                         <span class="checkmark"></span> 
                     </label>
                     <label class="checkbox-wrapper d-flex">
