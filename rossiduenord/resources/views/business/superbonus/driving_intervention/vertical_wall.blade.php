@@ -664,7 +664,7 @@
                                 <div class="box_input" data-id="microgeneration_system-{{$practice->id}}-{{$microgeneration_system->id}}">
                                     {{ $i + 1 }}
                                     <div class="row_input">
-                                        <input type="hidden" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" id="hybrid_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" value="">
+                                        <input type="hidden" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" value="">
                                     <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]">
                                         Tipo sostituito
                                         <select name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]">
@@ -769,51 +769,63 @@
                     </div>
 
                     <div class="mt-5">{{--SA. Installazione di scaldacqua a pompa di calore  --}}
-                        <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>SA. Installazione di scaldacqua a pompa di calore</b></span>
-                        </label>
+                        <div class="d-flex align-items-center mb-3">
+                            <label class="checkbox-wrapper d-flex align-items-center mb-0">
+                                <input {{$vertwall->water_heatpumps_installation == 'true' ? 'checked' : ''}} type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>SA. Installazione di scaldacqua a pompa di calore</b></span>
+                            </label>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addWaterHeatpumpsInstallation(event)">+</div>
+                            <span><strong>(n. {{ $water_heatpumps_installations->count() }} Installazione di scaldacqua a pompa di calore)</strong></span>
+                        </div>
                         <p style="width: 70%;">In sostituzione di un sistema di produzione di acqua calda quando avviene con lo stesso generatore di calore destinato alla climatizzazione invernale ai sensi delle lettre b) e c) del comma 1 dell’articolo 119 del Decreto Rilancio</p>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input" id="">
-                                <div class="row_input">
-                                    <label for="">
+                            <div id="water_heatpumps_installation_wrapper">
+                                @forelse($water_heatpumps_installations as $i => $water_heatpumps_installation)
+                                    <div class="box_input" data-id="water_heatpumps_installation-{{$practice->id}}-{{$water_heatpumps_installation->id}}">
+                                    {{ $i + 1 }}
+                                    <div class="row_input">
+                                        <input type="hidden" name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][condomino_id]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][condomino_id]" value="">
+                                    <label for="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][tipo_scaldacqua_sostituito]">
                                         Tipo scaldaacqua sostituito
-                                        <select name="" id="">
-                                            <option value="Boiler elettrico">Boiler elettrico</option>
-                                            <option value="Gas/Gasolio">Gas/Gasolio</option>
-                                            <option value="Altro">Altro</option>
+                                        <select name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][tipo_scaldacqua_sostituito]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][tipo_scaldacqua_sostituito]">
+                                            <option {{ $water_heatpumps_installation->tipo_scaldacqua_sostituito === 'Boiler elettrico' ? 'selected' : '' }} value="Boiler elettrico">Boiler elettrico</option>
+                                            <option {{ $water_heatpumps_installation->tipo_scaldacqua_sostituito === 'Gas/Gasolio' ? 'selected' : '' }} value="Gas/Gasolio">Gas/Gasolio</option>
+                                            <option {{ $water_heatpumps_installation->tipo_scaldacqua_sostituito === 'Altro' ? 'selected' : '' }} value="Altro">Altro</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_sostituito]">
                                         Pu scaldacqua sostituito
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_sostituito]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_sostituito]" value="{{ $water_heatpumps_installation->pu_scaldacqua_sostituito }}">
                                         kW
                                     </label>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="row_input">
-                                        <label for="">
+                                        <label for="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_a_pdc]">
                                             Pu scaldacqua a PDC
-                                            <input class="input_small" type="number" name="" id="">
+                                            <input class="input_small" type="number" name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_a_pdc]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][pu_scaldacqua_a_pdc]" value="{{ $water_heatpumps_installation->pu_scaldacqua_a_pdc }}">
                                             kW
                                         </label>
-                                        <label for="">
+                                        <label for="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][cop_nuovo_scaldacqua]">
                                             COP del nuovo scaldacqua
-                                            <input class="input_small" type="number" name="" id="">
+                                            <input class="input_small" type="number" name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][cop_nuovo_scaldacqua]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][cop_nuovo_scaldacqua]" value="{{ $water_heatpumps_installation->cop_nuovo_scaldacqua }}">
                                         </label>
-                                        <label for="">
+                                        <label for="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][capacita_accumulo]">
                                             Capacità accumulo
-                                            <input class="input_small" type="number" name="" id="">
+                                            <input class="input_small" type="number" name="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][capacita_accumulo]" id="water_heatpumps_installations[{{$practice->id}}-{{$water_heatpumps_installation->id}}][capacita_accumulo]" value="{{ $water_heatpumps_installation->capacita_accumulo }}">
                                             L
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <div onclick="deleteWaterHeatpumpsInstallation({{$practice->id}}, {{$water_heatpumps_installation->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                    </button>
+                                    </div>
                                 </div>
+                            </div>
+                                @empty
+                                    <p id="water_heatpumps_installations_no_data_row">Nessun dato</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -1088,4 +1100,5 @@
     @include('business.scripts.absorption_heat_pump')
     @include('business.scripts.hybrid_system')
     @include('business.scripts.microgeneration_system')
+    @include('business.scripts.water_heatpumps_installation')
 @endpush

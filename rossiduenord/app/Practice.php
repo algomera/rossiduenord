@@ -91,4 +91,8 @@ class Practice extends Model
     public function microgeneration_systems() {
         return $this->hasMany(MicrogenerationSystem::class);
     }
+
+    public function water_heatpumps_installations() {
+        return $this->hasMany(WaterHeatpumpsInstallation::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\HeatPump;
 use App\Http\Controllers\Controller;
 use App\HybridSystem;
 use App\MicrogenerationSystem;
+use App\WaterHeatpumpsInstallation;
 
 class InterventionController extends Controller
 {
@@ -34,5 +35,10 @@ class InterventionController extends Controller
     public function deleteMicrogenerationSystems($id) {
         $microgeneration_system = MicrogenerationSystem::find($id);
         $microgeneration_system->delete();
+    }
+
+    public function deleteWaterHeatpumpsInstallations($id) {
+        $water_heatpumps_installation = WaterHeatpumpsInstallation::find($id);
+        $water_heatpumps_installation->delete();
     }
 }

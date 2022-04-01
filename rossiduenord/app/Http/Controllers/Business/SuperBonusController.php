@@ -55,7 +55,9 @@ class SuperBonusController extends Controller
         $absorption_heat_pumps = $practice->absorption_heat_pumps;
         $hybrid_systems = $practice->hybrid_systems;
         $microgeneration_systems = $practice->microgeneration_systems;
+        $water_heatpumps_installations = $practice->water_heatpumps_installations;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
+            'water_heatpumps_installations',
             'microgeneration_systems',
             'hybrid_systems',
                 'absorption_heat_pumps',
@@ -222,6 +224,7 @@ class SuperBonusController extends Controller
         $practice->verical_wall->absorption_heat_pump = $request->get('absorption_heat_pump');
         $practice->verical_wall->hybrid_system = $request->get('hybrid_system');
         $practice->verical_wall->microgeneration_system = $request->get('microgeneration_system');
+        $practice->verical_wall->water_heatpumps_installation = $request->get('water_heatpumps_installation');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
@@ -233,11 +236,14 @@ class SuperBonusController extends Controller
         // Add Absorption Heat Pump
         $this->addAbsorptionHeatPump($practice, $request);
 
-        // Add Absorption Heat Pump
+        // Add Hybrid System
         $this->addHybridSystem($practice, $request);
 
-        // Add Absorption Heat Pump
+        // Add Microgeneration System
         $this->addMicrogenerationSystem($practice, $request);
+
+        // Add Water Heat Pumps Installation
+        $this->addWaterHeatpumpsInstallation($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -437,6 +443,30 @@ class SuperBonusController extends Controller
                         "potenza_risc_suppl" => $item['potenza_risc_suppl'],
                         "efficienza_ns" => $item['efficienza_ns'],
                         "classe_energ" => $item['classe_energ'],
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addWaterHeatpumpsInstallation($practice, $request) {
+        if($request->get('water_heatpumps_installations')) {
+            foreach ($request->get('water_heatpumps_installations') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->water_heatpumps_installations()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->water_heatpumps_installations()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_scaldacqua_sostituito" => $item['tipo_scaldacqua_sostituito'],
+                        "pu_scaldacqua_sostituito" => $item['pu_scaldacqua_sostituito'],
+                        "pu_scaldacqua_a_pdc" => $item['pu_scaldacqua_a_pdc'],
+                        "cop_nuovo_scaldacqua" => $item['cop_nuovo_scaldacqua'],
+                        "capacita_accumulo" => $item['capacita_accumulo'],
                     ]);
                 }
             }
