@@ -57,7 +57,9 @@ class SuperBonusController extends Controller
         $microgeneration_systems = $practice->microgeneration_systems;
         $water_heatpumps_installations = $practice->water_heatpumps_installations;
         $biome_generators = $practice->biome_generators;
+        $solar_panels = $practice->solar_panels;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
+            'solar_panels',
             'biome_generators',
             'water_heatpumps_installations',
             'microgeneration_systems',
@@ -228,6 +230,7 @@ class SuperBonusController extends Controller
         $practice->verical_wall->microgeneration_system = $request->get('microgeneration_system');
         $practice->verical_wall->water_heatpumps_installation = $request->get('water_heatpumps_installation');
         $practice->verical_wall->biome_generator = $request->get('biome_generator');
+        $practice->verical_wall->solar_panel = $request->get('solar_panel');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
@@ -250,6 +253,9 @@ class SuperBonusController extends Controller
 
         // Add Biome Generator
         $this->addBiomeGenerator($practice, $request);
+
+        // Add Solar Panel
+        $this->addSolarPanel($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -502,6 +508,39 @@ class SuperBonusController extends Controller
                         "p_al_focolare" => $item['p_al_focolare'],
                         "rend_utile_alla_pot_nom" => $item['rend_utile_alla_pot_nom'],
                         "sup_riscaldata" => $item['sup_riscaldata'],
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addSolarPanel($practice, $request) {
+        if($request->get('solar_panels')) {
+            foreach ($request->get('solar_panels') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->solar_panels()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->solar_panels()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "sup_lorda_singolo_modulo" => $item['sup_lorda_singolo_modulo'],
+                        "num_moduli" => $item['num_moduli'],
+                        "sup_totale" => $item['sup_totale'],
+                        "certificazione_solar_keymark" => isset($item['certificazione_solar_keymark']),
+                        "tipo_di_collettori" => $item['tipo_di_collettori'],
+                        "tipo_di_installazione" => $item['tipo_di_installazione'],
+                        "inclinazione" => $item['inclinazione'],
+                        "orientamento" => $item['orientamento'],
+                        "impianto_factory_made" => $item['impianto_factory_made'],
+                        "q_col_q_sol" => $item['q_col_q_sol'],
+                        "ql" => $item['ql'],
+                        "accumulo_in_litri" => $item['accumulo_in_litri'],
+                        "destinazione_calore" => $item['destinazione_calore'],
+                        "tipo_impianto_integrato_o_sostituito" => $item['tipo_impianto_integrato_o_sostituito'],
                     ]);
                 }
             }

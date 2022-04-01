@@ -9,6 +9,7 @@ use App\HeatPump;
 use App\Http\Controllers\Controller;
 use App\HybridSystem;
 use App\MicrogenerationSystem;
+use App\SolarPanel;
 use App\WaterHeatpumpsInstallation;
 
 class InterventionController extends Controller
@@ -46,5 +47,10 @@ class InterventionController extends Controller
     public function deleteBiomeGenerators($id) {
         $biome_generator = BiomeGenerator::find($id);
         $biome_generator->delete();
+    }
+
+    public function deleteSolarPanels($id) {
+        $solar_panel = SolarPanel::find($id);
+        $solar_panel->delete();
     }
 }

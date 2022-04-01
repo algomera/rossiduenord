@@ -122,6 +122,7 @@ Route::middleware('business')
     Route::delete('/microgeneration_systems/{id}/delete', 'InterventionController@deleteMicrogenerationSystems');
     Route::delete('/water_heatpumps_installations/{id}/delete', 'InterventionController@deleteWaterHeatpumpsInstallations');
     Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
+    Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 });
 
 

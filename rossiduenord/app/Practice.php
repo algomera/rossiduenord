@@ -99,4 +99,8 @@ class Practice extends Model
     public function biome_generators() {
         return $this->hasMany(BiomeGenerator::class);
     }
+
+    public function solar_panels() {
+        return $this->hasMany(SolarPanel::class);
+    }
 }

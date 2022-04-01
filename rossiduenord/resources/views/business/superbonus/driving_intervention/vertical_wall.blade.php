@@ -935,161 +935,142 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Il costo previsto per i generatori a biomassa IB) ammonta a *</p>
-                                <label for="IB_expected_cos" class=" m-0 mr-4 black">
-                                    <input type="text" value="{{$vertwall->IB_expected_cost}}" name="IB_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                    €
-                                </label>
-                            </div>
-{{--                            <button class="add-button">Computo metrico</button>--}}
-                        </div>
-                        <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-
-                        <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
-                                <label for="IB_max_cost" class=" m-0 mr-4 black">
-                                    <input type="text" value="{{$vertwall->IB_max_cost}}" name="IB_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                    €
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
-                                <label for="IB_nr_savings" class=" m-0 mr-4 black">
-                                    <input type="text" value="{{$vertwall->IB_nr_savings}}" name="IB_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                    KWh/anno
-                                </label>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="mt-5">{{-- Collettori solari --}}
-                        <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel" id="solar_panel" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>Collettori solari</b></span>
-                        </label>
+                        <div class="d-flex align-items-center mb-3">
+                            <label class="checkbox-wrapper d-flex align-items-center mb-0">
+                                <input {{$vertwall->solar_panel == 'true' ? 'checked' : ''}} type="checkbox" name="solar_panel" id="solar_panel" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>Collettori solari</b></span>
+                            </label>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addSolarPanel(event)">+</div>
+                            <span><strong>(n. {{ $solar_panels->count() }} Collettori solari)</strong></span>
+                        </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input" id="">
+                            <div id="solar_panel_wrapper">
+                                @forelse($solar_panels as $i => $solar_panel)
+                                <div class="box_input"  data-id="solar_panel-{{$practice->id}}-{{$solar_panel->id}}">
+                                    {{ $i + 1 }}
                                 <div class="row_input">
-                                    <label for="">
+                                    <input type="hidden" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][condomino_id]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][condomino_id]" value="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_lorda_singolo_modulo]">
                                         Superfice lorda Ag di un singolo modulo
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_lorda_singolo_modulo]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_lorda_singolo_modulo]" value="{{ $solar_panel->sup_lorda_singolo_modulo }}">
                                         m²
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][num_moduli]">
                                         N° di moduli
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][num_moduli]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][num_moduli]" value="{{ $solar_panel->num_moduli }}">
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_totale]">
                                         Sup. Totale
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_totale]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][sup_totale]" value="{{ $solar_panel->sup_totale }}">
                                         m²
                                     </label>
-                                    <label for="" class="checkbox-wrapper d-flex">
-                                        <input type="checkbox" name="" id="" value="true">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][certificazione_solar_keymark]" class="checkbox-wrapper d-flex">
+                                        <input type="checkbox" {{ $solar_panel->certificazione_solar_keymark ? 'checked' : '' }} name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][certificazione_solar_keymark]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][certificazione_solar_keymark]" value="true">
                                         <span class="checkmark"></span>
                                         Certificazione solar Keymark
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_collettori]">
                                         Tipo di collettori
-                                        <select name="" id="">
-                                            <option value="Piani vetrati">Piani vetrati</option>
-                                            <option value="Sotto vuoto o tubi evacuati">Sotto vuoto o tubi evacuati</option>
-                                            <option value="A concentrazione">A concentrazione</option>
-                                            <option value="Scoperti">Scoperti</option>
+                                        <select name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_collettori]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_collettori]">
+                                            <option {{ $solar_panel->tipo_di_collettori === 'Piani vetrati' ? 'selected' : '' }} value="Piani vetrati">Piani vetrati</option>
+                                            <option {{ $solar_panel->tipo_di_collettori === 'Sotto vuoto o tubi evacuati' ? 'selected' : '' }} value="Sotto vuoto o tubi evacuati">Sotto vuoto o tubi evacuati</option>
+                                            <option {{ $solar_panel->tipo_di_collettori === 'A concentrazione' ? 'selected' : '' }} value="A concentrazione">A concentrazione</option>
+                                            <option {{ $solar_panel->tipo_di_collettori === 'Scoperti' ? 'selected' : '' }} value="Scoperti">Scoperti</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_installazione]">
                                         Tipo di installazione
-                                        <select name="" id="">
-                                            <option value="Tetto piano">Tetto piano</option>
-                                            <option value="Tetto a falda">Tetto a falda</option>
-                                            <option value="Altro">Altro</option>
+                                        <select name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_installazione]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_di_installazione]">
+                                            <option {{ $solar_panel->tipo_di_installazione === 'Tetto piano' ? 'selected' : '' }} value="Tetto piano">Tetto piano</option>
+                                            <option {{ $solar_panel->tipo_di_installazione === 'Tetto a falda' ? 'selected' : '' }} value="Tetto a falda">Tetto a falda</option>
+                                            <option {{ $solar_panel->tipo_di_installazione === 'Altro' ? 'selected' : '' }} value="Altro">Altro</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][inclinazione]">
                                         inclinazione
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][inclinazione]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][inclinazione]" value="{{ $solar_panel->inclinazione }}">
                                         %
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][orientamento]">
                                         Orientamento
-                                        <select name="" id="">
-                                            <option value="Nord">Nord</option>
-                                            <option value="Nord-Est">Nord-Est</option>
-                                            <option value="Est">Est</option>
-                                            <option value="Sud-Est">Sud-Est</option>
-                                            <option value="Sud">Sud</option>
-                                            <option value="Sud-Ovest">Sud-Ovest</option>
-                                            <option value="Ovest">Ovest</option>
-                                            <option value="Nord-Ovest">Nord-Ovest</option>
-                                            <option value="P-orizzontale">P-orizzontale</option>
+                                        <select name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][orientamento]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][orientamento]">
+                                            <option {{ $solar_panel->orientamento === 'Nord' ? 'selected' : '' }} value="Nord">Nord</option>
+                                            <option {{ $solar_panel->orientamento === 'Nord-Est' ? 'selected' : '' }} value="Nord-Est">Nord-Est</option>
+                                            <option {{ $solar_panel->orientamento === 'Est' ? 'selected' : '' }} value="Est">Est</option>
+                                            <option {{ $solar_panel->orientamento === 'Sud-Est' ? 'selected' : '' }} value="Sud-Est">Sud-Est</option>
+                                            <option {{ $solar_panel->orientamento === 'Sud' ? 'selected' : '' }} value="Sud">Sud</option>
+                                            <option {{ $solar_panel->orientamento === 'Sud-Ovest' ? 'selected' : '' }} value="Sud-Ovest">Sud-Ovest</option>
+                                            <option {{ $solar_panel->orientamento === 'Ovest' ? 'selected' : '' }} value="Ovest">Ovest</option>
+                                            <option {{ $solar_panel->orientamento === 'Nord-Ovest' ? 'selected' : '' }} value="Nord-Ovest">Nord-Ovest</option>
+                                            <option {{ $solar_panel->orientamento === 'P-orizzontale' ? 'selected' : '' }} value="P-orizzontale">P-orizzontale</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]">
                                         Impianto factory made
-                                        <input type="radio" name="" id="">
+                                        <input type="radio" {{ $solar_panel->impianto_factory_made === 'N.D' ? 'checked' : '' }} name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" value="N.D">
                                         N.D
                                     </label>
-                                    <label for="">
-                                        <input type="radio" name="" id="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]">
+                                        <input type="radio" {{ $solar_panel->impianto_factory_made === 'No' ? 'checked' : '' }} name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" value="No">
                                         No
                                     </label>
-                                    <label for="">
-                                        <input type="radio" name="" id="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]">
+                                        <input type="radio" {{ $solar_panel->impianto_factory_made === 'Si' ? 'checked' : '' }} name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][impianto_factory_made]" value="Si">
                                         Si
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][q_col_q_sol]">
                                         Q col/Q sol
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][q_col_q_sol]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][q_col_q_sol]" value="{{ $solar_panel->q_col_q_sol }}">
                                         kWht
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][ql]">
                                         QL
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][ql]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][ql]" value="{{ $solar_panel->ql }}">
                                         MJ
                                     </label>
-                                    <label for="">
+                                    <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][accumulo_in_litri]">
                                         Accumulo in litri
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][accumulo_in_litri]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][accumulo_in_litri]" value="{{ $solar_panel->accumulo_in_litri }}">
                                     </label>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="row_input">
-                                        <label for="">
+                                        <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][destinazione_calore]">
                                             Destinazione del calore
-                                            <select name="" id="">
-                                                <option value="acqua sanitaria">Produzione di acqua calda sanitaria</option>
-                                                <option value="Produzione di ACS e riscaldamento ambiente">Produzione di ACS e riscaldamento ambiente</option>
-                                                <option value="Produzione di calore di processo">Produzione di calore di processo</option>
-                                                <option value="Riscaldamento piscine">Riscaldamento piscine</option>
-                                                <option value="Altro">Altro</option>
+                                            <select name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][destinazione_calore]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][destinazione_calore]">
+                                                <option {{ $solar_panel->destinazione_calore === 'Acqua sanitaria' ? 'selected' : '' }} value="Acqua sanitaria">Produzione di acqua calda sanitaria</option>
+                                                <option {{ $solar_panel->destinazione_calore === 'Produzione di ACS e riscaldamento ambiente' ? 'selected' : '' }} value="Produzione di ACS e riscaldamento ambiente">Produzione di ACS e riscaldamento ambiente</option>
+                                                <option {{ $solar_panel->destinazione_calore === 'Produzione di calore di processo' ? 'selected' : '' }} value="Produzione di calore di processo">Produzione di calore di processo</option>
+                                                <option {{ $solar_panel->destinazione_calore === 'Riscaldamento piscine' ? 'selected' : '' }} value="Riscaldamento piscine">Riscaldamento piscine</option>
+                                                <option {{ $solar_panel->destinazione_calore === 'Altro' ? 'selected' : '' }} value="Altro">Altro</option>
                                             </select>
                                         </label>
-                                        <label for="">
+                                        <label for="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_impianto_integrato_o_sostituito]">
                                             Tipo impianto integrato o sostituito
-                                            <select name="" id="">
-                                                <option value="Boiler elettrico">Boiler elettrico</option>
-                                                <option value="Gas/Gasolio">Gas/Gasolio</option>
-                                                <option value="Altro">Altro</option>
+                                            <select name="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_impianto_integrato_o_sostituito]" id="solar_panels[{{$practice->id}}-{{$solar_panel->id}}][tipo_impianto_integrato_o_sostituito]">
+                                                <option {{ $solar_panel->tipo_impianto_integrato_o_sostituito === 'Boiler elettrico' ? 'selected' : '' }} value="Boiler elettrico">Boiler elettrico</option>
+                                                <option {{ $solar_panel->tipo_impianto_integrato_o_sostituito === 'Gas/Gasolio' ? 'selected' : '' }} value="Gas/Gasolio">Gas/Gasolio</option>
+                                                <option {{ $solar_panel->tipo_impianto_integrato_o_sostituito === 'Altro' ? 'selected' : '' }} value="Altro">Altro</option>
                                             </select>
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <div onclick="deleteSolarPanel({{$practice->id}}, {{$solar_panel->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                    </button>
+                                    </div>
                                 </div>
+                            </div>
+                                @empty
+                                    <p id="solar_panels_no_data_row">Nessun dato</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -1228,4 +1209,5 @@
     @include('business.scripts.microgeneration_system')
     @include('business.scripts.water_heatpumps_installation')
     @include('business.scripts.biome_generator')
+    @include('business.scripts.solar_panel')
 @endpush
