@@ -88,11 +88,10 @@ class PracticeController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
     {
-        $practice_data = Carbon::today()->format('d/m/Y');
         $subject = $practice->subject;
         $applicant = $practice->applicant;
         $building = $practice->building;
-        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus', 'practice_data'));
+        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
     }
 
     /**
@@ -106,9 +105,9 @@ class PracticeController extends Controller
     {
         $validated = $request->validate([
             'applicant_id' => ' integer | exists:applicants,id',
-            'import' => 'nullable | numeric | min:3',
-            'practical_phase' => 'required | string',
-            'real_estate_type' => 'required | string',
+            'import' => 'nullable | numeric | min:2',
+            'practical_phase' => 'nullable | string',
+            'real_estate_type' => 'nullable | string',
             'month' => 'nullable | string',
             'year' => 'nullable | numeric | min:2',
             'policy_name' => 'nullable | string | min:3',
@@ -121,9 +120,9 @@ class PracticeController extends Controller
             'work_start' => 'nullable | string',
             'c_m' => 'nullable | numeric |min:2',
             'assev_tecnica' => 'nullable | numeric |min:2',
-            'nominative' => 'nullable | string |min:3 |max:80',
-            'lastName' => 'nullable | string | min:3 | max:30',
-            'name' => 'nullable | string | min:3 | max:30',
+            'nominative' => 'nullable | string |min:3 |max:150',
+            'lastName' => 'nullable | string | min:3 | max:50',
+            'name' => 'nullable | string | min:3 | max:50',
             'policy' => 'nullable | string',
             'request_policy' => 'nullable | string | min:3 |max:30',
             'referent_email' => 'nullable | email ',

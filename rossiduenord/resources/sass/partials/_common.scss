@@ -7,6 +7,12 @@
 input {
     font-weight: 600;
 }
+//input number -arrows removed-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .card {
     box-shadow: grey 0px 0px 10px -5px !important;
@@ -118,6 +124,10 @@ a {
     width: 80%;
 }
 
+.w-10 {
+    width: 10% !important;
+}
+
 //color
 .bg-body {
     background-color: $bg-body !important;
@@ -166,7 +176,7 @@ a {
 .font-500 {
     font-weight: 500;
 }
-.text-left{
+.text-left {
     text-align: left;
 }
 //container
@@ -212,7 +222,7 @@ tbody {
                 text-align: center;
                 border-right: 1px solid white !important;
                 border-bottom: none !important;
-                padding: 10px!important;
+                padding: 10px !important;
             }
         }
     }
@@ -220,10 +230,10 @@ tbody {
         tr {
             background-color: transparent;
             td {
-                border-bottom: 1px solid #f2f2f2!important;
-                border-right: 1px solid #f2f2f2!important;
-                height: fit-content!important;
-                padding: 10px!important;
+                border-bottom: 1px solid #f2f2f2 !important;
+                border-right: 1px solid #f2f2f2 !important;
+                height: fit-content !important;
+                padding: 10px !important;
                 text-align: center;
                 vertical-align: middle;
                 a {
@@ -265,6 +275,15 @@ tbody {
     &:focus-visible {
         outline: none !important;
     }
+}
+
+//custom input style
+
+.credit-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid #dbdcdb;
 }
 
 //checkbox custom
@@ -366,11 +385,11 @@ label {
     padding: 0 20px;
     a {
         font-weight: 600;
-        color: #bbbcbc!important;
+        color: #bbbcbc !important;
         padding: 0 25px;
         cursor: pointer;
-        &:hover{
-            color: #61a4d7!important;
+        &:hover {
+            color: #61a4d7 !important;
         }
     }
     .frame {
@@ -448,7 +467,7 @@ label {
     }
 }
 
-.box_date_condomino{
+.box_date_condomino {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -462,7 +481,7 @@ label {
         border-radius: 3px;
         text-align: center;
     }
-    select{
+    select {
         background-color: rgb(242, 242, 242);
     }
 
@@ -475,7 +494,12 @@ label {
     .input_small {
         width: 80px;
     }
-    .input_large{
+    .input_large {
         width: 300px;
     }
+}
+// utilities
+
+.error {
+    border: 1px solid red !important;
 }

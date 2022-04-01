@@ -34,7 +34,7 @@
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="general_contractor" style="display:inline-block;" >General Contractor</label><br/>
-                                        <input type="text" class="col-md-12 @error('general_contractor') is-invalid @enderror" id="general_contractor" name="general_contractor" value="{{$subject->general_contractor}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('general_contractor') is-invalid @enderror" id="general_contractor" name="general_contractor" value="{{old('general_contractor') ?? $subject->general_contractor}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('general_contractor')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
 
  --}}
                                         </div>
-                                        <input type="text" class="col-md-12 @error('construction_company') is-invalid @enderror" id="construction_company" name="construction_company" value="{{$subject->construction_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('construction_company') is-invalid @enderror" id="construction_company" name="construction_company" value="{{old('construction_company') ?? $subject->construction_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('construction_company')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="hydrothermal_sanitary_company" style="display:inline-block;" >Azienda imp. idrotermosanitari</label><br/>
-                                        <input type="text" class="col-md-12 @error('hydrothermal_sanitary_company') is-invalid @enderror" id="hydrothermal_sanitary_company" name="hydrothermal_sanitary_company" value="{{$subject->hydrothermal_sanitary_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('hydrothermal_sanitary_company') is-invalid @enderror" id="hydrothermal_sanitary_company" name="hydrothermal_sanitary_company" value="{{old('hydrothermal_sanitary_company') ?? $subject->hydrothermal_sanitary_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('hydrothermal_sanitary_company')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="photovoltaic_company" style="display:inline-block;" >Azienda imp. elettrici/fotovoltaici</label><br/>
-                                        <input type="text" class="col-md-12 @error('photovoltaic_company') is-invalid @enderror" id="photovoltaic_company" name="photovoltaic_company" value="{{$subject->photovoltaic_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('photovoltaic_company') is-invalid @enderror" id="photovoltaic_company" name="photovoltaic_company" value="{{old('photovoltaic_company') ?? $subject->photovoltaic_company}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('photovoltaic_company')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="technician_APE_Ante" style="display:inline-block;" >Termotecnico APE Ante</label><br/>
-                                        <input type="text" class="col-md-12 @error('technician_APE_Ante') is-invalid @enderror" id="technician_APE_Ante" name="technician_APE_Ante" value="{{$subject->technician_APE_Ante}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('technician_APE_Ante') is-invalid @enderror" id="technician_APE_Ante" name="technician_APE_Ante" value="{{old('technician_APE_Ante') ?? $subject->technician_APE_Ante}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('technician_APE_Ante')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="technician_energy_efficient" style="display:inline-block;" >Termotecnico efficient. energetico</label><br/>
-                                        <input type="text" class="col-md-12 @error('technician_energy_efficient') is-invalid @enderror" id="technician_energy_efficient" name="technician_energy_efficient"  value="{{$subject->technician_energy_efficient}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('technician_energy_efficient') is-invalid @enderror" id="technician_energy_efficient" name="technician_energy_efficient"  value="{{old('technician_energy_efficient') ?? $subject->technician_energy_efficient}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('technician_energy_efficient')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="technician_APE_Post" style="display:inline-block;" >Termotecnico APE Post</label><br/>
-                                        <input type="text" class="col-md-12 @error('technician_APE_Post') is-invalid @enderror" id="technician_APE_Post" name="technician_APE_Post" value="{{$subject->technician_APE_Post}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('technician_APE_Post') is-invalid @enderror" id="technician_APE_Post" name="technician_APE_Post" value="{{old('technician_APE_Post') ?? $subject->technician_APE_Post}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('technician_APE_Post')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="structural_engineer" style="display:inline-block;" >strutturista</label><br/>
-                                        <input type="text" class="col-md-12 @error('structural_engineer') is-invalid @enderror" id="structural_engineer" name="structural_engineer" value="{{$subject->structural_engineer}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('structural_engineer') is-invalid @enderror" id="structural_engineer" name="structural_engineer" value="{{old('structural_engineer') ?? $subject->structural_engineer}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('structural_engineer')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="metric_calc_technician" style="display:inline-block;" >Tecnico Computo Metrico</label><br/>
-                                        <input type="text" class="col-md-12 @error('metric_calc_technician') is-invalid @enderror" id="metric_calc_technician" name="metric_calc_technician" value="{{$subject->metric_calc_technician}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('metric_calc_technician') is-invalid @enderror" id="metric_calc_technician" name="metric_calc_technician" value="{{old('metric_calc_technician') ?? $subject->metric_calc_technician}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('metric_calc_technician')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="work_director" style="display:inline-block;" >Direttore lavori</label><br/>
-                                        <input type="text" class="col-md-12 @error('work_director') is-invalid @enderror" id="work_director" name="work_director" value="{{$subject->work_director}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('work_director') is-invalid @enderror" id="work_director" name="work_director" value="{{old('work_director') ?? $subject->work_director}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('work_director')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="technical_assev" style="display:inline-block;" >Asseveratore tecnico</label><br/>
-                                        <input type="text" class="col-md-12 @error('technical_assev') is-invalid @enderror" id="technical_assev" name="technical_assev" value="{{$subject->technical_assev}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('technical_assev') is-invalid @enderror" id="technical_assev" name="technical_assev" value="{{old('technical_assev') ?? $subject->technical_assev}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('technical_assev')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -143,7 +143,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="fiscal_assev" style="display:inline-block;" >Asseveratore fiscale</label><br/>
-                                        <input type="text" class="col-md-12 @error('fiscal_assev') is-invalid @enderror" id="fiscal_assev" name="fiscal_assev"  value="{{$subject->fiscal_assev}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('fiscal_assev') is-invalid @enderror" id="fiscal_assev" name="fiscal_assev"  value="{{old('fiscal_assev') ?? $subject->fiscal_assev}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('fiscal_assev')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="phiscal_transferee" style="display:inline-block;" >Cessionario credito fiscale</label><br/>
-                                        <input type="text" class="col-md-12 @error('phiscal_transferee') is-invalid @enderror" id="phiscal_transferee" name="phiscal_transferee" value="{{$subject->phiscal_transferee}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('phiscal_transferee') is-invalid @enderror" id="phiscal_transferee" name="phiscal_transferee" value="{{old('phiscal_transferee') ?? $subject->phiscal_transferee}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('phiscal_transferee')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -161,7 +161,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="lending_bank" style="display:inline-block;" >Banca finaziatrice</label><br/>
-                                        <input type="text" class="col-md-12 @error('lending_bank') is-invalid @enderror" id="lending_bank" name="lending_bank" value="{{$subject->lending_bank}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('lending_bank') is-invalid @enderror" id="lending_bank" name="lending_bank" value="{{old('lending_bank') ?? $subject->lending_bank}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('lending_bank')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="insurer" style="display:inline-block;" >Assicuratore</label><br/>
-                                        <input type="text" class="col-md-12 @error('insurer') is-invalid @enderror" id="insurer" name="insurer" value="{{$subject->insurer}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-12 form-control @error('insurer') is-invalid @enderror" id="insurer" name="insurer" value="{{old('insurer') ?? $subject->insurer}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('insurer')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -182,7 +182,7 @@
                                         <label for="consultant" style="display:inline-block;" >Consulente</label><br/>
                                         <div class="row">
                                             <div class="col-md form-group">
-                                                <input type="text" class="col-md-12 @error('consultant') is-invalid @enderror" id="consultant" name="consultant" value="{{$subject->consultant}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                                <input type="text" class="col-md-12 form-control @error('consultant') is-invalid @enderror" id="consultant" name="consultant" value="{{old('consultant') ?? $subject->consultant}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                                 @error('consultant')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -191,7 +191,7 @@
                                             </div>
                                             <label for="signaler"></label>
                                             <div class="col-md form-group">
-                                                <input type="text" class="col-md-12 @error('signaler') is-invalid @enderror" id="signaler" name="signaler" value="{{$subject->signaler}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                                <input type="text" class="col-md-12 form-control @error('signaler') is-invalid @enderror" id="signaler" name="signaler" value="{{old('signaler') ?? $subject->signaler}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                                 @error('signaler')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -203,7 +203,7 @@
         
                                     <div class="form-group">
                                         <label for="area_manager" style="display:inline-block;" >Area Manager</label><br/>
-                                        <input type="text" class="col-md-6 @error('area_manager') is-invalid @enderror" id="area_manager" name="area_manager" value="{{$subject->area_manager}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                        <input type="text" class="col-md-6 form-control @error('area_manager') is-invalid @enderror" id="area_manager" name="area_manager" value="{{old('area_manager') ?? $subject->area_manager}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('area_manager')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -257,7 +257,7 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="project_manager" style="display:inline-block;" >Project Manager</label><br/>
-                                    <input type="text" class="col-md-12 @error('project_manager') is-invalid @enderror" id="project_manager" name="project_manager" value="{{$subject->project_manager}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                    <input type="text" class="col-md-12 form-control @error('project_manager') is-invalid @enderror" id="project_manager" name="project_manager" value="{{old('project_manager') ?? $subject->project_manager}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                     @error('project_manager')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -266,7 +266,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="responsible_technician" style="display:inline-block;" >Tecnico responsabile</label><br/>
-                                    <input type="text" class="col-md-12 @error('responsible_technician') is-invalid @enderror" id="responsible_technician" name="responsible_technician" value="{{$subject->responsible_technician}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                    <input type="text" class="col-md-12 form-control @error('responsible_technician') is-invalid @enderror" id="responsible_technician" name="responsible_technician" value="{{old('responsible_technician') ?? $subject->responsible_technician}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                     @error('responsible_technician')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
