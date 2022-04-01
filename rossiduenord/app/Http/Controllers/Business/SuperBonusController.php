@@ -231,6 +231,9 @@ class SuperBonusController extends Controller
         $practice->verical_wall->water_heatpumps_installation = $request->get('water_heatpumps_installation');
         $practice->verical_wall->biome_generator = $request->get('biome_generator');
         $practice->verical_wall->solar_panel = $request->get('solar_panel');
+        $practice->verical_wall->solar_panel_use_winter = $request->get('solar_panel_use_winter');
+        $practice->verical_wall->solar_panel_use_summer = $request->get('solar_panel_use_summer');
+        $practice->verical_wall->solar_panel_use_water = $request->get('solar_panel_use_water');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
