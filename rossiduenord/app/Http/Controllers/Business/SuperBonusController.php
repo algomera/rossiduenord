@@ -52,7 +52,18 @@ class SuperBonusController extends Controller
         $vertwall = $practice->verical_wall;
         $condensing_boilers = $practice->condensing_boilers;
         $heat_pumps = $practice->heat_pumps;
-        return view('business.superbonus.driving_intervention.vertical_wall', compact('heat_pumps', 'condensing_boilers', 'vertwall','applicant', 'practice', 'building', 'subject', 'data_project'));
+        $absorption_heat_pumps = $practice->absorption_heat_pumps;
+        return view('business.superbonus.driving_intervention.vertical_wall', compact(
+                'absorption_heat_pumps',
+            'heat_pumps',
+            'condensing_boilers',
+            'vertwall',
+            'applicant',
+            'practice',
+            'building',
+            'subject',
+            'data_project')
+        );
     }
 
     /**
@@ -183,7 +194,7 @@ class SuperBonusController extends Controller
             'generators' => 'nullable',
             'condensing_boiler' => 'nullable',
             'heat_pump' => 'nullable',
-            'absorption_heat_pumps' => 'nullable',
+            'absorption_heat_pump' => 'nullable',
             'hybrid_system' => 'nullable',
             'microgeneration_system' => 'nullable',
             'water_heatpumps_installation' => 'nullable',
@@ -201,13 +212,20 @@ class SuperBonusController extends Controller
         ]);
 
         // Update data
-        $practice->verical_wall()->update($validated);
+        $practice->verical_wall->update($validated);
+        $practice->verical_wall->condensing_boiler = $request->get('condensing_boiler');
+        $practice->verical_wall->heat_pump = $request->get('heat_pump');
+        $practice->verical_wall->absorption_heat_pump = $request->get('absorption_heat_pump');
+        $practice->verical_wall->save();
 
         // Add Condensing Boiler
         $this->addCondensingBoiler($practice, $request);
 
         // Add Heat Pump
         $this->addHeatPump($practice, $request);
+
+        // Add Absorption Heat Pump
+        $this->addAbsorptionHeatPump($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -273,7 +291,18 @@ class SuperBonusController extends Controller
                     $practice->condensing_boilers()->updateOrCreate([
                         'id' => $cn,
                         'practice_id' => $pn
-                    ], $item);
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "potenza_nominale" => $item['potenza_nominale'],
+                        "rend_utile_nom" => $item['rend_utile_nom'],
+                        "use_destination" => $item['use_destination'],
+                        "efficienza_ns" => $item['efficienza_ns'],
+                        "efficienza_acs_nwh" => $item['efficienza_acs_nwh'],
+                        "tipo_di_alimentazione" => $item['tipo_di_alimentazione'],
+                        "classe_termo_evoluto" => $item['classe_termo_evoluto'],
+                    ]);
                 }
             }
         }
@@ -290,7 +319,49 @@ class SuperBonusController extends Controller
                     $practice->heat_pumps()->updateOrCreate([
                         'id' => $cn,
                         'practice_id' => $pn
-                    ], $item);
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "tipo_di_pdc" => $item['tipo_di_pdc'],
+                        "tipo_roof_top" => isset($item['tipo_roof_top']),
+                        "potenza_nominale" => $item['potenza_nominale'],
+                        "p_elettrica_assorbita" => $item['p_elettrica_assorbita'],
+                        "inverter" => isset($item['inverter']),
+                        "cop" => $item['cop'],
+                        "reversibile" => isset($item['reversibile']),
+                        "eer" => $item['eer'],
+                        "sonde_geotermiche" => isset($item['sonde_geotermiche']),
+                        "sup_riscaldata_dalla_pdc" => $item['sup_riscaldata_dalla_pdc'],
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addAbsorptionHeatPump($practice, $request) {
+        if($request->get('absorption_heat_pumps')) {
+            foreach ($request->get('absorption_heat_pumps') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->absorption_heat_pumps()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->absorption_heat_pumps()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "tipo_di_pdc" => $item['tipo_di_pdc'],
+                        "tipo_roof_top" => isset($item['tipo_roof_top']),
+                        "potenza_nominale" => $item['potenza_nominale'],
+                        "gueh" => $item['gueh'],
+                        "reversibile" => isset($item['reversibile']),
+                        "guec" => $item['guec'],
+                        "sup_riscaldata_dalla_pdc" => $item['sup_riscaldata_dalla_pdc'],
+                    ]);
                 }
             }
         }

@@ -79,4 +79,8 @@ class Practice extends Model
     public function heat_pumps() {
         return $this->hasMany(HeatPump::class);
     }
+
+    public function absorption_heat_pumps() {
+        return $this->hasMany(AbsorptionHeatPump::class);
+    }
 }
