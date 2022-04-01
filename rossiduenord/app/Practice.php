@@ -95,4 +95,8 @@ class Practice extends Model
     public function water_heatpumps_installations() {
         return $this->hasMany(WaterHeatpumpsInstallation::class);
     }
+
+    public function biome_generators() {
+        return $this->hasMany(BiomeGenerator::class);
+    }
 }

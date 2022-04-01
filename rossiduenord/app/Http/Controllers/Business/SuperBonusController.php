@@ -56,7 +56,9 @@ class SuperBonusController extends Controller
         $hybrid_systems = $practice->hybrid_systems;
         $microgeneration_systems = $practice->microgeneration_systems;
         $water_heatpumps_installations = $practice->water_heatpumps_installations;
+        $biome_generators = $practice->biome_generators;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
+            'biome_generators',
             'water_heatpumps_installations',
             'microgeneration_systems',
             'hybrid_systems',
@@ -225,6 +227,7 @@ class SuperBonusController extends Controller
         $practice->verical_wall->hybrid_system = $request->get('hybrid_system');
         $practice->verical_wall->microgeneration_system = $request->get('microgeneration_system');
         $practice->verical_wall->water_heatpumps_installation = $request->get('water_heatpumps_installation');
+        $practice->verical_wall->biome_generator = $request->get('biome_generator');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
@@ -244,6 +247,9 @@ class SuperBonusController extends Controller
 
         // Add Water Heat Pumps Installation
         $this->addWaterHeatpumpsInstallation($practice, $request);
+
+        // Add Biome Generator
+        $this->addBiomeGenerator($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -467,6 +473,35 @@ class SuperBonusController extends Controller
                         "pu_scaldacqua_a_pdc" => $item['pu_scaldacqua_a_pdc'],
                         "cop_nuovo_scaldacqua" => $item['cop_nuovo_scaldacqua'],
                         "capacita_accumulo" => $item['capacita_accumulo'],
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addBiomeGenerator($practice, $request) {
+        if($request->get('biome_generators')) {
+            foreach ($request->get('biome_generators') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->biome_generators()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->biome_generators()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "classe_generatore" => $item['classe_generatore'],
+                        "tipo_generatore" => $item['tipo_generatore'],
+                        "use_destination" => $item['use_destination'],
+                        "tipo_di_alimentazione" => $item['tipo_di_alimentazione'],
+                        "p_utile_nom" => $item['p_utile_nom'],
+                        "p_al_focolare" => $item['p_al_focolare'],
+                        "rend_utile_alla_pot_nom" => $item['rend_utile_alla_pot_nom'],
+                        "sup_riscaldata" => $item['sup_riscaldata'],
                     ]);
                 }
             }

@@ -830,15 +830,141 @@
                         </div>
                     </div>
 
-                    <div class="mt-5">{{-- IB. Generatori a biomamassa --}}
-                        <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->biome_generator == 'true' ? 'checked' : ''}} type="checkbox" name="biome_generator" id="biome_generator" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>IB. Generatori a biomassa</b></span>
-                        </label>
-                        <p style="width: 70%;">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
-                        <div style="width: 80%; height: 200px; background-color: #f2f2f2 ">
+                    <div>{{-- IB. Generatori a biomamassa --}}
+                        <div class="mt-5">
+                            <div class="d-flex align-items-center mb-3">
+                                <label for="biome_generator" class="checkbox-wrapper d-flex align-items-center mb-0">
+                                    <input type="checkbox" name="biome_generator" id="biome_generator" value="true" {{$vertwall->biome_generator == 'true' ? 'checked' : ''}}>
+                                    <span class="checkmark"></span>
+                                    <span class="black" ><b>IB. Generatori a biomamassa</b></span>
+                                </label>
+                                <div class="btn bg-blue white ml-3 mr-3" onclick="addBiomeGenerator(event)">+</div>
+                                <span><strong>(n. {{ $biome_generators->count() }} Generatori a biomamassa)</strong></span>
+                            </div>
+                            <p class="font-italic">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
+                            <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
+                                <div id="biome_generator_wrapper">
+                                    @forelse($biome_generators as $i => $biome_generator)
+                                        <div class="box_input" data-id="biome_generator-{{$practice->id}}-{{$biome_generator->id}}">
+                                            {{ $i + 1 }}
+                                            <div class="row_input">
+                                                <input type="hidden" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][condomino_id]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][condomino_id]" value="">
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_sostituito]">
+                                                    Tipo sostituito
+                                                    <select name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_sostituito]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_sostituito]">
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
+                                                        <option {{ $biome_generator->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
+                                                    </select>
+                                                </label>
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_nom_sostituito]">
+                                                    P. nom. sostituito
+                                                    <input class="input_small" type="number" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_nom_sostituito]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_nom_sostituito]" value="{{ $biome_generator->p_nom_sostituito }}">
+                                                    kW
+                                                </label>
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][classe_generatore]">
+                                                    Classe generatore
+                                                    <select name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][classe_generatore]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][classe_generatore]">
+                                                        <option {{ $biome_generator->classe_generatore === '4 stelle' ? 'selected' : ''}} value="4 stelle">4 stelle</option>
+                                                        <option {{ $biome_generator->classe_generatore === '5 stelle' ? 'selected' : ''}} value="5 stelle">5 stelle</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="row_input">
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_generatore]">
+                                                    Tipo generatore
+                                                    <select name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_generatore]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_generatore]">
+                                                        <option {{ $biome_generator->tipo_generatore === 'Caldaia a biomassa' ? 'selected' : ''}} value="Caldaia a biomassa">Caldaia a biomassa</option>
+                                                        <option {{ $biome_generator->tipo_generatore === 'Termocamini e stufe' ? 'selected' : ''}} value="Termocamini e stufe">Termocamini e stufe</option>
+                                                    </select>
+                                                </label>
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][use_destination]">
+                                                    Impianto destinato a
+                                                    <select name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][use_destination]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][use_destination]">
+                                                        <option {{ $biome_generator->use_destination === 'Riscaldamento ambiente' ? 'selected' : ''}} value="Riscaldamento ambiente">Riscaldamento ambiente</option>
+                                                        <option {{ $biome_generator->use_destination === 'Risc. amb. + prod. ACS' ? 'selected' : ''}} value="Risc. amb. + prod. ACS">Risc. amb. + prod. ACS</option>
+                                                    </select>
+                                                </label>
+                                                <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_di_alimentazione]">
+                                                    Tipo di alimentazione
+                                                    <select name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_di_alimentazione]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][tipo_di_alimentazione]">
+                                                        <option {{ $biome_generator->tipo_di_alimentazione === 'Legna' ? 'selected' : ''}} value="Legna">Legna</option>
+                                                        <option {{ $biome_generator->tipo_di_alimentazione === 'Pellet' ? 'selected' : ''}} value="Pellet">Pellet</option>
+                                                        <option {{ $biome_generator->tipo_di_alimentazione === 'Cippato' ? 'selected' : ''}} value="Cippato">Cippato</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="row_input">
+                                                    <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_utile_nom]">
+                                                        Pot. Utile nom.
+                                                        <input class="input_small" type="number" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_utile_nom]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_utile_nom]" value="{{ $biome_generator->p_utile_nom }}">
+                                                        kW
+                                                    </label>
+                                                    <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_al_focolare]">
+                                                        P. al focolare
+                                                        <input class="input_small" type="number" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_al_focolare]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][p_al_focolare]" value="{{ $biome_generator->p_al_focolare }}">
+                                                        kW
+                                                    </label>
+                                                    <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][rend_utile_alla_pot_nom]">
+                                                        Rend. utile alla pot. nom.
+                                                        <input class="input_small" type="number" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][rend_utile_alla_pot_nom]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][rend_utile_alla_pot_nom]" value="{{ $biome_generator->rend_utile_alla_pot_nom }}">
+                                                        %
+                                                    </label>
+                                                    <label for="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][sup_riscaldata]">
+                                                        Sup. riscaldata
+                                                        <input class="input_small" type="number" name="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][sup_riscaldata]" id="biome_generators[{{$practice->id}}-{{$biome_generator->id}}][sup_riscaldata]" value="{{ $biome_generator->sup_riscaldata }}">
+                                                        m²
+                                                    </label>
+                                                </div>
+                                                <div onclick="deleteBiomeGenerator({{$practice->id}}, {{$biome_generator->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                                    <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                                    <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <p id="biome_generators_no_data_row">Nessun dato</p>
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
+                            <div class="d-flex align-items-center">
+                                <p class="m-0">Il costo previsto per i generatori a biomassa IB) ammonta a *</p>
+                                <label for="IB_expected_cos" class=" m-0 mr-4 black">
+                                    <input type="text" value="{{$vertwall->IB_expected_cost}}" name="IB_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    €
+                                </label>
+                            </div>
+{{--                            <button class="add-button">Computo metrico</button>--}}
+                        </div>
+                        <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
+                        <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
+                            <div class="d-flex align-items-center">
+                                <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
+                                <label for="IB_max_cost" class=" m-0 mr-4 black">
+                                    <input type="text" value="{{$vertwall->IB_max_cost}}" name="IB_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
+                                    €
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
+                            <div class="d-flex align-items-center">
+                                <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
+                                <label for="IB_nr_savings" class=" m-0 mr-4 black">
+                                    <input type="text" value="{{$vertwall->IB_nr_savings}}" name="IB_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">
+                                    KWh/anno
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -1101,4 +1227,5 @@
     @include('business.scripts.hybrid_system')
     @include('business.scripts.microgeneration_system')
     @include('business.scripts.water_heatpumps_installation')
+    @include('business.scripts.biome_generator')
 @endpush

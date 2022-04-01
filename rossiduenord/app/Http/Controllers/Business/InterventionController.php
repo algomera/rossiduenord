@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Business;
 
 use App\AbsorptionHeatPump;
+use App\BiomeGenerator;
 use App\CondensingBoiler;
 use App\HeatPump;
 use App\Http\Controllers\Controller;
@@ -40,5 +41,10 @@ class InterventionController extends Controller
     public function deleteWaterHeatpumpsInstallations($id) {
         $water_heatpumps_installation = WaterHeatpumpsInstallation::find($id);
         $water_heatpumps_installation->delete();
+    }
+
+    public function deleteBiomeGenerators($id) {
+        $biome_generator = BiomeGenerator::find($id);
+        $biome_generator->delete();
     }
 }
