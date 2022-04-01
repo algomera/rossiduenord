@@ -7,6 +7,7 @@ use App\CondensingBoiler;
 use App\HeatPump;
 use App\Http\Controllers\Controller;
 use App\HybridSystem;
+use App\MicrogenerationSystem;
 
 class InterventionController extends Controller
 {
@@ -21,12 +22,17 @@ class InterventionController extends Controller
     }
 
     public function deleteAbsorptionHeatPumps($id) {
-        $heat_pump = AbsorptionHeatPump::find($id);
-        $heat_pump->delete();
+        $absorption_heat_pump = AbsorptionHeatPump::find($id);
+        $absorption_heat_pump->delete();
     }
 
     public function deleteHybridSystems($id) {
-        $heat_pump = HybridSystem::find($id);
-        $heat_pump->delete();
+        $hybrid_system = HybridSystem::find($id);
+        $hybrid_system->delete();
+    }
+
+    public function deleteMicrogenerationSystems($id) {
+        $microgeneration_system = MicrogenerationSystem::find($id);
+        $microgeneration_system->delete();
     }
 }

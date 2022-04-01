@@ -649,109 +649,121 @@
                     </div>
 
                     <div class="mt-5">{{-- CO. Sistemi di microgenerazione --}}
-                        <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
-                        </label>
+                        <div class="d-flex align-items-center mb-3">
+                            <label class="checkbox-wrapper d-flex align-items-center mb-0">
+                                <input {{$vertwall->microgeneration_system == 'true' ? 'checked' : ''}} type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
+                            </label>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addMicrogenerationSystem(event)">+</div>
+                            <span><strong>(n. {{ $microgeneration_systems->count() }} Sistemi di microgenerazione)</strong></span>
+                        </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input" id="">
-                                <div class="row_input">
-                                    <label for="">
+                            <div id="microgeneration_system_wrapper">
+                                @forelse($microgeneration_systems as $i => $microgeneration_system)
+                                <div class="box_input" data-id="microgeneration_system-{{$practice->id}}-{{$microgeneration_system->id}}">
+                                    {{ $i + 1 }}
+                                    <div class="row_input">
+                                        <input type="hidden" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" id="hybrid_systems[{{$practice->id}}-{{$microgeneration_system->id}}][condomino_id]" value="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]">
                                         Tipo sostituito
-                                        <select name="" id="">
-                                            <option value="Caldaia standard">Caldaia standard</option>
-                                            <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                            <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                            <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                            <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                            <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                            <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                            <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                            <option value="Altro">Altro</option>
+                                        <select name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_sostituito]">
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
+                                            <option {{ $microgeneration_system->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_nom_sostituito]">
                                         P. nom. sostituito
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_nom_sostituito]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_nom_sostituito]" value="{{ $microgeneration_system->p_nom_sostituito }}">
                                         kW
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_elettrica]">
                                         P. Elettrica
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_elettrica]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_elettrica]" value="{{ $microgeneration_system->p_elettrica }}">
                                         kW
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_immessa]">
                                         P. immessa
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_immessa]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_immessa]" value="{{ $microgeneration_system->p_immessa }}">
                                         kW
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_term_recuperata]">
                                         P. term. recuperata
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_term_recuperata]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][p_term_recuperata]" value="{{ $microgeneration_system->p_term_recuperata }}">
                                         kW
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][pes]">
                                         PES
-                                        <input class="input_small" type="number" name="" id="">
+                                        <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][pes]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][pes]" value="{{ $microgeneration_system->pes }}">
                                         %
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_di_alimentazione]">
                                         Tipo di alim.
-                                        <select name="" id="">
-                                            <option value="Metano">Gas Naturale (metano)</option>
-                                            <option value="Gpl">Gpl</option>
-                                            <option value="Gasolio">Gasolio</option>
+                                        <select name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_di_alimentazione]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_di_alimentazione]">
+                                            <option {{ $microgeneration_system->tipo_di_alimentazione === 'Metano' ? 'selected' : '' }} value="Metano">Gas Naturale (metano)</option>
+                                            <option {{ $microgeneration_system->tipo_di_alimentazione === 'Gpl' ? 'selected' : '' }} value="Gpl">Gpl</option>
+                                            <option {{ $microgeneration_system->tipo_di_alimentazione === 'Gasolio' ? 'selected' : '' }} value="Gasolio">Gasolio</option>
                                         </select>
                                     </label>
-                                    <label for="">
+                                    <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_intervento]">
                                         Tipo intervento
-                                        <select name="" id="">
-                                            <option value="nuovo">Nuova unità</option>
-                                            <option value="Rifacimento">Rifacimento</option>
+                                        <select name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_intervento]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][tipo_intervento]">
+                                            <option {{ $microgeneration_system->tipo_intervento === 'Nuovo' ? 'selected' : '' }} value="Nuovo">Nuova unità</option>
+                                            <option {{ $microgeneration_system->tipo_intervento === 'Rifacimento' ? 'selected' : '' }} value="Rifacimento">Rifacimento</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="row_input">
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
+                                        <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][a_celle_a_combustibile]" class="checkbox-wrapper d-flex">
+                                            <input type="checkbox" {{ $microgeneration_system->a_celle_a_combustibile ? 'checked' : '' }} name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][a_celle_a_combustibile]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][a_celle_a_combustibile]" value="true">
                                             <span class="checkmark"></span>
                                             a Celle a Combustibile
                                         </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
+                                        <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][riscaldatore_suppl]" class="checkbox-wrapper d-flex">
+                                            <input type="checkbox" {{ $microgeneration_system->riscaldatore_suppl ? 'checked' : '' }} name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][riscaldatore_suppl]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][riscaldatore_suppl]" value="true">
                                             <span class="checkmark"></span>
                                             Riscaldatore suppl.
                                         </label>
-                                        <label for="">
+                                        <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][potenza_risc_suppl]">
                                             Potenza risc. suppl.
-                                            <input class="input_small" type="number" name="" id="">
+                                            <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][potenza_risc_suppl]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][potenza_risc_suppl]" value="{{ $microgeneration_system->potenza_risc_suppl }}">
                                             kW
                                         </label>
-                                        <label for="">
+                                        <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][efficienza_ns]">
                                             Efficienza ns
-                                            <input class="input_small" type="number" name="" id="">
+                                            <input class="input_small" type="number" name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][efficienza_ns]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][efficienza_ns]" value="{{ $microgeneration_system->efficienza_ns }}">
                                             %
                                         </label>
-                                        <label for="">
+                                        <label for="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][classe_energ]">
                                             Classe energ.
-                                            <select name="" id="">
-                                                <option value="B">B</option>
-                                                <option value="A">A</option>
-                                                <option value="A+">A+</option>
-                                                <option value="A++">A++</option>
-                                                <option value="A+++">A+++</option>
+                                            <select name="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][classe_energ]" id="microgeneration_systems[{{$practice->id}}-{{$microgeneration_system->id}}][classe_energ]">
+                                                <option {{ $microgeneration_system->classe_energ === 'B' ? 'selected' : '' }} value="B">B</option>
+                                                <option {{ $microgeneration_system->classe_energ === 'A' ? 'selected' : '' }} value="A">A</option>
+                                                <option {{ $microgeneration_system->classe_energ === 'A+' ? 'selected' : '' }} value="A+">A+</option>
+                                                <option {{ $microgeneration_system->classe_energ === 'A++' ? 'selected' : '' }} value="A++">A++</option>
+                                                <option {{ $microgeneration_system->classe_energ === 'A+++' ? 'selected' : '' }} value="A+++">A+++</option>
                                             </select>
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <div onclick="deleteMicrogenerationSystem({{$practice->id}}, {{$microgeneration_system->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                    </button>
+                                    </div>
                                 </div>
+                            </div>
+                                @empty
+                                    <p id="microgeneration_systems_no_data_row">Nessun dato</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -1075,4 +1087,5 @@
     @include('business.scripts.heat_pump')
     @include('business.scripts.absorption_heat_pump')
     @include('business.scripts.hybrid_system')
+    @include('business.scripts.microgeneration_system')
 @endpush

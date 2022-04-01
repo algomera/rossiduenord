@@ -54,7 +54,9 @@ class SuperBonusController extends Controller
         $heat_pumps = $practice->heat_pumps;
         $absorption_heat_pumps = $practice->absorption_heat_pumps;
         $hybrid_systems = $practice->hybrid_systems;
+        $microgeneration_systems = $practice->microgeneration_systems;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
+            'microgeneration_systems',
             'hybrid_systems',
                 'absorption_heat_pumps',
             'heat_pumps',
@@ -219,6 +221,7 @@ class SuperBonusController extends Controller
         $practice->verical_wall->heat_pump = $request->get('heat_pump');
         $practice->verical_wall->absorption_heat_pump = $request->get('absorption_heat_pump');
         $practice->verical_wall->hybrid_system = $request->get('hybrid_system');
+        $practice->verical_wall->microgeneration_system = $request->get('microgeneration_system');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
@@ -232,6 +235,9 @@ class SuperBonusController extends Controller
 
         // Add Absorption Heat Pump
         $this->addHybridSystem($practice, $request);
+
+        // Add Absorption Heat Pump
+        $this->addMicrogenerationSystem($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -399,6 +405,38 @@ class SuperBonusController extends Controller
                         "heat_inverter" => isset($item['heat_inverter']),
                         "heat_cop" => $item['heat_cop'],
                         "heat_sonde_geotermiche" => isset($item['heat_sonde_geotermiche']),
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addMicrogenerationSystem($practice, $request) {
+        if($request->get('microgeneration_systems')) {
+            foreach ($request->get('microgeneration_systems') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->microgeneration_systems()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->microgeneration_systems()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "p_elettrica" => $item['p_elettrica'],
+                        "p_immessa" => $item['p_immessa'],
+                        "p_term_recuperata" => $item['p_term_recuperata'],
+                        "pes" => $item['pes'],
+                        "tipo_di_alimentazione" => $item['tipo_di_alimentazione'],
+                        "tipo_intervento" => $item['tipo_intervento'],
+                        "a_celle_a_combustibile" => isset($item['a_celle_a_combustibile']),
+                        "riscaldatore_suppl" => isset($item['riscaldatore_suppl']),
+                        "potenza_risc_suppl" => $item['potenza_risc_suppl'],
+                        "efficienza_ns" => $item['efficienza_ns'],
+                        "classe_energ" => $item['classe_energ'],
                     ]);
                 }
             }

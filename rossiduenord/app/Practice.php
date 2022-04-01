@@ -87,4 +87,8 @@ class Practice extends Model
     public function hybrid_systems() {
         return $this->hasMany(HybridSystem::class);
     }
+
+    public function microgeneration_systems() {
+        return $this->hasMany(MicrogenerationSystem::class);
+    }
 }
