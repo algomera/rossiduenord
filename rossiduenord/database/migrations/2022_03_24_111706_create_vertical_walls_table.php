@@ -46,7 +46,7 @@ class CreateVerticalWallsTable extends Migration
             $table->string('hybrid_system')->nullable();
             $table->string('microgeneration_system')->nullable();
             $table->string('water_heatpumps_installation')->nullable();
-            $table->string('biome_generators')->nullable();
+            $table->string('biome_generator')->nullable();
             $table->string('solar_panel')->nullable();
             $table->string('solar_panel_use_winter')->nullable();
             $table->string('solar_panel_use_summer')->nullable();

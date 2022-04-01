@@ -482,7 +482,7 @@
                                     </div>
                                     <div class="row_input">
                                         <label for="absorption_heat_pumps[{{$practice->id}}-{{$absorption_heat_pump->id}}][tipo_roof_top]" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" {{ $absorption_heat_pump->tipo_roof_top ? 'checked' : '' }} name="absorption_heat_pumps[{{$practice->id}}-{{$absorption_heat_pump->id}}][tipo_roof_top]" id="absorption_heat_pumps[{{$practice->id}}-{{$absorption_heat_pump->id}}][tipo_roof_top]">
+                                            <input type="checkbox" {{ $absorption_heat_pump->tipo_roof_top ? 'checked' : '' }} name="absorption_heat_pumps[{{$practice->id}}-{{$absorption_heat_pump->id}}][tipo_roof_top]" id="absorption_heat_pumps[{{$practice->id}}-{{$absorption_heat_pump->id}}][tipo_roof_top]" value="true">
                                             <span class="checkmark"></span>
                                             Tipo Roof Top
                                         </label>
@@ -527,111 +527,123 @@
                     </div>
 
                     <div class="mt-5">{{-- SI. Sistemi ibridi --}}
-                        <label for="hybrid_system" class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} type="checkbox" name="hybrid_system" id="hybrid_system" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>SI. Sistemi ibridi</b></span>
-                        </label>
+                        <div class="d-flex align-items-center mb-3">
+                            <label for="hybrid_system" class="checkbox-wrapper d-flex align-items-center mb-0">
+                                <input {{$vertwall->hybrid_system == 'true' ? 'checked' : ''}} type="checkbox" name="hybrid_system" id="hybrid_system" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>SI. Sistemi ibridi</b></span>
+                            </label>
+                            <div class="btn bg-blue white ml-3 mr-3" onclick="addHybridSystem(event)">+</div>
+                            <span><strong>(n. {{ $hybrid_systems->count() }} Sistemi ibridi)</strong></span>
+                        </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input" id="">
-                                <div class="row_input">
-                                    <label for="">
-                                        Tipo sostituito
-                                        <select name="" id="">
-                                            <option value="Caldaia standard">Caldaia standard</option>
-                                            <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                            <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                            <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                            <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                            <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                            <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                            <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                            <option value="Altro">Altro</option>
-                                        </select>
-                                    </label>
-                                    <label for="">
-                                        P. nom. sostituito
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                </div>
-                                <div class="row_input">
-                                    <h6>Caldaia a condensazione:</h6>
-                                    <label for="">
-                                        P. nom.
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                    <label for="">
-                                        Rend. utile nom. (100%)
-                                        <input class="input_small" type="number" name="" id="">
-                                        %
-                                    </label>
-                                    <label for="">
-                                        Efficienza ns
-                                        <input class="input_small" type="number" name="" id="">
-                                        %
-                                    </label>
-                                    <label for="">
-                                        Tipo di alim.
-                                        <select name="" id="">
-                                            <option value="Metano">Gas Naturale (metano)</option>
-                                            <option value="Gpl">Gpl</option>
-                                            <option value="Gasolio">Gasolio</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="row_input">
-                                    <h6>Pompa di calore (PDC):</h6>
-                                    <label for="">
-                                        Tipo di PDC
-                                        <select name="" id="">
-                                            <option value="Aria/Aria">Aria/Aria</option>
-                                            <option value="Aria/Acqua">Aria/Acqua</option>
-                                            <option value="Salamoia/Aria">Salamoia/Aria</option>
-                                            <option value="Salamoia/Acqua">Salamoia/Acqua</option>
-                                            <option value="Acqua/Aria">Acqua/Aria</option>
-                                            <option value="Acqua/Acqua">Acqua/Acqua</option>
-                                        </select>
-                                    </label>
-                                    <label for="" class="checkbox-wrapper d-flex">
-                                        <input type="checkbox" name="" id="" value="true">
-                                        <span class="checkmark"></span>
-                                        Tipo Roof Top
-                                    </label>
-                                    <label for="">
-                                        P. nome
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
+                            <div id="hybrid_system_wrapper">
+                                @forelse($hybrid_systems as $i => $hybrid_system)
+                                <div class="box_input" data-id="hybrid_system-{{$practice->id}}-{{$hybrid_system->id}}">
+                                    {{ $i + 1 }}
                                     <div class="row_input">
-                                        <label for="">
-                                            P. Elettrica assorbita
-                                            <input class="input_small" type="number" name="" id="">
+                                        <input type="hidden" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condomino_id]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condomino_id]" value="">
+                                    <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_sostituito]">
+                                        Tipo sostituito
+                                        <select name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_sostituito]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_sostituito]">
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
+                                            <option {{ $hybrid_system->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
+                                        </select>
+                                    </label>
+                                    <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][p_nom_sostituito]">
+                                        P. nom. sostituito
+                                        <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][p_nom_sostituito]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][p_nom_sostituito]" value="{{ $hybrid_system->p_nom_sostituito }}">
+                                        kW
+                                    </label>
+                                    </div>
+                                    <div class="row_input">
+                                        <h6>Caldaia a condensazione:</h6>
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_potenza_nominale]">
+                                            P. nom.
+                                            <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_potenza_nominale]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_potenza_nominale]" value="{{ $hybrid_system->condensing_potenza_nominale }}">
                                             kW
                                         </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            inverter
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_rend_utile_nom]">
+                                            Rend. utile nom. (100%)
+                                            <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_rend_utile_nom]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_rend_utile_nom]" value="{{ $hybrid_system->condensing_rend_utile_nom }}">
+                                            %
                                         </label>
-                                        <label for="">
-                                            COP
-                                            <input class="input_small" type="number" name="" id="">
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_efficienza_ns]">
+                                            Efficienza ns
+                                            <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_efficienza_ns]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][condensing_efficienza_ns]" value="{{ $hybrid_system->condensing_efficienza_ns }}">
+                                            %
                                         </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Sonde geotermiche
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_di_alimentazione]">
+                                            Tipo di alim.
+                                            <select name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_di_alimentazione]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][tipo_di_alimentazione]">
+                                                <option {{ $hybrid_system->tipo_di_alimentazione === 'Metano' ? 'selected' : '' }} value="Metano">Gas Naturale (metano)</option>
+                                                <option {{ $hybrid_system->tipo_di_alimentazione === 'Gpl' ? 'selected' : '' }} value="Gpl">Gpl</option>
+                                                <option {{ $hybrid_system->tipo_di_alimentazione === 'Gasolio' ? 'selected' : '' }} value="Gasolio">Gasolio</option>
+                                            </select>
                                         </label>
                                     </div>
-                                    <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                        <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                        <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                    </button>
+                                    <div class="row_input">
+                                        <h6>Pompa di calore (PDC):</h6>
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_di_pdc]">
+                                            Tipo di PDC
+                                            <select name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_di_pdc]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_di_pdc]">
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Aria/Aria' ? 'selected' : '' }} value="Aria/Aria">Aria/Aria</option>
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Aria/Acqua' ? 'selected' : '' }} value="Aria/Acqua">Aria/Acqua</option>
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Salamoia/Aria' ? 'selected' : '' }} value="Salamoia/Aria">Salamoia/Aria</option>
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Salamoia/Acqua' ? 'selected' : '' }} value="Salamoia/Acqua">Salamoia/Acqua</option>
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Acqua/Aria' ? 'selected' : '' }} value="Acqua/Aria">Acqua/Aria</option>
+                                                <option {{ $hybrid_system->heat_tipo_di_pdc === 'Acqua/Acqua' ? 'selected' : '' }} value="Acqua/Acqua">Acqua/Acqua</option>
+                                            </select>
+                                        </label>
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_roof_top]" class="checkbox-wrapper d-flex">
+                                            <input type="checkbox" {{ $hybrid_system->heat_tipo_roof_top ? 'checked' : '' }} name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_roof_top]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_tipo_roof_top]" value="true">
+                                            <span class="checkmark"></span>
+                                            Tipo Roof Top
+                                        </label>
+                                        <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_potenza_nominale]">
+                                            P. nom.
+                                            <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_potenza_nominale]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_potenza_nominale]" value="{{ $hybrid_system->heat_potenza_nominale }}">
+                                            kW
+                                        </label>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="row_input">
+                                            <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_p_elettrica_assorbita]">
+                                                P. Elettrica assorbita
+                                                <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_p_elettrica_assorbita]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_p_elettrica_assorbita]" value="{{ $hybrid_system->heat_p_elettrica_assorbita }}">
+                                                kW
+                                            </label>
+                                            <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_inverter]" class="checkbox-wrapper d-flex">
+                                                <input type="checkbox" {{ $hybrid_system->heat_inverter ? 'checked' : '' }} name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_inverter]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_inverter]" value="true">
+                                                <span class="checkmark"></span>
+                                                inverter
+                                            </label>
+                                            <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_cop]">
+                                                COP
+                                                <input class="input_small" type="number" name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_cop]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_cop]" value="{{ $hybrid_system->heat_cop }}">
+                                            </label>
+                                            <label for="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_sonde_geotermiche]" class="checkbox-wrapper d-flex">
+                                                <input type="checkbox" {{ $hybrid_system->heat_sonde_geotermiche ? 'checked' : '' }} name="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_sonde_geotermiche]" id="hybrid_systems[{{$practice->id}}-{{$hybrid_system->id}}][heat_sonde_geotermiche]" value="true">
+                                                <span class="checkmark"></span>
+                                                Sonde geotermiche
+                                            </label>
+                                        </div>
+                                        <div onclick="deleteHybridSystem({{$practice->id}}, {{$hybrid_system->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                        </div>
                                 </div>
+                            </div>
+                                @empty
+                                    <p id="hybrid_systems_no_data_row">Nessun dato</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -796,7 +808,7 @@
 
                     <div class="mt-5">{{-- IB. Generatori a biomamassa --}}
                         <label class="checkbox-wrapper d-flex">
-                            <input {{$vertwall->biome_generators == 'true' ? 'checked' : ''}} type="checkbox" name="biome_generators" id="biome_generators" value="true">
+                            <input {{$vertwall->biome_generator == 'true' ? 'checked' : ''}} type="checkbox" name="biome_generator" id="biome_generator" value="true">
                             <span class="checkmark"></span>
                             <span class="black" ><b>IB. Generatori a biomassa</b></span>
                         </label>
@@ -1062,4 +1074,5 @@
     @include('business.scripts.condensing_boiler')
     @include('business.scripts.heat_pump')
     @include('business.scripts.absorption_heat_pump')
+    @include('business.scripts.hybrid_system')
 @endpush

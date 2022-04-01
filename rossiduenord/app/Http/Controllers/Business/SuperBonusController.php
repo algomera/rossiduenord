@@ -53,7 +53,9 @@ class SuperBonusController extends Controller
         $condensing_boilers = $practice->condensing_boilers;
         $heat_pumps = $practice->heat_pumps;
         $absorption_heat_pumps = $practice->absorption_heat_pumps;
+        $hybrid_systems = $practice->hybrid_systems;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
+            'hybrid_systems',
                 'absorption_heat_pumps',
             'heat_pumps',
             'condensing_boilers',
@@ -198,7 +200,7 @@ class SuperBonusController extends Controller
             'hybrid_system' => 'nullable',
             'microgeneration_system' => 'nullable',
             'water_heatpumps_installation' => 'nullable',
-            'biome_generators' => 'nullable',
+            'biome_generator' => 'nullable',
             'solar_panel' => 'nullable',
             'solar_panel_use_winter' => 'nullable',
             'solar_panel_use_summer' => 'nullable',
@@ -216,6 +218,7 @@ class SuperBonusController extends Controller
         $practice->verical_wall->condensing_boiler = $request->get('condensing_boiler');
         $practice->verical_wall->heat_pump = $request->get('heat_pump');
         $practice->verical_wall->absorption_heat_pump = $request->get('absorption_heat_pump');
+        $practice->verical_wall->hybrid_system = $request->get('hybrid_system');
         $practice->verical_wall->save();
 
         // Add Condensing Boiler
@@ -226,6 +229,9 @@ class SuperBonusController extends Controller
 
         // Add Absorption Heat Pump
         $this->addAbsorptionHeatPump($practice, $request);
+
+        // Add Absorption Heat Pump
+        $this->addHybridSystem($practice, $request);
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
@@ -361,6 +367,38 @@ class SuperBonusController extends Controller
                         "reversibile" => isset($item['reversibile']),
                         "guec" => $item['guec'],
                         "sup_riscaldata_dalla_pdc" => $item['sup_riscaldata_dalla_pdc'],
+                    ]);
+                }
+            }
+        }
+    }
+
+    public function addHybridSystem($practice, $request) {
+        if($request->get('hybrid_systems')) {
+            foreach ($request->get('hybrid_systems') as $i => $item) {
+                if(is_numeric($i)) {
+                    $practice->hybrid_systems()->create($item);
+                } else if(is_string($i)) {
+                    $pn = explode('-', $i)[0];
+                    $cn = explode('-', $i)[1];
+                    $practice->hybrid_systems()->updateOrCreate([
+                        'id' => $cn,
+                        'practice_id' => $pn
+                    ], [
+                        "condomino_id" => $item['condomino_id'],
+                        "tipo_sostituito" => $item['tipo_sostituito'],
+                        "p_nom_sostituito" => $item['p_nom_sostituito'],
+                        "condensing_potenza_nominale" => $item['condensing_potenza_nominale'],
+                        "condensing_rend_utile_nom" => $item['condensing_rend_utile_nom'],
+                        "condensing_efficienza_ns" => $item['condensing_efficienza_ns'],
+                        "tipo_di_alimentazione" => $item['tipo_di_alimentazione'],
+                        "heat_tipo_di_pdc" => $item['heat_tipo_di_pdc'],
+                        "heat_tipo_roof_top" => isset($item['heat_tipo_roof_top']),
+                        "heat_potenza_nominale" => $item['heat_potenza_nominale'],
+                        "heat_p_elettrica_assorbita" => $item['heat_p_elettrica_assorbita'],
+                        "heat_inverter" => isset($item['heat_inverter']),
+                        "heat_cop" => $item['heat_cop'],
+                        "heat_sonde_geotermiche" => isset($item['heat_sonde_geotermiche']),
                     ]);
                 }
             }
