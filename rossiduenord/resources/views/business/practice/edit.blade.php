@@ -92,8 +92,6 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <h6>Richiesta polizza:</h6>
-
                     <div class="form-group" style="width: 15%;">
                         <label for="month" class="text">Mese</label>
                         <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month">

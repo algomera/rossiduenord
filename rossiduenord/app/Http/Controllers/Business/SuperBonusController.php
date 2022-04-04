@@ -64,7 +64,7 @@ class SuperBonusController extends Controller
             'water_heatpumps_installations',
             'microgeneration_systems',
             'hybrid_systems',
-                'absorption_heat_pumps',
+            'absorption_heat_pumps',
             'heat_pumps',
             'condensing_boilers',
             'vertwall',

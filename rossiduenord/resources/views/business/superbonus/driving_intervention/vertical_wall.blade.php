@@ -186,7 +186,7 @@
                                 <div class="w-100 pr-2 text-right">
                                     <small class="black ">almeno al 30%</small>
                                 </div>
-                                <div>
+                                <div class="black">
                                     <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1}}" name="total_isolation_cost_1" id="total_isolation_cost_1" class="ml-2 px-2 border @error('total_isolation_cost_1') is-invalid error @enderror" style="width:120px">
                                     €
                                     @error('total_isolation_cost_1')
@@ -203,7 +203,7 @@
                                 <div class="w-100 pr-2 text-right">
                                     <small class="black ">almeno al 60%</small>
                                 </div>
-                                <div>
+                                <div class="black">
                                     <input type="number" value="{{old('total_isolation_cost_2') ?? $vertwall->total_isolation_cost_2}}" name="total_isolation_cost_2" id="total_isolation_cost_2" class="ml-2 text-right px-2 border @error('total_isolation_cost_2') is-invalid error @enderror" style="width:120px">
                                      €
                                      @error('total_isolation_cost_2')
@@ -218,7 +218,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>SAL.F</span>
                             <label for="final_isolation_cost" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <div>
+                                <div class="black">
                                     <input type="number" value="{{old('final_isolation_cost') ?? $vertwall->final_isolation_cost}}" name="final_isolation_cost" id="final_isolation_cost" class="ml-2 border text-right px-2 @error('final_isolation_cost') is-invalid error @enderror" style="width:120px;">
                                      €
                                      @error('final_isolation_cost')
@@ -232,7 +232,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>SAL. 1+2</span>
                             <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <div>
+                                <div class="black">
                                     <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
                                      €
                                      @error('total_isolation_cost_1')
@@ -246,7 +246,7 @@
                         <div class="d-flex align-items-center ml-4">
                             <span>SAL. 1+2 F</span>
                             <label for="" class="d-flex flex-column align-items-end mr-1 mb-0">
-                                <div>
+                                <div class="black">
                                     <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2 + $vertwall->final_isolation_cost}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
                                      €
                                      @error('total_isolation_cost_1')
@@ -325,156 +325,134 @@
                         </div>
                     </div>
 
-                    <p>con impianti centralizzati dotati di:</p>
+                    <p class="m-0 mt-3">Con impianti centralizzati dotati di:</p>
 
-                    <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
-                        <label for="condensing_boiler" class="checkbox-wrapper ">
-                            <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} {{old('condensing_boiler') == 'true' ? 'checked' : '' }} type="checkbox" class="@error('condensing_boiler') is-invalid error @enderror" name="condensing_boiler" id="condensing_boiler" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>CC. Caldaie a condensazione</b></span>
-                            @error('condensing_boiler')
-                                  <span class="invalid-feedback pl-3 m-0" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                  </span>
-                            @enderror
-                        </label>
-                        <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div class="box_input">
-                                <div class="row_input">
-                                    <label for="">
-                                        Tipo sostituito
-                                        <select name="" id="">
-                                            <option value="Caldaia standard">Caldaia standard</option>
-                                            <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                            <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                            <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                            <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                            <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                            <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                            <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                            <option value="Altro">Altro</option>
-                                        </select>
-                                    </label>
-                                    <label for="">
-                                        P. nom. sostituito
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                    <label for="">
-                                        Potenza nominale
-                                        <input class="input_small" type="number" name="" id="">
-                                        kW
-                                    </label>
-                                </div>
+                    <div class="mt-4">{{-- CC. Caldaie a condensazione --}}
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="condensing_boiler" class="checkbox-wrapper ">
+                                <input {{$vertwall->condensing_boiler == 'true' ? 'checked' : ''}} {{old('condensing_boiler') == 'true' ? 'checked' : '' }} type="checkbox" class="@error('condensing_boiler') is-invalid error @enderror" name="condensing_boiler" id="condensing_boiler" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>CC. Caldaie a condensazione</b></span>
+                                @error('condensing_boiler')
+                                    <span class="invalid-feedback pl-3 m-0" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </label>
-                            <div class="btn bg-blue white ml-3 mr-3" id="add_condensing_boiler_btn" onclick="addCondensingBoiler(event)">+</div>
+                            <div class="add-btn-custom" id="add_condensing_boiler_btn" onclick="addCondensingBoiler(event)">+</div>
                             <span><strong>(n. {{ $condensing_boilers->count() }} Caldaia/e)</strong></span>
                         </div>
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
-                            <div id="condensing_boiler_wrapper">
-                                @forelse($condensing_boilers as $i => $condensing_boiler)
-                                <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$condensing_boiler->id}}">
-                                    {{ $i + 1 }}
-                                    <div class="row_input">
-                                        <input type="hidden" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" value="">
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
-                                            Tipo sostituito
-                                            <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
-                                                <option {{ $condensing_boiler->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]">
-                                            P. nom. sostituito
-                                            <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]" value="{{ $condensing_boiler->p_nom_sostituito }}">
-                                            kW
-                                        </label>
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]">
-                                            Potenza nominale
-                                            <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]" value="{{ $condensing_boiler->potenza_nominale }}">
-                                            kW
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]">
-                                            Rend. utile nom. (100%)
-                                            <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]" value="{{ $condensing_boiler->rend_utile_nom }}">
-                                            %
-                                        </label>
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
-                                            <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
-                                                <option {{ $condensing_boiler->use_destination === 'Riscaldameto ambiente' ? 'selected' : ''}} value="Riscaldameto ambiente">Riscaldameto ambiente</option>
-                                                <option {{ $condensing_boiler->use_destination === 'Risc. ambiente + prod.ACS' ? 'selected' : ''}} value="Risc. ambiente + prod.ACS">Risc. ambiente + prod.ACS</option>
-                                            </select>
-                                        </label>
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]">
-                                            Efficienza ns
-                                            <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]" value="{{ $condensing_boiler->efficienza_ns }}">
-                                            %
-                                        </label>
-                                        <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]">
-                                            Efficienza ACS nwh
-                                            <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]" value="{{ $condensing_boiler->efficienza_acs_nwh }}">
-                                            %
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
+                            <div  style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
+                                <div id="condensing_boiler_wrapper">
+                                    {{-- start loop --}}
+                                    @forelse($condensing_boilers as $i => $condensing_boiler)
+                                    <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$condensing_boiler->id}}">
+                                        {{ $i + 1 }}
                                         <div class="row_input">
-                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]">
-                                                Tipo di alimentazione
-                                                <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]">
-                                                    <option {{ $condensing_boiler->tipo_di_alimentazione === 'Metano' ? 'selected' : ''}} value="Metano">Gas Naturale (metano)</option>
-                                                    <option {{ $condensing_boiler->tipo_di_alimentazione === 'Gpl' ? 'selected' : ''}} value="Gpl">Gpl</option>
-                                                    <option {{ $condensing_boiler->tipo_di_alimentazione === 'Gasolio' ? 'selected' : ''}} value="Gasolio">Gasolio</option>
+                                            <input type="hidden" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][condomino_id]" value="">
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
+                                                Tipo sostituito
+                                                <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_sostituito]">
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia standard' ? 'selected' : ''}} value="Caldaia standard">Caldaia standard</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a bassa temperatura' ? 'selected' : ''}} value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a condensazione a gas' ? 'selected' : ''}} value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Caldaia a condesazione a gasolio' ? 'selected' : ''}} value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Pompa di calore anche con sonda geotermica' ? 'selected' : ''}} value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Generatori di aria calda' ? 'selected' : ''}} value="Generatori di aria calda">Generatori di aria calda</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Teleriscaldamento' ? 'selected' : ''}} value="Teleriscaldamento">Teleriscaldamento</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Impianto a biomassa' ? 'selected' : ''}} value="Impianto a biomassa">Impianto a biomassa</option>
+                                                    <option {{ $condensing_boiler->tipo_sostituito === 'Altro' ? 'selected' : ''}} value="Altro">Altro</option>
                                                 </select>
                                             </label>
-                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]">
-                                                Classe disp. termoregolazione evoluto
-                                                <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]">
-                                                    <option {{ $condensing_boiler->classe_termo_evoluto === 'V' ? 'selected' : ''}} value="V">V</option>
-                                                    <option {{ $condensing_boiler->classe_termo_evoluto === 'VI' ? 'selected' : ''}} value="VI">VI</option>
-                                                    <option {{ $condensing_boiler->classe_termo_evoluto === 'VIII' ? 'selected' : ''}} value="VIII">VIII</option>
-                                                    <option {{ $condensing_boiler->classe_termo_evoluto === 'Nessun dispositivo' ? 'selected' : ''}} value="Nessun dispositivo">Nessun dispositivo</option>
-                                                </select>
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]">
+                                                P. nom. sostituito
+                                                <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][p_nom_sostituito]" value="{{ $condensing_boiler->p_nom_sostituito }}">
+                                                kW
+                                            </label>
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]">
+                                                Potenza nominale
+                                                <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][potenza_nominale]" value="{{ $condensing_boiler->potenza_nominale }}">
+                                                kW
                                             </label>
                                         </div>
-                                        <div onclick="deleteCondensingBoiler({{$practice->id}}, {{$condensing_boiler->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                        <div class="row_input">
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]">
+                                                Rend. utile nom. (100%)
+                                                <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][rend_utile_nom]" value="{{ $condensing_boiler->rend_utile_nom }}">
+                                                %
+                                            </label>
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
+                                                <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][use_destination]">
+                                                    <option {{ $condensing_boiler->use_destination === 'Riscaldameto ambiente' ? 'selected' : ''}} value="Riscaldameto ambiente">Riscaldameto ambiente</option>
+                                                    <option {{ $condensing_boiler->use_destination === 'Risc. ambiente + prod.ACS' ? 'selected' : ''}} value="Risc. ambiente + prod.ACS">Risc. ambiente + prod.ACS</option>
+                                                </select>
+                                            </label>
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]">
+                                                Efficienza ns
+                                                <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_ns]" value="{{ $condensing_boiler->efficienza_ns }}">
+                                                %
+                                            </label>
+                                            <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]">
+                                                Efficienza ACS nwh
+                                                <input class="input_small" type="number" name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][efficienza_acs_nwh]" value="{{ $condensing_boiler->efficienza_acs_nwh }}">
+                                                %
+                                            </label>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="row_input">
+                                                <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]">
+                                                    Tipo di alimentazione
+                                                    <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][tipo_di_alimentazione]">
+                                                        <option {{ $condensing_boiler->tipo_di_alimentazione === 'Metano' ? 'selected' : ''}} value="Metano">Gas Naturale (metano)</option>
+                                                        <option {{ $condensing_boiler->tipo_di_alimentazione === 'Gpl' ? 'selected' : ''}} value="Gpl">Gpl</option>
+                                                        <option {{ $condensing_boiler->tipo_di_alimentazione === 'Gasolio' ? 'selected' : ''}} value="Gasolio">Gasolio</option>
+                                                    </select>
+                                                </label>
+                                                <label for="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]">
+                                                    Classe disp. termoregolazione evoluto
+                                                    <select name="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]" id="condensing_boilers[{{$practice->id}}-{{$condensing_boiler->id}}][classe_termo_evoluto]">
+                                                        <option {{ $condensing_boiler->classe_termo_evoluto === 'V' ? 'selected' : ''}} value="V">V</option>
+                                                        <option {{ $condensing_boiler->classe_termo_evoluto === 'VI' ? 'selected' : ''}} value="VI">VI</option>
+                                                        <option {{ $condensing_boiler->classe_termo_evoluto === 'VIII' ? 'selected' : ''}} value="VIII">VIII</option>
+                                                        <option {{ $condensing_boiler->classe_termo_evoluto === 'Nessun dispositivo' ? 'selected' : ''}} value="Nessun dispositivo">Nessun dispositivo</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <div onclick="deleteCondensingBoiler({{$practice->id}}, {{$condensing_boiler->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                                <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                                <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                                            </div>
                                         </div>
                                     </div>
+                                    @empty
+                                        <p id="consensing_boilers_no_data_row" class="grey"><b>Nessun impianto inserito</b></p>
+                                    @endforelse
+                                    {{-- end loop --}}
                                 </div>
-                                @empty
-                                    <p id="consensing_boilers_no_data_row">Nessun dato</p>
-                                @endforelse
-                                {{-- end loop --}}
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-5">{{-- PC. Pompe di calore (PDC) --}}
-                        <label for="heat_pump" class="checkbox-wrapper">
-                            <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} {{old('heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('heat_pumps') is-invalid error @enderror" name="heat_pumps" id="heat_pumps" value="true">
-                            <span class="checkmark"></span>
-                            <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
-                            @error('heat_pumps')
-                                  <span class="invalid-feedback pl-3 m-0" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                  </span>
-                            @enderror
-                        </label>
-                        <div class="btn bg-blue white ml-3 mr-3" id="add_condensing_boiler_btn" onclick="addHeatPump(event)">+</div>
-                        <span><strong>(n. {{ $heat_pumps->count() }} Pompa/e di calore)</strong></span>
-                        {{--  --}}
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="heat_pumps" class="checkbox-wrapper">
+                                <input {{$vertwall->heat_pumps == 'true' ? 'checked' : ''}} {{old('heat_pumps') == 'true' ? 'checked' : ''}} type="checkbox"  class="@error('heat_pumps') is-invalid error @enderror" name="heat_pumps" id="heat_pumps" value="true">
+                                <span class="checkmark"></span>
+                                <span class="black" ><b>PC. Pompe di calore (PDC) </b></span>
+                                @error('heat_pumps')
+                                    <span class="invalid-feedback pl-3 m-0" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </label>
+                            <div class="add-btn-custom" id="add_condensing_boiler_btn" onclick="addHeatPump(event)">+</div>
+                            <span><strong>(n. {{ $heat_pumps->count() }} Pompa/e di calore)</strong></span>
+                        </div>
+                        
                         <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
                             <div id="heat_pump_wrapper">
+                                {{-- start loop --}}
                                 @forelse($heat_pumps as $i => $heat_pump)
                                 <div class="box_input" data-id="heat_pump-{{$practice->id}}-{{$heat_pump->id}}">
                                     {{ $i + 1 }}
@@ -566,8 +544,9 @@
                                     </div>
                                 </div>
                                 @empty
-                                    <p id="heat_pumps_no_data_row">Nessun dato</p>
+                                    <p id="heat_pumps_no_data_row" class="grey"><b>Nessun impianto inserito</b></p>
                                 @endforelse
+                                {{-- end loop --}}
                             </div>
                         </div>
                     </div>
@@ -1240,6 +1219,7 @@
                         </label>
                     </div>
                 </div>
+
                 <div class="box-fixed">
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}

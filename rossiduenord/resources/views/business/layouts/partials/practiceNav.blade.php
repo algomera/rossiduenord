@@ -24,7 +24,7 @@
                 <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject*') ? 'visited' : ''}}">
                     SOGGETTI E IMPORTI
                 </a>
-                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building*') ? 'visited' : ''}}">
+                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>

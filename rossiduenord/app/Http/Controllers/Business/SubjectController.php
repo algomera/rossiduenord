@@ -84,7 +84,7 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         $validated = $request->validate([
-            'practice_id' => 'nullable | integer',
+            'practice_id' => 'nullable | numeric',
             'general_contractor' => 'nullable | string |min:3|max:100',
             'construction_company' => 'nullable | string |min:3|max:100',
             'hydrothermal_sanitary_company' => 'nullable | string |min:3|max:100',
@@ -108,15 +108,8 @@ class SubjectController extends Controller
         ]);
         
         $subject->update($validated);
-        $id = ['practice_id' => $subject->practice_id ];
-        // $building = Building::create($id);
 
-        $practice = $subject->practice;
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $condomini = $practice->condomini;
-
-        return view('business.building.edit', compact('condomini','practice','applicant', 'building', 'subject'));
+        return redirect()->route('business.building.edit', $subject);
     }
 
     /**

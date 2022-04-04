@@ -109,7 +109,7 @@ class PracticeController extends Controller
     public function update(Request $request, Practice $practice)
     {
         $validated = $request->validate([
-            'applicant_id' => ' integer | exists:applicants,id',
+            'applicant_id' => ' numeric | exists:applicants,id',
             'import' => 'nullable | numeric | min:2',
             'practical_phase' => 'nullable | string',
             'real_estate_type' => 'nullable | string',

@@ -456,6 +456,10 @@ label {
         text-align: center;
     }
 
+    label{
+        color: $bg-md-grey !important;
+    }
+
     .row_input {
         display: flex;
         align-items: center;
@@ -502,4 +506,18 @@ label {
 
 .error {
     border: 1px solid red !important;
+}
+
+.add-btn-custom{
+    width: 35px;
+    height: 35px;
+    margin: 0 15px;
+    color: white;
+    background-color: #61a4d7;
+    display: flex;
+    border-radius: 30%;
+    font-size: 17px;
+    font-weight: 600;
+    justify-content: space-around;
+    align-items: center;
 }

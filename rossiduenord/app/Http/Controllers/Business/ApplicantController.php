@@ -128,17 +128,9 @@ class ApplicantController extends Controller
             'role' => 'nullable | string',
         ]);
 
-        // $practices = DB::table('practices')
-        // ->where('applicant_id', '=', $applicant->id)
-        // ->get();
-        // $practice = $practices[0];
-
         $applicant->update($validated);
-        $practice =$applicant->practice[0];
-        $subject = $practice->subject;
-        $building = $practice->building;
 
-        return view('business.practice.edit', compact('practice','applicant','building','subject'));
+        return redirect()->route('business.practice.edit', $applicant);
     }
 
     /**
