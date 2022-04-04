@@ -112,5 +112,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.heat_pump')
+    @include('business.scripts.heat_pump', ['condomino' => $condomino ?? ''])
 @endpush

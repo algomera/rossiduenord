@@ -314,6 +314,7 @@ class SuperBonusController extends Controller
     }
 
     public function addCondensingBoiler($practice, $request) {
+//        dd($request->get('condensing_boilers'));
         if($request->get('condensing_boilers')) {
             foreach ($request->get('condensing_boilers') as $i => $item) {
                 $item['condomino_id'] = $this->checkCondominoId($item, $practice);

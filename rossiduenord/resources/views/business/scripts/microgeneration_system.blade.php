@@ -8,7 +8,7 @@
             $("#microgeneration_system_wrapper").append(`
         <div class="box_input" data-id="microgeneration_system-${ms}">
             <div class="row_input">
-                <input type="hidden" name="microgeneration_systems[${ms}][condomino_id]" id="hybrid_systems[${ms}][condomino_id]" value="">
+                <input type="hidden" name="microgeneration_systems[${ms}][condomino_id]" id="hybrid_systems[${ms}][condomino_id]" value="{{ $condomino ?? '' }}">
                                     <label for="microgeneration_systems[${ms}][tipo_sostituito]">
                                         Tipo sostituito
                                         <select name="microgeneration_systems[${ms}][tipo_sostituito]" id="microgeneration_systems[${ms}][tipo_sostituito]">

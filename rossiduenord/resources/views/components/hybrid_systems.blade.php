@@ -125,5 +125,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.hybrid_system')
+    @include('business.scripts.hybrid_system', ['condomino' => $condomino ?? ''])
 @endpush

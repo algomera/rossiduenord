@@ -104,6 +104,6 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.condensing_boiler')
+    @include('business.scripts.condensing_boiler', ['condomino' => $condomino ?? ''])
 @endpush
 

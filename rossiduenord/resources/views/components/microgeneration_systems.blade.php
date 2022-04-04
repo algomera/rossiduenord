@@ -123,5 +123,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.microgeneration_system')
+    @include('business.scripts.microgeneration_system', ['condomino' => $condomino ?? ''])
 @endpush

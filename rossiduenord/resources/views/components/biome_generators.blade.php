@@ -108,5 +108,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.biome_generator')
+    @include('business.scripts.biome_generator', ['condomino' => $condomino ?? ''])
 @endpush

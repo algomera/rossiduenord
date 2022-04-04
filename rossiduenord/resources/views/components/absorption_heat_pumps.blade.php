@@ -97,5 +97,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.absorption_heat_pump')
+    @include('business.scripts.absorption_heat_pump', ['condomino' => $condomino ?? ''])
 @endpush
