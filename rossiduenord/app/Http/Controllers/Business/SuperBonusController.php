@@ -218,7 +218,7 @@ class SuperBonusController extends Controller
             'total_replacing_cost_1' => 'nullable|integer | min:2 ',
             'total_replacing_cost_2' => 'nullable| integer | min:2',
             'final_replacing_cost' => 'nullable| integer | min:2',
-            'replacing_energetic_savings' => 'nullable|integer | min:2 ',
+            'replacing_energetic_savings' => 'nullable| integer | min:2 ',
         ]);
 
         // Update data

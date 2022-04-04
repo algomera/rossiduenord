@@ -29,9 +29,9 @@
                             Si
                         </label>
                     </div>
-                    <div class="d-flex align-items-center"> 
-                        <p class="pt-4" style="margin: 0">è stata depositata nell’ufficio competente del Comune di</p> 
-                        <div class="pt-4">
+                    <div class="d-flex align-items-center mt-3"> 
+                        <p style="margin: 0">è stata depositata nell’ufficio competente del Comune di</p> 
+                        <div>
                             <input type="text" value="{{ old('filed_common') ?? $data_project->filed_common}}" name="filed_common" id="filed_common" style="margin-left: 20px; width: 150px;" class="text-center border form-control  @error('filed_common') is-invalid @enderror">
                             @error('filed_common')
                                 <span class="invalid-feedback pl-3" role="alert">
@@ -40,33 +40,39 @@
                             @enderror
                         </div> 
                           
-                        <label for="filed_province" style="margin: 0; padding-left: 20px;">
-                            Prov.
-                            <input type="text" value="{{old('filed_province') ?? $data_project->filed_province}}" name="filed_province" id="filed_province" class="text-center border form-control  @error('filed_province') is-invalid @enderror">
-                            @error('filed_province')
-                                <span class="invalid-feedback pl-3" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </label>
-                        <label for="filed_date" style="margin: 0; padding-left: 20px;">
-                            in data
-                            <input type="date" value="{{old('filed_date') ?? $data_project->filed_date}}" name="filed_date" id="filed_date" class="text-center border form-control @error('filed_date') is-invalid @enderror">
-                            @error('filed_date')
-                                <span class="invalid-feedback pl-3" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </label>
-                        <label for="filed_protocol" style="margin: 0; padding-left: 20px;">
-                            Protocollo n.
-                            <input type="text" value="{{old('filed_protocol') ?? $data_project->filed_protocol}}" name="filed_protocol" id="filed_protocol" class="text-center border form-control @error('filed_protocol') is-invalid @enderror">
-                            @error('filed_protocol')
-                                <span class="invalid-feedback pl-3" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </label>
+                        <div class="h-100">
+                            <label for="filed_province" style="margin: 0; padding-left: 20px;" class="d-flex align-items-center">
+                                Prov.
+                                <input type="text" value="{{old('filed_province') ?? $data_project->filed_province}}" name="filed_province" id="filed_province" class="text-center mx-2 border form-control  @error('filed_province') is-invalid @enderror">
+                                @error('filed_province')
+                                    <span class="invalid-feedback pl-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </label>
+                        </div>
+                        <div>
+                            <label for="filed_date" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center mx-2">
+                                in data
+                                <input type="date" value="{{old('filed_date') ?? $data_project->filed_date}}" name="filed_date" id="filed_date" class="text-center border  mx-1 w-75 form-control @error('filed_date') is-invalid @enderror">
+                                @error('filed_date')
+                                    <span class="invalid-feedback pl-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </label>
+                        </div>
+                        <div>
+                            <label for="filed_protocol" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center">
+                                Protocollo n.
+                                <input type="text" value="{{old('filed_protocol') ?? $data_project->filed_protocol}}" name="filed_protocol" id="filed_protocol" class="text-center border w-50 mx-2 form-control @error('filed_protocol') is-invalid @enderror">
+                                @error('filed_protocol')
+                                    <span class="invalid-feedback pl-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </label>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center mt-5">  
                         <div class="form-group m-0" style="display:inline-block;" >
