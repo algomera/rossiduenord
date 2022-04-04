@@ -73,7 +73,7 @@
                     <div class="form-group" style="width: 48%;">
                         <label for="phone" class="text">{{ __('Telefono') }}</label>
                         <div>
-                            <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $applicant->phone   }}"  autocomplete="phone" autofocus>
+                            <input id="phone" type="text" style="height: 47px!important" minlength="10" maxlength="10" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $applicant->phone   }}"  autocomplete="phone" autofocus>
                             
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                     <div class="form-group" style="width: 50%;">
                         <label for="mobile_phone" class="text">{{ __('Cellulare') }}</label>
                         <div>
-                            <input id="mobile_phone" type="text" style="height: 47px!important" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{  old('mobile_phone') ?? $applicant->mobile_phone  }}"  autocomplete="mobile_phone" autofocus>
+                            <input id="mobile_phone" type="text" style="height: 47px!important" minlength="10" maxlength="10" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" value="{{  old('mobile_phone') ?? $applicant->mobile_phone  }}"  autocomplete="mobile_phone" autofocus>
                             
                             @error('mobile_phone')
                             <span class="invalid-feedback" role="alert">
@@ -135,10 +135,8 @@
 
                     {{-- role error modal --}}
                     @error('role')
-                        {{-- <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span> --}}
                         @include('business.layouts.partials.modal')
+                    
                     @enderror
                 </div>
 
