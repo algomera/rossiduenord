@@ -29,5 +29,8 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('edit-applicant', 'App\Policies\ApplicantPolicy@update');   
         Gate::define('edit-practice', 'App\Policies\PracticePolicy@update'); 
+        Gate::define('edit-subject', 'App\Policies\SubjectPolicy@update');
+        Gate::define('edit-building', 'App\Policies\BuildingPolicy@update');
+        Gate::define('edit-superbonus', 'App\Policies\SuperbonusPolicy@view');
     }
 }

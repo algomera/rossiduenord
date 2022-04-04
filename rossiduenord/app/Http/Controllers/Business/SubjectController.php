@@ -56,22 +56,14 @@ class SubjectController extends Controller
      * @param  \App\Subject  $subject
      * @return \Illuminate\Http\Response
      */
-    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building)
     {
+        $this->authorize('edit-subject', [$subject, $applicant]);
 
         $practice = $subject->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
-        return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
-    }
-
-    public function subject_edit(Practice $practice)
-    {
-        $building = $practice->building;
-        $subject = $practice->subject;
-        $applicant = $practice->applicant;
-
-        return view('business.subject.edit', compact('practice','subject','building','applicant'));
+        return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**

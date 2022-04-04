@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
+use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Data_project, Country};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,9 @@ class SuperBonusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Practice $practice)
-    {
+    {   
+        $this->authorize('edit-superbonus',  $practice->building);
+
         $applicant = $practice->applicant;
         $building = $practice->building;
         $subject = $practice->subject;
@@ -89,8 +91,9 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
+        $condomino = $condomini[0];
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomino','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
     /**

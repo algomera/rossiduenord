@@ -56,8 +56,10 @@ class BuildingController extends Controller
      * @param  \App\building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(building $building)
+    public function edit(building $building, Applicant $applicant)
     {
+        $this->authorize('edit-building', [$building, $applicant]);
+
         $practice = $building->practice;
         $applicant = $practice->applicant;
         $subject = $practice->subject;

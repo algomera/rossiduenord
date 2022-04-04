@@ -30,15 +30,7 @@
                     </td>
                 </tr>
                 {{-- @endforeach --}}
-{{--                 <tr>
-                    <td style="text-align: left;">
-                        <a href="{{route('business.superbonus.show', $buildings->id) }}">Camelia Via Piave 15 36060 Romano D'ezzelino VI</a>
-                    </td>
-                    <td style="text-align: left;">
-                        <a href="{{route('business.superbonus.show', $buildings->id) }}">09/03/2022</a>
-                    </td>
-                </tr>
- --}}            </tbody>
+            </tbody>
         </table>
     </div>
 @endsection

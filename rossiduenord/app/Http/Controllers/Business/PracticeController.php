@@ -139,7 +139,7 @@ class PracticeController extends Controller
 
         $practice->update($validated);
 
-        return redirect()->route('business.subject_edit', $practice);
+        return redirect()->route('business.subject.edit', $practice);
     }
 
     /**

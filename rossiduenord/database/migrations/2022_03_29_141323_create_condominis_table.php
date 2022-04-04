@@ -22,8 +22,8 @@ class CreateCondominisTable extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('email')->unique()->nullable();;
             $table->string('cf')->nullable();
-            $table->decimal('millesimi_inv', 5, 3, true)->nullable();
-            $table->decimal('millesimi_imp', 5, 3, true)->nullable();
+            $table->double('millesimi_inv', 5, 3, true)->nullable();
+            $table->double('millesimi_imp', 5, 3, true)->nullable();
             $table->string('foglio')->nullable();
             $table->string('part')->nullable();
             $table->string('sub')->nullable();
