@@ -43,34 +43,40 @@
                         <div class="h-100">
                             <label for="filed_province" style="margin: 0; padding-left: 20px;" class="d-flex align-items-center">
                                 Prov.
-                                <input type="text" value="{{old('filed_province') ?? $data_project->filed_province}}" name="filed_province" id="filed_province" class="text-center mx-2 border form-control  @error('filed_province') is-invalid @enderror">
-                                @error('filed_province')
-                                    <span class="invalid-feedback pl-3" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="d-flex flex-column justify-content-center">
+                                    <input type="text" value="{{old('filed_province') ?? $data_project->filed_province}}" name="filed_province" id="filed_province" class="text-center mx-2 border form-control  @error('filed_province') is-invalid @enderror">
+                                    @error('filed_province')
+                                        <span class="invalid-feedback pl-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </label>
                         </div>
                         <div>
                             <label for="filed_date" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center mx-2">
                                 in data
-                                <input type="date" value="{{old('filed_date') ?? $data_project->filed_date}}" name="filed_date" id="filed_date" class="text-center border  mx-1 w-75 form-control @error('filed_date') is-invalid @enderror">
-                                @error('filed_date')
-                                    <span class="invalid-feedback pl-3" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="d-flex flex-column justify-content-center">
+                                    <input type="date" value="{{old('filed_date') ?? $data_project->filed_date}}" name="filed_date" id="filed_date" class="text-center border  mx-1 form-control @error('filed_date') is-invalid @enderror">
+                                    @error('filed_date')
+                                        <span class="invalid-feedback pl-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </label>
                         </div>
                         <div>
                             <label for="filed_protocol" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center">
                                 Protocollo n.
-                                <input type="text" value="{{old('filed_protocol') ?? $data_project->filed_protocol}}" name="filed_protocol" id="filed_protocol" class="text-center border w-50 mx-2 form-control @error('filed_protocol') is-invalid @enderror">
-                                @error('filed_protocol')
-                                    <span class="invalid-feedback pl-3" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="d-flex flex-column justify-content-center">
+                                    <input type="text" value="{{old('filed_protocol') ?? $data_project->filed_protocol}}" name="filed_protocol" id="filed_protocol" class="text-center border w-50 mx-2 form-control @error('filed_protocol') is-invalid @enderror">
+                                    @error('filed_protocol')
+                                        <span class="invalid-feedback pl-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -178,16 +184,20 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center mt-4">
-                        <p class="m-0">- la superficie lorda ante lavori complessiva disperdente è pari a</p>
+                        <p class="m-0 ">- la superficie lorda ante lavori complessiva disperdente è pari a</p>
                         <div class="px-3">
-                            <label for="gross_surface_area">
-                                <input type="number" value="{{old('gross_surface_area') ?? $data_project->gross_surface_area}}" name="gross_surface_area" id="gross_surface_area" class="text-center border form-control @error('gross_surface_area') is-invalid @enderror">
-                                <span>m²</span>
-                                @error('gross_surface_area')
-                                        <span class="invalid-feedback pl-3" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                @enderror
+                            <label for="gross_surface_area" class="d-flex align-items-center">
+                                <div>
+                                    <input type="number" value="{{old('gross_surface_area') ?? $data_project->gross_surface_area}}" name="gross_surface_area" id="gross_surface_area" class="text-center border form-control @error('gross_surface_area') is-invalid @enderror">
+                                     @error('gross_surface_area')
+                                         <span class="invalid-feedback pl-3" role="alert">
+                                             <strong>{{ $message }}</strong>
+                                         </span>
+                                      @enderror
+                                </div>
+                                <div>
+                                    m²
+                                </div>
                             </label>
                         </div>
                     </div>

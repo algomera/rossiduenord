@@ -153,7 +153,7 @@ class SuperBonusController extends Controller
             'filed_common' => 'nullable |string| min:3|max:100',
             'filed_province' => 'nullable |string| min:2|max:2',
             'filed_date' => 'nullable | string',
-            'filed_protocol' => 'nullable |string |min:5|max:50',
+            'filed_protocol' => 'nullable |string |min:3|max:50',
             'technical_report_exclusion' => 'nullable |string',
             'work_start' => 'nullable |string |min:5 |string',
             'end_of_works' => 'nullable |string |min:5 |string',
@@ -161,11 +161,34 @@ class SuperBonusController extends Controller
             'building_unit' => 'nullable |string',
             'relevance' => 'nullable |integer',
             'centralized_system' => 'nullable|string',
-            'gross_surface_area' => 'nullable',
+            'gross_surface_area' => 'nullable | integer | min: 2',
             'np' => 'nullable',
             'np_validated' => 'nullable',
             'np_not_validated' => 'nullable',
-        ]);
+        ],
+        [
+            'technical_report.required'=> 'Seleziona questo campo per procedere',
+            'filed_common.required' => 'Inserisci il comune',
+            'filed_common.min' => 'Il comune deve avere un minimo di 3 caratteri',
+            'filed_common.max' => 'Il nome del comune è troppo lungo',
+            'filed_province.required' => 'Inserisci la provincia',
+            'filed_province.min' => 'Inserisci almeno due caratteri',
+            'filed_province.max' => 'Non più di due caratteri',
+            'filed_date.required' => 'Inserisci la data',
+            'filed_protocol.required' => 'Inserisci il numero di protocollo',
+            'filed_protocol.min' => 'Il numero di protocollo richiede un minimo di 3 caratteri',
+            'filed_protocol.max' => 'Inserisci il numero di protocollo',
+            'technical_report_exclusion.required' => 'Seleziona questo campo',
+            'work_start.required' => 'Inserisci la data di inizio dei lavori',
+            'end_of_works.required' => 'Inserisci la data di fine lavori',
+            'type_building.required' => 'Seleziona un tipo di edificio',
+            'building_unit.required' => 'Inserisci le unita immobiliari',
+            'relevance.required' => 'Inserisci il numero di pertinenze',
+            'centralized_system.required' => 'Seleziona il campo prima di procedere',
+            'gross_surface_area.required' => 'Inserisci il valore necessario prima di proseguire',
+            'gross_surface_area.min' => 'Il campo necessita di un minimo di 2 caratteri',
+        ]
+    );
 
         // Update data
         $data_project->update($validated);
@@ -219,7 +242,8 @@ class SuperBonusController extends Controller
             'total_replacing_cost_2' => 'nullable| integer | min:2',
             'final_replacing_cost' => 'nullable| integer | min:2',
             'replacing_energetic_savings' => 'nullable| integer | min:2 ',
-        ]);
+        ],
+    );
 
         // Update data
         $practice->verical_wall->update($validated);
