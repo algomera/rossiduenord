@@ -379,16 +379,19 @@
 
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex">
-                        <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
-                        <label for="bonus" class="checkbox-wrapper ">
-                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox" class="@error('bonus') is-invalid @enderror" name="bonus" id="bonus" value="110%">     
-                            <span class="checkmark"></span> 
-                            <span>Super Bonus 110%</span>
+                        <div>
+                            <h6 style="margin-right: 20px;" class="@error('bonus') is-invalid @enderror">Tipologia intervento:</h6>
                             @error('bonus')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                        <label for="bonus" class="checkbox-wrapper ">
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox"  name="bonus" id="bonus" value="110%">     
+                            <span class="checkmark"></span> 
+                            <span>Super Bonus 110%</span>
+                           
                         </label>
                     </div>
                     <div class="d-flex align-items-center">
