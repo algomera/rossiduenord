@@ -20,15 +20,15 @@
                 <div class="d-flex" style="font-weight: 500">
 
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
-                        <div class="d-flex align-items-center pb-2 pt-0">
+                        <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, null)">
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
-                            <p class="m-0 ml-2 font-weight-bold">Parti comuni</p>
+                            <p class="m-0 ml-2 {{ $condominoId === "null" ? 'font-weight-bold' : '' }}">Parti comuni</p>
                         </div>
                         {{-- loop condomini --}}
                         @forelse($condomini as $condomino)
-                        <div class="d-flex align-items-center py-2">
+                        <div class="d-flex align-items-center py-2" onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})">
                             <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">
+                            <p class="m-0 ml-2 {{ $condominoId == $condomino->id ? 'font-weight-bold' : '' }}">
                                 {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
                                 {{ $condomino->part }} {{ $condomino->sub }}
                             </p>
@@ -44,7 +44,7 @@
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
 
                         {{-- Date condomino --}}
-{{--                         
+{{-- START --}}
                         <div style="width: 100%; margin-bottom: 30px;">
                             <div class="box_date_condomino">
                                 <div class="row_input">
@@ -186,18 +186,17 @@
                                     <label for="{{$condomino->prov}}">
                                         Prov.
                                         <input class="input_small" type="text" name="prov" id="prov" value="{{$condomino->prov}}">
-                                    </label> 
+                                    </label>
                                 </div>
                                 <div class="row_input">
                                     <label for="{{$condomino->phone}}">
                                         Telefono
                                         <input class="input_large" type="text" name="phone" id="phone" value="{{$condomino->phone}}">
-                                    </label> 
+                                    </label>
                                 </div>
                             </div>
                         </div>
-
- --}}                        
+{{-- END --}}
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
@@ -497,7 +496,7 @@
                                                     <option value="Automatico">Automatico</option>
                                                     <option value="Servoassistito">Servoassistito</option>
                                                 </select>
-                                            </label>    
+                                            </label>
                                         </div>
                                         <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
@@ -683,7 +682,7 @@
                                                     <option value="Gasolio">Gasolio</option>
                                                 </select>
                                             </label>
-                                        </div>    
+                                        </div>
                                         <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                             <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
@@ -1019,11 +1018,11 @@
                                                     <input class="input_small" type="number" name="" id="">
                                                 </label>
                                                 <label for="">
-                                                    Capacità accumulo 
+                                                    Capacità accumulo
                                                     <input class="input_small" type="number" name="" id="">
                                                     L
                                                 </label>
-                                            </div>    
+                                            </div>
                                             <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                                 <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                                 <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
@@ -1290,7 +1289,7 @@
                                                     <input class="input_small" type="number" name="" id="">
                                                     m²
                                                 </label>
-                                            </div>    
+                                            </div>
                                             <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                                 <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                                 <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
@@ -1840,3 +1839,14 @@
         @include('business.scripts.select_country')
     @endpush
  --}}@endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        function setCondominoId(pid, id) {
+            axios.post(`/business/show_condomino_data/${id}`)
+                .then(() => {
+                    window.location.reload();
+                })
+        }
+    </script>
+@endpush

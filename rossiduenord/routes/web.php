@@ -115,6 +115,10 @@ Route::middleware('business')
         ->name('update_var_computation');
     Route::resource('/verticalwall', 'VerticalWallController');
 
+    Route::post('/show_condomino_data/{id}', function ($id) {
+        session()->put('condominoId', $id);
+    });
+
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
     Route::delete('/absorption_heat_pumps/{id}/delete', 'InterventionController@deleteAbsorptionHeatPumps');

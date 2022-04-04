@@ -89,8 +89,9 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
+        $condominoId = session()->get('condominoId') ?? null;
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'condominoId', 'towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
     /**
@@ -314,7 +315,6 @@ class SuperBonusController extends Controller
     }
 
     public function addCondensingBoiler($practice, $request) {
-//        dd($request->get('condensing_boilers'));
         if($request->get('condensing_boilers')) {
             foreach ($request->get('condensing_boilers') as $i => $item) {
                 $item['condomino_id'] = $this->checkCondominoId($item, $practice);
