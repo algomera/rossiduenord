@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
+use App\{CondensingBoiler, Condomini, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
