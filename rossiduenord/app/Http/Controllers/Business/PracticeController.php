@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{Practice, Subject, Applicant, Building, Bonus};
+use App\{Practice, Subject, Applicant, Building};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 class PracticeController extends Controller
 {
@@ -92,16 +90,15 @@ class PracticeController extends Controller
      * @param  \App\Practice  $practice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building)
     {
         $this->authorize('edit-practice', [$practice, $applicant]);
 
-        $practice_data = Carbon::today()->format('d/m/Y');
         $subject = $practice->subject;
         $applicant = $practice->applicant;
         $building = $practice->building;
 
-        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus', 'practice_data'));
+        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**
@@ -149,7 +146,7 @@ class PracticeController extends Controller
             //practical_phase
             'practical_phase.required'=>'Innserisci la fase pratica',
             //type
-            'real_estate_type.required'=>'Innserisci il tipo di struttura',
+            'real_estate_type.required'=>'Inserisci il tipo di struttura',
             'month.required'=>'Inserisci il mese della pratica',
             'year.required'=>'Inserisci l\'anno della pratica',
             'policy_name.required'=>'Inserisci il nome della pratica',

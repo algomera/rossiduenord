@@ -120,7 +120,7 @@
                             <tr>
                                 <td>{{$practice->nominative}}</td>
                                 <td>{{$practice->id}}</td>
-                                <td>{{$practice->created_at}}</td>
+                                <td>{{ date('d-m-Y', strtotime($practice->created_at)) }}</td>
                                 <td>{{$practice->description}}</td>
                                 <td>{{$practice->practical_phase}}</td>
                                 <td>{{$practice->month}}</td>
