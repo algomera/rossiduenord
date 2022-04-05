@@ -1,5 +1,6 @@
 @props(['vertwall', 'practice', 'items', 'condomino'])
 
+<div>
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
         <label class="checkbox-wrapper d-flex align-items-center mb-0">
@@ -120,6 +121,38 @@
             @endforelse
         </div>
     </div>
+</div>
+{{--<div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">--}}
+{{--    <div class="d-flex align-items-center">--}}
+{{--        <p class="m-0">Il costo previsto per i sistemi di microgenerazione CO) ammonta a *</p>--}}
+{{--        <label for="CO_expected_cost" class=" m-0 mr-4 black">--}}
+{{--            <input type="text" name="CO_expected_cost" value="{{$vertwall->CO_expected_cost}}" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">--}}
+{{--            €--}}
+{{--        </label>--}}
+{{--    </div>--}}
+{{--    <button class="add-button">Computo metrico</button>--}}
+{{--</div>--}}
+{{--<p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>--}}
+
+{{--<div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">--}}
+{{--    <div class="d-flex align-items-center">--}}
+{{--        <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>--}}
+{{--        <label for="CO_max_cost" class=" m-0 mr-4 black">--}}
+{{--            <input type="text" value="{{$vertwall->CO_max_cost}}" name="CO_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">--}}
+{{--            €--}}
+{{--        </label>--}}
+{{--    </div>--}}
+{{--</div>--}}
+
+{{--<div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">--}}
+{{--    <div class="d-flex align-items-center">--}}
+{{--        <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>--}}
+{{--        <label for="CO_nr_savings" class=" m-0 mr-4 black">--}}
+{{--            <input type="text" value="{{$vertwall->CO_nr_savings}}" name="CO_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">--}}
+{{--            KWh/anno--}}
+{{--        </label>--}}
+{{--    </div>--}}
+{{--</div>--}}
 </div>
 
 @push('scripts')

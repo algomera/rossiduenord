@@ -92,7 +92,33 @@ class SuperBonusController extends Controller
         $condominoId = session()->get('condominoId') ?? null;
         $selected_condomino = Condomini::find($condominoId);
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries', 'selected_condomino', 'condomini', 'condominoId', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', $condominoId)->get();
+        $heat_pumps = $practice->heat_pumps()->where('condomino_id', $condominoId)->get();
+        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', $condominoId)->get();
+        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', $condominoId)->get();
+        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', $condominoId)->get();
+        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
+        $biome_generators = $practice->biome_generators()->where('condomino_id', $condominoId)->get();
+        $solar_panels = $practice->solar_panels()->where('condomino_id', $condominoId)->get();
+        return view('business.superbonus.towed_intervention.vertical_wall', compact(
+                'solar_panels',
+                'biome_generators',
+                'water_heatpumps_installations',
+                'microgeneration_systems',
+                'hybrid_systems',
+                'absorption_heat_pumps',
+                'heat_pumps',
+                'condensing_boilers',
+            'countries',
+            'selected_condomino',
+            'condomini',
+            'condominoId',
+            'towed_vw',
+            'applicant',
+            'practice',
+            'building',
+            'subject')
+        );
     }
 
     /**

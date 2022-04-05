@@ -337,7 +337,7 @@
             <x-hybrid_systems :vertwall="$vertwall" :practice="$practice" :items="$hybrid_systems" />
             {{-- CO. Sistemi di microgenerazione --}}
             <x-microgeneration_systems :vertwall="$vertwall" :practice="$practice" :items="$microgeneration_systems" />
-            {{--SA. Installazione di scaldacqua a pompa di calore  --}}
+            {{-- SA. Installazione di scaldacqua a pompa di calore  --}}
             <x-water_heatpumps_installations :vertwall="$vertwall" :practice="$practice" :items="$water_heatpumps_installations" />
             {{-- IB. Generatori a biomamassa --}}
             <x-biome_generators :vertwall="$vertwall" :practice="$practice" :items="$biome_generators" />
