@@ -172,6 +172,14 @@ a:hover {
   color: #61a4d7 !important;
 }
 
+.border-blue {
+  border-radius: 3px;
+  border: 2px solid #61a4d7 !important;
+}
+.border-blue:focus {
+  outline: none;
+}
+
 .text-sm {
   font-size: 15px;
 }
