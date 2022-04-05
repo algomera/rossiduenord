@@ -30,7 +30,7 @@
         <div class="container-custom d-flex">
             <nav class="navbar">
                 <div class="my-4 ml-4">
-                    <img src="{{asset('img/logo.svg')}}" alt="">
+                    <img src="{{asset('img/logo.svg')}}" alt="" class="img-fluid">
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-pills">
