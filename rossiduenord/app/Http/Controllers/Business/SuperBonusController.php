@@ -91,9 +91,8 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
-        $condomino = $condomini[0];
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomino','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{Practice, Subject, Applicant, Building, Bonus};
+use App\{Practice, Subject, Applicant, Building};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -64,7 +64,10 @@ class BuildingController extends Controller
         $applicant = $practice->applicant;
         $subject = $practice->subject;
         $condomini = $practice->condomini;
-        return view('business.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building'));
+        $document = $practice->folder_documents;
+
+        //dd($document);
+        return view('business.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building','document'));
     }
 
     /**

@@ -43,7 +43,7 @@ class PracticeController extends Controller
 
         $practices = $q->get();
 
-//        dd($practices);
+        //dd($practices);
         return view('business/practice.index', compact('practices'));
     }
 

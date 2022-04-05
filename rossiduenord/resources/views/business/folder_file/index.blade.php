@@ -26,12 +26,6 @@
 
 
     <div class="content-main">
-        @if(session('message'))
-            <div class="alert alert-success" role="alert">
-                <strong>{{session('message')}}</strong>
-            </div>
-        @endif
-
         <a href="{{route('business.folder.create')}}" class="add-button">+ Aggiungi cartella</a>
         
         <div class="box px-20 pb-20 pt-20">

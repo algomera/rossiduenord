@@ -6,8 +6,8 @@ use App\{FinalState,
     Subject,
     Applicant,
     Building,
-    Bonus,
     Data_project,
+    Folder_Document,
     TrainatedVertWall,
     Variant,
     VerticalWall};
@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
 {
@@ -66,17 +67,32 @@ class ApplicantController extends Controller
         $subject = Subject::create($data);
         // building creation
         $building = Building::create($data);
-        // $new_project = new Data_project($data);
-        // $new_project->practice()->associate($practice)->save();
+
+        // superbonus creation
         Data_project::create($data);
-
         VerticalWall::create($data);
-
         TrainatedVertWall::create($data);
-
         FinalState::create($data);
-
         Variant::create($data);
+
+        $list_folder = [
+            [
+                'practice_id'=> $practice_id,
+                'name' => 'Documenti necessari PRIMA dell\'inizio dei lavori'
+            ],
+            [
+                'practice_id'=> $practice_id,
+                'name' => 'Documenti necessari DURANTE i lavori'
+            ],
+            [
+                'practice_id'=> $practice_id,
+                'name' => 'Documenti necessari AL TERMINE dei lavori'
+            ]
+
+        ];
+        for ($i = 0; $i < 3; $i++) { 
+            Folder_Document::create($list_folder[$i]);
+        }
 
         return view('business.applicant.edit', compact('applicant','practice','subject','building'));
     }
@@ -98,14 +114,14 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building, Bonus $bonus)
+    public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building)
     {
         $this->authorize('edit-applicant',  $applicant);
         $practice = $applicant->practice[0];
         $building = $practice->building;
         $subject = $practice->subject;
         
-        return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building', 'bonus'));
+        return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**

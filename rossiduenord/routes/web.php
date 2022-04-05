@@ -123,6 +123,9 @@ Route::middleware('business')
     Route::delete('/water_heatpumps_installations/{id}/delete', 'InterventionController@deleteWaterHeatpumpsInstallations');
     Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
     Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
+
+    route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
+    route::resource('/documents', 'DocumentController');
 });
 
 

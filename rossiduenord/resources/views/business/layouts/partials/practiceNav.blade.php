@@ -28,7 +28,9 @@
                     IMMOBILE
                 </a>
                 <a href="">FOTO DA APP</a>
-                <a href="">DOCUMENTI RICHIESTI</a>
+                <a href="{{route('business.folder_document', $practice->id)}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
+                    DOCUMENTI RICHIESTI
+                </a>
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
                     SUPERBONUS 110%
                 </a>
