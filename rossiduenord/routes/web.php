@@ -1,5 +1,7 @@
 <?php
 
+use App\Condomini;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 //home
-Route::get('/', function () {
+Route::middleware('guest')->get('/', function () {
     return view('auth.login');
 });
 
@@ -116,7 +118,20 @@ Route::middleware('business')
     Route::resource('/verticalwall', 'VerticalWallController');
 
     Route::post('/show_condomino_data/{id}', function ($id) {
-        session()->put('condominoId', $id);
+        if($id === "null") {
+            session()->remove('condominoId');
+        } else {
+            session()->put('condominoId', $id);
+        }
+    });
+
+    Route::post('/save_condomino_data/{id}', function ($id, Request $request) {
+        $data = json_decode($request->get('data'), true);
+//        dd($data);
+        $condomino = Condomini::find($id);
+        $condomino->update($data);
+
+        return "updated";
     });
 
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');

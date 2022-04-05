@@ -18,15 +18,14 @@
                 </div>
 
                 <div class="d-flex" style="font-weight: 500">
-
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
                         <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, null)">
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
-                            <p class="m-0 ml-2 {{ $condominoId === "null" ? 'font-weight-bold' : '' }}">Parti comuni</p>
+                            <p class="m-0 ml-2 {{ $condominoId === "null" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
                         </div>
                         {{-- loop condomini --}}
                         @forelse($condomini as $condomino)
-                        <div class="d-flex align-items-center py-2" onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})">
+                        <div class="d-flex align-items-center py-2" @if($condominoId != $condomino->id) onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})" @endif>
                             <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
                             <p class="m-0 ml-2 {{ $condominoId == $condomino->id ? 'font-weight-bold' : '' }}">
                                 {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
@@ -42,31 +41,27 @@
                     </div>
 
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
-
                         {{-- Date condomino --}}
-{{-- START --}}
-                        @if($condominoId !== "null")
-                            @php
-                                $selected_condomino = \App\Condomini::find($condominoId);
-                            @endphp
+                        {{-- START --}}
+                        @if($selected_condomino !== null)
                         <div style="width: 100%; margin-bottom: 30px;">
                             <div class="box_date_condomino">
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->foglio}}">
                                         Foglio
-                                        <input type="number" name="foglio" id="foglio" value="{{$selected_condomino->foglio}}">
+                                        <input type="number" name="selected_condomino-foglio" id="selected_condomino-foglio" value="{{$selected_condomino->foglio}}">
                                     </label>
                                     <label for="{{$selected_condomino->part}}">
                                         Particella
-                                        <input type="number" name="part" id="part" value="{{$selected_condomino->part}}">
+                                        <input type="number" name="selected_condomino-part" id="selected_condomino-part" value="{{$selected_condomino->part}}">
                                     </label>
                                     <label for="{{$selected_condomino->sub}}">
                                         Subalterno
-                                        <input type="number" name="sub" id="sub" value="{{$selected_condomino->sub}}">
+                                        <input type="number" name="selected_condomino-sub" id="selected_condomino-sub" value="{{$selected_condomino->sub}}">
                                     </label>
                                     <label for="{{$selected_condomino->categ_catastale}}">
                                         categ. catastale
-                                        <select name="categ_catastale" id="categ_catastale">
+                                        <select name="selected_condomino-categ_catastale" id="selected_condomino-categ_catastale">
                                             <option {{$selected_condomino->categ_catastale == 'A/2' ? 'selected' : ''}} value="A/2">A/2</option>
                                             <option {{$selected_condomino->categ_catastale == 'A/3' ? 'selected' : ''}} value="A/3">A/3</option>
                                             <option {{$selected_condomino->categ_catastale == 'A/4' ? 'selected' : ''}} value="A/4">A/4</option>
@@ -82,15 +77,15 @@
                                 <div class="row_input" style="margin-bottom: 20px;">
                                     <label for="{{$selected_condomino->millesimi_inv}}">
                                         Quota millesimi involucro
-                                        <input type="number" name="millesimi" id="millesimi" value="{{$selected_condomino->millesimi}}">
+                                        <input type="number" name="selected_condomino-millesimi_inv" id="selected_condomino-millesimi_inv" value="{{$selected_condomino->millesimi_inv}}">
                                     </label>
                                     <label for="{{$selected_condomino->millesimi_imp}}">
                                         Quota millesimi impianti
-                                        <input type="number" name="millesimi_imp" id="millesimi_imp" value="{{$selected_condomino->millesimi_imp}}">
+                                        <input type="number" name="selected_condomino-millesimi_imp" id="selected_condomino-millesimi_imp" value="{{$selected_condomino->millesimi_imp}}">
                                     </label>
                                     <label for="{{$selected_condomino->sup_catastale}}">
                                         Superfice catastale
-                                        <input type="number" name="sup_catastale" id="sup_catastale" value="{{$selected_condomino->sup_catastale}}">
+                                        <input type="number" name="selected_condomino-sup_catastale" id="selected_condomino-sup_catastale" value="{{$selected_condomino->sup_catastale}}">
                                         m²
                                     </label>
                                 </div>
@@ -99,7 +94,7 @@
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->type_beneficiary}}">
                                         Tipo beneficiario
-                                        <select name="type_beneficiary" id="type_beneficiary">
+                                        <select name="selected_condomino-type_beneficiary" id="selected_condomino-type_beneficiary">
                                             <option {{$selected_condomino->type_beneficiary == 'Persona fisica' ? 'selected' : ''}} value="Persona fisica">Persona fisica</option>
                                             <option {{$selected_condomino->type_beneficiary == 'IACP' ? 'selected' : ''}} value="IACP">IACP</option>
                                             <option {{$selected_condomino->type_beneficiary == 'Coop. Abit a prop. Indivisa' ? 'selected' : ''}} value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
@@ -110,7 +105,7 @@
                                     </label>
                                     <label for="{{$selected_condomino->possession_title}}">
                                         Titolo di possesso
-                                        <select name="possession_title" id="possession_title">
+                                        <select name="selected_condomino-possession_title" id="selected_condomino-possession_title">
                                             <option {{$selected_condomino->possession_title == 'Proprietario o comproprietario' ? 'selected' : ''}} value="Proprietario o comproprietario">Proprietario o comproprietario</option>
                                             <option {{$selected_condomino->possession_title == 'Detentore o co-detentore' ? 'selected' : ''}} value="Detentore o co-detentore">Detentore o co-detentore</option>
                                             <option {{$selected_condomino->possession_title == 'Familiare convivente con il possessore o con il detentore' ? 'selected' : ''}} value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
@@ -120,15 +115,15 @@
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->surname}}">
                                         Cognome
-                                        <input type="text" name="surname" id="surname" value="{{$selected_condomino->surname}}">
+                                        <input type="text" name="selected_condomino-surname" id="selected_condomino-surname" value="{{$selected_condomino->surname}}">
                                     </label>
                                     <label for="{{$selected_condomino->name}}">
                                         Nome
-                                        <input type="text" name="name" id="name" value="{{$selected_condomino->name}}">
+                                        <input type="text" name="selected_condomino-name" id="selected_condomino-name" value="{{$selected_condomino->name}}">
                                     </label>
                                     <label for="{{$selected_condomino->sex}}">
                                         Titolo di possesso
-                                        <select name="sex" id="sex">
+                                        <select name="selected_condomino-sex" id="selected_condomino-sex">
                                             <option {{$selected_condomino->sex == 'M' ? 'selected' : ''}} value="M">M</option>
                                             <option {{$selected_condomino->sex == 'F' ? 'selected' : ''}} value="F">F</option>
                                         </select>
@@ -137,29 +132,29 @@
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->date_of_birth}}">
                                         Data di nascita
-                                        <input type="date" name="date_of_birth" id="date_of_birth" value="{{$selected_condomino->date_of_birth}}">
+                                        <input type="date" name="selected_condomino-date_of_birth" id="selected_condomino-date_of_birth" value="{{$selected_condomino->date_of_birth}}">
                                     </label>
                                     <label for="{{$selected_condomino->nation_of_birth}}">
                                         Nazione di nascita
-                                        <select name="nation_of_birth" id="nation_of_birth">
+                                        <select name="selected_condomino-nation_of_birth" id="selected_condomino-nation_of_birth">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                <option {{ $selected_condomino->nation_of_birth === $country->name ? 'selected' : '' }} value="{{$country->name}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
                                     <label for="{{$selected_condomino->common_of_birth}}">
                                         Comune di nascita
-                                        <input type="text" name="common_of_birth" id="common_of_birth" value="{{$selected_condomino->common_of_birth}}">
+                                        <input type="text" name="selected_condomino-common_of_birth" id="selected_condomino-common_of_birth" value="{{$selected_condomino->common_of_birth}}">
                                     </label>
                                 </div>
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->cf}}">
                                         Cod. fiscale
-                                        <input class="input_large" type="text" name="cf" id="cf" value="{{$selected_condomino->cf}}">
+                                        <input class="input_large" type="text" name="selected_condomino-cf" id="selected_condomino-cf" value="{{$selected_condomino->cf}}">
                                     </label>
                                     <label for="{{$selected_condomino->P_IVA}}">
                                         Partita IVA
-                                        <input class="input_large" type="text" name="P_IVA" id="P_IVA" value="{{$selected_condomino->P_IVA}}">
+                                        <input class="input_large" type="text" name="selected_condomino-P_IVA" id="selected_condomino-P_IVA" value="{{$selected_condomino->P_IVA}}">
                                     </label>
                                 </div>
 
@@ -167,9 +162,9 @@
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->country}}">
                                         Nazione
-                                        <select name="country" id="country">
+                                        <select name="selected_condomino-country" id="selected_condomino-country">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                <option value="{{$country->name}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
@@ -177,31 +172,31 @@
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->address}}">
                                         Indirizzo
-                                        <input class="input_large" type="text" name="address" id="address" value="{{$selected_condomino->address}}">
+                                        <input class="input_large" type="text" name="selected_condomino-address" id="selected_condomino-address" value="{{$selected_condomino->address}}">
                                     </label>
                                     <label for="{{$selected_condomino->CAP}}">
                                         CAP
-                                        <input class="input_small" type="text" name="CAP" id="CAP" value="{{$selected_condomino->CAP}}">
+                                        <input class="input_small" type="text" name="selected_condomino-CAP" id="selected_condomino-CAP" value="{{$selected_condomino->CAP}}">
                                     </label>
                                     <label for="{{$selected_condomino->common}}">
                                         Comune
-                                        <input class="input_large" type="text" name="common" id="common" value="{{$selected_condomino->common}}">
+                                        <input class="input_large" type="text" name="selected_condomino-common" id="selected_condomino-common" value="{{$selected_condomino->common}}">
                                     </label>
                                     <label for="{{$selected_condomino->prov}}">
                                         Prov.
-                                        <input class="input_small" type="text" name="prov" id="prov" value="{{$selected_condomino->prov}}">
+                                        <input class="input_small" type="text" name="selected_condomino-prov" id="selected_condomino-prov" value="{{$selected_condomino->prov}}">
                                     </label>
                                 </div>
                                 <div class="row_input">
                                     <label for="{{$selected_condomino->phone}}">
                                         Telefono
-                                        <input class="input_large" type="text" name="phone" id="phone" value="{{$selected_condomino->phone}}">
+                                        <input class="input_large" type="text" name="selected_condomino-phone" id="selected_condomino-phone" value="{{$selected_condomino->phone}}">
                                     </label>
                                 </div>
                             </div>
                         </div>
                         @endif
-{{-- END --}}
+                        {{-- END --}}
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
@@ -1826,7 +1821,10 @@
                     </div>
                 </div>
 
-                <div class="box-fixed">
+                <div class="box-fixed" style="z-index: 1;">
+                    @if($condominoId !== null)
+                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $selected_condomino->id }})">Salva condomino</div>
+                    @endif
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}
                     </a>
@@ -1851,6 +1849,22 @@
             axios.post(`/business/show_condomino_data/${id}`)
                 .then(() => {
                     window.location.reload();
+                })
+        }
+        function saveCondominoChanges(id) {
+            let inputs = document.querySelectorAll("[name^='selected_condomino-']");
+            let datas = {};
+            inputs.forEach(input => {
+                let id = input.id.split('-')[1]
+                datas[id] = input.value === '' ? null : input.value
+            })
+            // console.log(datas)
+            axios.post(`/business/save_condomino_data/${id}`, {
+                    data: JSON.stringify(datas)
+                })
+                .then((res) => {
+                    console.log(res.data)
+                    // window.location.reload();
                 })
         }
     </script>

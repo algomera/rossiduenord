@@ -25,7 +25,7 @@
                             <input name="condomini[${i}][cf]" type="text" style="border:none; width: 100%;">
                         </td>
                         <td class="text-center">
-                            <input name="condomini[${i}][millesimi]" type="text" style="border:none; width: 100%;">
+                            <input name="condomini[${i}][millesimi_inv]" type="text" style="border:none; width: 100%;">
                         </td>
                         <td class="text-center">
                             <input name="condomini[${i}][foglio]" type="text" style="border:none; width: 100%;">

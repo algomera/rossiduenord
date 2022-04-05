@@ -663,7 +663,7 @@
                                                 <td class="text-left">{{ $condomino->phone }}</td>
                                                 <td class="text-left">{{ $condomino->email }}</td>
                                                 <td class="text-left">{{ $condomino->cf }}</td>
-                                                <td class="text-center">{{ $condomino->millesimi }}</td>
+                                                <td class="text-center">{{ $condomino->millesimi_inv }}</td>
                                                 <td class="text-center">{{ $condomino->foglio }}</td>
                                                 <td class="text-left">{{ $condomino->part }}</td>
                                                 <td class="text-left">{{ $condomino->sub }}</td>

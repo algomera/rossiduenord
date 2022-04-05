@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
+use App\{CondensingBoiler, Condomini, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -90,8 +90,9 @@ class SuperBonusController extends Controller
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
         $condominoId = session()->get('condominoId') ?? null;
+        $selected_condomino = Condomini::find($condominoId);
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'condominoId', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries', 'selected_condomino', 'condomini', 'condominoId', 'towed_vw','applicant', 'practice', 'building', 'subject'));
     }
 
     /**
@@ -272,6 +273,7 @@ class SuperBonusController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update_towed_intervention(Request $request, Practice $practice) {
+//        dd($request->get('condomini'));
         // Validazione form
 
         // Update data
