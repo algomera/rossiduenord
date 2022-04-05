@@ -11,8 +11,6 @@
             </div>
         </form>
     </div>
-    @include('business.layouts.partials.practice_info')
-
 
     <div class="content-main" style="padding-top: 0px;">
 
@@ -176,6 +174,7 @@
                 </table>
             </div>
         </div>
+        @include('business.layouts.partials.practice_info')
     </div>
 @endsection
 

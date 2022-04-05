@@ -1,5 +1,5 @@
 {{-- bottom fixed div  --}}
-<div class="practices-info py-3">
+<div class="practices-info fixed-bottom py-3">
     <div class="d-flex justify-content-between align-items-center h-100">
         <div class="practice-count text-center">
             <span class="mx-3 blue">N° Pratiche in lista</span>
