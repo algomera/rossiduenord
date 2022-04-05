@@ -164,7 +164,7 @@
                                         Nazione
                                         <select name="selected_condomino-country" id="selected_condomino-country">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                                <option {{ $selected_condomino->country === $country->name ? 'selected' : '' }} value="{{$country->name}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
@@ -1858,13 +1858,11 @@
                 let id = input.id.split('-')[1]
                 datas[id] = input.value === '' ? null : input.value
             })
-            // console.log(datas)
             axios.post(`/business/save_condomino_data/${id}`, {
                     data: JSON.stringify(datas)
                 })
-                .then((res) => {
-                    console.log(res.data)
-                    // window.location.reload();
+                .then(() => {
+                    window.location.reload();
                 })
         }
     </script>
