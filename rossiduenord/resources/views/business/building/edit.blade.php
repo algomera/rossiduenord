@@ -641,17 +641,17 @@
                                         <thead>
                                             <tr>
                                                 <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                                <td style="width:15%;" class="text-center"><b>Nome/Ragione soc…</b></td>
+                                                <td style="width:15%;" class="text-center"><b>Nome/Ragione sociale</b></td>
                                                 <td style="width:10%;"><b>Cognome</b></td>
                                                 <td style="width:10%;"><b>Telefono</b></td>
                                                 <td style="width:13%;"><b>Email</b></td>
-                                                <td style="width:12%;"><b>Codice fiscale/Pa…</b></td>
-                                                <td style="width:10%;" class="text-center"><b>Mille…</b></td>
-                                                <td style="width:5%;" class="text-center"><b>Foglio</b></td>
+                                                <td style="width:12%;"><b>Codice fiscale/P. IVA</b></td>
+                                                <td style="width:10%;" class="text-center"><b>Millesimi</b></td>
+                                                <td style="width:5%;" ><b>Foglio</b></td>
                                                 <td style="width:5%;"><b>Part.</b></td>
-                                                <td style="width:5%;"><b>sub</b></td>
-                                                <td style="width:5%;"><b>Cate…</b></td>
-                                                <td style="width:5%;"><b>sub…</b></td>
+                                                <td style="width:5%;"><b>Sub</b></td>
+                                                <td style="width:5%;" class="text-center"><b>Cat. catastale</b></td>
+                                                <td style="width:5%;" class="text-center"><b>Sub. catastale</b></td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -664,7 +664,7 @@
                                                 <td class="text-left">{{ $condomino->email }}</td>
                                                 <td class="text-left">{{ $condomino->cf }}</td>
                                                 <td class="text-center">{{ $condomino->millesimi_inv }}</td>
-                                                <td class="text-center">{{ $condomino->foglio }}</td>
+                                                <td class="text-left">{{ $condomino->foglio }}</td>
                                                 <td class="text-left">{{ $condomino->part }}</td>
                                                 <td class="text-left">{{ $condomino->sub }}</td>
                                                 <td class="text-center">{{ $condomino->categ_catastale }}</td>
