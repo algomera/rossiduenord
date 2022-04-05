@@ -8,7 +8,7 @@
             $("#water_heatpumps_installation_wrapper").append(`
                 <div class="box_input" data-id="water_heatpumps_installation-${whi}">
                                     <div class="row_input">
-                                        <input type="hidden" name="water_heatpumps_installations[${whi}][condomino_id]" id="water_heatpumps_installations[${whi}][condomino_id]" value="">
+                                        <input type="hidden" name="water_heatpumps_installations[${whi}][condomino_id]" id="water_heatpumps_installations[${whi}][condomino_id]" value="{{ $condomino ?? '' }}">
                                     <label for="water_heatpumps_installations[${whi}][tipo_scaldacqua_sostituito]">
                                         Tipo scaldaacqua sostituito
                                         <select name="water_heatpumps_installations[${whi}][tipo_scaldacqua_sostituito]" id="water_heatpumps_installations[${whi}][tipo_scaldacqua_sostituito]">

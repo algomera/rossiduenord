@@ -379,16 +379,19 @@
 
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div class="d-flex">
-                        <h6 style="margin-right: 20px;">Tipologia intervento:</h6>
-                        <label for="bonus" class="checkbox-wrapper ">
-                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox" class="@error('bonus') is-invalid @enderror" name="bonus" id="bonus" value="110%">     
-                            <span class="checkmark"></span> 
-                            <span>Super Bonus 110%</span>
+                        <div>
+                            <h6 style="margin-right: 20px;" class="@error('bonus') is-invalid @enderror">Tipologia intervento:</h6>
                             @error('bonus')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                        <label for="bonus" class="checkbox-wrapper ">
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox"  name="bonus" id="bonus" value="110%">     
+                            <span class="checkmark"></span> 
+                            <span>Super Bonus 110%</span>
+                           
                         </label>
                     </div>
                     <div class="d-flex align-items-center">
@@ -419,7 +422,7 @@
                         <div class="form-group mb-2 mr-2" style="width: 20%;">
                             <label for="year_processing" class="text"></label>
                             <div>
-                                <input id="year_processing" type="text" style="height: 47px!important" class="form-control" name="year_processing" value="{{old('year_processing') ?? $practice->year_processing }}" disabled>
+                                <input id="year_processing" type="text" style="height: 47px!important" class="form-control" name="year_processing" value="{{old('year_processing') ?? $practice->year_processing }}">
                             </div>
                         </div>
                         <div class="form-group mr-2" style="width: 40%">
@@ -433,7 +436,7 @@
                         <div class="form-group" style="width: 30%;">
                             <label for="import_sal" class="text"> Importo SAL/Lavori</label>
                             <div>
-                                <input id="import_sal" type="text" style="height: 47px!important" class="form-control" name="import_sal" value="{{old('import_sal') ?? $practice->import_sal}}" disabled>
+                                <input id="import_sal" type="text" style="height: 47px!important" class="form-control" name="import_sal" value="{{old('import_sal') ?? $practice->import_sal}}">
                             </div>
                         </div>
                     </div>

@@ -69,10 +69,10 @@
                             <span class="text-sm grey">N. Pratica</span>
                             <input style="width: 100%"type="number" name="practical_number" id="practical_number" value="{{ request()->get('practical_number') ?? '' }}">
                         </div>
+                        <button type="submit" class="py-1 px-3 add-button mt-4">
+                            Ricerca
+                        </button>
                     </div>
-                    <button type="submit" style="border: none; margin: 0 5px;">
-                        <img class="icon-search" src="{{ asset('/img/icon/CERCA.svg') }}" alt="">
-                    </button>
 {{--                    <input type="reset" style="margin: 0 5px; border: none; background: none" value="Reset" />--}}
 
 {{--                    <div class="d-flex align-items-center mb-2">--}}
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="box px-20 pt-20 pb-20">
+        <div class="box px-20 pt-20 pb-20 mb-0">
             <div class="table mt-2">
                 <table class="table_bonus" style="width: 100%">
                     <thead>
@@ -110,6 +110,7 @@
                             <th style="width: 10%">Mese lav.110%</th>
                             <th style="width: 10%">Lista incentivi</th>
                             <th style="width: 15%">Richiedente</th>
+                            <th style="width: 15%">SAl</th>
                             <th style="width: 5%">Notifiche</th>
                             <th style="width: 10%"></th>
                         </tr>
@@ -125,6 +126,7 @@
                                 <td>{{$practice->month}}</td>
                                 <td>{{$practice->bonus}}</td>
                                 <td>{{$practice->name}} {{$practice->lastName}}</td>
+                                <td>Sal</td>
                                 <td></td>
                                 <td class="d-flex align-items-center" style="height: fit-content">
                                     <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
@@ -174,6 +176,7 @@
                 </table>
             </div>
         </div>
+        @include('business.layouts.partials.practice_info')
     </div>
 @endsection
 

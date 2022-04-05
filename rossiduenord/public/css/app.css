@@ -10763,3 +10763,21 @@ h3 {
   transform: translate(-50%, -50%);
   z-index: 12;
 }
+
+.practices-info {
+  height: 50px;
+  background-color: #fff;
+  padding: 0 35px;
+  position: fixed;
+  bottom: 0;
+  left: 15.2%;
+  right: 0;
+}
+
+.border-blue {
+  border-radius: 3px;
+  border: 2px solid #61a4d7 !important;
+}
+.border-blue:focus {
+  outline: none;
+}

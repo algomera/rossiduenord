@@ -8,7 +8,7 @@
             $("#heat_pump_wrapper").append(`
         <div class="box_input" data-id="heat_pumps-${h}">
         <div class="row_input">
-        <input type="hidden" name="heat_pumps[${h}][condomino_id]" id="heat_pumps[${h}][condomino_id]" value="">
+        <input type="hidden" name="heat_pumps[${h}][condomino_id]" id="heat_pumps[${h}][condomino_id]" value="{{ $condomino ?? '' }}">
             <label for="heat_pumps[${h}][tipo_sostituito]">
                 Tipo sostituito
                 <select name="heat_pumps[${h}][tipo_sostituito]" id="heat_pumps[${h}][tipo_sostituito]">

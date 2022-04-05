@@ -8,7 +8,7 @@
             $("#hybrid_system_wrapper").append(`
         <div class="box_input" data-id="hybrid_system-${hs}">
             <div class="row_input">
-            <input type="hidden" name="hybrid_systems[${hs}][condomino_id]" id="hybrid_systems[${hs}][condomino_id]" value="">
+            <input type="hidden" name="hybrid_systems[${hs}][condomino_id]" id="hybrid_systems[${hs}][condomino_id]" value="{{ $condomino ?? '' }}">
             <label for="hybrid_systems[${hs}][tipo_sostituito]">
                                         Tipo sostituito
                                         <select name="hybrid_systems[${hs}][tipo_sostituito]" id="hybrid_systems[${hs}][tipo_sostituito]">

@@ -44,8 +44,8 @@ class ApplicantController extends Controller
             'name' => 'nullable | string | min:3 | max:100',
             'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 ',
-            'phone' => 'nullable | numeric',
-            'mobile_phone' => 'nullable | numeric | min:10',
+            'phone' => 'nullable | integer | min:10 ',
+            'mobile_phone' => 'nullable | integer | min:10',
             'email' => 'nullable | email',
             'role' => 'nullable | string',
         ]);
@@ -138,11 +138,39 @@ class ApplicantController extends Controller
             'name' => 'nullable | string | min:3 | max:100',
             'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i ',
-            'phone' => 'nullable | numeric',
-            'mobile_phone' => 'nullable | numeric | min:10',
+            'phone' => 'nullable | string | min:10',
+            'mobile_phone' => 'nullable | string | min:10',
             'email' => 'nullable | email',
-            'role' => 'nullable | string',
-        ]);
+            'role' => 'required | string',
+        ],
+        [
+            //name
+            'name.required'=> 'Inserisci un nome prima di procedere',
+            'name.required'=> 'Inserisci un nome prima di procedere',
+            'name.min'=> 'Il nome è troppo corto',
+            'name.max'=> 'Il nome è troppo lungo',
+            //lastname
+            'lastname.required'=> 'Inserisci un cognome prima di procedere',
+            'lastname.required'=> 'Inserisci un cognome prima di procedere',
+            'lastname.min'=> 'Il cognome è troppo corto',
+            'lastname.max'=> 'Il cognome è troppo lungo',
+            //c_f
+            'c_f.min'=>'Il codice fiscale deve avere un minimo di 16 caratteri',
+            'c_f.max'=>'Il codice fiscale deve avere un massimo di 16 caratteri',
+            'c_f.regex'=> 'Il codice fiscale risluta non valido',
+            //phone number
+            'phone.required' => 'Inserisci un numero di telefono',
+            'phone.min' => 'Il numero di telefono deve essere composto da almeno 10 caratteri',
+            //mobile phone
+            'mobile_phone.required' => 'Inserisci un numero di cellulare',
+            'mobile_phone.min' => 'Il numero di cellulare deve essere composto da almeno 10 caratteri',
+            //email
+            'email.required'=> 'Inserisci una email prima di procedere',
+            'email.email'=> 'Assicurati di aver inserito correttamente la mail',
+            //role
+            'role.required'=> 'Inserisci il ruolo prima di procedere',
+        ]
+    );
 
         $applicant->update($validated);
 

@@ -18,17 +18,16 @@
                 </div>
 
                 <div class="d-flex" style="font-weight: 500">
-
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
-                        <div class="d-flex align-items-center pb-2 pt-0">
+                        <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, null)">
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
-                            <p class="m-0 ml-2 font-weight-bold">Parti comuni</p>
+                            <p class="m-0 ml-2 {{ $condominoId === "null" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
                         </div>
                         {{-- loop condomini --}}
                         @forelse($condomini as $condomino)
-                        <div class="d-flex align-items-center py-2">
+                        <div class="d-flex align-items-center py-2" @if($condominoId != $condomino->id) onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})" @endif>
                             <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2">
+                            <p class="m-0 ml-2 {{ $condominoId == $condomino->id ? 'font-weight-bold' : '' }}">
                                 {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
                                 {{ $condomino->part }} {{ $condomino->sub }}
                             </p>
@@ -42,162 +41,162 @@
                     </div>
 
                     <div style="width: 80%" class="pb-20 px-4 scroll">{{-- column right --}}
-
                         {{-- Date condomino --}}
-{{--                         
+                        {{-- START --}}
+                        @if($selected_condomino !== null)
                         <div style="width: 100%; margin-bottom: 30px;">
                             <div class="box_date_condomino">
                                 <div class="row_input">
-                                    <label for="{{$condomino->foglio}}">
+                                    <label for="{{$selected_condomino->foglio}}">
                                         Foglio
-                                        <input type="number" name="foglio" id="foglio" value="{{$condomino->foglio}}">
+                                        <input type="number" name="selected_condomino-foglio" id="selected_condomino-foglio" value="{{$selected_condomino->foglio}}">
                                     </label>
-                                    <label for="{{$condomino->part}}">
+                                    <label for="{{$selected_condomino->part}}">
                                         Particella
-                                        <input type="number" name="part" id="part" value="{{$condomino->part}}">
+                                        <input type="number" name="selected_condomino-part" id="selected_condomino-part" value="{{$selected_condomino->part}}">
                                     </label>
-                                    <label for="{{$condomino->sub}}">
+                                    <label for="{{$selected_condomino->sub}}">
                                         Subalterno
-                                        <input type="number" name="sub" id="sub" value="{{$condomino->sub}}">
+                                        <input type="number" name="selected_condomino-sub" id="selected_condomino-sub" value="{{$selected_condomino->sub}}">
                                     </label>
-                                    <label for="{{$condomino->categ_catastale}}">
+                                    <label for="{{$selected_condomino->categ_catastale}}">
                                         categ. catastale
-                                        <select name="categ_catastale" id="categ_catastale">
-                                            <option {{$condomino->categ_catastale == 'A/2' ? 'selected' : ''}} value="A/2">A/2</option>
-                                            <option {{$condomino->categ_catastale == 'A/3' ? 'selected' : ''}} value="A/3">A/3</option>
-                                            <option {{$condomino->categ_catastale == 'A/4' ? 'selected' : ''}} value="A/4">A/4</option>
-                                            <option {{$condomino->categ_catastale == 'A/5' ? 'selected' : ''}} value="A/5">A/5</option>
-                                            <option {{$condomino->categ_catastale == 'A/6' ? 'selected' : ''}} value="A/6">A/6</option>
-                                            <option {{$condomino->categ_catastale == 'A/7' ? 'selected' : ''}} value="A/7">A/7</option>
-                                            <option {{$condomino->categ_catastale == 'A/11' ? 'selected' : ''}} value="A/11">A/11</option>
-                                            <option {{$condomino->categ_catastale == 'C/4' ? 'selected' : ''}} value="C/4">C/4 solo spogliatoi</option>
-                                            <option {{$condomino->categ_catastale == 'D/6' ? 'selected' : ''}} value="D/6">D/6 solo spogliatoi</option>
+                                        <select name="selected_condomino-categ_catastale" id="selected_condomino-categ_catastale">
+                                            <option {{$selected_condomino->categ_catastale == 'A/2' ? 'selected' : ''}} value="A/2">A/2</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/3' ? 'selected' : ''}} value="A/3">A/3</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/4' ? 'selected' : ''}} value="A/4">A/4</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/5' ? 'selected' : ''}} value="A/5">A/5</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/6' ? 'selected' : ''}} value="A/6">A/6</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/7' ? 'selected' : ''}} value="A/7">A/7</option>
+                                            <option {{$selected_condomino->categ_catastale == 'A/11' ? 'selected' : ''}} value="A/11">A/11</option>
+                                            <option {{$selected_condomino->categ_catastale == 'C/4' ? 'selected' : ''}} value="C/4">C/4 solo spogliatoi</option>
+                                            <option {{$selected_condomino->categ_catastale == 'D/6' ? 'selected' : ''}} value="D/6">D/6 solo spogliatoi</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input" style="margin-bottom: 20px;">
-                                    <label for="{{$condomino->millesimi_inv}}">
+                                    <label for="{{$selected_condomino->millesimi_inv}}">
                                         Quota millesimi involucro
-                                        <input type="number" name="millesimi" id="millesimi" value="{{$condomino->millesimi}}">
+                                        <input type="number" name="selected_condomino-millesimi_inv" id="selected_condomino-millesimi_inv" value="{{$selected_condomino->millesimi_inv}}">
                                     </label>
-                                    <label for="{{$condomino->millesimi_imp}}">
+                                    <label for="{{$selected_condomino->millesimi_imp}}">
                                         Quota millesimi impianti
-                                        <input type="number" name="millesimi_imp" id="millesimi_imp" value="{{$condomino->millesimi_imp}}">
+                                        <input type="number" name="selected_condomino-millesimi_imp" id="selected_condomino-millesimi_imp" value="{{$selected_condomino->millesimi_imp}}">
                                     </label>
-                                    <label for="{{$condomino->sup_catastale}}">
+                                    <label for="{{$selected_condomino->sup_catastale}}">
                                         Superfice catastale
-                                        <input type="number" name="sup_catastale" id="sup_catastale" value="{{$condomino->sup_catastale}}">
+                                        <input type="number" name="selected_condomino-sup_catastale" id="selected_condomino-sup_catastale" value="{{$selected_condomino->sup_catastale}}">
                                         m²
                                     </label>
                                 </div>
 
                                 <h6>Dati beneficiario</h6>
                                 <div class="row_input">
-                                    <label for="{{$condomino->type_beneficiary}}">
+                                    <label for="{{$selected_condomino->type_beneficiary}}">
                                         Tipo beneficiario
-                                        <select name="type_beneficiary" id="type_beneficiary">
-                                            <option {{$condomino->type_beneficiary == 'Persona fisica' ? 'selected' : ''}} value="Persona fisica">Persona fisica</option>
-                                            <option {{$condomino->type_beneficiary == 'IACP' ? 'selected' : ''}} value="IACP">IACP</option>
-                                            <option {{$condomino->type_beneficiary == 'Coop. Abit a prop. Indivisa' ? 'selected' : ''}} value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
-                                            <option {{$condomino->type_beneficiary == 'ONLUS' ? 'selected' : ''}} value="ONLUS">ONLUS</option>
-                                            <option {{$condomino->type_beneficiary == 'Ass. we società sportive' ? 'selected' : ''}} value="Ass. we società sportive">Ass. we società sportive</option>
-                                            <option {{$condomino->type_beneficiary == 'Altri soggetti' ? 'selected' : ''}} value="Altri soggetti">Altri soggetti</option>
+                                        <select name="selected_condomino-type_beneficiary" id="selected_condomino-type_beneficiary">
+                                            <option {{$selected_condomino->type_beneficiary == 'Persona fisica' ? 'selected' : ''}} value="Persona fisica">Persona fisica</option>
+                                            <option {{$selected_condomino->type_beneficiary == 'IACP' ? 'selected' : ''}} value="IACP">IACP</option>
+                                            <option {{$selected_condomino->type_beneficiary == 'Coop. Abit a prop. Indivisa' ? 'selected' : ''}} value="Coop. Abit a prop. Indivisa">Coop. Abit a prop. Indivisa</option>
+                                            <option {{$selected_condomino->type_beneficiary == 'ONLUS' ? 'selected' : ''}} value="ONLUS">ONLUS</option>
+                                            <option {{$selected_condomino->type_beneficiary == 'Ass. we società sportive' ? 'selected' : ''}} value="Ass. we società sportive">Ass. we società sportive</option>
+                                            <option {{$selected_condomino->type_beneficiary == 'Altri soggetti' ? 'selected' : ''}} value="Altri soggetti">Altri soggetti</option>
                                         </select>
                                     </label>
-                                    <label for="{{$condomino->possession_title}}">
+                                    <label for="{{$selected_condomino->possession_title}}">
                                         Titolo di possesso
-                                        <select name="possession_title" id="possession_title">
-                                            <option {{$condomino->possession_title == 'Proprietario o comproprietario' ? 'selected' : ''}} value="Proprietario o comproprietario">Proprietario o comproprietario</option>
-                                            <option {{$condomino->possession_title == 'Detentore o co-detentore' ? 'selected' : ''}} value="Detentore o co-detentore">Detentore o co-detentore</option>
-                                            <option {{$condomino->possession_title == 'Familiare convivente con il possessore o con il detentore' ? 'selected' : ''}} value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
+                                        <select name="selected_condomino-possession_title" id="selected_condomino-possession_title">
+                                            <option {{$selected_condomino->possession_title == 'Proprietario o comproprietario' ? 'selected' : ''}} value="Proprietario o comproprietario">Proprietario o comproprietario</option>
+                                            <option {{$selected_condomino->possession_title == 'Detentore o co-detentore' ? 'selected' : ''}} value="Detentore o co-detentore">Detentore o co-detentore</option>
+                                            <option {{$selected_condomino->possession_title == 'Familiare convivente con il possessore o con il detentore' ? 'selected' : ''}} value="Familiare convivente con il possessore o con il detentore">Familiare convivente con il possessore o con il detentore</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="{{$condomino->surname}}">
+                                    <label for="{{$selected_condomino->surname}}">
                                         Cognome
-                                        <input type="text" name="surname" id="surname" value="{{$condomino->surname}}">
+                                        <input type="text" name="selected_condomino-surname" id="selected_condomino-surname" value="{{$selected_condomino->surname}}">
                                     </label>
-                                    <label for="{{$condomino->name}}">
+                                    <label for="{{$selected_condomino->name}}">
                                         Nome
-                                        <input type="text" name="name" id="name" value="{{$condomino->name}}">
+                                        <input type="text" name="selected_condomino-name" id="selected_condomino-name" value="{{$selected_condomino->name}}">
                                     </label>
-                                    <label for="{{$condomino->sex}}">
+                                    <label for="{{$selected_condomino->sex}}">
                                         Titolo di possesso
-                                        <select name="sex" id="sex">
-                                            <option {{$condomino->sex == 'M' ? 'selected' : ''}} value="M">M</option>
-                                            <option {{$condomino->sex == 'F' ? 'selected' : ''}} value="F">F</option>
+                                        <select name="selected_condomino-sex" id="selected_condomino-sex">
+                                            <option {{$selected_condomino->sex == 'M' ? 'selected' : ''}} value="M">M</option>
+                                            <option {{$selected_condomino->sex == 'F' ? 'selected' : ''}} value="F">F</option>
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="{{$condomino->date_of_birth}}">
+                                    <label for="{{$selected_condomino->date_of_birth}}">
                                         Data di nascita
-                                        <input type="date" name="date_of_birth" id="date_of_birth" value="{{$condomino->date_of_birth}}">
+                                        <input type="date" name="selected_condomino-date_of_birth" id="selected_condomino-date_of_birth" value="{{$selected_condomino->date_of_birth}}">
                                     </label>
-                                    <label for="{{$condomino->nation_of_birth}}">
+                                    <label for="{{$selected_condomino->nation_of_birth}}">
                                         Nazione di nascita
-                                        <select name="nation_of_birth" id="nation_of_birth">
+                                        <select name="selected_condomino-nation_of_birth" id="selected_condomino-nation_of_birth">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                <option {{ $selected_condomino->nation_of_birth === $country->name ? 'selected' : '' }} value="{{$country->name}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
-                                    <label for="{{$condomino->common_of_birth}}">
+                                    <label for="{{$selected_condomino->common_of_birth}}">
                                         Comune di nascita
-                                        <input type="text" name="common_of_birth" id="common_of_birth" value="{{$condomino->common_of_birth}}">
+                                        <input type="text" name="selected_condomino-common_of_birth" id="selected_condomino-common_of_birth" value="{{$selected_condomino->common_of_birth}}">
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="{{$condomino->cf}}">
+                                    <label for="{{$selected_condomino->cf}}">
                                         Cod. fiscale
-                                        <input class="input_large" type="text" name="cf" id="cf" value="{{$condomino->cf}}">
+                                        <input class="input_large" type="text" name="selected_condomino-cf" id="selected_condomino-cf" value="{{$selected_condomino->cf}}">
                                     </label>
-                                    <label for="{{$condomino->P_IVA}}">
+                                    <label for="{{$selected_condomino->P_IVA}}">
                                         Partita IVA
-                                        <input class="input_large" type="text" name="P_IVA" id="P_IVA" value="{{$condomino->P_IVA}}">
+                                        <input class="input_large" type="text" name="selected_condomino-P_IVA" id="selected_condomino-P_IVA" value="{{$selected_condomino->P_IVA}}">
                                     </label>
                                 </div>
 
                                 <h6>Residenza</h6>
                                 <div class="row_input">
-                                    <label for="{{$condomino->country}}">
+                                    <label for="{{$selected_condomino->country}}">
                                         Nazione
-                                        <select name="country" id="country">
+                                        <select name="selected_condomino-country" id="selected_condomino-country">
                                             @foreach ($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                                <option {{ $selected_condomino->country === $country->name ? 'selected' : '' }} value="{{$country->name}}">{{$country->name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="{{$condomino->address}}">
+                                    <label for="{{$selected_condomino->address}}">
                                         Indirizzo
-                                        <input class="input_large" type="text" name="address" id="address" value="{{$condomino->address}}">
+                                        <input class="input_large" type="text" name="selected_condomino-address" id="selected_condomino-address" value="{{$selected_condomino->address}}">
                                     </label>
-                                    <label for="{{$condomino->CAP}}">
+                                    <label for="{{$selected_condomino->CAP}}">
                                         CAP
-                                        <input class="input_small" type="text" name="CAP" id="CAP" value="{{$condomino->CAP}}">
+                                        <input class="input_small" type="text" name="selected_condomino-CAP" id="selected_condomino-CAP" value="{{$selected_condomino->CAP}}">
                                     </label>
-                                    <label for="{{$condomino->common}}">
+                                    <label for="{{$selected_condomino->common}}">
                                         Comune
-                                        <input class="input_large" type="text" name="common" id="common" value="{{$condomino->common}}">
+                                        <input class="input_large" type="text" name="selected_condomino-common" id="selected_condomino-common" value="{{$selected_condomino->common}}">
                                     </label>
-                                    <label for="{{$condomino->prov}}">
+                                    <label for="{{$selected_condomino->prov}}">
                                         Prov.
-                                        <input class="input_small" type="text" name="prov" id="prov" value="{{$condomino->prov}}">
-                                    </label> 
+                                        <input class="input_small" type="text" name="selected_condomino-prov" id="selected_condomino-prov" value="{{$selected_condomino->prov}}">
+                                    </label>
                                 </div>
                                 <div class="row_input">
-                                    <label for="{{$condomino->phone}}">
+                                    <label for="{{$selected_condomino->phone}}">
                                         Telefono
-                                        <input class="input_large" type="text" name="phone" id="phone" value="{{$condomino->phone}}">
-                                    </label> 
+                                        <input class="input_large" type="text" name="selected_condomino-phone" id="selected_condomino-phone" value="{{$selected_condomino->phone}}">
+                                    </label>
                                 </div>
                             </div>
                         </div>
-
- --}}                        
+                        @endif
+                        {{-- END --}}
                         <div>{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="thermical_isolation_intervention" value="true"  {{$towed_vw->thermical_isolation_intervention == 'true' ? 'checked' : ''}}>
@@ -497,7 +496,7 @@
                                                     <option value="Automatico">Automatico</option>
                                                     <option value="Servoassistito">Servoassistito</option>
                                                 </select>
-                                            </label>    
+                                            </label>
                                         </div>
                                         <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
@@ -547,94 +546,12 @@
                             <p>Con impianti dotati di:</p>
                             <hr>
                         </div>
+{{-- START INTERVENTI --}}
+                        {{-- CC. Caldaie a condensazione --}}
+                        <x-condensing_boilers :vertwall="$towed_vw" :practice="$practice" :items="$condensing_boilers" :condomino="$condominoId" />
 
-                        <div class="mt-5">{{-- CC. Caldaie a condensazione --}}
-                            <label for="condensing_boiler" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="condensing_boiler" id="condensing_boiler" value="true" {{$towed_vw->condensing_boiler == 'true' ? 'checked': ''}}>
-                                <span class="checkmark"></span>
-                                <span class="black" ><b>CC. Caldaie a condensazione</b></span>
-                            </label>
-                            <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                <div class="box_input">
-                                    <div class="row_input">
-                                        <label for="">
-                                            Tipo sostituito
-                                            <select name="" id="">
-                                                <option value="Caldaia standard">Caldaia standard</option>
-                                                <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                <option value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            P. nom. sostituito
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            Potenza nominale
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="">
-                                            Rend. utile nom. (100%)
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                        <label for="">
-                                            <select name="" id="">
-                                                <option value="Riscaldameto ambiente">Riscaldameto ambiente</option>
-                                                <option value="Risc. ambiente + prod.ACS">Risc. ambiente + prod.ACS</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            Efficienza ns
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                        <label for="">
-                                            Efficienza ACS nwh
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Tipo di alimentazione
-                                                <select name="" id="">
-                                                    <option value="Metano">Gas Naturale (metano)</option>
-                                                    <option value="Gpl">Gpl</option>
-                                                    <option value="Gasolio">Gasolio</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Classe disp. termoregolazione evoluto
-                                                <select name="" id="">
-                                                    <option value="V">V</option>
-                                                    <option value="VI">VI</option>
-                                                    <option value="VIII">VIII</option>
-                                                    <option value="Nessun dispositivo">Nessun dispositivo</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-5">{{-- GA. Generatori di aria calda a condensazione --}}
+                        {{-- TODO: GA. Generatori di aria calda a condensazione --}}
+                        <div class="mt-5">
                             <label for="condensing_generator" class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="condensing_generator" id="condensing_generator" value="true" {{$towed_vw->condensing_generator == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
@@ -683,103 +600,6 @@
                                                     <option value="Gasolio">Gasolio</option>
                                                 </select>
                                             </label>
-                                        </div>    
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-5">{{-- PC) Pompe di calore (PDC) --}}
-                            <label for="absorption_heat_pumps" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true" {{$towed_vw->absorption_heat_pumps == 'true' ? 'checked' : ''}}>
-                                <span class="checkmark"></span>
-                                <span class="black" ><b>PC) Pompe di calore (PDC)</b></span>
-                            </label>
-                            <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                <div class="box_input" id="">
-                                    <div class="row_input">
-                                        <label for="">
-                                            Tipo sostituito
-                                            <select name="" id="">
-                                                <option value="Caldaia standard">Caldaia standard</option>
-                                                <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                <option value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            P. nom. sostituito
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            Tipo di PDC
-                                            <select name="" id="">
-                                                <option value="Aria/Aria">Aria/Aria</option>
-                                                <option value="Aria/Acqua">Aria/Acqua</option>
-                                                <option value="Salamoia/Aria">Salamoia/Aria</option>
-                                                <option value="Salamoia/Acqua">Salamoia/Acqua</option>
-                                                <option value="Acqua/Aria">Acqua/Aria</option>
-                                                <option value="Acqua/Acqua">Acqua/Acqua</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Tipo Roof Top
-                                        </label>
-                                        <label for="">
-                                            P. nom.
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            P. Elettrica assorbita
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            inverter
-                                        </label>
-                                        <label for="">
-                                            COP
-                                            <input class="input_small" type="number" name="" id="">
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="row_input">
-                                            <label for="" class="checkbox-wrapper d-flex">
-                                                <input type="checkbox" name="" id="" value="true">
-                                                <span class="checkmark"></span>
-                                                E' reversibile
-                                            </label>
-                                            <label for="">
-                                                EER
-                                                <input class="input_small" type="number" name="" id="">
-                                            </label>
-                                            <label for="" class="checkbox-wrapper d-flex">
-                                                <input type="checkbox" name="" id="" value="true">
-                                                <span class="checkmark"></span>
-                                                Sonde geotermiche
-                                            </label>
-                                            <label for="">
-                                                Sup. riscaldata dalla PDC
-                                                <input class="input_small" type="number" name="" id="">
-                                                m²
-                                            </label>
                                         </div>
                                         <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
@@ -790,549 +610,26 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">{{-- PCA. Pompe di calore ad assorbimento a gas --}}
-                            <label for="absorption_heat_pumps" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="absorption_heat_pumps" id="absorption_heat_pumps" value="true" {{$towed_vw->absorption_heat_pumps == 'true' ? 'checked' : ''}}>
-                                <span class="checkmark"></span>
-                                <span class="black" ><b>PCA. Pompe di calore ad assorbimento a gas</b></span>
-                            </label>
-                            <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                <div class="box_input" id="">
-                                    <div class="row_input">
-                                        <label for="">
-                                            Tipo sostituito
-                                            <select name="" id="">
-                                                <option value="Caldaia standard">Caldaia standard</option>
-                                                <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                <option value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            P. nom. sostituito
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            Tipo di PDC
-                                            <select name="" id="">
-                                                <option value="Aria/Aria">Aria/Aria</option>
-                                                <option value="Aria/Acqua">Aria/Acqua</option>
-                                                <option value="Salamoia/Aria">Salamoia/Aria</option>
-                                                <option value="Salamoia/Acqua">Salamoia/Acqua</option>
-                                                <option value="Acqua/Aria">Acqua/Aria</option>
-                                                <option value="Acqua/Acqua">Acqua/Acqua</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Tipo Roof Top
-                                        </label>
-                                        <label for="">
-                                            P. nom.
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            GUEh
-                                            <input class="input_small" type="number" name="" id="">
-                                        </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            E' reversibile
-                                        </label>
-                                        <label for="">
-                                            GUEc
-                                            <input class="input_small" type="number" name="" id="">
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Sup. riscaldata dalla PDC
-                                                <input class="input_small" type="number" name="" id="">
-                                                m²
-                                            </label>
-                                        </div>
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- PC. Pompe di calore (PDC) --}}
+                        <x-heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$heat_pumps" :condomino="$condominoId" />
 
-                        <div class="mt-5">{{-- SI. Sistemi ibridi --}}
-                            <label for="hybrid_system" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="hybrid_system" id="hybrid_system" value="true" {{$towed_vw->hybrid_system == 'true' ? 'checked' : ''}}>
-                                <span class="checkmark"></span>
-                                <span class="black" ><b>SI. Sistemi ibridi</b></span>
-                            </label>
-                            <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                <div class="box_input" id="">
-                                    <div class="row_input">
-                                        <label for="">
-                                            Tipo sostituito
-                                            <select name="" id="">
-                                                <option value="Caldaia standard">Caldaia standard</option>
-                                                <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                <option value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            P. nom. sostituito
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <h6>Caldaia a condensazione:</h6>
-                                        <label for="">
-                                            P. nom.
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                        <label for="">
-                                            Rend. utile nom. (100%)
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                        <label for="">
-                                            Efficienza ns
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                        <label for="">
-                                            Tipo di alim.
-                                            <select name="" id="">
-                                                <option value="Metano">Gas Naturale (metano)</option>
-                                                <option value="Gpl">Gpl</option>
-                                                <option value="Gasolio">Gasolio</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <h6>Pompa di calore (PDC):</h6>
-                                        <label for="">
-                                            Tipo di PDC
-                                            <select name="" id="">
-                                                <option value="Aria/Aria">Aria/Aria</option>
-                                                <option value="Aria/Acqua">Aria/Acqua</option>
-                                                <option value="Salamoia/Aria">Salamoia/Aria</option>
-                                                <option value="Salamoia/Acqua">Salamoia/Acqua</option>
-                                                <option value="Acqua/Aria">Acqua/Aria</option>
-                                                <option value="Acqua/Acqua">Acqua/Acqua</option>
-                                            </select>
-                                        </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Tipo Roof Top
-                                        </label>
-                                        <label for="">
-                                            P. nome
-                                            <input class="input_small" type="number" name="" id="">
-                                            kW
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="row_input">
-                                            <label for="">
-                                                P. Elettrica assorbita
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                            <label for="" class="checkbox-wrapper d-flex">
-                                                <input type="checkbox" name="" id="" value="true">
-                                                <span class="checkmark"></span>
-                                                inverter
-                                            </label>
-                                            <label for="">
-                                                COP
-                                                <input class="input_small" type="number" name="" id="">
-                                            </label>
-                                            <label for="" class="checkbox-wrapper d-flex">
-                                                <input type="checkbox" name="" id="" value="true">
-                                                <span class="checkmark"></span>
-                                                Sonde geotermiche
-                                            </label>
-                                        </div>
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- PCA. Pompe di calore ad assorbimento a gas --}}
+                        <x-absorption_heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$absorption_heat_pumps" :condomino="$condominoId" />
 
-                        <div>{{-- SA. Installazione di scaldacqua a pompa di calore --}}
-                            <div class="mt-5">
-                                <label for="water_heatpumps_installation" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="water_heatpumps_installation" id="water_heatpumps_installation" value="true" {{$towed_vw->water_heatpumps_installation == ' true' ? 'checked' : ''}}>
-                                    <span class="checkmark"></span>
-                                    <span class="black" ><b>SA. Installazione di scaldacqua a pompa di calore</b></span>
-                                </label>
-                                <p class="font-italic">In sostituzione di scaldacqua tradizionali con scaldacqua a pompa di calore dedicati alla produzione di acqua calda sanitaria</p>
-                                <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                    <div class="box_input" id="">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Tipo scaldaacqua sostituito
-                                                <select name="" id="">
-                                                    <option value="Boiler elettrico">Boiler elettrico</option>
-                                                    <option value="Gas/Gasolio">Gas/Gasolio</option>
-                                                    <option value="Altro">Altro</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Pu scaldacqua sostituito
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="row_input">
-                                                <label for="">
-                                                    Pu scaldacqua a PDC
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    kW
-                                                </label>
-                                                <label for="">
-                                                    COP del nuovo scaldacqua
-                                                    <input class="input_small" type="number" name="" id="">
-                                                </label>
-                                                <label for="">
-                                                    Capacità accumulo 
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    L
-                                                </label>
-                                            </div>    
-                                            <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                                <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                                <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il costo complessivo previsto degli interventi sull’impianto (Punto 2) ammonta a *</p>
-                                    <label for="SA_expected_cost" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->SA_expected_cost}}" name="SA_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                                <button class="add-button">Computo metrico</button>
-                            </div>
-                            <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
+                        {{-- SI. Sistemi ibridi --}}
+                        <x-hybrid_systems :vertwall="$towed_vw" :practice="$practice" :items="$hybrid_systems" :condomino="$condominoId" />
 
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">La spesa massima ammissibile per la sostituzione degli impianti è pari a</p>
-                                    <label for="SA_max_cost" class=" m-0 mr-4 black">
-                                        <input type="text" name="SA_max_cost" value="{{$towed_vw->SA_max_cost}}" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                            </div>
+                        {{-- SA. Installazione di scaldacqua a pompa di calore  --}}
+                        <x-water_heatpumps_installations :vertwall="$towed_vw" :practice="$practice" :items="$water_heatpumps_installations" :condomino="$condominoId" />
 
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
-                                    <label for="SA_nr_savings" class=" m-0 mr-4 black">
-                                        <input type="text" name="SA_nr_savings" value="{{$towed_vw->SA_nr_savings}}" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                        KWh/anno
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- CO. Sistemi di microgenerazione --}}
+                        <x-microgeneration_systems :vertwall="$towed_vw" :practice="$practice" :items="$microgeneration_systems" :condomino="$condominoId" />
 
-                        <div>{{-- CO. Sistemi di microgenerazione --}}
-                            <div class="mt-5">
-                                <label for="microgeneration_system" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="microgeneration_system" id="microgeneration_system" value="true" {{$towed_vw->microgeneration_system == 'true' ? 'checked' : ''}}>
-                                    <span class="checkmark"></span>
-                                    <span class="black" ><b>CO. Sistemi di microgenerazione</b></span>
-                                </label>
-                                <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                    <div class="box_input" id="">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Tipo sostituito
-                                                <select name="" id="">
-                                                    <option value="Caldaia standard">Caldaia standard</option>
-                                                    <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                    <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                    <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                    <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                    <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                    <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                    <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                    <option value="Altro">Altro</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                P. nom. sostituito
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                            <label for="">
-                                                P. Elettrica
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                            <label for="">
-                                                P. immessa
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                        </div>
-                                        <div class="row_input">
-                                            <label for="">
-                                                P. term. recuperata
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                            <label for="">
-                                                PES
-                                                <input class="input_small" type="number" name="" id="">
-                                                %
-                                            </label>
-                                            <label for="">
-                                                Tipo di alim.
-                                                <select name="" id="">
-                                                    <option value="Metano">Gas Naturale (metano)</option>
-                                                    <option value="Gpl">Gpl</option>
-                                                    <option value="Gasolio">Gasolio</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Tipo intervento
-                                                <select name="" id="">
-                                                    <option value="nuovo">Nuova unità</option>
-                                                    <option value="Rifacimento">Rifacimento</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="row_input">
-                                                <label for="" class="checkbox-wrapper d-flex">
-                                                    <input type="checkbox" name="" id="" value="true">
-                                                    <span class="checkmark"></span>
-                                                    a Celle a Combustibile
-                                                </label>
-                                                <label for="" class="checkbox-wrapper d-flex">
-                                                    <input type="checkbox" name="" id="" value="true">
-                                                    <span class="checkmark"></span>
-                                                    Riscaldatore suppl.
-                                                </label>
-                                                <label for="">
-                                                    Potenza risc. suppl.
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    kW
-                                                </label>
-                                                <label for="">
-                                                    Efficienza ns
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    %
-                                                </label>
-                                                <label for="">
-                                                    Classe energ.
-                                                    <select name="" id="">
-                                                        <option value="B">B</option>
-                                                        <option value="A">A</option>
-                                                        <option value="A+">A+</option>
-                                                        <option value="A++">A++</option>
-                                                        <option value="A+++">A+++</option>
-                                                    </select>
-                                                </label>
-                                            </div>
-                                            <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                                <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                                <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il costo previsto per i sistemi di microgenerazione CO) ammonta a *</p>
-                                    <label for="CO_expected_cost" class=" m-0 mr-4 black">
-                                        <input type="text" name="CO_expected_cost" value="{{$towed_vw->CO_expected_cost}}" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                                <button class="add-button">Computo metrico</button>
-                            </div>
-                            <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
+                        {{-- IB. Generatori a biomamassa --}}
+                        <x-biome_generators :vertwall="$towed_vw" :practice="$practice" :items="$biome_generators" :condomino="$condominoId" />
 
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
-                                    <label for="CO_max_cost" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->CO_max_cost}}" name="CO_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
-                                    <label for="CO_nr_savings" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->CO_nr_savings}}" name="CO_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                        KWh/anno
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>{{-- IB. Generatori a biomamassa --}}
-                            <div class="mt-5">
-                                <label for="biome_generators" class="checkbox-wrapper d-flex">
-                                    <input type="checkbox" name="biome_generators" id="biome_generators" value="true" {{$towed_vw->biome_generators == 'true' ? 'checked' : ''}}>
-                                    <span class="checkmark"></span>
-                                    <span class="black" ><b>IB. Generatori a biomamassa</b></span>
-                                </label>
-                                <p class="font-italic">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
-                                <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                    <div class="box_input" id="">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Tipo sostituito
-                                                <select name="" id="">
-                                                    <option value="Caldaia standard">Caldaia standard</option>
-                                                    <option value="Caldaia a bassa temperatura">Caldaia a bassa temperatura</option>
-                                                    <option value="Caldaia a condensazione a gas">Caldaia a condensazione a gas</option>
-                                                    <option value="Caldaia a condesazione a gasolio">Caldaia a condesazione a gasolio</option>
-                                                    <option value="Pompa di calore anche con sonda geotermica">Pompa di calore anche con sonda geotermica</option>
-                                                    <option value="Generatori di aria calda">Generatori di aria calda</option>
-                                                    <option value="Teleriscaldamento">Teleriscaldamento</option>
-                                                    <option value="Impianto a biomassa">Impianto a biomassa</option>
-                                                    <option value="Altro">Altro</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                P. nom. sostituito
-                                                <input class="input_small" type="number" name="" id="">
-                                                kW
-                                            </label>
-                                            <label for="">
-                                                Classe generatore
-                                                <select name="" id="">
-                                                    <option value="4 stelle">4 stelle</option>
-                                                    <option value="5 stelle">5 stelle</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <div class="row_input">
-                                            <label for="">
-                                                Tipo generatore
-                                                <select name="" id="">
-                                                    <option value="Caldaia a biomassa">Caldaia a biomassa</option>
-                                                    <option value="Termocamini e stufe">Termocamini e stufe</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Impianto destinato a
-                                                <select name="" id="">
-                                                    <option value="Riscaldamento ambiente">Riscaldamento ambiente</option>
-                                                    <option value="Risc. amb. + prod. ACS">Risc. amb. + prod. ACS</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Tipo di alimentazione
-                                                <select name="" id="">
-                                                    <option value="Legna">Legna</option>
-                                                    <option value="Pellet">Pellet</option>
-                                                    <option value="Cippato">Cippato</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="row_input">
-                                                <label for="">
-                                                    Pot. Utile nom.
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    kW
-                                                </label>
-                                                <label for="">
-                                                    P. al focolare
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    kW
-                                                </label>
-                                                <label for="">
-                                                    Rend. utile alla pot. nom.
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    %
-                                                </label>
-                                                <label for="">
-                                                    Sup. riscaldata
-                                                    <input class="input_small" type="number" name="" id="">
-                                                    m²
-                                                </label>
-                                            </div>    
-                                            <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                                <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                                <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il costo previsto per i generatori a biomassa IB) ammonta a *</p>
-                                    <label for="IB_expected_cos" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->IB_expected_cost}}" name="IB_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                                <button class="add-button">Computo metrico</button>
-                            </div>
-                            <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
-
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">La spesa massima ammissibile per l’intrevento è pari a</p>
-                                    <label for="IB_max_cost" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->IB_max_cost}}" name="IB_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
-                                    <label for="IB_nr_savings" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->IB_nr_savings}}" name="IB_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                        KWh/anno
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>{{-- BA. Bullding automation --}}
+                        {{-- BA. Bullding automation --}}
+                        <div>
                             <div class="mt-5">
                                 <label for="building_automation" class="checkbox-wrapper d-flex">
                                     <input type="checkbox" name="building_automation" id="building_automation" value="true" {{$towed_vw->building_automation == 'true' ? 'checked' : ''}}>
@@ -1411,7 +708,8 @@
                             </div>
                         </div>
 
-                        <div>{{-- Gli impianti sopra indicati sono destinati a: --}}
+                        {{-- Gli impianti sopra indicati sono destinati a: --}}
+                        <div>
                             <p class="font-weight-bold">Gli impianti sopra indicati sono destinati a:</p>
                             <div class="d-flex">
                                 <label for="winter_acs" class="checkbox-wrapper d-flex">
@@ -1432,163 +730,11 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">{{-- ST. Collettori solari --}}
-                            <label for="TS" class="checkbox-wrapper d-flex">
-                                <input type="checkbox" name="TS" id="TS" value="true" {{$towed_vw->TS == 'true' ? 'checked' : ''}}>
-                                <span class="checkmark"></span>
-                                <span class="black" ><b>ST. Collettori solari</b></span>
-                            </label>
-                            <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
-                                <div class="box_input" id="">
-                                    <div class="row_input">
-                                        <label for="">
-                                            Superfice lorda Ag di un singolo modulo
-                                            <input class="input_small" type="number" name="" id="">
-                                            m²
-                                        </label>
-                                        <label for="">
-                                            N° di moduli
-                                            <input class="input_small" type="number" name="" id="">
-                                        </label>
-                                        <label for="">
-                                            Sup. Totale
-                                            <input class="input_small" type="number" name="" id="">
-                                            m²
-                                        </label>
-                                        <label for="" class="checkbox-wrapper d-flex">
-                                            <input type="checkbox" name="" id="" value="true">
-                                            <span class="checkmark"></span>
-                                            Certificazione solar Keymark
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="">
-                                            Tipo di collettori
-                                            <select name="" id="">
-                                                <option value="Piani vetrati">Piani vetrati</option>
-                                                <option value="Sotto vuoto o tubi evacuati">Sotto vuoto o tubi evacuati</option>
-                                                <option value="A concentrazione">A concentrazione</option>
-                                                <option value="Scoperti">Scoperti</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            Tipo di installazione
-                                            <select name="" id="">
-                                                <option value="Tetto piano">Tetto piano</option>
-                                                <option value="Tetto a falda">Tetto a falda</option>
-                                                <option value="Altro">Altro</option>
-                                            </select>
-                                        </label>
-                                        <label for="">
-                                            inclinazione
-                                            <input class="input_small" type="number" name="" id="">
-                                            %
-                                        </label>
-                                        <label for="">
-                                            Orientamento
-                                            <select name="" id="">
-                                                <option value="Nord">Nord</option>
-                                                <option value="Nord-Est">Nord-Est</option>
-                                                <option value="Est">Est</option>
-                                                <option value="Sud-Est">Sud-Est</option>
-                                                <option value="Sud">Sud</option>
-                                                <option value="Sud-Ovest">Sud-Ovest</option>
-                                                <option value="Ovest">Ovest</option>
-                                                <option value="Nord-Ovest">Nord-Ovest</option>
-                                                <option value="P-orizzontale">P-orizzontale</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="row_input">
-                                        <label for="">
-                                            Impianto factory made
-                                            <input type="radio" name="" id="">
-                                            N.D
-                                        </label>
-                                        <label for="">
-                                            <input type="radio" name="" id="">
-                                            No
-                                        </label>
-                                        <label for="">
-                                            <input type="radio" name="" id="">
-                                            Si
-                                        </label>
-                                        <label for="">
-                                            Q col/Q sol
-                                            <input class="input_small" type="number" name="" id="">
-                                            kWht
-                                        </label>
-                                        <label for="">
-                                            QL
-                                            <input class="input_small" type="number" name="" id="">
-                                            MJ
-                                        </label>
-                                        <label for="">
-                                            Accumulo in litri
-                                            <input class="input_small" type="number" name="" id="">
-                                        </label>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="row_input">
-                                            <label for="">
-                                                Destinazione del calore
-                                                <select name="" id="">
-                                                    <option value="acqua sanitaria">Produzione di acqua calda sanitaria</option>
-                                                    <option value="Produzione di ACS e riscaldamento ambiente">Produzione di ACS e riscaldamento ambiente</option>
-                                                    <option value="Produzione di calore di processo">Produzione di calore di processo</option>
-                                                    <option value="Riscaldamento piscine">Riscaldamento piscine</option>
-                                                    <option value="Altro">Altro</option>
-                                                </select>
-                                            </label>
-                                            <label for="">
-                                                Tipo impianto integrato o sostituito
-                                                <select name="" id="">
-                                                    <option value="Boiler elettrico">Boiler elettrico</option>
-                                                    <option value="Gas/Gasolio">Gas/Gasolio</option>
-                                                    <option value="Altro">Altro</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <button type="button" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-2" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il costo previsto per i Collettori solari ST) ammonta a *</p>
-                                    <label for="TS_expected_cost" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->TS_expected_cost}}" name="TS_expected_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                                <button class="add-button">Computo metrico</button>
-                            </div>
-                            <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
+                        {{-- Collettori solari --}}
+                        <x-solar_panels :vertwall="$towed_vw" :practice="$practice" :items="$solar_panels" :condomino="$condominoId" />
 
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">La spesa massima ammissibile è pari a</p>
-                                    <label for="TS_max_cost" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->TS_max_cost}}" name="TS_max_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right">
-                                        €
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
-                                <div class="d-flex align-items-center">
-                                    <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
-                                    <label for="TS_nr_savings" class=" m-0 mr-4 black">
-                                        <input type="text" value="{{$towed_vw->TS_nr_savings}}" name="TS_nr_savings" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                        KWh/anno
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-5">{{-- FV. Fotovoltaico --}}
+                        {{-- FV. Fotovoltaico --}}
+                        <div class="mt-5">
                             <label class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="FV" id="FV" value="true" {{$towed_vw->FV == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
@@ -1633,7 +779,8 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">{{-- AC. Sistema di accumulo --}}
+                        {{-- AC. Sistema di accumulo --}}
+                        <div class="mt-5">
                             <label for="AC" class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="AC" id="AC" value="true" {{$towed_vw->AC == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
@@ -1669,7 +816,8 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">{{-- CR. Infrastrutture per la ricarica di veicoli elettrici --}}
+                        {{-- CR. Infrastrutture per la ricarica di veicoli elettrici --}}
+                        <div class="mt-5">
                             <label for="CR" class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="CR" id="CR" value="true" {{$towed_vw->CR == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
@@ -1706,7 +854,8 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">{{-- EBA. Eliminazione delle barriere architettoniche --}}
+                        {{-- EBA. Eliminazione delle barriere architettoniche --}}
+                        <div class="mt-5">
                             <label for="EBA" class="checkbox-wrapper d-flex">
                                 <input type="checkbox" name="EBA" id="EBA" value="true" {{$towed_vw->EBA == 'true' ? 'checked' : ''}}>
                                 <span class="checkmark"></span>
@@ -1822,7 +971,10 @@
                     </div>
                 </div>
 
-                <div class="box-fixed">
+                <div class="box-fixed" style="z-index: 1;">
+                    @if($condominoId !== null)
+                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $selected_condomino->id }})">Salva condomino</div>
+                    @endif
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}
                     </a>
@@ -1840,3 +992,28 @@
         @include('business.scripts.select_country')
     @endpush
  --}}@endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        function setCondominoId(pid, id) {
+            axios.post(`/business/show_condomino_data/${id}`)
+                .then(() => {
+                    window.location.reload();
+                })
+        }
+        function saveCondominoChanges(id) {
+            let inputs = document.querySelectorAll("[name^='selected_condomino-']");
+            let datas = {};
+            inputs.forEach(input => {
+                let id = input.id.split('-')[1]
+                datas[id] = input.value === '' ? null : input.value
+            })
+            axios.post(`/business/save_condomino_data/${id}`, {
+                    data: JSON.stringify(datas)
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+        }
+    </script>
+@endpush

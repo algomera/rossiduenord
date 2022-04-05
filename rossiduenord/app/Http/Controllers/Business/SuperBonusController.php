@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Business;
-use App\{CondensingBoiler, Practice, Subject, Applicant, Building, Data_project, Country};
+use App\{CondensingBoiler, Condomini, Practice, Subject, Applicant, Building, Bonus, Data_project, Country};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class SuperBonusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Practice $practice)
-    {   
+    {
         $this->authorize('edit-superbonus',  $practice->building);
 
         $applicant = $practice->applicant;
@@ -52,14 +52,14 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $vertwall = $practice->verical_wall;
-        $condensing_boilers = $practice->condensing_boilers;
-        $heat_pumps = $practice->heat_pumps;
-        $absorption_heat_pumps = $practice->absorption_heat_pumps;
-        $hybrid_systems = $practice->hybrid_systems;
-        $microgeneration_systems = $practice->microgeneration_systems;
-        $water_heatpumps_installations = $practice->water_heatpumps_installations;
-        $biome_generators = $practice->biome_generators;
-        $solar_panels = $practice->solar_panels;
+        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', null)->get();
+        $heat_pumps = $practice->heat_pumps()->where('condomino_id', null)->get();
+        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', null)->get();
+        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', null)->get();
+        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', null)->get();
+        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', null)->get();
+        $biome_generators = $practice->biome_generators()->where('condomino_id', null)->get();
+        $solar_panels = $practice->solar_panels()->where('condomino_id', null)->get();
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -91,8 +91,36 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
+        $condominoId = session()->get('condominoId') ?? null;
+        $selected_condomino = Condomini::find($condominoId);
         $countries = Country::all();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact('countries','condomini', 'towed_vw','applicant', 'practice', 'building', 'subject'));
+        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', $condominoId)->get();
+        $heat_pumps = $practice->heat_pumps()->where('condomino_id', $condominoId)->get();
+        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', $condominoId)->get();
+        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', $condominoId)->get();
+        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', $condominoId)->get();
+        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
+        $biome_generators = $practice->biome_generators()->where('condomino_id', $condominoId)->get();
+        $solar_panels = $practice->solar_panels()->where('condomino_id', $condominoId)->get();
+        return view('business.superbonus.towed_intervention.vertical_wall', compact(
+                'solar_panels',
+                'biome_generators',
+                'water_heatpumps_installations',
+                'microgeneration_systems',
+                'hybrid_systems',
+                'absorption_heat_pumps',
+                'heat_pumps',
+                'condensing_boilers',
+            'countries',
+            'selected_condomino',
+            'condomini',
+            'condominoId',
+            'towed_vw',
+            'applicant',
+            'practice',
+            'building',
+            'subject')
+        );
     }
 
     /**
@@ -155,7 +183,7 @@ class SuperBonusController extends Controller
             'filed_common' => 'nullable |string| min:3|max:100',
             'filed_province' => 'nullable |string| min:2|max:2',
             'filed_date' => 'nullable | string',
-            'filed_protocol' => 'nullable |string |min:5|max:50',
+            'filed_protocol' => 'nullable |string |min:3|max:50',
             'technical_report_exclusion' => 'nullable |string',
             'work_start' => 'nullable |string |min:5 |string',
             'end_of_works' => 'nullable |string |min:5 |string',
@@ -163,11 +191,34 @@ class SuperBonusController extends Controller
             'building_unit' => 'nullable |string',
             'relevance' => 'nullable |integer',
             'centralized_system' => 'nullable|string',
-            'gross_surface_area' => 'nullable',
+            'gross_surface_area' => 'nullable | integer | min: 2',
             'np' => 'nullable',
             'np_validated' => 'nullable',
             'np_not_validated' => 'nullable',
-        ]);
+        ],
+        [
+            'technical_report.required'=> 'Seleziona questo campo per procedere',
+            'filed_common.required' => 'Inserisci il comune',
+            'filed_common.min' => 'Il comune deve avere un minimo di 3 caratteri',
+            'filed_common.max' => 'Il nome del comune è troppo lungo',
+            'filed_province.required' => 'Inserisci la provincia',
+            'filed_province.min' => 'Inserisci almeno due caratteri',
+            'filed_province.max' => 'Non più di due caratteri',
+            'filed_date.required' => 'Inserisci la data',
+            'filed_protocol.required' => 'Inserisci il numero di protocollo',
+            'filed_protocol.min' => 'Il numero di protocollo richiede un minimo di 3 caratteri',
+            'filed_protocol.max' => 'Inserisci il numero di protocollo',
+            'technical_report_exclusion.required' => 'Seleziona questo campo',
+            'work_start.required' => 'Inserisci la data di inizio dei lavori',
+            'end_of_works.required' => 'Inserisci la data di fine lavori',
+            'type_building.required' => 'Seleziona un tipo di edificio',
+            'building_unit.required' => 'Inserisci le unita immobiliari',
+            'relevance.required' => 'Inserisci il numero di pertinenze',
+            'centralized_system.required' => 'Seleziona il campo prima di procedere',
+            'gross_surface_area.required' => 'Inserisci il valore necessario prima di proseguire',
+            'gross_surface_area.min' => 'Il campo necessita di un minimo di 2 caratteri',
+        ]
+    );
 
         // Update data
         $data_project->update($validated);
@@ -220,8 +271,9 @@ class SuperBonusController extends Controller
             'total_replacing_cost_1' => 'nullable|integer | min:2 ',
             'total_replacing_cost_2' => 'nullable| integer | min:2',
             'final_replacing_cost' => 'nullable| integer | min:2',
-            'replacing_energetic_savings' => 'nullable|integer | min:2 ',
-        ]);
+            'replacing_energetic_savings' => 'nullable| integer | min:2 ',
+        ],
+    );
 
         // Update data
         $practice->verical_wall->update($validated);
@@ -318,8 +370,9 @@ class SuperBonusController extends Controller
     public function addCondensingBoiler($practice, $request) {
         if($request->get('condensing_boilers')) {
             foreach ($request->get('condensing_boilers') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
-                    $practice->condensing_boilers()->create(['condomino_id' => $item['condomino_id']], $item);
+                    $practice->condensing_boilers()->create($item);
                 } else if(is_string($i)) {
                     $pn = explode('-', $i)[0];
                     $cn = explode('-', $i)[1];
@@ -346,6 +399,7 @@ class SuperBonusController extends Controller
     public function addHeatPump($practice, $request) {
         if($request->get('heat_pumps')) {
             foreach ($request->get('heat_pumps') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->heat_pumps()->create($item);
                 } else if(is_string($i)) {
@@ -377,6 +431,7 @@ class SuperBonusController extends Controller
     public function addAbsorptionHeatPump($practice, $request) {
         if($request->get('absorption_heat_pumps')) {
             foreach ($request->get('absorption_heat_pumps') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->absorption_heat_pumps()->create($item);
                 } else if(is_string($i)) {
@@ -405,6 +460,7 @@ class SuperBonusController extends Controller
     public function addHybridSystem($practice, $request) {
         if($request->get('hybrid_systems')) {
             foreach ($request->get('hybrid_systems') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->hybrid_systems()->create($item);
                 } else if(is_string($i)) {
@@ -437,6 +493,7 @@ class SuperBonusController extends Controller
     public function addMicrogenerationSystem($practice, $request) {
         if($request->get('microgeneration_systems')) {
             foreach ($request->get('microgeneration_systems') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->microgeneration_systems()->create($item);
                 } else if(is_string($i)) {
@@ -469,6 +526,7 @@ class SuperBonusController extends Controller
     public function addWaterHeatpumpsInstallation($practice, $request) {
         if($request->get('water_heatpumps_installations')) {
             foreach ($request->get('water_heatpumps_installations') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->water_heatpumps_installations()->create($item);
                 } else if(is_string($i)) {
@@ -493,6 +551,7 @@ class SuperBonusController extends Controller
     public function addBiomeGenerator($practice, $request) {
         if($request->get('biome_generators')) {
             foreach ($request->get('biome_generators') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->biome_generators()->create($item);
                 } else if(is_string($i)) {
@@ -522,6 +581,7 @@ class SuperBonusController extends Controller
     public function addSolarPanel($practice, $request) {
         if($request->get('solar_panels')) {
             foreach ($request->get('solar_panels') as $i => $item) {
+                $item['condomino_id'] = $this->checkCondominoId($item, $practice);
                 if(is_numeric($i)) {
                     $practice->solar_panels()->create($item);
                 } else if(is_string($i)) {
@@ -550,5 +610,9 @@ class SuperBonusController extends Controller
                 }
             }
         }
+    }
+
+    protected function checkCondominoId($item, $practice) {
+        return in_array($item['condomino_id'], $practice->condomini()->pluck('id')->toArray()) ? $item['condomino_id'] : null;
     }
 }
