@@ -174,6 +174,7 @@
                 </table>
             </div>
         </div>
+        @include('business.layouts.partials.practice_info')
     </div>
 @endsection
 
