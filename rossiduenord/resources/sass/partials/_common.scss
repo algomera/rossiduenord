@@ -166,14 +166,6 @@ a {
     color: $bg-bt-blue !important;
 }
 
-.border-blue {
-    border-radius: 3px;
-    border: 2px solid $bg-bt-blue !important;
-    &:focus {
-        outline: none;
-    }
-}
-
 //text
 .text-sm {
     font-size: 15px;
