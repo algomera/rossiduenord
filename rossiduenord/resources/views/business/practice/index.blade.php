@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="box px-20 pt-20 pb-20">
+        <div class="box px-20 pt-20 pb-20 mb-0">
             <div class="table mt-2">
                 <table class="table_bonus" style="width: 100%">
                     <thead>
@@ -110,6 +110,7 @@
                             <th style="width: 10%">Mese lav.110%</th>
                             <th style="width: 10%">Lista incentivi</th>
                             <th style="width: 15%">Richiedente</th>
+                            <th style="width: 15%">SAl</th>
                             <th style="width: 5%">Notifiche</th>
                             <th style="width: 10%"></th>
                         </tr>
@@ -125,6 +126,7 @@
                                 <td>{{$practice->month}}</td>
                                 <td>{{$practice->bonus}}</td>
                                 <td>{{$practice->name}} {{$practice->lastName}}</td>
+                                <td>Sal</td>
                                 <td></td>
                                 <td class="d-flex align-items-center" style="height: fit-content">
                                     <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
