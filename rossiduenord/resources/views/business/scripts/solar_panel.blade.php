@@ -8,7 +8,7 @@
             $("#solar_panel_wrapper").append(`
                 <div class="box_input"  data-id="solar_panel-${sp}">
             <div class="row_input">
-                <input type="hidden" name="solar_panels[${sp}][condomino_id]" id="solar_panels[${sp}][condomino_id]" value="">
+                <input type="hidden" name="solar_panels[${sp}][condomino_id]" id="solar_panels[${sp}][condomino_id]" value="{{ $condomino ?? '' }}">
                                     <label for="solar_panels[${sp}][sup_lorda_singolo_modulo]">
                                         Superfice lorda Ag di un singolo modulo
                                         <input class="input_small" type="number" name="solar_panels[${sp}][sup_lorda_singolo_modulo]" id="solar_panels[${sp}][sup_lorda_singolo_modulo]">

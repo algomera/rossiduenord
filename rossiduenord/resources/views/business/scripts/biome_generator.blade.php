@@ -8,6 +8,7 @@
             $("#biome_generator_wrapper").append(`
                 <div class="box_input" data-id="biome_generator-${bg}">
                                     <div class="row_input">
+                                    <input type="hidden" name="biome_generators[${ah}][condomino_id]" id="biome_generators[${ah}][condomino_id]" value="{{ $condomino ?? '' }}">
                                         <label for="biome_generators[${bg}][tipo_sostituito]">
                                             Tipo sostituito
                                             <select name="biome_generators[${bg}][tipo_sostituito]" id="biome_generators[${bg}][tipo_sostituito]">
