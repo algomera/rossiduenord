@@ -69,10 +69,10 @@
                             <span class="text-sm grey">N. Pratica</span>
                             <input style="width: 100%"type="number" name="practical_number" id="practical_number" value="{{ request()->get('practical_number') ?? '' }}">
                         </div>
+                        <button type="submit" class="py-1 px-3 add-button mt-4">
+                            Ricerca
+                        </button>
                     </div>
-                    <button type="submit" style="border: none; margin: 0 5px;">
-                        <img class="icon-search" src="{{ asset('/img/icon/CERCA.svg') }}" alt="">
-                    </button>
 {{--                    <input type="reset" style="margin: 0 5px; border: none; background: none" value="Reset" />--}}
 
 {{--                    <div class="d-flex align-items-center mb-2">--}}
