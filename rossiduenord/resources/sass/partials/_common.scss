@@ -61,18 +61,25 @@ a {
         background-color: $bg-bt-black;
     }
 }
-
+// oerflow
 .ov-y {
-    overflow-y: scroll;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
-
+// cursor pointer
 .clickable {
     cursor: pointer;
 }
-
+//
 .nav-parent {
     font-weight: bold;
     color: #04003c;
+}
+//
+.selected-nav {
+    background-color: #f4f9ff;
 }
 
 .back-button {

@@ -60,7 +60,10 @@ a:hover {
 }
 
 .ov-y {
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+.ov-y::-webkit-scrollbar {
+  display: none;
 }
 
 .clickable {
@@ -70,6 +73,10 @@ a:hover {
 .nav-parent {
   font-weight: bold;
   color: #04003c;
+}
+
+.selected-nav {
+  background-color: #f4f9ff;
 }
 
 .back-button {
