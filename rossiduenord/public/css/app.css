@@ -79,7 +79,14 @@ a:hover {
   background-color: #f4f9ff;
 }
 
-.dash-box {
+.dash-container .dash-link {
+  text-decoration: none;
+  color: black;
+}
+.dash-container .dash-link:hover {
+  color: black !important;
+}
+.dash-container .dash-box {
   width: 265px;
   height: 190px;
   border-radius: 3px;

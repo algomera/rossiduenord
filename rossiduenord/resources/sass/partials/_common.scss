@@ -83,12 +83,20 @@ a {
 }
 
 //DASHBOARD
-
-.dash-box {
-    width: 265px;
-    height: 190px;
-    border-radius: 3px;
-    background-color: #fff;
+.dash-container {
+    .dash-link {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            color: black !important;
+        }
+    }
+    .dash-box {
+        width: 265px;
+        height: 190px;
+        border-radius: 3px;
+        background-color: #fff;
+    }
 }
 
 .back-button {
