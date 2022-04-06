@@ -30,7 +30,7 @@
         <div class="container-custom d-flex">
             <nav class="navbar ov-y">
                 <div class="my-4 ml-3">
-                    <img src="{{asset('img/logo.svg')}}" alt="" class="img-fluid">
+                    <img src="{{asset('img/Logo_.png')}}" alt="" class="img-fluid">
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-pills">
@@ -79,7 +79,7 @@
                         <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openDoc()"> <b>Credito D.O.C</b> </a>
+                        <a class="nav-link clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openDoc()"> Credito D.O.C </a>
                         <ul class="nav flex-column" v-if="isDocVisible">
                             <div class="pl-2">
                                 <li class="nav-item">
