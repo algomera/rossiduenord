@@ -19,6 +19,7 @@ class CreateSolarPanelsTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
+            $table->boolean('is_common')->default(false);
             $table->double('sup_lorda_singolo_modulo')->nullable();
             $table->integer('num_moduli')->nullable();
             $table->double('sup_totale')->nullable();

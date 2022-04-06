@@ -1,4 +1,4 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
 
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
@@ -18,6 +18,7 @@
                 <div class="box_input" data-id="hybrid_system-{{$practice->id}}-{{$item->id}}">
                     {{ $i + 1 }}
                     <div class="row_input">
+                        <input type="hidden" name="hybrid_systems[{{$practice->id}}-{{$item->id}}][is_common]" id="hybrid_systems[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                         <input type="hidden" name="hybrid_systems[{{$practice->id}}-{{$item->id}}][condomino_id]" id="hybrid_systems[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                         <label for="hybrid_systems[{{$practice->id}}-{{$item->id}}][tipo_sostituito]">
                             Tipo sostituito
@@ -125,5 +126,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.hybrid_system', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.hybrid_system', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
 @endpush
