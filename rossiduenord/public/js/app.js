@@ -49800,17 +49800,17 @@ var app = new Vue({
   el: "#app",
   data: {
     isModalVisible: true,
-    isDocVisible: false
+    isListVisible: false
   },
   methods: {
     closeModal: function closeModal() {
       this.isModalVisible = false;
     },
-    openDoc: function openDoc() {
-      if (this.isDocVisible == false) {
-        this.isDocVisible = true;
+    openList: function openList() {
+      if (this.isListVisible == false) {
+        this.isListVisible = true;
       } else {
-        this.isDocVisible = false;
+        this.isListVisible = false;
       }
     }
   }
