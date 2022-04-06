@@ -1,4 +1,4 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
 
 <div>
     <div class="mt-5">
@@ -20,6 +20,7 @@
                     <div class="box_input" data-id="biome_generator-{{$practice->id}}-{{$item->id}}">
                         {{ $i + 1 }}
                         <div class="row_input">
+                            <input type="hidden" name="biome_generators[{{$practice->id}}-{{$item->id}}][is_common]" id="biome_generators[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                             <input type="hidden" name="biome_generators[{{$practice->id}}-{{$item->id}}][condomino_id]" id="biome_generators[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                             <label for="biome_generators[{{$practice->id}}-{{$item->id}}][tipo_sostituito]">
                                 Tipo sostituito
@@ -141,5 +142,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.biome_generator', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.biome_generator', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush

@@ -159,7 +159,6 @@
                         @enderror
                     </label>
                 </div>
-                <button class="add-button">Computo metrico</button>
             </div>
 
             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
@@ -328,21 +327,21 @@
             <p class="m-0 mt-3">Con impianti centralizzati dotati di:</p>
 
             {{-- CC. Caldaie a condensazione --}}
-            <x-condensing_boilers :vertwall="$vertwall" :practice="$practice" :items="$condensing_boilers" />
+            <x-condensing_boilers :vertwall="$vertwall" :practice="$practice" :items="$condensing_boilers" isCommon="0"/>
             {{-- PC. Pompe di calore (PDC) --}}
-            <x-heat_pumps :vertwall="$vertwall" :practice="$practice" :items="$heat_pumps" />
+            <x-heat_pumps :vertwall="$vertwall" :practice="$practice" :items="$heat_pumps" isCommon="0"/>
             {{-- PCA. Pompe di calore ad assorbimento a gas --}}
-            <x-absorption_heat_pumps :vertwall="$vertwall" :practice="$practice" :items="$absorption_heat_pumps" />
+            <x-absorption_heat_pumps :vertwall="$vertwall" :practice="$practice" :items="$absorption_heat_pumps" isCommon="0"/>
             {{-- SI. Sistemi ibridi --}}
-            <x-hybrid_systems :vertwall="$vertwall" :practice="$practice" :items="$hybrid_systems" />
+            <x-hybrid_systems :vertwall="$vertwall" :practice="$practice" :items="$hybrid_systems" isCommon="0"/>
             {{-- CO. Sistemi di microgenerazione --}}
-            <x-microgeneration_systems :vertwall="$vertwall" :practice="$practice" :items="$microgeneration_systems" />
+            <x-microgeneration_systems :vertwall="$vertwall" :practice="$practice" :items="$microgeneration_systems" isCommon="0"/>
             {{-- SA. Installazione di scaldacqua a pompa di calore  --}}
-            <x-water_heatpumps_installations :vertwall="$vertwall" :practice="$practice" :items="$water_heatpumps_installations" />
+            <x-water_heatpumps_installations :vertwall="$vertwall" :practice="$practice" :items="$water_heatpumps_installations" isCommon="0"/>
             {{-- IB. Generatori a biomamassa --}}
-            <x-biome_generators :vertwall="$vertwall" :practice="$practice" :items="$biome_generators" />
+            <x-biome_generators :vertwall="$vertwall" :practice="$practice" :items="$biome_generators" isCommon="0"/>
             {{-- Collettori solari --}}
-            <x-solar_panels :vertwall="$vertwall" :practice="$practice" :items="$solar_panels" />
+            <x-solar_panels :vertwall="$vertwall" :practice="$practice" :items="$solar_panels" isCommon="0"/>
 
             <div class="d-flex mt-3">
                 <span>Destinati a</span>
@@ -391,7 +390,6 @@
                         @enderror
                     </label>
                 </div>
-                <button class="add-button">Computo metrico</button>
             </div>
 
             <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>

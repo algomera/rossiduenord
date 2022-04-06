@@ -19,9 +19,9 @@
 
                 <div class="d-flex" style="font-weight: 500">
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
-                        <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, null)">
+                        <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, 'common')">
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
-                            <p class="m-0 ml-2 {{ $condominoId === "null" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
+                            <p class="m-0 ml-2 {{ $condominoId === "common" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
                         </div>
                         {{-- loop condomini --}}
                         @forelse($condomini as $condomino)
@@ -298,7 +298,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                         </div>
@@ -363,7 +362,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
@@ -513,7 +511,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -548,7 +545,7 @@
                         </div>
 {{-- START INTERVENTI --}}
                         {{-- CC. Caldaie a condensazione --}}
-                        <x-condensing_boilers :vertwall="$towed_vw" :practice="$practice" :items="$condensing_boilers" :condomino="$condominoId" />
+                        <x-condensing_boilers :vertwall="$towed_vw" :practice="$practice" :items="$condensing_boilers" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- TODO: GA. Generatori di aria calda a condensazione --}}
                         <div class="mt-5">
@@ -611,22 +608,22 @@
                         </div>
 
                         {{-- PC. Pompe di calore (PDC) --}}
-                        <x-heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$heat_pumps" :condomino="$condominoId" />
+                        <x-heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$heat_pumps" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- PCA. Pompe di calore ad assorbimento a gas --}}
-                        <x-absorption_heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$absorption_heat_pumps" :condomino="$condominoId" />
+                        <x-absorption_heat_pumps :vertwall="$towed_vw" :practice="$practice" :items="$absorption_heat_pumps" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- SI. Sistemi ibridi --}}
-                        <x-hybrid_systems :vertwall="$towed_vw" :practice="$practice" :items="$hybrid_systems" :condomino="$condominoId" />
+                        <x-hybrid_systems :vertwall="$towed_vw" :practice="$practice" :items="$hybrid_systems" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- SA. Installazione di scaldacqua a pompa di calore  --}}
-                        <x-water_heatpumps_installations :vertwall="$towed_vw" :practice="$practice" :items="$water_heatpumps_installations" :condomino="$condominoId" />
+                        <x-water_heatpumps_installations :vertwall="$towed_vw" :practice="$practice" :items="$water_heatpumps_installations" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- CO. Sistemi di microgenerazione --}}
-                        <x-microgeneration_systems :vertwall="$towed_vw" :practice="$practice" :items="$microgeneration_systems" :condomino="$condominoId" />
+                        <x-microgeneration_systems :vertwall="$towed_vw" :practice="$practice" :items="$microgeneration_systems" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- IB. Generatori a biomamassa --}}
-                        <x-biome_generators :vertwall="$towed_vw" :practice="$practice" :items="$biome_generators" :condomino="$condominoId" />
+                        <x-biome_generators :vertwall="$towed_vw" :practice="$practice" :items="$biome_generators" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- BA. Bullding automation --}}
                         <div>
@@ -685,7 +682,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -731,7 +727,7 @@
                         </div>
 
                         {{-- Collettori solari --}}
-                        <x-solar_panels :vertwall="$towed_vw" :practice="$practice" :items="$solar_panels" :condomino="$condominoId" />
+                        <x-solar_panels :vertwall="$towed_vw" :practice="$practice" :items="$solar_panels" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />
 
                         {{-- FV. Fotovoltaico --}}
                         <div class="mt-5">
@@ -765,7 +761,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -802,7 +797,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -831,7 +825,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
@@ -873,7 +866,6 @@
                                         </label>
                                     </p>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <div class="d-flex align-items-end mt-4" style="width: 65%">
                                 <p class="m-0">
@@ -972,9 +964,9 @@
                 </div>
 
                 <div class="box-fixed" style="z-index: 1;">
-                    @if($condominoId !== null)
-                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $selected_condomino->id }})">Salva condomino</div>
-                    @endif
+{{--                    @if($condominoId !== null)--}}
+{{--                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $towed_vw->practice->id }}, {{ $selected_condomino->id }})">Salva condomino</div>--}}
+{{--                    @endif--}}
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}
                     </a>
@@ -996,23 +988,63 @@
 @push('scripts')
     <script type="text/javascript">
         function setCondominoId(pid, id) {
+            saveCondominoChanges(pid, '{{ $condominoId }}');
             axios.post(`/business/show_condomino_data/${id}`)
                 .then(() => {
                     window.location.reload();
                 })
         }
-        function saveCondominoChanges(id) {
+        function saveCondominoChanges(pid, id) {
+            // Form anagrafica condomino
             let inputs = document.querySelectorAll("[name^='selected_condomino-']");
             let datas = {};
             inputs.forEach(input => {
                 let id = input.id.split('-')[1]
                 datas[id] = input.value === '' ? null : input.value
             })
-            axios.post(`/business/save_condomino_data/${id}`, {
-                    data: JSON.stringify(datas)
+
+            let interventi = [
+                'condensing_boilers',
+                'heat_pumps',
+                'absorption_heat_pumps',
+                'hybrid_systems',
+                'microgeneration_systems',
+                'water_heatpumps_installations',
+                'biome_generators',
+                'solar_panels'
+            ];
+
+            let x = (function() {
+                let n = {};
+                interventi.forEach(intervento => {
+                    let i = document.querySelectorAll(`[name^=${intervento}]`);
+                    if(i) {
+                        n[intervento] = {};
+                        i.forEach(o => {
+                            let oid = o.id.split(/\[(.*?)\]/)[1]
+                            let okey = o.id.split(/\[(.*?)\]/)[3]
+                            if(n[`${intervento}`][oid] === undefined) {
+                                n[`${intervento}`][oid] = {};
+                            }
+                            if(o.getAttribute('type') === 'checkbox' && o.checked === true) {
+                                n[`${intervento}`][oid][okey] = o.checked
+                            } else if(o.getAttribute('type') === 'radio') {
+                                if(o.checked) {
+                                    n[`${intervento}`][oid][okey] = o.value;
+                                }
+                            } else if(o.getAttribute('type') !== 'checkbox') {
+                                n[`${intervento}`][oid][okey] = o.value === '' ? null : o.value;
+                            }
+                        })
+                    }
                 })
-                .then(() => {
-                    window.location.reload();
+                return n;
+            })();
+
+            axios.post(`/business/save_condomino_data/${id}`, {
+                    data: JSON.stringify(datas),
+                    practice: pid,
+                    interventi: x
                 })
         }
     </script>
