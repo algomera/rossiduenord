@@ -41,7 +41,6 @@
                         </div>
                         <button id="select-all" class="btn bg-black white checkall">Seleziona tutto</button>
                         <button id="deselect-all" class="btn bg-grey white uncheckall">Deseleziona tutto</button>
-                        <button id="visible-column" class="btn bg-lightgrey black">Elimina</button>
                         <button id="select-delete" class="btn bg-red white">Elimina selezionato</button>
                     </div>
                     <form action="" method="POST" class="position-relative w-25">

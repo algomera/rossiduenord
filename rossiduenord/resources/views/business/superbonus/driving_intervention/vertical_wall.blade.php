@@ -159,7 +159,6 @@
                         @enderror
                     </label>
                 </div>
-                <button class="add-button">Computo metrico</button>
             </div>
 
             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
@@ -391,7 +390,6 @@
                         @enderror
                     </label>
                 </div>
-                <button class="add-button">Computo metrico</button>
             </div>
 
             <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>

@@ -6,9 +6,11 @@
 <div class="content-main" style="padding-top: 0px;">
     <div class="box">
         <div class="px-20 pt-20">
-            <span style="margin-right: 20px" class="black text-md {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
-                Lista Pratiche
-            </span>
+            <a href="{{route('business.practice.index')}}">
+                <span style="margin-right: 20px" class="black text-md clickable {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
+                    Lista Pratiche
+                </span>
+            </a>
             <span class="black text-md {{Route::currentRouteName() != 'business.practice.index' ? 'bold' : ''}}">
                 Scheda pratica
             </span>

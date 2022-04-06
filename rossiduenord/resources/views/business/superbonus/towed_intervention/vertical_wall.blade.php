@@ -298,7 +298,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                         </div>
@@ -363,7 +362,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
@@ -513,7 +511,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -685,7 +682,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -765,7 +761,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -802,7 +797,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
                             <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
@@ -831,7 +825,6 @@
                                         €
                                     </label>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
@@ -873,7 +866,6 @@
                                         </label>
                                     </p>
                                 </div>
-                                <button class="add-button">Computo metrico</button>
                             </div>
                             <div class="d-flex align-items-end mt-4" style="width: 65%">
                                 <p class="m-0">

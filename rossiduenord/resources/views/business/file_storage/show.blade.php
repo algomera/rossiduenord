@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-main">
-        <div class="box">
+        <div class="box px-20 py-3">
             <span class="black text-md"><b>File:</b> {{ $file->title}}</span>
             <hr class="bg-black">
 
