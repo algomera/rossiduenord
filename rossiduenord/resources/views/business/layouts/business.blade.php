@@ -29,7 +29,7 @@
     <div id="app">
         <div class="container-custom d-flex">
             <nav class="navbar ov-y p-0">
-                <div class="my-4 ml-3 px-3">
+                <div class="my-3 ml-3 px-3">
                     <img src="{{asset('img/Logo_.png')}}" alt="" class="img-fluid">
                 </div>
                 <ul class="nav flex-column w-100">
@@ -67,7 +67,7 @@
                         <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche ***</a>
+                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
