@@ -2,11 +2,9 @@
 
 @section('content')
     <div class="content-main">
-        <div class="box">
+        <div class="box px-20 py-5">
             <span class="black text-md"><b>Carica file</b></span>
-            <hr class="bg-black">
-
-            @include('business.layouts.partials.error')    
+            <hr class="bg-black">  
 
             <form action="{{ route('business.file.store', $file->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

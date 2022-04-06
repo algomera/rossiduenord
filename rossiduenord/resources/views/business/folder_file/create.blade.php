@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <button type="submit" class="add-button position-relative">
-                    {{ __('Salva file') }}
+                    {{ __('Crea cartella') }}
                 </button>
             </form>
         </div>

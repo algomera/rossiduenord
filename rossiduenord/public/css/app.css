@@ -163,23 +163,23 @@ a:hover {
 }
 
 .bg-black {
-  background-color: #383d3f;
+  background-color: #383d3f !important;
 }
 
 .bg-grey {
-  background-color: #818387;
+  background-color: #818387 !important;
 }
 
 .bg-lightgrey {
-  background-color: #dbdcdb;
+  background-color: #dbdcdb !important;
 }
 
 .bg-red {
-  background-color: #e4003c;
+  background-color: #e4003c !important;
 }
 
 .bg-green {
-  background-color: #00cfb4;
+  background-color: #00cfb4 !important;
 }
 
 .bg-blue {

@@ -39,13 +39,13 @@
                             <span class="text-sm grey">Elementi visualizzati</span>
                             <input class="type-number" type="number" value="100" name="" id="">
                         </div>
-                        <button id="select-all" class="btn-custom bg-black white checkall">Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall">Deseleziona tutto</button>
-                        <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
-                        <button id="select-delete" class="btn-custom bg-red white">Elimina selezionato</button>
+                        <button id="select-all" class="btn bg-black white checkall">Seleziona tutto</button>
+                        <button id="deselect-all" class="btn bg-grey white uncheckall">Deseleziona tutto</button>
+                        <button id="visible-column" class="btn bg-lightgrey black">Elimina</button>
+                        <button id="select-delete" class="btn bg-red white">Elimina selezionato</button>
                     </div>
                     <form action="" method="POST" class="position-relative w-25">
-                        <input class="search" type="text" placeholder="Cerca" name="" id="searchFolder">
+                        <input class="search" type="text" placeholder="Cerca le cartelle" name="" id="searchFolder">
                         <img class="img-search" src="{{ asset('/img/icon/ICONA-CERCA.svg')}}" alt="">
                     </form>
                 </div>
@@ -69,17 +69,17 @@
                                     <input class="ceck" type="checkbox" value="{{$folder->id}}" name="id" id="id">
                                 </td>
                                 <td>{{$folder->name}}</td>
-                                <td>{{$folder->created_at}}</td>
+                                <td>{{$folder->created_at->format('d/m/y')}}</td>
                                 <td>{{$folder->type}}</td>
                                 <td>{{$folder->created_by}}</td>
                                 <td class="">
-                                    <a href="{{route('business.folder.show', $folder->id)}}" class="btn-custom white bg-green">
+                                    <a href="{{route('business.folder.show', $folder->id)}}" class="btn bg-green white">
                                         Vedi
                                     </a>
-                                    <a href="{{route('business.folder.edit', $folder->id)}}" class="btn-custom white bg-black">
+                                    <a href="{{route('business.folder.edit', $folder->id)}}" class="btn white bg-black">
                                         Modifica
                                     </a>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$folder->id}}">
+                                    <button type="button" class="btn bg-red white px-1" data-toggle="modal" data-target="#del{{$folder->id}}">
                                         elimina
                                     </button>
 
