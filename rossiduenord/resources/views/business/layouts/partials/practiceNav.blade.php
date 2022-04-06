@@ -6,9 +6,11 @@
 <div class="content-main" style="padding-top: 0px;">
     <div class="box">
         <div class="px-20 pt-20">
-            <span style="margin-right: 20px" class="black text-md {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
-                Lista Pratiche
-            </span>
+            <a href="{{route('business.practice.index')}}">
+                <span style="margin-right: 20px" class="black text-md clickable {{Route::currentRouteName() == 'business.practice.index' ? 'bold' : ''}}">
+                    Lista Pratiche
+                </span>
+            </a>
             <span class="black text-md {{Route::currentRouteName() != 'business.practice.index' ? 'bold' : ''}}">
                 Scheda pratica
             </span>
@@ -22,20 +24,20 @@
                     PRATICA
                 </a>
                 <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject*') ? 'visited' : ''}}">
-                    SOGGETTI E IMPORTI
+                    SUBAPPALTATORI
                 </a>
                 <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
-                <a href="">FOTO DA APP</a>
+                <a href="">FOTO E VIDEO</a>
                 <a href="{{route('business.folder_document', $practice->id)}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
                     DOCUMENTI RICHIESTI
                 </a>
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
-                    SUPERBONUS 110%
+                    SUPERBONUS
                 </a>
                 <a href="">CONTRATTI</a>
-                <a href="">AUDITOR</a>
+                <a href="">POLIZZE</a>
             </div>
 
             @if (Route::currentRouteName() == 'business.applicant.create')

@@ -59,6 +59,40 @@ a:hover {
   background-color: #383d3f;
 }
 
+.ov-y {
+  overflow-y: auto;
+}
+.ov-y::-webkit-scrollbar {
+  display: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.nav-parent {
+  font-weight: bold;
+  color: #04003c;
+}
+
+.selected-nav {
+  background-color: #f4f9ff;
+}
+
+.dash-container .dash-link {
+  text-decoration: none;
+  color: black;
+}
+.dash-container .dash-link:hover {
+  color: black !important;
+}
+.dash-container .dash-box {
+  width: 265px;
+  height: 190px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
 .back-button {
   background-color: #818387;
   padding: 10px 20px;
@@ -129,23 +163,23 @@ a:hover {
 }
 
 .bg-black {
-  background-color: #383d3f;
+  background-color: #383d3f !important;
 }
 
 .bg-grey {
-  background-color: #818387;
+  background-color: #818387 !important;
 }
 
 .bg-lightgrey {
-  background-color: #dbdcdb;
+  background-color: #dbdcdb !important;
 }
 
 .bg-red {
-  background-color: #e4003c;
+  background-color: #e4003c !important;
 }
 
 .bg-green {
-  background-color: #00cfb4;
+  background-color: #00cfb4 !important;
 }
 
 .bg-blue {

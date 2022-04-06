@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="content-main">
-        @if(session('message'))
+        {{-- @if(session('message'))
             <div class="alert alert-success" role="alert">
                 <strong>{{session('message')}}</strong>
             </div>
-        @endif
+        @endif --}}
 
         <a href="{{route('business.file.create')}}" class="add-button">+ Aggiungi file</a>
 
         <div class="box px-20 pb-20 pt-20">
             <div style="margin-bottom: 20px">
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
-                <a href="{{ route('business.folder.index') }}">Torna indietro</a>
+                <a href="{{ route('business.folder.index') }}">Torna all'elenco</a>
             </div>
 
             <span class="black text-md"><b>Elenco file cartella:</b> {{$folder->name}}</span>
@@ -29,11 +29,10 @@
                         </div>
                         <button id="select-all" class="btn-custom bg-black white">Seleziona tutto</button>
                         <button id="deselect-all" class="btn-custom bg-grey white">Deseleziona tutto</button>
-                        <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
                         <button id="select-delete" class="btn-custom bg-red white">Elimina selezionato</button>
                     </div>
                     <div class="position-relative w-25">
-                        <input class="search" type="search" placeholder="Cerca" name="" id="">
+                        <input class="search" type="search" placeholder="Cerca tra i file" name="" id="">
                         <img class="img-search" src="{{ asset('/img/icon/ICONA-CERCA.svg')}}" alt="">
                     </div>
                 </div>
@@ -60,10 +59,10 @@
                                     <a href="{{ asset('storage/' . $file->file)}}" download="{{$file->title}}.pdf">scarica</a>
                                 </td> 
                                 <td class="">
-                                    <a href="{{route('business.file.show', $file)}}" class="btn-custom white bg-green">
+                                    <a href="{{route('business.file.show', $file)}}" class="btn  white bg-green">
                                         Vedi
                                     </a>
-                                    <a href="{{route('business.file.edit', $file)}}" class="btn-custom white bg-black">
+                                    <a href="{{route('business.file.edit', $file)}}" class="btn  white bg-black">
                                         Modifica
                                     </a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$file->id}}">
@@ -102,7 +101,7 @@
                     </table>
                 </div>
             @else
-                <h5>Nessun File contenuto in cartella!</h5>
+                <h5>Nessun file caricato in questa cartella, inizia a caricare il tuo database.</h5>
             @endif
         </div>
     </div>

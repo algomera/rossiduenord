@@ -110,7 +110,7 @@
                             <th style="width: 10%">Mese lav.110%</th>
                             <th style="width: 10%">Lista incentivi</th>
                             <th style="width: 15%">Richiedente</th>
-                            <th style="width: 15%">SAl</th>
+                            <th style="width: 15%">SAL</th>
                             <th style="width: 5%">Notifiche</th>
                             <th style="width: 10%"></th>
                         </tr>

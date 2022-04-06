@@ -49799,11 +49799,19 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: "#app",
   data: {
-    isModalVisible: true
+    isModalVisible: true,
+    isDocVisible: false
   },
   methods: {
     closeModal: function closeModal() {
       this.isModalVisible = false;
+    },
+    openDoc: function openDoc() {
+      if (this.isDocVisible == false) {
+        this.isDocVisible = true;
+      } else {
+        this.isDocVisible = false;
+      }
     }
   }
 });
