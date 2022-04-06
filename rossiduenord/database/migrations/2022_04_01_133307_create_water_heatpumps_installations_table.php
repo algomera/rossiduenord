@@ -19,6 +19,7 @@ class CreateWaterHeatpumpsInstallationsTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
+            $table->boolean('is_common')->default(false);
             $table->text('tipo_scaldacqua_sostituito')->nullable();
             $table->double('pu_scaldacqua_sostituito')->nullable();
             $table->double('pu_scaldacqua_a_pdc')->nullable();

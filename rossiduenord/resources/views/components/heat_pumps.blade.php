@@ -1,4 +1,7 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
+@php
+    $isCommon = isset($isCommon) ? 1 : 0
+@endphp
 
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
@@ -18,6 +21,7 @@
                 <div class="box_input" data-id="heat_pump-{{$practice->id}}-{{$item->id}}">
                     {{ $i + 1 }}
                     <div class="row_input">
+                        <input type="hidden" name="heat_pumps[{{$practice->id}}-{{$item->id}}][is_common]" id="heat_pumps[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                         <input type="hidden" name="heat_pumps[{{$practice->id}}-{{$item->id}}][condomino_id]" id="heat_pumps[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                         <label for="heat_pumps[{{$practice->id}}-{{$item->id}}][tipo_sostituito]">
                             Tipo sostituito
@@ -112,5 +116,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.heat_pump', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.heat_pump', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush

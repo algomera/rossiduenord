@@ -1,4 +1,7 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
+@php
+    $isCommon = isset($isCommon) ? 1 : 0
+@endphp
 
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
@@ -18,6 +21,7 @@
                 <div class="box_input"  data-id="solar_panel-{{$practice->id}}-{{$item->id}}">
                     {{ $i + 1 }}
                     <div class="row_input">
+                        <input type="hidden" name="solar_panels[{{$practice->id}}-{{$item->id}}][is_common]" id="solar_panels[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                         <input type="hidden" name="solar_panels[{{$practice->id}}-{{$item->id}}][condomino_id]" id="solar_panels[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                         <label for="solar_panels[{{$practice->id}}-{{$item->id}}][sup_lorda_singolo_modulo]">
                             Superfice lorda Ag di un singolo modulo
@@ -141,5 +145,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.solar_panel', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.solar_panel', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush

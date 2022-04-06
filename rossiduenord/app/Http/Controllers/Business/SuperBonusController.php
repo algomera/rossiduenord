@@ -103,14 +103,14 @@ class SuperBonusController extends Controller
         $biome_generators = $practice->biome_generators()->where('condomino_id', $condominoId)->get();
         $solar_panels = $practice->solar_panels()->where('condomino_id', $condominoId)->get();
         return view('business.superbonus.towed_intervention.vertical_wall', compact(
-                'solar_panels',
-                'biome_generators',
-                'water_heatpumps_installations',
-                'microgeneration_systems',
-                'hybrid_systems',
-                'absorption_heat_pumps',
-                'heat_pumps',
-                'condensing_boilers',
+            'solar_panels',
+            'biome_generators',
+            'water_heatpumps_installations',
+            'microgeneration_systems',
+            'hybrid_systems',
+            'absorption_heat_pumps',
+            'heat_pumps',
+            'condensing_boilers',
             'countries',
             'selected_condomino',
             'condomini',
@@ -272,7 +272,7 @@ class SuperBonusController extends Controller
             'total_replacing_cost_2' => 'nullable| integer | min:2',
             'final_replacing_cost' => 'nullable| integer | min:2',
             'replacing_energetic_savings' => 'nullable| integer | min:2 ',
-        ],
+        ]
     );
 
         // Update data

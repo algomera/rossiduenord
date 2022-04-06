@@ -1,4 +1,7 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
+@php
+    $isCommon = isset($isCommon) ? 1 : 0
+@endphp
 
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
@@ -20,6 +23,7 @@
                 <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$item->id}}">
                     {{ $i + 1 }}
                     <div class="row_input">
+                        <input type="hidden" name="condensing_boilers[{{$practice->id}}-{{$item->id}}][is_common]" id="condensing_boilers[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                         <input type="hidden" name="condensing_boilers[{{$practice->id}}-{{$item->id}}][condomino_id]" id="condensing_boilers[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                         <label for="condensing_boilers[{{$practice->id}}-{{$item->id}}][tipo_sostituito]">
                             Tipo sostituito
@@ -104,6 +108,6 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.condensing_boiler', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.condensing_boiler', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush
 

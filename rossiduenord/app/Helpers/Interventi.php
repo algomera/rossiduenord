@@ -17,6 +17,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -46,6 +47,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -78,6 +80,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -107,6 +110,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -140,6 +144,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -173,6 +178,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_scaldacqua_sostituito" => $item['tipo_scaldacqua_sostituito'],
                         "pu_scaldacqua_sostituito" => $item['pu_scaldacqua_sostituito'],
@@ -198,6 +204,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "tipo_sostituito" => $item['tipo_sostituito'],
                         "p_nom_sostituito" => $item['p_nom_sostituito'],
@@ -228,6 +235,7 @@ class Interventi
                         'id' => $cn,
                         'practice_id' => $pn
                     ], [
+                        "is_common" => $item['is_common'] ?? false,
                         "condomino_id" => $item['condomino_id'],
                         "sup_lorda_singolo_modulo" => $item['sup_lorda_singolo_modulo'],
                         "num_moduli" => $item['num_moduli'],

@@ -8,6 +8,7 @@
             $("#absorption_heat_pump_wrapper").append(`
         <div class="box_input" data-id="absorption_heat_pump-${ah}">
             <div class="row_input">
+            <input type="hidden" name="absorption_heat_pumps[${ah}][is_common]" id="absorption_heat_pumps[${ah}][is_common]" value="{{ $is_common }}">
                 <input type="hidden" name="absorption_heat_pumps[${ah}][condomino_id]" id="absorption_heat_pumps[${ah}][condomino_id]" value="{{ $condomino ?? '' }}">
                                         <label for="absorption_heat_pumps[${ah}][tipo_sostituito]">
                                             Tipo sostituito

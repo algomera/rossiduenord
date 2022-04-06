@@ -1,4 +1,7 @@
-@props(['vertwall', 'practice', 'items', 'condomino'])
+@props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
+@php
+    $isCommon = isset($isCommon) ? 1 : 0
+@endphp
 
 <div>
     <div class="mt-5">
@@ -20,6 +23,7 @@
                     <div class="box_input" data-id="water_heatpumps_installation-{{$practice->id}}-{{$item->id}}">
                         {{ $i + 1 }}
                         <div class="row_input">
+                            <input type="hidden" name="water_heatpumps_installations[{{$practice->id}}-{{$item->id}}][is_common]" id="water_heatpumps_installations[{{$practice->id}}-{{$item->id}}][is_common]" value="{{ $isCommon }}">
                             <input type="hidden" name="water_heatpumps_installations[{{$practice->id}}-{{$item->id}}][condomino_id]" id="water_heatpumps_installations[{{$practice->id}}-{{$item->id}}][condomino_id]" value="{{ $condomino ?? $item->condomino_id }}">
                             <label for="water_heatpumps_installations[{{$practice->id}}-{{$item->id}}][tipo_scaldacqua_sostituito]">
                                 Tipo scaldaacqua sostituito
@@ -98,5 +102,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.water_heatpumps_installation', ['condomino' => $condomino ?? ''])
+    @include('business.scripts.water_heatpumps_installation', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
 @endpush
