@@ -973,7 +973,7 @@
 
                 <div class="box-fixed" style="z-index: 1;">
                     @if($condominoId !== null)
-                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $selected_condomino->id }})">Salva condomino</div>
+                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $towed_vw->practice->id }}, {{ $selected_condomino->id }})">Salva condomino</div>
                     @endif
                     <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
                         {{ __('Annulla')}}
@@ -996,23 +996,65 @@
 @push('scripts')
     <script type="text/javascript">
         function setCondominoId(pid, id) {
+            saveCondominoChanges(pid, {{ $condominoId }});
             axios.post(`/business/show_condomino_data/${id}`)
                 .then(() => {
                     window.location.reload();
                 })
         }
-        function saveCondominoChanges(id) {
+        function saveCondominoChanges(pid, id) {
+            // Form anagrafica condomino
             let inputs = document.querySelectorAll("[name^='selected_condomino-']");
             let datas = {};
             inputs.forEach(input => {
                 let id = input.id.split('-')[1]
                 datas[id] = input.value === '' ? null : input.value
             })
-            axios.post(`/business/save_condomino_data/${id}`, {
-                    data: JSON.stringify(datas)
+
+            let interventi = [
+                'condensing_boilers',
+                'heat_pumps',
+                'absorption_heat_pumps',
+                'hybrid_systems',
+                'microgeneration_systems',
+                'water_heatpumps_installations',
+                'biome_generators',
+                'solar_panels'
+            ];
+
+            let x = (function() {
+                let n = {};
+                interventi.forEach(intervento => {
+                    let i = document.querySelectorAll(`[name^=${intervento}]`);
+                    if(i) {
+                        n[intervento] = {};
+                        i.forEach(o => {
+                            let oid = o.id.split(/\[(.*?)\]/)[1]
+                            let okey = o.id.split(/\[(.*?)\]/)[3]
+                            if(n[`${intervento}`][oid] === undefined) {
+                                n[`${intervento}`][oid] = {};
+                            }
+                            if(o.getAttribute('type') === 'checkbox' && o.checked === true) {
+                                n[`${intervento}`][oid][okey] = o.checked
+                            } else if(o.getAttribute('type') === 'radio') {
+                                if(o.checked) {
+                                    n[`${intervento}`][oid][okey] = o.value;
+                                }
+                            } else if(o.getAttribute('type') !== 'checkbox') {
+                                n[`${intervento}`][oid][okey] = o.value === '' ? null : o.value;
+                            }
+                        })
+                    }
                 })
-                .then(() => {
-                    window.location.reload();
+                return n;
+            })();
+
+            console.log(x.solar_panels)
+
+            axios.post(`/business/save_condomino_data/${id}`, {
+                    data: JSON.stringify(datas),
+                    practice: pid,
+                    interventi: x
                 })
         }
     </script>

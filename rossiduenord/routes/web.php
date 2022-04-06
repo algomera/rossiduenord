@@ -1,6 +1,8 @@
 <?php
 
 use App\Condomini;
+use App\Helpers\Interventi;
+use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -126,11 +128,23 @@ Route::middleware('business')
     });
 
     Route::post('/save_condomino_data/{id}', function ($id, Request $request) {
-        $data = json_decode($request->get('data'), true);
-//        dd($data);
-        $condomino = Condomini::find($id);
-        $condomino->update($data);
-
+        $pid = $request->get('practice');
+        $practice = Practice::find($pid);
+        // Update Condomino Datas
+        if($id !== "undefined") {
+            $data = json_decode($request->get('data'), true);
+            $condomino = Condomini::find($id);
+            $condomino->update($data);
+        }
+        // Update Interventi
+        Interventi::addCondensingBoiler($practice, $request->get('interventi')['condensing_boilers']);
+        Interventi::addHeatPump($practice, $request->get('interventi')['heat_pumps']);
+        Interventi::addAbsorptionHeatPump($practice, $request->get('interventi')['absorption_heat_pumps']);
+        Interventi::addHybridSystem($practice, $request->get('interventi')['hybrid_systems']);
+        Interventi::addMicrogenerationSystem($practice, $request->get('interventi')['microgeneration_systems']);
+        Interventi::addWaterHeatpumpsInstallation($practice, $request->get('interventi')['water_heatpumps_installations']);
+        Interventi::addBiomeGenerator($practice, $request->get('interventi')['biome_generators']);
+        Interventi::addSolarPanel($practice, $request->get('interventi')['solar_panels']);
         return "updated";
     });
 
