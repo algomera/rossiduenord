@@ -59,6 +59,19 @@ a:hover {
   background-color: #383d3f;
 }
 
+.ov-y {
+  overflow-y: scroll;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.nav-parent {
+  font-weight: bold;
+  color: #04003c;
+}
+
 .back-button {
   background-color: #818387;
   padding: 10px 20px;

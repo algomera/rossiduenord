@@ -36,11 +36,19 @@ const app = new Vue({
     el: "#app",
     data: {
         isModalVisible: true,
+        isDocVisible: false,
     },
 
     methods: {
         closeModal() {
             this.isModalVisible = false;
+        },
+        openDoc() {
+            if (this.isDocVisible == false) {
+                this.isDocVisible = true;
+            } else {
+                this.isDocVisible = false;
+            }
         },
     },
 });

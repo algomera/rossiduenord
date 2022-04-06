@@ -137,7 +137,7 @@ class ApplicantController extends Controller
             'applicant' => 'nullable | string',
             'name' => 'nullable | string | min:3 | max:100',
             'lastName' => 'nullable | string | min:3 | max:100',
-            'c_f' => 'nullable | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i ',
+            'c_f' => 'nullable | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
             'phone' => 'nullable | string | min:10',
             'mobile_phone' => 'nullable | string | min:10',
             'email' => 'nullable | email',
@@ -171,7 +171,6 @@ class ApplicantController extends Controller
             'role.required'=> 'Inserisci il ruolo prima di procedere',
         ]
     );
-
         $applicant->update($validated);
 
         return redirect()->route('business.practice.edit', $applicant);

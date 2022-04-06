@@ -28,7 +28,7 @@
 <body>
     <div id="app">
         <div class="container-custom d-flex">
-            <nav class="navbar">
+            <nav class="navbar ov-y">
                 <div class="my-4 ml-3">
                     <img src="{{asset('img/logo.svg')}}" alt="" class="img-fluid">
                 </div>
@@ -37,13 +37,77 @@
                         <a class="nav-link {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Utenti</a>
+                        <a class="nav-link  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi ***</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Gestione Pratiche</a>
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Visualizza valut.rating</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Book reference</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Aziende subappaltatrici</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze aziendali</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Vetrina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Cronoprogramma lavori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Fornitori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche ***</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File ***</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione Tecnica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openDoc()"> <b>Credito D.O.C</b> </a>
+                        <ul class="nav flex-column" v-if="isDocVisible">
+                            <div class="pl-2">
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione tecnica</a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione fiscale</a>
+                                 </li>
+                                <li class="nav-item">
+                                      <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Controllo qualità lavoro/imprese</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto GPS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Video GPS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Elaborati grafici</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Supervisor</a>
+                                </li>
+                            </div>
+                        </ul>
                     </li>
                 </ul>
             </nav>
