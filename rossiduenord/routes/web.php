@@ -131,7 +131,7 @@ Route::middleware('business')
         $pid = $request->get('practice');
         $practice = Practice::find($pid);
         // Update Condomino Datas
-        if($id !== "undefined") {
+        if($id !== "common") {
             $data = json_decode($request->get('data'), true);
             $condomino = Condomini::find($id);
             $condomino->update($data);

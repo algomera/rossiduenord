@@ -94,14 +94,14 @@ class SuperBonusController extends Controller
         $condominoId = session()->get('condominoId') ?? null;
         $selected_condomino = Condomini::find($condominoId);
         $countries = Country::all();
-        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', $condominoId)->get();
-        $heat_pumps = $practice->heat_pumps()->where('condomino_id', $condominoId)->get();
-        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', $condominoId)->get();
-        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', $condominoId)->get();
-        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', $condominoId)->get();
-        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
-        $biome_generators = $practice->biome_generators()->where('condomino_id', $condominoId)->get();
-        $solar_panels = $practice->solar_panels()->where('condomino_id', $condominoId)->get();
+        $condensing_boilers = $condominoId === 'common' ? $practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 1)->get() : $practice->condensing_boilers()->where('condomino_id', $condominoId)->get();
+        $heat_pumps = $condominoId === 'common' ? $practice->heat_pumps()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->heat_pumps()->where('condomino_id', $condominoId)->get();
+        $absorption_heat_pumps = $condominoId === 'common' ? $practice->absorption_heat_pumps()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->absorption_heat_pumps()->where('condomino_id', $condominoId)->get();
+        $hybrid_systems = $condominoId === 'common' ? $practice->hybrid_systems()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->hybrid_systems()->where('condomino_id', $condominoId)->get();
+        $microgeneration_systems = $condominoId === 'common' ? $practice->microgeneration_systems()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->microgeneration_systems()->where('condomino_id', $condominoId)->get();
+        $water_heatpumps_installations = $condominoId === 'common' ? $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
+        $biome_generators = $condominoId === 'common' ? $practice->biome_generators()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->biome_generators()->where('condomino_id', $condominoId)->get();
+        $solar_panels = $condominoId === 'common' ? $practice->solar_panels()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->solar_panels()->where('condomino_id', $condominoId)->get();
         return view('business.superbonus.towed_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',

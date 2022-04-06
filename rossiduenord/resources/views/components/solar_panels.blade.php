@@ -1,7 +1,4 @@
 @props(['vertwall', 'practice', 'items', 'condomino', 'isCommon'])
-@php
-    $isCommon = isset($isCommon) ? 1 : 0
-@endphp
 
 <div class="mt-5">
     <div class="d-flex align-items-center mb-3">
