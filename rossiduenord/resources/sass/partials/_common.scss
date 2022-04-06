@@ -61,7 +61,7 @@ a {
         background-color: $bg-bt-black;
     }
 }
-// oerflow
+// NAVBAR
 .ov-y {
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -80,6 +80,15 @@ a {
 //
 .selected-nav {
     background-color: #f4f9ff;
+}
+
+//DASHBOARD
+
+.dash-box {
+    width: 265px;
+    height: 190px;
+    border-radius: 3px;
+    background-color: #fff;
 }
 
 .back-button {

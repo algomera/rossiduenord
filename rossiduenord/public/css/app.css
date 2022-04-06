@@ -79,6 +79,13 @@ a:hover {
   background-color: #f4f9ff;
 }
 
+.dash-box {
+  width: 265px;
+  height: 190px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
 .back-button {
   background-color: #818387;
   padding: 10px 20px;
