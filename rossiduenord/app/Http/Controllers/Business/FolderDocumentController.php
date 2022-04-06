@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{Practice, Subject, Applicant, Building, Folder_Document};
+use App\{Practice,Folder_Document, Document};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 class FolderDocumentController extends Controller
 {
     /**
@@ -14,14 +12,13 @@ class FolderDocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Folder_Document $folder_Document, Practice $practice, Subject $subject, Applicant $applicant, Building $building)
+    public function index(Practice $practice)
     {   
         $applicant = $practice->applicant;
         $subject = $practice->subject;
         $building = $practice->building;
-        $folders = Folder_Document::where('practice_id', '=', $practice->id)->get();
-
-        return view('business.document.index', compact('practice','applicant','subject','building','folders'));
+        $folder_Documents = Folder_Document::where('practice_id', '=', $practice->id)->get();
+        return view('business.folder_document.index', compact('practice','applicant','subject','building','folder_Documents'));
     }
 
     /**
@@ -51,9 +48,15 @@ class FolderDocumentController extends Controller
      * @param  \App\Folder_Document  $folder_Document
      * @return \Illuminate\Http\Response
      */
-    public function show(Folder_Document $folder_Document)
+    public function show(Practice $practice, Folder_Document $folder_Document)
     {
-        //
+        $applicant = $practice->applicant;
+        $subject = $practice->subject;
+        $building = $practice->building;
+        $folder_Documents = Folder_Document::where('practice_id', '=', $practice->id)->get();
+        $documents = Document::where('folder_id', '=', $folder_Document->id)->orderBy('created_at', 'DESC')->get();
+        //dd($folder_Document->id);
+        return view('business.folder_document.show', compact('folder_Document','practice','applicant','subject', 'building','folder_Documents','documents'));
     }
 
     /**

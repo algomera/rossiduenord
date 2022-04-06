@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-    protected $guarded = [];
-
-    public function practice() {
+    protected $fillable = [
+        'folder_id', 
+        'role',
+        'allega',
+        'status',
+        'description',
+        'note',
+        'type',
+    ];
+    public function folder() {
         return $this->belongsTo(Folder_Document::class);
     }
 }

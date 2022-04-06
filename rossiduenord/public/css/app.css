@@ -46,16 +46,32 @@ a:hover {
 }
 
 .add-button {
-  background-color: #61a4d7;
-  padding: 10px 20px;
+  background-color: #61a4d7 !important;
+  padding: 10px 20px !important;
   color: white !important;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.35px;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.35px !important;
   border: 1px solid #707070;
   border-radius: 3px;
+  text-align: center;
 }
 .add-button:hover {
+  background-color: #383d3f !important;
+}
+.add-button:focus {
+  color: black !important;
+  background-color: gray !important;
+}
+
+.back {
+  color: black !important;
+}
+.back:hover {
+  color: black !important;
+  font-weight: 700;
+}
+.back:hover {
   background-color: #383d3f;
 }
 

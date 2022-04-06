@@ -17,12 +17,12 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->bigInteger('folder_id')->unsigned();
             $table->foreign('folder_id')->references('id')->on('folder__documents')->onDelete('cascade');
-            $table->string('number')->nullable();
+            $table->string('role')->nullable();
+            $table->string('allega')->nullable();
             $table->string('status')->nullable();
             $table->string('description')->nullable();
-            $table->string('role')->nullable();
-            $table->string('N_id')->nullable();
             $table->string('note')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

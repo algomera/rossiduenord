@@ -94,7 +94,7 @@ class ApplicantController extends Controller
             Folder_Document::create($list_folder[$i]);
         }
 
-        return view('business.applicant.edit', compact('applicant','practice','subject','building'));
+        return redirect()->route('business.applicant.edit', $applicant);
     }
 
     /**
@@ -157,7 +157,7 @@ class ApplicantController extends Controller
             //c_f
             'c_f.min'=>'Il codice fiscale deve avere un minimo di 16 caratteri',
             'c_f.max'=>'Il codice fiscale deve avere un massimo di 16 caratteri',
-            'c_f.regex'=> 'Il codice fiscale risluta non valido',
+            'c_f.regex'=> 'Il codice fiscale risulta non valido',
             //phone number
             'phone.required' => 'Inserisci un numero di telefono',
             'phone.min' => 'Il numero di telefono deve essere composto da almeno 10 caratteri',

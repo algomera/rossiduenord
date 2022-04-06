@@ -143,8 +143,9 @@ Route::middleware('business')
     Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
     Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 
-    route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
-    route::resource('/documents', 'DocumentController');
+    Route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
+    Route::get('/folder_document/{practice}/{folder_Document}', 'FolderDocumentController@show')->name('folder_show');
+    Route::resource('/documents', 'DocumentController');
 });
 
 
