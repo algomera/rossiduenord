@@ -52,14 +52,14 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $vertwall = $practice->verical_wall;
-        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', null)->get();
-        $heat_pumps = $practice->heat_pumps()->where('condomino_id', null)->get();
-        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', null)->get();
-        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', null)->get();
-        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', null)->get();
-        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', null)->get();
-        $biome_generators = $practice->biome_generators()->where('condomino_id', null)->get();
-        $solar_panels = $practice->solar_panels()->where('condomino_id', null)->get();
+        $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 0)->get();
+        $heat_pumps = $practice->heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
+        $absorption_heat_pumps = $practice->absorption_heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
+        $hybrid_systems = $practice->hybrid_systems()->where('condomino_id', null)->where('is_common', 0)->get();
+        $microgeneration_systems = $practice->microgeneration_systems()->where('condomino_id', null)->where('is_common', 0)->get();
+        $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', null)->where('is_common', 0)->get();
+        $biome_generators = $practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
+        $solar_panels = $practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
