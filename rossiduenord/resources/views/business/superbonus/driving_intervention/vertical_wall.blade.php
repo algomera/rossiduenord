@@ -285,7 +285,7 @@
             </div>
         </div>
 
-        <div class="px-20 pb-20">{{-- Intervento di sostituzione degli impianti di climatizzazione invernale esistenti --}}
+        <div class="px-20 pb-20" style="padding-right: 20%">{{-- Intervento di sostituzione degli impianti di climatizzazione invernale esistenti --}}
             <label class="checkbox-wrapper">
                 <input {{$vertwall->winter_acs_replacing == 'true' ? 'checked' : ''}} {{old('winter_acs_replacing') == 'true' ? 'checked' : ''}} type="checkbox" name="winter_acs_replacing" class="@error('winter_acs_replacing') is-invalid error @enderror" id="winter_acs_replacing" value="true">
                 <span class="checkmark"></span>

@@ -14,7 +14,7 @@
             @endif
         </div>
         <p style="width: 70%;">In sostituzione di un sistema di produzione di acqua calda quando avviene con lo stesso generatore di calore destinato alla climatizzazione invernale ai sensi delle lettre b) e c) del comma 1 dell’articolo 119 del Decreto Rilancio</p>
-        <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
+        <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
             <div id="water_heatpumps_installation_wrapper">
                 @forelse($items as $i => $item)
                     <div class="box_input" data-id="water_heatpumps_installation-{{$practice->id}}-{{$item->id}}">

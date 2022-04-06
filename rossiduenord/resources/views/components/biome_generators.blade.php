@@ -14,7 +14,7 @@
             @endif
         </div>
         <p class="font-italic">Installazione di impianti di climatizzazione invernale dotati di generatori di calore alimentati da biomasse combustibili</p>
-        <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
+        <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
             <div id="biome_generator_wrapper">
                 @forelse($items as $i => $item)
                     <div class="box_input" data-id="biome_generator-{{$practice->id}}-{{$item->id}}">

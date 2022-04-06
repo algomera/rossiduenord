@@ -14,7 +14,7 @@
             <span><strong>(Inserite: {{ $items->count() }})</strong></span>
         @endif
     </div>
-    <div class="px-20 pt-20 pb-20" style="width: 80%; min-height: 160px; background-color: #f2f2f2 ">
+    <div class="px-20 pt-20 pb-20" style="width: 100%; min-height: 160px; background-color: #f2f2f2 ">
         <div id="condensing_boiler_wrapper">
             @forelse($items as $i => $item)
                 <div class="box_input" data-id="condensing_boiler-{{$practice->id}}-{{$item->id}}">
