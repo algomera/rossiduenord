@@ -34,7 +34,7 @@
                         <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Imprese</a>
                     </li>
                     <li class="nav-item" :class="{'selected-nav' : isListVisible}">
-                        <a class="nav-link ml-4 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Pratiche </a>
+                        <a class="nav-link ml-4 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}" @click="openList()"> Pratiche </a>
                         {{-- <ul class="nav flex-column"  v-if="isListVisible">
                             <div class="pl-2">
                                 <li class="nav-item">
