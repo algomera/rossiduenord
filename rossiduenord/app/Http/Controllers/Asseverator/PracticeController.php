@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Asseverator;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Practice;
 
+use Illuminate\Support\Facades\DB;
 class PracticeController extends Controller
 {
     /**
@@ -13,7 +16,15 @@ class PracticeController extends Controller
      */
     public function index()
     {
-        //
+        $practices = DB::table('practices')
+        ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
+        ->select('practices.*', 'applicants.*')
+        ->get();
+        //dd($practices->created_at);
+        //$createdAt = Carbon::parse($practices[0]->created_at->format('d/m/Y'));
+        //dd($createdAt);
+        //$practice_data = Carbon::today()->format('d/m/Y');
+        return view('asseverator/practice.index', compact('practices'));
     }
 
     /**
