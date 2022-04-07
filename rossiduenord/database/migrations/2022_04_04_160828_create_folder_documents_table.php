@@ -13,7 +13,7 @@ class CreateFolderDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('folder__documents', function (Blueprint $table) {
+        Schema::create('folder_documents', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');

@@ -2,17 +2,19 @@
 
 @section('content')
     @include('business.layouts.partials.practiceNav')
-   
+
     <div class="d-flex pb-20">
 
         {{-- column left --}}
         <div class="px-20 pb-20" style="width: 20%; border-right: 1px solid lightgrey;">
             <h3>Cartelle</h3>
-            @foreach ($folder_Documents as $folder_Document)
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group" role="group" aria-label="First group">
-                        <a class="add-button mb-2" href="{{ route('business.folder_show', [$practice->id, $folder_Document->id])}}">{{$folder_Document->name}}</a>
-                    </div>
+            @foreach ($folder_documents as $folder_document)
+                <div>
+                    <a href="{{ route('business.folder_show', [$practice->id, $folder_Document->id])}}">
+                        <button type="button" class="add-button mb-2 {{'business.folder_show' && request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'active_folder' : ''}}">
+                            {{$folder_Document->name}}
+                        </button>
+                    </a>
                 </div>
             @endforeach
         </div>
@@ -34,7 +36,7 @@
                             <select style="height: 47px!important" class="form-control" name="folder_id" id="folder_id">
                                 <option selected disabled value="">Seleziona cartella</option>
                                 @foreach($folder_Documents as $folder_Document)
-                                    <option value="{{$folder_Document->id}}">{{$folder_Document->name}}</option>
+                                    <option {{request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'selected' : ''}} value="{{$folder_Document->id}}">{{$folder_Document->name}}</option>
                                 @endforeach
                             </select>
                         </label>

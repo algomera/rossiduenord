@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('folder_id')->unsigned();
-            $table->foreign('folder_id')->references('id')->on('folder__documents')->onDelete('cascade');
+            $table->foreign('folder_id')->references('id')->on('folder_documents')->onDelete('cascade');
             $table->string('role')->nullable();
             $table->string('allega')->nullable();
             $table->string('status')->nullable();

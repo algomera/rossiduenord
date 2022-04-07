@@ -7,7 +7,7 @@ use App\{FinalState,
     Applicant,
     Building,
     Data_project,
-    Folder_Document,
+    FolderDocument,
     TrainatedVertWall,
     Variant,
     VerticalWall};
@@ -90,8 +90,8 @@ class ApplicantController extends Controller
             ]
 
         ];
-        for ($i = 0; $i < 3; $i++) { 
-            Folder_Document::create($list_folder[$i]);
+        for ($i = 0; $i < 3; $i++) {
+            FolderDocument::create($list_folder[$i]);
         }
 
         return redirect()->route('business.applicant.edit', $applicant);
@@ -120,7 +120,7 @@ class ApplicantController extends Controller
         $practice = $applicant->practice[0];
         $building = $practice->building;
         $subject = $practice->subject;
-        
+
         return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 

@@ -2,22 +2,23 @@
 
 @section('content')
     @include('business.layouts.partials.practiceNav')
-   
+
     <div class="d-flex pb-20">
 
         {{-- column left --}}
         <div class="px-20 pb-20" style="width: 20%; border-right: 1px solid lightgrey;">
             <h3>Cartelle</h3>
-            @foreach ($folder_Documents as $folder_Document)
-            <div>
-                <a href="{{ route('business.folder_show', [$practice->id, $folder_Document->id])}}">
-                    <button type="button" class="add-button mb-2 {{'business.folder_show' && request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'active_folder' : ''}}">
-                        {{$folder_Document->name}}
-                    </button>
-                </a>
-            </div>
+            @foreach ($folder_documents as $folder_document)
+                <div>
+                    <a href="{{ route('business.folder_show', [$practice->id, $folder_document->id])}}">
+                        <button type="button" class="add-button mb-2 {{'business.folder_show' && request()->route()->parameter('folder_document')->name == $folder_document->name ? 'active_folder' : ''}}">
+                            {{$folder_document->name}}
+                        </button>
+                    </a>
+                </div>
             @endforeach
         </div>
+
         {{-- column right --}}
         <div class="px-20 pb-20" style="width: 80%">
             <div class="d-flex">
@@ -34,9 +35,8 @@
                             Cartella
                             <select style="height: 47px!important" class="form-control" name="folder_id" id="folder_id">
                                 <option selected disabled value="">Seleziona cartella</option>
-                                @foreach($folder_Documents as $folder_Document)
-
-                                <option {{request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'selected' : ''}} value="{{$folder_Document->id}}">{{$folder_Document->name}}</option>
+                                @foreach($folder_documents as $folder_document)
+                                    <option {{request()->route()->parameter('folder_document')->name == $folder_document->name ? 'selected' : ''}} value="{{$folder_document->id}}">{{$folder_document->name}}</option>
                                 @endforeach
                             </select>
                         </label>
