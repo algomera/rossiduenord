@@ -57,6 +57,7 @@ class CreatePracticesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('practices', function (Blueprint $table) {
             $table->dropForeign(['applicant_id']);
             $table->dropColumn('applicant_id');

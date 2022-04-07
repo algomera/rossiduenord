@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Folder_Document extends Model
+class FolderDocument extends Model
 {
     protected $guarded = [];
 

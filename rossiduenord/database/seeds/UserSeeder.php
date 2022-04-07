@@ -14,33 +14,38 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $name = [
-            [
-                'name' => 'Mps'
-            ],
-            [
-                'name' => 'Unicredit'
-            ],
-            [
-                'name' => 'San Paolo'
-            ],
-            [
-                'name' => 'Poste'
-            ],
-            [
-                'name' => 'Widiba'
-            ],
-        ];
+        // Utente Impresa
+        $business = User::create([
+            'created_by' => 'financial',
+            'name' => "Impresa Example",
+            'referent' => $faker->name(),
+            'email' => 'info@primehub.it',
+            'password' => bcrypt('mtmopx9m'),
+            'role' => 'business',
+        ]);
+        Business::create([
+            'created_by' => 'financial',
+            'user_id' => $business->id,
+            'name' => "Impresa Example",
+            'email' => 'info@primehub.it',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
 
-        for ($i = 0; $i < 1; $i++) {
-            $d = new User;
-            $d->created_by = 'financial';
-            $d->name = $name[$i]['name'];
-            $d->referent = $faker->name();
-            $d->email = 'impresa@example.test';
-            $d->password = bcrypt('password');
-            $d->role = 'business';
-            $d->save();
-        }
+        // Utente Banca
+        $bank = User::create([
+            'created_by' => 'financial',
+            'name' => "Banca Prova",
+            'referent' => $faker->name(),
+            'email' => 'bancaprova@mail.com',
+            'password' => bcrypt('password'),
+            'role' => 'bank',
+        ]);
+        Bank::create([
+            'created_by' => 'financial',
+            'user_id' => $bank->id,
+            'name' => "Banca Prova",
+            'email' => 'bancaprova@mail.com',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Business;
 
 use App\Document;
-use App\Folder_Document;
+use App\FolderDocument;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +37,7 @@ class DocumentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $validated = $request->validate([
             'folder_id' => 'required | integer',
             'role' => 'nullable | string',
@@ -47,9 +47,9 @@ class DocumentController extends Controller
             'note' => 'nullable',
             'type' => 'Nullable',
         ]);
-        
-        $folders = Folder_Document::all()->pluck('id');
-        
+
+        $folders = FolderDocument::all()->pluck('id');
+
         if (array_key_exists('allega', $validated)) {
             if(in_array($validated['folder_id'], $folders->toArray())){
                 $business_document = Storage::put('business_folders/first_document_request', $validated['allega']);
@@ -80,7 +80,7 @@ class DocumentController extends Controller
         $applicant = $practice->applicant;
         $subject = $practice->subject;
         $building = $practice->building;
-        $folders = Folder_Document::where('practice_id', '=', $practice->id)->get();
+        $folders = FolderDocument::where('practice_id', '=', $practice->id)->get();
         $documents = Document::where('folder_id', '=', $document->id)->orderBy('created_at', 'DESC')->get();
         //dd($documents);
         return view('business.folder_document.show', compact('document','documents','practice','applicant','subject', 'building','folders'));

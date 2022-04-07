@@ -30,7 +30,7 @@
                     IMMOBILE
                 </a>
                 <a href="">FOTO E VIDEO</a>
-                <a href="{{route('business.folder_document', $practice->id)}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
+                <a href="{{route('business.folder_show', [$practice->id, $practice->folder_documents()->first()])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
                     DOCUMENTI RICHIESTI
                 </a>
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">

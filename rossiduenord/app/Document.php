@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     protected $fillable = [
-        'folder_id', 
+        'folder_id',
         'role',
         'allega',
         'status',
@@ -16,6 +16,6 @@ class Document extends Model
         'type',
     ];
     public function folder() {
-        return $this->belongsTo(Folder_Document::class);
+        return $this->belongsTo(FolderDocument::class);
     }
 }
