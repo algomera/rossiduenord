@@ -35,10 +35,10 @@
                     </li>
                     <li class="nav-item" :class="{'selected-nav' : isListVisible}">
                         <a class="nav-link ml-4 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Pratiche </a>
-                        <ul class="nav flex-column"  v-if="isListVisible">
+                        {{-- <ul class="nav flex-column"  v-if="isListVisible">
                             <div class="pl-2">
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Dati pratica</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Dati pratica</a>
                                 </li>
                                 <li class="nav-item">
                                       <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Dati Immobile</a>
@@ -68,7 +68,7 @@
                                     <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
                                 </li>
                             </div>
-                        </ul>
+                        </ul> --}}
                     </li>
                 </ul>
             </nav>
