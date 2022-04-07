@@ -22,16 +22,14 @@ class HomeController extends Controller
 
     public function editbusinessData(Business $business)
     {
-        $email = Auth()->user()->email;
+        $email = auth()->user()->email;
         $business = DB::table('businesses')->where('email', '=', $email)->first();
         return view('business.data', compact('business'));
     }
 
     public function updatebusinessData(Request $request, Business $business)
-    
     {
-        $email = Auth()->user()->email;
-        $business = DB::table('businesses')->where('email', '=', $email)->first();
+        $business = Business::where('email', auth()->user()->email)->first();
         $validated = $request->validate([
             'type' => 'nullable | string',
             'p_iva' => 'nullable | string | min:11 | max:11',
