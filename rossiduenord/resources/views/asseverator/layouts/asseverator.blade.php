@@ -23,8 +23,8 @@
     <div id="appt">
         <div class="container-custom d-flex">
             <nav class="navbar ov-y p-0">
-                <div class="my-3 ml-3 px-3">
-                    <img src="{{asset('img/Logo_.png')}}" alt="" class="img-fluid">
+                <div class="ml-3 px-4">
+                    <img src="{{asset('img/logo_edrasis.png')}}" class="img-fluid h-50">
                 </div>
                 <ul class="nav flex-column w-100">
                     <li class="nav-item nav-pills">
