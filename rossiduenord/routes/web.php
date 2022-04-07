@@ -190,6 +190,7 @@ Route::middleware('asseverator')
 ->prefix('asseverator')
 ->group(function () {
     Route::get('/dashboard', 'HomeController@asseveratorHome')->name('dashboard');
+    Route::resource('practice', 'PracticeController');
 });
 
 
