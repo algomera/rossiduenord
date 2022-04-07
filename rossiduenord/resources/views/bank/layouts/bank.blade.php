@@ -34,7 +34,34 @@
                         <a class="nav-link {{Route::currentRouteName() == 'bank.dashboard' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  {{Route::currentRouteName() == 'bank.users.index' ? 'activ' : ''}}" href="{{route('bank.users.index')}}">Gestione Utenti</a>
+                        <a class="nav-link  {{Route::currentRouteName() == 'bank.users.index' ? 'activ' : ''}}" href="{{route('bank.users.index')}}">Gestione Accessi</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Anagrafica clienti</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Kit documentale</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Info Temporary manager</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Info credito D.O.C</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Info rating aziendale</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Info rating tecnico</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Vetrina</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Imprese</a>
+                    </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Credito D.O.C</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{Route::currentRouteName() == 'bank.folder.index' ? 'activ' : ''}}" href="{{route('bank.folder.index')}}" href="#">Gestione Cartelle/File</a>
