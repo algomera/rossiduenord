@@ -11,14 +11,13 @@
             @foreach ($folder_Documents as $folder_Document)
             <div>
                 <a href="{{ route('business.folder_show', [$practice->id, $folder_Document->id])}}">
-                    <button type="button" class="add-button mb-2">
+                    <button type="button" class="add-button mb-2 {{'business.folder_show' && request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'active_folder' : ''}}">
                         {{$folder_Document->name}}
                     </button>
                 </a>
             </div>
             @endforeach
         </div>
-
         {{-- column right --}}
         <div class="px-20 pb-20" style="width: 80%">
             <div class="d-flex">
@@ -36,7 +35,8 @@
                             <select style="height: 47px!important" class="form-control" name="folder_id" id="folder_id">
                                 <option selected disabled value="">Seleziona cartella</option>
                                 @foreach($folder_Documents as $folder_Document)
-                                <option value="{{$folder_Document->id}}">{{$folder_Document->name}}</option>
+
+                                <option {{request()->route()->parameter('folder_Document')->name == $folder_Document->name ? 'selected' : ''}} value="{{$folder_Document->id}}">{{$folder_Document->name}}</option>
                                 @endforeach
                             </select>
                         </label>

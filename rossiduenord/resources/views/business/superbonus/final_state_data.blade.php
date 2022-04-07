@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <label class="checkbox-wrapper d-flex">
-                            <input type="checkbox" name="summer_acs_presence" value="true" {{$final_state->summer_acs_presence = 'true' ? 'checked' : ''}}>
+                            <input type="checkbox" name="summer_acs_presence" value="true" {{$final_state->summer_acs_presence == 'true' ? 'checked' : ''}}>
                             <span class="checkmark"></span>
                             <span class="black" >Presenza dell’impianto di condizionamento estivo</span>
                         </label>
