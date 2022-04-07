@@ -15,14 +15,19 @@
                 <p><b>Lista Pratiche</b></p>
             </div>
         </a>
-        <a class="dash-link" href="{{route('business.practice.store')}}">
-            <div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-                <div class="mb-2" >
-                    <img src="{{asset('img/icon/ICONA NUOVA PRATICA.svg')}}" alt="" class="img-fluid">
+
+        <form action="{{route('business.applicant.store') }}" method="post">
+            @csrf
+            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
+                <div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
+                    <div class="mb-2" >
+                        <img src="{{asset('img/icon/ICONA NUOVA PRATICA.svg')}}" alt="" class="img-fluid">
+                    </div>
+                    <p><b>Nuova Pratica</b></p>
                 </div>
-                <p><b>Nuova Pratica</b></p>
-            </div>
-        </a>
+            </button>
+        </form>
+
         <a class="dash-link" href="{{route('business.users.index')}}">
             <div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
                 <div class="mb-2">
