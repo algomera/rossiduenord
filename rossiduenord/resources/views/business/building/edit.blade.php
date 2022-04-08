@@ -634,7 +634,7 @@
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
-{{--                                <a href="#" class="btn bg-blue white ml-3">Export</a>--}}
+                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
