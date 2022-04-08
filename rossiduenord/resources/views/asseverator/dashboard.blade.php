@@ -35,12 +35,14 @@
             </div>
             
         </div>
-        <canvas id="myChart" class="py-3 px-3"></canvas>
+
+        {{-- <canvas id="myChart" class="py-3 px-3"></canvas> --}}
+        <asseverator-chart></asseverator-chart>
     </div>
   {{--  --}}
 
 
 @push('asseverator-scripts')
-    @include('asseverator.scripts.chart')
+    {{-- @include('asseverator.scripts.chart') --}}
 @endpush
 @endsection
