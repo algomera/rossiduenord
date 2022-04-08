@@ -8,6 +8,7 @@ use App\{FinalState,
     Building,
     Data_project,
     FolderDocument,
+    Photo,
     TrainatedVertWall,
     Variant,
     VerticalWall};
@@ -67,6 +68,7 @@ class ApplicantController extends Controller
         $subject = Subject::create($data);
         // building creation
         $building = Building::create($data);
+        $photo = Photo::create($data);
 
         // superbonus creation
         Data_project::create($data);

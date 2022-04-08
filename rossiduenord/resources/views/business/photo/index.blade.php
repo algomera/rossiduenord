@@ -1,7 +1,7 @@
 @extends('business.layouts.business')
 
 @section('content')
-    {{-- @include('business.layouts.partials.practiceNav') --}}
+    @include('business.layouts.partials.practiceNav')
    <div class="bg-white">
     <div class="nav_bonus">
         <a class="frame">Foto</a> 

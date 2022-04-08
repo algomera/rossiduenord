@@ -118,7 +118,7 @@ Route::middleware('business')
     ->where('practice', '[0-9]+')
     ->name('update_var_computation');
     Route::resource('/verticalwall', 'VerticalWallController');
-    Route::get('/photos', 'PhotoController@index')->name('photos');
+    Route::get('/photos/{practice}', 'PhotoController@index')->name('photos');
     
     Route::post('/show_condomino_data/{id}', function ($id) {
         if($id === "null") {
