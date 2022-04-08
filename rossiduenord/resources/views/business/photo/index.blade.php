@@ -22,46 +22,43 @@
                                 <th style="width: 10%">Data Caricamento</th>
                                 <th style="width: 5%">Descrizione</th>
                                 <th style="width: 10%">Riferito a </th>
-                                <th style="width: 15%">Apri/Salva</th>
+                                <th style="width: 15%">Scarica</th>
                                 <th style="width: 10%">Mappa</th>
                                 <th style="width: 10%">Nome del file</th>
                             </tr>
                         </thead>
                         <tbody id="table_ContentList">
-                            <tr>
-                                <td>18/11/21</td>
-                                <td>Foto n.1</td>
-                                <td>SAl 1</td>
-                                <td><a href="#">Vedi</a></td>
-                                <td class="text-underline">Apri</td>
-                                <td>Sal1_foo_1.jpg</td>
-                            </tr>
-                            <tr>
-                                <td>18/11/21</td>
-                                <td>Foto n.1</td>
-                                <td>SAl 1</td>
-                                <td><a href="#">Vedi</a></td>
-                                <td class="text-underline">Apri</td>
-                                <td>Sal1_foo_1.jpg</td>
-                            </tr>
-                            <tr>
-                                <td>18/11/21</td>
-                                <td>Foto n.1</td>
-                                <td>SAl 1</td>
-                                <td><a href="#">Vedi</a></td>
-                                <td class="text-underline">Apri</td>
-                                <td>Sal1_foo_1.jpg</td>
-                            </tr>
-                            <tr>
-                                <td>18/11/21</td>
-                                <td>Foto n.1</td>
-                                <td>SAl 1</td>
-                                <td><a href="#">Vedi</a></td>
-                                <td class="text-underline">Apri</td>
-                                <td>Sal1_foo_1.jpg</td>
-                            </tr>
+                            @forelse ($photos as $photo)
+                                <tr>
+                                    @if ($photo->name != '')
+                                    <td >{{$photo->created_at->format('d/m/y')}}</td> 
+                                    @endif
+                                    @if ($photo->name != '') 
+                                    <td>{{$photo->description}}</td> 
+                                    @endif
+                                    @if ($photo->name != '')
+                                    <td >Sal 1 </td> 
+                                    @endif
+                                    @if ($photo->name != '')
+                                    <td ><a href="#"> <ins>Download &#8595; <i class="fa-solid fa-arrow-down"></i></ins>   </a></td> 
+                                    @endif
+                                    @if ($photo->name != '')
+                                    <td class="text-underline"><a href="">Apri</a></td> 
+                                    @endif
+                                    @if ($photo->name != '')
+                                    <td >{{$photo->name}}</td> 
+                                    @endif
+                                </tr>
+                            @empty
+                                Nessuna foto   
+                            @endforelse
                         </tbody>
                     </table>
+                    @if (count($photos) > 0)
+                        <div class="d-flex justify-content-end py-3">
+                            <a href="" class="btn bg-blue white">Scarica tutte le foto</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
