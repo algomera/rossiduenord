@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="appt">
+    <div id="app">
         <div class="container-custom d-flex">
             <nav class="navbar ov-y p-0">
                 <div class="ml-3 px-4">
