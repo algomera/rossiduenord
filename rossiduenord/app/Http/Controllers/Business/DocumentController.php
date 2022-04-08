@@ -115,8 +115,10 @@ class DocumentController extends Controller
      * @param  \App\Document  $document
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Document $document)
+    public function destroy($id)
     {
-        //
+        $document = Document::find($id);
+        $document->delete();
+        return redirect()->back()->with('message', "Il documento e stato eliminato!");
     }
 }

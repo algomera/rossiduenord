@@ -144,6 +144,78 @@
                     </div>
                 </div>
             </form>
+
+            <div class="d-flex">
+                <h3>Allegati</h3>
+                <a class="add-btn-custom" style="color: white!important" href="#FormDocument" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">+</a>
+            </div>
+
+            <table class="table_bonus" style="width: 100%">
+                <thead>
+                    <tr>
+                        <td class="text-center" style="width:5%;"><b>N.</b></td>
+                        <td style="width:10%;"><b>Stato</b></td>
+                        <td style="width:20%;"><b>Descrizione</b></td>
+                        <td style="width:20%;"><b>Ruolo</b></td>
+                        <td style="width:20%;"><b>Tipo</b></td>
+                        <td style="width:20%;"><b>Note documento</b></td>
+                        <td style="width:20%;"><b>allegato</b></td>
+                        <td class="text-center"><b>Azioni</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($documents as $document)
+                        <tr>
+                            <td class="text-center">{{$document->id}}</td>
+                            <td class="text-left">{{$document->status}}</td>
+                            <td class="text-left">{{$document->description}}</td>
+                            <td class="text-left">{{$document->role}}</td>
+                            <td class="text-left">{{$document->type}}</td>
+                            <td class="text-left">{{$document->note}}</td>
+                            <td class="text-center">
+                                <a style="color: #61a4d7!important" href="{{ asset('storage/' . $document->allega)}}" download="{{$document->allega}}.pdf">scarica</a>
+                            </td>
+                            <td class="d-flex">
+                                <a href="" class="btn">
+                                    Vedi
+                                </a>
+                                <a href="" class="btn">
+                                    Modifica
+                                </a>
+                                <button type="button" class="btn" data-toggle="modal" data-target="#del{{$document->id}}">
+                                    elimina
+                                </button>
+
+                                <div class="modal fade" id="del{{$document->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Conferma elimina file</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di volere eliminare il documento?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
+                                                <form action="{{ Route('business.documents.destroy', $document->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-custom white bg-red mr-0">
+                                                        Conferma
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
