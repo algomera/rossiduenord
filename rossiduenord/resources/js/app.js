@@ -23,22 +23,26 @@ window.Vue = require("vue");
 
 Vue.component(
     "example-component",
-    require("./components/ExampleComponent.vue").default
+    require("./components/ExampleComponent.vue")
 );
+
+import BarChart from "./components/Bar.vue";
+Vue.component("Bar", BarChart);
+import AsseveratorChart from "./components/AsseveratorChart.vue";
+import Vue from "vue";
+Vue.component("AsseveratorChart", AsseveratorChart);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
     el: "#app",
     data: {
         isModalVisible: true,
         isListVisible: false,
     },
-
     methods: {
         closeModal() {
             this.isModalVisible = false;
