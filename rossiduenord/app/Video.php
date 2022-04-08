@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class Video extends Model
 {
-    public function practice()
-    {
+    public function practice(){
         return $this->belongsTo(Practice::class);
     }
 }

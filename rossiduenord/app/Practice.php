@@ -113,4 +113,12 @@ class Practice extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function photos(){
+        return $this->hasMany(Photo::class);
+    }
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
 }
