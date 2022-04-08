@@ -571,6 +571,11 @@ label {
   border: 2px solid gray !important;
 }
 
+.preview {
+  height: 300px;
+  width: 100%;
+}
+
 header {
   background-color: #615f5f;
   color: white;
