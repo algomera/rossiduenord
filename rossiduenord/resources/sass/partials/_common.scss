@@ -577,10 +577,37 @@ label {
     display: flex;
     border-radius: 30%;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     justify-content: space-around;
     align-items: center;
     cursor: pointer;
+
+    &:hover{
+        color: #61a4d7;
+        background-color: transparent;
+        border: #61a4d7 2px solid;
+    }
+
+}
+.add-btn-custom-small {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    color: white;
+    background-color: #61a4d7;
+    display: flex;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 700;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover{
+        color: #61a4d7;
+        background-color: transparent;
+        border: #61a4d7 2px solid;
+    }
 }
 
 .active_folder{

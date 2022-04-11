@@ -17,7 +17,7 @@
             <hr style="margin-top: 5px; background-color: #818387;">
         </div>
 
-        <div class="px-20">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
+        <div class="px-20" style="padding-right: 20%">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
             <label class="checkbox-wrapper">
                 <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} {{old('thermical_isolation_intervention') == 'true' ? 'checked' : ''}} type="checkbox" class="@error('thermical_isolation_intervention') is-invalid error @enderror" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
                 <span class="checkmark"></span>
@@ -31,108 +31,9 @@
 
             <p style="font-weight: 500">Le superfici oggetto dell’intervento sono:</p>
 
-            <div class="nav_bonus d-flex align-items-center" style="width: 80%; padding-right: 0px; margin:0;margin-bottom: 5px;">
-                <a class="frame">(PV) Pareti Verticali</a>
-                <a>(PO) Coperture</a>
-                <a>(PS) Pavimenti</a>
-                <a>(POND) Cop. non disperdenti</a>
-                <p class="m-0">Data inizio pagamento coperture non disperdenti</p>
-                <input value="{{$vertwall->start_date_payment}}" name="start_date_payment" id="start_date_payment" class="border ml-2" style="width: 150px; padding:0 5px" type="date">
-            </div>
-            <table class="table_bonus" style="width: 80%">
-                <thead>
-                <tr>
-                    <td class="text-center" style="width:5%;"><b>N.</b></td>
-                    <td style="width:20%;"><b>Descrizione</b></td>
-                    <td style="width:13%;"><b>Superficie (m2)</b></td>
-                    <td style="width:10%;">
-                        <b>
-                            Trasm. ante
-                            (W/m2k)
-                        </b>
-                    </td>
-                    <td style="width:10%;">
-                        <b>
-                            Trasm. post
-                            (W/m2k)
-                        </b>
-                    </td>
-                    <td style="width:15%;">
-                        <b>
-                            Trasm. Term.
-                            Period. YIE (W/m2k)
-                        </b>
-                    </td>
-                    <td style="width:15%;"><b>Confine</b></td>
-                    <td style="width:15%;"><b>Coibentazione</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Cappotto esterno pareti verticali</td>
-                    <td class="text-right">656,46</td>
-                    <td class="text-right">0,95</td>
-                    <td class="text-right">0,21   </td>
-                    <td class="text-right">0,01 </td>
-                    <td class="text-center">Verso esterno</td>
-                    <td class="text-center">Esterna</td>
-                </tr>
-                </tbody>
-            </table>
+            <x-surface :vertwall="$vertwall" :practice="$practice" :surfaces="$surfaces"/>
 
-            <div class="d-flex mt-2" style="background-color: #f2f2f2; width:80%; padding:5px 10px">
-                <div class="d-flex mr-4">
-                    <p class="m-0">Totale “pareti verticali”</p>
-                    <label for="total_vertical_walls" class="m-0 black">
-                        <input type="number" value="{{old('total_vertical_walls') ?? $vertwall->total_vertical_walls}}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right  @error('total_vertical_walls') is-invalid error @enderror" style="width: 80px">
-                        m²
-                        @error('total_vertical_walls')
-                        <span class="invalid-feedback pl-3" role="alert">
-                            <strong>{{ 'incorrect' }}</strong>
-                        </span>
-                        @enderror
-                    </label>
-                </div>
-                <div class="d-flex mr-4">
-                    <p class="m-0">di cui realizzati SAL n. 1</p>
-                    <label for="vw_realized_1" class="m-0  black">
-                        <input type="number" value="{{old('vw_realized_1') ?? $vertwall->vw_realized_1}}" name="vw_realized_1" id="vw_realized_1" class="border ml-2 px-2 text-right @error('vw_realized_1') is-invalid error @enderror" style="width: 80px">
-                        m²
-                        @error('vw_realized_1')
-                        <span class="invalid-feedback pl-3" role="alert">
-                            <strong>{{ 'incorrect' }}</strong>
-                        </span>
-                        @enderror
-                    </label>
-                </div>
-                <div class="d-flex mr-4">
-                    <p class="m-0">SAL n. 2</p>
-                    <label for="vw_realized_2" class="m-0  black">
-                        <input type="number" value="{{old('vw_realized_2') ?? $vertwall->vw_realized_2}}" name="vw_realized_2" id="vw_realized_2" class="border ml-2 px-2 text-right @error('vw_realized_2') is-invalid error @enderror" style="width: 80px">
-                        m²
-                        @error('vw_realized_2')
-                        <span class="invalid-feedback pl-3" role="alert">
-                            <strong>{{ 'incorrect' }}</strong>
-                        </span>
-                        @enderror
-                    </label>
-                </div>
-                <div class="d-flex mr-4">
-                    <p class="m-0">SAL F.</p>
-                    <label for="vw_sal_f" class="m-0  black">
-                        <input type="number" value="{{old('vw_sal_f') ?? $vertwall->vw_sal_f}}" name="vw_sal_f" id="vw_sal_f" class="border ml-2 px-2 text-right @error('vw_sal_f') is-invalid error @enderror" style="width: 80px">
-                        m²
-                        @error('vw_sal_f')
-                        <span class="invalid-feedback pl-3" role="alert">
-                            <strong>{{ 'incorrect' }}</strong>
-                        </span>
-                        @enderror
-                    </label>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mt-3" style="width:80%;">
+            <div class="d-flex align-items-center mt-3" style="width:100%;">
                 <p class="m-0">Superficie totale oggetto dell’intervento</p>
                 <label for="total_intervention_surface" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('total_intervention_surface') ?? $vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid error @enderror">
@@ -146,7 +47,7 @@
                 <p class="m-0 font-weight-light" style="font-size: 13px">* Il POND non viene considerato nel calcolo per l’ammisibilità dell’intervento trainante sull’involucro (maggiore del 25% della sup. disperdente)</p>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between mt-3" style="width:80%;">
+            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                 <div class="d-flex align-items-center">
                     <p class="m-0">Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a*</p>
                     <label for="total_expected_cost" class=" m-0 mr-4 black">
@@ -163,7 +64,7 @@
 
             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
-            <div class="d-flex align-items-center mt-3" style="width:80%;">
+            <div class="d-flex align-items-center mt-3" style="width:100%;">
                 <p class="m-0">La spesa massima ammissibile dei lavori sulle parti opache è pari a</p>
                 <label for="max_possible_cost" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('max_possible_cost') ?? $vertwall->max_possible_cost}}" name="max_possible_cost" id="max_possible_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('max_possible_cost') is-invalid error @enderror">
@@ -178,7 +79,7 @@
 
             <p class="m-0 mt-3" style="font-weight: 500;">Il costo dei lavori realizzati è pari a</p>
 
-            <div class="d-flex" style="width: 80%">
+            <div class="d-flex" style="width: 100%">
                 <div class="d-flex align-items-center">
                     <span>SAL. n.1</span>
                     <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mb-3 mr-1">
@@ -258,7 +159,7 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-center mt-2" style="width:80%;">
+            <div class="d-flex align-items-center mt-2" style="width:100%;">
                 <p class="m-0">Di cui per coperture non disperdenti</p>
                 <label for="dispersing_covers" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('dispersing_covers') ?? $vertwall->dispersing_covers}}" name="dispersing_covers" id="dispersing_covers" style="width: 120px;" class="border ml-2 px-2 text-right @error('dispersing_covers') is-invalid error @enderror">
@@ -271,7 +172,7 @@
                 </label>
             </div>
 
-            <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
+            <div class="d-flex align-items-center mt-2 mb-4" style="width:100%;">
                 <p class="m-0">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                 <label for="isolation_energetic_savings" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('isolation_energetic_savings') ?? $vertwall->isolation_energetic_savings}}" name="isolation_energetic_savings" id="isolation_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('isolation_energetic_savings') is-invalid error @enderror">
@@ -407,7 +308,7 @@
                 </label>
             </div>
 
-            <div class="d-flex justify-content-between" style="width: 80%">
+            <div class="d-flex justify-content-between" style="width: 100%">
                 <p class="m-0 mt-2 font-weight-bold">Sono stati conclusi i seguenti lavori</p>
                 <table class="table_bonus" style="width: 70%">
                     <thead>
@@ -428,7 +329,7 @@
             </div>
 
             <p class="font-weight-bold m-0 mt-5">per un ammontare pari a</p>
-            <div class="d-flex" style="width: 80%">
+            <div class="d-flex" style="width: 100%">
                 <div class="d-flex align-items-center">
                     <span>SAL. n.1</span>
                     <label for="total_replacing_cost_1" class="d-flex flex-column align-items-end mb-3 mr-1">
@@ -483,7 +384,7 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-center mt-2 mb-4" style="width:80%;">
+            <div class="d-flex align-items-center mt-2 mb-4" style="width:100%;">
                 <p class="m-0 font-weight-bold">Il risparmio di energia primaria non rinnovabile di progetto è</p>
                 <label for="replacing_energetic_savings" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('replacing_energetic_savings') ?? $vertwall->replacing_energetic_savings}}" name="replacing_energetic_savings" id="replacing_energetic_savings" style="width: 120px;" class="border ml-2 px-2 text-right @error('replacing_energetic_savings') is-invalid error @enderror">

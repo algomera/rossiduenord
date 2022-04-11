@@ -205,84 +205,8 @@
                             </label>
                             <p>Le superfici oggetto dell'intervento sono:</p>
 
-                            <div class="nav_bonus d-flex align-items-center" style="padding-right: 0px; margin:0;margin-bottom: 5px;">
-                                <a class="frame">(PV) Pareti Verticali</a>
-                                <a>(PO) Coperture</a>
-                                <a>(PS) Pavimenti</a>
-                            </div>
+                            <x-surface :vertwall="$towed_vw" :practice="$practice" :surfaces="$surfaces"/>  
 
-                            <table class="table_bonus" style="width: 100%">
-                                <thead>
-                                    <tr>
-                                        <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                        <td style="width:20%;"><b>Descrizione</b></td>
-                                        <td style="width:13%;"><b>Superficie (m2)</b></td>
-                                        <td style="width:10%;">
-                                            <b>
-                                                Trasm. ante
-                                                (W/m2k)
-                                            </b>
-                                        </td>
-                                        <td style="width:10%;">
-                                            <b>
-                                                Trasm. post
-                                                (W/m2k)
-                                            </b>
-                                        </td>
-                                        <td style="width:15%;">
-                                            <b>
-                                                Trasm. Term.
-                                                Period. YIE (W/m2k)
-                                            </b>
-                                        </td>
-                                        <td style="width:15%;"><b>Confine</b></td>
-                                        <td style="width:15%;"><b>Coibentazione</b></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center"></td>
-                                        <td class="text-right">0,00</td>
-                                        <td class="text-right">0,00</td>
-                                        <td class="text-right">0,00</td>
-                                        <td class="text-right">0,00 </td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class="d-flex mt-1" style="background-color: #f2f2f2; width:100%; padding:5px 10px">
-                                <div class="d-flex mr-4">
-                                    <p class="m-0">Totale “pareti verticali”</p>
-                                    <label for="total_vertical_walls" class="m-0 black">
-                                        <input type="number" value="{{$towed_vw->total_vertical_walls}}" name="total_vertical_walls" class="border ml-2 px-2 text-right" style="width: 80px">
-                                        m²
-                                    </label>
-                                </div>
-                                <div class="d-flex mr-4">
-                                    <p class="m-0">di cui realizzati SAL n. 1</p>
-                                    <label for="vw_realized_1" class="m-0  black">
-                                        <input type="number" value="{{$towed_vw->vw_realized_1}}" name="vw_realized_1" class="border ml-2 px-2 text-right" style="width: 80px">
-                                        m²
-                                    </label>
-                                </div>
-                                <div class="d-flex mr-4">
-                                    <p class="m-0">SAL n. 2</p>
-                                    <label for="vw_realized_2" class="m-0  black">
-                                        <input type="number" value="{{$towed_vw->vw_realized_2}}" name="vw_realized_2" class="border ml-2 px-2 text-right" style="width: 80px">
-                                        m²
-                                    </label>
-                                </div>
-                                <div class="d-flex mr-4">
-                                    <p class="m-0">SAL F.</p>
-                                    <label for="" class="m-0  black">
-                                        <input type="number" value="" class="border ml-2 px-2 text-right" style="width: 80px">
-                                        m²
-                                    </label>
-                                </div>
-                            </div>
                             <div class="d-flex align-items-center mt-3" style="width:100%;">
                                 <p class="m-0">Superficie totale oggetto dell’intervento</p>
                                 <label for="total_intervention_surface" class=" m-0 mr-4 black">

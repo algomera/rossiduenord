@@ -113,4 +113,10 @@ class Practice extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function surfaces()
+    {
+        return $this->hasMany(Surface::class);
+    }
+
 }

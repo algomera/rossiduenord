@@ -60,6 +60,7 @@ class SuperBonusController extends Controller
         $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', null)->where('is_common', 0)->get();
         $biome_generators = $practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
         $solar_panels = $practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
+        $surfaces = $practice->surfaces;
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -74,7 +75,8 @@ class SuperBonusController extends Controller
             'practice',
             'building',
             'subject',
-            'data_project')
+            'data_project',
+            'surfaces')
         );
     }
 
@@ -102,6 +104,7 @@ class SuperBonusController extends Controller
         $water_heatpumps_installations = $condominoId === 'common' ? $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
         $biome_generators = $condominoId === 'common' ? $practice->biome_generators()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->biome_generators()->where('condomino_id', $condominoId)->get();
         $solar_panels = $condominoId === 'common' ? $practice->solar_panels()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->solar_panels()->where('condomino_id', $condominoId)->get();
+        $surfaces = $practice->surfaces;
         return view('business.superbonus.towed_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -119,7 +122,8 @@ class SuperBonusController extends Controller
             'applicant',
             'practice',
             'building',
-            'subject')
+            'subject',
+            'surfaces')
         );
     }
 
@@ -236,6 +240,7 @@ class SuperBonusController extends Controller
      */
     public function update_driving_intervention(Request $request, Practice $practice)
     {
+        //dd($request);
         // Form Validation
         $validated = $request->validate([
             'practice_id' => 'nullable',
@@ -313,6 +318,10 @@ class SuperBonusController extends Controller
 
         // Add Solar Panel
         Interventi::addSolarPanel($practice, $request->get('solar_panels'));
+
+        if($request->get('surfaces')) {
+            $practice->surfaces()->createMany($request->get('surfaces'));
+        }
 
         // Redirect to next tab
         return redirect()->route('business.towed_intervention', [$practice]);
