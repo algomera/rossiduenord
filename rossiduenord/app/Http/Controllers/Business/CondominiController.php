@@ -483,7 +483,30 @@ class CondominiController extends Controller
                 ],
             ],
         ]);
-//        dd(($this->spreadsheet->getActiveSheet()->getHighestRow()));
+
+        $sheet->setCellValue('E' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'Sommano complessivi');
+        $sheet->mergeCells('E' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':F' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(G" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ":G" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . ")");
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(H" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ":H" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . ")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(I" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ":I" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . ")");
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(I" . $this->spreadsheet->getActiveSheet()->getHighestRow() . "/H" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ")");
+        $sheet->getStyle('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
+        $sheet->getStyle('J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
+
+        // TODO: Impostare colonna J con valore %
+        $sheet->getStyle('E' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12',
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
     }
 
     private function generateCalculationCells($sheet) {
