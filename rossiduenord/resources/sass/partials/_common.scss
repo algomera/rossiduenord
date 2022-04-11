@@ -48,35 +48,34 @@ a {
 
 //button
 .add-button {
-    background-color: $bg-bt-blue!important;
-    padding: 10px 20px!important;
+    background-color: $bg-bt-blue !important;
+    padding: 10px 20px !important;
     color: white !important;
-    font-size: 15px!important;
-    font-weight: 700!important;
-    letter-spacing: 0.35px!important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.35px !important;
     border: 1px solid #707070;
     border-radius: 3px;
     text-align: center;
 
     &:hover {
-        background-color: $bg-bt-black!important;
+        background-color: $bg-bt-black !important;
     }
-    &:focus{
-        color: black!important;
-        background-color: gray!important;
+    &:focus {
+        color: black !important;
+        background-color: gray !important;
     }
 }
 
-.back{
-    color: black!important;
-    &:hover{
-        color: black!important;
+.back {
+    color: black !important;
+    &:hover {
+        color: black !important;
         font-weight: 700;
     }
     &:hover {
         background-color: $bg-bt-black;
     }
-
 }
 // NAVBAR
 .ov-y {
@@ -582,12 +581,11 @@ label {
     align-items: center;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         color: #61a4d7;
         background-color: transparent;
         border: #61a4d7 2px solid;
     }
-
 }
 .add-btn-custom-small {
     width: 20px;
@@ -603,16 +601,20 @@ label {
     align-items: center;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         color: #61a4d7;
         background-color: transparent;
         border: #61a4d7 2px solid;
     }
 }
 
-.active_folder{
-    background-color: #f7f7f7!important;
-    border: 3px solid #61a4d7!important;
-    color: #61a4d7!important;
+.active_folder {
+    background-color: #f7f7f7 !important;
+    border: 3px solid #61a4d7 !important;
+    color: #61a4d7 !important;
     box-shadow: 0px 0px 10px 0px #61a4d7;
+}
+
+.preview {
+    width: 100%;
 }

@@ -63567,7 +63567,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: "#app",
   data: {
     isModalVisible: true,
-    isListVisible: false
+    isListVisible: false,
+    isPhotos: true,
+    isVideos: false
   },
   methods: {
     closeModal: function closeModal() {
@@ -63578,6 +63580,18 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
         this.isListVisible = true;
       } else {
         this.isListVisible = false;
+      }
+    },
+    photos: function photos() {
+      if (this.isPhotos == false) {
+        this.isPhotos = true;
+        this.isVideos = false;
+      }
+    },
+    videos: function videos() {
+      if (this.isVideos == false) {
+        this.isVideos = true;
+        this.isPhotos = false;
       }
     }
   }

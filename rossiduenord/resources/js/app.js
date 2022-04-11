@@ -42,6 +42,8 @@ const app = new Vue({
     data: {
         isModalVisible: true,
         isListVisible: false,
+        isPhotos: true,
+        isVideos: false,
     },
     methods: {
         closeModal() {
@@ -52,6 +54,18 @@ const app = new Vue({
                 this.isListVisible = true;
             } else {
                 this.isListVisible = false;
+            }
+        },
+        photos() {
+            if (this.isPhotos == false) {
+                this.isPhotos = true;
+                this.isVideos = false;
+            }
+        },
+        videos() {
+            if (this.isVideos == false) {
+                this.isVideos = true;
+                this.isPhotos = false;
             }
         },
     },

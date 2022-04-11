@@ -8,9 +8,10 @@ use App\{FinalState,
     Building,
     Data_project,
     FolderDocument,
+    Photo,
     TrainatedVertWall,
     Variant,
-    VerticalWall};
+    VerticalWall, Video};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +68,8 @@ class ApplicantController extends Controller
         $subject = Subject::create($data);
         // building creation
         $building = Building::create($data);
+        $photo = Photo::create($data);
+        $video = Video::create($data);
 
         // superbonus creation
         Data_project::create($data);
