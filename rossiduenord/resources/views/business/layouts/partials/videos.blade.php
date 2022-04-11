@@ -46,7 +46,7 @@
                                         @endif
                                     </tr>
                                 @empty
-                                    Nessuna foto   
+                                    Nessun video 
                                 @endforelse 
                         </tbody>
                     </table>
