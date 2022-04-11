@@ -334,6 +334,155 @@ class CondominiController extends Controller
             ],
         ]);
 
+        $sheet->setCellValue('G' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'TOT. COSTI NOI');
+        $sheet->setCellValue('H' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 'TOT. CMP');
+        $sheet->setCellValue('I' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 'UTILE');
+        $sheet->setCellValue('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 'MARGINE %');
+        $sheet->getStyle('G' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFE0EAF5'
+                ]
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
+
+        $riga_somme = 11 + ($this->condomini->count() * 3) + 6;
+        $sheet->setCellValue('A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'PRATICA ' . $this->practice->id);
+        $sheet->mergeCells('A' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 18));
+        $sheet->setCellValue('B' . $this->spreadsheet->getActiveSheet()->getHighestRow(), 'TOTALE TRAINATI E COMUNI');
+        $sheet->mergeCells('B' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':B' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 18));
+
+        $sheet->setCellValue('C' . $this->spreadsheet->getActiveSheet()->getHighestRow(), 'Serramenti');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Schermature');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'BACS');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow() . "-G" . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1));
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Elettricista (building automation)');
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Fotovoltaico');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."+H" . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1) . "+H" . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2) . "-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Infr. Ricarica');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Sist. Accumulo');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Isolamento');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow() . "-G" . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1));
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Lattoneria (edile)');
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Sostituzione impianti');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."+H" . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1) . "-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Riscaldamento');
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUMIF(\$C$11:\$F$" . ($riga_somme - 1) . ",\$C". $this->spreadsheet->getActiveSheet()->getHighestRow() .",\$H$11:\$H$". ($riga_somme - 1) .")");
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Progetto');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $riga_somme . "*10%");
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $riga_somme);
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Asseverazione Tecnica');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=L" . $riga_somme);
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Asseverazione Fiscale');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=M" . $riga_somme);
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=I" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."/H" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Polizze 2% tutto tranne IVA');
+        $sheet->setCellValue('F' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 2/100);
+        $sheet->getStyle('F' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode('0.00%');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(H" . $riga_somme . ":M" . $riga_somme . ")*F" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Fascicolazione 3.5');
+        $sheet->setCellValue('F' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 3.5/100);
+        $sheet->getStyle('F' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode('0.00%');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . $riga_somme . "*F" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Supporto alla progettazione');
+        $sheet->setCellValue('G' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=J" . $riga_somme);
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Costi aggiuntivi Cantiere');
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Banca acquisizione crediti');
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=H" . $this->spreadsheet->getActiveSheet()->getHighestRow() ."-G" . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->mergeCells('C' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':E' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+
+        $sheet->getStyle('A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 18) . ':B' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFE0BBB9'
+                ]
+            ],
+            'font' => [
+                'bold' => true
+            ],
+        ]);
+        $sheet->getStyle('A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 18) . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
 //        dd(($this->spreadsheet->getActiveSheet()->getHighestRow()));
     }
 
