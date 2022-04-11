@@ -182,7 +182,6 @@ class CondominiController extends Controller
             ]
         ]);
 
-
         $sheet->getStyle('G8:G' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
@@ -213,6 +212,129 @@ class CondominiController extends Controller
         $sheet->setCellValue('N' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(N11:N". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
         $sheet->setCellValue('O' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(O11:O". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
         $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(P11:P". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+
+        // Cessione
+        $sheet->setCellValue('N' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'Cessione');
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12'
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ]
+        ]);
+
+        $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . "*1.1");
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12',
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFB0FBA3'
+                ]
+            ],
+        ]);
+
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
+
+        // Prezzo d'acquisto 101
+        $sheet->setCellValue('N' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'Prezzo d\'acquisto 101');
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12'
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ]
+        ]);
+
+        $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 4) . "*1.01");
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12',
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFB0FBA3'
+                ]
+            ],
+        ]);
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
+
+        // Guadagno o perdita
+        $sheet->setCellValue('N' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'Guadagno o Perdita');
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12'
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ]
+        ]);
+
+        $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . "-P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 6));
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'italic' => true,
+                'size' => '12',
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER
+            ],
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFB0FBA3'
+                ]
+            ],
+        ]);
+        $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
+
+//        dd(($this->spreadsheet->getActiveSheet()->getHighestRow()));
     }
 
     private function generateCalculationCells($sheet) {
@@ -318,14 +440,14 @@ class CondominiController extends Controller
                 'wrapText' => true
             ]
         ]);
-        $sheet->getStyle('G8:G' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
-            'fill' => [
-                'fillType' => Fill::FILL_SOLID,
-                'color' => [
-                    'argb' => 'FFFFFEA6'
-                ]
-            ],
-        ]);
+//        $sheet->getStyle('G8:G' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+//            'fill' => [
+//                'fillType' => Fill::FILL_SOLID,
+//                'color' => [
+//                    'argb' => 'FFFFFEA6'
+//                ]
+//            ],
+//        ]);
         $sheet->getStyle('H8:P8')->applyFromArray([
             'font' => [
                 'bold' => true,
