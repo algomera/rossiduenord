@@ -14,6 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Conditional;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class CondominiController extends Controller
@@ -33,12 +34,11 @@ class CondominiController extends Controller
         $this->spreadsheet = new Spreadsheet();
 
         // Create Sheet
-        $main = $this->spreadsheet->createSheet(0)->setTitle('Nome Richiedente');
-        $ceilings = $this->spreadsheet->createSheet(1)->setTitle('Calcolo massimali');
+        $main = $this->spreadsheet->getActiveSheet();
         $this->spreadsheet->setActiveSheetIndex(0);
-
-        // Remove default Sheet
-        $this->spreadsheet->removeSheetByIndex(2);
+        $main->setTitle($this->applicant->name . ' ' . $this->applicant->lastName);
+        $ceilings = $this->spreadsheet->createSheet();
+        $ceilings->setTitle('Calcolo massimali');
 
         // MAIN SHEET
         $this->mainGenerateCells($main);
@@ -150,7 +150,71 @@ class CondominiController extends Controller
             $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
             $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
         }
+
+        $sheet->getStyle('A11:B' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFE0BBB9'
+                ]
+            ],
+        ]);
+        $sheet->getStyle('A11:P' . ($this->spreadsheet->getActiveSheet()->getHighestRow()))->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+        ]);
+
+        $sheet->setCellValue('E' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Somme');
+        $sheet->mergeCells('E' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':F' . $this->spreadsheet->getActiveSheet()->getHighestRow());
+        $sheet->getStyle('E' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => Border::BORDER_THIN,
+                    'color' => ['argb' => 'FF000000'],
+                ],
+            ],
+            'font' => [
+                'bold' => true
+            ]
+        ]);
+
+
+        $sheet->getStyle('G8:G' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFFFFEA6'
+                ]
+            ],
+            'alignment' => [
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'wrapText' => true
+            ]
+        ]);
+        $sheet->getStyle('P9:P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'color' => [
+                    'argb' => 'FFB0FBA3'
+                ]
+            ],
+        ]);
+
+        $sheet->setCellValue('H' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(H11:H". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('I' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(I11:I". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('J' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(J11:J". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('K' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(K11:K". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('L' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(L11:L". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('M' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(M11:M". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('N' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(N11:N". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('O' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(O11:O". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
+        $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(P11:P". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
     }
+
     private function generateCalculationCells($sheet) {
         $sheet->setCellValue('I' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$I$10,2)");
         $sheet->setCellValue('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$J$10,2)");
@@ -162,6 +226,7 @@ class CondominiController extends Controller
         $sheet->setCellValue('P' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=SUM(H" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ":O" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ")");
         $sheet->setCellValue('Q' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=IF(P" . $this->spreadsheet->getActiveSheet()->getHighestRow() . "<=G" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ",\"Ok\",\"ATTENZIONE\")");
     }
+
     private function mainApplyStylesToCells($sheet) {
         $sheet->getStyle('A:Z')->applyFromArray([
             'alignment' => [
@@ -279,30 +344,30 @@ class CondominiController extends Controller
                 ]
             ],
         ]);
-        $sheet->getStyle('P9:P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
-            'fill' => [
-                'fillType' => Fill::FILL_SOLID,
-                'color' => [
-                    'argb' => 'FFB0FBA3'
-                ]
-            ],
-        ]);
-        $sheet->getStyle('A11:P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => Border::BORDER_THIN,
-                    'color' => ['argb' => 'FF000000'],
-                ],
-            ],
-        ]);
-        $sheet->getStyle('A11:B' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
-            'fill' => [
-                'fillType' => Fill::FILL_SOLID,
-                'color' => [
-                    'argb' => 'FFE0BBB9'
-                ]
-            ],
-        ]);
+//        $sheet->getStyle('P9:P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+//            'fill' => [
+//                'fillType' => Fill::FILL_SOLID,
+//                'color' => [
+//                    'argb' => 'FFB0FBA3'
+//                ]
+//            ],
+//        ]);
+//        $sheet->getStyle('A11:P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+//            'borders' => [
+//                'allBorders' => [
+//                    'borderStyle' => Border::BORDER_THIN,
+//                    'color' => ['argb' => 'FF000000'],
+//                ],
+//            ],
+//        ]);
+//        $sheet->getStyle('A11:B' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
+//            'fill' => [
+//                'fillType' => Fill::FILL_SOLID,
+//                'color' => [
+//                    'argb' => 'FFE0BBB9'
+//                ]
+//            ],
+//        ]);
         $sheet->getStyle('G11:P'.$this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 
         $conditional = new Conditional();
