@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
-    public function index( Practice $practice){
+    // public function index( Practice $practice){
 
-        //relation value
-        $photos = $practice->photos;
-        $subject = $practice->subject;
-        $applicant = $practice->applicant;
-        $building = $practice->building;
+    //     //relation value
+    //     $photos = $practice->photos;
+    //     $subject = $practice->subject;
+    //     $applicant = $practice->applicant;
+    //     $building = $practice->building;
         
-        return view ('business.photo.index', compact('practice','photos', 'applicant', 'building', 'subject'));
-    }
+    //     return view ('business.photo.index', compact('practice', 'photos', 'applicant', 'building', 'subject'));
+    // }
 }

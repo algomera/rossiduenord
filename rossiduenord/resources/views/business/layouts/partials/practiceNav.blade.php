@@ -29,7 +29,7 @@
                 <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}}">
                     IMMOBILE
                 </a>
-                <a href="{{route('business.photos', $practice->id)}}">FOTO E VIDEO</a>
+                <a href="{{route('business.medias', $practice->id)}}" class="{{request()->is('business/medias/*') ? 'visited' : ''}}">FOTO E VIDEO</a>
                 <a href="{{route('business.folder_show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
                     DOCUMENTI RICHIESTI
                 </a>

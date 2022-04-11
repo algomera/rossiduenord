@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
+    protected $fillable = [
+        'practice_id',
+        'name',
+        'description',
+        'reference',
+        'inspection_date',
+    ];
+
     public function practice(){
         return $this->belongsTo(Practice::class);
     }
