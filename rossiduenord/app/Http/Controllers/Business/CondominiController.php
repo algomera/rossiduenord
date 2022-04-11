@@ -10,6 +10,8 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Conditional;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -105,19 +107,27 @@ class CondominiController extends Controller
         $sheet->mergeCells('B11:B12');
         $sheet->setCellValue('C11', 'Isolamento');
         $sheet->mergeCells('C11:E11');
+        $sheet->setCellValue('G11', "=IF(E7<9,E7*'Calcolo massimali'!C2,(8*'Calcolo massimali'!C2)+((E7-8)*'Calcolo massimali'!D2))");
+        $this->generateCalculationCells($sheet);
         $sheet->setCellValue('C12', 'Sostituzione Impianti');
         $sheet->mergeCells('C12:E12');
-//        $sheet->setCellValue('F11', NULL);
+        $sheet->setCellValue('G12', "=IF(E7<9,E7*'Calcolo massimali'!C2,(8*'Calcolo massimali'!C2)+((E7-8)*'Calcolo massimali'!D2))");
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('A13:A16');
         $sheet->setCellValue('B13', 'Parti Comuni');
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('B13:B16');
         $sheet->setCellValue('C13', 'Serramenti');
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('C13:E13');
         $sheet->setCellValue('C14', 'Fotovoltaico');
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('C14:E14');
         $sheet->setCellValue('C15', 'Sist. Accumulo');
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('C15:E15');
         $sheet->setCellValue('C16', 'Infr. ricarica');
+        $this->generateCalculationCells($sheet);
         $sheet->mergeCells('C16:E16');
 
         // Loop condomini
@@ -127,12 +137,30 @@ class CondominiController extends Controller
             $sheet->mergeCells('A' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2));
             $sheet->mergeCells('B' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':B' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2));
             $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), 'Serramenti');
-            $sheet->mergeCells('C'. ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
+            $sheet->setCellValue('G' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "='Calcolo massimali'!\$B$12");
+            $this->generateCalculationCells($sheet);
+            $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
             $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'Schermature');
-            $sheet->mergeCells('C'. ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
+            $sheet->setCellValue('G' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "='Calcolo massimali'!\$B$12");
+            $this->generateCalculationCells($sheet);
+            $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
             $sheet->setCellValue('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'BACS');
-            $sheet->mergeCells('C'. ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
+            $sheet->setCellValue('G' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "='Calcolo massimali'!\$B$14");
+            $this->generateCalculationCells($sheet);
+            $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
+            $sheet->mergeCells('C' . ($this->spreadsheet->getActiveSheet()->getHighestRow()) . ':E' . ($this->spreadsheet->getActiveSheet()->getHighestRow()));
         }
+    }
+    private function generateCalculationCells($sheet) {
+        $sheet->setCellValue('I' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$I$10,2)");
+        $sheet->setCellValue('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$J$10,2)");
+        $sheet->setCellValue('K' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$K$10,2)");
+        $sheet->setCellValue('L' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$L$10,2)");
+        $sheet->setCellValue('M' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*\$M$10,2)");
+        $sheet->setCellValue('N' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(H". $this->spreadsheet->getActiveSheet()->getHighestRow() . "*0.1,2)");
+        $sheet->setCellValue('O' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=ROUND(SUM(I" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ":M" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ")*0.22,2)");
+        $sheet->setCellValue('P' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=SUM(H" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ":O" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ")");
+        $sheet->setCellValue('Q' . ($this->spreadsheet->getActiveSheet()->getHighestRow()), "=IF(P" . $this->spreadsheet->getActiveSheet()->getHighestRow() . "<=G" . $this->spreadsheet->getActiveSheet()->getHighestRow() . ",\"Ok\",\"ATTENZIONE\")");
     }
     private function mainApplyStylesToCells($sheet) {
         $sheet->getStyle('A:Z')->applyFromArray([
@@ -275,6 +303,18 @@ class CondominiController extends Controller
                 ]
             ],
         ]);
+        $sheet->getStyle('G11:P'.$this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+
+        $conditional = new Conditional();
+        $conditional->setConditionType(Conditional::CONDITION_CELLIS);
+        $conditional->setOperatorType(Conditional::OPERATOR_EQUAL);
+        $conditional->addCondition("\"ATTENZIONE\"");
+        $conditional->getStyle()->getFont()->getColor()->setARGB(Color::COLOR_RED);
+        $conditional->getStyle()->getFont()->setBold(true);
+        $conditionalStyles = $sheet->getStyle('Q11:Q' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getConditionalStyles();
+        $conditionalStyles[] = $conditional;
+
+        $sheet->getStyle('Q11:Q' . $this->spreadsheet->getActiveSheet()->getHighestRow())->setConditionalStyles($conditionalStyles);
     }
 
     private function ceilingsGenerateCells($sheet)
