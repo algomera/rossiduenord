@@ -129,6 +129,20 @@ Route::middleware('business')
         }
     });
 
+    Route::post('/show_surface_type/{type}', function ($type) {
+        
+        session()->put('surfaceType', $type);
+
+    });
+    Route::post('/save_type_data/{type}', function ($type, Request $request) {
+        $pid = $request->get('practice');
+        $practice = Practice::find($pid);
+        dd($request->get('surfaces'));
+    });
+
+    Route::delete('/surface/{id}/delete', 'SuperBonusController@delete_surface');
+
+
     Route::post('/save_condomino_data/{id}', function ($id, Request $request) {
         $pid = $request->get('practice');
         $practice = Practice::find($pid);

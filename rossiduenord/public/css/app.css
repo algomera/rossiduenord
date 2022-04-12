@@ -445,6 +445,15 @@ label {
 .nav_bonus a:hover {
   color: #61a4d7 !important;
 }
+.nav_bonus .link {
+  font-weight: 600;
+  color: #bbbcbc !important;
+  padding: 0 25px;
+  cursor: pointer;
+}
+.nav_bonus .link:hover {
+  color: #61a4d7 !important;
+}
 .nav_bonus .frame {
   border: 1px solid #bbbcbc;
   border-bottom: 0;

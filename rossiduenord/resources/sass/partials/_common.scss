@@ -451,6 +451,15 @@ label {
             color: #61a4d7 !important;
         }
     }
+    .link{
+        font-weight: 600;
+        color: #bbbcbc !important;
+        padding: 0 25px;
+        cursor: pointer;
+        &:hover {
+            color: #61a4d7 !important;
+        }
+    }
     .frame {
         border: 1px solid #bbbcbc;
         border-bottom: 0;
