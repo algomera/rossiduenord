@@ -98,14 +98,17 @@ class PracticeController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
 
+
+
         //import formatting
-       if($practice['import'] != null){
-        $practice['import'] = number_format((float)$practice['import'], 2, ',', '.');
-        $practice['import'] = intval( $practice['import']);
+      if($practice['import'] != null){
+        $practice['import'] = number_format($practice['import'] , 2, ',',  '.');
        }
         if($practice['import_sal'] != null){
             $practice['import_sal'] = number_format($practice['import_sal'], 2, ',', '.');
         }
+
+      
 
 
 
@@ -124,7 +127,7 @@ class PracticeController extends Controller
 
         $validated = $request->validate([
             'applicant_id' => ' numeric | exists:applicants,id',
-            'import' => 'nullable | integer | min:1',
+            'import' => 'nullable | string',
             'practical_phase' => 'nullable | string',
             'real_estate_type' => 'nullable | string',
             'month' => 'nullable | string',
@@ -199,6 +202,17 @@ class PracticeController extends Controller
             'practice_ok.required'=>'Inserisci lo stato della pratica prima di procedere',
         ]
     );
+
+        if($validated['import'] != null){
+            $validated['import'] = str_replace('.','',$validated['import']);
+            $validated['import'] = str_replace(',','.',$validated['import']);
+        }
+
+        if($validated['import_sal'] != null){
+            $validated['import_sal'] = str_replace('.','',$validated['import_sal']);
+            $validated['import_sal'] = str_replace(',','.',$validated['import_sal']);
+        }
+
         $practice->update($validated);
 
         return redirect()->route('business.subject.edit', $practice);
