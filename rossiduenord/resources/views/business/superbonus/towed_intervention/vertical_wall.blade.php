@@ -19,7 +19,7 @@
 
                 <div class="d-flex" style="font-weight: 500">
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
-                        <div class="d-flex align-items-center pb-2 pt-0" onclick="setCondominoId({{ $practice->id }}, 'common')">
+                        <div class="d-flex align-items-center pb-2 pt-0" @if($condominoId != 'common') onclick="setCondominoId({{ $practice->id }}, 'common')" @endif>
                             <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
                             <p class="m-0 ml-2 {{ $condominoId === "common" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
                         </div>

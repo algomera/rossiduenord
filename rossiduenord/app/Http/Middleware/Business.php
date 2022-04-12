@@ -15,7 +15,7 @@ class Business
      */
     public function handle($request, Closure $next)
     {
-        if (Auth()->user()->role == 'business') {
+        if (auth()->user() && auth()->user()->role == 'business') {
             return $next($request);
         }
         return redirect('login');

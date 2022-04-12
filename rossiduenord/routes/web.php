@@ -162,6 +162,8 @@ Route::middleware('business')
     Route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
     Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folder_show');
     Route::resource('/documents', 'DocumentController');
+
+    Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 });
 
 

@@ -93,7 +93,7 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $towed_vw = $practice->trainated_vert_wall;
         $condomini = $practice->condomini;
-        $condominoId = session()->get('condominoId') ?? null;
+        $condominoId = session()->get('condominoId') ?? 'common';
         $selected_condomino = Condomini::find($condominoId);
         $countries = Country::all();
         $condensing_boilers = $condominoId === 'common' ? $practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 1)->get() : $practice->condensing_boilers()->where('condomino_id', $condominoId)->get();
