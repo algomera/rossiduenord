@@ -98,6 +98,17 @@ class PracticeController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
 
+        //import formatting
+       if($practice['import'] != null){
+        $practice['import'] = number_format((float)$practice['import'], 2, ',', '.');
+        $practice['import'] = intval( $practice['import']);
+       }
+        if($practice['import_sal'] != null){
+            $practice['import_sal'] = number_format($practice['import_sal'], 2, ',', '.');
+        }
+
+
+
         return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
@@ -110,9 +121,10 @@ class PracticeController extends Controller
      */
     public function update(Request $request, Practice $practice)
     {
+
         $validated = $request->validate([
             'applicant_id' => ' numeric | exists:applicants,id',
-            'import' => 'nullable | integer | min:2',
+            'import' => 'nullable | integer | min:1',
             'practical_phase' => 'nullable | string',
             'real_estate_type' => 'nullable | string',
             'month' => 'nullable | string',
@@ -135,6 +147,10 @@ class PracticeController extends Controller
             'referent_email' => 'nullable | email ',
             'description' => 'nullable | string',
             'bonus' => 'nullable | string',
+            'month_processing'=> 'nullable|string',
+            'year_processing'=> 'nullable | string',
+            'sal'=> 'nullable | string',
+            'import_sal'=> 'nullable | string',
             'note' => 'nullable | string',
             'practice_ok' => 'nullable | string',
         ],
@@ -183,8 +199,6 @@ class PracticeController extends Controller
             'practice_ok.required'=>'Inserisci lo stato della pratica prima di procedere',
         ]
     );
-
-        
         $practice->update($validated);
 
         return redirect()->route('business.subject.edit', $practice);

@@ -141,7 +141,7 @@ class ApplicantController extends Controller
             'name' => 'nullable | string | min:3 | max:100',
             'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
-            'phone' => 'nullable | string | min:10',
+            'phone' => 'nullable | string | min:10|regex: /[0-9]/',
             'mobile_phone' => 'nullable | string | min:10',
             'email' => 'nullable | email',
             'role' => 'required | string',
@@ -176,14 +176,19 @@ class ApplicantController extends Controller
     );
 
         // phone number validation
-        preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['phone'],  $matches );
-        $phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
-        $validated['mobile_phone'] = $phone;
+        if($validated['phone'] != null){
+            $validated['phone'] = str_replace(' ', '',$validated['phone']);
+            preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['phone'],  $matches );
+            $validated['phone'] = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
+        }
 
 
-        preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['moble_phone'],  $matches );
-        $mobile_phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
-        $validated['mobile_phone'] = $mobile_phone;
+        if($validated['mobile_phone'] != null){
+            $validated['mobile_phone'] = str_replace(' ', '',$validated['mobile_phone']);
+            preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['mobile_phone'],  $matches );
+             $mobile_phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
+             $validated['mobile_phone'] = $mobile_phone;
+        }
         
         $applicant->update($validated);
 
