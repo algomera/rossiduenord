@@ -1,18 +1,35 @@
-@props(['vertwall', 'practice', 'surfaces'])
+@props(['vertwall', 'practice', 'surfaces', 'condomino', 'isCommon'])
 
 <div>
     <div class="nav_bonus d-flex align-items-center" style="width: 100%; padding-right: 0px; margin:0;margin-bottom: 5px;">
-        <a class="frame d-flex align-items-center">
+        <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PV' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PV') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PV')" @endif>
             (PV) Pareti Verticali
-            <div class="add-btn-custom-small" onclick="addSurface(event)">+</div>
-         </a>
-        <a>(PO) Coperture</a>
-        <a>(PS) Pavimenti</a>
+            @if(session()->get('surfaceType') == 'PV')
+                <div class="add-btn-custom-small" onclick="addSurface(event, 'PV')">+</div>
+            @endif
+         </div>
+         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PO' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PO') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')" @endif>
+            (PO) Coperture
+            @if(session()->get('surfaceType') == 'PO')
+                <div class="add-btn-custom-small" onclick="addSurface(event, 'PO')">+</div>
+            @endif
+         </div>
+         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PS' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PS') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PS')" @endif>
+            (PS) Pavimenti
+            @if(session()->get('surfaceType') == 'PS')
+                <div class="add-btn-custom-small" onclick="addSurface(event, 'PS')">+</div>
+            @endif
+         </div>
         @if(Route::currentRouteName() == 'business.driving_intervention')
-            <a>(POND) Cop. non disperdenti</a>
+            <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'POND' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'POND') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'POND')" @endif>
+                (POND) Cop. non disperdenti
+                @if(session()->get('surfaceType') == 'POND')
+                    <div class="add-btn-custom-small" onclick="addSurface(event, 'POND')">+</div>
+                @endif
+            </div>
             <p class="m-0">Data inizio pagamento coperture non disperdenti</p>
             <input value="{{$vertwall->start_date_payment}}" name="start_date_payment" id="start_date_payment" class="border ml-2" style="width: 150px; padding:0 5px" type="date">
-        @endif    
+        @endif
     </div>
     <table class="table_bonus" id="surface_table" style="width: 100%">
         <thead>
@@ -40,21 +57,44 @@
             </td>
             <td style="width:15%;"><b>Confine</b></td>
             <td style="width:15%;"><b>Coibentazione</b></td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
             @forelse($surfaces as $s => $surface)
-                <tr>
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][intervention]" value="{{$surface->intervention}}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][is_common]" id="" value="{{ $isCommon }}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][condomino_id]" id="" value="{{ $condomino === 'common' ? '' : $condomino}}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][type]" id="" value="{{ session()->get('surfaceType') }}">
+                <tr name="{{$practice->id}}-{{$surface->id}}">
                     <td class="text-center">{{ $s + 1 }}</td>
                     <td class="text-center">
-                        <input type="text" style="border: none" value="{{ $surface->description_surface }}">
+                        <input type="text" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][description_surface]" value="{{ $surface->description_surface }}">
                     </td>
-                    <td class="text-right">{{ $surface->surface }}</td>
-                    <td class="text-right">{{ $surface->trasm_ante }}</td>
-                    <td class="text-right">{{ $surface->trasm_post }}</td>
-                    <td class="text-right">{{ $surface->trasm_term }}</td>
-                    <td class="text-center">{{ $surface->confine }}</td>
-                    <td class="text-center">{{ $surface->insulation }}</td>
+                    <td class="text-right">
+                        <input type="number" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][surface]" value="{{ $surface->surface }}">
+                    </td>
+                    <td class="text-right">
+                        <input type="number" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][trasm_ante]" value="{{ $surface->trasm_ante }}">
+                    </td>
+                    <td class="text-right">
+                        <input type="number" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][trasm_post]" value="{{ $surface->trasm_post }}">
+                    </td>
+                    <td class="text-right">
+                        <input type="number" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][trasm_term]" value="{{ $surface->trasm_term }}">
+                    </td>
+                    <td class="text-center">
+                        <input type="text" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][confine]" value="{{ $surface->confine }}">
+                    </td>
+                    <td class="text-center">
+                        <input type="text" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][insulation]" value="{{ $surface->insulation }}">
+                    </td>
+                    <td>
+                        <div onclick="deleteSurface({{$practice->id}}, {{$surface->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center">
+                            <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                            <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
+                        </div>
+                    </td>
                 </tr>
             @empty
                 <tr id="no_data_row">
@@ -118,4 +158,35 @@
 
 @push('scripts')
     @include('business.scripts.surface_add')
+
+    <script type="text/javascript">
+        function setType(pid, id = null, type) {
+            saveTypeChange(pid, id, type)
+            axios.post(`/business/show_surface_type/${type}`)
+                .then(() => {
+                    window.location.reload();
+                })
+        }
+        function saveTypeChange(pid, id, type)  {
+            let inputs = document.querySelectorAll("[name^='surfaces']");
+
+            let x = (function() {
+                let n = {};
+                inputs.forEach(o => {
+                    let oid = o.name.split(/\[(.*?)\]/)[1]
+                    let okey = o.name.split(/\[(.*?)\]/)[3]
+                    if(n[oid] === undefined) {
+                        n[oid] = {};
+                    }
+                    n[oid][okey] = o.value === '' ? null : o.value;
+                })
+                return n;
+            })();
+            axios.post(`/business/save_type_data/${type}`, {
+                practice: pid,
+                surfaces: x,
+            })
+        }
+
+    </script>
 @endpush

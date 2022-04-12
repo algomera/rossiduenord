@@ -31,7 +31,7 @@
 
             <p style="font-weight: 500">Le superfici oggetto dell’intervento sono:</p>
 
-            <x-surface :vertwall="$vertwall" :practice="$practice" :surfaces="$surfaces"/>
+            <x-surface :vertwall="$vertwall" :practice="$practice" :surfaces="$surfaces" :condomino="$condominoId" isCommon="0"/>
 
             <div class="d-flex align-items-center mt-3" style="width:100%;">
                 <p class="m-0">Superficie totale oggetto dell’intervento</p>

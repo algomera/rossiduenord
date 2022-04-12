@@ -120,14 +120,54 @@ Route::middleware('business')
     Route::resource('/verticalwall', 'VerticalWallController');
     Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
 
-    
+
     Route::post('/show_condomino_data/{id}', function ($id) {
         if($id === "null") {
             session()->remove('condominoId');
+            session()->put('surfaceType', 'PV');
         } else {
             session()->put('condominoId', $id);
+            session()->put('surfaceType', 'PV');
         }
     });
+
+    Route::post('/show_surface_type/{type}', function ($type) {
+        session()->put('surfaceType', $type);
+    });
+
+    Route::post('/save_type_data/{type}', function ($type, Request $request) {
+        $pid = $request->get('practice');
+        $practice = Practice::find($pid);
+        $items = $request->get('surfaces');
+        foreach ($items as $i => $item) {
+//            $item['condomino_id'] = self::checkCondominoId($item, $practice);
+            if(is_numeric($i)) {
+                $practice->surfaces()->create($item);
+            } else if(is_string($i)) {
+                $pn = explode('-', $i)[0];
+                $sn = explode('-', $i)[1];
+                $practice->surfaces()->updateOrCreate([
+                    'id' => $sn,
+                    'practice_id' => $pn
+                ], [
+                    "is_common" => $item['is_common'] ?? false,
+                    "condomino_id" => $item['condomino_id'],
+                    "type" => $item['type'],
+                    "intervention" => $item['intervention'],
+                    "description_surface" => $item['description_surface'],
+                    "surface" => $item['surface'],
+                    "trasm_ante" => $item['trasm_ante'],
+                    "trasm_post" => $item['trasm_post'],
+                    "trasm_term" => $item['trasm_term'],
+                    "confine" => $item['confine'],
+                    "insulation" => $item['insulation'],
+                ]);
+            }
+        }
+    });
+
+    Route::delete('/surface/{id}/delete', 'SuperBonusController@delete_surface');
+
 
     Route::post('/save_condomino_data/{id}', function ($id, Request $request) {
         $pid = $request->get('practice');
