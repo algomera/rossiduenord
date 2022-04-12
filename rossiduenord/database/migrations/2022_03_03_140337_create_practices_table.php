@@ -17,7 +17,7 @@ class CreatePracticesTable extends Migration
             $table->id();
             $table->bigInteger('applicant_id')->unsigned();
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
-            $table->decimal('import', 10, 2, true )->nullable();
+            $table->float('import',10,2)->nullable();
             $table->string('practical_phase')->nullable();
             $table->string('real_estate_type')->nullable();
             $table->string('month')->nullable();
