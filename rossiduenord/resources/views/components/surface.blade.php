@@ -66,7 +66,7 @@
                 <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][is_common]" id="" value="{{ $isCommon }}">
                 <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][condomino_id]" id="" value="{{ $condomino === 'common' ? '' : $condomino}}">
                 <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][type]" id="" value="{{ session()->get('surfaceType') }}">
-                <tr>
+                <tr name="{{$practice->id}}-{{$surface->id}}">
                     <td class="text-center">{{ $s + 1 }}</td>
                     <td class="text-center">
                         <input type="text" style="border: none; width:100%;" name="surfaces[{{$practice->id}}-{{$surface->id}}][description_surface]" value="{{ $surface->description_surface }}">

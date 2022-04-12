@@ -40,9 +40,9 @@
     }
 
     function deleteSurface(pid, cid){
-        axios.delete(`/surface/${cid}/delete`)
+        axios.delete(`/business/surface/${cid}/delete`)
         .then(() => {
-            $(`table[#surface_table tbody tr-${pid}-${cid}]`).remove();
+            $(`table#surface_table tbody tr[name=${pid}-${cid}]`).remove();
         })
     }
 </script>
