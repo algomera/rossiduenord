@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Business;
 use App\{CondensingBoiler, Condomini, Helpers\Interventi, Practice, Subject, Applicant, Building, Bonus, Data_project, Country, Surface};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class SuperBonusController extends Controller
 {
@@ -46,6 +47,9 @@ class SuperBonusController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function driving_intervention(Practice $practice) {
+        if(url()->previous() !== url()->current()) {
+            session()->put('surfaceType', 'PV');
+        }
         // Redirect to next tab
         $data_project = $practice->data_project;
         $applicant = $practice->applicant;
@@ -89,6 +93,10 @@ class SuperBonusController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function towed_intervention(Practice $practice) {
+        if(url()->previous() !== url()->current()) {
+            session()->put('surfaceType', 'PV');
+        }
+
         // Redirect to next tab
         $applicant = $practice->applicant;
         $building = $practice->building;

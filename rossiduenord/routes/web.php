@@ -124,16 +124,17 @@ Route::middleware('business')
     Route::post('/show_condomino_data/{id}', function ($id) {
         if($id === "null") {
             session()->remove('condominoId');
+            session()->put('surfaceType', 'PV');
         } else {
             session()->put('condominoId', $id);
+            session()->put('surfaceType', 'PV');
         }
     });
 
     Route::post('/show_surface_type/{type}', function ($type) {
-
         session()->put('surfaceType', $type);
-
     });
+
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
         $pid = $request->get('practice');
         $practice = Practice::find($pid);
