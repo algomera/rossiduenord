@@ -213,6 +213,8 @@ class CondominiController extends Controller
         $sheet->setCellValue('O' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(O11:O". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
         $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=SUM(P11:P". ($this->spreadsheet->getActiveSheet()->getHighestRow() - 1) .")");
 
+        $sheet->getStyle('G11:P'.$this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+
         // Cessione
         $sheet->setCellValue('N' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 2), 'Cessione');
         $sheet->getStyle('N' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
@@ -228,6 +230,8 @@ class CondominiController extends Controller
 
         $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
         $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . "*1.1");
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+
         $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -269,6 +273,7 @@ class CondominiController extends Controller
 
         $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
         $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 4) . "*1.01");
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
         $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -309,6 +314,7 @@ class CondominiController extends Controller
 
         $sheet->mergeCells('N' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':O' . $this->spreadsheet->getActiveSheet()->getHighestRow());
         $sheet->setCellValue('P' . $this->spreadsheet->getActiveSheet()->getHighestRow(), "=P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 2) . "-P" . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 6));
+        $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
         $sheet->getStyle('P' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -355,7 +361,6 @@ class CondominiController extends Controller
                 ],
             ],
         ]);
-
         $riga_somme = 11 + ($this->condomini->count() * 3) + 6;
         $sheet->setCellValue('A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 1), 'PRATICA ' . $this->practice->id);
         $sheet->mergeCells('A' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':A' . ($this->spreadsheet->getActiveSheet()->getHighestRow() + 18));
@@ -493,7 +498,9 @@ class CondominiController extends Controller
         $sheet->getStyle('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
         $sheet->getStyle('J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
 
-        // TODO: Impostare colonna J con valore %
+        $sheet->getStyle('G' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ':I' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+        $sheet->getStyle('J' . ($this->spreadsheet->getActiveSheet()->getHighestRow() - 20) . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_PERCENTAGE_00);
+
         $sheet->getStyle('E' . $this->spreadsheet->getActiveSheet()->getHighestRow() . ':J' . $this->spreadsheet->getActiveSheet()->getHighestRow())->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -662,7 +669,6 @@ class CondominiController extends Controller
 //                ]
 //            ],
 //        ]);
-        $sheet->getStyle('G11:P'.$this->spreadsheet->getActiveSheet()->getHighestRow())->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 
         $conditional = new Conditional();
         $conditional->setConditionType(Conditional::CONDITION_CELLIS);
