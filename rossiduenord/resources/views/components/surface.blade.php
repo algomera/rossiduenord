@@ -108,7 +108,7 @@
         <div class="d-flex mr-4">
             <p class="m-0">Totale “pareti verticali”</p>
             <label for="total_vertical_walls" class="m-0 black">
-                <input type="number" readonly disabled value="{{ $surfaces->sum('surface') }}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right  @error('total_vertical_walls') is-invalid error @enderror" style="width: 80px">
+                <input type="number" readonly value="{{ $surfaces->sum('surface') }}" name="total_vertical_walls" id="total_vertical_walls" class="border ml-2 px-2 text-right  @error('total_vertical_walls') is-invalid error @enderror" style="width: 80px">
                 m²
                 @error('total_vertical_walls')
                 <span class="invalid-feedback pl-3" role="alert">
