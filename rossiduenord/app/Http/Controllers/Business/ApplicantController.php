@@ -174,6 +174,17 @@ class ApplicantController extends Controller
             'role.required'=> 'Inserisci il ruolo prima di procedere',
         ]
     );
+
+        // phone number validation
+        preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['phone'],  $matches );
+        $phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
+        $validated['mobile_phone'] = $phone;
+
+
+        preg_match( '/^(\d{3})(\d{3})(\d{4})$/', $validated['moble_phone'],  $matches );
+        $mobile_phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
+        $validated['mobile_phone'] = $mobile_phone;
+        
         $applicant->update($validated);
 
         return redirect()->route('business.practice.edit', $applicant);
