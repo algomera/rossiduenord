@@ -61,7 +61,7 @@ class SuperBonusController extends Controller
         $water_heatpumps_installations = $practice->water_heatpumps_installations()->where('condomino_id', null)->where('is_common', 0)->get();
         $biome_generators = $practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
         $solar_panels = $practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
-        $surfaces = $practice->surfaces;
+        $surfaces = $practice->surfaces()->where('type', session()->get('surfaceType'))->where('intervention', 'driving')->get();
         return view('business.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -106,7 +106,7 @@ class SuperBonusController extends Controller
         $water_heatpumps_installations = $condominoId === 'common' ? $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->water_heatpumps_installations()->where('condomino_id', $condominoId)->get();
         $biome_generators = $condominoId === 'common' ? $practice->biome_generators()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->biome_generators()->where('condomino_id', $condominoId)->get();
         $solar_panels = $condominoId === 'common' ? $practice->solar_panels()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->solar_panels()->where('condomino_id', $condominoId)->get();
-        $surfaces = $practice->surfaces;
+        $surfaces = $practice->surfaces()->where('type', session()->get('surfaceType'))->where('intervention', 'towed')->where('condomino_id', $condominoId === 'common' ? null : $condominoId)->get();
         return view('business.superbonus.towed_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',

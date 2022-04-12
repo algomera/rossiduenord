@@ -2,26 +2,26 @@
 
 <div>
     <div class="nav_bonus d-flex align-items-center" style="width: 100%; padding-right: 0px; margin:0;margin-bottom: 5px;">
-        <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PV' ? 'frame' : ''}}" onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PV')">
+        <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PV' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PV') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PV')" @endif>
             (PV) Pareti Verticali
             @if(session()->get('surfaceType') == 'PV')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PV')">+</div>
             @endif
          </div>
-         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PO' ? 'frame' : ''}}" onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')">
+         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PO' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PO') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')" @endif>
             (PO) Coperture
             @if(session()->get('surfaceType') == 'PO')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PO')">+</div>
             @endif
          </div>
-         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PS' ? 'frame' : ''}}" onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PS')">
+         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PS' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PS') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PS')" @endif>
             (PS) Pavimenti
             @if(session()->get('surfaceType') == 'PS')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PS')">+</div>
             @endif
          </div>
         @if(Route::currentRouteName() == 'business.driving_intervention')
-            <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'POND' ? 'frame' : ''}}" onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'POND')">
+            <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'POND' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'POND') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'POND')" @endif>
                 (POND) Cop. non disperdenti
                 @if(session()->get('surfaceType') == 'POND')
                     <div class="add-btn-custom-small" onclick="addSurface(event, 'POND')">+</div>
@@ -29,7 +29,7 @@
             </div>
             <p class="m-0">Data inizio pagamento coperture non disperdenti</p>
             <input value="{{$vertwall->start_date_payment}}" name="start_date_payment" id="start_date_payment" class="border ml-2" style="width: 150px; padding:0 5px" type="date">
-        @endif   
+        @endif
     </div>
     <table class="table_bonus" id="surface_table" style="width: 100%">
         <thead>
@@ -62,9 +62,10 @@
         </thead>
         <tbody>
             @forelse($surfaces as $s => $surface)
-
-                <input type="hidden" value="{{$surface->intervention}}">
-                <input type="hidden" id="" value="{{ $isCommon }}">  
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][intervention]" value="{{$surface->intervention}}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][is_common]" id="" value="{{ $isCommon }}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][condomino_id]" id="" value="{{ $condomino === 'common' ? '' : $condomino}}">
+                <input type="hidden" name="surfaces[{{$practice->id}}-{{$surface->id}}][type]" id="" value="{{ session()->get('surfaceType') }}">
                 <tr>
                     <td class="text-center">{{ $s + 1 }}</td>
                     <td class="text-center">
@@ -157,31 +158,35 @@
 
 @push('scripts')
     @include('business.scripts.surface_add')
-    
+
     <script type="text/javascript">
         function setType(pid, id = null, type) {
             saveTypeChange(pid, id, type)
             axios.post(`/business/show_surface_type/${type}`)
                 .then(() => {
-                    //window.location.reload();
+                    window.location.reload();
                 })
-            console.log(pid, id, type);
         }
         function saveTypeChange(pid, id, type)  {
             let inputs = document.querySelectorAll("[name^='surfaces']");
-            let datas = [];
-            inputs.forEach(input => {
-                let id = input.name.split(/\[(.*?)\]/)[1]
-                let key = input.name.split(/\[(.*?)\]/)[3]
-                console.log(id, key, input.value);
-                datas[id][key] = input.value
-                console.log(datas);
-            })
+
+            let x = (function() {
+                let n = {};
+                inputs.forEach(o => {
+                    let oid = o.name.split(/\[(.*?)\]/)[1]
+                    let okey = o.name.split(/\[(.*?)\]/)[3]
+                    if(n[oid] === undefined) {
+                        n[oid] = {};
+                    }
+                    n[oid][okey] = o.value === '' ? null : o.value;
+                })
+                return n;
+            })();
             axios.post(`/business/save_type_data/${type}`, {
                 practice: pid,
-                
+                surfaces: x,
             })
         }
-        
+
     </script>
 @endpush
