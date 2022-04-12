@@ -106,7 +106,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="structural_engineer" style="display:inline-block;" >strutturista</label><br/>
+                                        <label for="structural_engineer" style="display:inline-block;" >Strutturista</label><br/>
                                         <input type="text" class="col-md-12 form-control @error('structural_engineer') is-invalid @enderror" id="structural_engineer" name="structural_engineer" value="{{old('structural_engineer') ?? $subject->structural_engineer}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                         @error('structural_engineer')
                                             <span class="invalid-feedback" role="alert">

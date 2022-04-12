@@ -98,6 +98,20 @@ class PracticeController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
 
+
+
+        //import formatting
+      if($practice['import'] != null){
+        $practice['import'] = number_format($practice['import'] , 2, ',',  '.');
+       }
+        if($practice['import_sal'] != null){
+            $practice['import_sal'] = number_format($practice['import_sal'], 2, ',', '.');
+        }
+
+      
+
+
+
         return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
@@ -110,33 +124,38 @@ class PracticeController extends Controller
      */
     public function update(Request $request, Practice $practice)
     {
+
         $validated = $request->validate([
             'applicant_id' => ' numeric | exists:applicants,id',
-            'import' => 'required | integer | min:2',
-            'practical_phase' => 'required | string',
-            'real_estate_type' => 'required | string',
-            'month' => 'required | string',
-            'year' => 'required | numeric | min:2',
-            'policy_name' => 'required | string | min:3',
-            'address' => 'required | string | min:5',
-            'civic' => 'required | numeric | min:1',
-            'common' => 'required | string | min:3',
-            'province' => 'required | string | min:2 | max:2',
-            'region' => 'required | string',
-            'cap' => 'required | string | min:5 | max:5',
-            'work_start' => 'required | string',
-            'c_m' => 'required | numeric |min:2',
-            'assev_tecnica' => 'required | numeric |min:2',
-            'nominative' => 'required | string |min:3 |max:150',
-            'lastName' => 'required | string | min:3 | max:50',
-            'name' => 'required | string | min:3 | max:50',
-            'policy' => 'required | string',
-            'request_policy' => 'required | string | min:3 |max:30',
-            'referent_email' => 'required | email ',
-            'description' => 'required | string',
-            'bonus' => 'required | string',
-            'note' => 'required | string',
-            'practice_ok' => 'required | string',
+            'import' => 'nullable | string',
+            'practical_phase' => 'nullable | string',
+            'real_estate_type' => 'nullable | string',
+            'month' => 'nullable | string',
+            'year' => 'nullable | numeric | min:2',
+            'policy_name' => 'nullable | string | min:3',
+            'address' => 'nullable | string | min:5',
+            'civic' => 'nullable | numeric | min:1',
+            'common' => 'nullable | string | min:3',
+            'province' => 'nullable | string | min:2 | max:2',
+            'region' => 'nullable | string',
+            'cap' => 'nullable | string | min:5 | max:5',
+            'work_start' => 'nullable | string',
+            'c_m' => 'nullable | numeric |min:2',
+            'assev_tecnica' => 'nullable | numeric |min:2',
+            'nominative' => 'nullable | string |min:3 |max:150',
+            'lastName' => 'nullable | string | min:3 | max:50',
+            'name' => 'nullable | string | min:3 | max:50',
+            'policy' => 'nullable | string',
+            'request_policy' => 'nullable | string | min:3 |max:30',
+            'referent_email' => 'nullable | email ',
+            'description' => 'nullable | string',
+            'bonus' => 'nullable | string',
+            'month_processing'=> 'nullable|string',
+            'year_processing'=> 'nullable | string',
+            'sal'=> 'nullable | string',
+            'import_sal'=> 'nullable | string',
+            'note' => 'nullable | string',
+            'practice_ok' => 'nullable | string',
         ],
         [
             //todo  custom errors
@@ -183,6 +202,16 @@ class PracticeController extends Controller
             'practice_ok.required'=>'Inserisci lo stato della pratica prima di procedere',
         ]
     );
+
+        if($validated['import'] != null){
+            $validated['import'] = str_replace('.','',$validated['import']);
+            $validated['import'] = str_replace(',','.',$validated['import']);
+        }
+
+        if($validated['import_sal'] != null){
+            $validated['import_sal'] = str_replace('.','',$validated['import_sal']);
+            $validated['import_sal'] = str_replace(',','.',$validated['import_sal']);
+        }
 
         $practice->update($validated);
 
