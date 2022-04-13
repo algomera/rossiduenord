@@ -446,7 +446,7 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <label for="note" class="text">{{ __('note') }}</label>
+                    <label for="note" class="text">{{ __('Note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{old('note') ?? $practice->note }}</textarea>
                     <label class="checkbox-wrapper mt-2">
                         <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}} {{old('practice_ok') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">     
