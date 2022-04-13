@@ -13,7 +13,7 @@
         <div class="box px-20 pb-20 pt-20">
             <div style="margin-bottom: 20px">
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
-                <a class="back" href="{{ route('business.folder.index') }}">Torna indietro</a>
+                <a class="clickable text-dark" href="{{ route('business.folder.index') }}">Torna indietro</a>
             </div>
 
             <span class="black text-md"><b>Elenco file cartella:</b> {{$folder->name}}</span>

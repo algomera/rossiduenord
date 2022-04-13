@@ -398,6 +398,7 @@
                             <label for="month_processing" class="text">Mese di lavorazione</label>
                             <select style="height: 47px!important" class="form-control bg-body @error('month_processing') is-invalid @enderror" name="month_processing" id="month_processing">
                                 <optgroup label="seleziona mese">
+                                    <option value="">-</option>
                                     <option {{ $practice->month_processing == 'gennaio' ? 'selected' : ''}} {{old('month_processing') == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>
                                     <option {{ $practice->month_processing == 'febbraio' ? 'selected' : ''}} {{old('month_processing') == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>
                                     <option {{ $practice->month_processing == 'marzo' ? 'selected' : ''}} {{old('month_processing') == 'marzo' ? 'selected' : ''}} value="marzo">marzo</option>
@@ -428,7 +429,10 @@
                             <label for="sal" class="text">SAL</label>
                             <select style="height: 47px!important" class="form-control bg-body" name="sal" id="sal">
                                 <optgroup label="seleziona mese">
-                                    <option {{ $practice->sal == 'sal finale' ? 'selected' : ''}} {{old('sal') == 'sal finale' ? 'selected' : ''}} value="sal finale">Sal finale</option>
+                                    <option value="">-</option>
+                                    <option {{ $practice->sal == 'Sal 1' ? 'selected' : ''}} {{old('sal') == 'Sal 1' ? 'selected' : ''}} value="Sal 1">Sal finale</option>
+                                    <option {{ $practice->sal == 'Sal 2' ? 'selected' : ''}} {{old('sal') == 'Sal 2' ? 'selected' : ''}} value="Sal 2">Sal finale</option>
+                                    <option {{ $practice->sal == 'Sal finale' ? 'selected' : ''}} {{old('sal') == 'Sal finale' ? 'selected' : ''}} value="Sal finale">Sal finale</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -442,7 +446,7 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <label for="note" class="text">{{ __('note') }}</label>
+                    <label for="note" class="text">{{ __('Note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{old('note') ?? $practice->note }}</textarea>
                     <label class="checkbox-wrapper mt-2">
                         <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}} {{old('practice_ok') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">     

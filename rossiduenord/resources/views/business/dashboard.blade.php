@@ -18,7 +18,7 @@
 
         <form action="{{route('business.applicant.store') }}" method="post">
             @csrf
-            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
+            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center" style="background-color: transparent; border: none;">
                 <div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
                     <div class="mb-2" >
                         <img src="{{asset('img/icon/ICONA NUOVA PRATICA.svg')}}" alt="" class="img-fluid">

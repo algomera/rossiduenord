@@ -8,7 +8,7 @@
 
             <div>
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
-                <a href="{{ route('business.folder.index') }}">Torna indietro</a>
+                <a href="{{ route('business.folder.index') }}" class="text-dark clickable">Torna indietro</a>
             </div>
 
             <table style="width: 100%; margin-top: 20px;">

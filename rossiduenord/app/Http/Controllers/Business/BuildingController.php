@@ -209,14 +209,20 @@ class BuildingController extends Controller
             'administrator_email.max' => 'La mail dell\'amministratore è troppo lunga',
         ]
 );
-
+        if(array_key_exists('province', $validated)){
+            $validated['province'] = strtoupper($validated['province']);
+        }
+        
         $building->update($validated);
         $practice = $building->practice;
 
         if($request->get('condomini')) {
-            $building->practice->condomini()->createMany($request->get('condomini'));
+            // $building->practice->condomini()->createMany($request->get('condomini'));
+            $condomini = $request->get('condomini');
+            foreach ($condomini as $condomino) {
+                $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);  
+            }
         }
-
         return redirect()->route('business.superbonus.index', [$practice]);
 //        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
     }
