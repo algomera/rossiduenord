@@ -638,8 +638,8 @@
                                 <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
                                     <input type="file" name="imported_excel_file" id="imported_excel_file" />
                                     @if($building->imported_excel_file)
-                                        <div class="d-flex flex-column  ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
-                                            <span style="font-size: 11px">File caricato:</span>
+                                        <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                            <span style="font-size: 11px" class="mr-2">File caricato:</span>
                                             <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
                                         </div>
                                     @endif
