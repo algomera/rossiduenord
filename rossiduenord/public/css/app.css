@@ -15,6 +15,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type=date] {
+  color: #ffffff;
+}
+
 .card {
   box-shadow: grey 0px 0px 10px -5px !important;
 }
@@ -157,7 +161,7 @@ a:hover {
 }
 
 #visible-column:hover {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 #select-delete:hover {
@@ -175,7 +179,7 @@ a:hover {
 }
 
 .bg-body {
-  background-color: #F2F2F2 !important;
+  background-color: #f2f2f2 !important;
 }
 
 .bg-black {
@@ -198,6 +202,10 @@ a:hover {
   background-color: #00cfb4 !important;
 }
 
+.bg-logo-green {
+  background-color: #06b13e !important;
+}
+
 .bg-blue {
   background-color: #61a4d7 !important;
 }
@@ -215,7 +223,7 @@ a:hover {
 }
 
 .light-grey {
-  color: #BBBCBC;
+  color: #bbbcbc;
 }
 
 .blue {
@@ -619,7 +627,7 @@ header {
 }
 
 main {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   min-height: 100vh;
 }
 
@@ -635,7 +643,7 @@ main {
 .content-main .box .type-number {
   width: 60px;
   padding: 2px 5px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   color: #383D3F;
   font-size: 15px;
   margin: 0 10px;

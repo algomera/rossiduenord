@@ -178,8 +178,8 @@
                                             </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="fiscal_code">Codice fiscale</label><br/>
+                                <div class="form-group mt-3">
+                                    <label for="fiscal_code" class="mt-1">Codice fiscale</label><br/>
                                     <input class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%"  />
                                     @error('fiscal_code')
                                             <span class="invalid-feedback" role="alert">
@@ -311,65 +311,65 @@
                         </div>
 
                         <div class="row">{{-- section form description 2 --}}
-                            <div class="col-md" >
+                            <div class="col-12" >
                                 <div class="row" >
-                                    <div class="col-md">
-                                        <label for="section">Sezione</label><br/>
-                                        <input class="col-md form-control credit-input  @error('section') is-invalid @enderror" type="number" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="section">Sezione</label>
+                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="number" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%"  />
                                         @error('section')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="foil">Foglio</label><br/>
-                                        <input class="col-md form-control credit-input  @error('foil') is-invalid @enderror" type="number" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="foil">Foglio</label>
+                                        <input class="col form-control credit-input  @error('foil') is-invalid @enderror" type="number" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%"  />
                                         @error('foil')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="particle">Particella</label><br/>
-                                        <input class="col-md form-control credit-input  @error('particle') is-invalid @enderror" type="number" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="particle">Particella</label>
+                                        <input class="col form-control credit-input  @error('particle') is-invalid @enderror" type="number" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%"  />
                                         @error('particle')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="subaltern">Subalterno</label><br/>
-                                        <input class="col-md form-control credit-input  @error('subaltern') is-invalid @enderror" type="number" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="subaltern">Subalterno</label>
+                                        <input class="col form-control credit-input  @error('subaltern') is-invalid @enderror" type="number" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%"  />
                                         @error('subaltern')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="unit_builidg_number">N. unità immobiliari</label><br/>
-                                        <input class="col-md form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="unit_builidg_number" class="text-nowrap">N. unità immobiliari</label>
+                                        <input class="col form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%"  />
                                         @error('unit_builidg_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="pertinence_number">N. pertinenze</label><br/>
-                                        <input class="col-md form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="pertinence_number" class="text-nowrap">N. pertinenze</label> 
+                                        <input class="col form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%"  />
                                         @error('pertinence_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="resolution_stairs">Scale per delibere..</label><br/>
-                                        <input class="col-md form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="resolution_stairs " class="text-nowrap">Scale delibere</label>
+                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%"  />
                                         @error('resolution_stairs')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -381,7 +381,7 @@
                         </div>
 
                         <div class="row">{{-- note --}}
-                            <div class="col-md" >
+                            <div class="col-md mt-3" >
                                 <label for="note">Note</label>
                                 <input class="col-md  form-control credit-input @error('note') is-invalid @enderror" value="{{old('note') ?? $building->note }}" type="text" name="note" id="note" width="100%"  />
                                 @error('note')
@@ -593,19 +593,19 @@
                                 </div>
                             </div>
 
-                            <div class="row" >
+                            <div class="row mt-2">
                                 <div class="col-md">
                                     <div class="row">
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="license_number">Num. licenza/titolo</label><br/>
-                                            <input class="col-md form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="number" name="license_number" id="license_number" width="100%"  />
+                                            <input class="col form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="number" name="license_number" id="license_number" width="100%"  />
                                             @error('license_number')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="license_date">Data licenza/titolo</label><br/>
                                             <input class="col-md form-control credit-input @error('license_date') is-invalid @enderror" value="{{ old('license_date') ?? $building->license_date }}" type="date" name="license_date" id="license_date" width="100%"  />
                                             @error('license_date')
@@ -614,7 +614,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="construction_date">Anno costruzione</label><br/>
                                             <input class="col-md form-control credit-input @error('construction_date') is-invalid @enderror" value="{{ old('construction_date') ?? $building->construction_date }}" type="number" placeholder="YYYY" name="construction_date" id="construction_date" width="100%"  />
                                             @error('construction_date')
@@ -634,7 +634,6 @@
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
-                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
@@ -673,11 +672,14 @@
                                             </tr>
                                         @empty
                                             <tr id="no_data_row">
-                                                <td colspan="12">Nessun dato disponibile</td>
+                                                <td colspan="12">Nessun condomine inserito</td>
                                             </tr>
                                         @endforelse
                                         </tbody>
                                     </table>
+
+                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Export</a>
+
                                 </div>
                             </div>
                         </div>
