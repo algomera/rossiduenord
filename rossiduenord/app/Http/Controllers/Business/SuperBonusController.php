@@ -49,7 +49,6 @@ class SuperBonusController extends Controller
     public function driving_intervention(Practice $practice) {
         if(url()->previous() !== url()->current()) {
             session()->put('surfaceType', 'PV');
-            session()->save();
         }
         // Redirect to next tab
         $data_project = $practice->data_project;
@@ -96,7 +95,6 @@ class SuperBonusController extends Controller
     public function towed_intervention(Practice $practice) {
         if(url()->previous() !== url()->current()) {
             session()->put('surfaceType', 'PV');
-            session()->save();
         }
 
         // Redirect to next tab
