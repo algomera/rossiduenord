@@ -220,7 +220,6 @@ class BuildingController extends Controller
                 $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);  
             }
         }
-
         return redirect()->route('business.superbonus.index', [$practice]);
 //        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
     }
