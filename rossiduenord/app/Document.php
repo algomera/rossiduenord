@@ -15,7 +15,7 @@ class Document extends Model
         'note',
         'type',
     ];
-    public function folder() {
-        return $this->belongsTo(FolderDocument::class);
+    public function sub_folders() {
+        return $this->belongsTo(Sub_folders::class);
     }
 }
