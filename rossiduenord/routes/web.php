@@ -125,9 +125,11 @@ Route::middleware('business')
         if($id === "null") {
             session()->remove('condominoId');
             session()->put('surfaceType', 'PV');
+            session()->save();
         } else {
             session()->put('condominoId', $id);
             session()->put('surfaceType', 'PV');
+            session()->save();
         }
     });
 
