@@ -209,7 +209,10 @@ class BuildingController extends Controller
             'administrator_email.max' => 'La mail dell\'amministratore è troppo lunga',
         ]
 );
-
+        if(array_key_exists('province', $validated)){
+            $validated['province'] = strtoupper($validated['province']);
+        }
+        
         $building->update($validated);
         $practice = $building->practice;
 

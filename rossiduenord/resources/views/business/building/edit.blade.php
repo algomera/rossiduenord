@@ -678,7 +678,7 @@
                                         </tbody>
                                     </table>
 
-                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Export</a>
+                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Esporta lista condomini <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a>
 
                                 </div>
                             </div>

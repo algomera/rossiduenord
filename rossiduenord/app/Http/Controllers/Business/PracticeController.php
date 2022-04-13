@@ -203,6 +203,12 @@ class PracticeController extends Controller
         ]
     );
 
+
+        //formatting values
+        if(array_key_exists('province', $validated)){
+            $validated['province'] = strtoupper($validated['province']);
+        }
+
         if($validated['import'] != null){
             $validated['import'] = str_replace('.','',$validated['import']);
             $validated['import'] = str_replace(',','.',$validated['import']);
