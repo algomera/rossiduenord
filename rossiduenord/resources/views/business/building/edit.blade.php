@@ -658,17 +658,17 @@
                                         @forelse($condomini as $i => $condomino)
                                             <tr>
                                                 <td class="text-center">{{ $i + 1 }}</td>
-                                                <td class="text-center">{{ $condomino->name }}</td>
-                                                <td class="text-left">{{ $condomino->surname }}</td>
-                                                <td class="text-left">{{ $condomino->phone }}</td>
-                                                <td class="text-left">{{ $condomino->email }}</td>
-                                                <td class="text-left">{{ $condomino->cf }}</td>
-                                                <td class="text-center">{{ $condomino->millesimi_inv }}</td>
-                                                <td class="text-left">{{ $condomino->foglio }}</td>
-                                                <td class="text-left">{{ $condomino->part }}</td>
-                                                <td class="text-left">{{ $condomino->sub }}</td>
-                                                <td class="text-center">{{ $condomino->categ_catastale }}</td>
-                                                <td class="text-center">{{ $condomino->sup_catastale }}</td>
+                                                <td class="text-center"> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input"></td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input"></td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input"> </td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input"> </td>
                                             </tr>
                                         @empty
                                             <tr id="no_data_row">

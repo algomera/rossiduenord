@@ -214,7 +214,11 @@ class BuildingController extends Controller
         $practice = $building->practice;
 
         if($request->get('condomini')) {
-            $building->practice->condomini()->createMany($request->get('condomini'));
+            // $building->practice->condomini()->createMany($request->get('condomini'));
+            $condomini = $request->get('condomini');
+            foreach ($condomini as $condomino) {
+                $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);  
+            }
         }
 
         return redirect()->route('business.superbonus.index', [$practice]);
