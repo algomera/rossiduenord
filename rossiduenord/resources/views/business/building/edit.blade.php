@@ -5,7 +5,7 @@
 
             <div class="scroll">
 
-                <form action="{{ route('business.building.update', $building->id)}}" method="POST">
+                <form action="{{ route('business.building.update', $building->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -635,6 +635,15 @@
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
                                 <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
+                                <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                    <input type="file" name="imported_excel_file" id="imported_excel_file" />
+                                    @if($building->imported_excel_file)
+                                        <div class="d-flex flex-column  ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                            <span style="font-size: 11px">File caricato:</span>
+                                            <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
