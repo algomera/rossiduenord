@@ -12,4 +12,8 @@ class Anagrafica extends Model
     public function roles() {
         return $this->belongsToMany(SubjectRole::class, 'anagrafiche_roles');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

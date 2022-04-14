@@ -107,4 +107,7 @@ class User extends Authenticatable
         return $this->hasMany(Applicant::class);
     }
 
+    public function anagrafiche() {
+        return $this->hasMany(Anagrafica::class);
+    }
 }

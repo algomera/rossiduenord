@@ -102,7 +102,7 @@ class TestSeeder extends Seeder
 
         // Anagrafica
         $azienda = Anagrafica::create([
-            'practice_id' => $practice->id,
+            'user_id' => $business->id,
             'subject_type' => config('anagrafiche.subject_types.AZIENDA'),
             'company_name' => $faker->company(),
             'first_name' => $faker->firstName(),
@@ -116,7 +116,7 @@ class TestSeeder extends Seeder
         ]);
 
         $area_manager = Anagrafica::create([
-            'practice_id' => $practice->id,
+            'user_id' => $business->id,
             'subject_type' => config('anagrafiche.subject_types.AREA_MANAGER'),
             'company_name' => $faker->company(),
             'first_name' => $faker->firstName(),

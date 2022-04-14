@@ -15,8 +15,8 @@ class CreateAnagraficheTable extends Migration
     {
         Schema::create('anagrafiche', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('practice_id')->unsigned();
-            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('subject_type', config('anagrafiche.subject_types'))->nullable();
             $table->text('company_name')->nullable();
             $table->text('first_name')->nullable();

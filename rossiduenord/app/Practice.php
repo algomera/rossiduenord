@@ -126,8 +126,4 @@ class Practice extends Model
     public function videos(){
         return $this->hasMany(Video::class);
     }
-
-    public function anagrafiche() {
-        return $this->hasMany(Anagrafica::class);
-    }
 }

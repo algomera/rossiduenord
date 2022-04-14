@@ -209,6 +209,8 @@ Route::middleware('business')
     Route::resource('/documents', 'DocumentController');
 
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
+
+    Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
 });
 
 

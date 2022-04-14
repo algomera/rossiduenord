@@ -36,6 +36,9 @@
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
+                    <li class="nav-item nav-pills">
+                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.anagrafiche.index' ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi</a>
                     </li>
