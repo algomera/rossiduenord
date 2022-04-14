@@ -131,6 +131,6 @@ class TestSeeder extends Seeder
 
         // Anagrafica - Role
         $azienda->roles()->attach([1,4,10]);
-        $area_manager->roles()->attach([17]);
+        $area_manager->roles()->attach([1, 17]);
     }
 }
