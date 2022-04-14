@@ -634,7 +634,6 @@
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
-                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
                                 <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
                                     <input type="file" name="imported_excel_file" id="imported_excel_file" />
                                     @if($building->imported_excel_file)
