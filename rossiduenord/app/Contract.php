@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model
 {
-    protected $fillable =[];
+    protected $fillable =[
+        'practice_id',
+        'name',
+        'tipology'
+    ];
 
     public function practice()
     {

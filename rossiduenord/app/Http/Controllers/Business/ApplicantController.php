@@ -12,6 +12,7 @@ use App\{FinalState,
     TrainatedVertWall,
     Variant,
     VerticalWall, Video};
+use App\Helpers\Contracts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -96,6 +97,9 @@ class ApplicantController extends Controller
         for ($i = 0; $i < 3; $i++) {
             FolderDocument::create($list_folder[$i]);
         }
+
+        //create default conract entity
+        Contracts::createInitialContracts($practice_id);
 
         return redirect()->route('business.applicant.edit', $applicant);
     }

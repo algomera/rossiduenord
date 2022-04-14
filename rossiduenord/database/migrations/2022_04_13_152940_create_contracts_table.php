@@ -18,7 +18,7 @@ class CreateContractsTable extends Migration
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->string('name')->nullable();
-            $table->string('typology')->nullable();
+            $table->string('tipology')->nullable();
             $table->timestamps();
         });
     }
