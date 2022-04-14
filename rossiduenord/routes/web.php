@@ -6,6 +6,8 @@ use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -189,6 +191,9 @@ Route::middleware('business')
         Interventi::addSolarPanel($practice, $request->get('interventi')['solar_panels']);
         return "updated";
     });
+
+    Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
+    Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
 
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');

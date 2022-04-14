@@ -38,6 +38,7 @@ class CreateBuildingsTable extends Migration
             $table->string('pertinence_number')->nullable();
             $table->string('resolution_stairs')->nullable();
             $table->string('note')->nullable();
+            $table->string('imported_excel_file')->nullable();
             //check section
             $table->string('cultural_constraints')->nullable();
             $table->string('denied_intervents')->nullable();

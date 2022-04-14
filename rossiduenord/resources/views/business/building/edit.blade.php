@@ -5,7 +5,7 @@
 
             <div class="scroll">
 
-                <form action="{{ route('business.building.update', $building->id)}}" method="POST">
+                <form action="{{ route('business.building.update', $building->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -359,7 +359,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-2">
-                                        <label for="pertinence_number" class="text-nowrap">N. pertinenze</label> 
+                                        <label for="pertinence_number" class="text-nowrap">N. pertinenze</label>
                                         <input class="col form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%"  />
                                         @error('pertinence_number')
                                             <span class="invalid-feedback" role="alert">
@@ -634,6 +634,22 @@
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
+                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
+                                <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                    <input type="file" name="imported_excel_file" id="imported_excel_file" />
+                                    @if($building->imported_excel_file)
+                                        <div class="d-flex" id="imported_excel_file_box">
+                                            <div class="d-flex flex-column align-items-start ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                                <span style="font-size: 11px" class="mr-2">File caricato:</span>
+                                                <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
+                                            </div>
+                                            <div onclick="deleteExcel({{ $building->practice->id }})" class="d-flex flex-column align-items-center justify-content-center mr-3" style="border: none; background-color: transparent;">
+                                                <img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24" height="24" alt="">
+                                                <p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
@@ -842,5 +858,14 @@
 
     @push('scripts')
         @include('business.scripts.condomini')
+
+        <script type="text/javascript">
+            function deleteExcel(id) {
+                axios.delete(`/business/delete/excel/${id}`)
+                .then(() => {
+                    document.querySelector('#imported_excel_file_box').remove();
+                })
+            }
+        </script>
     @endpush
 @endsection
