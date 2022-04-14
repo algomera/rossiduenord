@@ -8,7 +8,7 @@ use App\SubjectRole;
 class AnagraficheController extends Controller
 {
     public function index() {
-        $subject_roles = SubjectRole::all();
+        $subject_roles = SubjectRole::all()->except(21);
         $anagrafiche = auth()->user()->anagrafiche;
         return view('business.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
     }

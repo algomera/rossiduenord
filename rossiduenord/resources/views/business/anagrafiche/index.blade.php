@@ -18,9 +18,9 @@
                     <div class="border p-2">
                         <div class="row">
                             @foreach($subject_roles as $sr)
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="d-flex align-items-center">
-                                        <div class="flex-shrink-0" style="height: 15px; width: 15px; border-radius: 100%; margin-right: 5px; background-color: {{ $sr->color }}"></div>
+                                        <div class="flex-shrink-0 border border-dark" style="height: 15px; width: 15px; border-radius: 100%; margin-right: 5px; background-color: {{ $sr->color }}"></div>
                                         <span class="text-truncate">{{ $sr->name }}</span>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                 <td>
                                     <div class="d-flex">
                                         @foreach($anagrafica->roles as $role)
-                                            <div style="height: 15px; width: 15px; border-radius: 100%; margin-right: 3px; background-color: {{ $role->color }}"></div>
+                                            <div class="flex-shrink-0 border border-dark" style="height: 15px; width: 15px; border-radius: 100%; margin-right: 3px; background-color: {{ $role->color }}"></div>
                                         @endforeach
                                     </div>
                                 </td>
