@@ -249,6 +249,15 @@ class BuildingController extends Controller
         return Storage::download($file);
     }
 
+    public function deleteExcel($id) {
+        $practice = Practice::find($id)->first();
+        $practice->building->imported_excel_file = '';
+        $practice->building->save();
+        $files = Storage::allFiles('practices/' . $id . '/excel');
+
+        Storage::delete($files);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

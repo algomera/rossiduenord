@@ -193,6 +193,7 @@ Route::middleware('business')
     });
 
     Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
+    Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
 
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
