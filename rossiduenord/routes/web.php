@@ -73,6 +73,8 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
+    //contract
+    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
     Route::get('/subject/{practice}', 'SubjectController@subject_edit')
     ->where('practice', '[0-9]+')->name('subject_edit');
     Route::resource('/subject', 'SubjectController');

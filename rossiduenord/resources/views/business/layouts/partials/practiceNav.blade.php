@@ -36,7 +36,7 @@
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
                     SUPERBONUS
                 </a>
-                <a href="">CONTRATTI</a>
+                <a href="{{route('business.contracts.index', $practice->id)}}" class="{{request()->is('business/contracts*') ? 'visited' : ''}}">CONTRATTI</a>
                 <a href="">POLIZZE</a>
             </div>
 
