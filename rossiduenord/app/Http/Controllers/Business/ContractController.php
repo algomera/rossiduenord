@@ -18,13 +18,13 @@ class ContractController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
 
-        //initializing contracts array
-        $contracts = [];
+        //query contracts array
+        $contracts = $practice->contracts->where('tipology', '=', 'originals');
 
         //verify if records are present on db
-        if($practice->contracts != null){
+        if($contracts == null){
             // assign the records to the array
-            $contracts = $practice->contracts;
+            $contracts = [];
         }
 
         return view('business.contract.index', compact('practice','applicant','building', 'subject','videos','photos','contracts'));
@@ -46,7 +46,8 @@ class ContractController extends Controller
             $new_contract = [
                 'practice_id' => $practice->id,
                 'name' => $filename,
-                'path' => $path
+                'path' => $path,
+                'tipology' => $request['tipology']
             ];
 
             //creazione record nel db 
@@ -59,6 +60,5 @@ class ContractController extends Controller
     public function download($id,Contract $contract){
         $file = Contract::find($id);
         return Storage::download($file->path);
-
     }
 }

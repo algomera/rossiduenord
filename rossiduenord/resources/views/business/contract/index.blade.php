@@ -14,7 +14,6 @@
                         <tr style="border-top: 1px solid #707070">
                             <th style="width: 5%">#</th>
                             <th style="width: 20%">Nome file</th>
-                            <th style="width: 20%">Tipologia</th>
                             <th style="width: 20%">Scarica</th>
                             <th style="whith: 20%">Stato</th>
                             <th style="whith: 15%"></th>
@@ -25,7 +24,6 @@
                             <tr>
                                 <td>{{$contract->id}}</td>
                                 <td>{{$contract->name}}</td>
-                                <td>{{$contract->tipology}}</td>
                                 <td> <a href="{{route('business.contract.download',$contract->id)}}" class="clickable"> Scarica <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a> </td>
                                 <td></td>
                                 <td>
@@ -35,21 +33,17 @@
                                 </td>
                             </tr>
                         @empty
-                            <td colspan="7" class="text-center">
-                                      Nessun contratto
-                                    
-                            </td>
+                              <td colspan="10"> Nessun contratto inserito</td>
                         @endforelse
                     </tbody>
                 </table>
-                @if (count($contracts) > 0)
                     <div class="mt-3">
                             <label for="contract_upload" class="btn bg-logo-green white">
                                 Inserisi <i class="fa-solid fa-file-arrow-up"></i>
                                 <input type="file" name="contract" id="contract_upload" hidden>
+                                <input type="text" name="tipology" value="originals" hidden>
                             </label>
                     </div>
-                @endif
             </div>
             <div class="box-fixed">
                 <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
