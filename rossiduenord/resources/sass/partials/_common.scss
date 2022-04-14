@@ -57,14 +57,6 @@ a {
     border: 1px solid #707070;
     border-radius: 3px;
     text-align: center;
-
-    &:hover {
-        background-color: $bg-bt-black !important;
-    }
-    &:focus {
-        color: black !important;
-        background-color: gray !important;
-    }
 }
 
 .back {
@@ -591,7 +583,7 @@ label {
     cursor: pointer;
 
     &:hover {
-        color: #61a4d7;
+        color: #61a4d7!important;
         background-color: transparent;
         border: #61a4d7 2px solid;
     }

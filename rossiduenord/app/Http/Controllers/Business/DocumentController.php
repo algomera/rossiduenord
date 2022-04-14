@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Business;
 
 use App\Document;
 use App\FolderDocument;
+use App\Sub_folders;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,25 +40,23 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'folder_id' => 'required | integer',
-            'role' => 'nullable | string',
+            'practice_id' => 'required | integer',
+            'sub_folder_id' => 'required | integer',
             'allega' => 'nullable',
-            'status' => 'nullable',
-            'description' => 'nullable',
             'note' => 'nullable',
             'type' => 'Nullable',
         ]);
 
-        $folders = FolderDocument::all()->pluck('id');
+        $folders = Sub_folders::all()->pluck('id');
 
         if (array_key_exists('allega', $validated)) {
-            if(in_array($validated['folder_id'], $folders->toArray())){
+            if(in_array($validated['sub_folder_id'], $folders->toArray())){
                 $business_document = Storage::put('business_folders/first_document_request', $validated['allega']);
             }
-            if(in_array($validated['folder_id'], $folders->toArray())){
+            if(in_array($validated['sub_folder_id'], $folders->toArray())){
                 $business_document = Storage::put('business_folders/during_document_request', $validated['allega']);
             }
-            if(in_array($validated['folder_id'], $folders->toArray())){
+            if(in_array($validated['sub_folder_id'], $folders->toArray())){
                 $business_document = Storage::put('business_folders/after_document_request', $validated['allega']);
             }
             $validated['allega'] = $business_document;
@@ -76,7 +75,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        $practice = $document->folder->practice;
+        $practice = $document->sub_folder->practice;
         $applicant = $practice->applicant;
         $subject = $practice->subject;
         $building = $practice->building;

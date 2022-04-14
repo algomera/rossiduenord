@@ -200,7 +200,8 @@ Route::middleware('business')
     Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 
     Route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
-    Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folder_show');
+    Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folderDocument_show');
+    Route::get('/folder_document/{practice}/{folder_document}/{document}', 'FolderDocumentController@show_document')->name('document_show');
     Route::resource('/documents', 'DocumentController');
 
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');

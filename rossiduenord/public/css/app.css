@@ -56,13 +56,6 @@ a:hover {
   border-radius: 3px;
   text-align: center;
 }
-.add-button:hover {
-  background-color: #383d3f !important;
-}
-.add-button:focus {
-  color: black !important;
-  background-color: gray !important;
-}
 
 .back {
   color: black !important;
@@ -575,7 +568,7 @@ label {
   cursor: pointer;
 }
 .add-btn-custom:hover {
-  color: #61a4d7;
+  color: #61a4d7 !important;
   background-color: transparent;
   border: #61a4d7 2px solid;
 }

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     protected $fillable = [
-        'folder_id',
-        'role',
+        'practice_id',
+        'sub_folder_id',
         'allega',
-        'status',
-        'description',
         'note',
         'type',
     ];

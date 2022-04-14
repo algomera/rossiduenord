@@ -15,9 +15,12 @@ class CreateSubFoldersTable extends Migration
     {
         Schema::create('sub_folders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('folder_id')->unsigned();
-            $table->foreign('folder_id')->references('id')->on('folder_documents')->onDelete('cascade');
-            $table->string('name')->nullable();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+            $table->string('folder_type');
+            $table->string('status')->nullable();
+            $table->string('name');
+            $table->string('role');
             $table->timestamps();
         });
     }

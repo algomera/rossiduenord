@@ -15,12 +15,11 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('practice_id')->unsigned();
+            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('sub_folder_id')->unsigned();
             $table->foreign('sub_folder_id')->references('id')->on('sub_folders')->onDelete('cascade');
-            $table->string('role')->nullable();
             $table->string('allega')->nullable();
-            $table->string('status')->nullable();
-            $table->string('description')->nullable();
             $table->string('note')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();

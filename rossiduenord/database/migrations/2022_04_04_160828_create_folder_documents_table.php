@@ -18,6 +18,7 @@ class CreateFolderDocumentsTable extends Migration
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->string('name');
+            $table->string('type');
             $table->timestamps();
         });
     }
