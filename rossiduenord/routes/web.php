@@ -75,8 +75,7 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
-    //contract
-    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
+    
     //practice
     Route::get('/subject/{practice}', 'SubjectController@subject_edit')
     ->where('practice', '[0-9]+')->name('subject_edit');
@@ -217,6 +216,11 @@ Route::middleware('business')
     Route::resource('/documents', 'DocumentController');
 
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
+
+    //contract
+    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
+    Route::post('/new/contracts/{practice}','ContractController@store')->name('contract.store');
+    Route::get('/contract/download/{id}','ContractController@download')->name('contract.download');
 });
 
 

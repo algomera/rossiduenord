@@ -9,7 +9,8 @@ class Contract extends Model
     protected $fillable =[
         'practice_id',
         'name',
-        'tipology'
+        'tipology',
+        'path'
     ];
 
     public function practice()
