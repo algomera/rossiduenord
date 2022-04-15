@@ -160,7 +160,7 @@ class SubjectController extends Controller
             'responsible_technician' => 'Il nome del responsabile tecnico è troppo lungo',
         ]
     );
-        
+
         $subject->update($validated);
 
         return redirect()->route('business.building.edit', $subject);

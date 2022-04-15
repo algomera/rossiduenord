@@ -20,9 +20,9 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=date] {
-  color: #ffffff;
-}
+/*input[type=date] {*/
+/*  color: #ffffff;*/
+/*}*/
 
 .card {
   box-shadow: grey 0px 0px 10px -5px !important;
