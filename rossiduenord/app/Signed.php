@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Signed extends Model
 {
-    protected $fillbale = [
+    protected $fillable = [
         'contract_id',
         'name',
         'typology',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Business;
 use App\Contract;
 use App\Http\Controllers\Controller;
 use App\Practice;
+use App\Signed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,7 +57,7 @@ class ContractController extends Controller
     }
 
     //download the contract file
-    public function download($id,Contract $contract){
+    public function contractDownload($id){
         $file = Contract::find($id);
         return Storage::download($file->path);
     }
@@ -77,14 +78,14 @@ class ContractController extends Controller
             $signeds = $contract->signeds;
         }
 
-        return view('business.contract.signedIndex',compact('signeds','practice','applicant','building','subject','photos','videos'));
+        return view('business.contract.signedIndex',compact('signeds','practice','applicant','building','subject','photos','videos','contract'));
     }
 
     public function signedStore(Request $request,Contract $contract){
         //verify the presence of the file
-        if($request->hasFile('contract')){
+        if($request->hasFile('signed')){
             //saving file
-            $file = $request->file('contract');
+            $file = $request->file('signed');
             // taking the extensione 
             $extension = $file->extension();
             //taking the full name
@@ -100,8 +101,14 @@ class ContractController extends Controller
             ];
 
             //creazione record nel db 
-            Contract::create($new_signed);
+            Signed::create($new_signed);
         }
-        return redirect()->route('business.contracts.show', $contract);
+
+        return redirect()->route('business.signed.show', $contract);
+    }
+
+    public function signedDownload($id){
+        $file = Signed::find($id);
+        return Storage::download($file->path);
     }
 }
