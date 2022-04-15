@@ -8,7 +8,7 @@
             </div>
         @endif
 
-        <a href="{{route('business.users.create')}}" class="add-button">+ Aggiungi Anagrafica</a>
+        <a href="{{route('business.anagrafiche.create')}}" class="add-button">+ Aggiungi Anagrafica</a>
 
         <div class="box px-20 pb-20 pt-20">
             <div class="d-flex">
@@ -70,31 +70,31 @@
                                         Elimina
                                     </button>
 
-{{--                                    <div class="modal fade" id="del{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
-{{--                                        <div class="modal-dialog" role="document">--}}
-{{--                                            <div class="modal-content">--}}
-{{--                                                <div class="modal-header">--}}
-{{--                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>--}}
-{{--                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                        <span aria-hidden="true">&times;</span>--}}
-{{--                                                    </button>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="modal-body">--}}
-{{--                                                    Sei sicuro di volere eliminare l'utente: {{$user->name}} ?--}}
-{{--                                                </div>--}}
-{{--                                                <div class="modal-footer">--}}
-{{--                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>--}}
-{{--                                                    <form action="{{ Route('business.users.destroy', $user->id) }}" method="POST">--}}
-{{--                                                        @csrf--}}
-{{--                                                        @method('DELETE')--}}
-{{--                                                        <button type="submit" class="btn-custom white bg-red mr-0">--}}
-{{--                                                            Conferma--}}
-{{--                                                        </button>--}}
-{{--                                                    </form>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="modal fade" id="del{{$anagrafica->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina anagrafica</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Sei sicuro di volere eliminare l'anagrafica: {{$anagrafica->company_name}} ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                                                    <form action="{{ route('business.anagrafiche.delete', $anagrafica) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn-custom white bg-red mr-0">
+                                                            Conferma
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

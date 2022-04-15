@@ -41,6 +41,9 @@ class CreateAnagraficheTable extends Migration
             $table->text('date_of_birth')->nullable();
             $table->text('common_of_birth')->nullable();
             $table->text('province_of_birth')->nullable();
+            $table->text('order_or_college')->nullable();
+            $table->text('order_or_college_province')->nullable();
+            $table->text('order_or_college_number')->nullable();
             $table->timestamps();
         });
     }

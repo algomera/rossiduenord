@@ -211,6 +211,9 @@ Route::middleware('business')
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 
     Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
+    Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
+    Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
+    Route::delete('/anagrafiche/{anagrafica}', 'AnagraficheController@destroy')->name('anagrafiche.delete');
 });
 
 
