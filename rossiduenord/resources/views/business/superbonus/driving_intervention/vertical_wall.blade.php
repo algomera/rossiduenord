@@ -308,25 +308,6 @@
                 </label>
             </div>
 
-            <div class="d-flex justify-content-between" style="width: 100%">
-                <p class="m-0 mt-2 font-weight-bold">Sono stati conclusi i seguenti lavori</p>
-                <table class="table_bonus" style="width: 70%">
-                    <thead>
-                    <tr>
-                        <td style="width:40%;"><b>Lavori</b></td>
-                        <td style="width:30%;"><b>Conclusi</b></td>
-                        <td style="width:30%;"><b>SAL</b></td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="text-right"></td>
-                        <td class="text-right"></td>
-                        <td class="text-right"></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
 
             <p class="font-weight-bold m-0 mt-5">per un ammontare pari a</p>
             <div class="d-flex" style="width: 100%">

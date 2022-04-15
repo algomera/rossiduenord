@@ -75,8 +75,7 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
-    //contract
-    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
+    
     //practice
     Route::get('/subject/{practice}', 'SubjectController@subject_edit')
     ->where('practice', '[0-9]+')->name('subject_edit');
@@ -227,6 +226,14 @@ Route::middleware('business')
     Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
     Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
     Route::delete('/anagrafiche/{anagrafica}', 'AnagraficheController@destroy')->name('anagrafiche.delete');
+    //contract
+    Route::get('/contracts/{practice}','ContractController@originalIndex')->name('contracts.index');
+    Route::get('/contracts/signed/{contract}','ContractController@signedIndex')->name('signed.index');
+    Route::post('/new/signed/{contract}','ContractController@signedStore')->name('signed.store');
+    Route::get('/signed/{signed}','ContractController@signedShow')->name('signed.show');
+    Route::get('/contract/download/{id}','ContractController@contractDownload')->name('contract.download');
+    Route::get('/contract/signed/download/{id}','ContractController@signedDownload')->name('signed.download');
+    Route::delete('/signed/delete/{signed}','ContractController@deleteSigned')->name('signed.delete');
 });
 
 
