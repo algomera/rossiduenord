@@ -15,6 +15,7 @@ use App\{FinalState,
     Video,
     Helpers\Folder_documents
 };
+use App\Helpers\Contracts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +83,7 @@ class ApplicantController extends Controller
 
         // folder document creation
         Folder_documents::addFolders($practice_id, $folderDocument);
-        //dd($practice->folder_documents);
+        Contracts::createInitialContracts($practice_id);
         return redirect()->route('business.applicant.edit', $applicant);
     }
 
