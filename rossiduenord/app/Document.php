@@ -7,15 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     protected $fillable = [
-        'folder_id',
-        'role',
+        'practice_id',
+        'sub_folder_id',
         'allega',
-        'status',
-        'description',
         'note',
         'type',
     ];
-    public function folder() {
-        return $this->belongsTo(FolderDocument::class);
+    public function sub_folder() {
+        return $this->belongsTo(Sub_folder::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentsTable extends Migration
+class CreateSubFoldersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('sub_folders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
-            $table->bigInteger('sub_folder_id')->unsigned();
-            $table->foreign('sub_folder_id')->references('id')->on('sub_folders')->onDelete('cascade');
-            $table->string('allega')->nullable();
-            $table->string('note')->nullable();
-            $table->string('type')->nullable();
+            $table->bigInteger('folder_document_id')->unsigned();
+            $table->foreign('folder_document_id')->references('id')->on('folder_documents')->onDelete('cascade');
+            $table->string('folder_type');
+            $table->string('status')->nullable();
+            $table->string('name');
+            $table->string('role');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('sub_folders');
     }
 }

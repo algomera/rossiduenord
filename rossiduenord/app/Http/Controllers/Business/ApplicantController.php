@@ -11,14 +11,13 @@ use App\{FinalState,
     Photo,
     TrainatedVertWall,
     Variant,
-    VerticalWall, Video};
-use App\Helpers\Contracts;
+    VerticalWall, 
+    Video,
+    Helpers\Folder_documents
+};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class ApplicantController extends Controller
 {
@@ -39,8 +38,9 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Practice $practice, Applicant $applicant)
+    public function store(Request $request, Practice $practice, Applicant $applicant, FolderDocument $folderDocument)
     {
+       
         $validated = $request->validate([
             'applicant' => 'nullable | string',
             'name' => 'nullable | string | min:3 | max:100',
@@ -66,11 +66,12 @@ class ApplicantController extends Controller
         $practice_id = $practice['id'];
         $data = ['practice_id'=> $practice_id];
         // subject creation
-        $subject = Subject::create($data);
+        Subject::create($data);
         // building creation
-        $building = Building::create($data);
-        $photo = Photo::create($data);
-        $video = Video::create($data);
+        Building::create($data);
+        // media creation
+        Photo::create($data);
+        Video::create($data);
 
         // superbonus creation
         Data_project::create($data);
@@ -79,28 +80,9 @@ class ApplicantController extends Controller
         FinalState::create($data);
         Variant::create($data);
 
-        $list_folder = [
-            [
-                'practice_id'=> $practice_id,
-                'name' => 'Documenti necessari PRIMA dell\'inizio dei lavori'
-            ],
-            [
-                'practice_id'=> $practice_id,
-                'name' => 'Documenti necessari DURANTE i lavori'
-            ],
-            [
-                'practice_id'=> $practice_id,
-                'name' => 'Documenti necessari AL TERMINE dei lavori'
-            ]
-
-        ];
-        for ($i = 0; $i < 3; $i++) {
-            FolderDocument::create($list_folder[$i]);
-        }
-
-        //create default conract entity
-        Contracts::createInitialContracts($practice_id);
-
+        // folder document creation
+        Folder_documents::addFolders($practice_id, $folderDocument);
+        //dd($practice->folder_documents);
         return redirect()->route('business.applicant.edit', $applicant);
     }
 
