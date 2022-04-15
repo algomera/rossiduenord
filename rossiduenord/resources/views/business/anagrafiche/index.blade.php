@@ -53,7 +53,7 @@
                                 <td>
                                     <div class="d-flex">
                                         @foreach($anagrafica->roles as $role)
-                                            <div class="flex-shrink-0 border border-dark" style="height: 15px; width: 15px; border-radius: 100%; margin-right: 3px; background-color: {{ $role->color }}"></div>
+                                            <div class="flex-shrink-0 border border-dark" style="height: 15px; width: 15px; border-radius: 100%; margin-right: 3px; background-color: {{ $role->color }}" data-toggle="tooltip" data-placement="top" title="{{ $role->name }}"></div>
                                         @endforeach
                                     </div>
                                 </td>
@@ -108,3 +108,11 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+@endpush
