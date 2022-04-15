@@ -47,10 +47,9 @@
                             <input class="type-number" type="number" value="100" name="" id="">
                         </div>
 
-                        <button id="select-all" class="btn-custom bg-black white checkall"  >Seleziona tutto</button>
-                        <button id="deselect-all" class="btn-custom bg-grey white uncheckall"  >Deseleziona tutto</button>
-                        <button id="visible-column" class="btn-custom bg-lighgrey black">Visibilità colonna</button>
-                        <button id="select-delete" class="btn-custom bg-red white" data-toggle="modal" >Elimina selezionato</button>
+                        <button id="select-all" class="btn bg-black white checkall"  >Seleziona tutto</button>
+                        <button id="visible-column" class="btn bg-grey white">Deseleziona tutto</button>
+                        <button id="select-delete" class="btn bg-red white" data-toggle="modal" >Elimina selezionato</button>
                     </div>
                     <div class="position-relative w-25">
                         <input class="search" type="search" placeholder="Cerca" name="" id="searchUser">
@@ -87,10 +86,10 @@
                                 </td>
                                 <td>{{$user->created_by}}</td>
                                 <td class="">
-                                    <a href="{{route('business.users.show', $user)}}" class="btn-custom white bg-green">
+                                    <a href="{{route('business.users.show', $user)}}" class="btn white bg-green">
                                         Vedi
                                     </a>
-                                    <a href="{{route('business.users.edit', $user)}}" class="btn-custom white bg-black">
+                                    <a href="{{route('business.users.edit', $user)}}" class="btn white bg-black">
                                         Modifica
                                     </a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$user->id}}">

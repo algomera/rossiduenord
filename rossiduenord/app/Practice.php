@@ -126,4 +126,7 @@ class Practice extends Model
     public function videos(){
         return $this->hasMany(Video::class);
     }
+    public function contracts(){
+        return $this->hasMany(Contract::class);
+    }
 }

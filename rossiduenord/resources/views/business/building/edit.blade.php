@@ -5,7 +5,7 @@
 
             <div class="scroll">
 
-                <form action="{{ route('business.building.update', $building->id)}}" method="POST">
+                <form action="{{ route('business.building.update', $building->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -178,8 +178,8 @@
                                             </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="fiscal_code">Codice fiscale</label><br/>
+                                <div class="form-group mt-3">
+                                    <label for="fiscal_code" class="mt-1">Codice fiscale</label><br/>
                                     <input class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%"  />
                                     @error('fiscal_code')
                                             <span class="invalid-feedback" role="alert">
@@ -311,65 +311,65 @@
                         </div>
 
                         <div class="row">{{-- section form description 2 --}}
-                            <div class="col-md" >
+                            <div class="col-12" >
                                 <div class="row" >
-                                    <div class="col-md">
-                                        <label for="section">Sezione</label><br/>
-                                        <input class="col-md form-control credit-input  @error('section') is-invalid @enderror" type="number" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="section">Sezione</label>
+                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="number" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%"  />
                                         @error('section')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="foil">Foglio</label><br/>
-                                        <input class="col-md form-control credit-input  @error('foil') is-invalid @enderror" type="number" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="foil">Foglio</label>
+                                        <input class="col form-control credit-input  @error('foil') is-invalid @enderror" type="number" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%"  />
                                         @error('foil')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="particle">Particella</label><br/>
-                                        <input class="col-md form-control credit-input  @error('particle') is-invalid @enderror" type="number" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="particle">Particella</label>
+                                        <input class="col form-control credit-input  @error('particle') is-invalid @enderror" type="number" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%"  />
                                         @error('particle')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="subaltern">Subalterno</label><br/>
-                                        <input class="col-md form-control credit-input  @error('subaltern') is-invalid @enderror" type="number" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%"  />
+                                    <div class="col">
+                                        <label for="subaltern">Subalterno</label>
+                                        <input class="col form-control credit-input  @error('subaltern') is-invalid @enderror" type="number" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%"  />
                                         @error('subaltern')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="unit_builidg_number">N. unità immobiliari</label><br/>
-                                        <input class="col-md form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="unit_builidg_number" class="text-nowrap">N. unità immobiliari</label>
+                                        <input class="col form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%"  />
                                         @error('unit_builidg_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="pertinence_number">N. pertinenze</label><br/>
-                                        <input class="col-md form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="pertinence_number" class="text-nowrap">N. pertinenze</label>
+                                        <input class="col form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%"  />
                                         @error('pertinence_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md">
-                                        <label for="resolution_stairs">Scale per delibere..</label><br/>
-                                        <input class="col-md form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%"  />
+                                    <div class="col-2">
+                                        <label for="resolution_stairs " class="text-nowrap">Scale delibere</label>
+                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%"  />
                                         @error('resolution_stairs')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -381,7 +381,7 @@
                         </div>
 
                         <div class="row">{{-- note --}}
-                            <div class="col-md" >
+                            <div class="col-md mt-3" >
                                 <label for="note">Note</label>
                                 <input class="col-md  form-control credit-input @error('note') is-invalid @enderror" value="{{old('note') ?? $building->note }}" type="text" name="note" id="note" width="100%"  />
                                 @error('note')
@@ -593,19 +593,19 @@
                                 </div>
                             </div>
 
-                            <div class="row" >
+                            <div class="row mt-2">
                                 <div class="col-md">
                                     <div class="row">
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="license_number">Num. licenza/titolo</label><br/>
-                                            <input class="col-md form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="number" name="license_number" id="license_number" width="100%"  />
+                                            <input class="col form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="number" name="license_number" id="license_number" width="100%"  />
                                             @error('license_number')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="license_date">Data licenza/titolo</label><br/>
                                             <input class="col-md form-control credit-input @error('license_date') is-invalid @enderror" value="{{ old('license_date') ?? $building->license_date }}" type="date" name="license_date" id="license_date" width="100%"  />
                                             @error('license_date')
@@ -614,7 +614,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md">
+                                        <div class="col-4">
                                             <label for="construction_date">Anno costruzione</label><br/>
                                             <input class="col-md form-control credit-input @error('construction_date') is-invalid @enderror" value="{{ old('construction_date') ?? $building->construction_date }}" type="number" placeholder="YYYY" name="construction_date" id="construction_date" width="100%"  />
                                             @error('construction_date')
@@ -634,7 +634,21 @@
                             <div class="d-flex align-items-center mb-3">
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
-                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-blue white ml-3">Export</a>
+                                <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                    <input type="file" name="imported_excel_file" id="imported_excel_file" />
+                                    @if($building->imported_excel_file)
+                                        <div class="d-flex" id="imported_excel_file_box">
+                                            <div class="d-flex flex-column align-items-start ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                                <span style="font-size: 11px" class="mr-2">File caricato:</span>
+                                                <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
+                                            </div>
+                                            <div onclick="deleteExcel({{ $building->practice->id }})" class="d-flex flex-column align-items-center justify-content-center mr-3" style="border: none; background-color: transparent;">
+                                                <img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24" height="24" alt="">
+                                                <p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
@@ -659,25 +673,28 @@
                                         @forelse($condomini as $i => $condomino)
                                             <tr>
                                                 <td class="text-center">{{ $i + 1 }}</td>
-                                                <td class="text-center">{{ $condomino->name }}</td>
-                                                <td class="text-left">{{ $condomino->surname }}</td>
-                                                <td class="text-left">{{ $condomino->phone }}</td>
-                                                <td class="text-left">{{ $condomino->email }}</td>
-                                                <td class="text-left">{{ $condomino->cf }}</td>
-                                                <td class="text-center">{{ $condomino->millesimi_inv }}</td>
-                                                <td class="text-left">{{ $condomino->foglio }}</td>
-                                                <td class="text-left">{{ $condomino->part }}</td>
-                                                <td class="text-left">{{ $condomino->sub }}</td>
-                                                <td class="text-center">{{ $condomino->categ_catastale }}</td>
-                                                <td class="text-center">{{ $condomino->sup_catastale }}</td>
+                                                <td class="text-center"> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input"></td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input"> </td>
+                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input"></td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input"> </td>
+                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input"> </td>
                                             </tr>
                                         @empty
                                             <tr id="no_data_row">
-                                                <td colspan="12">Nessun dato disponibile</td>
+                                                <td colspan="12">Nessun condomine inserito</td>
                                             </tr>
                                         @endforelse
                                         </tbody>
                                     </table>
+
+                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Esporta lista condomini <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a>
+
                                 </div>
                             </div>
                         </div>
@@ -840,5 +857,14 @@
 
     @push('scripts')
         @include('business.scripts.condomini')
+
+        <script type="text/javascript">
+            function deleteExcel(id) {
+                axios.delete(`/business/delete/excel/${id}`)
+                .then(() => {
+                    document.querySelector('#imported_excel_file_box').remove();
+                })
+            }
+        </script>
     @endpush
 @endsection

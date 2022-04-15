@@ -6,6 +6,8 @@ use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,10 +75,16 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
+    //contract
+    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
+    //practice
     Route::get('/subject/{practice}', 'SubjectController@subject_edit')
     ->where('practice', '[0-9]+')->name('subject_edit');
+    //subject
     Route::resource('/subject', 'SubjectController');
+    //building
     Route::resource('/building', 'BuildingController');
+    //superbonus
     Route::get('/superbonus/{practice}', 'SuperBonusController@index')
     ->where('practice', '[0-9]+')
     ->name('superbonus.index');
@@ -117,7 +125,9 @@ Route::middleware('business')
     Route::put('/superbonus/var_computation/{practice}/update', 'SuperBonusController@update_var_computation')
     ->where('practice', '[0-9]+')
     ->name('update_var_computation');
+    //vertical wall
     Route::resource('/verticalwall', 'VerticalWallController');
+    //media
     Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
 
 
@@ -189,6 +199,9 @@ Route::middleware('business')
         Interventi::addSolarPanel($practice, $request->get('interventi')['solar_panels']);
         return "updated";
     });
+
+    Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
+    Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
 
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');

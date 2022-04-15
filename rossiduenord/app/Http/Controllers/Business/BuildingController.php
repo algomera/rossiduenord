@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Business;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\{Practice, Subject, Applicant, Building};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -124,6 +126,7 @@ class BuildingController extends Controller
             'administrator_telephone' => 'nullable | numeric | min:10',
             'administrator_cellphone' => 'nullable | numeric| min:10',
             'administrator_email' => 'nullable | string |min:3 |max:50',
+            'imported_excel_file' => 'nullable | file | mimes:xls,xlsx,csv | max:512'
         ],
         [
             'intervention_name.required' => 'Inserisci il nome dell\'intervento prima di procedere',
@@ -207,18 +210,53 @@ class BuildingController extends Controller
             'administrator_email.required' => 'Inserisci la mail dell\'amministratore',
             'administrator_email.min' => 'la mail dell\'amministratore è troppo corta',
             'administrator_email.max' => 'La mail dell\'amministratore è troppo lunga',
-        ]
-);
+        ]);
+
+        // Se esiste "imported_excel_file"
+        if($request->hasFile('imported_excel_file')) {
+            // Recupero l'estensione e il nome del file
+            $extension = $request->file('imported_excel_file')->extension();
+            $filename = pathinfo($request->file('imported_excel_file')->getClientOriginalName(), PATHINFO_FILENAME);
+            // Dovendo avere un solo file caricato, cancello gli altri (se presenti) nella cartella
+            if(count(Storage::allFiles('practices/' . $request->get('practice_id') . '/excel'))) {
+                $files = Storage::allFiles('practices/' . $request->get('practice_id') . '/excel');
+                Storage::delete($files);
+            }
+
+            // Salvo il file sul server
+            $path = $request->file('imported_excel_file')->storeAs('practices/' . $request->get('practice_id') . '/excel' , $filename . '.' . $extension);
+            $building->imported_excel_file = $path;
+            $building->save();
+        }
 
         $building->update($validated);
         $practice = $building->practice;
 
         if($request->get('condomini')) {
-            $building->practice->condomini()->createMany($request->get('condomini'));
+            $condomini = $request->get('condomini');
+            foreach ($condomini as $condomino) {
+                $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);
+            }
         }
 
         return redirect()->route('business.superbonus.index', [$practice]);
 //        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
+    }
+
+    public function downloadExcel($id) {
+        $practice = Practice::find($id)->first();
+        $file = $practice->building->imported_excel_file;
+
+        return Storage::download($file);
+    }
+
+    public function deleteExcel($id) {
+        $practice = Practice::find($id)->first();
+        $practice->building->imported_excel_file = '';
+        $practice->building->save();
+        $files = Storage::allFiles('practices/' . $id . '/excel');
+
+        Storage::delete($files);
     }
 
     /**

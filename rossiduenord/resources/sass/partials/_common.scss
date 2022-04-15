@@ -14,6 +14,11 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+//input date
+input[type="date"] {
+    color: #ffffff;
+}
+
 .card {
     box-shadow: grey 0px 0px 10px -5px !important;
 }
@@ -198,6 +203,9 @@ a {
 }
 .bg-green {
     background-color: $bg-bt-green !important;
+}
+.bg-logo-green {
+    background-color: $logo-green !important;
 }
 .bg-blue {
     background-color: $bg-bt-blue !important;
@@ -450,7 +458,7 @@ label {
             color: #61a4d7 !important;
         }
     }
-    .link{
+    .link {
         font-weight: 600;
         color: #bbbcbc !important;
         padding: 0 25px;
@@ -641,4 +649,9 @@ label {
 
 .row_folder:hover{
     border-left: #61a4d7 5px solid;  
+}
+
+.invisible-input {
+    border: none;
+    width: 100%;
 }

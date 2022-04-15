@@ -10,6 +10,7 @@
                     <tr>
                         <td class="text-center">${$("#condominis_table tbody tr").length + 1 }</td>
                         <td class="text-center">
+                            <input type="hidden" name="condomini[${i}][id]">
                             <input name="condomini[${i}][name]" type="text" style="border:none; width: 100%;">
                         </td>
                         <td class="text-left">
