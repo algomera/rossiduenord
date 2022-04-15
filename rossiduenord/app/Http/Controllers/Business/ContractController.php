@@ -91,17 +91,18 @@ class ContractController extends Controller
             //taking the full name
             $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             //creating the path
-            $practice = $contract->practice;
-            $path = $file->storeAs('practices/' . $practice->id . '/contracts'. "/$contract->id".  '/signed' , $filename . '.' . $extension);
-
             $new_signed = [
                 'contract_id' => $contract->id,
                 'name' => $filename,
-                'path' => $path
+                'path' => ''
             ];
 
             //creazione record nel db 
-            Signed::create($new_signed);
+            $signed = Signed::create($new_signed);
+            $practice = $contract->practice;
+            $path = $file->storeAs('practices/' . $practice->id . '/contracts'. "/$contract->id".  '/signed' ."/$signed->id"  , $filename . '.' . $extension);
+            $update = ['path' => $path];
+            $signed->update($update);
         }
         
         return redirect()->route('business.signed.index', $contract);
@@ -121,7 +122,14 @@ class ContractController extends Controller
     public function deleteSigned(Signed $signed){
         //deleting the signe contract
         $contract = $signed->contract;
+        $practice = $contract->practice;
+        //finding the contract
         $signed = Signed::find($signed->id);
+        // finding the file in the storage
+        $files = Storage::allFiles('practices/' . "$practice->id" . '/contracts'. "/$contract->id".  '/signed' ."/$signed->id" );
+        // deleteing the file from the storage
+        Storage::delete($files);
+        // deleting the record in the db
         $signed->delete();
         return redirect()->route('business.signed.index',compact('contract'));
     }
