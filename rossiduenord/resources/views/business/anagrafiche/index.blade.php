@@ -2,12 +2,6 @@
 
 @section('content')
     <div class="content-main">
-        @if(session('message'))
-            <div class="alert alert-success" role="alert">
-                <strong>{{session('message')}}</strong>
-            </div>
-        @endif
-
         <a href="{{route('business.anagrafiche.create')}}" class="add-button">+ Aggiungi Anagrafica</a>
 
         <div class="box px-20 pb-20 pt-20">
@@ -35,11 +29,11 @@
                     <table>
                         <thead>
                         <tr style="border-top: 1px solid #707070">
-                            <th style="width: 20%">Categoria</th>
+                            <th style="width: 15%">Categoria</th>
                             <th style="width: 20%">Ragione Sociale</th>
                             <th style="width: 15%">Nome</th>
                             <th style="width: 15%">Cognome</th>
-                            <th style="width: 20%">Ruoli</th>
+                            <th style="width: 25%">Ruoli</th>
                             <th style="width: 10%"></th>
                         </tr>
                         </thead>
@@ -62,8 +56,7 @@
                                     <a href="#" class="btn white bg-green mr-2">
                                         Vedi
                                     </a>
-                                    {{-- {{route('business.anagrafica.edit', $anagrafica)}} --}}
-                                    <a href="" class="btn white bg-black mr-2">
+                                    <a href="{{route('business.anagrafiche.edit', $anagrafica)}}" class="btn white bg-black mr-2">
                                         Modifica
                                     </a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$anagrafica->id}}">

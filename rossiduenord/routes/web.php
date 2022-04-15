@@ -213,6 +213,8 @@ Route::middleware('business')
     Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
     Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
     Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
+    Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
+    Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
     Route::delete('/anagrafiche/{anagrafica}', 'AnagraficheController@destroy')->name('anagrafiche.delete');
 });
 
