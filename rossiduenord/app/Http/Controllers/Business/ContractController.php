@@ -62,7 +62,7 @@ class ContractController extends Controller
         return Storage::download($file->path);
     }
 
-    public function show(Contract $contract){
+    public function signedIndex(Contract $contract){
 
         //elements
         $practice = $contract->practice;
@@ -104,7 +104,13 @@ class ContractController extends Controller
             Signed::create($new_signed);
         }
         
-        return redirect()->route('business.signed.show', $contract);
+        return redirect()->route('business.signed.index', $contract);
+    }
+
+
+    public function signedShow(Signed $signed){
+
+        return view('business.contract.signedShow', compact('signed'));
     }
 
     public function signedDownload($id){
@@ -114,8 +120,9 @@ class ContractController extends Controller
 
     public function deleteSigned(Signed $signed){
         //deleting the signe contract
+        $contract = $signed->contract;
         $signed = Signed::find($signed->id);
         $signed->delete();
-        return redirect()->route('business.signed.show');
+        return redirect()->route('business.signed.index',compact('contract'));
     }
 }
