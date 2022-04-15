@@ -17,4 +17,8 @@ class Contract extends Model
     {
         return $this->belongsTo(Practice::class);
     }
+
+    public function signeds(){
+        return $this->hasMany(Signed::class);
+    }
 }

@@ -219,7 +219,8 @@ Route::middleware('business')
 
     //contract
     Route::get('/contracts/{practice}','ContractController@originalIndex')->name('contracts.index');
-    Route::post('/new/contracts/{practice}','ContractController@originalStore')->name('contract.store');
+    Route::get('/contracts/signed/{contract}','ContractController@show')->name('signed.show');
+    Route::post('/new/signed/{contract}','ContractController@signedStore')->name('signed.store');
     Route::get('/contract/download/{id}','ContractController@download')->name('contract.download');
 });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContractsTable extends Migration
+class CreateSignedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('signeds', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('practice_id')->unsigned();
-            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+            $table->bigInteger('contract_id')->unsigned();
+            $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('path')->nullable();
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('signeds');
     }
 }

@@ -11,19 +11,16 @@ class Contracts{
             [
                 'practice_id' => $id, 
                  'name' => 'contratto.pdf',
-                'tipology' => 'originals',
                  'path'=> 'practices/default/contratto.pdf'
             ],
             [
                 'practice_id' => $id, 
                  'name' => 'contratto.pdf',
-                'tipology' => 'originals',
                  'path'=> 'practices/default/contratto.pdf'
             ],
             [
                 'practice_id' => $id, 
                  'name' => 'contratto.pdf',
-                'tipology' => 'originals',
                  'path'=> 'practices/default/contratto.pdf'
             ]
         ];

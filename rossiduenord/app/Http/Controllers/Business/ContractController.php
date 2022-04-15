@@ -19,7 +19,7 @@ class ContractController extends Controller
         $building = $practice->building;
 
         //query contracts array
-        $contracts = $practice->contracts->where('tipology', '=', 'originals');
+        $contracts = $practice->contracts;
 
         //verify if records are present on db
         if($contracts == null){
@@ -47,7 +47,6 @@ class ContractController extends Controller
                 'practice_id' => $practice->id,
                 'name' => $filename,
                 'path' => $path,
-                'tipology' => $request['tipology']
             ];
 
             //creazione record nel db 
@@ -56,29 +55,53 @@ class ContractController extends Controller
         return redirect()->route('business.contracts.index', $practice);
     }
 
+    //download the contract file
+    public function download($id,Contract $contract){
+        $file = Contract::find($id);
+        return Storage::download($file->path);
+    }
 
+    public function show(Contract $contract){
 
-    public function modifiedIndex(Practice $practice){
+        //elements
+        $practice = $contract->practice;
+        $photos = $practice->photos;
         $videos = $practice->videos;
         $subject = $practice->subject;
         $applicant = $practice->applicant;
         $building = $practice->building;
 
-        //query contracts array
-        $contracts = $practice->contracts->where('tipology', '=', 'modified');
-
-        //verify if records are present on db
-        if($contracts == null){
-            // assign the records to the array
-            $contracts = [];
+        //contracts
+        $signeds = [];
+        if($contract->signeds){
+            $signeds = $contract->signeds;
         }
 
-        return view('business.contracts.modifiedIndex');
+        return view('business.contract.signedIndex',compact('signeds','practice','applicant','building','subject','photos','videos'));
     }
 
+    public function signedStore(Request $request,Contract $contract){
+        //verify the presence of the file
+        if($request->hasFile('contract')){
+            //saving file
+            $file = $request->file('contract');
+            // taking the extensione 
+            $extension = $file->extension();
+            //taking the full name
+            $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            //creating the path
+            $practice = $contract->practice;
+            $path = $file->storeAs('practices/' . $practice->id . '/contracts'. $contract->id .'/signed' , $filename . '.' . $extension);
 
-    public function download($id,Contract $contract){
-        $file = Contract::find($id);
-        return Storage::download($file->path);
+            $new_signed = [
+                'contract_id' => $contract->id,
+                'name' => $filename,
+                'path' => $path
+            ];
+
+            //creazione record nel db 
+            Contract::create($new_signed);
+        }
+        return redirect()->route('business.contracts.show', $contract);
     }
 }
