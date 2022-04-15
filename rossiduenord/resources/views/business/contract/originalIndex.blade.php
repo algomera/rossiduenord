@@ -1,8 +1,6 @@
 @extends('business.layouts.business')
 @section('content')
 @include('business.layouts.partials.practiceNav')
-    <form action="{{route('business.contract.store',$practice->id)}}" method="post" enctype="multipart/form-data">
-        @csrf
         <div class="bg-white px-20 pb-5">
             <div class="table mt-2">
     
@@ -28,7 +26,7 @@
                                 <td></td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="" target="_blank" class="btn btn-primary px-3">Apri</a>
+                                        <a href="" target="_blank" class="btn btn-primary px-3">Carica</a>
                                     </div>
                                 </td>
                             </tr>
@@ -37,13 +35,6 @@
                         @endforelse
                     </tbody>
                 </table>
-                    <div class="mt-3">
-                            <label for="contract_upload" class="btn bg-logo-green white">
-                                Inserisi <i class="fa-solid fa-file-arrow-up"></i>
-                                <input type="file" name="contract" id="contract_upload" hidden>
-                                <input type="text" name="tipology" value="originals" hidden>
-                            </label>
-                    </div>
             </div>
             <div class="box-fixed">
                 <a href="{{ route('business.practice.index') }}" class="add-button" style="background-color: #818387" >
@@ -54,5 +45,4 @@
                 </button>
             </div>
         </div>
-    </form>
 @endsection

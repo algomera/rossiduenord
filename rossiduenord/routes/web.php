@@ -218,8 +218,8 @@ Route::middleware('business')
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 
     //contract
-    Route::get('/contracts/{practice}','ContractController@index')->name('contracts.index');
-    Route::post('/new/contracts/{practice}','ContractController@store')->name('contract.store');
+    Route::get('/contracts/{practice}','ContractController@originalIndex')->name('contracts.index');
+    Route::post('/new/contracts/{practice}','ContractController@originalStore')->name('contract.store');
     Route::get('/contract/download/{id}','ContractController@download')->name('contract.download');
 });
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ContractController extends Controller
 {
-    public function index(Practice $practice){
+    public function originalIndex(Practice $practice){
         //practice nav elemements
         $photos = $practice->photos;
         $videos = $practice->videos;
@@ -27,11 +27,11 @@ class ContractController extends Controller
             $contracts = [];
         }
 
-        return view('business.contract.index', compact('practice','applicant','building', 'subject','videos','photos','contracts'));
+        return view('business.contract.originalIndex', compact('practice','applicant','building', 'subject','videos','photos','contracts'));
     }
 
 
-    public function store(Request $request, Practice $practice,Contract $contract){
+    public function originalStore(Request $request, Practice $practice,Contract $contract){
         //verify the presence of the file
         if($request->hasFile('contract')){
             //saving file
@@ -54,6 +54,26 @@ class ContractController extends Controller
             Contract::create($new_contract);
         }
         return redirect()->route('business.contracts.index', $practice);
+    }
+
+
+
+    public function modifiedIndex(Practice $practice){
+        $videos = $practice->videos;
+        $subject = $practice->subject;
+        $applicant = $practice->applicant;
+        $building = $practice->building;
+
+        //query contracts array
+        $contracts = $practice->contracts->where('tipology', '=', 'modified');
+
+        //verify if records are present on db
+        if($contracts == null){
+            // assign the records to the array
+            $contracts = [];
+        }
+
+        return view('business.contracts.modifiedIndex');
     }
 
 
