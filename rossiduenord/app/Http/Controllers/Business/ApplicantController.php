@@ -13,8 +13,8 @@ use App\{FinalState,
     Variant,
     VerticalWall, 
     Video,
-    Helpers\Folder_documents
 };
+use App\Helpers\Folder_documents;
 use App\Helpers\Contracts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
