@@ -823,33 +823,7 @@
                                 </p>
                             </div>
 
-                            <div class="d-flex justify-content-between mt-4" style="width: 100%">
-                                <p class="m-0 mt-2 font-500">Avanzamento lavori trainanti</p>
-                                <table class="table_bonus" style="width: 70%">
-                                    <thead>
-                                        <tr>
-                                            <td style="width:25%;"><b>Lavori</b></td>
-                                            <td style="width:10%;"><b>% SAL 1</b></td>
-                                            <td style="width:10%;"><b>% SAL 2</b></td>
-                                            <td style="width:10%;"><b>% SAL F</b></td>
-                                            <td style="width:15%;"><b>Importo SAL 1</b></td>
-                                            <td style="width:15%;"><b>Importo SAL 2</b></td>
-                                            <td style="width:15%;"><b>Importo SAL F</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                            <td class="text-right"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            
 
                             <div class="d-flex align-items-center mt-5" style="width: 80%">
                                 <p class="m-0 font-500">per un ammontare pari a</p>
