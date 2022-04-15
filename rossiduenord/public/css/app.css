@@ -195,7 +195,7 @@ a:hover {
 }
 
 .bg-logo-green {
-  background-color: #4cad4e;
+  background-color: #4cad4e !important;
 }
 
 .bg-lightgrey {
