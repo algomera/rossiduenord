@@ -92,7 +92,7 @@ class ContractController extends Controller
             $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             //creating the path
             $practice = $contract->practice;
-            $path = $file->storeAs('practices/' . $practice->id . '/contracts'. $contract->id .'/signed' , $filename . '.' . $extension);
+            $path = $file->storeAs('practices/' . $practice->id . '/contracts'. "/$contract->id".  '/signed' , $filename . '.' . $extension);
 
             $new_signed = [
                 'contract_id' => $contract->id,
@@ -103,12 +103,19 @@ class ContractController extends Controller
             //creazione record nel db 
             Signed::create($new_signed);
         }
-
+        
         return redirect()->route('business.signed.show', $contract);
     }
 
     public function signedDownload($id){
         $file = Signed::find($id);
         return Storage::download($file->path);
+    }
+
+    public function deleteSigned(Signed $signed){
+        //deleting the signe contract
+        $signed = Signed::find($signed->id);
+        $signed->delete();
+        return redirect()->route('business.signed.show');
     }
 }
