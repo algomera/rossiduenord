@@ -22,8 +22,6 @@ class CreateSubjectRolesTable extends Migration
 
         Schema::create('anagrafiche_roles', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('practice_id')->unsigned();
-            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('anagrafica_id')->unsigned();
             $table->foreign('anagrafica_id')->references('id')->on('anagrafiche')->onDelete('cascade');
             $table->bigInteger('subject_role_id')->unsigned();

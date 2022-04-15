@@ -130,7 +130,7 @@ class TestSeeder extends Seeder
         ]);
 
         // Anagrafica - Role
-        $azienda->roles()->attach([1,4,10], ['practice_id' => $practice->id]);
-        $area_manager->roles()->attach([1, 17], ['practice_id' => $practice->id]);
+        $azienda->roles()->attach([1,4,10]);
+        $area_manager->roles()->attach([1, 17]);
     }
 }
