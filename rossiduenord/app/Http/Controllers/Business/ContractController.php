@@ -126,7 +126,7 @@ class ContractController extends Controller
         //finding the contract
         $signed = Signed::find($signed->id);
         // finding the file in the storage
-        $files = Storage::allFiles('practices/' . "$practice->id" . '/contracts'. "/$contract->id".  '/signed' ."/$signed->id" );
+        $files = Storage::deleteDirectory('practices/' . $practice->id . '/contracts/'. $contract->id.  '/signed/' .$signed->id );
         // deleteing the file from the storage
         Storage::delete($files);
         // deleting the record in the db
