@@ -17,6 +17,8 @@ class CreateSubFoldersTable extends Migration
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+            $table->bigInteger('folder_document_id')->unsigned();
+            $table->foreign('folder_document_id')->references('id')->on('folder_documents')->onDelete('cascade');
             $table->string('folder_type');
             $table->string('status')->nullable();
             $table->string('name');

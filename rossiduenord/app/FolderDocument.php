@@ -9,6 +9,12 @@ class FolderDocument extends Model
     protected $guarded = [];
 
     public function practice() {
-        return $this->belongsTo(Practice::class, 'practice_id');
+        return $this->belongsTo(Practice::class);
     }
+
+    public function sub_folder()
+    {
+        return $this->hasMany(Sub_folder::class);
+    }
+
 }

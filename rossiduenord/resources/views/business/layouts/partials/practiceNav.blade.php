@@ -32,7 +32,7 @@
                 <a href="{{route('business.medias', $practice->id)}}" class="{{request()->is('business/medias/*') ? 'visited' : ''}}">
                     FOTO E VIDEO
                 </a>
-                <a href="{{route('business.folderDocument_show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
+                <a href="{{route('business.folderDocument.show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
                     DOCUMENTI RICHIESTI
                 </a>
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">

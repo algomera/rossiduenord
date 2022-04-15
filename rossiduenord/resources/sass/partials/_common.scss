@@ -57,6 +57,13 @@ a {
     border: 1px solid #707070;
     border-radius: 3px;
     text-align: center;
+
+    &:hover{
+        background-color: transparent!important;
+        color: #61a4d7!important;
+        border: #61a4d7 1px solid!important;
+        border-style: inset;
+    }
 }
 
 .back {
@@ -611,11 +618,27 @@ label {
 
 .active_folder {
     background-color: #f7f7f7 !important;
-    border: 3px solid #61a4d7 !important;
+    border: 1px solid #61a4d7 !important;
     color: #61a4d7 !important;
     box-shadow: 0px 0px 10px 0px #61a4d7;
 }
 
 .preview {
     width: 100%;
+}
+
+.overflow-custom{
+    -ms-overflow-style: none!important;  
+    scrollbar-width: none!important;  
+}
+.overflow-custom::-webkit-scrollbar {
+    display: none!important;
+}
+
+.selected_folder{
+    border-left: #61a4d7 5px solid;
+}
+
+.row_folder:hover{
+    border-left: #61a4d7 5px solid;  
 }

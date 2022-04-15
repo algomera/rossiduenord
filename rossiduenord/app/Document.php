@@ -13,7 +13,7 @@ class Document extends Model
         'note',
         'type',
     ];
-    public function sub_folders() {
-        return $this->belongsTo(Sub_folders::class);
+    public function sub_folder() {
+        return $this->belongsTo(Sub_folder::class);
     }
 }

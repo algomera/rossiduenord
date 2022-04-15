@@ -199,11 +199,13 @@ Route::middleware('business')
     Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
     Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 
-    Route::get('/folder_document/{practice}', 'FolderDocumentController@index')->name('folder_document');
-    Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folderDocument_show');
-    Route::get('/folder_document/{practice}/{folder_document}/{document}', 'FolderDocumentController@show_document')->name('document_show');
-    Route::resource('/documents', 'DocumentController');
-
+    // folder document
+    Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folderDocument.show');
+    Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}', 'FolderDocumentController@show_document')->name('document.show');
+    Route::post('/folder_document/{practice}/{folder_document}/{sub_folder}/store', 'FolderDocumentController@store')->name('document.store');
+    Route::delete('/folder_document/{practice}/{folder_document}/{sub_folder}/{document}/delete', 'FolderDocumentController@destroy')->name('document.destroy');
+    
+    // condomini export
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 });
 

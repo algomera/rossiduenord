@@ -109,9 +109,9 @@ class Practice extends Model
         return $this->hasMany(FolderDocument::class);
     }
 
-    public function documents()
+    public function sub_folder()
     {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(Sub_folder::class);
     }
 
     public function surfaces()

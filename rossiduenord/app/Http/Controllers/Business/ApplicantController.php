@@ -40,6 +40,7 @@ class ApplicantController extends Controller
      */
     public function store(Request $request, Practice $practice, Applicant $applicant, FolderDocument $folderDocument)
     {
+       
         $validated = $request->validate([
             'applicant' => 'nullable | string',
             'name' => 'nullable | string | min:3 | max:100',
@@ -81,7 +82,7 @@ class ApplicantController extends Controller
 
         // folder document creation
         Folder_documents::addFolders($practice_id, $folderDocument);
-
+        //dd($practice->folder_documents);
         return redirect()->route('business.applicant.edit', $applicant);
     }
 
