@@ -5,7 +5,7 @@ use App\FolderDocument;
 use App\Sub_folder;
 use App\Practice;
 
-class Folder_documents
+class folder_documents
 
 {
     public static function addFolders($practice_id, $folder_document)

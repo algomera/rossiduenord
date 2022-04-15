@@ -14,7 +14,7 @@ use App\{FinalState,
     VerticalWall, 
     Video,
 };
-use App\Helpers\Folder_documents;
+use App\Helpers\folder_documents;
 use App\Helpers\Contracts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -82,7 +82,7 @@ class ApplicantController extends Controller
         Variant::create($data);
 
         // folder document creation
-        Folder_documents::addFolders($practice_id, $folderDocument);
+        folder_documents::addFolders($practice_id, $folderDocument);
         Contracts::createInitialContracts($practice_id);
         return redirect()->route('business.applicant.edit', $applicant);
     }
