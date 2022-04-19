@@ -32,8 +32,8 @@
                             <h6 class="mb-3 mt-3">Attori/Soggetti</h6>
                             <div class="row">
                                 <div class="col-md">
-                                    <x-subject_select label="General Contractor" name="general_contractor" :subject="$subject" :items="$general_contractor"></x-subject_select>
-                                    <x-subject_select label="Azienda edile" name="construction_company" :subject="$subject" :items="$construction_company"></x-subject_select>
+                                    <x-subject_select label="General Contractor*" name="general_contractor" :subject="$subject" :items="$general_contractor"></x-subject_select>
+                                    <x-subject_select label="Azienda edile*" name="construction_company" :subject="$subject" :items="$construction_company"></x-subject_select>
                                     <x-subject_select label="Azienda imp. idrotermosanitari" name="hydrothermal_sanitary_company" :subject="$subject" :items="$hydrothermal_sanitary_company"></x-subject_select>
                                     <x-subject_select label="Azienda imp. elettrici/fotovoltaici" name="photovoltaic_company" :subject="$subject" :items="$photovoltaic_company"></x-subject_select>
                                     <x-subject_select label="Termotecnico APE Ante" name="technician_APE_Ante" :subject="$subject" :items="$technician_APE_Ante"></x-subject_select>

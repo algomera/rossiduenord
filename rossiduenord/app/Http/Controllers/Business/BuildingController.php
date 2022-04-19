@@ -83,26 +83,26 @@ class BuildingController extends Controller
     {
         $validated = $request->validate([
             'practice_id' => 'nullable | numeric',
-            'intervention_name' => 'nullable | string |min:2',
-            'company_role' => 'nullable | string',
-            'intervention_tipology' => 'nullable | string',
-            'build_address' => 'nullable | string |min:5| max:150',
-            'build_civic_number' => 'nullable | numeric',
-            'common' => 'nullable | string |min:2 |max:100',
-            'province' => 'nullable | string |min:2|max:2',
-            'region' => 'nullable | string',
-            'cap' => 'nullable |numeric',
-            'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
-            'iban' => 'nullable | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
-            'build_type' => 'nullable | string',
-            'zone' => 'nullable | string',
-            'section' => 'nullable | numeric |min:1',
-            'foil' => 'nullable | numeric |min:1',
-            'particle' => 'nullable | numeric |min:1',
-            'subaltern' => 'nullable | string |min:2',
-            'unit_builidg_number' => 'nullable | numeric |min:1',
-            'pertinence_number' => 'nullable | numeric |min:1',
-            'resolution_stairs' => 'nullable | numeric |min:1',
+            'intervention_name' => 'required | string |min:2',
+            'company_role' => 'required | string',
+            'intervention_tipology' => 'required | string',
+            'build_address' => 'required | string |min:5| max:150',
+            'build_civic_number' => 'required | numeric',
+            'common' => 'required | string |min:2 |max:100',
+            'province' => 'required | string |min:2|max:2',
+            'region' => 'required | string',
+            'cap' => 'required |numeric',
+            'fiscal_code' => 'required | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
+            'iban' => 'required | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
+            'build_type' => 'required | string',
+            'zone' => 'required | string',
+            'section' => 'required | numeric |min:1',
+            'foil' => 'required | numeric |min:1',
+            'particle' => 'required | numeric |min:1',
+            'subaltern' => 'required | string |min:2',
+            'unit_builidg_number' => 'required | numeric |min:1',
+            'pertinence_number' => 'required | numeric |min:1',
+            'resolution_stairs' => 'required | numeric |min:1',
             'note' => 'nullable | string',
             'cultural_constraints' => 'nullable | string',
             'denied_intervents' => 'nullable | string',
@@ -211,7 +211,7 @@ class BuildingController extends Controller
             'administrator_email.min' => 'la mail dell\'amministratore è troppo corta',
             'administrator_email.max' => 'La mail dell\'amministratore è troppo lunga',
         ]);
-
+        //dd($request->get('condomini'));
         // Se esiste "imported_excel_file"
         if($request->hasFile('imported_excel_file')) {
             // Recupero l'estensione e il nome del file
@@ -238,9 +238,11 @@ class BuildingController extends Controller
                 $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);
             }
         }
-
-        return redirect()->route('business.superbonus.index', [$practice]);
-//        return view('business.superbonus.index', compact('building','practice','applicant','subject'));
+        if($request->get('condomini') > 0){
+            return redirect()->route('business.superbonus.index', [$practice]);
+        }else{
+            return back()->withErrors('Inserisci almeno un condomino!');
+        }
     }
 
     public function downloadExcel($id) {
