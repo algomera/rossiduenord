@@ -237,7 +237,7 @@ class SubjectController extends Controller
         ]
     );
 
-        if($signaler->consultant_type) {
+        if($signaler && $signaler->consultant_type) {
             $validated['signaler'] = $signaler->consultant_type;
         } else {
             $validated['signaler'] = null;
