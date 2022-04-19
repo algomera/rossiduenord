@@ -72,6 +72,24 @@ a:hover {
   border-style: inset;
 }
 
+.folder {
+  background-color: #636362 !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.35px !important;
+  border: 1px solid #707070;
+  border-radius: 3px;
+  text-align: center;
+}
+.folder:hover {
+  background-color: transparent !important;
+  color: #636362 !important;
+  border: #636362 1px solid !important;
+  border-style: inset;
+}
+
 .back {
   color: black !important;
 }
@@ -140,6 +158,14 @@ a:hover {
   letter-spacing: 0.35px;
   border-radius: 3px;
   border: 1px solid #707070;
+}
+
+.file-btn {
+  background-color: #eeeded;
+  border: 1px solid grey;
+  color: black;
+  padding: 5px 5px;
+  border-radius: 3px;
 }
 
 .btn-delete {
@@ -614,9 +640,9 @@ label {
 
 .active_folder {
   background-color: #f7f7f7 !important;
-  border: 1px solid #61a4d7 !important;
-  color: #61a4d7 !important;
-  box-shadow: 0px 0px 10px 0px #61a4d7;
+  border: 1px solid #636362 !important;
+  color: #636362 !important;
+  box-shadow: 0px 0px 10px 0px #636362;
 }
 
 .preview {
