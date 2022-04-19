@@ -130,4 +130,7 @@ class Practice extends Model
     public function contracts(){
         return $this->hasMany(Contract::class);
     }
+    public function policies(){
+        return $this->hasMany(Policy::class);
+    }
 }

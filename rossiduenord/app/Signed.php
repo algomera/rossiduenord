@@ -17,4 +17,9 @@ class Signed extends Model
     {
         return $this->belongsTo(Contract::class);
     }
+
+    public function policy()
+    {
+        return $this->belongsTo(Policy::class);
+    }
 }

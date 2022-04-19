@@ -37,8 +37,8 @@
                 <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
                     SUPERBONUS
                 </a>
-                <a href="{{route('business.contracts.index', $practice->id)}}" class="{{request()->is('business/contracts*') ? 'visited' : ''}}">CONTRATTI</a>
-                <a href="">POLIZZE</a>
+                <a href="{{route('business.contracts.index', $practice->id)}}" class="{{ request()->is('business/contracts*') ? 'visited' : ''}} ">CONTRATTI</a>
+                <a href="{{route('business.policies.index', $practice->id)}}" class="{{request()->is('business/policies*') ? 'visited' : ''}}">POLIZZE</a>
             </div>
 
             @if (Route::currentRouteName() == 'business.applicant.create')
