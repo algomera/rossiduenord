@@ -10,18 +10,18 @@ class Contracts{
         $data = [
             [
                 'practice_id' => $id, 
-                 'name' => 'contratto.pdf',
-                 'path'=> 'default/contratto.pdf'
+                 'name' => 'CAR ROSSI DUE NORD',
+                 'path'=> 'default/CAR ROSSIDUE NORD ( PRE-COMPILATO ) edit 4 - buono.pdf'
             ],
             [
                 'practice_id' => $id, 
-                 'name' => 'contratto.pdf',
-                 'path'=> 'default/contratto.pdf'
+                 'name' => 'POSTUMA ROSSI DUE NORD',
+                 'path'=> 'default/POSTUMA ROSSIDUE NORD ( PRE-COMPILATO ) edit 2 - buono.pdf'
             ],
             [
                 'practice_id' => $id, 
-                 'name' => 'contratto.pdf',
-                 'path'=> 'default/contratto.pdf'
+                 'name' => 'TUTELA LEGALE',
+                 'path'=> 'default/TUTELA LEGALE ( PRE-COMPILATO) edit 1_.pdf'
             ]
         ];
 
