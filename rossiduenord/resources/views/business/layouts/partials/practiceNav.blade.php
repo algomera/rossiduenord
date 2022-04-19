@@ -15,7 +15,6 @@
                 Scheda pratica
             </span>
             <hr class="bg-black" style="margin-top: 5px;">
-
             <div class="d-flex justify-content-between menu mb-4">
                 <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{request()->is('business/applicant*') ? 'visited' : ''}}">
                     RICHIEDENTE
