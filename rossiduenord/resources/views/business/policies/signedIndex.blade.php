@@ -4,7 +4,7 @@
  <form action="{{route('business.policies.signed.store', $policy)}}" method="post" enctype="multipart/form-data">
      @csrf
      <div class="px-20 bg-white">
-        <a href="{{url()->previous()}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
+        <a href="{{route('business.policies.index',$policy->practice)}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
         <p class="black text-md"><b>Elenco polizze caricate</b></p>
         <hr class="bg-black">
         {{-- table --}}
