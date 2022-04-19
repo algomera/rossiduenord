@@ -632,10 +632,16 @@
 
                         <div class="mt-5">{{-- table list condomini --}}
                             <div class="d-flex align-items-center mb-3">
+
                                 <h6 class="mb-0">Lista condomini</h6>
                                 <div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>
                                 <div class="d-flex align-items-center ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
-                                    <input type="file" name="imported_excel_file" id="imported_excel_file" />
+                                    <label for="imported_excel_file" class="mt-2">
+                                      <span class=" file-btn clickable"> Carica lista condomini <i class="fa-solid fa-file-arrow-up"></i> </span>
+                                      <input type="file" name="imported_excel_file" id="imported_excel_file" hidden />
+                                    </label>
+
+
                                     @if($building->imported_excel_file)
                                         <div class="d-flex" id="imported_excel_file_box">
                                             <div class="d-flex flex-column align-items-start ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">

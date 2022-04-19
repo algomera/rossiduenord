@@ -11,7 +11,7 @@
             @foreach ($folder_documents as $folder_document)
                 <div>
                     <a href="{{ route('business.folderDocument.show', [$practice, $folder_document])}}">
-                        <button type="button" class="add-button mb-2 {{'business.folderDocument.show' && request()->route()->parameter('folder_document')->name == $folder_document->name ? 'active_folder' : ''}}">
+                        <button type="button" class="folder mb-2 {{'business.folderDocument.show' && request()->route()->parameter('folder_document')->name == $folder_document->name ? 'active_folder' : ''}}">
                             {{$folder_document->name}}
                         </button>
                     </a>
