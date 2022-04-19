@@ -9,6 +9,7 @@ use App\{FinalState,
     Data_project,
     FolderDocument,
     Photo,
+    Policy,
     TrainatedVertWall,
     Variant,
     VerticalWall, 
@@ -16,6 +17,7 @@ use App\{FinalState,
 };
 use App\Helpers\folder_documents;
 use App\Helpers\Contracts;
+use App\Helpers\Policies;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +86,7 @@ class ApplicantController extends Controller
         // folder document creation
         folder_documents::addFolders($practice_id, $folderDocument);
         Contracts::createInitialContracts($practice_id);
+        Policies::createInitialPolicies($practice_id);
         return redirect()->route('business.applicant.edit', $applicant);
     }
 
