@@ -125,6 +125,7 @@
             </div>
         </div>
     </div>
-@stack('scripts')
+    @stack('modals')
+    @stack('scripts')
 </body>
 </html>

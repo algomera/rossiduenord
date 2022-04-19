@@ -164,5 +164,20 @@
 
     </div>{{-- chiusura div content-main praticeNav --}}
 
-
 @endsection
+
+@push('modals')
+    <x-anagrafica-modal />
+@endpush
+
+@push('scripts')
+    <script>
+        function setSubject(p, n, v) {
+            axios.post(`/business/subject/${p}/set`, {
+                name: n,
+                value: v
+            })
+        }
+    </script>
+@endpush
+

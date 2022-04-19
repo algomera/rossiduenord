@@ -29,14 +29,10 @@ class CreateAnagraficheTable extends Migration
             $table->text('iban')->nullable();
             $table->text('vat')->nullable();
             $table->text('fiscal_code')->nullable();
-            $table->text('phone_1')->nullable();
-            $table->text('phone_2')->nullable();
+            $table->text('phone')->nullable();
             $table->text('fax')->nullable();
-            $table->text('mobile')->nullable();
-            $table->text('email_1')->nullable();
-            $table->text('email_2')->nullable();
-            $table->text('email_pec_1')->nullable();
-            $table->text('email_pec_2')->nullable();
+            $table->text('email')->nullable();
+            $table->text('email_pec')->nullable();
             $table->text('ticket_code')->nullable();
             $table->text('date_of_birth')->nullable();
             $table->text('common_of_birth')->nullable();

@@ -258,4 +258,9 @@ class SubjectController extends Controller
     {
         //
     }
+
+    public function setSubject(Practice $practice, Request $request) {
+        $practice->subject[$request->get('name')] = $request->get('value');
+        $practice->subject->save();
+    }
 }

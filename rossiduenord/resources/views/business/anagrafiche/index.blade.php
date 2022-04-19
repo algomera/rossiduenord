@@ -52,10 +52,9 @@
                                     </div>
                                 </td>
                                 <td class="d-flex align-items-center">
-                                    {{-- {{route('business.anagrafica.show', $anagrafica)}} --}}
-                                    <a href="#" class="btn white bg-green mr-2">
+                                    <button type="button" class="viewAnagrafica btn white bg-green mr-2" data-toggle="modal" data-target="#anagrafiche-modal" data-company_name="{{$anagrafica->company_name}}">
                                         Vedi
-                                    </a>
+                                    </button>
                                     <a href="{{route('business.anagrafiche.edit', $anagrafica)}}" class="btn white bg-black mr-2">
                                         Modifica
                                     </a>
@@ -101,6 +100,10 @@
         </div>
     </div>
 @endsection
+
+@push('modals')
+    <x-anagrafica-modal />
+@endpush
 
 @push('scripts')
     <script type="text/javascript">

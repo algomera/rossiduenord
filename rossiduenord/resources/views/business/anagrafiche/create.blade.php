@@ -203,11 +203,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="phone_1" class="text">{{ __('Telefono 1') }}</label>
+                                <label for="phone" class="text">{{ __('Telefono') }}</label>
                                 <div>
-                                    <input id="phone_1" type="text" style="height: 47px!important" class="form-control @error('phone_1') is-invalid @enderror" name="phone_1" value="{{ old('phone_1') }}">
+                                    <input id="phone" type="text" style="height: 47px!important" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
 
-                                    @error('phone_1')
+                                    @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -215,23 +215,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="phone_2" class="text">{{ __('Telefono 2') }}</label>
-                                <div>
-                                    <input id="phone_2" type="text" style="height: 47px!important" class="form-control @error('phone_2') is-invalid @enderror" name="phone_2" value="{{ old('phone_2') }}">
-
-                                    @error('phone_2')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="fax" class="text">{{ __('Fax') }}</label>
@@ -246,30 +229,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="mobile" class="text">{{ __('Cellulare') }}</label>
-                                <div>
-                                    <input id="mobile" type="text" style="height: 47px!important" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}">
-
-                                    @error('mobile')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="email_1" class="text">{{ __('Email 1') }}</label>
+                                <label for="email" class="text">{{ __('Email') }}</label>
                                 <div>
-                                    <input id="email_1" type="email" style="height: 47px!important" class="form-control @error('email_1') is-invalid @enderror" name="email_1" value="{{ old('email_1') }}">
+                                    <input id="email" type="email" style="height: 47px!important" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
 
-                                    @error('email_1')
+                                    @error('email')
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -279,42 +247,11 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="email_2" class="text">{{ __('Email 2') }}</label>
+                                <label for="email_pec" class="text">{{ __('Email PEC') }}</label>
                                 <div>
-                                    <input id="email_2" type="email" style="height: 47px!important" class="form-control @error('email_2') is-invalid @enderror" name="email_2" value="{{ old('email_2') }}">
+                                    <input id="email_pec" type="email" style="height: 47px!important" class="form-control @error('email_pec') is-invalid @enderror" name="email_pec" value="{{ old('email_pec') }}">
 
-                                    @error('email_2')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="email_pec_1" class="text">{{ __('Email PEC 1') }}</label>
-                                <div>
-                                    <input id="email_pec_1" type="email" style="height: 47px!important" class="form-control @error('email_pec_1') is-invalid @enderror" name="email_pec_1" value="{{ old('email_pec_1') }}">
-
-                                    @error('email_pec_1')
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="email_pec_2" class="text">{{ __('Email PEC 2') }}</label>
-                                <div>
-                                    <input id="email_pec_2" type="email" style="height: 47px!important" class="form-control @error('email_pec_2') is-invalid @enderror" name="email_pec_2" value="{{ old('email_pec_2') }}">
-
-                                    @error('email_pec_2')
+                                    @error('email_pec')
                                     <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
