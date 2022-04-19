@@ -11,7 +11,7 @@ class Contracts{
             [
                 'practice_id' => $id, 
                  'name' => 'contratto.pdf',
-                 'path'=> 'practices/default/contratto.pdf'
+                 'path'=> 'storage/app/default/contratto.pdf'
             ],
             [
                 'practice_id' => $id, 

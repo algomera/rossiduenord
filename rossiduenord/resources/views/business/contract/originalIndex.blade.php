@@ -22,7 +22,7 @@
                                 <tr>
                                     <td>{{$contract->id}}</td>
                                     <td>{{$contract->name}}</td>
-                                    <td> <a href="{{route('business.contract.download',$contract->id)}}" class="clickable"> Scarica <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a> </td>
+                                    <td> <a href="{{}}" download class="clickable"> Scarica <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a> </td>
                                     <td> {{count($contract->signeds) > 0 ? 'Caricato' : 'Nessuna modifica'}}</td>
                                     <td>
                                         <div class="d-flex">
