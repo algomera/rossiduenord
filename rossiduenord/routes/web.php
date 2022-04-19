@@ -233,10 +233,15 @@ Route::middleware('business')
     Route::get('/signed/{signed}','ContractController@signedShow')->name('signed.show');
     Route::get('/contract/download/{id}','ContractController@contractDownload')->name('contract.download');
     Route::get('/contract/signed/download/{id}','ContractController@signedDownload')->name('signed.download');
-    Route::delete('/signed/delete/{signed}','ContractController@deleteSigned')->name('signed.delete');
+    Route::delete('/signed/delete/{signed}','ContractController@deleteSigned')->name('contracts.signed.delete');
 
     //policies
     Route::get('/policies/{practice}', 'PolicyController@index')->name('policies.index');
+    Route::get('/policy/download/{id}','PolicyController@policyDownload')->name('policy.download');
+    Route::get('/policies/signed/{policy}', 'PolicyController@signedIndex')->name('policies.signed');
+    Route::post('/new/signedpolicy/{policy}', 'PolicyController@signedStore')->name('policies.signed.store');
+    Route::get('/policies/modified/{id}/download','PolicyController@modifiedDownload')->name('modified.download');
+    Route::delete('/signed/delete/{signed}','PolicyController@deleteSigned')->name('policies.signed.delete');
 });
 
 

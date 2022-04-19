@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-3 mt-3">
-                <form action="{{route('business.signed.delete',$signed)}}" method="post">
+                <form action="{{route('business.contracts.signed.delete',$signed)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Elimina</button>

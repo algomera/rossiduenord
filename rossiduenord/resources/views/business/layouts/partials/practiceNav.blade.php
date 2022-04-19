@@ -39,7 +39,7 @@
                     SUPERBONUS
                 </a>
                 <a href="{{route('business.contracts.index', $practice->id)}}" class="{{ request()->is('business/contracts*') ? 'visited' : ''}} ">CONTRATTI</a>
-                <a href="{{route('business.policies.index', $practice->id)}}" class="{{request()->is('business/polcies*') ? 'visited' : ''}}">POLIZZE</a>
+                <a href="{{route('business.policies.index', $practice->id)}}" class="{{request()->is('business/policies*') ? 'visited' : ''}}">POLIZZE</a>
             </div>
 
             @if (Route::currentRouteName() == 'business.applicant.create')

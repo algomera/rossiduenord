@@ -18,7 +18,17 @@
                             </tr>
                         </thead>
                         <tbody id="table_ContentListFolder" class="text-center">
-                            
+                            @forelse ($policies as $policy)
+                                <tr>
+                                    <td>{{$policy->id}}</td>
+                                    <td>{{$policy->name}}</td>
+                                    <td> <a href="{{route('business.policy.download',$policy->id)}}" class="clickable"> Scarica <i class="fa-solid fa-file-arrow-down fa-1x"></i> </td>
+                                    <td> da caricare </td>
+                                    <td class="text-left"> <a href="{{route('business.policies.signed', $policy->id)}}" class="btn btn-primary"> Carica </a> </td>
+                                </tr>
+                            @empty
+                                Nessuna polizza inserita
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

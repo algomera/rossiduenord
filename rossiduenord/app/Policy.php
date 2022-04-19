@@ -17,4 +17,8 @@ class Policy extends Model
     {
         return $this->belongsTo(Practice::class);
     }
+    public function modifieds()
+    {
+        return $this->hasMany(Modified::class);
+    }
 }
