@@ -150,6 +150,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
+        $signaler = auth()->user()->anagrafiche()->where('company_name', $request->consultant)->first();
         $validated = $request->validate([
             'practice_id' => 'nullable | numeric',
             'general_contractor' => 'nullable | string |min:3|max:100',
@@ -235,6 +236,12 @@ class SubjectController extends Controller
             'responsible_technician' => 'Il nome del responsabile tecnico è troppo lungo',
         ]
     );
+
+        if($signaler->consultant_type) {
+            $validated['signaler'] = $signaler->consultant_type;
+        } else {
+            $validated['signaler'] = null;
+        }
 
         $subject->update($validated);
 

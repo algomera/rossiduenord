@@ -53,7 +53,14 @@
                                         <div class="col-6">
                                             <x-subject_select label="Consulente" name="consultant" :subject="$subject" :items="$consultant"></x-subject_select>
                                         </div>
-{{--                                        <div class="col-6"></div>--}}
+                                        @if($subject->signaler)
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="project_manager" style="display:inline-block;" >Tipo di consulente</label><br/>
+                                                    <input type="text" readonly disabled class="col-md-12 form-control" value="{{$subject->signaler}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
