@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{Practice, Subject, Applicant, Building, Bonus};
+use App\{Anagrafica, Practice, Subject, Applicant, Building, Bonus, SubjectRole};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -63,7 +63,82 @@ class SubjectController extends Controller
         $practice = $subject->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
-        return view('business.subject.edit', compact('practice', 'subject', 'applicant', 'building'));
+
+        $consultant = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 3);
+        })->get();
+        $lending_bank = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 4);
+        })->get();
+        $general_contractor = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 5);
+        })->get();
+        $construction_company = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 6);
+        })->get();
+        $hydrothermal_sanitary_company = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 7);
+        })->get();
+        $photovoltaic_company = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 8);
+        })->get();
+        $technician_APE_Ante = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 9);
+        })->get();
+        $structural_engineer = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 10);
+        })->get();
+        $work_director = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 11);
+        })->get();
+        $technical_assev = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 12);
+        })->get();
+        $fiscal_assev = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 13);
+        })->get();
+        $phiscal_transferee = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 15);
+        })->get();
+        $insurer = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 16);
+        })->get();
+        $area_manager = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 17);
+        })->get();
+        $technician_energy_efficient = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 18);
+        })->get();
+        $technician_APE_Post = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 19);
+        })->get();
+        $metric_calc_technician = Anagrafica::whereHas('roles', function ($q) {
+            $q->where('subject_role_id', 20);
+        })->get();
+
+        return view('business.subject.edit', compact(
+            'consultant',
+            'lending_bank',
+            'general_contractor',
+            'construction_company',
+            'hydrothermal_sanitary_company',
+            'photovoltaic_company',
+            'technician_APE_Ante',
+            'structural_engineer',
+            'work_director',
+            'technical_assev',
+            'fiscal_assev',
+            'phiscal_transferee',
+            'insurer',
+            'area_manager',
+            'technician_energy_efficient',
+            'technician_APE_Post',
+            'metric_calc_technician',
+            'practice',
+            'subject',
+            'applicant',
+            'building'
+        ));
     }
 
     /**
@@ -75,6 +150,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
+        $signaler = auth()->user()->anagrafiche()->where('company_name', $request->consultant)->first();
         $validated = $request->validate([
             'practice_id' => 'nullable | numeric',
             'general_contractor' => 'nullable | string |min:3|max:100',
@@ -160,6 +236,12 @@ class SubjectController extends Controller
             'responsible_technician' => 'Il nome del responsabile tecnico è troppo lungo',
         ]
     );
+
+        if($signaler && $signaler->consultant_type) {
+            $validated['signaler'] = $signaler->consultant_type;
+        } else {
+            $validated['signaler'] = null;
+        }
 
         $subject->update($validated);
 
