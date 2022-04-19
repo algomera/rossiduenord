@@ -35,7 +35,7 @@
                     <div style="width: 15%;" class="form-group">
                         <label for="import" class="text">{{ __('Importo stimato ') }}</label>
                         <div>
-                            <input id="import" type="text" step="0.01" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{old('import') ?? $practice->import }}" autocomplete="import" autofocus>
+                            <input id="import" type="text" step="0.01" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{old('import') ?? $practice->import }}" autocomplete="import" autofocus required>
                             
                             @error('import')
                             <span class="invalid-feedback" role="alert">
@@ -49,9 +49,9 @@
                 <div class="d-flex">
                     <div class="form-group" style="width: 25%; margin-right: 20px;">
                         <label for="practical_phase" class="text">Fase pratica</label>
-                        <select style="height: 47px!important" class="form-control bg-body @error('practical_phase') is-invalid @enderror" name="practical_phase" id="practical_phase" value="{{ old('practical_phase') ?? $practice->practical_phase}}">
-                            <optgroup label="seleziona fase pratica">
-                                <option {{ $practice->practical_phase == 'Nessuna' ? 'selected' : ''}} {{old('practical_phase') == 'Nessuna' ? 'selected' : ''}} value="Nessuna">Nessuna</option>
+                        <select style="height: 47px!important" class="form-control bg-body @error('practical_phase') is-invalid @enderror" name="practical_phase" id="practical_phase" value="{{ old('practical_phase') ?? $practice->practical_phase}}" required>
+                            <optgroup label="Seleziona fase pratica">
+                                <option value="">Nessuna</option>
                                 <option {{ $practice->practical_phase == 'In istruttoria' ? 'selected' : ''}} {{old('practical_phase') == 'In istruttoria' ? 'selected' : ''}} value="In istruttoria">In istruttoria</option>
                                 <option {{ $practice->practical_phase == 'In progettazione' ? 'selected' : ''}} {{old('practical_phase') == 'In progettazione' ? 'selected' : ''}} value="In progettazione">In progettazione</option>
                                 <option {{ $practice->practical_phase == 'In offertazione' ? 'selected' : ''}} {{old('practical_phase') == 'In offertazione' ? 'selected' : ''}} value="In offertazione">In offertazione</option>
@@ -75,8 +75,9 @@
 
                     <div class="form-group" style="width: 15%;">
                         <label for="real_estate_type" class="text">Tipo immobile</label>
-                        <select style="height: 47px!important" class="form-control bg-body @error('real_estate_type') is-invalid @enderror" name="real_estate_type" id="real_estate_type">
-                            <optgroup label="seleziona tipo immobile">
+                        <select style="height: 47px!important" class="form-control bg-body @error('real_estate_type') is-invalid @enderror" name="real_estate_type" id="real_estate_type" required>
+                            <optgroup label="Seleziona tipo immobile">
+                                <option value="">Seleziona</option>
                                 <option {{ $practice->real_estate_type == 'Condominio' ? 'selected' : ''}} {{old('real_estate_type') == 'Condominio' ? 'selected' : ''}} value="Condominio">Condominio</option>
                                 <option {{ $practice->real_estate_type == 'Unifamiliare' ? 'selected' : ''}} {{old('real_estate_type') == 'Unifamiliare' ? 'selected' : ''}} value="Unifamiliare">Unifamiliare</option>
                                 <option {{ $practice->real_estate_type == 'Fabbricato industriale' ? 'selected' : ''}} {{old('real_estate_type') == 'Fabbricato industriale' ? 'selected' : ''}} value="Fabbricato industriale">Fabbricato industriale</option>
@@ -93,8 +94,9 @@
                 <div class="d-flex justify-content-between">
                     <div class="form-group" style="width: 15%;">
                         <label for="month" class="text">Mese</label>
-                        <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month">
-                            <optgroup label="seleziona mese">
+                        <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month" required>
+                            <optgroup label="Seleziona mese">
+                                <option value="">Seleziona</option>
                                 <option {{ $practice->month == 'gennaio' ? 'selected' : ''}} {{old('month') == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>
                                 <option {{ $practice->month == 'febbraio' ? 'selected' : ''}} {{old('month') == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>
                                 <option {{ $practice->month == 'marzo' ? 'selected' : ''}} {{old('month') == 'marzo' ? 'selected' : ''}} value="marzo">marzo</option>
@@ -119,7 +121,7 @@
                     <div class="form-group" style="width: 10%;">
                         <label for="year" class="text">{{ __('Anno') }}</label>
                         <div>
-                            <input id="year" type="text" style="height: 47px!important" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') ?? $practice->year }}" autocomplete="year" autofocus>
+                            <input id="year" type="text" style="height: 47px!important" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') ?? $practice->year }}" autocomplete="year" autofocus required>
                             
                             @error('year')
                             <span class="invalid-feedback" role="alert">
@@ -132,7 +134,7 @@
                     <div class="form-group" style="width: 65%;">
                         <label for="policy_name" class="text">{{ __('Denominazione') }}</label>
                         <div>
-                            <input id="policy_name" type="text" style="height: 47px!important" class="form-control @error('policy_name') is-invalid @enderror" name="policy_name" value="{{ old('policy_name') ?? $practice->policy_name }}" autocomplete="policy_name" autofocus>
+                            <input id="policy_name" type="text" style="height: 47px!important" class="form-control @error('policy_name') is-invalid @enderror" name="policy_name" value="{{ old('policy_name') ?? $practice->policy_name }}" autocomplete="policy_name" autofocus required>
                             
                             @error('policy_name')
                             <span class="invalid-feedback" role="alert">
@@ -147,7 +149,7 @@
                     <div class="form-group" style="width: 45%;">
                         <label for="address" class="text">{{ __('Indirizzo') }}</label>
                         <div>
-                            <input id="address" type="text" style="height: 47px!important" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') ?? $practice->address }}" autocomplete="address" autofocus>
+                            <input id="address" type="text" style="height: 47px!important" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') ?? $practice->address }}" autocomplete="address" autofocus required>
 
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
@@ -160,7 +162,7 @@
                     <div class="form-group" style="width: 5%;">
                         <label for="civic" class="text">{{ __('N.') }}</label>
                         <div>
-                            <input id="civic" type="text" style="height: 47px!important" class="form-control @error('civic') is-invalid @enderror" name="civic" value="{{ old('civic') ?? $practice->civic }}" autocomplete="civic" autofocus>
+                            <input id="civic" type="text" style="height: 47px!important" class="form-control @error('civic') is-invalid @enderror" name="civic" value="{{ old('civic') ?? $practice->civic }}" autocomplete="civic" autofocus required>
 
                             @error('civic')
                                 <span class="invalid-feedback" role="alert">
@@ -173,7 +175,7 @@
                     <div class="form-group" style="width: 15%;">
                         <label for="common" class="text">{{ __('Comune') }}</label>
                         <div>
-                            <input id="common" type="text" style="height: 47px!important" class="form-control @error('common') is-invalid @enderror" name="common" value="{{ old('common') ?? $practice->common }}" autocomplete="common" autofocus>
+                            <input id="common" type="text" style="height: 47px!important" class="form-control @error('common') is-invalid @enderror" name="common" value="{{ old('common') ?? $practice->common }}" autocomplete="common" autofocus required>
 
                             @error('common')
                                 <span class="invalid-feedback" role="alert">
@@ -186,7 +188,7 @@
                     <div class="form-group" style="width: 5%;">
                         <label for="province" class="text">{{ __('Provincia') }}</label>
                         <div>
-                            <input id="province" type="text" style="height: 47px!important" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') ?? $practice->province }}" autocomplete="province" autofocus>
+                            <input id="province" type="text" style="height: 47px!important" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') ?? $practice->province }}" autocomplete="province" autofocus required>
 
                             @error('province')
                                 <span class="invalid-feedback" role="alert">
@@ -198,8 +200,9 @@
 
                     <div class="form-group" style="width: 15%;">
                         <label for="region" class="text">Regione</label>
-                        <select style="height: 47px!important" class="form-control bg-body @error('region') is-invalid @enderror" name="region" id="region">
+                        <select style="height: 47px!important" class="form-control bg-body @error('region') is-invalid @enderror" name="region" id="region" required>
                             <optgroup label="seleziona regione">
+                                <option value="">Seleziona</option>
                                 <option {{ $practice->region == 'Abruzzo' ? 'selected' : ''}} {{old('region') == 'Abruzzo' ? 'selected' : ''}} value="Abruzzo">Abruzzo</option>
                                 <option {{ $practice->region == 'Basilicata' ? 'selected' : ''}} {{old('region') == 'Basilicata' ? 'selected' : ''}} value="Basilicata">Basilicata</option>
                                 <option {{ $practice->region == 'Calabria' ? 'selected' : ''}} {{old('region') == 'Calabria' ? 'selected' : ''}} value="Calabria">Calabria</option>
@@ -232,7 +235,7 @@
                     <div class="form-group" style="width: 10%;">
                         <label for="cap" class="text">{{ __('CAP') }}</label>
                         <div>
-                            <input id="cap" type="text" style="height: 47px!important" class="form-control @error('cap') is-invalid @enderror" name="cap" value="{{ old('cap') ?? $practice->cap }}" autocomplete="cap" autofocus>
+                            <input id="cap" type="text" style="height: 47px!important" class="form-control @error('cap') is-invalid @enderror" name="cap" value="{{ old('cap') ?? $practice->cap }}" autocomplete="cap" autofocus required>
 
                             @error('cap')
                                 <span class="invalid-feedback" role="alert">
@@ -247,7 +250,7 @@
                     <div class="form-group" style="width: 15%; margin-right: 20px;">
                         <label for="work_start" class="text">{{ __('Inizio lavori') }}</label>
                         <div>
-                            <input id="work_start" type="date" style="height: 47px!important" class="form-control @error('work_start') is-invalid @enderror" name="work_start" value="{{ old('work_start') ?? $practice->work_start }}" autocomplete="work_start" autofocus>
+                            <input id="work_start" type="date" style="height: 47px!important" class="form-control @error('work_start') is-invalid @enderror" name="work_start" value="{{ old('work_start') ?? $practice->work_start }}" autocomplete="work_start" autofocus required>
 
                             @error('work_start')
                                 <span class="invalid-feedback" role="alert">
@@ -260,7 +263,7 @@
                     <div class="form-group" style="width: 20%; margin-right: 20px;">
                         <label for="c_m" class="text">{{ __('Importo C.M') }}</label>
                         <div>
-                            <input id="c_m" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('c_m') is-invalid @enderror" name="c_m" value="{{ old('c_m') ?? $practice->c_m }}" autocomplete="c_m" autofocus>
+                            <input id="c_m" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('c_m') is-invalid @enderror" name="c_m" value="{{ old('c_m') ?? $practice->c_m }}" autocomplete="c_m" autofocus required>
 
                             @error('c_m')
                                 <span class="invalid-feedback" role="alert">
@@ -273,7 +276,7 @@
                     <div class="form-group" style="width: 20%;">
                         <label for="assev_tecnica" class="text">{{ __('Assev. Tecnica(no IVA)') }}</label>
                         <div>
-                            <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ old('assev_tecnica') ?? $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus>
+                            <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ old('assev_tecnica') ?? $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus required>
 
                             @error('assev_tecnica')
                                 <span class="invalid-feedback" role="alert">
@@ -288,7 +291,7 @@
                     <div class="form-group" style="width: 45%;">
                         <label for="nominative" class="text">{{ __('Nominativo') }}</label>
                         <div>
-                            <input id="nominative" type="text" style="height: 47px!important" class="form-control bg-body @error('nominative') is-invalid @enderror" name="nominative" value="{{ old('nominative') ?? $practice->nominative }}" autocomplete="nominative" autofocus>
+                            <input id="nominative" type="text" style="height: 47px!important" class="form-control bg-body @error('nominative') is-invalid @enderror" name="nominative" value="{{ old('nominative') ?? $practice->nominative }}" autocomplete="nominative" autofocus required>
 
                             @error('nominative')
                                 <span class="invalid-feedback" role="alert">
@@ -301,7 +304,7 @@
                     <div class="form-group" style="width: 26%;">
                         <label for="lastName" class="text">{{ __('Cognome') }}</label>
                         <div>
-                            <input id="lastName" type="text" style="height: 47px!important" class="form-control bg-body @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') ?? $practice->lastName }}" autocomplete="lastName" autofocus>
+                            <input id="lastName" type="text" style="height: 47px!important" class="form-control bg-body @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') ?? $practice->lastName }}" autocomplete="lastName" autofocus required>
 
                             @error('lastName')
                                 <span class="invalid-feedback" role="alert">
@@ -314,7 +317,7 @@
                     <div class="form-group" style="width: 26%;">
                         <label for="name" class="text">{{ __('Nome') }}</label>
                         <div>
-                            <input id="name" type="text" style="height: 47px!important" class="form-control bg-body @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $practice->name }}" autocomplete="name" autofocus>
+                            <input id="name" type="text" style="height: 47px!important" class="form-control bg-body @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $practice->name }}" autocomplete="name" autofocus required>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
