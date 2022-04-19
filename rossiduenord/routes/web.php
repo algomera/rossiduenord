@@ -241,7 +241,7 @@ Route::middleware('business')
     Route::get('/policies/signed/{policy}', 'PolicyController@signedIndex')->name('policies.signed');
     Route::post('/new/signedpolicy/{policy}', 'PolicyController@signedStore')->name('policies.signed.store');
     Route::get('/policies/modified/{id}/download','PolicyController@modifiedDownload')->name('modified.download');
-    Route::get('/policies/modified/{id}','PolicyController@modifiedShow')->name('modified.show');
+    Route::get('/policies/modified/{modified}','PolicyController@modifiedShow')->name('modified.show');
     Route::delete('/modified/delete/{modified}','PolicyController@deleteModified')->name('policies.modified.delete');
 });
 
