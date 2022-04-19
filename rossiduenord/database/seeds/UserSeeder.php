@@ -31,6 +31,23 @@ class UserSeeder extends Seeder
             'password' => bcrypt('mtmopx9m'),
         ]);
 
+        $edrasis = User::create([
+            'created_by' => 'financial',
+            'name' => "Edrasis Group",
+            'referent' => $faker->name(),
+            'email' => 'info@edrasis.it',
+            'password' => bcrypt('mtmopx9m'),
+            'role' => 'business',
+        ]);
+        // edrasis group
+        Business::create([
+            'created_by' => 'financial',
+            'user_id' => $edrasis->id,
+            'name' => "Edrasis Group",
+            'email' => 'info@edrasis.it',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
+
         // Utente Banca
         $bank = User::create([
             'created_by' => 'financial',
