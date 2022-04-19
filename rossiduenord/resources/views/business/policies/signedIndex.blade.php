@@ -3,7 +3,7 @@
  @include('business.layouts.partials.practiceNav')
  <form action="{{route('business.policies.signed.store', $policy)}}" method="post" enctype="multipart/form-data">
      @csrf
-     <div class="px-20 bg-white">
+     <div class="px-20 bg-white pb-5">
         <a href="{{route('business.policies.index',$policy->practice)}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
         <p class="black text-md"><b>Elenco polizze caricate</b></p>
         <hr class="bg-black">
@@ -35,10 +35,11 @@
                 </tbody>
             </table>
             <div class="mt-3">
+            <div class="mt-3 contenitore file-container">
                 <label for="signed_upload" class="btn bg-logo-green white">
-                      Scegli file <i class="fa-solid fa-file-arrow-up"></i>
-                    <input type="file" name="modified" id="signed_upload" hidden>
+                        Scegli file <i class="fa-solid fa-file-arrow-up"></i>
                 </label>
+                <input type="file" name="signed" id="signed_upload" class="mt-1">
             </div>
         </div>
         <div class="box-fixed">
