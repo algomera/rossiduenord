@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class ContractController extends Controller
 {
     public function originalIndex(Practice $practice){
+
         //practice nav elemements
         $photos = $practice->photos;
         $videos = $practice->videos;
