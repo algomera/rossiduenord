@@ -27,7 +27,7 @@
                                 <a href="{{route('business.modified.download',$modified->id)}}" class="clickable"> Scarica <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a>
                              </td>
                              <td>{{$modified->created_at ? $modified->created_at->format('d/m/y') : '' }}</td>
-                             <td class="text-left" > <a href="{{route('business.signed.show', $modified)}}" class="btn btn-primary">Vedi</a> </td>
+                             <td class="text-left" > <a href="{{route('business.modified.show', $modified)}}" class="btn btn-primary">Vedi</a> </td>
                         </tr>
                     @empty
                         <td colspan="10">Nessun elemento </td>

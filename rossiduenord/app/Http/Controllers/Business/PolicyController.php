@@ -77,12 +77,16 @@ class PolicyController extends Controller
         return redirect()->route('business.policies.signed', $policy);
     }
 
+    public function modifiedShow(Modified $modified){
+        return view('business.policies.show',compact('modified'));
+    }
+
     public function modifiedDownload($id){
         $file = Modified::find($id);
         return Storage::download($file->path);
     }
 
-    public function deleteSigned(Modified $modified){
+    public function deleteModified(Modified $modified){
         //deleting the signe contract
         $policy = $modified->policy;
         $practice = $policy->practice;
