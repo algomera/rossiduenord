@@ -23,6 +23,7 @@ class AnagraficheController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'subject_type' => 'required',
+            'consultant_type' => 'nullable',
             'company_name' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -66,6 +67,7 @@ class AnagraficheController extends Controller
     public function update(Anagrafica $anagrafica, Request $request) {
         $validated = $request->validate([
             'subject_type' => 'required',
+            'consultant_type' => 'nullable',
             'company_name' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',

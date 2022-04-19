@@ -31,6 +31,20 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
+                                <label for="subject_type" class="text">Tipologia consulente</label>
+                                <select style="height: 47px!important" class="form-control" name="consultant_type" id="consultant_type">
+                                    <option value="" selected>Seleziona..</option>
+                                    @foreach(config('anagrafiche.consultant_types') as $consultant_type)
+                                        <option value="{{ $consultant_type }}">{{ $consultant_type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
                                 <label for="company_name" class="text">{{ __('Ragione Sociale') }} *</label>
                                 <div>
                                     <input id="company_name" type="text" style="height: 47px!important" class="form-control @error('company_name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required>
