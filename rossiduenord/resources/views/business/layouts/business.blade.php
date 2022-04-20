@@ -31,10 +31,10 @@
             <nav class="navbar ov-y p-0">
                 <div class="my-3 ml-3 px-3">
                     @if (Auth::user()->name == 'Impresa Example')
-                      <img src="{{asset('img/Logo_.png')}}" alt="Prime-Hub" class="img-fluid">   
+                      <img src="{{asset('img/Logo_.png')}}" alt="Prime-Hub" class="img-fluid">
                     @endif
                     @if (Auth::user()->name == 'Edrasis Group')
-                      <img src="{{asset('img/edrasis_logo.png')}}" alt="Edrasis Logo" class="img-fluid w-75 mt-3">   
+                      <img src="{{asset('img/edrasis_logo.png')}}" alt="Edrasis Logo" class="img-fluid w-75 mt-3">
                     @endif
                 </div>
                 <ul class="nav flex-column w-100">
@@ -42,10 +42,10 @@
                         <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
                     <li class="nav-item nav-pills">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.anagrafiche.index' ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
+                        <a class="nav-link ml-4 {{request()->is('business/anagrafiche*') ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">  <b>Gestione Accessi</b> </a>
+                        <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
@@ -75,10 +75,10 @@
                         <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}"><b>Pratiche</b></a>
+                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}"><b>Gestione Cartelle/File</b></a>
+                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione Tecnica</a>
