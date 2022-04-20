@@ -259,7 +259,7 @@ class SuperBonusController extends Controller
             'vw_realized_1' => 'nullable |integer',
             'vw_realized_2' => 'nullable |integer',
             'vw_sal_f' => 'nullable| integer',
-            'total_intervention_surface' => 'nullable|integer',
+            'total_intervention_surface' => 'nullable',
             'total_expected_cost' => 'nullable| integer ',
             'max_possible_cost' => 'nullable| integer',
             'total_isolation_cost_1' => 'nullable|integer ',

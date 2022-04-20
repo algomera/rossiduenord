@@ -36,7 +36,7 @@
             <div class="d-flex align-items-center mt-3" style="width:100%;">
                 <p class="m-0">Superficie totale oggetto dell’intervento</p>
                 <label for="total_intervention_surface" class=" m-0 mr-4 black">
-                    <input type="number" value="{{old('total_intervention_surface') ?? $vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid error @enderror">
+                    <input type="number" step="0.01" value="{{old('total_intervention_surface') ?? $vertwall->total_intervention_surface}}" name="total_intervention_surface" id="total_intervention_surface" style="width: 80px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('total_intervention_surface') is-invalid error @enderror">
                     m²
                     @error('total_intervention_surface')
                     <span class="invalid-feedback pl-3" role="alert">
