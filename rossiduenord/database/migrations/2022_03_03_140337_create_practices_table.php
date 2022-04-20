@@ -20,8 +20,8 @@ class CreatePracticesTable extends Migration
             $table->float('import',10,2)->nullable();
             $table->string('practical_phase')->nullable();
             $table->string('real_estate_type')->nullable();
-            $table->string('month')->nullable();
-            $table->string('year')->nullable();
+//            $table->string('month')->nullable();
+//            $table->string('year')->nullable();
             $table->string('policy_name')->nullable();
             $table->string('address')->nullable();
             $table->string('civic')->nullable();
@@ -32,12 +32,13 @@ class CreatePracticesTable extends Migration
             $table->string('work_start')->nullable();
             $table->string('c_m')->nullable();
             $table->string('assev_tecnica')->nullable();
-            $table->string('nominative')->nullable();
-            $table->string('lastName')->nullable();
-            $table->string('name')->nullable();
+//            $table->string('nominative')->nullable();
+//            $table->string('lastName')->nullable();
+//            $table->string('name')->nullable();
             $table->string('policy')->nullable();
             $table->string('request_policy')->nullable();
             $table->string('referent_email')->nullable();
+            $table->string('referent_mobile')->nullable();
             $table->text('description')->nullable();
             $table->string('bonus')->nullable();
             $table->string('month_processing')->nullable();

@@ -12,7 +12,7 @@ use App\{FinalState,
     Policy,
     TrainatedVertWall,
     Variant,
-    VerticalWall, 
+    VerticalWall,
     Video,
 };
 use App\Helpers\folder_documents;
@@ -43,11 +43,12 @@ class ApplicantController extends Controller
      */
     public function store(Request $request, Practice $practice, Applicant $applicant, FolderDocument $folderDocument)
     {
-       
+
         $validated = $request->validate([
             'applicant' => 'nullable | string',
-            'name' => 'nullable | string | min:3 | max:100',
-            'lastName' => 'nullable | string | min:3 | max:100',
+            'company_name' => 'nullable | string | min:3 | max:100',
+//            'name' => 'nullable | string | min:3 | max:100',
+//            'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 ',
             'phone' => 'nullable | integer | min:10 ',
             'mobile_phone' => 'nullable | integer | min:10',
@@ -128,8 +129,9 @@ class ApplicantController extends Controller
     {
         $validated = $request->validate([
             'applicant' => 'nullable | string',
-            'name' => 'nullable | string | min:3 | max:100',
-            'lastName' => 'nullable | string | min:3 | max:100',
+            'company_name' => 'nullable | string | min:3 | max:100',
+//            'name' => 'nullable | string | min:3 | max:100',
+//            'lastName' => 'nullable | string | min:3 | max:100',
             'c_f' => 'nullable | string | min:16 | max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
             'phone' => 'nullable | string | min:10|regex: /[0-9]/',
             'mobile_phone' => 'nullable | string | min:10',
@@ -137,16 +139,20 @@ class ApplicantController extends Controller
             'role' => 'required | string',
         ],
         [
+            // company_name
+            'company_name.required'=> 'Inserisci il nome dell\'impresa prima di procedere',
+            'company_name.min'=> 'Il nome è troppo corto',
+            'company_name.max'=> 'Il nome è troppo lungo',
             //name
-            'name.required'=> 'Inserisci un nome prima di procedere',
-            'name.required'=> 'Inserisci un nome prima di procedere',
-            'name.min'=> 'Il nome è troppo corto',
-            'name.max'=> 'Il nome è troppo lungo',
+//            'name.required'=> 'Inserisci un nome prima di procedere',
+//            'name.required'=> 'Inserisci un nome prima di procedere',
+//            'name.min'=> 'Il nome è troppo corto',
+//            'name.max'=> 'Il nome è troppo lungo',
             //lastname
-            'lastname.required'=> 'Inserisci un cognome prima di procedere',
-            'lastname.required'=> 'Inserisci un cognome prima di procedere',
-            'lastname.min'=> 'Il cognome è troppo corto',
-            'lastname.max'=> 'Il cognome è troppo lungo',
+//            'lastname.required'=> 'Inserisci un cognome prima di procedere',
+//            'lastname.required'=> 'Inserisci un cognome prima di procedere',
+//            'lastname.min'=> 'Il cognome è troppo corto',
+//            'lastname.max'=> 'Il cognome è troppo lungo',
             //c_f
             'c_f.min'=>'Il codice fiscale deve avere un minimo di 16 caratteri',
             'c_f.max'=>'Il codice fiscale deve avere un massimo di 16 caratteri',
@@ -179,7 +185,7 @@ class ApplicantController extends Controller
              $mobile_phone = $matches[1] . ' ' .$matches[2] . ' ' . $matches[3];
              $validated['mobile_phone'] = $mobile_phone;
         }
-        
+
         $applicant->update($validated);
 
         return redirect()->route('business.practice.edit', $applicant);

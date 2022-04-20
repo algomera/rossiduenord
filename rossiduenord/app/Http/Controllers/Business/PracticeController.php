@@ -18,10 +18,7 @@ class PracticeController extends Controller
     {
         $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
-        $q = DB::table('practices')
-            ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
-            ->whereIn('applicant_id', $applicants)
-            ->select('practices.*', 'applicants.*');
+        $q = Practice::query()->whereId(1);
 
         if($request->get('practical_month') !== null) {
             $q->where('month', '=', $request->get('practical_month'));
@@ -108,10 +105,6 @@ class PracticeController extends Controller
             $practice['import_sal'] = number_format($practice['import_sal'], 2, ',', '.');
         }
 
-      
-
-
-
         return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
@@ -130,8 +123,8 @@ class PracticeController extends Controller
             'import' => 'required | string',
             'practical_phase' => 'required | string',
             'real_estate_type' => 'required | string',
-            'month' => 'required | string',
-            'year' => 'required | numeric | min:2',
+//            'month' => 'required | string',
+//            'year' => 'required | numeric | min:2',
             'policy_name' => 'required | string | min:3',
             'address' => 'required | string | min:5',
             'civic' => 'required | numeric | min:1',
@@ -142,9 +135,9 @@ class PracticeController extends Controller
             'work_start' => 'required | string',
             'c_m' => 'required | numeric |min:2',
             'assev_tecnica' => 'required | numeric |min:2',
-            'nominative' => 'nullable | string |min:3 |max:150',
-            'lastName' => 'nullable | string | min:3 | max:50',
-            'name' => 'nullable | string | min:3 | max:50',
+//            'nominative' => 'nullable | string |min:3 |max:150',
+//            'lastName' => 'nullable | string | min:3 | max:50',
+//            'name' => 'nullable | string | min:3 | max:50',
             'policy' => 'nullable | string',
             'request_policy' => 'nullable | string | min:3 |max:30',
             'referent_email' => 'nullable | email ',
@@ -218,6 +211,9 @@ class PracticeController extends Controller
             $validated['import_sal'] = str_replace('.','',$validated['import_sal']);
             $validated['import_sal'] = str_replace(',','.',$validated['import_sal']);
         }
+
+        $validated['policy'] = isset($validated['policy']);
+        $validated['bonus'] = isset($validated['bonus']) ? '110%' : '';
 
         $practice->update($validated);
 
