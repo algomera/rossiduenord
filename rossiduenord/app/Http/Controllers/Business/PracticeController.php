@@ -18,7 +18,7 @@ class PracticeController extends Controller
     {
         $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
-        $q = Practice::query()->whereId(1);
+        $q = Practice::query()->whereIn('applicant_id', $applicants);
 
         if($request->get('practical_month') !== null) {
             $q->where('month', '=', $request->get('practical_month'));
