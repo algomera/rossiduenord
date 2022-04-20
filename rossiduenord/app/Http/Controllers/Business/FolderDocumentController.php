@@ -82,6 +82,11 @@ class FolderDocumentController extends Controller
         return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders'));
     }
 
+    public function downloadDocument($id){
+        $file = Document::find($id);
+        return Storage::download($file->allega);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

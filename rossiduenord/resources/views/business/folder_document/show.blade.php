@@ -78,7 +78,7 @@
                                     <td class="text-left">{{$document->type}}</td>
                                     <td class="text-left">{{$document->note}}</td>
                                     <td class="text-center">
-                                        <a style="color: #61a4d7!important" href="{{ asset('storage/' . $document->allega)}}" download="{{$document->allega}}.pdf">scarica</a>
+                                        <a style="color: #61a4d7!important" href="{{route('business.document.download',$document->id)}}">scarica</a>
                                     </td>
                                     <td class="d-flex">
                                         <button type="button" class="btn" data-toggle="modal" data-target="#del{{$document->id}}">
