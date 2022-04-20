@@ -30,6 +30,7 @@
 
             <div style="margin-top: 50px">
                 <embed src="{{ asset('storage/' . $file->file) }}" style="width: 100%; height: 1000px;" alt="pdf" />
+                <object width="100%" height="1000px" type="application/pdf" data="{{ asset('storage/' . $file->file) }}">
             </div>
         </div>
     </div>
