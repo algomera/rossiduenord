@@ -151,7 +151,6 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        $signaler = auth()->user()->anagrafiche()->where('id', $request->consultant)->first();
         $validated = $request->validate([
             'practice_id' => 'nullable | int',
             'general_contractor' => [
@@ -273,9 +272,8 @@ class SubjectController extends Controller
                     $q->where('user_id', auth()->id());
                 })
             ],
-            'signaler' => 'nullable | string | min:3| max:100',
-            'project_manager' => 'nullable | string | min:3| max:100',
-            'responsible_technician' => 'nullable | string | min:3| max:100',
+            'project_manager' => 'nullable | string | min:3 | max:100',
+            'responsible_technician' => 'nullable | string | min:3 | max:100',
         ],
         [
             //general contractor
@@ -339,12 +337,6 @@ class SubjectController extends Controller
             'responsible_technician' => 'Il nome del responsabile tecnico è troppo lungo',
         ]
     );
-
-        if($signaler && $signaler->consultant_type) {
-            $validated['signaler'] = $signaler->consultant_type;
-        } else {
-            $validated['signaler'] = null;
-        }
 
         $subject->update($validated);
 

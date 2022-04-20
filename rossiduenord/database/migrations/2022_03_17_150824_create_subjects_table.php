@@ -33,7 +33,6 @@ class CreateSubjectsTable extends Migration
             $table->foreignId('lending_bank')->nullable()->constrained('anagrafiche');
             $table->foreignId('insurer')->nullable()->constrained('anagrafiche');
             $table->foreignId('consultant')->nullable()->constrained('anagrafiche');
-            $table->string('signaler')->nullable();
             $table->foreignId('area_manager')->nullable()->constrained('anagrafiche');
             $table->string('project_manager')->nullable();
             $table->string('responsible_technician')->nullable();
