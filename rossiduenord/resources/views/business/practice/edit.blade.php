@@ -447,9 +447,9 @@
                             <select style="height: 47px!important" class="form-control bg-body" name="sal" id="sal">
                                 <optgroup label="seleziona mese">
                                     <option value="">-</option>
-                                    <option {{ $practice->sal == 'Sal 1' ? 'selected' : ''}} {{old('sal') == 'Sal 1' ? 'selected' : ''}} value="Sal 1">Sal finale</option>
-                                    <option {{ $practice->sal == 'Sal 2' ? 'selected' : ''}} {{old('sal') == 'Sal 2' ? 'selected' : ''}} value="Sal 2">Sal finale</option>
-                                    <option {{ $practice->sal == 'Sal finale' ? 'selected' : ''}} {{old('sal') == 'Sal finale' ? 'selected' : ''}} value="Sal finale">Sal finale</option>
+                                    <option {{ $practice->sal == 'Sal 1' ? 'selected' : ''}} {{old('sal') == 'Sal 1' ? 'selected' : ''}} value="Sal 1">Sal 1</option>
+                                    <option {{ $practice->sal == 'Sal 2' ? 'selected' : ''}} {{old('sal') == 'Sal 2' ? 'selected' : ''}} value="Sal 2">Sal 2</option>
+                                    <option {{ $practice->sal == 'Sal 3' ? 'selected' : ''}} {{old('sal') == 'Sal finale' ? 'selected' : ''}} value="Sal finale">Sal 3</option>
                                 </optgroup>
                             </select>
                         </div>
