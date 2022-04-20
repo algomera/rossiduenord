@@ -63569,8 +63569,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
     isModalVisible: true,
     isListVisible: false,
     isPhotos: true,
-    isVideos: false,
-    anagraficaTab: 'data'
+    isVideos: false
   },
   methods: {
     closeModal: function closeModal() {
