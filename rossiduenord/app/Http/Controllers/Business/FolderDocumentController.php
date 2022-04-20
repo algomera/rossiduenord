@@ -58,7 +58,7 @@ class FolderDocumentController extends Controller
         $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
         $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->orderBy('created_at', 'DESC')->get();
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
-        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document','documents', 'sub_folders'));
+        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders'));
     }
 
     /**
@@ -69,12 +69,13 @@ class FolderDocumentController extends Controller
      */
     public function show_document(Request $request, Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder, Document $document)
     {
-        //dd($request->all());
+        //element fro the view
         $applicant = $practice->applicant;
         $subject = $practice->subject;
         $building = $practice->building;
         $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
         $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->latest()->get();
+        //taking the documents
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
         //dd($folder_documents);
         //dd($practice->id, $folder_document->id, $sub_folder->id, $document->id);
