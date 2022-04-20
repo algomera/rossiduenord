@@ -13,17 +13,7 @@ class Applicant extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'user_id',
-        'applicant',
-        'name',
-        'lastName',
-        'c_f',
-        'phone',
-        'mobile_phone',
-        'email',
-        'role',
-    ];
+    protected $guarded = [];
 
     protected $primaryKey = 'id';
 
@@ -34,6 +24,6 @@ class Applicant extends Model
 
     public function practice()
     {
-        return $this->hasMany(Practice::class);
+        return $this->hasOne(Practice::class);
     }
 }

@@ -282,9 +282,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="iban">IBAN*</label><br/>
-                                    <input class="col-md form-control credit-input @error('iban') is-invalid @enderror" type="text" name="iban" id="iban" value="{{ old('iban') ?? $building->iban }}" width="100%" required/>
-                                    @error('iban')
+                                    <label for="condominio">Condominio*</label><br/>
+                                    <input class="col-md form-control credit-input @error('condominio') is-invalid @enderror" type="text" name="condominio" id="condominio" value="{{ old('condominio') ?? $building->condominio }}" width="100%" required/>
+                                    @error('condominio')
                                         <span class="invalid-feedback" role="alert">
                                              <strong>{{ $message }}</strong>
                                         </span>
@@ -315,7 +315,7 @@
                                 <div class="row" >
                                     <div class="col">
                                         <label for="section">Sezione*</label>
-                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="number" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="text" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%" required/>
                                         @error('section')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -324,7 +324,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="foil">Foglio*</label>
-                                        <input class="col form-control credit-input  @error('foil') is-invalid @enderror" type="number" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('foil') is-invalid @enderror" type="text" name="foil" id="foil" value="{{ old('foil') ?? $building->foil }}" width="100%" required/>
                                         @error('foil')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -333,7 +333,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="particle">Particella*</label>
-                                        <input class="col form-control credit-input  @error('particle') is-invalid @enderror" type="number" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('particle') is-invalid @enderror" type="text" name="particle" id="particle" value="{{old('particle') ?? $building->particle }}" width="100%" required/>
                                         @error('particle')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -342,7 +342,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="subaltern">Subalterno*</label>
-                                        <input class="col form-control credit-input  @error('subaltern') is-invalid @enderror" type="number" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('subaltern') is-invalid @enderror" type="text" name="subaltern" id="subaltern" value="{{old('subaltern') ?? $building->subaltern }}" width="100%" required/>
                                         @error('subaltern')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -351,7 +351,7 @@
                                     </div>
                                     <div class="col-2">
                                         <label for="unit_builidg_number" class="text-nowrap">N. unità immobiliari*</label>
-                                        <input class="col form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="number" name="unit_builidg_number" id="unit_builidg_number" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('unit_builidg_number') is-invalid @enderror" value="{{ old('unit_builidg_number') ?? $building->unit_builidg_number }}" type="text" name="unit_builidg_number" id="unit_builidg_number" width="100%" required/>
                                         @error('unit_builidg_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -360,7 +360,7 @@
                                     </div>
                                     <div class="col-2">
                                         <label for="pertinence_number" class="text-nowrap">N. pertinenze*</label>
-                                        <input class="col form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="number" name="pertinence_number" id="pertinence_number" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('pertinence_number') is-invalid @enderror" value="{{ old('pertinence_number') ?? $building->pertinence_number}}" type="text" name="pertinence_number" id="pertinence_number" width="100%" required/>
                                         @error('pertinence_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -369,7 +369,7 @@
                                     </div>
                                     <div class="col-2">
                                         <label for="resolution_stairs " class="text-nowrap">Scale delibere*</label>
-                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="number" name="resolution_stairs" id="resolution_stairs" width="100%" required/>
+                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="text" name="resolution_stairs" id="resolution_stairs" width="100%" required/>
                                         @error('resolution_stairs')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

@@ -44,7 +44,6 @@ const app = new Vue({
         isListVisible: false,
         isPhotos: true,
         isVideos: false,
-        anagraficaTab: 'data',
     },
     methods: {
         closeModal() {

@@ -31,10 +31,10 @@
             <nav class="navbar ov-y p-0 ov-x-none">
                 <div class="my-3 ml-3 ml-md-2 px-3">
                     @if (Auth::user()->name == 'Impresa Example')
-                      <img src="{{asset('img/Logo_.png')}}" alt="Prime-Hub" class="img-fluid">   
+                      <img src="{{asset('img/Logo_.png')}}" alt="Prime-Hub" class="img-fluid">
                     @endif
                     @if (Auth::user()->name == 'Edrasis Group')
-                      <img src="{{asset('img/edrasis_logo.png')}}" alt="Edrasis Logo" class="img-fluid w-75 mt-3">   
+                      <img src="{{asset('img/edrasis_logo.png')}}" alt="Edrasis Logo" class="img-fluid w-75 mt-3">
                     @endif
                 </div>
                 <ul class="nav flex-column w-100">
