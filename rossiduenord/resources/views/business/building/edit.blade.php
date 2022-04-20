@@ -282,9 +282,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="iban">IBAN*</label><br/>
-                                    <input class="col-md form-control credit-input @error('iban') is-invalid @enderror" type="text" name="iban" id="iban" value="{{ old('iban') ?? $building->iban }}" width="100%" required/>
-                                    @error('iban')
+                                    <label for="condominio">Condominio*</label><br/>
+                                    <input class="col-md form-control credit-input @error('condominio') is-invalid @enderror" type="text" name="condominio" id="condominio" value="{{ old('condominio') ?? $building->condominio }}" width="100%" required/>
+                                    @error('condominio')
                                         <span class="invalid-feedback" role="alert">
                                              <strong>{{ $message }}</strong>
                                         </span>
@@ -696,7 +696,7 @@
                                             <div onclick="deleteExcel({{ $building->practice->id }})" class="d-flex flex-column align-items-center justify-content-center mr-3" style="border: none; background-color: transparent;">
                                                 <img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24" height="24" alt="" class="clickable">
                                                 <p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>
-                                            </div> 
+                                            </div>
                                         </div>
                                     @endif
                                 </div>
