@@ -52,42 +52,12 @@
                                     </div>
                                 </td>
                                 <td class="d-flex align-items-center">
-                                    {{-- {{route('business.anagrafica.show', $anagrafica)}} --}}
-                                    <a href="#" class="btn white bg-green mr-2">
+                                    <button type="button" class="viewAnagrafica btn white bg-green mr-2" data-toggle="modal" data-target="#anagrafiche-modal" data-id="{{$anagrafica->id}}">
                                         Vedi
-                                    </a>
+                                    </button>
                                     <a href="{{route('business.anagrafiche.edit', $anagrafica)}}" class="btn white bg-black mr-2">
                                         Modifica
                                     </a>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$anagrafica->id}}">
-                                        Elimina
-                                    </button>
-
-                                    <div class="modal fade" id="del{{$anagrafica->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina anagrafica</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Sei sicuro di volere eliminare l'anagrafica: {{$anagrafica->company_name}} ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                                                    <form action="{{ route('business.anagrafiche.delete', $anagrafica) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-custom white bg-red mr-0">
-                                                            Conferma
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -101,6 +71,10 @@
         </div>
     </div>
 @endsection
+
+@push('modals')
+    <x-anagrafica-modal />
+@endpush
 
 @push('scripts')
     <script type="text/javascript">

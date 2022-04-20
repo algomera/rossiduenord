@@ -75,12 +75,13 @@ Route::middleware('business')
     Route::resource('/file', 'FileController');
     Route::resource('/applicant', 'ApplicantController');
     Route::resource('/practice', 'PracticeController');
-    
+
     //practice
     Route::get('/subject/{practice}', 'SubjectController@subject_edit')
     ->where('practice', '[0-9]+')->name('subject_edit');
     //subject
     Route::resource('/subject', 'SubjectController');
+    Route::post('/subject/{practice}/set', 'SubjectController@setSubject');
     //building
     Route::resource('/building', 'BuildingController');
     //superbonus
@@ -225,8 +226,9 @@ Route::middleware('business')
     Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
     Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
     Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
-    Route::delete('/anagrafiche/{anagrafica}', 'AnagraficheController@destroy')->name('anagrafiche.delete');
-    //contracts
+    Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
+
+    //contract
     Route::get('/contracts/{practice}','ContractController@originalIndex')->name('contracts.index');
     Route::get('/contracts/signed/{contract}','ContractController@signedIndex')->name('signed.index');
     Route::post('/new/signed/{contract}','ContractController@signedStore')->name('signed.store');
