@@ -1,33 +1,33 @@
 @props(['vertwall', 'practice', 'surfaces', 'condomino', 'isCommon'])
 
-<div>
-    <div class="nav_bonus d-flex align-items-center" style="width: 100%; padding-right: 0px; margin:0;margin-bottom: 5px;">
-        <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PV' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PV') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PV')" @endif>
+<div class="ov-x-none">
+    <div class="nav_bonus d-flex align-items-center ov-x ov-y-none" style="width: 100%; padding-right: 0px; margin:0;margin-bottom: 5px;">
+        <div class="d-flex align-items-center link text-nowrap {{ session()->get('surfaceType') == 'PV' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PV') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PV')" @endif>
             (PV) Pareti Verticali
             @if(session()->get('surfaceType') == 'PV')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PV')">+</div>
             @endif
          </div>
-         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PO' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PO') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')" @endif>
+         <div class="d-flex align-items-center link text-nowrap {{ session()->get('surfaceType') == 'PO' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PO') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')" @endif>
             (PO) Coperture
             @if(session()->get('surfaceType') == 'PO')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PO')">+</div>
             @endif
          </div>
-         <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'PS' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PS') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PS')" @endif>
+         <div class="d-flex align-items-center link text-nowrap {{ session()->get('surfaceType') == 'PS' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'PS') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PS')" @endif>
             (PS) Pavimenti
             @if(session()->get('surfaceType') == 'PS')
                 <div class="add-btn-custom-small" onclick="addSurface(event, 'PS')">+</div>
             @endif
          </div>
         @if(Route::currentRouteName() == 'business.driving_intervention')
-            <div class="d-flex align-items-center link {{ session()->get('surfaceType') == 'POND' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'POND') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'POND')" @endif>
+            <div class="d-flex align-items-center link text-nowrap {{ session()->get('surfaceType') == 'POND' ? 'frame' : ''}}" @if(session()->get('surfaceType') !== 'POND') onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'POND')" @endif>
                 (POND) Cop. non disperdenti
                 @if(session()->get('surfaceType') == 'POND')
                     <div class="add-btn-custom-small" onclick="addSurface(event, 'POND')">+</div>
                 @endif
             </div>
-            <p class="m-0">Data inizio pagamento coperture non disperdenti</p>
+            <p class="m-0 text-nowrap">Data inizio pagamento coperture non disperdenti</p>
             <input value="{{$vertwall->start_date_payment}}" name="start_date_payment" id="start_date_payment" class="border ml-2" style="width: 150px; padding:0 5px" type="date">
         @endif
     </div>

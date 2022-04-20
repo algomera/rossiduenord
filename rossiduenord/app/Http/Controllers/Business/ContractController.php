@@ -111,7 +111,6 @@ class ContractController extends Controller
 
 
     public function signedShow(Signed $signed){
-
         return view('business.contract.signedShow', compact('signed'));
     }
 

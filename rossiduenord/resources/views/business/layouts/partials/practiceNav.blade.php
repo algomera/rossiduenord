@@ -15,30 +15,30 @@
                 Scheda pratica
             </span>
             <hr class="bg-black" style="margin-top: 5px;">
-            <div class="d-flex justify-content-between menu mb-4">
-                <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{request()->is('business/applicant*') ? 'visited' : ''}}">
+            <div class="d-flex justify-content-between menu mb-4 ov-x">
+                <a href="{{route('business.applicant.edit', $applicant->id) }}" class="{{request()->is('business/applicant*') ? 'visited' : ''}} px-3">
                     RICHIEDENTE
                 </a>
-                <a href="{{route('business.practice.edit', $practice->id) }}" class="{{request()->is('business/practice*') ? 'visited' : ''}}">
+                <a href="{{route('business.practice.edit', $practice->id) }}" class="{{request()->is('business/practice*') ? 'visited' : ''}} px-3">
                     PRATICA
                 </a>
-                <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject*') ? 'visited' : ''}}">
+                <a href="{{route('business.subject.edit', $subject->id) }}" class="{{request()->is('business/subject*') ? 'visited' : ''}} px-3">
                     SUBAPPALTATORI
                 </a>
-                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}}">
+                <a href="{{route('business.building.edit', $building->id) }}" class="{{request()->is('business/building/*') ? 'visited' : ''}} px-3">
                     IMMOBILE
                 </a>
-                <a href="{{route('business.medias', $practice->id)}}" class="{{request()->is('business/medias/*') ? 'visited' : ''}}">
+                <a href="{{route('business.medias', $practice->id)}}" class="{{request()->is('business/medias/*') ? 'visited' : ''}} px-3 text-nowrap">
                     FOTO E VIDEO
                 </a>
-                <a href="{{route('business.folderDocument.show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}}">
+                <a href="{{route('business.folderDocument.show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}} text-nowrap px-3">
                     DOCUMENTI RICHIESTI
                 </a>
-                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}}">
+                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}} px-3">
                     SUPERBONUS
                 </a>
-                <a href="{{route('business.contracts.index', $practice->id)}}" class="{{ request()->is('business/contracts*') ? 'visited' : ''}} ">CONTRATTI</a>
-                <a href="{{route('business.policies.index', $practice->id)}}" class="{{request()->is('business/policies*') ? 'visited' : ''}}">POLIZZE</a>
+                <a href="{{route('business.contracts.index', $practice->id)}}" class="{{ request()->is('business/contracts*') ? 'visited' : ''}} px-3">CONTRATTI</a>
+                <a href="{{route('business.policies.index', $practice->id)}}" class="{{request()->is('business/policies*') ? 'visited' : ''}} px-3">POLIZZE</a>
             </div>
 
             @if (Route::currentRouteName() == 'business.applicant.create')

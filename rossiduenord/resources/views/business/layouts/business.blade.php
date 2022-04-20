@@ -28,8 +28,8 @@
 <body>
     <div id="app">
         <div class="container-custom d-flex">
-            <nav class="navbar ov-y p-0">
-                <div class="my-3 ml-3 px-3">
+            <nav class="navbar ov-y p-0 ov-x-none">
+                <div class="my-3 ml-3 ml-md-2 px-3">
                     @if (Auth::user()->name == 'Impresa Example')
                       <img src="{{asset('img/Logo_.png')}}" alt="Prime-Hub" class="img-fluid">   
                     @endif
@@ -39,80 +39,80 @@
                 </div>
                 <ul class="nav flex-column w-100">
                     <li class="nav-item nav-pills">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
                     <li class="nav-item nav-pills">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.anagrafiche.index' ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.anagrafiche.index' ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">  <b>Gestione Accessi</b> </a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">  <b>Gestione Accessi</b> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Visualizza valut.rating</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Visualizza valut.rating</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Book reference</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Book reference</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Aziende subappaltatrici</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Aziende subappaltatrici</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze aziendali</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze aziendali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Vetrina</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Vetrina</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Cronoprogramma lavori</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Cronoprogramma lavori</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Fornitori</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Fornitori</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
+                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}"><b>Pratiche</b></a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}"><b>Pratiche</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}"><b>Gestione Cartelle/File</b></a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}"><b>Gestione Cartelle/File</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione Tecnica</a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione Tecnica</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
+                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
                     </li>
                     <li class="nav-item" :class="{'selected-nav' : isListVisible}">
-                        <a class="nav-link ml-4 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Credito D.O.C </a>
+                        <a class="nav-link ml-4 ml-md-2 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Credito D.O.C </a>
                         <ul class="nav flex-column"  v-if="isListVisible">
                             <div class="pl-2">
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione tecnica</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione tecnica</a>
                                 </li>
                                 <li class="nav-item">
-                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione fiscale</a>
+                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione fiscale</a>
                                  </li>
                                 <li class="nav-item">
-                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Contr. qualità lavoro/imprese</a>
+                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Contr. qualità lavoro/imprese</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto GPS</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto GPS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Video GPS</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Video GPS</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Elaborati grafici</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Elaborati grafici</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Supervisor</a>
+                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Supervisor</a>
                                 </li>
                             </div>
                         </ul>

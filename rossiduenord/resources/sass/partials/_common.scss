@@ -7,19 +7,13 @@
 input {
     font-weight: 600;
 }
+
 //input number -arrows removed-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
-//input date
-
-/* input[type="date"] {
-    color: #ffffff;
-}
- */
 
 .card {
     box-shadow: grey 0px 0px 10px -5px !important;
@@ -120,6 +114,21 @@ a {
     &::-webkit-scrollbar {
         display: none;
     }
+}
+
+.ov-x {
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.ov-x-none {
+    overflow-x: hidden;
+}
+
+.ov-y-none {
+    overflow-y: hidden;
 }
 // cursor pointer
 .clickable {

@@ -5,7 +5,7 @@
     @include('business.layouts.partials.nav_superbonus')
 
 
-    <form action="{{ route('business.update_driving_intervention', ['practice' => $practice]) }}" method="POST">
+    <form action="{{ route('business.update_driving_intervention', ['practice' => $practice]) }}" method="POST" class="ov-x-none">
         @csrf
         @method('PUT')
 
@@ -81,7 +81,7 @@
 
             <div class="d-flex" style="width: 100%">
                 <div class="d-flex align-items-center">
-                    <span>SAL. n.1</span>
+                    <span class="text-nowrap">SAL. n.1</span>
                     <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mb-3 mr-1">
                         <div class="w-100 pr-2 text-right">
                             <small class="black ">almeno al 30%</small>
@@ -98,14 +98,14 @@
                     </label>
                 </div>
                 <div class="d-flex align-items-center ml-4">
-                    <span>SAL. n.2</span>
+                    <span class="text-nowrap">SAL. n.2</span>
                     <label for="total_isolation_cost_2" class="d-flex flex-column  align-items-end mb-3 mr-1">
                         <div class="w-100 pr-2 text-right">
                             <small class="black ">almeno al 60%</small>
                         </div>
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_2') ?? $vertwall->total_isolation_cost_2}}" name="total_isolation_cost_2" id="total_isolation_cost_2" class="ml-2 text-right px-2 border @error('total_isolation_cost_2') is-invalid error @enderror" style="width:120px">
-                            €
+                             <span>€</span> 
                             @error('total_isolation_cost_2')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ 'incorrect' }}</strong>
@@ -116,7 +116,7 @@
                     </label>
                 </div>
                 <div class="d-flex align-items-center ml-4">
-                    <span>SAL.F</span>
+                    <span class="text-nowrap">SAL.F</span>
                     <label for="final_isolation_cost" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('final_isolation_cost') ?? $vertwall->final_isolation_cost}}" name="final_isolation_cost" id="final_isolation_cost" class="ml-2 border text-right px-2 @error('final_isolation_cost') is-invalid error @enderror" style="width:120px;">
@@ -130,7 +130,7 @@
                     </label>
                 </div>
                 <div class="d-flex align-items-center ml-4">
-                    <span>SAL. 1+2</span>
+                    <span class="text-nowrap">SAL. 1+2</span>
                     <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
@@ -144,7 +144,7 @@
                     </label>
                 </div>
                 <div class="d-flex align-items-center ml-4">
-                    <span>SAL. 1+2 F</span>
+                    <span class="text-nowrap">SAL. 1+2 F</span>
                     <label for="" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2 + $vertwall->final_isolation_cost}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
