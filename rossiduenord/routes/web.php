@@ -226,8 +226,7 @@ Route::middleware('business')
     Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
     Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
     Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
-    Route::delete('/anagrafiche/{anagrafica}', 'AnagraficheController@destroy')->name('anagrafiche.delete');
-    Route::get('/anagrafiche/{anagrafica:company_name}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
+    Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
 
     //contract
     Route::get('/contracts/{practice}','ContractController@originalIndex')->name('contracts.index');

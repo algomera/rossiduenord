@@ -95,13 +95,7 @@ class AnagraficheController extends Controller
         return redirect()->route('business.anagrafiche.index')->with('message', 'Anagrafica aggiornata con successo');
     }
 
-    public function destroy(Anagrafica $anagrafica) {
-        $anagrafica->delete();
-
-        return redirect()->back();
-    }
-
-    public function loadModal($companyName) {
-        return auth()->user()->anagrafiche()->whereCompanyName($companyName)->first();
+    public function loadModal($id) {
+        return auth()->user()->anagrafiche()->whereId($id)->first();
     }
 }

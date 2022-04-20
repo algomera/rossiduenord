@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Business;
 use App\{Anagrafica, Practice, Subject, Applicant, Building, Bonus, SubjectRole};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SubjectController extends Controller
 {
@@ -64,55 +65,55 @@ class SubjectController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
 
-        $consultant = Anagrafica::whereHas('roles', function ($q) {
+        $consultant = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 3);
         })->get();
-        $lending_bank = Anagrafica::whereHas('roles', function ($q) {
+        $lending_bank = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 4);
         })->get();
-        $general_contractor = Anagrafica::whereHas('roles', function ($q) {
+        $general_contractor = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 5);
         })->get();
-        $construction_company = Anagrafica::whereHas('roles', function ($q) {
+        $construction_company = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 6);
         })->get();
-        $hydrothermal_sanitary_company = Anagrafica::whereHas('roles', function ($q) {
+        $hydrothermal_sanitary_company = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 7);
         })->get();
-        $photovoltaic_company = Anagrafica::whereHas('roles', function ($q) {
+        $photovoltaic_company = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 8);
         })->get();
-        $technician_APE_Ante = Anagrafica::whereHas('roles', function ($q) {
+        $technician_APE_Ante = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 9);
         })->get();
-        $structural_engineer = Anagrafica::whereHas('roles', function ($q) {
+        $structural_engineer = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 10);
         })->get();
-        $work_director = Anagrafica::whereHas('roles', function ($q) {
+        $work_director = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 11);
         })->get();
-        $technical_assev = Anagrafica::whereHas('roles', function ($q) {
+        $technical_assev = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 12);
         })->get();
-        $fiscal_assev = Anagrafica::whereHas('roles', function ($q) {
+        $fiscal_assev = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 13);
         })->get();
-        $phiscal_transferee = Anagrafica::whereHas('roles', function ($q) {
+        $phiscal_transferee = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 15);
         })->get();
-        $insurer = Anagrafica::whereHas('roles', function ($q) {
+        $insurer = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 16);
         })->get();
-        $area_manager = Anagrafica::whereHas('roles', function ($q) {
+        $area_manager = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 17);
         })->get();
-        $technician_energy_efficient = Anagrafica::whereHas('roles', function ($q) {
+        $technician_energy_efficient = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 18);
         })->get();
-        $technician_APE_Post = Anagrafica::whereHas('roles', function ($q) {
+        $technician_APE_Post = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 19);
         })->get();
-        $metric_calc_technician = Anagrafica::whereHas('roles', function ($q) {
+        $metric_calc_technician = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
             $q->where('subject_role_id', 20);
         })->get();
 
@@ -152,27 +153,129 @@ class SubjectController extends Controller
     {
         $signaler = auth()->user()->anagrafiche()->where('company_name', $request->consultant)->first();
         $validated = $request->validate([
-            'practice_id' => 'nullable | numeric',
-            'general_contractor' => 'nullable | string |min:3|max:100',
-            'construction_company' => 'nullable | string |min:3|max:100',
-            'hydrothermal_sanitary_company' => 'nullable | string |min:3|max:100',
-            'photovoltaic_company' => 'nullable | string |min:3|max:100',
-            'technician_APE_Ante' => 'nullable | string |min:3|max:100',
-            'technician_energy_efficient' => 'nullable | string |min:3|max:100',
-            'technician_APE_Post' => 'nullable | string |min:3|max:100',
-            'structural_engineer' => 'nullable | string |min:3|max:100',
-            'metric_calc_technician' => 'nullable | string |min:3|max:100',
-            'work_director' => 'nullable | string |min:3|max:100',
-            'technical_assev' => 'nullable | string |min:3|max:100',
-            'fiscal_assev' => 'nullable | string |min:3|max:100',
-            'phiscal_transferee' => 'nullable | string |min:3|max:100',
-            'lending_bank' => 'nullable | string |min:3|max:100',
-            'insurer' => 'nullable | string |min:3|max:100',
-            'consultant' => 'nullable | string |min:3|max:100',
-            'signaler' => 'nullable | string |min:3|max:100',
-            'area_manager' => 'nullable | string |min:3|max:100',
-            'project_manager' => 'nullable | string |min:3|max:100',
-            'responsible_technician' => 'nullable | string |min:3|max:100',
+            'practice_id' => 'nullable | int',
+            'general_contractor' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'construction_company' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'hydrothermal_sanitary_company' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'photovoltaic_company' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'technician_APE_Ante' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'technician_energy_efficient' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'technician_APE_Post' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'structural_engineer' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'metric_calc_technician' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'work_director' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'technical_assev' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'fiscal_assev' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'phiscal_transferee' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'lending_bank' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'insurer' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'consultant' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'area_manager' => [
+                'nullable',
+                'exists:anagrafiche,id',
+                Rule::exists('anagrafiche', 'id')->where(function ($q) {
+                    $q->where('user_id', auth()->id());
+                })
+            ],
+            'signaler' => 'nullable | string | min:3| max:100',
+            'project_manager' => 'nullable | string | min:3| max:100',
+            'responsible_technician' => 'nullable | string | min:3| max:100',
         ],
         [
             //general contractor
