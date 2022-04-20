@@ -34,14 +34,10 @@ class AnagraficheController extends Controller
             'iban' => 'nullable | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
             'vat' => 'nullable|string',
             'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
-            'phone_1' => 'nullable|string|min:10|regex: /[0-9]/',
-            'phone_2' => 'nullable|string|min:10|regex: /[0-9]/',
+            'phone' => 'nullable|string|min:10|regex: /[0-9]/',
             'fax' => 'nullable|string|min:10|regex: /[0-9]/',
-            'mobile' => 'nullable|string|min:10',
-            'email_1' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_2' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_pec_1' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_pec_2' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'email' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche',
             'date_of_birth' => 'nullable|date|date_format:Y-m-d|before:today',
             'common_of_birth' => 'nullable|string',
             'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
@@ -78,14 +74,10 @@ class AnagraficheController extends Controller
             'iban' => 'nullable | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
             'vat' => 'nullable|string',
             'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
-            'phone_1' => 'nullable|string|min:10|regex: /[0-9]/',
-            'phone_2' => 'nullable|string|min:10|regex: /[0-9]/',
+            'phone' => 'nullable|string|min:10|regex: /[0-9]/',
             'fax' => 'nullable|string|min:10|regex: /[0-9]/',
-            'mobile' => 'nullable|string|min:10',
-            'email_1' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_2' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_pec_1' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_pec_2' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'email' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche',
             'date_of_birth' => 'nullable|date|date_format:Y-m-d|before:today',
             'common_of_birth' => 'nullable|string',
             'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
@@ -103,9 +95,7 @@ class AnagraficheController extends Controller
         return redirect()->route('business.anagrafiche.index')->with('message', 'Anagrafica aggiornata con successo');
     }
 
-    public function destroy(Anagrafica $anagrafica) {
-        $anagrafica->delete();
-
-        return redirect()->back();
+    public function loadModal($id) {
+        return auth()->user()->anagrafiche()->whereId($id)->first();
     }
 }
