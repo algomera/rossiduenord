@@ -151,7 +151,7 @@ class SubjectController extends Controller
      */
     public function update(Request $request, Subject $subject)
     {
-        $signaler = auth()->user()->anagrafiche()->where('company_name', $request->consultant)->first();
+        $signaler = auth()->user()->anagrafiche()->where('id', $request->consultant)->first();
         $validated = $request->validate([
             'practice_id' => 'nullable | int',
             'general_contractor' => [
