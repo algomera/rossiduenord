@@ -36,9 +36,15 @@ class CondominiController extends Controller
         // Create Sheets
         $main = $this->spreadsheet->getActiveSheet();
         $this->spreadsheet->setActiveSheetIndex(0);
-        $main->setTitle($this->applicant->name . ' ' . $this->applicant->lastName);
+        $main->setTitle($this->applicant->name || $this->applicant->lastName ? $this->applicant->name . ' ' . $this->applicant->lastName : 'Scheda 1');
         $ceilings = $this->spreadsheet->createSheet();
         $ceilings->setTitle('Calcolo massimali');
+        $list = $this->spreadsheet->createSheet();
+        $list->setTitle('Lista condomini');
+
+
+        // LIST SHEET
+        $this->listGenerateCells($list);
 
         // MAIN SHEET
         $this->mainGenerateCells($main);
@@ -48,6 +54,7 @@ class CondominiController extends Controller
         // CEILING SHEET
         $this->ceilingsGenerateCells($ceilings);
         $this->ceilingsSetColRowDimension();
+
 
 
         // Redirect output to client browser and setup file name, then auto download
@@ -740,6 +747,47 @@ class CondominiController extends Controller
         $sheet->setCellValue('C20', 1500);
         $sheet->setCellValue('D20', 1200);
         $sheet->getStyle('B20:D20')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+    }
+
+    private function listGenerateCells($sheet) {
+        $sheet->setCellValue('A1', 'N.');
+        $sheet->setCellValue('B1', 'Nome');
+        $sheet->setCellValue('C1', 'Cognome');
+        $sheet->setCellValue('D1', 'Codice fiscale');
+        $sheet->setCellValue('E1', 'Millesimi');
+        $sheet->setCellValue('F1', 'Telefono');
+        $sheet->setCellValue('G1', 'Email');
+        $sheet->setCellValue('H1', 'Foglio');
+        $sheet->setCellValue('I1', 'Particella');
+        $sheet->setCellValue('J1', 'Subalterno');
+        $sheet->setCellValue('K1', 'Categoria catastale');
+        $sheet->setCellValue('L1', 'Superficie catastale');
+
+        // Loop condomini
+        foreach ($this->condomini as $i => $condomino) {
+            $sheet->setCellValue('A' . ($i + 2), $i + 1);
+            $sheet->setCellValue('B' . ($i + 2), $condomino->name);
+            $sheet->setCellValue('C' . ($i + 2), $condomino->surname);
+            $sheet->setCellValue('D' . ($i + 2), $condomino->cf);
+            $sheet->setCellValue('E' . ($i + 2), $condomino->millesimi_inv);
+            $sheet->setCellValue('F' . ($i + 2), $condomino->phone);
+            $sheet->setCellValue('G' . ($i + 2), $condomino->email);
+            $sheet->setCellValue('H' . ($i + 2), $condomino->foglio);
+            $sheet->setCellValue('I' . ($i + 2), $condomino->part);
+            $sheet->setCellValue('J' . ($i + 2), $condomino->sub);
+            $sheet->setCellValue('K' . ($i + 2), $condomino->categ_catastale);
+            $sheet->setCellValue('L' . ($i + 2), $condomino->sup_catastale);
+        }
+
+        foreach ($sheet->getColumnIterator() as $column) {
+            $sheet->getColumnDimension($column->getColumnIndex())->setAutoSize(true);
+        }
+
+        $sheet->getStyle('A1:L1')->applyFromArray([
+            'font' => [
+                'bold' => true
+            ]
+        ]);
     }
 
     private function mainSetColRowDimension() {
