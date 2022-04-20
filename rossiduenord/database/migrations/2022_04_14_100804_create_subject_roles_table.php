@@ -36,6 +36,8 @@ class CreateSubjectRolesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::table('anagrafiche_roles', function (Blueprint $table) {
             $table->dropForeign(['anagrafica_id']);
             $table->dropColumn('anagrafica_id');

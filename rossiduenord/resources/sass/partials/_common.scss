@@ -20,11 +20,12 @@ input::-webkit-inner-spin-button {
     color: #ffffff;
 }
  */
+
 .card {
     box-shadow: grey 0px 0px 10px -5px !important;
 }
 
-.up {
+.up-5 {
     z-index: 5;
 }
 
@@ -56,10 +57,10 @@ nav {
         }
     }
 }
+
 a {
     &:hover {
         text-decoration: none !important;
-        color: white !important;
     }
 }
 
@@ -111,9 +112,6 @@ a {
     &:hover {
         color: black !important;
         font-weight: 700;
-    }
-    &:hover {
-        background-color: $bg-bt-black;
     }
 }
 // NAVBAR

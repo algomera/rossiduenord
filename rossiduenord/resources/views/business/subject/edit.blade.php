@@ -53,11 +53,11 @@
                                         <div class="col-6">
                                             <x-subject_select label="Consulente" name="consultant" :subject="$subject" :items="$consultant"></x-subject_select>
                                         </div>
-                                        @if($subject->signaler)
+                                        @if($subject->consultant)
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="project_manager" style="display:inline-block;" >Tipo di consulente</label><br/>
-                                                    <input type="text" readonly disabled class="col-md-12 form-control" value="{{$subject->signaler}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
+                                                    <input type="text" readonly disabled class="col-md-12 form-control" value="{{\App\Anagrafica::find($subject->consultant)->first()->consultant_type}}" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" />
                                                 </div>
                                             </div>
                                         @endif
@@ -164,5 +164,20 @@
 
     </div>{{-- chiusura div content-main praticeNav --}}
 
-
 @endsection
+
+@push('modals')
+    <x-anagrafica-modal />
+@endpush
+
+@push('scripts')
+    <script>
+        function setSubject(p, n, v) {
+            axios.post(`/business/subject/${p}/set`, {
+                name: n,
+                value: v
+            })
+        }
+    </script>
+@endpush
+

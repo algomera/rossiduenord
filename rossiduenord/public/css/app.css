@@ -28,7 +28,7 @@ input::-webkit-inner-spin-button {
   box-shadow: grey 0px 0px 10px -5px !important;
 }
 
-.up {
+.up-5 {
   z-index: 5;
 }
 
@@ -62,7 +62,6 @@ nav a:hover {
 
 a:hover {
   text-decoration: none !important;
-  color: white !important;
 }
 
 .form-control:focus {
@@ -112,9 +111,6 @@ a:hover {
 .back:hover {
   color: black !important;
   font-weight: 700;
-}
-.back:hover {
-  background-color: #383d3f;
 }
 
 .ov-y {
