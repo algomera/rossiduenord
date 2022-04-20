@@ -18,8 +18,9 @@ class CreateApplicantsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('applicant')->nullable();
-            $table->string('name')->nullable();
-            $table->string('lastName')->nullable();
+            $table->string('company_name')->nullable();
+//            $table->string('name')->nullable();
+//            $table->string('lastName')->nullable();
             $table->string('c_f')->nullable();
             $table->string('phone')->nullable();
             $table->string('mobile_phone')->nullable();

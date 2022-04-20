@@ -125,8 +125,8 @@
                                 <td>{{$practice->practical_phase}}</td>
                                 <td>{{$practice->month}}</td>
                                 <td>{{$practice->bonus}}</td>
-                                <td>{{$practice->name}} {{$practice->lastName}}</td>
-                                <td>Sal</td>
+                                <td>{{$practice->applicant->company_name}}</td>
+                                <td>{{$practice->sal ?? '-'}}</td>
                                 <td></td>
                                 <td class="d-flex align-items-center" style="height: fit-content">
                                     <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">

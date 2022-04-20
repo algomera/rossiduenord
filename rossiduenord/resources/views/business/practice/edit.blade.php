@@ -2,7 +2,7 @@
 
 @section('content')
     @include('business.layouts.partials.practiceNav')
-    
+
             <form class="px-20 pb-20" action="{{ route('business.practice.update',$practice->id) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -11,7 +11,7 @@
                         <label for="id" class="text">{{ __('Numero pratica*') }}</label>
                         <div>
                             <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{$practice->id}}" autocomplete="id" autofocus>
-                            
+
                             @error('id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -19,12 +19,12 @@
                             @enderror
                         </div>
                     </div>
-                    
+
                     <div style="width: 15%; margin-right: 20px;" class="form-group">
                         <label for="created_at" class="text">{{ __('Data pratica*') }}</label>
                         <div>
                             <input id="created_at" type="text" style="height: 47px!important" class="form-control" name="created_at" value="{{$practice->created_at->format('d/m/y') }}" autocomplete="created_at" autofocus>
-                            
+
                             @error('created_at')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                         <label for="import" class="text">{{ __('Importo stimato*') }}</label>
                         <div>
                             <input id="import" type="text" step="0.01" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{old('import') ?? $practice->import }}" autocomplete="import" autofocus required>
-                            
+
                             @error('import')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -87,54 +87,56 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between">
-                    <div class="form-group" style="width: 15%;">
-                        <label for="month" class="text">Mese*</label>
-                        <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month" required>
-                            <option selected value="">Seleziona</option>
-                            <option {{ $practice->month == 'gennaio' ? 'selected' : ''}} {{old('month') == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>
-                            <option {{ $practice->month == 'febbraio' ? 'selected' : ''}} {{old('month') == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>
-                            <option {{ $practice->month == 'marzo' ? 'selected' : ''}} {{old('month') == 'marzo' ? 'selected' : ''}} value="marzo">marzo</option>
-                            <option {{ $practice->month == 'aprile' ? 'selected' : ''}} {{old('month') == 'aprile' ? 'selected' : ''}} value="aprile">aprile</option>
-                            <option {{ $practice->month == 'maggio' ? 'selected' : ''}} {{old('month') == 'maggio' ? 'selected' : ''}} value="maggio">maggio</option>
-                            <option {{ $practice->month == 'giugno' ? 'selected' : ''}} {{old('month') == 'giugno' ? 'selected' : ''}} value="giugno">giugno</option>
-                            <option {{ $practice->month == 'luglio' ? 'selected' : ''}} {{old('month') == 'luglio' ? 'selected' : ''}} value="luglio">luglio</option>
-                            <option {{ $practice->month == 'agosto' ? 'selected' : ''}} {{old('month') == 'agosto' ? 'selected' : ''}} value="agosto">agosto</option>
-                            <option {{ $practice->month == 'settembre' ? 'selected' : ''}} {{old('month') == 'settembre' ? 'selected' : ''}} value="settembre">settembre</option>
-                            <option {{ $practice->month == 'ottobre' ? 'selected' : ''}} {{old('month') == 'ottobre' ? 'selected' : ''}} value="ottobre">ottobre</option>
-                            <option {{ $practice->month == 'novembre' ? 'selected' : ''}} {{old('month') == 'novembre' ? 'selected' : ''}} value="novembre">novembre</option>
-                            <option {{ $practice->month == 'dicembre' ? 'selected' : ''}} {{old('month') == 'dicembre' ? 'selected' : ''}} value="dicembre">dicembre</option>
-                        </select>
-                        @error('month')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-            
-                    <div class="form-group" style="width: 10%;">
-                        <label for="year" class="text">{{ __('Anno*') }}</label>
-                        <div>
-                            <input id="year" type="text" style="height: 47px!important" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') ?? $practice->year }}" autocomplete="year" autofocus required>
-                            
-                            @error('year')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                                        
-                    <div class="form-group" style="width: 65%;">
-                        <label for="policy_name" class="text">{{ __('Denominazione*') }}</label>
-                        <div>
-                            <input id="policy_name" type="text" style="height: 47px!important" class="form-control @error('policy_name') is-invalid @enderror" name="policy_name" value="{{ old('policy_name') ?? $practice->policy_name }}" autocomplete="policy_name" autofocus required>
-                            
-                            @error('policy_name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                <div class="row">
+{{--                    <div class="form-group" style="width: 15%;">--}}
+{{--                        <label for="month" class="text">Mese*</label>--}}
+{{--                        <select style="height: 47px!important" class="form-control bg-body @error('month') is-invalid @enderror" name="month" id="month" required>--}}
+{{--                            <option selected value="">Seleziona</option>--}}
+{{--                            <option {{ $practice->month == 'gennaio' ? 'selected' : ''}} {{old('month') == 'gennaio' ? 'selected' : ''}} value="gennaio">gennaio</option>--}}
+{{--                            <option {{ $practice->month == 'febbraio' ? 'selected' : ''}} {{old('month') == 'febbraio' ? 'selected' : ''}} value="febbraio">febbraio</option>--}}
+{{--                            <option {{ $practice->month == 'marzo' ? 'selected' : ''}} {{old('month') == 'marzo' ? 'selected' : ''}} value="marzo">marzo</option>--}}
+{{--                            <option {{ $practice->month == 'aprile' ? 'selected' : ''}} {{old('month') == 'aprile' ? 'selected' : ''}} value="aprile">aprile</option>--}}
+{{--                            <option {{ $practice->month == 'maggio' ? 'selected' : ''}} {{old('month') == 'maggio' ? 'selected' : ''}} value="maggio">maggio</option>--}}
+{{--                            <option {{ $practice->month == 'giugno' ? 'selected' : ''}} {{old('month') == 'giugno' ? 'selected' : ''}} value="giugno">giugno</option>--}}
+{{--                            <option {{ $practice->month == 'luglio' ? 'selected' : ''}} {{old('month') == 'luglio' ? 'selected' : ''}} value="luglio">luglio</option>--}}
+{{--                            <option {{ $practice->month == 'agosto' ? 'selected' : ''}} {{old('month') == 'agosto' ? 'selected' : ''}} value="agosto">agosto</option>--}}
+{{--                            <option {{ $practice->month == 'settembre' ? 'selected' : ''}} {{old('month') == 'settembre' ? 'selected' : ''}} value="settembre">settembre</option>--}}
+{{--                            <option {{ $practice->month == 'ottobre' ? 'selected' : ''}} {{old('month') == 'ottobre' ? 'selected' : ''}} value="ottobre">ottobre</option>--}}
+{{--                            <option {{ $practice->month == 'novembre' ? 'selected' : ''}} {{old('month') == 'novembre' ? 'selected' : ''}} value="novembre">novembre</option>--}}
+{{--                            <option {{ $practice->month == 'dicembre' ? 'selected' : ''}} {{old('month') == 'dicembre' ? 'selected' : ''}} value="dicembre">dicembre</option>--}}
+{{--                        </select>--}}
+{{--                        @error('month')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                <strong>{{ $message }}</strong>--}}
+{{--                            </span>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
+
+{{--                    <div class="form-group" style="width: 10%;">--}}
+{{--                        <label for="year" class="text">{{ __('Anno*') }}</label>--}}
+{{--                        <div>--}}
+{{--                            <input id="year" type="text" style="height: 47px!important" class="form-control @error('year') is-invalid @enderror" name="year" value="{{ old('year') ?? $practice->year }}" autocomplete="year" autofocus required>--}}
+
+{{--                            @error('year')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                <strong>{{ $message }}</strong>--}}
+{{--                            </span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="policy_name" class="text">{{ __('Denominazione*') }}</label>
+                            <div>
+                                <input id="policy_name" type="text" style="height: 47px!important" class="form-control @error('policy_name') is-invalid @enderror" name="policy_name" value="{{ old('policy_name') ?? $practice->policy_name }}" autocomplete="policy_name" autofocus required>
+
+                                @error('policy_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,7 +281,7 @@
                     </div>
                 </div>
 
-{{-- 
+{{--
                 <div class="d-flex justify-content-between">
                     <div class="form-group" style="width: 45%;">
                         <label for="nominative" class="text">{{ __('Nominativo*') }}</label>
@@ -321,7 +323,7 @@
                     </div>
                 </div>
 
- --}}                
+ --}}
                 <div class="form-group">
                     <label for="description" class="text">{{ __('Descrizione') }}</label>
                     <textarea class="p-2 border form-control @error('description') is-invalid @enderror" style="width: 100%" name="description" id="description" cols="30" rows="3">{{ old('description') ??  $practice->description }}</textarea>
@@ -332,24 +334,42 @@
                     @enderror
                 </div>
 
-                <div class="form-group" style="width: 30%;">
-                    <label for="referent_email" class="text">{{ __('Email di riferimento') }}</label>
-                    <div>
-                        <input id="referent_email" type="email" style="height: 47px!important" class="form-control @error('referent_email') is-invalid @enderror" name="referent_email" value="{{ old('referent_email') ?? $practice->referent_email }}" autocomplete="referent_email" autofocus>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="referent_email" class="text">{{ __('Email di riferimento') }}</label>
+                            <div>
+                                <input id="referent_email" type="email" style="height: 47px!important" class="form-control @error('referent_email') is-invalid @enderror" name="referent_email" value="{{ old('referent_email') ?? $practice->referent_email }}" autocomplete="referent_email" autofocus>
 
-                        @error('referent_email')
-                            <span class="invalid-feedback" role="alert">
+                                @error('referent_email')
+                                <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="referent_mobile" class="text">{{ __('Cellulare di riferimento') }}</label>
+                            <div>
+                                <input id="referent_mobile" type="tel" style="height: 47px!important" class="form-control @error('referent_mobile') is-invalid @enderror" name="referent_mobile" value="{{ old('referent_mobile') ?? $practice->referent_mobile }}" autofocus>
+
+                                @error('referent_mobile')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="d-flex">
                     <div class="d-flex align-items-center" style="margin-right: 20px;">
                         <label class="checkbox-wrapper mt-2">
-                            <input {{ $practice->policy == 'true' ? 'checked' : ''}} {{old('policy') == 'true' ? 'checked' : ''}} class="form-check-input @error('policy') is-invalid @enderror"  type="checkbox" name="policy" id="policy" value="true">     
-                            <span class="checkmark"></span> 
+                            <input {{ $practice->policy == '1' ? 'checked' : ''}} {{old('policy') == '1' ? 'checked' : ''}} class="form-check-input @error('policy') is-invalid @enderror"  type="checkbox" name="policy" id="policy" value="true">
+                            <span class="checkmark"></span>
                             <span>Richiedi polizza</span>
                             @error('policy')
                                 <span class="invalid-feedback" role="alert">
@@ -384,10 +404,10 @@
                             @enderror
                         </div>
                         <label for="bonus" class="checkbox-wrapper ">
-                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox"  name="bonus" id="bonus" value="110%">     
-                            <span class="checkmark"></span> 
+                            <input {{ $practice->bonus == '110%' ? 'checked' : ''}} {{old('bonus') == '110%' ? 'checked' : ''}} type="checkbox"  name="bonus" id="bonus" value="110%">
+                            <span class="checkmark"></span>
                             <span>Super Bonus 110%</span>
-                           
+
                         </label>
                     </div>
                     <div class="d-flex align-items-center">
@@ -446,8 +466,8 @@
                     <label for="note" class="text">{{ __('Note') }}</label>
                     <textarea class="p-2 border" style="width: 100%" name="note" id="note" cols="30" rows="2">{{old('note') ?? $practice->note }}</textarea>
                     <label class="checkbox-wrapper mt-2">
-                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}} {{old('practice_ok') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">     
-                        <span class="checkmark"></span> 
+                        <input {{ $practice->practice_ok == 'true' ? 'checked' : ''}} {{old('practice_ok') == 'true' ? 'checked' : ''}}  type="checkbox" class="@error('practice_ok') is-invalid @enderror" name="practice_ok" value="true">
+                        <span class="checkmark"></span>
                         <span>Pratica in regola</span>
                         @error('practice_ok')
                                 <span class="invalid-feedback" role="alert">

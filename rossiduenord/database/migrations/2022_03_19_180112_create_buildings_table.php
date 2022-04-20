@@ -27,7 +27,8 @@ class CreateBuildingsTable extends Migration
             $table->string('region')->nullable();
             $table->string('cap')->nullable();
             $table->string('fiscal_code')->nullable();
-            $table->string('iban')->nullable();
+            $table->string('condominio')->nullable();
+//            $table->string('iban')->nullable();
             $table->string('build_type')->nullable();
             $table->string('zone')->nullable();
             $table->string('section')->nullable();
