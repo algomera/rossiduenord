@@ -3,8 +3,8 @@
  @include('business.layouts.partials.practiceNav')
  <form action="{{route('business.signed.store',$contract)}}" method="post" enctype="multipart/form-data">
      @csrf
-     <div class="px-20 bg-white">
-        <a href="{{url()->previous()}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
+     <div class="px-20 pb-5 bg-white">
+        <a href="{{route('business.contracts.index', $contract->practice)}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
         <p class="black text-md"><b>Elenco contratti firmati</b></p>
         <hr class="bg-black">
         {{-- table --}}
@@ -34,11 +34,11 @@
                     @endforelse
                 </tbody>
             </table>
-            <div class="mt-3">
+            <div class="mt-3 contenitore file-container">
                 <label for="signed_upload" class="btn bg-logo-green white">
                       Scegli file <i class="fa-solid fa-file-arrow-up"></i>
-                    <input type="file" name="signed" id="signed_upload" hidden>
                 </label>
+                <input type="file" name="signed" id="signed_upload" class="mt-1">
             </div>
         </div>
         <div class="box-fixed">

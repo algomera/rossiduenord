@@ -24,6 +24,22 @@ input::-webkit-inner-spin-button {
     box-shadow: grey 0px 0px 10px -5px !important;
 }
 
+.up {
+    z-index: 5;
+}
+
+.file-container {
+    position: relative;
+    label {
+        position: absolute;
+        z-index: 5;
+    }
+    input {
+        position: absolute;
+        left: 20px;
+    }
+}
+
 // tag
 nav {
     width: 15%;
