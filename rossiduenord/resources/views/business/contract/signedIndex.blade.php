@@ -4,7 +4,7 @@
  <form action="{{route('business.signed.store',$contract)}}" method="post" enctype="multipart/form-data">
      @csrf
      <div class="px-20 pb-5 bg-white">
-        <a href="{{route('business.contracts.index', $contract->practice)}}" class="black"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
+        <a href="{{route('business.contracts.index', $contract->practice)}}" class="back"> <i class="fa-solid fa-arrow-left"></i> Torna indietro</a>
         <p class="black text-md"><b>Elenco contratti firmati</b></p>
         <hr class="bg-black">
         {{-- table --}}
