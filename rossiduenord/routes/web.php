@@ -132,15 +132,18 @@ Route::middleware('business')
 
     Route::post('/show_condomino_data/{id}', function ($id) {
         if($id === "null") {
-            session()->remove('condominoId');
+            session()->forget('condominoId');
             session()->put('surfaceType', 'PV');
         } else {
+            session()->forget('condominoId');
+            session()->forget('surfaceType');
             session()->put('condominoId', $id);
             session()->put('surfaceType', 'PV');
         }
     });
 
     Route::post('/show_surface_type/{type}', function ($type) {
+        session()->forget('surfaceType');
         session()->put('surfaceType', $type);
     });
 
@@ -149,7 +152,6 @@ Route::middleware('business')
         $practice = Practice::find($pid);
         $items = $request->get('surfaces');
         foreach ($items as $i => $item) {
-//            $item['condomino_id'] = self::checkCondominoId($item, $practice);
             if(is_numeric($i)) {
                 $practice->surfaces()->create($item);
             } else if(is_string($i)) {
@@ -158,7 +160,8 @@ Route::middleware('business')
                 $practice->surfaces()->updateOrCreate([
                     'id' => $sn,
                     'practice_id' => $pn
-                ], [
+                ], 
+                [
                     "is_common" => $item['is_common'] ?? false,
                     "condomino_id" => $item['condomino_id'],
                     "type" => $item['type'],

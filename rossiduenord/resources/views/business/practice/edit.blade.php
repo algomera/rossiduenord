@@ -279,6 +279,7 @@
                     </div>
                 </div>
 
+{{-- 
                 <div class="d-flex justify-content-between">
                     <div class="form-group" style="width: 45%;">
                         <label for="nominative" class="text">{{ __('Nominativo*') }}</label>
@@ -320,6 +321,7 @@
                     </div>
                 </div>
 
+ --}}                
                 <div class="form-group">
                     <label for="description" class="text">{{ __('Descrizione') }}</label>
                     <textarea class="p-2 border form-control @error('description') is-invalid @enderror" style="width: 100%" name="description" id="description" cols="30" rows="3">{{ old('description') ??  $practice->description }}</textarea>

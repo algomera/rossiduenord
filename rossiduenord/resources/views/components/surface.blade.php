@@ -156,17 +156,20 @@
     </div>
 </div>
 
+{{-- onclick="setType({{$practice->id}},{{$condominio->id ?? 'null'}}, 'PO')"--}}
+
 @push('scripts')
     @include('business.scripts.surface_add')
 
     <script type="text/javascript">
         function setType(pid, id = null, type) {
             saveTypeChange(pid, id, type)
-            axios.post(`/business/show_surface_type/${type}`)
-                .then(() => {
-                    window.location.reload();
-                })
+
+            axios.post(`/business/show_surface_type/${type}`).then(() => {
+                window.location.reload();
+            })
         }
+        
         function saveTypeChange(pid, id, type)  {
             let inputs = document.querySelectorAll("[name^='surfaces']");
 
