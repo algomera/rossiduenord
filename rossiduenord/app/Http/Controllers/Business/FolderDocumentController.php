@@ -88,9 +88,10 @@ class FolderDocumentController extends Controller
      * @param  \App\FolderDocument  $folder_Document
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($practice_id, $folder_document_id, $sub_folder_id,$document_id)
     {
-        $document = Document::find($id);
+        $document = Document::find($document_id);
+        Storage::delete($document->allega);
         $document->delete();
         return redirect()->back()->with('message', "Il documento e stato eliminato!");
     }
