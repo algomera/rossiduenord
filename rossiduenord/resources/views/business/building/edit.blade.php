@@ -3,7 +3,7 @@
 @section('content')
     @include('business.layouts.partials.practiceNav')
 
-            <div class="scroll">
+            <div class="scroll ov-x-none">
 
                 <form action="{{ route('business.building.update', $building->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -638,68 +638,70 @@
                             </div>
                             <div class="row">
                                 <div class="col-md"> <!-- Data table content -->
-                                    <table id="condominis_table" class="table_bonus" style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                                <td style="width:15%;" class="text-center"><b>Nome/Ragione sociale</b></td>
-                                                <td style="width:10%;"><b>Cognome</b></td>
-                                                <td style="width:10%;"><b>Telefono</b></td>
-                                                <td style="width:13%;"><b>Email</b></td>
-                                                <td style="width:12%;"><b>Codice fiscale/P. IVA</b></td>
-                                                <td style="width:10%;" class="text-center"><b>Millesimi</b></td>
-                                                <td style="width:5%;" ><b>Foglio</b></td>
-                                                <td style="width:5%;"><b>Part.</b></td>
-                                                <td style="width:5%;"><b>Sub</b></td>
-                                                <td style="width:5%;" class="text-center"><b>Cat. catastale</b></td>
-                                                <td style="width:5%;" class="text-center"><b>Sub. catastale</b></td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @forelse($condomini as $i => $condomino)
-                                            <tr>
-                                                <td class="text-center">{{ $i + 1 }}</td>
-                                                <td class="text-center"> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
-                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input"></td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input"> </td>
-                                                <td class="text-left"> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input"></td>
-                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input"> </td>
-                                                <td class="text-center"> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input"> </td>
-                                            </tr>
-                                        @empty
-                                            <tr id="no_data_row">
-                                                <td colspan="12">Nessun condomine inserito</td>
-                                            </tr>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
+                                    <div class="ov-x">
+                                        <table id="condominis_table" class="table_bonus px-5" style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-center" style="width:5%;"><b>N.</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Nome/Rag. sociale</b></td>
+                                                    <td style="width:5%;"><b>Cognome</b></td>
+                                                    <td style="width:15%;"><b>Telefono</b></td>
+                                                    <td style="width:15%;"><b>Email</b></td>
+                                                    <td style="width:12%;"><b>Cod. fiscale/P. IVA</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Millesimi</b></td>
+                                                    <td style="width:5%;" ><b>Foglio</b></td>
+                                                    <td style="width:5%;"><b>Part.</b></td>
+                                                    <td style="width:5%;"><b>Sub</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Cat. catastale</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Sub. catastale</b></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse($condomini as $i => $condomino)
+                                                    <tr>
+                                                        <td class="text-center">{{ $i + 1 }}</td>
+                                                        <td class="text-center"> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input"></td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input"></td>
+                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input"> </td>
+                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input"> </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr id="no_data_row">
+                                                        <td colspan="12">Nessun condomine inserito</td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Esporta lista condomini <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a>
-                                <div class="d-flex align-items-center py-1 position-relative">
-                                    <label for="imported_excel_file" class="mt-2 up-5">
-                                      <span class=" file-btn clickable py-2 px-2"> Carica lista condomini <i class="fa-solid fa-file-arrow-up"></i> </span>
-                                    </label>
-                                    <input type="file" name="imported_excel_file" id="imported_excel_file" class="position-absolute" style="left: 98px;"  @if($building->imported_excel_file) hidden @endif />
+                                    <a href="{{ route('business.condomini.export', $building->practice) }}" class="btn bg-logo-green white mt-3">Esporta lista condomini <i class="fa-solid fa-file-arrow-down fa-1x"></i> </a>
+                                    <div class="d-flex align-items-center py-1 position-relative">
+                                        <label for="imported_excel_file" class="mt-2 up-5">
+                                        <span class=" file-btn clickable py-2 px-2"> Carica lista condomini <i class="fa-solid fa-file-arrow-up"></i> </span>
+                                        </label>
+                                        <input type="file" name="imported_excel_file" id="imported_excel_file" class="position-absolute" style="left: 98px;"  @if($building->imported_excel_file) hidden @endif />
 
 
-                                    @if($building->imported_excel_file)
-                                        <div class="d-flex" id="imported_excel_file_box">
-                                            <div class="d-flex flex-column align-items-start ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
-                                                <span style="font-size: 11px" class="mr-2">File caricato:</span>
-                                                <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
+                                        @if($building->imported_excel_file)
+                                            <div class="d-flex" id="imported_excel_file_box">
+                                                <div class="d-flex flex-column align-items-start ml-3 px-3 py-1" style="border-left: 1px solid #ced4da;">
+                                                    <span style="font-size: 11px" class="mr-2">File caricato:</span>
+                                                    <a href="{{ route('business.downloadExcel', $building->practice) }}" style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;" class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>
+                                                </div>
+                                                <div onclick="deleteExcel({{ $building->practice->id }})" class="d-flex flex-column align-items-center justify-content-center mr-3" style="border: none; background-color: transparent;">
+                                                    <img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24" height="24" alt="" class="clickable">
+                                                    <p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>
+                                                </div> 
                                             </div>
-                                            <div onclick="deleteExcel({{ $building->practice->id }})" class="d-flex flex-column align-items-center justify-content-center mr-3" style="border: none; background-color: transparent;">
-                                                <img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24" height="24" alt="" class="clickable">
-                                                <p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
+                                        @endif
+                                    </div>
 
                                 </div>
                             </div>
