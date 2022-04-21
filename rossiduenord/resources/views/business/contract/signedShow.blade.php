@@ -10,7 +10,7 @@
         <div>
             <div class="col-12" style="height: 55vh;">
                 <div class="preview h-100">
-                    <iframe src="https://www.orimi.com/pdf-test.pdf" type="" frameborder="0" class="w-100 h-100"></iframe>
+                    <iframe src="{{asset('storage/app/public/'.$signed->path)}}" type="application/pdf" frameborder="0" class="w-100 h-100"></iframe>
                 </div>
             </div>
             <div class="col-3 mt-3">

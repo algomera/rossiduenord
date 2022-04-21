@@ -26,11 +26,22 @@ Vue.component(
     require("./components/ExampleComponent.vue")
 );
 
+// barchart
 import BarChart from "./components/Bar.vue";
 Vue.component("Bar", BarChart);
+
+// asseveerator chart
 import AsseveratorChart from "./components/AsseveratorChart.vue";
-import Vue from "vue";
 Vue.component("AsseveratorChart", AsseveratorChart);
+
+// practice creation loader
+
+import PracticeLoader from "./components/PracticeLoader.vue";
+Vue.component("PracticeLoader", PracticeLoader);
+
+import { AtomSpinner } from "epic-spinners";
+Vue.component("AtomSpinner", AtomSpinner);
+import Vue from "vue";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -44,6 +55,7 @@ const app = new Vue({
         isListVisible: false,
         isPhotos: true,
         isVideos: false,
+        isLoading: false,
     },
     methods: {
         closeModal() {
@@ -67,6 +79,9 @@ const app = new Vue({
                 this.isVideos = true;
                 this.isPhotos = false;
             }
+        },
+        startLoading() {
+            this.isLoading = true;
         },
     },
 });

@@ -12,6 +12,13 @@
         </form>
     </div>
 
+
+    {{-- LOADER --}}
+        <div v-if="isLoading">
+            <practice-loader></practice-loader>
+        </div>
+    {{-- LOADER --}}
+
     <div class="content-main" style="padding-top: 0px;">
 
         <div class="box px-20 pt-20"  style=" margin-bottom:0;">
@@ -66,7 +73,7 @@
                             <input style="width: 100%" type="text" name="practical_description" id="practical_description" value="{{ request()->get('practical_description') ?? '' }}">
                         </div>
                         <div style="width: 10%; margin: 0 10px;">
-                            <span class="text-sm grey">N. Pratica</span>
+                            <span class="text-sm grey text-nowrap">N. Pratica</span>
                             <input style="width: 100%"type="number" name="practical_number" id="practical_number" value="{{ request()->get('practical_number') ?? '' }}">
                         </div>
                         <button type="submit" class="py-1 px-3 add-button mt-4">
@@ -84,21 +91,22 @@
                 </form>
 
                 <div class="mt-4">
-                    <div class="d-flex align-items-center" action="">
-                        <form action="{{route('business.applicant.store') }}" method="post">
+                    <div class="d-flex align-items-center" >
+                        <form action="{{route('business.applicant.store') }}" method="post" @click="startLoading()">
                             @csrf
                             <button type="submit" class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
                                 <img src="{{ asset('/img/icon/icona_nuovo.svg') }}" alt="">
-                                <p style="color: #818387">Nuovo</p>
+                                <p style="color: #818387" >Nuovo</p>
                             </button>
                         </form>
                     </div>
+                    <div class="w-100"></div>
                 </div>
             </div>
         </div>
 
         <div class="box px-20 pt-20 pb-20 mb-0">
-            <div class="table mt-2">
+            <div class="table mt-2 ov-x">
                 <table class="table_bonus" style="width: 100%">
                     <thead>
                         <tr style="border-top: 1px solid #707070">

@@ -7,8 +7,8 @@
                 @csrf
                 @method('PUT')
                 <div class="d-flex">
-                    <div style="width: 10%; margin-right: 20px;" class="form-group ">
-                        <label for="id" class="text">{{ __('Numero pratica*') }}</label>
+                    <div style="width: 10%; margin-right: 20px;" class="form-group">
+                        <label for="id" class="text text-nowrap">{{ __('N. pratica*') }}</label>
                         <div>
                             <input id="id" type="text" style="height: 47px!important" class="form-control bg-body @error('id') is-invalid @enderror" name="id" value="{{$practice->id}}" autocomplete="id" autofocus>
 
@@ -182,7 +182,7 @@
                     </div>
 
                     <div class="form-group" style="width: 5%;">
-                        <label for="province" class="text">{{ __('Provincia*') }}</label>
+                        <label for="province" class="text">{{ __('Prov*') }}</label>
                         <div>
                             <input id="province" type="text" style="height: 47px!important" class="form-control @error('province') is-invalid @enderror" name="province" value="{{ old('province') ?? $practice->province }}" autocomplete="province" autofocus required>
 
@@ -268,7 +268,7 @@
                     </div>
 
                     <div class="form-group" style="width: 20%;">
-                        <label for="assev_tecnica" class="text">{{ __('Assev. Tecnica(no IVA)*') }}</label>
+                        <label for="assev_tecnica" class="text text-nowrap">{{ __('Assev. Tecnica(no IVA)*') }}</label>
                         <div>
                             <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ old('assev_tecnica') ?? $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus required>
 
@@ -412,7 +412,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="form-group mr-2" style="width: 30%">
-                            <label for="month_processing" class="text">Mese di lavorazione</label>
+                            <label for="month_processing" class="text text-nowrap">Mese di lavorazione</label>
                             <select style="height: 47px!important" class="form-control bg-body @error('month_processing') is-invalid @enderror" name="month_processing" id="month_processing">
                                 <optgroup label="seleziona mese">
                                     <option value="">-</option>
@@ -454,7 +454,7 @@
                             </select>
                         </div>
                         <div class="form-group" style="width: 30%;">
-                            <label for="import_sal" class="text"> Importo SAL/Lavori</label>
+                            <label for="import_sal" class="text text-nowrap"> Importo SAL/Lavori</label>
                             <div>
                                 <input id="import_sal" type="text" style="height: 47px!important" class="form-control" name="import_sal" value="{{old('import_sal') ?? $practice->import_sal}}">
                             </div>
@@ -487,5 +487,6 @@
                 </div>
             </form>
         </div>
+        
     </div>
 @endsection
