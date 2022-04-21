@@ -144,8 +144,9 @@ Route::middleware('business')
     });
 
     Route::post('/show_surface_type/{type}', function ($type, Request $request) {
-        $request->session()->forget('surfaceType');
-        $request->session()->put('surfaceType', $type);
+        if(url()->previous() === url()->current()) {
+            $request->session()->put('surfaceType', $type);
+        }
     });
 
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
