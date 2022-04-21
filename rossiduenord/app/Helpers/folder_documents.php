@@ -471,25 +471,5 @@ class folder_documents
         foreach ($list_folders_casing_chunk as $chunk) {
             DB::table('sub_folders')->insert($chunk->toArray());
         }
-
-//        for ($i = 0; $i < count($list_folders_first); $i++) {
-//            DB::table('sub_folders')->insert($list_folders_first[$i]);
-////            Sub_folder::create($list_folders_first[$i]);
-//        }
-
-//        for ($i = 0; $i < count($list_folders_during); $i++) {
-//            DB::table('sub_folders')->insert($list_folders_during[$i]);
-////            Sub_folder::create($list_folders_during[$i]);
-//        }
-
-//        for ($i = 0; $i < count($list_folders_after); $i++) {
-//            DB::table('sub_folders')->insert($list_folders_after[$i]);
-////            Sub_folder::create($list_folders_after[$i]);
-//        }
-
-//        for ($i = 0; $i < count($list_folders_casing); $i++) {
-//            DB::table('sub_folders')->insert($list_folders_casing[$i]);
-////            Sub_folder::create($list_folders_casing[$i]);
-//        }
     }
 }
