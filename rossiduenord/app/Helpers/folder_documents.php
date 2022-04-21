@@ -447,13 +447,13 @@ class folder_documents
         ];
 
         $list_folders_first = collect($list_folders_first);
-        $list_folders_first_chunk = $list_folders_first->chunk(15);
+        $list_folders_first_chunk = $list_folders_first->chunk(20);
         $list_folders_during = collect($list_folders_during);
-        $list_folders_during_chunk = $list_folders_during->chunk(15);
+        $list_folders_during_chunk = $list_folders_during->chunk(20);
         $list_folders_after = collect($list_folders_after);
-        $list_folders_after_chunk = $list_folders_after->chunk(15);
+        $list_folders_after_chunk = $list_folders_after->chunk(20);
         $list_folders_casing = collect($list_folders_casing);
-        $list_folders_casing_chunk = $list_folders_casing->chunk(15);
+        $list_folders_casing_chunk = $list_folders_casing->chunk(20);
 
 
         foreach ($list_folders_first_chunk as $chunk) {
