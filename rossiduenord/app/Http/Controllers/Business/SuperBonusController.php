@@ -46,9 +46,9 @@ class SuperBonusController extends Controller
      * @param Practice $practice
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function driving_intervention(Practice $practice) {
+    public function driving_intervention(Practice $practice, Request $request) {
         if(url()->previous() !== url()->current()) {
-            session()->put('surfaceType', 'PV');
+            $request->session()->put('surfaceType', 'PV');
         }
         // Redirect to next tab
         $data_project = $practice->data_project;
@@ -92,9 +92,9 @@ class SuperBonusController extends Controller
      * @param Practice $practice
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function towed_intervention(Practice $practice) {
+    public function towed_intervention(Practice $practice, Request $request) {
         if(url()->previous() !== url()->current()) {
-            session()->put('surfaceType', 'PV');
+            $request->session()->put('surfaceType', 'PV');
         }
 
         // Redirect to next tab
