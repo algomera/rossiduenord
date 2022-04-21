@@ -87,7 +87,7 @@
                     <div class="d-flex align-items-center" action="">
                         <form action="{{route('business.applicant.store') }}" method="post">
                             @csrf
-                            <button type="submit"  class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
+                            <button type="submit" onclick="showSpinner()" class="d-flex flex-column align-items-center justify-content-center mr-3" style="background-color: transparent; border: none;">
                                 <img src="{{ asset('/img/icon/icona_nuovo.svg') }}" alt="">
                                 <p style="color: #818387">Nuovo</p>
                             </button>
@@ -178,5 +178,15 @@
         </div>
         @include('business.layouts.partials.practice_info')
     </div>
+    <div id="spinner" class="position-fixed d-flex align-items-center justify-content-center" style="visibility: hidden; height: 100vh; width: 100vw; top: 0; left: 0; right: 0; bottom: 0; background-color:rgba(0,0,0,0.8); color: white">Creazione pratica in corso..</div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        function showSpinner() {
+            let spinner = document.querySelector('#spinner');
+            spinner.style.visibility = "visible";
+        }
+    </script>
+@endpush
 
