@@ -29,18 +29,20 @@
                             Si
                         </label>
                     </div>
-                    <div class="d-flex align-items-center mt-3"> 
-                        <p style="margin: 0">è stata depositata nell’ufficio competente del Comune di</p> 
-                        <div>
-                            <input type="text" value="{{ old('filed_common') ?? $data_project->filed_common}}" name="filed_common" id="filed_common" style="margin-left: 20px; width: 150px;" class="text-center border form-control  @error('filed_common') is-invalid @enderror">
-                            @error('filed_common')
-                                <span class="invalid-feedback pl-3" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div> 
+                    <div class="d-flex align-items-center flex-wrap mt-3"> 
+                        <div class="col-sm-9 col-xl d-flex align-items-center">
+                            <p style="margin: 0" class="text-nowrap">è stata depositata nell’ufficio competente del Comune di</p> 
+                            <div>
+                                <input type="text" value="{{ old('filed_common') ?? $data_project->filed_common}}" name="filed_common" id="filed_common" style="margin-left: 20px; width: 150px;" class="text-center border form-control  @error('filed_common') is-invalid @enderror">
+                                @error('filed_common')
+                                    <span class="invalid-feedback pl-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> 
+                        </div>
                           
-                        <div class="h-100">
+                        <div class="col-sm-3 col-xl">
                             <label for="filed_province" style="margin: 0; padding-left: 20px;" class="d-flex align-items-center">
                                 Prov.
                                 <div class="d-flex flex-column justify-content-center">
@@ -53,10 +55,10 @@
                                 </div>
                             </label>
                         </div>
-                        <div>
-                            <label for="filed_date" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center mx-2">
+                        <div class="col-sm-6 col-xl mt-md-3 mt-xl-0">
+                            <label for="filed_date" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center mx-2 text-nowrap">
                                 in data
-                                <div class="d-flex flex-column justify-content-center">
+                                <div class="d-flex flex-column justify-content-center px-3">
                                     <input type="date" value="{{old('filed_date') ?? $data_project->filed_date}}" name="filed_date" id="filed_date" class="text-center border  mx-1 form-control @error('filed_date') is-invalid @enderror">
                                     @error('filed_date')
                                         <span class="invalid-feedback pl-3" role="alert">
@@ -66,8 +68,8 @@
                                 </div>
                             </label>
                         </div>
-                        <div>
-                            <label for="filed_protocol" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center">
+                        <div class="col-sm-6 col-xl mt-md-3 mt-xl-0">
+                            <label for="filed_protocol" style="margin: 0; padding-left: 10px;" class="d-flex align-items-center text-nowrap">
                                 Protocollo n.
                                 <div class="d-flex flex-column justify-content-center">
                                     <input type="text" value="{{old('filed_protocol') ?? $data_project->filed_protocol}}" name="filed_protocol" id="filed_protocol" class="text-center border w-50 mx-2 form-control @error('filed_protocol') is-invalid @enderror">
@@ -98,7 +100,7 @@
                     </div>
 
                     <div class="mt-5 d-flex align-items-center">
-                        <div>
+                        <div class="text-nowrap">
                             - gli stessi lavori sono iniziati in data
                        </div> 
                         <label for="work_start">
@@ -109,7 +111,7 @@
                                 </div>
                             @enderror
                         </label>
-                        <div class="ml-5">e conclusi in data</div>
+                        <div class="ml-4 text-nowrap">e conclusi in data</div>
                         <label for="end_of_works">
                             <input type="date" value="{{old('end_of_works') ?? $data_project->end_of_works}}" name="end_of_works" id="end_of_works" class="text-center border form-control ml-3 @error('end_of_works') is-invalid @enderror">
                             @error('end_of_works')
@@ -125,7 +127,7 @@
                         <div class="d-flex align-items-center">
                             <label for="type_building" class="">
                                 <input {{ $data_project->type_building == 'condominium' ? 'checked' : ''}} {{old('type_building') == 'condominium' ? 'checked' : ''}} type="radio" value="condominium" name="type_building" id="type_building" class="mr-2 @error('type_building') is-invalid @enderror">
-                                <span>Edificio condominiale composto da n. unità</span>
+                                <span class="text-wrap">Edificio condominiale composto da n. unità</span>
                                 @error('type_building')
                                     <span class="invalid-feedback pl-3 pl-3" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -154,7 +156,7 @@
                                     </span>
                                 @enderror
                             </label>
-                            <label for="centralized_system" class="checkbox-wrapper d-flex mx-5">
+                            <label for="centralized_system" class="checkbox-wrapper d-flex mx-5 text-nowrap">
                                 <input {{ $data_project->centralized_system == 'true' ? 'checked' : ''}} {{old('centralized_system') == 'true' ? 'checked' : ''}} type="checkbox" value="true" name="centralized_system" id="centralized_system" class="@error('centralized_system') is-invalid @enderror">
                                 <span class="checkmark"></span>
                                 con impianto termico centralizzato

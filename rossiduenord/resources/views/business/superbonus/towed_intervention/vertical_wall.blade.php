@@ -3,8 +3,6 @@
 @section('content')
     @include('business.layouts.partials.practiceNav')
     @include('business.layouts.partials.nav_superbonus')
-
-
             <form action="{{ route('business.update_towed_vertical_wall', ['practice' => $practice]) }}" method="POST">
                 @csrf
                 @method('PUT')
@@ -17,7 +15,7 @@
                     <hr style="margin-top: 5px; background-color: #818387;">
                 </div>
 
-                <div class="d-flex" style="font-weight: 500">
+                <div class="d-flex ov-x-none" style="font-weight: 500">
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
                         <a href="{{ route('business.towed_intervention', ['practice'=>$practice->id, 'condomino'=>'common', 'type'=>'PV'])}}" class="black">
                             <div class="d-flex align-items-center pb-2 pt-0" @if($condominoId != 'common') onclick="setCondominoId({{ $practice->id }}, 'common')" @endif>
@@ -563,7 +561,7 @@
                                 </label>
                             </div>
                             <p>I sistemi di Building Automation dedicati al controllo di:</p>
-                            <div class="d-flex">
+                            <div class="d-flex flex-sm-column flex-xl-row">
                                 <div class="mr-5">
                                     <p class="m-0">Climatizzazione invernale</p>
                                     <input type="radio" name="BA_winter_acs" value="N.D" {{$towed_vw->BA_winter_acs == 'N.D' ? 'checked' : ''}} id="">
@@ -829,24 +827,24 @@
 
                             
 
-                            <div class="d-flex align-items-center mt-5" style="width: 80%">
-                                <p class="m-0 font-500">per un ammontare pari a</p>
-                                <div class="d-flex align-items-center ml-5">
-                                    <span>SAL. n.1</span>
+                            <div class="d-flex align-items-center mt-5 flex-wrap">
+                                <p class="m-0 font-500 text-nowrap">per un ammontare pari a</p>
+                                <div class="d-flex align-items-center ml-3 col-sm-4 col-lg">
+                                    <span class="text-nowrap"> SAL. n.1</span>
                                     <label for="EBA_cost_1" class="d-flex align-items-end m-0 mr-1">
                                         <input type="text" name="EBA_cost_1" value="{{$towed_vw->EBA_cost_1}}" class="ml-2 text-right px-2 border" style="width:120px; background-color: #f2f2f2">
                                     </label>
                                     <span>€</span>
                                 </div>
-                                <div class="d-flex align-items-center ml-4">
-                                    <span>SAL. n.2</span>
+                                <div class="d-flex align-items-center ml-3 col-sm-4 col-lg mx-lg-0">
+                                    <span class="text-nowrap">SAL. n.2</span>
                                     <label for="EBA_cost_2" class="d-flex align-items-end m-0 mr-1">
                                         <input type="text" value="{{$towed_vw->EBA_cost_2}}" name="EBA_cost_2" class="ml-2 text-right px-2 border" style="width:120px; background-color: #f2f2f2">
                                     </label>
                                     <span>€</span>
                                 </div>
-                                <div class="d-flex align-items-center ml-4">
-                                    <span>SAL. n.F</span>
+                                <div class="d-flex align-items-center ml-4 col-sm-4 col-lg mt-3 mt-lg-0 ml-5 ml-lg-0">
+                                    <span class="text-nowrap">SAL. n.F</span>
                                     <label for="" class="d-flex align-items-end m-0 mr-1">
                                         <input type="text" value="" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
                                     </label>

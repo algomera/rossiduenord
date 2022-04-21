@@ -43,6 +43,7 @@
                                     è stata depositata nell'ufficio competente del Comune di
                                 </p>
                                 <label for="sai2_common" class=" m-0 mr-4 black">
+                                    <span class="invisible">comune</span>
                                     <input type="text" value="{{$variant->sai2_common}}" name="sai2_common" id="sai2_common" class="border ml-2 px-2" style="width: 120px;" placeholder="comune L.10">
                                 </label>
                                 <label for="sai2_province" class=" m-0 mr-4 black">Prov.
@@ -132,6 +133,7 @@
                                     è stata depositata nell'ufficio competente del Comune di
                                 </p>
                                 <label for="finalSai_common" class=" m-0 mr-4 black">
+                                    <span class="invisible">Common</span>
                                     <input type="text" value="{{$variant->finalSai_common}}" name="finalSai_common" id="finalSai_common" class="border ml-2 px-2" style="width: 120px;" placeholder="comune L.10">
                                 </label>
                                 <label for="finalSai2_province" class=" m-0 mr-4 black">Prov.
