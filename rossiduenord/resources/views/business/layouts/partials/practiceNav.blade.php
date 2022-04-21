@@ -31,10 +31,10 @@
                 <a href="{{route('business.medias', $practice->id)}}" class="{{request()->is('business/medias/*') ? 'visited' : ''}} px-3 text-nowrap">
                     FOTO E VIDEO
                 </a>
-                <a href="{{route('business.folderDocument.show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}} text-nowrap px-3">
+{{--                 <a href="{{route('business.folderDocument.show', [$practice->id, $practice->folder_documents->first()->id ])}}" class="{{request()->is('business/folder_document/*') ? 'visited' : ''}} text-nowrap px-3">
                     DOCUMENTI RICHIESTI
                 </a>
-                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}} px-3">
+ --}}                <a href="{{route('business.superbonus.index', $practice->id) }}" class="{{request()->is('business/superbonus*') ? 'visited' : ''}} px-3">
                     SUPERBONUS
                 </a>
                 <a href="{{route('business.contracts.index', $practice->id)}}" class="{{ request()->is('business/contracts*') ? 'visited' : ''}} px-3">CONTRATTI</a>
