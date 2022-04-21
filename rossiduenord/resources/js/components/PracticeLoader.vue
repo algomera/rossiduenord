@@ -5,7 +5,7 @@
         >
             <atom-spinner
                 :animation-duration="1000"
-                :size="150"
+                :size="120"
                 color="#61a4d7"
             />
             <div class="w-100 mt-3">

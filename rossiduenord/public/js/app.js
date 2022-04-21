@@ -57347,7 +57347,7 @@ var render = function () {
       },
       [
         _c("atom-spinner", {
-          attrs: { "animation-duration": 1000, size: 150, color: "#61a4d7" },
+          attrs: { "animation-duration": 1000, size: 120, color: "#61a4d7" },
         }),
         _vm._v(" "),
         _vm._m(0),
