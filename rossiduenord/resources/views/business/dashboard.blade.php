@@ -3,7 +3,7 @@
 @section('content')
 {{-- header --}}
     <div class="mb-2" style="padding: 10px 165px 10px 30px; border-bottom: 2px solid rgb(219, 220, 219);">
-        <h2 class="light-grey">Dashboard</h2> 
+        <h2 class="light-grey">Dashboard</h2>
     </div>
 {{-- main --}}
     <div class="dash-container d-flex px-4 my-2 text-black">
@@ -16,7 +16,7 @@
             </div>
         </a>
 
-        <form action="{{route('business.applicant.store') }}" method="post">
+        <form action="{{route('business.applicant.store') }}" method="post" @click="startLoading()">
             @csrf
             <button type="submit"  class="d-flex flex-column align-items-center justify-content-center" style="background-color: transparent; border: none;">
                 <div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
@@ -56,5 +56,5 @@
                 </a>
             </div>
     </div>
-     
+
 @endsection

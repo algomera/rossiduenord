@@ -13,11 +13,7 @@
     </div>
 
 
-    {{-- LOADER --}}
-        <div v-if="isLoading">
-            <practice-loader></practice-loader>
-        </div>
-    {{-- LOADER --}}
+
 
     <div class="content-main" style="padding-top: 0px;">
 

@@ -126,6 +126,12 @@
                     @include('business.layouts.partials.error')
                     @include('business.layouts.partials.message')
                     @yield('content')
+
+                    {{-- LOADER --}}
+                    <div v-if="isLoading">
+                        <practice-loader></practice-loader>
+                    </div>
+                    {{-- LOADER --}}
                 </main>
             </div>
         </div>
