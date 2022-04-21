@@ -85,7 +85,7 @@ class ApplicantController extends Controller
         Variant::create($data);
 
         // folder document creation
-        folder_documents::addFolders($practice_id, $folderDocument);
+        //folder_documents::addFolders($practice_id, $folderDocument);
         Contracts::createInitialContracts($practice_id);
         Policies::createInitialPolicies($practice_id);
         return redirect()->route('business.applicant.edit', $applicant);

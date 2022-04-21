@@ -12,8 +12,6 @@ class SubjectRoleSeeder extends Seeder
      */
     public function run()
     {
-        SubjectRole::truncate();
-
         SubjectRole::create([
             'name' => 'Richiedente',
             'color' => '#f1a754'
