@@ -131,21 +131,21 @@ Route::middleware('business')
     Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
 
 
-    Route::post('/show_condomino_data/{id}', function ($id) {
+    Route::post('/show_condomino_data/{id}', function ($id, Request $request) {
         if($id === "null") {
-            session()->forget('condominoId');
-            session()->put('surfaceType', 'PV');
+            $request->session()->forget('condominoId');
+            $request->session()->put('surfaceType', 'PV');
         } else {
-            session()->forget('condominoId');
-            session()->forget('surfaceType');
-            session()->put('condominoId', $id);
-            session()->put('surfaceType', 'PV');
+            $request->session()->forget('condominoId');
+            $request->session()->forget('surfaceType');
+            $request->session()->put('condominoId', $id);
+            $request->session()->put('surfaceType', 'PV');
         }
     });
 
-    Route::post('/show_surface_type/{type}', function ($type) {
-        session()->forget('surfaceType');
-        session()->put('surfaceType', $type);
+    Route::post('/show_surface_type/{type}', function ($type, Request $request) {
+        $request->session()->forget('surfaceType');
+        $request->session()->put('surfaceType', $type);
     });
 
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
