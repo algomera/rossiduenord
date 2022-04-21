@@ -172,5 +172,10 @@
                 </div>
             </form>
         </div>
+        @push('scripts')
+            <script type="text/javascript">
+               console.log('ciao');
+            </script>
+        @endpush
     </div>
 @endsection

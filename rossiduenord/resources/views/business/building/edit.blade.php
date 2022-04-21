@@ -514,7 +514,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-7 my-1 my-lg-0">
                                 <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('isUnderRenovation') is-invalid @enderror m-0">L’edificio è in fase di ristrutturazione Art. 3, Com. 1, lettere d), e), f), del D.P.R. 380/2001</p>
                                 @error('isUnderRenovation')
                                     <span class="invalid-feedback" role="alert">
@@ -540,7 +540,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-7 my-1 my-lg-0">
                                 <p style="display:inline-block; margin-right:25px; font-weight:500;" class="@error('nonMetan_area') is-invalid @enderror m-0">L’edificio è in un’area non metanizzata</p>
                                 @error('nonMetan_area')
                                     <span class="invalid-feedback" role="alert">
