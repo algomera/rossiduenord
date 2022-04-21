@@ -144,7 +144,7 @@ Route::middleware('business')
     });
 
     Route::post('/show_surface_type/{type}', function ($type, Request $request) {
-        if(url()->previous() === url()->current()) {
+        if(url()->previous() !== url()->current()) {
             $request->session()->put('surfaceType', $type);
         }
     });
