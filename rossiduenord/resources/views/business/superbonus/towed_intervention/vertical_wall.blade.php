@@ -19,19 +19,23 @@
 
                 <div class="d-flex" style="font-weight: 500">
                     <div class="px-20 border-right" style="width: 20%">{{-- column left --}}
-                        <div class="d-flex align-items-center pb-2 pt-0" @if($condominoId != 'common') onclick="setCondominoId({{ $practice->id }}, 'common')" @endif>
-                            <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
-                            <p class="m-0 ml-2 {{ $condominoId === "common" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
-                        </div>
+                        <a href="{{ route('business.towed_intervention', ['practice'=>$practice->id, 'condomino'=>'common', 'type'=>'PV'])}}" class="black">
+                            <div class="d-flex align-items-center pb-2 pt-0" @if($condominoId != 'common') onclick="setCondominoId({{ $practice->id }}, 'common')" @endif>
+                                <img src="{{ asset('/img/icon/round-yellow.svg')}}" alt="">
+                                <p class="m-0 ml-2 {{ $condominoId === "common" || !$condominoId ? 'font-weight-bold' : '' }}">Parti comuni</p>
+                            </div>                        
+                        </a>
                         {{-- loop condomini --}}
                         @forelse($condomini as $condomino)
-                        <div class="d-flex align-items-center py-2" @if($condominoId != $condomino->id) onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})" @endif>
-                            <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
-                            <p class="m-0 ml-2 {{ $condominoId == $condomino->id ? 'font-weight-bold' : '' }}">
-                                {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
-                                {{ $condomino->part }} {{ $condomino->sub }}
-                            </p>
-                        </div>
+                        <a href="{{ route('business.towed_intervention', ['practice'=>$practice->id, 'condomino'=>$condomino->id, 'type'=>'PV'])}}">
+                            <div class="d-flex align-items-center py-2" @if($condominoId != $condomino->id) onclick="setCondominoId({{ $practice->id }}, {{ $condomino->id }})" @endif>
+                                <img src="{{ asset('/img/icon/round-green.svg')}}" alt="">
+                                <p class="m-0 ml-2 black {{ $condominoId == $condomino->id ? 'font-weight-bold' : '' }}">
+                                    {{ $condomino->name }} {{ $condomino->surname }} - {{ $condomino->foglio }}
+                                    {{ $condomino->part }} {{ $condomino->sub }}
+                                </p>
+                            </div>
+                        </a>
                         @empty
                             <div class="d-flex align-items-center py-2">
                                 <p class="m-0 ml-2">Nessun codomino</p>
@@ -205,7 +209,7 @@
                             </label>
                             <p>Le superfici oggetto dell'intervento sono:</p>
 
-                            <x-surface :vertwall="$towed_vw" :practice="$practice" :surfaces="$surfaces" :condomino="$condominoId" :isCommon="$condominoId === 'common' ? 1 : 0" />  
+                            <x-surface :vertwall="$towed_vw" :practice="$practice" :surfaces="$surfaces" :condomino="$condominoId" :type="$type" :isCommon="$condominoId === 'common' ? 1 : 0" />  
 
                             <div class="d-flex align-items-center mt-3" style="width:100%;">
                                 <p class="m-0">Superficie totale oggetto dell’intervento</p>
@@ -887,11 +891,11 @@
     <script type="text/javascript">
         function setCondominoId(pid, id) {
             saveCondominoChanges(pid, '{{ $condominoId }}');
-            axios.post(`/business/show_condomino_data/${id}`)
+/*             axios.post(`/business/show_condomino_data/${id}`)
                 .then(() => {
                     window.location.reload();
                 })
-        }
+ */        }
         function saveCondominoChanges(pid, id) {
             // Form anagrafica condomino
             let inputs = document.querySelectorAll("[name^='selected_condomino-']");

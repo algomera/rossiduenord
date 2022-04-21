@@ -95,13 +95,13 @@ Route::middleware('business')
     Route::put('/superbonus/data_project/{practice}/update', 'SuperBonusController@update_data_project')
     ->where('practice', '[0-9]+')
     ->name('update_data_project');
-    Route::get('/superbonus/driving_intervention/{practice}', 'SuperBonusController@driving_intervention')
+    Route::get('/superbonus/driving_intervention/{practice}/{type?}', 'SuperBonusController@driving_intervention')
     ->where('practice', '[0-9]+')
     ->name('driving_intervention');
     Route::put('/superbonus/driving_intervention/{practice}/update', 'SuperBonusController@update_driving_intervention')
     ->where('practice', '[0-9]+')
     ->name('update_driving_intervention');
-    Route::get('/superbonus/towed_intervention/{practice}', 'SuperBonusController@towed_intervention')
+    Route::get('/superbonus/towed_intervention/{practice}/{condomino?}/{type?}', 'SuperBonusController@towed_intervention')
     ->where('practice', '[0-9]+')
     ->name('towed_intervention');
     Route::put('/superbonus/towed_intervention/{practice}/update', 'SuperBonusController@update_towed_intervention')
@@ -129,25 +129,6 @@ Route::middleware('business')
     Route::resource('/verticalwall', 'VerticalWallController');
     //media
     Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
-
-
-    Route::post('/show_condomino_data/{id}', function ($id, Request $request) {
-        if($id === "null") {
-            $request->session()->forget('condominoId');
-            $request->session()->put('surfaceType', 'PV');
-        } else {
-            $request->session()->forget('condominoId');
-            $request->session()->forget('surfaceType');
-            $request->session()->put('condominoId', $id);
-            $request->session()->put('surfaceType', 'PV');
-        }
-    });
-
-    Route::post('/show_surface_type/{type}', function ($type, Request $request) {
-        if(url()->previous() !== url()->current()) {
-            $request->session()->put('surfaceType', $type);
-        }
-    });
 
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
         $pid = $request->get('practice');
@@ -182,7 +163,6 @@ Route::middleware('business')
 
     Route::delete('/surface/{id}/delete', 'SuperBonusController@delete_surface');
 
-
     Route::post('/save_condomino_data/{id}', function ($id, Request $request) {
         $pid = $request->get('practice');
         $practice = Practice::find($pid);
@@ -207,6 +187,7 @@ Route::middleware('business')
     Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
     Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
 
+    // Intervention delete
     Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
     Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
     Route::delete('/absorption_heat_pumps/{id}/delete', 'InterventionController@deleteAbsorptionHeatPumps');

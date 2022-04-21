@@ -115,7 +115,7 @@ a {
         display: none;
     }
 }
-
+/* 
 .ov-x {
     overflow-x: auto;
     &::-webkit-scrollbar {
@@ -130,7 +130,8 @@ a {
 .ov-y-none {
     overflow-y: hidden;
 }
-// cursor pointer
+
+ */// cursor pointer
 .clickable {
     cursor: pointer;
 }
@@ -519,13 +520,13 @@ label {
         }
     }
     .frame {
-        border: 1px solid #bbbcbc;
-        border-bottom: 0;
+        border: 1px solid #bbbcbc!important;
+        border-bottom: 0!important;
         background-color: white;
         padding: 10px 20px 3px !important;
         color: #61a4d7 !important;
-        z-index: 1;
-        margin-bottom: -1px;
+        z-index: 1!important;
+        margin-bottom: -1px!important;
     }
 }
 
@@ -706,3 +707,4 @@ label {
     border: none;
     width: 100%;
 }
+
