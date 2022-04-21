@@ -446,24 +446,50 @@ class folder_documents
             ],
         ];
 
-        for ($i = 0; $i < count($list_folders_first); $i++) {
-            DB::table('sub_folders')->insert($list_folders_first[$i]);
-//            Sub_folder::create($list_folders_first[$i]);
+        $list_folders_first = collect($list_folders_first);
+        $list_folders_first_chunk = $list_folders_first->chunk(5);
+        $list_folders_during = collect($list_folders_during);
+        $list_folders_during_chunk = $list_folders_during->chunk(5);
+        $list_folders_after = collect($list_folders_after);
+        $list_folders_after_chunk = $list_folders_after->chunk(5);
+        $list_folders_casing = collect($list_folders_casing);
+        $list_folders_casing_chunk = $list_folders_casing->chunk(5);
+
+
+        foreach ($list_folders_first_chunk as $chunk) {
+            DB::table('sub_folders')->insert($chunk->toArray());
         }
 
-        for ($i = 0; $i < count($list_folders_during); $i++) {
-            DB::table('sub_folders')->insert($list_folders_during[$i]);
-//            Sub_folder::create($list_folders_during[$i]);
+        foreach ($list_folders_during_chunk as $chunk) {
+            DB::table('sub_folders')->insert($chunk->toArray());
         }
 
-        for ($i = 0; $i < count($list_folders_after); $i++) {
-            DB::table('sub_folders')->insert($list_folders_after[$i]);
-//            Sub_folder::create($list_folders_after[$i]);
+        foreach ($list_folders_after_chunk as $chunk) {
+            DB::table('sub_folders')->insert($chunk->toArray());
         }
 
-        for ($i = 0; $i < count($list_folders_casing); $i++) {
-            DB::table('sub_folders')->insert($list_folders_casing[$i]);
-//            Sub_folder::create($list_folders_casing[$i]);
+        foreach ($list_folders_casing_chunk as $chunk) {
+            DB::table('sub_folders')->insert($chunk->toArray());
         }
+
+//        for ($i = 0; $i < count($list_folders_first); $i++) {
+//            DB::table('sub_folders')->insert($list_folders_first[$i]);
+////            Sub_folder::create($list_folders_first[$i]);
+//        }
+
+//        for ($i = 0; $i < count($list_folders_during); $i++) {
+//            DB::table('sub_folders')->insert($list_folders_during[$i]);
+////            Sub_folder::create($list_folders_during[$i]);
+//        }
+
+//        for ($i = 0; $i < count($list_folders_after); $i++) {
+//            DB::table('sub_folders')->insert($list_folders_after[$i]);
+////            Sub_folder::create($list_folders_after[$i]);
+//        }
+
+//        for ($i = 0; $i < count($list_folders_casing); $i++) {
+//            DB::table('sub_folders')->insert($list_folders_casing[$i]);
+////            Sub_folder::create($list_folders_casing[$i]);
+//        }
     }
 }
