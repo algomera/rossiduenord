@@ -4,6 +4,7 @@ namespace App\Helpers;
 use App\FolderDocument;
 use App\Sub_folder;
 use App\Practice;
+use Illuminate\Support\Facades\DB;
 
 class folder_documents
 
@@ -32,13 +33,12 @@ class folder_documents
                 'name' => 'Documenti necessari per Involucro',
                 'type' => 'casing'
             ]
-                
         ];
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < count($session_folder); $i++) {
             FolderDocument::create($session_folder[$i]);
         }
-        
+
         $list_folders_first = [
             [
                 'practice_id'=> $practice_id,
@@ -47,7 +47,7 @@ class folder_documents
                 'name' => 'Dichiarazione di conformità all\'originale',
                 'role' => 'General Contractor'
             ],
-            
+
             [
                 'practice_id'=> $practice_id,
                 'folder_document_id' => $practice->folder_documents()->where('type', 'first')->first()->id,
@@ -181,7 +181,7 @@ class folder_documents
                 'name' => 'Comunicazione denuncia inizio lavori ASL/SPISAL',
                 'role' => 'Direttore lavori'
             ],
-            
+
         ];
 
         $list_folders_during = [
@@ -312,7 +312,6 @@ class folder_documents
                 'role' => 'Direttore lavori'
             ],
         ];
-        
 
         $list_folders_after = [
             [
@@ -447,20 +446,24 @@ class folder_documents
             ],
         ];
 
-        for ($i = 0; $i < 20; $i++) {
-            Sub_folder::create($list_folders_first[$i]);
+        for ($i = 0; $i < count($list_folders_first); $i++) {
+            DB::table('sub_folders')->insert($list_folders_first[$i]);
+//            Sub_folder::create($list_folders_first[$i]);
         }
 
-        for ($i = 0; $i < 18; $i++) {
-            Sub_folder::create($list_folders_during[$i]);
+        for ($i = 0; $i < count($list_folders_during); $i++) {
+            DB::table('sub_folders')->insert($list_folders_during[$i]);
+//            Sub_folder::create($list_folders_during[$i]);
         }
 
-        for ($i = 0; $i < 6; $i++) {
-            Sub_folder::create($list_folders_after[$i]);
+        for ($i = 0; $i < count($list_folders_after); $i++) {
+            DB::table('sub_folders')->insert($list_folders_after[$i]);
+//            Sub_folder::create($list_folders_after[$i]);
         }
 
-        for ($i = 0; $i < 12; $i++) {
-            Sub_folder::create($list_folders_casing[$i]);
+        for ($i = 0; $i < count($list_folders_casing); $i++) {
+            DB::table('sub_folders')->insert($list_folders_casing[$i]);
+//            Sub_folder::create($list_folders_casing[$i]);
         }
     }
 }
