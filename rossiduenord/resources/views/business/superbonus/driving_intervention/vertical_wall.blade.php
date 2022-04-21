@@ -17,7 +17,7 @@
             <hr style="margin-top: 5px; background-color: #818387;">
         </div>
 
-        <div class="px-20" style="padding-right: 20%">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
+        <div class="px-20" style="padding-right: 10%">{{-- 1. Intervento di isolamento termico delle superfici opache verticali e orizzontali --}}
             <label class="checkbox-wrapper">
                 <input {{ $vertwall->thermical_isolation_intervention == 'true' ? 'checked' : ''}} {{old('thermical_isolation_intervention') == 'true' ? 'checked' : ''}} type="checkbox" class="@error('thermical_isolation_intervention') is-invalid error @enderror" name="thermical_isolation_intervention" id="thermical_isolation_intervention" value="true">
                 <span class="checkmark"></span>
@@ -79,8 +79,8 @@
 
             <p class="m-0 mt-3" style="font-weight: 500;">Il costo dei lavori realizzati è pari a</p>
 
-            <div class="d-flex" style="width: 100%">
-                <div class="d-flex align-items-center">
+            <div class="d-flex flex-wrap w-100">
+                <div class="d-flex align-items-center col-md-4 col-xl-2">
                     <span class="text-nowrap">SAL. n.1</span>
                     <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mb-3 mr-1">
                         <div class="w-100 pr-2 text-right">
@@ -88,7 +88,6 @@
                         </div>
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1}}" name="total_isolation_cost_1" id="total_isolation_cost_1" class="ml-2 px-2 border @error('total_isolation_cost_1') is-invalid error @enderror" style="width:120px">
-                            €
                             @error('total_isolation_cost_1')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ 'incorrect' }}</strong>
@@ -96,8 +95,9 @@
                             @enderror
                         </div>
                     </label>
+                    €
                 </div>
-                <div class="d-flex align-items-center ml-4">
+                <div class="d-flex align-items-center ml-4 col-md-4 col-xl-2">
                     <span class="text-nowrap">SAL. n.2</span>
                     <label for="total_isolation_cost_2" class="d-flex flex-column  align-items-end mb-3 mr-1">
                         <div class="w-100 pr-2 text-right">
@@ -105,22 +105,20 @@
                         </div>
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_2') ?? $vertwall->total_isolation_cost_2}}" name="total_isolation_cost_2" id="total_isolation_cost_2" class="ml-2 text-right px-2 border @error('total_isolation_cost_2') is-invalid error @enderror" style="width:120px">
-                             <span>€</span> 
                             @error('total_isolation_cost_2')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ 'incorrect' }}</strong>
                             </span>
                             @enderror
                         </div>
-
                     </label>
+                    <span>€</span> 
                 </div>
-                <div class="d-flex align-items-center ml-4">
+                <div class="d-flex align-items-center ml-4 col-md-4 col-xl-2">
                     <span class="text-nowrap">SAL.F</span>
                     <label for="final_isolation_cost" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('final_isolation_cost') ?? $vertwall->final_isolation_cost}}" name="final_isolation_cost" id="final_isolation_cost" class="ml-2 border text-right px-2 @error('final_isolation_cost') is-invalid error @enderror" style="width:120px;">
-                            €
                             @error('final_isolation_cost')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ 'incorrect' }}</strong>
@@ -128,13 +126,14 @@
                             @enderror
                         </div>
                     </label>
+                    <span>€</span>
                 </div>
-                <div class="d-flex align-items-center ml-4">
+                <div class="d-flex align-items-center ml-4 col-md-4 col-xl-2">
                     <span class="text-nowrap">SAL. 1+2</span>
                     <label for="total_isolation_cost_1" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
-                            €
+                            
                             @error('total_isolation_cost_1')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -142,13 +141,13 @@
                             @enderror
                         </div>
                     </label>
+                    <span>€</span>
                 </div>
-                <div class="d-flex align-items-center ml-4">
+                <div class="d-flex align-items-center ml-4 col-md-4 col-xl-2">
                     <span class="text-nowrap">SAL. 1+2 F</span>
                     <label for="" class="d-flex flex-column align-items-end mr-1 mb-0">
                         <div class="black">
                             <input type="number" value="{{old('total_isolation_cost_1') ?? $vertwall->total_isolation_cost_1 + $vertwall->total_isolation_cost_2 + $vertwall->final_isolation_cost}}" class="ml-2 border text-right px-2" style="width:120px; background-color: #f2f2f2">
-                            €
                             @error('total_isolation_cost_1')
                             <span class="invalid-feedback pl-3" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -156,6 +155,7 @@
                             @enderror
                         </div>
                     </label>
+                    <span>€</span>
                 </div>
             </div>
 

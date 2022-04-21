@@ -172,44 +172,45 @@
                             <p class="m-0">Volume lordo riscaldato V</p>
                             <label for="heated_volume" class=" m-0 mr-4 black">
                                 <input type="number" name="heated_volume" value="{{$final_state->heated_volume}}" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                m²
                             </label>
                         </div>
-                        <div class="d-flex mt-3">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Superficie disperdente S</p>
-                                <label for="dispersing_surface" class=" m-0 mr-4 black">
+                        <div class="d-flex flex-wrap mt-3">
+                            <div class="d-flex align-items-center mx-2">
+                                <p class="m-0 text-nowrap">Superficie disperdente S</p>
+                                <label for="dispersing_surface" class=" m-0 black">
                                     <input type="number" name="dispersing_surface" value="{{$final_state->dispersing_surface}}" style="width: 120px;" class="border ml-3 px-2 text-right">
-                                    m²
                                 </label>
+                                <span>m²</span>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Rapporto S/V</p>
-                                <label for="SV_report" class=" m-0 mr-4 black">
+                            <div class="d-flex align-items-center mx-2">
+                                <p class="m-0 text-nowrap">Rapporto S/V</p>
+                                <label for="SV_report" class=" m-0 black">
                                     <input type="number" value="{{$final_state->SV_report}}" name="SV_report" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                    m²
                                 </label>
+                                <span>m²</span>
+
                             </div>
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Superficie utile riscaldata</p>
-                                <label for="useful_heated_surface" class=" m-0 mr-4 black">
+                            <div class="d-flex align-items-center mx-2 mt-3 mt-xl-0">
+                                <p class="m-0 text-nowrap">Superficie utile riscaldata</p>
+                                <label for="useful_heated_surface" class=" m-0 black">
                                     <input type="number" value="{{$final_state->useful_heated_surface}}" name="useful_heated_surface" style="width: 120px;" class="border ml-2 px-2 text-right">
-                                    m²
                                 </label>
+                                <span>m²</span>
                             </div>
                         </div>
 
                         <div class="d-flex mt-3">
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Superficie utile raffrescata</p>
-                                <label for="useful_cooled_surface" class=" m-0 mr-4 black">
+                            <div class="d-flex align-items-center mx-2">
+                                <p class="m-0 text-nowrap">Superficie utile raffrescata</p>
+                                <label for="useful_cooled_surface" class=" m-0 black">
                                     <input type="number" value="{{$final_state->useful_cooled_surface}}" name="useful_cooled_surface" style="width: 120px;" class="border ml-1 px-2 text-right">
-                                    m²
                                 </label>
+                                <span>m²</span>
+
                             </div>
-                            <div class="d-flex align-items-center">
-                                <p class="m-0">Anno di installazione del generatore</p>
-                                <label for="generator_inst_date" class=" m-0 mr-4 black">
+                            <div class="d-flex align-items-center mx-2">
+                                <p class="m-0 text-nowrap">Anno di installazione del generatore</p>
+                                <label for="generator_inst_date" class=" m-0 black">
                                     <input type="number" value="{{$final_state->generator_inst_date}}" name="generator_inst_date" style="width: 120px;" class="border ml-2 px-2 text-right">
                                 </label>
                             </div>
