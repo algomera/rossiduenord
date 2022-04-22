@@ -15,6 +15,12 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        // Utente Admin
+        $admin = User::create([
+            'email' => 'admin@example.test',
+            'password' => bcrypt('password'),
+        ]);
+
         // Utenti Impresa
         $primehub = User::create([
             'email' => 'info@primehub.it',
@@ -25,19 +31,29 @@ class UserSeeder extends Seeder
             'password' => bcrypt('mtmopx9m'),
         ]);
 
+        // Creo UserData per admin
+        UserData::create([
+            'user_id' => $admin->id,
+            'created_by' => null,
+            'name' => "Administrator",
+        ]);
+
         // Creo UserData per imprese
         UserData::create([
             'user_id' => $primehub->id,
-            'created_by' => 'financial',
+            'created_by' => $admin->id,
             'name' => "Impresa Example",
             'referent' => $faker->name(),
         ]);
         UserData::create([
             'user_id' => $edrasis->id,
-            'created_by' => 'financial',
+            'created_by' => $admin->id,
             'name' => "Edrasis Group",
             'referent' => $faker->name(),
         ]);
+
+        // Assegno ruolo "business" all'utente "Administrator"
+        $admin->assignRole(Role::findByName('admin'));
 
         // Assegno ruolo "business" all'utente "Primehub"
         $primehub->assignRole(Role::findByName('business'));

@@ -6,7 +6,7 @@
             <span class="black text-md"><b>Crea utente</b></span>
             <hr class="bg-black">
 
-            @include('business.layouts.partials.error')    
+            @include('business.layouts.partials.error')
 
             <form action="{{ route('business.users.store') }}" method="POST">
                 @csrf
@@ -15,7 +15,9 @@
                     <label for="role" class="text">Tipologia profilo</label>
                     <select style="height: 47px!important" class="form-control" name="role" id="role">
                     <optgroup label="Ruoli">
-                        <option value="collaborator">collaboratore</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role }}">{{ ucfirst($role) }}</option>
+                        @endforeach
                     </optgroup>
                     </select>
                 </div>

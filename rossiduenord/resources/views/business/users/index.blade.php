@@ -1,38 +1,7 @@
 @extends('business.layouts.business')
 
 @section('content')
-
-    <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
-    <script type='text/javascript'>
-        $(document).ready(function(){
-            $("#searchUser").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#table_ContentList tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-
-        $(document).ready(function() {
-             
-            $('.checkall').click(function() {
-                $(":checkbox").attr("checked", true);
-            });
-            
-            $('.uncheckall').click(function() {
-                $(":checkbox").attr("checked", false);
-            });
-         });
-
-    </script>
-
     <div class="content-main">
-        @if(session('message'))
-            <div class="alert alert-success" role="alert">
-                <strong>{{session('message')}}</strong>
-            </div>
-        @endif
-        
         <a href="{{route('business.users.create')}}" class="add-button">+ Aggiungi Utente</a>
 
         <div class="box px-20 pb-20 pt-20">
@@ -71,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody id="table_ContentList" >
-                            @foreach($users as $user) 
+                            @foreach($users as $user)
                             <tr>
                                 <td style="border-left: 1px solid #707070">
                                     <input class="ceck" type="checkbox"  name="id" > <!-- #checbox item to handle by function  -->
@@ -81,7 +50,7 @@
                                 <td>{{$user->email}}</td>
                                 <td>
                                     <div class="pill">
-                                        {{$user->role}}
+                                        {{ $user->role }}
                                     </div>
                                 </td>
                                 <td>{{$user->created_by}}</td>
@@ -93,7 +62,7 @@
                                         Modifica
                                     </a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{$user->id}}">
-                                        elimina
+                                        Elimina
                                     </button>
 
                                     <div class="modal fade" id="del{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -134,3 +103,29 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"> </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $("#searchUser").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#table_ContentList tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        $(document).ready(function() {
+
+            $('.checkall').click(function() {
+                $(":checkbox").attr("checked", true);
+            });
+
+            $('.uncheckall').click(function() {
+                $(":checkbox").attr("checked", false);
+            });
+        });
+    </script>
+@endpush

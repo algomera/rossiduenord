@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Business;
 
 use Spatie\Permission\Models\Role;
-use App\{User, Collaborator, UserData};
+use App\{User, UserData};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,10 +17,8 @@ class UserController extends Controller
     public function index(User $user)
     {
         $users = User::whereHas('user_data', function($q) {
-            $q->where('created_by', auth()->user()->user_data->name);
+            $q->where('created_by', auth()->user()->id);
         })->get();
-//        dd($users);
-//        $users = User::where('created_by', auth()->user()->user_data->name)->orderBy('created_at', 'DESC')->paginate(10);
         return view('business.users.index', compact('user', 'users'));
     }
 
@@ -33,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('business.users.create');
+        $roles = Role::all()->pluck(['name']);
+
+        return view('business.users.create', compact('roles'));
     }
 
     /**
@@ -60,7 +58,7 @@ class UserController extends Controller
         // Crazione UserData
         UserData::create([
             'user_id' => $user->id,
-            'created_by' => auth()->user()->user_data->name,
+            'created_by' => auth()->user()->id,
             'name' => $validated['name'],
         ]);
 
@@ -87,9 +85,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user, Collaborator $collaborator)
+    public function edit(User $user)
     {
-        return view('business.users.edit', compact('user', 'collaborator'));
+        $roles = Role::all()->pluck(['name']);
+
+        return view('business.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -99,25 +99,34 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user, Collaborator $collaborator)
+    public function update(Request $request, User $user)
     {
         $validated = $request->validate([
             'role' => 'required | string',
             'name' => 'required | string | min:3 | max:100',
             'email' => 'required | string | email | max:100',
-            'password' => 'required |string | min:8 | confirmed'
+            'password' => 'sometimes | nullable | string | min:8 | confirmed'
         ]);
 
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
-        $user_id = Auth::user()->id;
-        $validated['user_id'] = $user_id;
+        if($request->has('password')) {
+            $validated['password'] = $validated['password'] ? bcrypt($validated['password']) : bcrypt($user->password);
+        }
 
-        $collaborator->update($validated);
-        $user->update($validated);
+        $user->update([
+            'email' => $validated['email'],
+            'password' => $validated['password']
+        ]);
 
-        dd($collaborator, $user, $validated);
-        return redirect()->route('business.users.index')->with('message', "utente modificato!");
+        $user->user_data()->update([
+            'name' => $validated['name']
+        ]);
+
+        if($user->getRoleNames()->first() !== $validated['role']) {
+            $user->removeRole($user->getRoleNames()->first());
+            $user->assignRole($validated['role']);
+        }
+
+        return redirect()->route('business.users.index')->with('message', "Utente aggiornato con successo!");
     }
 
     /**
@@ -129,7 +138,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $tmp_name = $user->name;
         $user->delete();
-        return redirect()->back()->with('message', "Utente $user->name e stato eliminato!");
+        return redirect()->back()->with('message', "Utente " . $tmp_name . " è stato eliminato!");
     }
 }

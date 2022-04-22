@@ -10,7 +10,7 @@
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
                 <a href="{{ route('business.users.index') }}">Torna indietro</a>
             </div>
-            
+
             <table style="width: 100%; margin-top: 20px;">
                 <tbody class="table">
                     <tr>
@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td class="w-25">Nome</td>
-                        <td>{{ $user->name}}</td>
+                        <td>{{ $user->name }}</td>
                     </tr>
                     <tr>
                         <td class="w-25">Email</td>
@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td class="w-25">Tipologia Profilo</td>
-                        <td>{{ $user->role}}</td>
+                        <td>{{ ucfirst($user->role)}}</td>
                     </tr>
                 </tbody>
             </table>

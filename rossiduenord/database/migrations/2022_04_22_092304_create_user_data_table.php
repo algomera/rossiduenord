@@ -18,7 +18,8 @@ class CreateUserDataTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name')->nullable();
-            $table->string('created_by')->nullable();
+            $table->bigInteger('created_by')->nullable()->unsigned();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->string('type')->nullable();
             $table->string('p_iva', 11)->nullable();
             $table->string('c_f')->nullable();

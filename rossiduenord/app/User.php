@@ -38,6 +38,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getNameAttribute() {
+        return $this->user_data->name;
+    }
+
+    public function getCreatedByAttribute() {
+        $user = User::find($this->user_data->created_by);
+        return $user->name;
+    }
+
+    public function getRoleAttribute() {
+        return $this->getRoleNames()->first();
+    }
+
     public function user_data() {
         return $this->hasOne(UserData::class);
     }
