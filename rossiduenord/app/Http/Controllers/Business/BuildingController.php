@@ -81,6 +81,13 @@ class BuildingController extends Controller
      */
     public function update(Request $request, building $building)
     {
+        if($request->get('condomini')) {
+            $condomini = $request->get('condomini');
+            foreach ($condomini as $condomino) {
+                $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);
+            }
+        }
+
         $validated = $request->validate([
             'practice_id' => 'nullable | numeric',
             'intervention_name' => 'required | string |min:2',
@@ -234,12 +241,6 @@ class BuildingController extends Controller
         $building->update($validated);
         $practice = $building->practice;
 
-        if($request->get('condomini')) {
-            $condomini = $request->get('condomini');
-            foreach ($condomini as $condomino) {
-                $building->practice->condomini()->updateOrCreate(['id' => $condomino['id']], $condomino);
-            }
-        }
         if($request->get('condomini') > 0){
             return redirect()->route('business.superbonus.index', [$practice]);
         }else{
