@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{User,Collaborator};
+use Spatie\Permission\Models\Role;
+use App\{User, Collaborator, UserData};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,11 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $users = User::where('created_by', Auth::user()->name)->orderBy('created_at', 'DESC')->paginate(10);
+        $users = User::whereHas('user_data', function($q) {
+            $q->where('created_by', auth()->user()->user_data->name);
+        })->get();
+//        dd($users);
+//        $users = User::where('created_by', auth()->user()->user_data->name)->orderBy('created_at', 'DESC')->paginate(10);
         return view('business.users.index', compact('user', 'users'));
     }
 
@@ -46,19 +51,21 @@ class UserController extends Controller
             'password' => 'required | string | min:8 | confirmed'
         ]);
 
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
+        // Creazione Utente
+        $user = User::create([
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password'])
+        ]);
 
-        $created_by = Auth::user()->name;
-        $validated['created_by'] = $created_by;
+        // Crazione UserData
+        UserData::create([
+            'user_id' => $user->id,
+            'created_by' => auth()->user()->user_data->name,
+            'name' => $validated['name'],
+        ]);
 
-        User::create($validated);
-
-        if ($validated['role'] == 'collaborator') {
-            $user_id = Auth::user()->id;
-            $validated['user_id'] = $user_id;
-            Collaborator::create($validated);
-        }
+        $role = Role::findByName($validated['role']);
+        $user->assignRole($role);
 
         return redirect()->route('business.users.index')->with('message', "Nuovo utente inserito!");
     }
