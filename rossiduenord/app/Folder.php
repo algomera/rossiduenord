@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Folder extends Model
 {
-    protected $fillable = [
-        'name', 'type', 'created_by', 'parent_name',
-    ];
+    protected $guarded = [];
 
     public function user(){
         return $this->belongsTo(User::class);

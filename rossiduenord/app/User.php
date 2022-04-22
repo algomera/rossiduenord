@@ -55,6 +55,10 @@ class User extends Authenticatable
         return $this->hasOne(UserData::class);
     }
 
+    public function folders() {
+        return $this->hasMany(Folder::class);
+    }
+
     public function applicant()
     {
         return $this->hasMany(Applicant::class);
