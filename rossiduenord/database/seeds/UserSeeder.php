@@ -17,36 +17,33 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // Utente Impresa "Primehub"
+        // Creo ruoli
+        $business_role = Role::create(['name' => 'business']);
+        $bank_role = Role::create(['name' => 'bank']);
+
+        // Utenti Impresa
         $primehub = User::create([
             'email' => 'info@primehub.it',
             'password' => bcrypt('mtmopx9m'),
         ]);
+        $edrasis = User::create([
+            'email' => 'info@edrasis.it',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
 
-        // Creo UserData per "Primehub"
+        // Creo UserData per imprese
         UserData::create([
             'user_id' => $primehub->id,
             'created_by' => 'financial',
             'name' => "Impresa Example",
             'referent' => $faker->name(),
         ]);
-
-        // Utente Impresa "Edrasis"
-        $edrasis = User::create([
-            'email' => 'info@edrasis.it',
-            'password' => bcrypt('mtmopx9m'),
-        ]);
-
-        // Creo UserData per "Edrasis"
         UserData::create([
             'user_id' => $edrasis->id,
             'created_by' => 'financial',
             'name' => "Edrasis Group",
             'referent' => $faker->name(),
         ]);
-
-        // Creo ruolo "business"
-        $business_role = Role::create(['name' => 'business']);
 
         // Assegno ruolo "business" all'utente "Primehub"
         $primehub->assignRole($business_role);
@@ -55,7 +52,8 @@ class UserSeeder extends Seeder
         $edrasis->assignRole($business_role);
 
 
-//        // Utente Banca
+
+        // Utente Banca
 //        $bank = User::create([
 //            'created_by' => 'financial',
 //            'name' => "Banca Prova",
