@@ -15,7 +15,7 @@
                 <li class="nav-item dropdown">
                     <a style="color: white!important;" id="dropdownMenuButton" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre  onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        {{ Auth::user()->name }}
+                        {{ auth()->user()->user_data->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
