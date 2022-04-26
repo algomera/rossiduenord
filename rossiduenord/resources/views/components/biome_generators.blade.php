@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 @empty
-                    <p id="biome_generators_no_data_row">Nessun impianto inserito</p>
+                    <p id="biome_generators_no_data_row">Nessun generatore a biomassa inserito</p>
                 @endforelse
             </div>
         </div>

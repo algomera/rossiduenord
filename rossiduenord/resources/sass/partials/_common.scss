@@ -115,7 +115,7 @@ a {
         display: none;
     }
 }
-/* 
+
 .ov-x {
     overflow-x: auto;
     &::-webkit-scrollbar {
@@ -123,15 +123,14 @@ a {
     }
 }
 
-.ov-x-none {
-    overflow-x: hidden;
-}
+// .ov-x-none {
+//     overflow-x: hidden;
+// }
 
-.ov-y-none {
-    overflow-y: hidden;
-}
+// .ov-y-none {
+//     overflow-y: hidden;
+// }
 
- */// cursor pointer
 .clickable {
     cursor: pointer;
 }
@@ -520,13 +519,13 @@ label {
         }
     }
     .frame {
-        border: 1px solid #bbbcbc!important;
-        border-bottom: 0!important;
+        border: 1px solid #bbbcbc !important;
+        border-bottom: 0 !important;
         background-color: white;
         padding: 10px 20px 3px !important;
         color: #61a4d7 !important;
-        z-index: 1!important;
-        margin-bottom: -1px!important;
+        z-index: 1 !important;
+        margin-bottom: -1px !important;
     }
 }
 
@@ -707,4 +706,3 @@ label {
     border: none;
     width: 100%;
 }
-

@@ -118,7 +118,7 @@
                     </div>
                 </div>
             @empty
-                <p id="microgeneration_systems_no_data_row">Nessun impianto inserito</p>
+                <p id="microgeneration_systems_no_data_row">Nessun impianto di microgenerazione inserito</p>
             @endforelse
         </div>
     </div>

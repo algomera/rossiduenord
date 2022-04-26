@@ -135,7 +135,7 @@
                     </div>
                 </div>
             @empty
-                <p id="solar_panels_no_data_row">Nessun impianto inserito</p>
+                <p id="solar_panels_no_data_row">Nessun collettore solare inserito</p>
             @endforelse
         </div>
     </div>

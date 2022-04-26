@@ -91,7 +91,7 @@
                     </div>
                 </div>
             @empty
-                <p id="absorption_heat_pumps_no_data_row">Nessun impianto inserito</p>
+                <p id="absorption_heat_pumps_no_data_row">Nessuna pompa di calore ad assorbimento a gas inserita</p>
             @endforelse
         </div>
     </div>
