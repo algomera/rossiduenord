@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 class AnagraficheController extends Controller
 {
     public function index() {
+        $this->authorize('access_anagrafiche');
+
         $subject_roles = SubjectRole::all()->except(21);
         $anagrafiche = auth()->user()->anagrafiche;
         return view('business.anagrafiche.index', compact('subject_roles', 'anagrafiche'));

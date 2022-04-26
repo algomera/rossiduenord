@@ -16,6 +16,8 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
+        $this->authorize('access_users');
+
         $users = User::whereHas('user_data', function($q) {
             $q->where('parent', auth()->user()->id);
         })->get();
