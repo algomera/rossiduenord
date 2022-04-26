@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\{User,Collaborator};
+use Spatie\Permission\Models\Role;
+use App\{User, UserData};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -17,7 +16,11 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $users = User::where('created_by', Auth::user()->name)->orderBy('created_at', 'DESC')->paginate(10);
+        $this->authorize('access_users');
+
+        $users = User::whereHas('user_data', function($q) {
+            $q->where('parent', auth()->user()->id);
+        })->get();
         return view('business.users.index', compact('user', 'users'));
     }
 
@@ -28,7 +31,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('business.users.create');
+        $roles = Role::all()->pluck(['name']);
+
+        return view('business.users.create', compact('roles'));
     }
 
     /**
@@ -46,19 +51,21 @@ class UserController extends Controller
             'password' => 'required | string | min:8 | confirmed'
         ]);
 
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
+        // Creazione Utente
+        $user = User::create([
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password'])
+        ]);
 
-        $created_by = Auth::user()->name;
-        $validated['created_by'] = $created_by;
+        // Crazione UserData
+        UserData::create([
+            'user_id' => $user->id,
+            'parent' => auth()->user()->id,
+            'name' => $validated['name'],
+        ]);
 
-        User::create($validated);
-
-        if ($validated['role'] == 'collaborator') {
-            $user_id = Auth::user()->id;
-            $validated['user_id'] = $user_id;
-            Collaborator::create($validated);
-        }
+        $role = Role::findByName($validated['role']);
+        $user->assignRole($role);
 
         return redirect()->route('business.users.index')->with('message', "Nuovo utente inserito!");
     }
@@ -80,9 +87,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user, Collaborator $collaborator)
+    public function edit(User $user)
     {
-        return view('business.users.edit', compact('user', 'collaborator'));
+        $roles = Role::all()->pluck(['name']);
+
+        return view('business.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -92,25 +101,30 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user, Collaborator $collaborator)
+    public function update(Request $request, User $user)
     {
         $validated = $request->validate([
             'role' => 'required | string',
             'name' => 'required | string | min:3 | max:100',
             'email' => 'required | string | email | max:100',
-            'password' => 'required |string | min:8 | confirmed'
+            'password' => 'sometimes | nullable | string | min:8 | confirmed'
         ]);
 
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
-        $user_id = Auth::user()->id;
-        $validated['user_id'] = $user_id;
+        $user->update([
+            'email' => $validated['email'],
+            'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
+        ]);
 
-        $collaborator->update($validated);
-        $user->update($validated);
+        $user->user_data()->update([
+            'name' => $validated['name']
+        ]);
 
-        dd($collaborator, $user, $validated);
-        return redirect()->route('business.users.index')->with('message', "utente modificato!");
+        if($user->getRoleNames()->first() !== $validated['role']) {
+            $user->removeRole($user->getRoleNames()->first());
+            $user->assignRole($validated['role']);
+        }
+
+        return redirect()->route('business.users.index')->with('message', "Utente aggiornato con successo!");
     }
 
     /**
@@ -122,7 +136,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $tmp_name = $user->name;
         $user->delete();
-        return redirect()->back()->with('message', "Utente $user->name e stato eliminato!");
+        return redirect()->back()->with('message', "Utente " . $tmp_name . " è stato eliminato!");
     }
 }

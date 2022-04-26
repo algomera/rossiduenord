@@ -1,10 +1,11 @@
 <?php
 
+use App\UserData;
 use Illuminate\Database\Seeder;
 use Faker\Generator as faker;
 use App\User;
-use App\Bank;
-use App\Business;
+use Spatie\Permission\Models\Role;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -14,55 +15,50 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // Utente Impresa
-        $business = User::create([
-            'created_by' => 'financial',
-            'name' => "Impresa Example",
-            'referent' => $faker->name(),
-            'email' => 'info@primehub.it',
-            'password' => bcrypt('mtmopx9m'),
-            'role' => 'business',
-        ]);
-        Business::create([
-            'created_by' => 'financial',
-            'user_id' => $business->id,
-            'name' => "Impresa Example",
-            'email' => 'info@primehub.it',
-            'password' => bcrypt('mtmopx9m'),
+        // Utente Admin
+        $admin = User::create([
+            'email' => 'admin@example.test',
+            'password' => bcrypt('password'),
         ]);
 
+        // Utenti Impresa
+        $primehub = User::create([
+            'email' => 'info@primehub.it',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
         $edrasis = User::create([
-            'created_by' => 'financial',
-            'name' => "Edrasis Group",
-            'referent' => $faker->name(),
-            'email' => 'info@edrasis.it',
-            'password' => bcrypt('mtmopx9m'),
-            'role' => 'business',
-        ]);
-        // edrasis group
-        Business::create([
-            'created_by' => 'financial',
-            'user_id' => $edrasis->id,
-            'name' => "Edrasis Group",
             'email' => 'info@edrasis.it',
             'password' => bcrypt('mtmopx9m'),
         ]);
 
-        // Utente Banca
-        $bank = User::create([
-            'created_by' => 'financial',
-            'name' => "Banca Prova",
+        // Creo UserData per admin
+        UserData::create([
+            'user_id' => $admin->id,
+            'parent' => null,
+            'name' => "Administrator",
+        ]);
+
+        // Creo UserData per imprese
+        UserData::create([
+            'user_id' => $primehub->id,
+            'parent' => $admin->id,
+            'name' => "Impresa Example",
             'referent' => $faker->name(),
-            'email' => 'bancaprova@mail.com',
-            'password' => bcrypt('password'),
-            'role' => 'bank',
         ]);
-        Bank::create([
-            'created_by' => 'financial',
-            'user_id' => $bank->id,
-            'name' => "Banca Prova",
-            'email' => 'bancaprova@mail.com',
-            'password' => bcrypt('password'),
+        UserData::create([
+            'user_id' => $edrasis->id,
+            'parent' => $admin->id,
+            'name' => "Edrasis Group",
+            'referent' => $faker->name(),
         ]);
+
+        // Assegno ruolo "business" all'utente "Administrator"
+        $admin->assignRole(Role::findByName('admin'));
+
+        // Assegno ruolo "business" all'utente "Primehub"
+        $primehub->assignRole(Role::findByName('business'));
+
+        // Assegno ruolo "business" all'utente "Edrasis"
+        $edrasis->assignRole(Role::findByName('business'));
     }
 }

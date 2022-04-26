@@ -143,7 +143,7 @@ Route::middleware('business')
                 $practice->surfaces()->updateOrCreate([
                     'id' => $sn,
                     'practice_id' => $pn
-                ], 
+                ],
                 [
                     "is_common" => $item['is_common'] ?? false,
                     "condomino_id" => $item['condomino_id'],

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Business;
 use App\{Folder, User, File};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class FolderController extends Controller
 {
@@ -16,9 +15,8 @@ class FolderController extends Controller
      */
     public function index()
     {
-        $folders = Folder::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(100);
-        $relateds = Folder::where('parent_name', '=', Auth::user()->name)->orderBy('created_at', 'DESC')->paginate(100);
-        return view('business.folder_file.index', compact('relateds', 'folders'));
+        $folders = Folder::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(100);
+        return view('business.folder_file.index', compact('folders'));
     }
 
     /**
@@ -26,10 +24,9 @@ class FolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Folder $folder, User $user)
+    public function create()
     {
-        $users = User::all();
-        return view('business.folder_file.create', compact('folder', 'users', 'user'));
+        return view('business.folder_file.create');
     }
 
     /**
@@ -41,20 +38,12 @@ class FolderController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'parent_name' => 'nullable',
             'name' => 'required | string',
             'type' => 'required | string ',
         ]);
 
-        $parent_name = Auth::user()->created_by;
-        $validated['parent_name'] = $parent_name;
+        $folder = auth()->user()->folders()->create($validated);
 
-        $created_by = Auth::user()->name;
-        $validated['created_by'] = $created_by;
-        //dd($validated);
-        $folder = new Folder($validated);
-        $id = auth()->user()->id;
-        $folder->user()->associate($id)->save();
         return redirect()->route('business.folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Business;
 use App\Business;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,16 +21,14 @@ class HomeController extends Controller
         return view('business.dashboard');
     }
 
-    public function editbusinessData(Business $business)
+    public function editbusinessData()
     {
-        $email = auth()->user()->email;
-        $business = DB::table('businesses')->where('email', '=', $email)->first();
-        return view('business.data', compact('business'));
+        return view('business.data');
     }
 
-    public function updatebusinessData(Request $request, Business $business)
+    public function updatebusinessData(Request $request)
     {
-        $business = Business::where('email', auth()->user()->email)->first();
+        $business = UserData::where('user_id', auth()->user()->id)->first();
         $validated = $request->validate([
             'type' => 'nullable | string',
             'p_iva' => 'nullable | string | min:11 | max:11',
@@ -39,6 +38,7 @@ class HomeController extends Controller
             'c_ateco' => 'nullable | string ',
             'reg_date' => 'nullable | string ',
         ]);
+        $validated['c_f'] = strtoupper($validated['c_f']);
         $business->update($validated);
         return redirect()->route('business.dashboard')->with('message', "Profilo completato!");
 

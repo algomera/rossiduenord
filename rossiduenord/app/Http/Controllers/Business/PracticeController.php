@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Business;
 use App\{Practice, Subject, Applicant, Building};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PracticeController extends Controller
 {
@@ -16,6 +15,8 @@ class PracticeController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('access_practices');
+
         $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
         $q = Practice::query()->whereIn('applicant_id', $applicants);
@@ -38,13 +39,9 @@ class PracticeController extends Controller
 
         $practices = $q->get();
         //importo sal finale
-        $tot_sal = 0;
-        $expected_sal = 0;
-        foreach($practices as $practice){
-           $tot_sal += $practice->import_sal;
-           $expected_sal += $practice->import;
-        }
-        return view('business/practice.index', compact('practices','tot_sal','expected_sal'));
+        $tot_sal = $practices->sum('import_sal');
+        $expected_sal = $practices->sum('import');
+        return view('business/practice.index', compact('practices','tot_sal', 'expected_sal'));
     }
 
     /**

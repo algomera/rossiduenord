@@ -3,23 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Admin;
-use App\Financial;
-use App\Bank;
-use App\Business;
-use App\Asseverator;
-use App\Collaborator;
-use App\Condominium;
-use App\Consultant;
-use App\Manager;
-use App\Provider;
 use App\Http\Controllers\Controller;
-use App\Lv1_agent;
-use App\Lv2_agent;
-use App\Providers\RouteServiceProvider;
+use App\UserData;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -78,134 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Creazione Utente
         $user = User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'],
-            'created_by' => $data['created_by'],
+            'password' => bcrypt($data['password']),
         ]);
 
-        if($data['role'] == 'admin') {
-            $user = Admin::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
+        // Crazione UserData
+        UserData::create([
+            'user_id' => $user->id,
+            'created_by' => $data['created_by'],
+            'name' => $data['name'],
+        ]);
 
-            ]);
-        }
-
-        if ($data['role'] == 'financial') {
-            $user = Financial::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'bank') {
-            $user = Bank::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'business') {
-            $user = Business::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'collaborator') {
-            $user = Collaborator::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'consultant') {
-            $user = Consultant::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'asseverator') {
-            $user = Asseverator::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'manager') {
-            $user = Manager::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'provider') {
-            $user = Provider::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'lv1_agent') {
-            $user = Lv1_agent::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'lv2_agent') {
-            $user = Lv2_agent::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
-
-        if ($data['role'] == 'condominium') {
-            $user = Condominium::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => $user->password,
-                'created_by' => $data['created_by'],
-            ]);
-        }
+        // Associazione Utente->Ruolo
+        $role = Role::findByName($data['role']);
+        $user->assignRole($role);
 
         return $user;
     }

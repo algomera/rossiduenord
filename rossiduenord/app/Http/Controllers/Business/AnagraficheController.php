@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 class AnagraficheController extends Controller
 {
     public function index() {
+        $this->authorize('access_anagrafiche');
+
         $subject_roles = SubjectRole::all()->except(21);
         $anagrafiche = auth()->user()->anagrafiche;
         return view('business.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
@@ -76,8 +78,8 @@ class AnagraficheController extends Controller
             'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
             'phone' => 'nullable|string|min:10|regex: /[0-9]/',
             'fax' => 'nullable|string|min:10|regex: /[0-9]/',
-            'email' => 'nullable|string|email|max:100|unique:anagrafiche',
-            'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'email' => 'nullable|string|email|max:100|unique:anagrafiche,email,' . $anagrafica->id,
+            'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche,email,' . $anagrafica->id,
             'date_of_birth' => 'nullable|date|date_format:Y-m-d|before:today',
             'common_of_birth' => 'nullable|string',
             'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',

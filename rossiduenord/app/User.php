@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -38,69 +39,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function admin()
-    {
-        return $this->hasOne(Admin::class);
+    public function getNameAttribute() {
+        return $this->user_data->name;
     }
 
-    public function asseverators()
-    {
-        return $this->hasMany(Asseverator::class);
+    public function getParentAttribute() {
+        $parent = User::find($this->user_data->parent);
+        return $parent;
     }
 
-    public function banks()
-    {
-        return $this->hasMany(banks::class);
+    public function getRoleAttribute() {
+        return $this->getRoleNames()->first();
     }
 
-    public function businesses()
-    {
-        return $this->hasMany(Business::class);
+    public function user_data() {
+        return $this->hasOne(UserData::class);
     }
 
-    public function collaborators()
-    {
-        return $this->hasMany(Collaborator::class);
-    }
-
-    public function condominia()
-    {
-        return $this->hasMany(Condominium::class);
-    }
-
-    public function consultants()
-    {
-        return $this->hasMany(Consultant::class);
-    }
-
-    public function finacials()
-    {
-        return $this->hasMany(Financial::class);
-    }
-
-    public function folders()
-    {
-        return $this->hasMany(Folders::class);
-    }
-
-    public function agents_lv_1()
-    {
-        return $this->hasMany(Lv1_agent::class);
-    }
-
-    public function agents_lv_2()
-    {
-        return $this->hasMany(Lv2_agent::class);
-    }
-
-    public function managers()
-    {
-        return $this->hasMany(Manager::class);
-    }
-
-    public function providers()
-    {
-        return $this->hasMany(Provider::class);
+    public function folders() {
+        return $this->hasMany(Folder::class);
     }
 
     public function applicant()
@@ -111,5 +68,4 @@ class User extends Authenticatable
     public function anagrafiche() {
         return $this->hasMany(Anagrafica::class);
     }
-    
 }
