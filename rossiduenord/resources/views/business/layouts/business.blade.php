@@ -92,7 +92,7 @@
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
                     </li>
-                    <li class="nav-item" :class="{'selected-nav' : isListVisible}">
+                    <li v-cloak class="nav-item" :class="{'selected-nav' : isListVisible}">
                         <a class="nav-link ml-4 ml-md-2 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Credito D.O.C </a>
                         <ul class="nav flex-column"  v-if="isListVisible">
                             <div class="pl-2">

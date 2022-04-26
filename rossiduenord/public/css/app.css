@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 input {
   font-weight: 600;
 }
@@ -116,7 +120,7 @@ a:hover {
   display: none;
 }
 
-/* 
+/*
 .ov-x {
     overflow-x: auto;
     &::-webkit-scrollbar {
