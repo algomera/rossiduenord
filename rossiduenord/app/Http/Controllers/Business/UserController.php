@@ -108,13 +108,9 @@ class UserController extends Controller
             'password' => 'sometimes | nullable | string | min:8 | confirmed'
         ]);
 
-        if($request->has('password')) {
-            $validated['password'] = $validated['password'] ? bcrypt($validated['password']) : bcrypt($user->password);
-        }
-
         $user->update([
             'email' => $validated['email'],
-            'password' => $validated['password']
+            'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
         ]);
 
         $user->user_data()->update([
