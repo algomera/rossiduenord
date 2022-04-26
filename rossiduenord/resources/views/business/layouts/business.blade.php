@@ -41,12 +41,16 @@
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
+                    @can('access_anagrafiche')
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 ml-md-2 {{request()->is('business/anagrafiche*') ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
                     </li>
+                    @endcan
+                    @can('access_users')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi</a>
                     </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
                     </li>
@@ -74,9 +78,11 @@
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
                     </li>
+                    @can('access_practices')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche</a>
                     </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
                     </li>

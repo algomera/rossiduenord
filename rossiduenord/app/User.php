@@ -42,9 +42,9 @@ class User extends Authenticatable
         return $this->user_data->name;
     }
 
-    public function getCreatedByAttribute() {
-        $user = User::find($this->user_data->created_by);
-        return $user->name;
+    public function getParentAttribute() {
+        $parent = User::find($this->user_data->parent);
+        return $parent;
     }
 
     public function getRoleAttribute() {

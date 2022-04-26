@@ -27,8 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('edit-applicant', 'App\Policies\ApplicantPolicy@update');   
-        Gate::define('edit-practice', 'App\Policies\PracticePolicy@update'); 
+        // Grant "admin" role all permissions
+        Gate::before(function($user, $ability) {
+            return $user->hasRole('admin') ? true : null;
+        });
+
+        Gate::define('edit-applicant', 'App\Policies\ApplicantPolicy@update');
+        Gate::define('edit-practice', 'App\Policies\PracticePolicy@update');
         Gate::define('edit-subject', 'App\Policies\SubjectPolicy@update');
         Gate::define('edit-building', 'App\Policies\BuildingPolicy@update');
         Gate::define('edit-superbonus', 'App\Policies\SuperbonusPolicy@view');

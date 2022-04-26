@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Business;
 use App\{Practice, Subject, Applicant, Building};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PracticeController extends Controller
 {
@@ -16,6 +15,8 @@ class PracticeController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('access_practices');
+
         $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
         $q = Practice::query()->whereIn('applicant_id', $applicants);

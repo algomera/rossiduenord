@@ -34,20 +34,20 @@ class UserSeeder extends Seeder
         // Creo UserData per admin
         UserData::create([
             'user_id' => $admin->id,
-            'created_by' => null,
+            'parent' => null,
             'name' => "Administrator",
         ]);
 
         // Creo UserData per imprese
         UserData::create([
             'user_id' => $primehub->id,
-            'created_by' => $admin->id,
+            'parent' => $admin->id,
             'name' => "Impresa Example",
             'referent' => $faker->name(),
         ]);
         UserData::create([
             'user_id' => $edrasis->id,
-            'created_by' => $admin->id,
+            'parent' => $admin->id,
             'name' => "Edrasis Group",
             'referent' => $faker->name(),
         ]);

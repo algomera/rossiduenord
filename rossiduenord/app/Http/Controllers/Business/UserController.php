@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index(User $user)
     {
         $users = User::whereHas('user_data', function($q) {
-            $q->where('created_by', auth()->user()->id);
+            $q->where('parent', auth()->user()->id);
         })->get();
         return view('business.users.index', compact('user', 'users'));
     }
@@ -58,7 +58,7 @@ class UserController extends Controller
         // Crazione UserData
         UserData::create([
             'user_id' => $user->id,
-            'created_by' => auth()->user()->id,
+            'parent' => auth()->user()->id,
             'name' => $validated['name'],
         ]);
 

@@ -53,7 +53,7 @@
                                         {{ $user->role }}
                                     </div>
                                 </td>
-                                <td>{{$user->created_by}}</td>
+                                <td>{{$user->parent->name}}</td>
                                 <td class="">
                                     <a href="{{route('business.users.show', $user)}}" class="btn white bg-green">
                                         Vedi
