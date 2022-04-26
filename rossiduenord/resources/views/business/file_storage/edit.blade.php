@@ -6,7 +6,7 @@
             <span class="black text-md"><b>Modifica file:</b> {{ $file->title}}</span>
             <hr class="bg-black">
 
-            @include('business.layouts.partials.error')    
+            @include('business.layouts.partials.error')
 
             <form action="{{ route('business.file.update', $file->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

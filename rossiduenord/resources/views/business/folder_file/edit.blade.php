@@ -3,11 +3,11 @@
 @section('content')
     <div class="content-main">
         <div class="box px-20 pb-20 pt-20">
-            
+
             <span class="black text-md"><b>Modifica cartella:</b> {{ $folder->name }}</span>
             <hr class="bg-black">
 
-            @include('business.layouts.partials.error')    
+            @include('business.layouts.partials.error')
 
             <form action="{{ route('business.folder.update', $folder->id) }}" method="POST">
                 @csrf
@@ -29,9 +29,8 @@
                 <div class="form-group">
                     <label for="type" class="text">Cartella</label>
                     <select style="height: 47px!important" class="form-control" name="type" id="type">
-                        <option selected value="{{$folder->type}}">{{$folder->type}}</option>
-                        <option value="documenti vari">documenti vari</option>
-                        <option value="documenti fiscali">documenti fiscali</option>
+                        <option {{ $folder->type === 'documenti vari' ? 'selected' : '' }} value="documenti vari">documenti vari</option>
+                        <option {{ $folder->type === 'documenti fiscali' ? 'selected' : '' }} value="documenti fiscali">documenti fiscali</option>
                     </select>
                 </div>
                 <button type="submit" class="add-button position-relative">
