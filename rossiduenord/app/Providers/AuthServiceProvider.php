@@ -4,8 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Policies\PracticePolicy;
-use App\Practice;
+use Laravel\Passport\Passport;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -32,5 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-subject', 'App\Policies\SubjectPolicy@update');
         Gate::define('edit-building', 'App\Policies\BuildingPolicy@update');
         Gate::define('edit-superbonus', 'App\Policies\SuperbonusPolicy@view');
+
+        Passport::routes();
     }
 }
