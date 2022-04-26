@@ -15,7 +15,7 @@ class FolderDocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
         $validated = $request->validate([
             'practice_id' => 'required | integer',
@@ -25,17 +25,15 @@ class FolderDocumentController extends Controller
             'type' => 'Nullable',
         ]);
 
+        $extension = $request->file('allega')->extension();
+        $filename = pathinfo($request->file('allega')->getClientOriginalName(), PATHINFO_FILENAME);
+        //dd($extension, $filename);
         $folders = Sub_folder::all()->pluck('id');
+        $s_folder = Sub_folder::find($request->route('sub_folder'));
 
         if (array_key_exists('allega', $validated)) {
             if(in_array($validated['sub_folder_id'], $folders->toArray())){
-                $business_document = Storage::put('business_folders/first_document_request', $validated['allega']);
-            }
-            if(in_array($validated['sub_folder_id'], $folders->toArray())){
-                $business_document = Storage::put('business_folders/during_document_request', $validated['allega']);
-            }
-            if(in_array($validated['sub_folder_id'], $folders->toArray())){
-                $business_document = Storage::put('business_folders/after_document_request', $validated['allega']);
+                $business_document = $request->file('allega')->storeAs('practices/' . $validated['practice_id'] . '/business_folders/'. $s_folder->folder_type . '_document_request', $filename . '.' . $extension);
             }
             $validated['allega'] = $business_document;
         }
