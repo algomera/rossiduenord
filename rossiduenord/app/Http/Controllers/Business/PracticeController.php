@@ -38,13 +38,9 @@ class PracticeController extends Controller
 
         $practices = $q->get();
         //importo sal finale
-        $tot_sal = 0;
-        $expected_sal = 0;
-        foreach($practices as $practice){
-           $tot_sal += $practice->import_sal;
-           $expected_sal += $practice->import;
-        }
-        return view('business/practice.index', compact('practices','tot_sal','expected_sal'));
+        $tot_sal = $practices->sum('import_sal');
+        $expected_sal = $practices->sum('import');
+        return view('business/practice.index', compact('practices','tot_sal', 'expected_sal'));
     }
 
     /**
