@@ -119,7 +119,7 @@
                     </div>
                 </div>
             @empty
-                <p id="hybrid_systems_no_data_row">Nessun impianto inserito</p>
+                <p id="hybrid_systems_no_data_row">Nessun sistema ibrido inserito</p>
             @endforelse
         </div>
     </div>

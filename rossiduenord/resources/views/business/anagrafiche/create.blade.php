@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label for="subject_type" class="text">Tipologia consulente</label>
                                         <select style="height: 47px!important" class="form-control" name="consultant_type" id="consultant_type">
-                                            <option value="" selected>Seleziona..</option>
+                                            <option value="" selected>Seleziona un contatto nell'anagrafica...</option>
                                             @foreach(config('anagrafiche.consultant_types') as $consultant_type)
                                                 <option value="{{ $consultant_type }}">{{ $consultant_type }}</option>
                                             @endforeach

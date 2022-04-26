@@ -9,7 +9,7 @@
                 @method('PUT')
 
                 <div class="px-20">
-                    <h6>Dati di Progetti</h6>
+                    <h6>Dati di Progetto</h6>
                     <hr style="margin-top: 5px; background-color: #211e16;">
                 </div>
 

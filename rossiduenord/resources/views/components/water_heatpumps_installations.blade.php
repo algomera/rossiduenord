@@ -53,14 +53,14 @@
                                     L
                                 </label>
                             </div>
-                            <div onclick="deleteWaterHeatpumpsInstallation({{$practice->id}}, {{$item->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                            <div onclick="deleteWaterHeatpumpsInstallation({{$practice->id}}, {{$item->id}})" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3 clickable">
                                 <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                 <p class="m-0" style="color: #818387; font-size: 12px">Cancella</p>
                             </div>
                         </div>
                     </div>
                 @empty
-                    <p id="water_heatpumps_installations_no_data_row">Nessun impianto inserito</p>
+                    <p id="water_heatpumps_installations_no_data_row">Nessuno scaldacqua a pompa di calore inserito</p>
                 @endforelse
             </div>
         </div>

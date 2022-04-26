@@ -97,7 +97,7 @@
                     </div>
                 </div>
             @empty
-                <p id="consensing_boilers_no_data_row">Nessun impianto inserito</p>
+                <p id="consensing_boilers_no_data_row">Nessuna caldaia inserita</p>
             @endforelse
             {{-- end loop --}}
         </div>

@@ -106,7 +106,7 @@
                     </div>
                 </div>
             @empty
-                <p id="heat_pumps_no_data_row">Nessun impianto inserito</p>
+                <p id="heat_pumps_no_data_row">Nessuna pompa di calore inserita</p>
             @endforelse
         </div>
     </div>
