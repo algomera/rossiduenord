@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Applicant;
+use App\Practice;
+use App\Http\Resources\PracticeResource;
 class ApiController extends Controller
 {
 
@@ -19,20 +22,9 @@ class ApiController extends Controller
         /**Check the credentials are valid or not
         */
         if( auth()->attempt($credentials) ){
-            /**Store the information of authenticated user
-            */
-            //$user = Auth::user();
-            /**Create token for the authenticated user
-            */
-            if(auth()->user()->api_token){
-                $success['token'] = auth()->user()->api_token;
-            }else{
-                $success['token'] = auth()->user()->createToken('AppName')->accessToken;
-                auth()->user()->api_token = $success['token'];      
-                auth()->user()->save();
-            }
-            /* todo: fix token */
-            return response()->json(['success' => $success], 200);
+            $success['token'] = auth()->user()->createToken('AppName')->accessToken;
+            return response()->json(['token' => $success['token']], 200);
+
         } else {
             /**Return error message
             */
@@ -40,4 +32,13 @@ class ApiController extends Controller
         }
     }
 
+    public function getPracticeList()
+    {
+
+        $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
+        $practices = Practice::query()->whereIn('applicant_id', $applicants)->get();
+
+        return  PracticeResource::collection($practices);
+
+    }
 }

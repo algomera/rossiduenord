@@ -1,9 +1,11 @@
 <?php
 use App\Http\Resources\PracticeResource;
 use App\Practice;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('practices/{practice}', function (Practice $practice) {
-        return new PracticeResource($practice);
-    });
+    
+    Route::get('practices',  'ApiController@getPracticeList');
+
     Route::post('details', 'ApiController@user_info');
 });
 

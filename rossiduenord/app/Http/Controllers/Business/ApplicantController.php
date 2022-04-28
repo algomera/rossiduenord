@@ -110,7 +110,7 @@ class ApplicantController extends Controller
      */
     public function edit(Applicant $applicant)
     {
-        $this->authorize('edit-applicant',  $applicant);
+        //$this->authorize('edit-applicant',  $applicant);
         $practice = $applicant->practice;
         $building = $practice->building;
         $subject = $practice->subject;

@@ -711,3 +711,19 @@ label {
     width: 100%;
 }
 
+.new_practice{
+    .txt-gr{
+        color: #bbbcbc!important;
+    }
+
+    .btp{
+        filter: grayscale(1);
+        opacity: 0.5;
+
+        &:hover{
+            filter: none;
+            opacity: 1;
+        }
+    }
+}
+

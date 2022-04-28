@@ -12,12 +12,16 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="created_by" class="col-md-4 col-form-label text-md-right">{{ __('Creato da') }}</label>
+                            <label for="parent" class="col-md-4 col-form-label text-md-right">{{ __('Creato da') }}</label>
 
                             <div class="col-md-6">
-                                <input id="created_by" type="text" class="form-control @error('created_by') is-invalid @enderror" name="created_by" value="Admin" autofocus>
+                                <select name="parent" id="parent">
+                                    @foreach ($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                                </select>
 
-                                @error('created_by')
+                                @error('parent')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -85,7 +89,8 @@
                                 <option value="business">Impresa</option>
                                 <option value="collaborator">Collaboratore</option>
                                 <option value="consultant">Consulente</option>
-                                <option value="asseverator">Asseveratore</option>
+                                <option value="technical_asseverator">Asseveratore Tecnico</option>
+                                <option value="fiscal_asseverator">Asseveratore Fiscale</option>
                                 <option value="manager">Manager</option>
                                 <option value="provider">Fornitore</option>
                                 <option value="condominium">Condominio</option>

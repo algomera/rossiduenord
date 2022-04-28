@@ -49,14 +49,18 @@ class LoginController extends Controller
         if(Auth::attempt($credentials, $request->has('remember'))) {
             $request->session()->regenerate();
 
-            if (auth()->user()->roles->first()->name === 'business') {
+            if (auth()->user()->role === 'business') {
                 $user = User::where('email', auth()->user()->email)->first();
                 $business_data = $user->user_data;
                 if(!$business_data->type || !$business_data->p_iva || !$business_data->c_f || !$business_data->legal_form || !$business_data->rea || !$business_data->c_ateco || !$business_data->reg_date){
                     return redirect()->route('business.edit.data');
                 }
             }
-            return redirect()->route(auth()->user()->roles->first()->name . '.dashboard');
+            if(auth()->user()->role == 'fiscal_asseverator' || auth()->user()->role == 'technical_asseverator'){
+                //dd('ciao');
+                return redirect()->route('asseverator.dashboard');                
+            }
+            return redirect()->route(auth()->user()->role . '.dashboard');
         }
 
         return back()->withErrors([

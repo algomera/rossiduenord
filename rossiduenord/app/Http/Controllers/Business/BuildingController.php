@@ -60,7 +60,7 @@ class BuildingController extends Controller
      */
     public function edit(building $building, Applicant $applicant)
     {
-        $this->authorize('edit-building', [$building, $applicant]);
+        //$this->authorize('edit-building', [$building, $applicant]);
 
         $practice = $building->practice;
         $applicant = $practice->applicant;

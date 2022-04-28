@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 input {
   font-weight: 600;
 }
@@ -684,6 +688,18 @@ label {
 .invisible-input {
   border: none;
   width: 100%;
+}
+
+.new_practice .txt-gr {
+  color: #bbbcbc !important;
+}
+.new_practice .btp {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.new_practice .btp:hover {
+  filter: none;
+  opacity: 1;
 }
 
 header {

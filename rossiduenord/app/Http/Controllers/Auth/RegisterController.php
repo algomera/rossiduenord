@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string'],
-            'created_by' => ['required', 'string'],
+            'parent' => ['required', 'string'],
         ]);
     }
 
@@ -76,7 +76,7 @@ class RegisterController extends Controller
         // Crazione UserData
         UserData::create([
             'user_id' => $user->id,
-            'created_by' => $data['created_by'],
+            'parent' => $data['parent'],
             'name' => $data['name'],
         ]);
 

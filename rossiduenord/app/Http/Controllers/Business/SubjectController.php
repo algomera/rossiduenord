@@ -59,7 +59,7 @@ class SubjectController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building)
     {
-        $this->authorize('edit-subject', [$subject, $applicant]);
+        //$this->authorize('edit-subject', [$subject, $applicant]);
 
         $practice = $subject->practice;
         $applicant = $practice->applicant;

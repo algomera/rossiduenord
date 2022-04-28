@@ -109,7 +109,7 @@
                             <th style="width: 10%">Piattaforma</th>
                             <th style="width: 5%">Pratica</th>
                             <th style="width: 10%">Data Pratica</th>
-                            <th style="width: 15%">Descrizione</th>
+                            <th style="width: 15%">Denominazione</th>
                             <th style="width: 10%">Fase</th>
                             <th style="width: 10%">Mese lav.110%</th>
                             <th style="width: 10%">Lista incentivi</th>
@@ -121,24 +121,24 @@
                     </thead>
                     <tbody id="table_ContentList">
                         @forelse ($practices as $practice)
-                            <tr>
-                                <td>{{$practice->nominative}}</td>
-                                <td>{{$practice->id}}</td>
-                                <td>{{ date('d-m-Y', strtotime($practice->created_at)) }}</td>
-                                <td>{{$practice->description}}</td>
-                                <td>{{$practice->practical_phase}}</td>
-                                <td>{{$practice->month}}</td>
-                                <td>{{$practice->bonus}}</td>
-                                <td>{{$practice->applicant->company_name}}</td>
-                                <td>{{$practice->sal ?? '-'}}</td>
+                            <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
+                                <td class="txt-gr">{{$practice->applicant->user->user_data->name}}</td>
+                                <td class="txt-gr">{{$practice->id}}</td>
+                                <td class="txt-gr">{{ date('d-m-Y', strtotime($practice->created_at)) }}</td>
+                                <td class="txt-gr">{{$practice->policy_name}}</td>
+                                <td class="txt-gr">{{$practice->practical_phase}}</td>
+                                <td class="txt-gr">{{$practice->month_processing}}</td>
+                                <td class="txt-gr">{{$practice->bonus}}</td>
+                                <td class="txt-gr">{{$practice->applicant->company_name}}</td>
+                                <td class="txt-gr">{{$practice->import_sal ?? '-'}}</td>
                                 <td></td>
                                 <td class="d-flex align-items-center" style="height: fit-content">
-                                    <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3 btp">
                                         <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
-                                        <p class="m-0" style="color: #818387">Modifica</p>
+                                        <p class="m-0 " style="color: #818387">Modifica</p>
                                     </a>
 
-                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3 btp">
                                         <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387">Cancella</p>
                                     </button>

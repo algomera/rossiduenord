@@ -24,7 +24,7 @@
         <div class="container-custom d-flex">
             <nav class="navbar ov-y p-0">
                 <div class="ml-3 px-4">
-                    <img src="{{asset('img/logo_edrasis.png')}}" class="img-fluid h-50">
+                    <img src="{{asset('img/edrasis_logo.png')}}" class="img-fluid h-50">
                 </div>
                 <ul class="nav flex-column w-100">
                     <li class="nav-item nav-pills">

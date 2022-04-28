@@ -15,7 +15,7 @@ class SuperBonusController extends Controller
      */
     public function index(Practice $practice)
     {
-        $this->authorize('edit-superbonus',  $practice->building);
+        //$this->authorize('edit-superbonus',  $practice->building);
 
         $applicant = $practice->applicant;
         $building = $practice->building;
