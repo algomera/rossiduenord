@@ -57,7 +57,7 @@
             </div>
     </div>
 
-    <div class="container">
+    <div class="container" hidden>
         <div class="row justify-content-center">
             <div class="col-8">
                 <div class="card">
