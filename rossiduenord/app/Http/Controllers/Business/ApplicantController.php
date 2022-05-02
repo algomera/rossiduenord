@@ -110,11 +110,9 @@ class ApplicantController extends Controller
      */
     public function edit(Applicant $applicant)
     {
-        //$this->authorize('edit-applicant',  $applicant);
         $practice = $applicant->practice;
         $building = $practice->building;
         $subject = $practice->subject;
-
 
         return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building'));
     }

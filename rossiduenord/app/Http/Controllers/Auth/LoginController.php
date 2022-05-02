@@ -57,7 +57,6 @@ class LoginController extends Controller
                 }
             }
             if(auth()->user()->role == 'fiscal_asseverator' || auth()->user()->role == 'technical_asseverator'){
-                //dd('ciao');
                 return redirect()->route('asseverator.dashboard');                
             }
             return redirect()->route(auth()->user()->role . '.dashboard');

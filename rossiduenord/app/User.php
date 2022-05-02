@@ -68,4 +68,9 @@ class User extends Authenticatable
     public function anagrafiche() {
         return $this->hasMany(Anagrafica::class);
     }
+
+    public function asseverator()
+    {
+        return $this->belongsToMany(User::class, 'asseverator_business', 'asseverator_id', 'business_id');
+    }
 }

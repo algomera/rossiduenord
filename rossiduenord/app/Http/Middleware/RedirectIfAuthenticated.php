@@ -19,7 +19,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(auth()->user()->roles->first()->name . '/dashboard');
+            if(auth()->user()->role == 'fiscal_asseverator' || auth()->user()->role == 'technical_asseverator'){
+                return redirect()->route('asseverator.dashboard');                
+            }
+
+            return redirect(auth()->user()->role . '/dashboard');
         }
 
         return $next($request);

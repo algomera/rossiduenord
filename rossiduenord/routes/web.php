@@ -262,6 +262,7 @@ Route::middleware('asseverator')
 ->group(function () {
     Route::get('/dashboard', 'HomeController@asseveratorHome')->name('dashboard');
     Route::resource('practice', 'PracticeController');
+    //Route::get('/practice{practice}', 'PracticeController@show')->name('practice');
 });
 
 
