@@ -711,20 +711,8 @@ label {
     width: 100%;
 }
 
-.new_practice{
-    color: #bbbcbc!important;
-    td{
-        color: #bbbcbc!important;
-    }
-
-    td:last-child {
-        filter: grayscale(1);
-        opacity: 0.5;
-
-        &:hover{
-            filter: none;
-            opacity: 1;
-        }
-    }
+.new_practice:hover{
+    opacity: 1!important;
+    filter: none!important;
 }
 
