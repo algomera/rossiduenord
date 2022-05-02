@@ -15,7 +15,7 @@ class PracticeController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('access_practices');
+        //$this->authorize('access_practices');
 
         $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
 
