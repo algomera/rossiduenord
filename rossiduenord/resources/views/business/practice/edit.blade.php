@@ -268,9 +268,9 @@
                     </div>
 
                     <div class="form-group" style="width: 20%;">
-                        <label for="assev_tecnica" class="text text-nowrap">{{ __('Assev. Tecnica(no IVA)*') }}</label>
+                        <label for="assev_tecnica" class="text text-nowrap">{{ __('Assev. Tecnica(no IVA)') }}</label>
                         <div>
-                            <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ old('assev_tecnica') ?? $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus required>
+                            <input id="assev_tecnica" type="number" placeholder="€ 0,00" style="height: 47px!important" class="form-control @error('assev_tecnica') is-invalid @enderror" name="assev_tecnica" value="{{ old('assev_tecnica') ?? $practice->assev_tecnica }}" autocomplete="assev_tecnica" autofocus>
 
                             @error('assev_tecnica')
                                 <span class="invalid-feedback" role="alert">
