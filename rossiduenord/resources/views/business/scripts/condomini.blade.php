@@ -26,22 +26,22 @@
                             <input name="condomini[${i}][cf]" type="text" style="border:none; width: 100%;">
                         </td>
                         <td class="text-center">
-                            <input name="condomini[${i}][millesimi_inv]" type="text" style="border:none; width: 100%;">
+                            <input name="condomini[${i}][millesimi_inv]" type="text" style="border:none; width: 100%; text-align: center">
                         </td>
                         <td class="text-center">
-                            <input name="condomini[${i}][foglio]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][part]" type="text" style="border:none; width: 100%;">
-                        </td>
-                        <td class="text-left">
-                            <input name="condomini[${i}][sub]" type="text" style="border:none; width: 100%;">
+                            <input name="condomini[${i}][foglio]" type="text" style="border:none; width: 100%; text-align: center">
                         </td>
                         <td class="text-center">
-                            <input name="condomini[${i}][categ_catastale]" type="text" style="border:none; width: 100%;">
+                            <input name="condomini[${i}][part]" type="text" style="border:none; width: 100%; text-align: center">
                         </td>
                         <td class="text-center">
-                            <input name="condomini[${i}][sup_catastale]" type="text" style="border:none; width: 100%;">
+                            <input name="condomini[${i}][sub]" type="text" style="border:none; width: 100%; text-align: center">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][categ_catastale]" type="text" style="border:none; width: 100%; text-align: center">
+                        </td>
+                        <td class="text-center">
+                            <input name="condomini[${i}][sup_catastale]" type="text" style="border:none; width: 100%; text-align: center">
                         </td>
                         </tr>
                     `)

@@ -124,7 +124,7 @@ class PracticeController extends Controller
 //            'year' => 'required | numeric | min:2',
             'policy_name' => 'required | string | min:3',
             'address' => 'required | string | min:5',
-            'civic' => 'required | numeric | min:1',
+            'civic' => 'required | string',
             'common' => 'required | string | min:3',
             'province' => 'required | string | min:2 | max:2',
             'region' => 'required | string',

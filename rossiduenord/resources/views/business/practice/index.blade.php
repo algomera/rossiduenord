@@ -124,7 +124,7 @@
                             <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
                                 <td class="txt-gr">{{$practice->applicant->user->user_data->name}}</td>
                                 <td class="txt-gr">{{$practice->id}}</td>
-                                <td class="txt-gr">{{ date('d-m-Y', strtotime($practice->created_at)) }}</td>
+                                <td class="txt-gr">{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
                                 <td class="txt-gr">{{$practice->policy_name}}</td>
                                 <td class="txt-gr">{{$practice->practical_phase}}</td>
                                 <td class="txt-gr">{{$practice->month_processing}}</td>

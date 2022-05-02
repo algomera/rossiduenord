@@ -166,22 +166,16 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row" style="margin-top:30px;">{{-- section form description 1 --}}
 
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="build_address">Indirizzo*</label><br/>
-                                    <input class="col-md form-control credit-input @error('build_address') is-invalid @enderror"  type="text" name="build_address" id="build_address" value="{{ old('build_address') ?? $building->build_address}}" width="100%" required/>
-                                    @error('build_address')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
+                                    <label for="build_address">Indirizzo</label><br/>
+                                    <input class="col-md form-control credit-input" type="text" name="build_address" id="build_address" value="{{ $building->practice->address}}" width="100%" readonly/>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <label for="fiscal_code" class="mt-1">Codice fiscale*</label><br/>
-                                    <input class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%" required/>
+                                    <label for="fiscal_code">Codice fiscale*</label><br/>
+                                    <input type="number" class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%" minlength="11" maxlength="11" required/>
                                     @error('fiscal_code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -206,83 +200,33 @@
                                 </div>
                             </div>
 
-
                             <div class="col-md">
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between" style="column-gap: 10px;">
                                         <div style="width: 80px">
-                                            <label for="build_civic_number">N.*</label><br/>
-                                            <input class="col-md form-control credit-input @error('build_civic_number') is-invalid @enderror" value="{{old('build_civic_number') ?? $building->build_civic_number }}"  type="text" name="build_civic_number" maxlength="4" id="build_civic_number" width="100%" required/>
-                                            @error('build_civic_number')
-                                             <span class="invalid-feedback" role="alert">
-                                                 <strong>{{ $message }}</strong>
-                                             </span>
-                                            @enderror
+                                            <label for="build_civic_number">N.</label><br/>
+                                            <input class="col-md form-control credit-input"  value="{{ $building->practice->civic}}"  type="text" name="build_civic_number" id="build_civic_number" width="100%" readonly/>
                                         </div>
                                         <div style="width: 200px">
-                                            <label for="common">Comune*</label><br/>
-                                            <input class="col-md form-control credit-input @error('common') is-invalid @enderror" value="{{old('common') ?? $building->common}}" type="text" name="common" id="common" width="100%" required/>
-                                            @error('common')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <label for="common">Comune</label><br/>
+                                            <input class="col-md form-control credit-input " value="{{ $building->practice->common}}" type="text" name="common" id="common" width="100%" readonly/>
                                         </div>
                                         <div style="width: 80px">
-                                            <label for="province">Provincia*</label><br/>
-                                            <input class="col-md form-control credit-input @error('province') is-invalid @enderror" value="{{old('province') ?? $building->province  }}" type="text" name="province" id="province" minlength="2" maxlength="2" required/>
-                                            @error('province')
-                                             <span class="invalid-feedback" role="alert">
-                                                 <strong>{{ $message }}</strong>
-                                             </span>
-                                            @enderror
+                                            <label for="province">Provincia</label><br/>
+                                            <input class="col-md form-control credit-input" value="{{ $building->practice->province }}" type="text" name="province" id="province" readonly/>
                                         </div>
                                         <div style="width: 200px">
-                                            <label for="region">Regione*</label>
-                                            <div class="position-relative">
-                                                <div class="select"></div>
-                                                <select id="region" class="col-md form-control credit-input @error('region') is-invalid @enderror" name="region" style="height:40px; border-radius:2px; border:1px solid #DBDCDB; background-color: #F2F2F2;" required>
-                                                    <option {{ $building->region == 'Abruzzo' ? 'selected' : ''}} {{old('region') == 'Abruzzo' ? 'selected' : ''}} value="Abruzzo">Abruzzo</option>
-                                                    <option {{ $building->region == 'Basilicata' ? 'selected' : ''}} {{old('region') == 'Basilicata' ? 'selected' : ''}} value="Basilicata">Basilicata</option>
-                                                    <option {{ $building->region == 'Calabria' ? 'selected' : ''}} {{old('region') == 'Calabria' ? 'selected' : ''}} value="Calabria">Calabria</option>
-                                                    <option {{ $building->region == 'Campania' ? 'selected' : ''}} {{old('region') == 'Campania' ? 'selected' : ''}} value="Campania">Campania</option>
-                                                    <option {{ $building->region == 'Emilia-Romagna' ? 'selected' : ''}} {{old('region') == 'Emilia-Romagna' ? 'selected' : ''}} value="Emilia-Romagna">Emilia-Romagna</option>
-                                                    <option {{ $building->region == 'Friuli Venezia Giulia' ? 'selected' : ''}} {{old('region') == 'Friuli Venezia Giulia' ? 'selected' : ''}} value="Friuli Venezia Giulia">Friuli Venezia Giulia</option>
-                                                    <option {{ $building->region == 'Lazio' ? 'selected' : ''}} {{old('region') == 'Lazio' ? 'selected' : ''}} value="Lazio">Lazio</option>
-                                                    <option {{ $building->region == 'Liguria' ? 'selected' : ''}} {{old('region') == 'Liguria' ? 'selected' : ''}} value="Liguria">Liguria</option>
-                                                    <option {{ $building->region == 'Lombardia' ? 'selected' : ''}} {{old('region') == 'Lombardia' ? 'selected' : ''}} value="Lombardia">Lombardia</option>
-                                                    <option {{ $building->region == 'Marche' ? 'selected' : ''}} {{old('region') == 'Marche' ? 'selected' : ''}} value="Marche">Marche</option>
-                                                    <option {{ $building->region == 'Molise' ? 'selected' : ''}} {{old('region') == 'Molise' ? 'selected' : ''}} value="Molise">Molise</option>
-                                                    <option {{ $building->region == 'Piemonte' ? 'selected' : ''}} {{old('region') == 'Piemonte' ? 'selected' : ''}} value="Piemonte">Piemonte</option>
-                                                    <option {{ $building->region == 'Puglia' ? 'selected' : ''}} {{old('region') == 'Puglia' ? 'selected' : ''}} value="Puglia">Puglia</option>
-                                                    <option {{ $building->region == 'Sardegna' ? 'selected' : ''}} {{old('region') == 'Sardegna' ? 'selected' : ''}} value="Sardegna">Sardegna</option>
-                                                    <option {{ $building->region == 'sicilia' ? 'selected' : ''}} {{old('region') == 'Sicilia' ? 'selected' : ''}} value="Sicilia">Sicilia</option>
-                                                    <option {{ $building->region == 'Toscana' ? 'selected' : ''}} {{old('region') == 'Toscana' ? 'selected' : ''}} value="Toscana">Toscana</option>
-                                                    <option {{ $building->region == 'Trentino-Alto Adige' ? 'selected' : ''}} {{old('region') == 'Trentino-Alto Adige' ? 'selected' : ''}} value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-                                                    <option {{ $building->region == 'Umbria' ? 'selected' : ''}} {{old('region') == 'Umbria' ? 'selected' : ''}} value="Umbria">Umbria</option>
-                                                    <option {{ $building->region == 'Valle d\'Aosta' ? 'selected' : ''}} {{old('region') == 'Valle d\'Aosta' ? 'selected' : ''}} value="Valle d'Aosta">Valle d'Aosta</option>
-                                                    <option {{ $building->region == 'Veneto' ? 'selected' : ''}} {{old('region') == 'Veneto' ? 'selected' : ''}} value="Veneto">Veneto</option>
-                                                </select>
-                                                @error('region')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                            <label for="region">Regione</label>
+                                            <input id="region" class="col-md form-control credit-input" value="{{ $building->practice->region }}" name="region" readonly>
                                         </div>
                                         <div style="width: 150px">
-                                            <label for="cap">CAP*</label>
-                                            <input class="col-md form-control credit-input @error('cap') is-invalid @enderror" value="{{ old('cap') ?? $building->cap }}" type="number" name="cap" maxlength="5" minlength="5" id="cap" width="100%" required/>
-                                            @error('cap')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <label for="cap">CAP</label>
+                                            <input class="col-md form-control credit-input" value="{{ $building->practice->cap }}" type="number" name="cap" id="cap" width="100%" readonly/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="condominio">Condominio*</label><br/>
+                                <div class="form-group mt-3">
+                                    <label for="condominio">Nome Condominio*</label><br/>
                                     <input class="col-md form-control credit-input @error('condominio') is-invalid @enderror" type="text" name="condominio" id="condominio" value="{{ old('condominio') ?? $building->condominio }}" width="100%" required/>
                                     @error('condominio')
                                         <span class="invalid-feedback" role="alert">
@@ -314,8 +258,8 @@
                             <div class="col-12" >
                                 <div class="row" >
                                     <div class="col">
-                                        <label for="section">Sezione*</label>
-                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="text" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%" required/>
+                                        <label for="section">Sezione</label>
+                                        <input class="col form-control credit-input  @error('section') is-invalid @enderror" type="text" name="section" id="section" value="{{ old('section') ?? $building->section }}" width="100%"/>
                                         @error('section')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -368,8 +312,8 @@
                                         @enderror
                                     </div>
                                     <div class="col-2">
-                                        <label for="resolution_stairs " class="text-nowrap">Scale delibere*</label>
-                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="text" name="resolution_stairs" id="resolution_stairs" width="100%" required/>
+                                        <label for="resolution_stairs " class="text-nowrap">Scale delibere</label>
+                                        <input class="col form-control credit-input  @error('resolution_stairs') is-invalid @enderror" value="{{old('resolution_stairs') ?? $building->resolution_stairs }}" type="text" name="resolution_stairs" id="resolution_stairs" width="100%"/>
                                         @error('resolution_stairs')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -598,7 +542,7 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <label for="license_number">Num. licenza/titolo</label><br/>
-                                            <input class="col form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="number" name="license_number" id="license_number" width="100%"  />
+                                            <input class="col form-control credit-input @error('license_number') is-invalid @enderror" value="{{ old('license_number') ?? $building->license_number }}" type="text" name="license_number" id="license_number" width="100%"  />
                                             @error('license_number')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -643,11 +587,11 @@
                                             <thead>
                                                 <tr>
                                                     <td class="text-center" style="width:5%;"><b>N.</b></td>
-                                                    <td style="width:5%;" class="text-center"><b>Nome/Rag. sociale</b></td>
-                                                    <td style="width:5%;"><b>Cognome</b></td>
+                                                    <td style="width:10%;" ><b>Nome/ <br>Rag. Sociale</b></td>
+                                                    <td style="width:10%;"><b>Cognome</b></td>
                                                     <td style="width:15%;"><b>Telefono</b></td>
                                                     <td style="width:15%;"><b>Email</b></td>
-                                                    <td style="width:12%;"><b>Cod. fiscale/P. IVA</b></td>
+                                                    <td style="width:15%;"><b>Cod. fiscale/P. IVA</b></td>
                                                     <td style="width:5%;" class="text-center"><b>Millesimi</b></td>
                                                     <td style="width:5%;" ><b>Foglio</b></td>
                                                     <td style="width:5%;"><b>Part.</b></td>
@@ -660,17 +604,17 @@
                                                 @forelse($condomini as $i => $condomino)
                                                     <tr>
                                                         <td class="text-center">{{ $i + 1 }}</td>
-                                                        <td class="text-center"> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input"></td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-left"> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input"></td>
-                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input"> </td>
-                                                        <td class="text-center"> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="hidden" name="condomini[{{$i}}][id]" value="{{$condomino->id}}"> <input type="text" name="condomini[{{$i}}][name]" value="{{ $condomino->name }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][surname]" value="{{ $condomino->surname }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][phone]" value="{{ $condomino->phone }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][email]" value="{{ $condomino->email }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}" id="" class="invisible-input"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][millesimi_inv]" value="{{ $condomino->millesimi_inv }}" id="" class="invisible-input text-center"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][foglio]" value=" {{ $condomino->foglio }}" id="" class="invisible-input text-center"></td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][part]" value="{{ $condomino->part }}" id="" class="invisible-input text-center"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input text-center"></td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input text-center"> </td>
+                                                        <td> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input text-center"> </td>
                                                     </tr>
                                                 @empty
                                                     <tr id="no_data_row">
