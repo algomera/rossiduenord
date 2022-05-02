@@ -690,6 +690,9 @@ label {
   width: 100%;
 }
 
+.new_practice {
+  color: #bbbcbc !important;
+}
 .new_practice td {
   color: #bbbcbc !important;
 }
