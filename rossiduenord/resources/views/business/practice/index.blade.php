@@ -122,23 +122,23 @@
                     <tbody id="table_ContentList">
                         @forelse ($practices as $practice)
                             <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
-                                <td class="txt-gr">{{$practice->applicant->user->user_data->name}}</td>
-                                <td class="txt-gr">{{$practice->id}}</td>
-                                <td class="txt-gr">{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
-                                <td class="txt-gr">{{$practice->policy_name}}</td>
-                                <td class="txt-gr">{{$practice->practical_phase}}</td>
-                                <td class="txt-gr">{{$practice->month_processing}}</td>
-                                <td class="txt-gr">{{$practice->bonus}}</td>
-                                <td class="txt-gr">{{$practice->applicant->company_name}}</td>
-                                <td class="txt-gr">{{$practice->import_sal ?? '-'}}</td>
+                                <td>{{$practice->applicant->user->user_data->name}}</td>
+                                <td>{{$practice->id}}</td>
+                                <td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
+                                <td>{{$practice->policy_name}}</td>
+                                <td>{{$practice->practical_phase}}</td>
+                                <td>{{$practice->month_processing}}</td>
+                                <td>{{$practice->bonus}}</td>
+                                <td>{{$practice->applicant->company_name}}</td>
+                                <td>{{$practice->import_sal ?? '-'}}</td>
                                 <td></td>
                                 <td class="d-flex align-items-center" style="height: fit-content">
-                                    <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3 btp">
+                                    <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
                                         <p class="m-0 " style="color: #818387">Modifica</p>
                                     </a>
 
-                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3 btp">
+                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                         <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                         <p class="m-0" style="color: #818387">Cancella</p>
                                     </button>

@@ -712,11 +712,11 @@ label {
 }
 
 .new_practice{
-    .txt-gr{
+    td{
         color: #bbbcbc!important;
     }
 
-    .btp{
+    td:last-child {
         filter: grayscale(1);
         opacity: 0.5;
 
