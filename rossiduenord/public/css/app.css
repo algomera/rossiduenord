@@ -690,11 +690,6 @@ label {
   width: 100%;
 }
 
-.new_practice:hover {
-  opacity: 1 !important;
-  filter: none !important;
-}
-
 header {
   background-color: #615f5f;
   color: white;

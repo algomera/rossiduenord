@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class AnagraficheController extends Controller
 {
     public function index() {
-        $this->authorize('access_anagrafiche');
+        //$this->authorize('access_anagrafiche');
 
         $subject_roles = SubjectRole::all()->except(21);
         $anagrafiche = auth()->user()->anagrafiche;
@@ -32,7 +32,7 @@ class AnagraficheController extends Controller
             'address' => 'nullable|string',
             'zip' => 'nullable|string|min:5|regex: /[0-9]/',
             'city' => 'required|string',
-            'province' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'province' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'iban' => 'nullable | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
             'vat' => 'nullable|string',
             'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
@@ -40,11 +40,12 @@ class AnagraficheController extends Controller
             'fax' => 'nullable|string|min:10|regex: /[0-9]/',
             'email' => 'nullable|string|email|max:100|unique:anagrafiche',
             'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche',
+            'ticket_code' => 'nullable|string',
             'date_of_birth' => 'nullable|date|date_format:Y-m-d|before:today',
             'common_of_birth' => 'nullable|string',
-            'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'order_or_college' => 'nullable|string',
-            'order_or_college_province' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'order_or_college_province' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'order_or_college_number' => 'nullable|string|regex: /[0-9]/',
         ]);
 
@@ -72,7 +73,7 @@ class AnagraficheController extends Controller
             'address' => 'nullable|string',
             'zip' => 'nullable|string|min:5|regex: /[0-9]/',
             'city' => 'required|string',
-            'province' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'province' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'iban' => 'nullable | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
             'vat' => 'nullable|string',
             'fiscal_code' => 'nullable | string |min:16|max:16 |regex:/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/i',
@@ -80,11 +81,12 @@ class AnagraficheController extends Controller
             'fax' => 'nullable|string|min:10|regex: /[0-9]/',
             'email' => 'nullable|string|email|max:100|unique:anagrafiche,email,' . $anagrafica->id,
             'email_pec' => 'nullable|string|email|max:100|unique:anagrafiche,email,' . $anagrafica->id,
+            'ticket_code' => 'nullable|string',
             'date_of_birth' => 'nullable|date|date_format:Y-m-d|before:today',
             'common_of_birth' => 'nullable|string',
-            'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'province_of_birth' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'order_or_college' => 'nullable|string',
-            'order_or_college_province' => 'nullable|string|min:2|max:2|regex: /[A-Z]/',
+            'order_or_college_province' => 'nullable|string|min:2|max:2|regex: /[A-Za-z]/',
             'order_or_college_number' => 'nullable|string|regex: /[0-9]/',
         ]);
 
