@@ -30,6 +30,14 @@ class UserSeeder extends Seeder
             'email' => 'info@edrasis.it',
             'password' => bcrypt('mtmopx9m'),
         ]);
+        $novello = User::create([
+            'email' => 'p.novello@integrabusiness.net',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
+        $tasrl = User::create([
+            'email' => 'tasrl1202@gmail.com',
+            'password' => bcrypt('mtmopx9m'),
+        ]);
 
         // Creo UserData per admin
         UserData::create([
@@ -52,6 +60,18 @@ class UserSeeder extends Seeder
             'referent' => $faker->name(),
         ]);
 
+        // Creo UserData per Banche
+        UserData::create([
+            'user_id' => $novello->id,
+            'parent' => $admin->id,
+            'name' => "Integrabusiness",
+        ]);
+        UserData::create([
+            'user_id' => $tasrl->id,
+            'parent' => $admin->id,
+            'name' => "Ta S.r.l",
+        ]);
+
         // Assegno ruolo "business" all'utente "Administrator"
         $admin->assignRole(Role::findByName('admin'));
 
@@ -60,5 +80,11 @@ class UserSeeder extends Seeder
 
         // Assegno ruolo "business" all'utente "Edrasis"
         $edrasis->assignRole(Role::findByName('business'));
+
+        // Assegno ruolo "bank" all'utente "Novello"
+        $novello->assignRole(Role::findByName('bank'));
+
+        // Assegno ruolo "bank" all'utente "Ta S.r.l"
+        $tasrl->assignRole(Role::findByName('bank'));
     }
 }
