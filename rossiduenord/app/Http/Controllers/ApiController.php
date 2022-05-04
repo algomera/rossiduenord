@@ -22,7 +22,7 @@ class ApiController extends Controller
         /**Check the credentials are valid or not
         */
         if( auth()->attempt($credentials) ){
-            $success['token'] = auth()->user()->createToken('AppName')->accessToken;
+            $success['token'] = auth()->user()->createToken('App')->accessToken;
             return response()->json(['token' => $success['token']], 200);
 
         } else {

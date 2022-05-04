@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers\Admin;
 
-use App\{File, Folder};
+use App\File;
+use App\Folder;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-
     /**
      * Show the form for creating a new resource.
      *
@@ -18,7 +18,7 @@ class FileController extends Controller
     public function create(File $file)
     {
         $folders = Folder::all();
-        return view('business.file_storage.create', compact('folders', 'file'));
+        return view('admin.file_storage.create', compact('folders', 'file'));
     }
 
     /**
@@ -27,27 +27,27 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Folder $folder)
     {
         $validated = $request->validate([
             'title' => 'required | string',
             'folder_id' => 'required | integer | exists:folders,id',
             'file' => 'required',
         ]);
-
+        
         $extension = $request->file('file')->extension();
         $filename = pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_FILENAME);
         $folders = Folder::all()->pluck('id');
 
         if (array_key_exists('file', $validated)) {
             if(in_array($validated['folder_id'], $folders->toArray())){
-                $business_document = $request->file('file')->storeAs('folder/' . 'business_folders/' . $validated['title'] . '/' , $filename . '.' . $extension);
+                $admin_document = $request->file('file')->storeAs('folder/' . 'admin_folders/' . $validated['title'] . '/' , $filename . '.' . $extension);
             }
-            $validated['file'] = $business_document;
+            $validated['file'] = $admin_document;
         }
 
         File::create($validated);
-        return redirect()->route('business.folder.index')->with('message', "Nuovo file inserito!");
+        return redirect()->route('admin.folder.index')->with('message', "Nuovo file inserito!");
     }
 
     /**
@@ -58,7 +58,7 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        return view('business.file_storage.show', compact('file'));
+        return view('admin.file_storage.show', compact('file'));
     }
 
     /**
@@ -70,7 +70,7 @@ class FileController extends Controller
     public function edit(File $file)
     {
         $folders = Folder::all();
-        return view('business.file_storage.edit', compact('file', 'folders'));
+        return view('admin.file_storage.edit', compact('file', 'folders'));
     }
 
     /**
@@ -90,13 +90,13 @@ class FileController extends Controller
 
         if (array_key_exists('file', $validated)) {
             Storage::delete($file->file);
-            $business_file = Storage::put('business_file', $validated['file']);
-            $validated['file'] = $business_file;
+            $admin_file = Storage::put('admin_file', $validated['file']);
+            $validated['file'] = $admin_file;
         }
 
         $file->update($validated);
         $folder = $validated['folder_id'];
-        return redirect()->route('business.folder.show', compact('folder'))->with('message', "file modificato!");
+        return redirect()->route('admin.folder.show', compact('folder'))->with('message', "file modificato!");
     }
 
     /**

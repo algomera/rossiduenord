@@ -1,4 +1,4 @@
-@extends('business.layouts.business')
+@extends('admin.layouts.admin')
 
 @section('content')
     <div class="content-main">
@@ -8,7 +8,7 @@
 
             <div>
                 <img src="{{ asset('/img/icon/arrow-left.svg')}}" alt="">
-                <a class="back" href="{{ route('business.users.index') }}">Torna indietro</a>
+                <a class="back" href="{{ route('admin.users.index') }}">Torna indietro</a>
             </div>
 
             <table style="width: 100%; margin-top: 20px;">

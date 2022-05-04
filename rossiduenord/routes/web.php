@@ -34,6 +34,13 @@ Route::middleware('admin')
 ->prefix('admin')
 ->group(function () {
     Route::get('/dashboard', 'HomeController@adminHome')->name('dashboard');
+    Route::resource('/practice', 'PracticeController');
+    Route::resource('/users', 'UserController');
+    Route::resource('/folder', 'FolderController');
+    Route::resource('/file', 'FileController');
+    Route::resource('/anagrafiche', 'AnagraficheController');
+    Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
+
 });
 
 
@@ -207,6 +214,7 @@ Route::middleware('business')
     // condomini export
     Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 
+    // anagrafiche
     Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
     Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
     Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');

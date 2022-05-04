@@ -47,29 +47,13 @@
     </div>
     <div class="mt-5 pl-4 ml-2">
         <h4 class="mb-0">Scarica l'app</h4>
-            <div class=" d-flex w-25 border-bottom border-dark mt-1">
-                <a href="#">
-                 <img src="{{asset('img/icon/BUTTON_APP_STORE.svg')}}" alt="" class="img-fluid">
-                </a>
-                <a href="#">
-                    <img src="{{asset('img/icon/BUTTON_GOOGLE_PLAY.svg')}}" alt="" class="img-fluid">
-                </a>
-            </div>
-    </div>
-
-    <div class="container" hidden>
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-header">API</div>
-                    <div class="card-body">
-                        <passport-clients></passport-clients>
-                        <passport-authorized-clients></passport-authorized-clients>
-                        <passport-personal-access-tokens></passport-personal-access-tokens>
-                    </div>
-                </div>
-            </div>
+        <div class=" d-flex w-25 border-bottom border-dark mt-1">
+            <a href="#">
+                <img src="{{asset('img/icon/BUTTON_APP_STORE.svg')}}" alt="" class="img-fluid">
+            </a>
+            <a href="#">
+                <img src="{{asset('img/icon/BUTTON_GOOGLE_PLAY.svg')}}" alt="" class="img-fluid">
+            </a>
         </div>
     </div>
-
 @endsection

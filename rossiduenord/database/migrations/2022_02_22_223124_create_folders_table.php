@@ -19,6 +19,7 @@ class CreateFoldersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('type');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers\Admin;
 
-use App\{Folder, User, File};
+use App\Folder;
+use App\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class FolderController extends Controller
      */
     public function index()
     {
-        $folders = Folder::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(100);
-        return view('business.folder_file.index', compact('folders'));
+        $folders = Folder::all();
+        return view('admin.folder_file.index', compact('folders'));
     }
 
     /**
@@ -26,7 +27,7 @@ class FolderController extends Controller
      */
     public function create()
     {
-        return view('business.folder_file.create');
+        return view('admin.folder_file.create');
     }
 
     /**
@@ -40,13 +41,12 @@ class FolderController extends Controller
         $validated = $request->validate([
             'name' => 'required | string',
             'type' => 'required | string ',
-            'created_by' => 'nullable',
         ]);
 
         $validated['created_by'] = auth()->user()->name;
         $folder = auth()->user()->folders()->create($validated);
 
-        return redirect()->route('business.folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
+        return redirect()->route('admin.folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
     }
 
     /**
@@ -55,11 +55,10 @@ class FolderController extends Controller
      * @param  \App\Folder  $folder
      * @return \Illuminate\Http\Response
      */
-    public function show(Folder $folder, File $file)
+    public function show(Folder $folder)
     {
         $files = File::where('folder_id', '=', $folder->id)->orderBy('created_at', 'DESC')->paginate(10);
-
-        return view('business.folder_file.show', compact('folder', 'files'));
+        return view('admin.folder_file.show', compact('folder', 'files'));
     }
 
     /**
@@ -70,7 +69,7 @@ class FolderController extends Controller
      */
     public function edit(Folder $folder)
     {
-        return view('business.folder_file.edit', compact('folder'));
+        return view('admin.folder_file.edit', compact('folder'));
     }
 
     /**
@@ -88,7 +87,7 @@ class FolderController extends Controller
         ]);
 
         $folder->update($validated);
-        return redirect()->route('business.folder.index')->with('message', "La cartella: $folder->name e stata modificata!");
+        return redirect()->route('admin.folder.index')->with('message', "La cartella: $folder->name e stata modificata!");
     }
 
     /**
