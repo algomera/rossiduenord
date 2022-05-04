@@ -34,12 +34,19 @@ class FileController extends Controller
             'file' => 'required',
         ]);
 
-        $bank_file = Storage::put('banc_file', $validated['file']);
-        $validated['file'] = $bank_file;
+        $extension = $request->file('file')->extension();
+        $filename = pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_FILENAME);
+        $folders = Folder::all()->pluck('id');
 
-        $folder = $validated['folder_id'];
+        if (array_key_exists('file', $validated)) {
+            if(in_array($validated['folder_id'], $folders->toArray())){
+                $bank_document = $request->file('file')->storeAs('folder/' . 'bank_folders/' . $validated['title'] . '/' , $filename . '.' . $extension);
+            }
+            $validated['file'] = $bank_document;
+        }
+
         File::create($validated);
-        return redirect()->route('bank.folder.show', compact('folder'))->with('message', "Nuovo file inserito!");
+        return redirect()->route('bank.folder.index')->with('message', "Nuovo file inserito!");
     }
 
     /**

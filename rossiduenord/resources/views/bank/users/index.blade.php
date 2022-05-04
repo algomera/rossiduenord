@@ -59,7 +59,7 @@
                                         {{$user->role}}
                                     </div>
                                 </td>
-                                <td>{{$user->created_by}}</td>
+                                <td>{{$user->parent->name}}</td>
                                 <td class="">
                                     <a href="{{route('bank.users.show', $user)}}" class="btn-custom white bg-green">
                                         Vedi

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Bank;
 
-use App\{User, Business};
+use App\{User, UserData};
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -15,10 +15,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        $users = User::where('created_by', Auth::user()->name)->orderBy('created_at', 'DESC')->paginate(10);
-        return view('bank.users.index', compact('users'));
+        $users = User::whereHas('user_data', function($q) {
+            $q->where('parent', auth()->user()->id);
+        })->get();
+        return view('bank.users.index', compact('users', 'user'));
     }
 
     /**
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('bank.users.create');
+        $roles = Role::all()->pluck(['name']);
+        return view('bank.users.create', compact('roles'));
     }
 
     /**
@@ -41,28 +44,27 @@ class UserController extends Controller
     {           
         $validated = $request->validate([
             'role' => 'required | string',
-            'created_by' => 'nullable | string',
             'name' => 'required | string | min:3 | max:100',
-            'referent' => 'required | string',
-            'referent_phone' => 'required | string',
             'email' => 'required | string | email | max:100 | unique:users',
             'password' => 'required | string | min:8 | confirmed'
         ]);
 
-        $created_by = Auth::user()->name;
-        $validated['created_by'] = $created_by;
-        
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
+        // Creazione Utente
+        $user = User::create([
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password'])
+        ]);
 
-        User::create($validated);
-        
-        if($validated['role'] == 'business'){
-            $user_id = Auth::user()->id;
-            $validated['user_id'] = $user_id;
-            Business::create($validated);
-        }
-        //dd($validated);
+        // Crazione UserData
+        UserData::create([
+            'user_id' => $user->id,
+            'parent' => auth()->user()->id,
+            'name' => $validated['name'],
+        ]);
+
+        $role = Role::findByName($validated['role']);
+        $user->assignRole($role);
+
         return redirect()->route('bank.users.index')->with('message', "Nuovo utente inserito!");
     }
 
@@ -85,7 +87,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('bank.users.edit', compact('user'));
+        $roles = Role::all()->pluck(['name']);
+
+        return view('bank.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -104,9 +108,20 @@ class UserController extends Controller
             'password' => 'required |string | min:8 | confirmed'
         ]);
 
-        $password = Hash::make($request->password);
-        $validated['password'] = $password;
-        $user->update($validated);
+        $user->update([
+            'email' => $validated['email'],
+            'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
+        ]);
+
+        $user->user_data()->update([
+            'name' => $validated['name']
+        ]);
+
+        if($user->getRoleNames()->first() !== $validated['role']) {
+            $user->removeRole($user->getRoleNames()->first());
+            $user->assignRole($validated['role']);
+        }
+
         return redirect()->route('bank.users.index')->with('message', "utente modificato!");
     }
 
@@ -119,8 +134,9 @@ class UserController extends Controller
     public function destroy($id)
     {   
         $user = User::find($id);
+        $tmp_name = $user->name;
         $user->delete();
 
-        return redirect()->back()->with('message', "Utente $user->name e stato eliminato!");
+        return redirect()->back()->with('message', "Utente " . $tmp_name . " e stato eliminato!");
     }
 }

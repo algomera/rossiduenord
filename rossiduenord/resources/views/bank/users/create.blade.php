@@ -34,32 +34,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="referent" class="text">{{ __('referente') }}</label>
-                    <div>
-                        <input id="referent" type="text" style="height: 47px!important" class="form-control @error('referent') is-invalid @enderror" name="referent" value="{{ old('referent') }}" required autocomplete="referent" autofocus>
-
-                        @error('referent')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="referent_phone" class="text">{{ __('Numero referente') }}</label>
-                    <div>
-                        <input id="referent_phone" type="text" style="height: 47px!important" class="form-control @error('referent_phone') is-invalid @enderror" name="referent_phone" value="{{ old('referent_phone') }}" required autocomplete="name" autofocus>
-
-                        @error('referent_phone')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label for="email" class="text">{{ __('E-Mail') }}</label>
 
                     <div>
