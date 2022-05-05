@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bank;
 
 use App\Http\Controllers\Controller;
 use App\Practice;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -14,16 +15,32 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $practices = DB::table('practices')
-        ->join('applicants', 'practices.applicant_id', '=', 'applicants.id')
-        ->select('practices.*', 'applicants.*')
-        ->get();
-        //dd($practices->created_at);
-        //$createdAt = Carbon::parse($practices[0]->created_at->format('d/m/Y'));
-        //dd($createdAt);
-        //$practice_data = Carbon::today()->format('d/m/Y');
+        $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
+
+        $q = Practice::query()->whereIn('applicant_id', $applicants);
+
+        if($request->get('practical_month') !== null) {
+            $q->where('month', '=', $request->get('practical_month'));
+        }
+
+        if($request->get('practical_phase') !== null) {
+            $q->where('practical_phase', '=', $request->get('practical_phase'));
+        }
+
+        if($request->get('practical_description') !== null) {
+            $q->where('description', 'LIKE', '%' . $request->get('practical_description') . '%');
+        }
+
+        if($request->get('practical_number') !== null) {
+            $q->where('id', '=', $request->get('practical_number'));
+        }
+
+        $practices = $q->get();
+        //importo sal finale
+        $tot_sal = $practices->sum('import_sal');
+        $expected_sal = $practices->sum('import');
         return view('bank/practice.index', compact('practices'));
     }
 
