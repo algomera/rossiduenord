@@ -76,83 +76,41 @@
                         <th style="width: 10%">Piattaforma</th>
                         <th style="width: 5%">Pratica</th>
                         <th style="width: 10%">Data Pratica</th>
-                        <th style="width: 15%">Descrizione</th>
+                        <th style="width: 15%">Denominazione</th>
                         <th style="width: 10%">Fase</th>
                         <th style="width: 10%">Mese lav.110%</th>
                         <th style="width: 10%">Lista incentivi</th>
                         <th style="width: 15%">Richiedente</th>
+                        <th style="width: 15%">SAL</th>
                         <th style="width: 5%">Notifiche</th>
+                        <th style="width: 10%"></th>
                     </tr>
                 </thead>
-                <tbody id="table_ContentListFolder">
-{{--                     @foreach ($practices as $practice)
-                        <tr>
-                            <td>{{$practice->nominative}}</td>
+                <tbody id="table_ContentList">
+                    @forelse ($practices as $practice)
+                        <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) style="filter: grayscale(1); opacity: 0.5;" @endif>
+                            <td>{{$practice->applicant->user->user_data->name}}</td>
                             <td>{{$practice->id}}</td>
-                            <td>{{$practice->created_at}}</td>
-                            <td>{{$practice->description}}</td>
+                            <td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
+                            <td>{{$practice->policy_name}}</td>
                             <td>{{$practice->practical_phase}}</td>
-                            <td>{{$practice->month}}</td>
+                            <td>{{$practice->month_processing}}</td>
                             <td>{{$practice->bonus}}</td>
-                            <td>{{$practice->name}} {{$practice->lastName}}</td>
+                            <td>{{$practice->applicant->company_name}}</td>
+                            <td>{{$practice->import_sal ?? '-'}}</td>
                             <td></td>
+                            <td class="d-flex align-items-center" style="height: fit-content">
+                                <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
+                                    <p class="m-0 " style="color: #818387">Visiona</p>
+                                </a>
+                            </td>
                         </tr>
-                    @endforeach
- --}}                        <tr>
-                            <td>Marco Rossi</td>
-                            <td>1</td>
-                            <td>2/03/2022</td>
-                            <td>da verificare</td>
-                            <td>in istruttoria </td>
-                            <td>Marzo</td>
-                            <td>110%</td>
-                            <td>Marco Rossi</td>
-                            <td></td>
-                        </tr>
+                    @empty
                         <tr>
-                            <td>Giovanni Merlo</td>
-                            <td>2</td>
-                            <td>5/03/2022</td>
-                            <td></td>
-                            <td>in Progettazione </td>
-                            <td>Marzo</td>
-                            <td>110%</td>
-                            <td>Giovanni Merlo</td>
-                            <td></td>
+                            <td colspan="10">Nessun risultato</td>
                         </tr>
-                        <tr>
-                            <td>Vincenzo Corso</td>
-                            <td>3</td>
-                            <td>7/03/2022</td>
-                            <td>da verificare</td>
-                            <td>in Fatturazione </td>
-                            <td>Aprile</td>
-                            <td>110%</td>
-                            <td>Vincenzo Corso</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Maria Giusti</td>
-                            <td>4</td>
-                            <td>10/03/2022</td>
-                            <td>in lavorazione</td>
-                            <td>Contrattualizzato </td>
-                            <td>Maggio</td>
-                            <td>110%</td>
-                            <td>Maria Giusti</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Francesca Monti</td>
-                            <td>5</td>
-                            <td>15/03/2022</td>
-                            <td></td>
-                            <td>In Offertazione</td>
-                            <td>Luglio</td>
-                            <td>110%</td>
-                            <td>Francesca Monti</td>
-                            <td></td>
-                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
