@@ -85,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody id="table_ContentListFolder">
-                    @foreach ($practices as $practice)
+{{--                     @foreach ($practices as $practice)
                         <tr>
                             <td>{{$practice->nominative}}</td>
                             <td>{{$practice->id}}</td>
@@ -98,7 +98,7 @@
                             <td></td>
                         </tr>
                     @endforeach
-                        <tr>
+ --}}                        <tr>
                             <td>Marco Rossi</td>
                             <td>1</td>
                             <td>2/03/2022</td>
