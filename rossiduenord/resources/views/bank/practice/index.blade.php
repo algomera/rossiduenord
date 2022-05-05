@@ -83,8 +83,8 @@
                         <th style="width: 15%">Richiedente</th>
                         <th style="width: 15%">SAL</th>
                         <th style="width: 5%">Notifiche</th>
-                        <th style="width: 10%"></th>
-                    </tr>
+{{--                         <th style="width: 10%"></th>
+ --}}                    </tr>
                 </thead>
                 <tbody id="table_ContentList">
                     @forelse ($practices as $practice)
@@ -99,13 +99,13 @@
                             <td>{{$practice->applicant->company_name}}</td>
                             <td>{{$practice->import_sal ?? '-'}}</td>
                             <td></td>
-                            <td class="d-flex align-items-center" style="height: fit-content">
+{{--                             <td class="d-flex align-items-center" style="height: fit-content">
                                 <a href="{{route('business.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                     <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
                                     <p class="m-0 " style="color: #818387">Visiona</p>
                                 </a>
                             </td>
-                        </tr>
+ --}}                        </tr>
                     @empty
                         <tr>
                             <td colspan="10">Nessun risultato</td>
