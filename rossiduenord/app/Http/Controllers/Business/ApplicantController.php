@@ -64,7 +64,7 @@ class ApplicantController extends Controller
         //takig the id of new applicant
         $applicant_id = $applicant['id'];
         //insert into new practice
-        $practice_data= ['applicant_id'=> $applicant_id];
+        $practice_data= ['applicant_id'=> $applicant_id, 'user_id' => $user_id];
         //new practice creation
         $practice = Practice::create($practice_data);
         $practice_id = $practice['id'];

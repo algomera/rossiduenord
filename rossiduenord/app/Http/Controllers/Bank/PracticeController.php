@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Bank;
 use App\Http\Controllers\Controller;
 use App\Practice;
 use App\Applicant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -17,9 +18,11 @@ class PracticeController extends Controller
      */
     public function index(Request $request)
     {
-        $applicants = Applicant::where('user_id', auth()->id())->pluck('id');
+        $businesses = User::whereHas('user_data', function ($query) {
+            return $query->where('parent', auth()->user()->id);
+        })->get()->pluck('id');
 
-        $q = Practice::query()->whereIn('applicant_id', $applicants);
+        $q = Practice::query()->whereIn('user_id',  $businesses);
 
         if($request->get('practical_month') !== null) {
             $q->where('month', '=', $request->get('practical_month'));

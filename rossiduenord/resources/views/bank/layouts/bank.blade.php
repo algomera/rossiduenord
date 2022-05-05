@@ -27,8 +27,8 @@
         <div class="container-custom d-flex">
             <nav class="navbar">
                 <ul class="nav flex-column">
-                    <div class="my-4 ml-4">
-                        <img src="" alt="Logo">
+                    <div class="my-4 ">
+                        <img src="{{ asset('img/logo_integra.png')}}" alt="Integra Logo">
                     </div>
                     <li class="nav-item nav-pills">
                         <a class="nav-link {{Route::currentRouteName() == 'bank.dashboard' ? 'activ' : ''}}" href="{{route('bank.dashboard')}}">Home</a>
