@@ -81,6 +81,7 @@ class BuildingController extends Controller
      */
     public function update(Request $request, building $building)
     {
+        //dd($request->all());
         if($request->get('condomini')) {
             $condomini = $request->get('condomini');
             foreach ($condomini as $condomino) {
@@ -93,12 +94,12 @@ class BuildingController extends Controller
             'intervention_name' => 'required | string |min:2',
             'company_role' => 'required | string',
             'intervention_tipology' => 'required | string',
-            'build_address' => 'required | string |min:5| max:150',
-            'build_civic_number' => 'required | string',
-            'common' => 'required | string |min:2 |max:100',
-            'province' => 'required | string |min:2|max:2',
-            'region' => 'required | string',
-            'cap' => 'required |numeric',
+            'build_address' => 'nullable | string |min:5| max:150',
+            'build_civic_number' => 'nullable | string',
+            'common' => 'nullable | string |min:2 |max:100',
+            'province' => 'nullable | string |min:2|max:2',
+            'region' => 'nullable | string',
+            'cap' => 'nullable |numeric',
             'fiscal_code' => 'required | min:11 | max:11',
             'condominio' => 'required | string',
 //            'iban' => 'required | string |min:27 |max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',

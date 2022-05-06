@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="fiscal_code">Codice fiscale*</label><br/>
-                                    <input type="number" class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%" minlength="11" maxlength="11" required/>
+                                    <input type="text" class="col-md form-control credit-input ext @error('fiscal_code') is-invalid @enderror" name="fiscal_code" id="fiscal_code" value="{{ old('fiscal_code') ?? $building->fiscal_code}}" width="100%" minlength="11" maxlength="11" required/>
                                     @error('fiscal_code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -597,7 +597,8 @@
                                                     <td style="width:5%;"><b>Part.</b></td>
                                                     <td style="width:5%;"><b>Sub</b></td>
                                                     <td style="width:5%;" class="text-center"><b>Cat. catastale</b></td>
-                                                    <td style="width:5%;" class="text-center"><b>Sub. catastale</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Sup. catastale</b></td>
+                                                    <td style="width:5%;" class="text-center"><b>Comproprietari</b></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -615,6 +616,7 @@
                                                         <td> <input type="text" name="condomini[{{$i}}][sub]" value=" {{ $condomino->sub }}" id="" class="invisible-input text-center"></td>
                                                         <td> <input type="text" name="condomini[{{$i}}][categ_catastale]" value="{{ $condomino->categ_catastale }}" id="" class="invisible-input text-center"> </td>
                                                         <td> <input type="text" name="condomini[{{$i}}][sup_catastale]" value="{{ $condomino->sup_catastale }}" id="" class="invisible-input text-center"> </td>
+                                                        <td> <input type="checkbox" name="condomini[{{$i}}][comproprietari]" value="{{ $condomino->comproprietari }}" {{$condomino->comproprietari == 1 ? 'checked' : ''}} id="" class="invisible-input text-center"> </td>
                                                     </tr>
                                                 @empty
                                                     <tr id="no_data_row">

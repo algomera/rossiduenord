@@ -121,7 +121,7 @@
                     </thead>
                     <tbody id="table_ContentList">
                         @forelse ($practices as $practice)
-                            <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' )  @endif>
+                            <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
                                 <td>{{$practice->applicant->user->user_data->name}}</td>
                                 <td>{{$practice->id}}</td>
                                 <td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>

@@ -29,6 +29,7 @@ class CreateCondominisTable extends Migration
             $table->string('sub')->nullable();
             $table->string('categ_catastale')->nullable();
             $table->decimal('sup_catastale', 10, 2, true)->nullable();
+            $table->boolean('comproprietari')->default(false);
             // date beneficiary
             $table->string('type_beneficiary')->nullable();
             $table->string('possession_title')->nullable();

@@ -23,10 +23,10 @@ class CreateSurfacesTable extends Migration
             $table->string('type')->nullable();
             $table->boolean('is_common')->nullable();
             $table->string('description_surface')->nullable();
-            $table->double('surface')->nullable();
-            $table->double('trasm_ante')->nullable();
-            $table->double('trasm_post')->nullable();
-            $table->double('trasm_term')->nullable();
+            $table->decimal('surface', 8, 2)->nullable();
+            $table->decimal('trasm_ante', 8, 2)->nullable();
+            $table->decimal('trasm_post', 8, 2)->nullable();
+            $table->decimal('trasm_term', 8, 2)->nullable();
             $table->string('confine')->nullable();
             $table->string('insulation')->nullable();
             $table->timestamps();

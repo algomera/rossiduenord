@@ -248,7 +248,7 @@ class SuperBonusController extends Controller
         $validated = $request->validate([
             'practice_id' => 'nullable',
             'thermical_isolation_intervention' => 'nullable| string',
-            'total_vertical_walls' => 'nullable|integer',
+            'total_vertical_walls' => 'nullable',
             'vw_realized_1' => 'nullable |integer',
             'vw_realized_2' => 'nullable |integer',
             'vw_sal_f' => 'nullable| integer',
@@ -410,6 +410,7 @@ class SuperBonusController extends Controller
     }
 
     public function delete_surface($id){
+        dd($id);
         $surface = Surface::find($id);
         $surface->delete();
     }

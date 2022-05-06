@@ -43,7 +43,10 @@
                         <td class="text-center">
                             <input name="condomini[${i}][sup_catastale]" type="text" style="border:none; width: 100%; text-align: center">
                         </td>
-                        </tr>
+                        <td class="text-center">
+                            <input name="condomini[${i}][comproprietari]" type="checkbox" onclick="$(this).val(this.checked ? 1 : 0)" class="invisible-input text-center" width: 100%; text-align: center">
+                        </td>
+                    </tr>
                     `)
     }
 </script>
