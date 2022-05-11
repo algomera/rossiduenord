@@ -66,8 +66,7 @@ class UserController extends Controller
         $user->assignRole($role);
 
 		if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator') {
-			$business = User::find($request->business);
-			$business->asseverator()->sync($user);
+			$user->business()->sync($request->business);
 		}
 
         return redirect()->route('admin.users.index')->with('message', "Nuovo utente inserito!");
@@ -94,7 +93,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
 	    $business = User::role('business')->get();
-        return view('admin.users.edit', compact('user', 'business'));
+		$associated = $user->business->pluck('id');
+        return view('admin.users.edit', compact('user', 'business', 'associated'));
     }
 
     /**
@@ -128,8 +128,7 @@ class UserController extends Controller
         }
 
 	    if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator') {
-		    $business = User::find($request->business);
-		    $user->business()->sync($business);
+			    $user->business()->sync($request->business);
 	    }
 
         return redirect()->route('admin.users.index')->with('message', "Utente aggiornato con successo!");

@@ -22,14 +22,16 @@
 					</select>
 				</div>
 				<div id="asseverator_business" class="form-group">
-					<label for="role" class="text">A chi vuoi associare l'utente?</label>
-					<select style="height: 47px!important" class="form-control" name="business" id="business">
-						<optgroup label="Imprese">
-							@foreach($business as $b)
-								<option value="{{ $b->id }}">{{ ucfirst($b->name) }}</option>
-							@endforeach
-						</optgroup>
-					</select>
+					<label>A chi vuoi associare l'utente?</label>
+					<div id="business" class="row">
+						@foreach($business as $b)
+							<div class="col-3">
+								<input type="checkbox" id="business_{{ $b->id }}" name="business[]"
+								       value="{{ $b->id }}">
+								<label for="business_{{ $b->id }}"> {{ ucfirst($b->name) }}</label>
+							</div>
+						@endforeach
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -99,16 +101,15 @@
 @push('scripts')
 	<script type="text/javascript">
         $(document).ready(function () {
+            $('input[id^="business_"]').attr('disabled', true)
             $('#role').change(function () {
                 let selected = $(this).find(":selected").val();
                 if (selected === 'technical_asseverator') {
-                    $('#asseverator_business label span').text('Asseveratore Tecnico');
-                    $('#asseverator_business select').prop('disabled', false)
+                    $('input[id^="business_"]').attr('disabled', false)
                 } else if (selected === 'fiscal_asseverator') {
-                    $('#asseverator_business label span').text('Asseveratore Fiscale');
-                    $('#asseverator_business select').prop('disabled', false)
+                    $('input[id^="business_"]').attr('disabled', false)
                 } else {
-                    $('#asseverator_business select').prop('disabled', 'disabled')
+                    $('input[id^="business_"]').attr('disabled', true)
                 }
             })
         })
