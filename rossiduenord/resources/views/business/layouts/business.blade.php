@@ -41,84 +41,57 @@
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.dashboard' ? 'activ' : ''}}" href="{{route('business.dashboard')}}">Home</a>
                     </li>
+                    @can('access_anagrafiche')
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 ml-md-2 {{request()->is('business/anagrafiche*') ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
                     </li>
+                    @endcan
                     @can('access_users')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi</a>
                     </li>
                     @endcan
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Visualizza valut.rating</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Book reference</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Aziende subappaltatrici</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze aziendali</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Vetrina</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Cronoprogramma lavori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Fornitori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Certficati materiali</a>
-                    </li>
+                    @can('access_practices')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche</a>
                     </li>
+                    @endcan
+                    @can('access_files')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione Tecnica</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
-                    </li>
-                    <li v-cloak class="nav-item" :class="{'selected-nav' : isListVisible}">
-                        <a class="nav-link ml-4 ml-md-2 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Credito D.O.C </a>
-                        <ul class="nav flex-column"  v-if="isListVisible">
-                            <div class="pl-2">
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione tecnica</a>
-                                </li>
-                                <li class="nav-item">
-                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione fiscale</a>
-                                 </li>
-                                <li class="nav-item">
-                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Contr. qualità lavoro/imprese</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto GPS</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Video GPS</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Elaborati grafici</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Supervisor</a>
-                                </li>
-                            </div>
-                        </ul>
-                    </li>
+                    @endcan
+{{--                    <li v-cloak class="nav-item" :class="{'selected-nav' : isListVisible}">--}}
+{{--                        <a class="nav-link ml-4 ml-md-2 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" @click="openList()"> Credito D.O.C </a>--}}
+{{--                        <ul class="nav flex-column"  v-if="isListVisible">--}}
+{{--                            <div class="pl-2">--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione tecnica</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Revisione fiscale</a>--}}
+{{--                                 </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                      <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Contr. qualità lavoro/imprese</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto GPS</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Video GPS</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Elaborati grafici</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Supervisor</a>--}}
+{{--                                </li>--}}
+{{--                            </div>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                 </ul>
             </nav>
 
