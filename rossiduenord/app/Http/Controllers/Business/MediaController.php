@@ -18,4 +18,5 @@ class MediaController extends Controller
          
          return view ('business.media.index', compact('practice', 'photos','videos', 'applicant', 'building', 'subject'));
     }
+
 }

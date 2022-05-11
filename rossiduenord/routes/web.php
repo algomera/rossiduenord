@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use App\Photo;
+use App\Http\Resources\PhotoResource;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -136,7 +137,13 @@ Route::middleware('business')
     Route::resource('/verticalwall', 'VerticalWallController');
     //media
     Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
-
+    Route::get('photos_practice', function(Request $request) {
+        $user = $request->user()->id;
+        $practice = Practice::where('user_id', $user)->pluck('id');
+        $photos = Photo::where('practice_id', $practice)->get(); 
+         
+        return PhotoResource::collection($photos);
+     });
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
         $pid = $request->get('practice');
         $practice = Practice::find($pid);

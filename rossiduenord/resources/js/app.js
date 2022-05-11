@@ -71,6 +71,8 @@ const app = new Vue({
         isPhotos: true,
         isVideos: false,
         isLoading: false,
+        photos:[],
+        path_photo: '../../img/placeholder.png'
     },
     methods: {
         closeModal() {
@@ -83,13 +85,13 @@ const app = new Vue({
                 this.isListVisible = false;
             }
         },
-        photos() {
+        photosPage() {
             if (this.isPhotos == false) {
                 this.isPhotos = true;
                 this.isVideos = false;
             }
         },
-        videos() {
+        videosPage() {
             if (this.isVideos == false) {
                 this.isVideos = true;
                 this.isPhotos = false;
@@ -98,5 +100,20 @@ const app = new Vue({
         startLoading() {
             this.isLoading = true;
         },
+        showImage(path){
+            return this.path_photo = path;
+        },
     },
+    
+    mounted() {
+        const Urlphoto = "/business/photos_practice";
+
+         Axios.get(Urlphoto).then(resp => {
+            console.log(resp);
+            this.photos = resp.data.data
+        }).catch(e =>{
+            console.log(e);
+        })
+ 
+    }
 });

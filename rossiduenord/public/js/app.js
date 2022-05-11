@@ -71887,7 +71887,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
     isListVisible: false,
     isPhotos: true,
     isVideos: false,
-    isLoading: false
+    isLoading: false,
+    photos: [],
+    path_photo: '../../img/placeholder.png'
   },
   methods: {
     closeModal: function closeModal() {
@@ -71900,13 +71902,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
         this.isListVisible = false;
       }
     },
-    photos: function photos() {
+    photosPage: function photosPage() {
       if (this.isPhotos == false) {
         this.isPhotos = true;
         this.isVideos = false;
       }
     },
-    videos: function videos() {
+    videosPage: function videosPage() {
       if (this.isVideos == false) {
         this.isVideos = true;
         this.isPhotos = false;
@@ -71914,7 +71916,21 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
     },
     startLoading: function startLoading() {
       this.isLoading = true;
+    },
+    showImage: function showImage(path) {
+      return this.path_photo = path;
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var Urlphoto = "/business/photos_practice";
+    Axios.get(Urlphoto).then(function (resp) {
+      console.log(resp);
+      _this.photos = resp.data.data;
+    })["catch"](function (e) {
+      console.log(e);
+    });
   }
 });
 

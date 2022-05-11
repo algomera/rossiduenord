@@ -73,10 +73,6 @@ class ApplicantController extends Controller
         Subject::create($data);
         // building creation
         Building::create($data);
-        // media creation
-        Photo::create($data);
-        Video::create($data);
-
         // superbonus creation
         Data_project::create($data);
         VerticalWall::create($data);

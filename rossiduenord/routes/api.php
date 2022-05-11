@@ -1,11 +1,7 @@
 <?php
-use App\Http\Resources\PracticeResource;
-use App\Practice;
-use App\Applicant;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +22,12 @@ Route::middleware('auth:api')->group(function () {
     
     Route::get('practices',  'ApiController@getPracticeList');
 
-    Route::post('details', 'ApiController@user_info');
+    Route::get('photos', 'ApiController@get_photo');
+    Route::post('photos', 'ApiController@create_photo');
+
+    Route::get('videos', 'ApiController@get_video');
+    Route::post('videos', 'ApiController@create_video');
+
 });
 
 /**Route for login API */

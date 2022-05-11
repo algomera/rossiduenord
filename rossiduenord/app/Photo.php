@@ -9,8 +9,9 @@ class Photo extends Model
     protected $fillable = [
         'practice_id',
         'name',
+        'image',
         'description',
-        'refreence',
+        'reference',
         'position'
     ]; 
     

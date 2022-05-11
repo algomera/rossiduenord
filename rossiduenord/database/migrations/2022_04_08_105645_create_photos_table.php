@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->string('name')->nullable();
+            $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->string('reference')->nullable();
             $table->string('position')->nullable();
