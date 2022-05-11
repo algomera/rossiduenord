@@ -14,10 +14,10 @@ class CreateAsseveratorBusinessTable extends Migration
     public function up()
     {
         Schema::create('asseverator_business', function (Blueprint $table) {
-            $table->bigInteger('business_id')->unsigned();
-            $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('asseverator_id')->unsigned();
             $table->foreign('asseverator_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('business_id')->unsigned();
+            $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

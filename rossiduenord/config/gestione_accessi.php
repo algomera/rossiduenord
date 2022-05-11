@@ -1,24 +1,24 @@
 <?php
 	return [
 		'admin' => [
-			'admin' => 'admin',
-			'financial' => 'financial',
-			'bank' => 'bank',
-			'business' => 'business',
-			'collaborator' => 'collaborator',
-			'consultant' => 'consultant',
-			'technical_asseverator' => 'technical_asseverator',
-			'fiscal_asseverator' => 'fiscal_asseverator'
+			'admin' => 'Amministratore',
+			'financial' => 'Società Finanziaria',
+			'bank' => 'Banca',
+			'business' => 'Impresa',
+			'collaborator' => 'Collaboratore',
+			'consultant' => 'Consulente',
+			'technical_asseverator' => 'Asseveratore Tecnico',
+			'fiscal_asseverator' => 'Asseveratore Fiscale'
 		],
 		'financial' => [
-			'bank' => 'bank',
-			'business' => 'business',
+			'bank' => 'Banca',
+			'business' => 'Impresa',
 		],
 		'bank' => [
-			'business' => 'business',
+			'business' => 'Impresa',
 		],
 		'business' => [
-			'collaborator' => 'collaborator',
+			'collaborator' => 'Collaboratore',
 		],
 		'collaborator' => [
 

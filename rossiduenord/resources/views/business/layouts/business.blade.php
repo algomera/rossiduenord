@@ -56,7 +56,7 @@
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.practice.index' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Pratiche</a>
                     </li>
                     @endcan
-                    @can('access_files')
+                    @can('access_folders')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2 {{Route::currentRouteName() == 'business.folder.index' ? 'activ' : ''}}" href="{{route('business.folder.index')}}">Gestione Cartelle/File</a>
                     </li>

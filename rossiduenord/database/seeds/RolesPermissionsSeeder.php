@@ -80,28 +80,28 @@ class RolesPermissionsSeeder extends Seeder
 			'access_anagrafiche',
 			'access_users',
             'access_practices',
-			'access_files',
+			'access_folders',
         ]);
 	    // Bank base permissions
 	    $bank->givePermissionTo([
 		    'access_anagrafiche',
 		    'access_users',
 		    'access_practices',
-		    'access_files',
+		    'access_folders',
 	    ]);
 	    // Technical Asseverator base permissions
 	    $technical_asseverator->givePermissionTo([
 		    'access_anagrafiche',
 		    'access_users',
 		    'access_practices',
-		    'access_files',
+		    'access_folders',
 	    ]);
 	    // Fiscal Asseverator base permissions
 	    $fiscal_asseverator->givePermissionTo([
 		    'access_anagrafiche',
 		    'access_users',
 		    'access_practices',
-		    'access_files',
+		    'access_folders',
 	    ]);
     }
 }
