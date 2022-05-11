@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="preview mt-2">
-                        <img :src="'../../storage/' + path_photo" alt="image" class="img-fluid">
+                        <img :src="`${path_photo}`" alt="image" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-8">

@@ -71889,7 +71889,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
     isVideos: false,
     isLoading: false,
     photos: [],
-    path_photo: '../../img/placeholder.png'
+    path_photo: '/img/placeholder.png'
   },
   methods: {
     closeModal: function closeModal() {
@@ -71918,7 +71918,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
       this.isLoading = true;
     },
     showImage: function showImage(path) {
-      return this.path_photo = path;
+      return this.path_photo = '/storage/' + path;
     }
   },
   mounted: function mounted() {

@@ -72,7 +72,7 @@ const app = new Vue({
         isVideos: false,
         isLoading: false,
         photos:[],
-        path_photo: '../../img/placeholder.png'
+        path_photo: '/img/placeholder.png'
     },
     methods: {
         closeModal() {
@@ -101,7 +101,7 @@ const app = new Vue({
             this.isLoading = true;
         },
         showImage(path){
-            return this.path_photo = path;
+            return this.path_photo = '/storage/' + path;
         },
     },
     
