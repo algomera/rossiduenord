@@ -106,16 +106,20 @@
 	        @if($user->role === 'technical_asseverator' || $user->role === 'fiscal_asseverator')
             $('input[id^="business_"]').attr('disabled', false)
 	        @else
+            $('#asseverator_business').hide()
             $('input[id^="business_"]').attr('disabled', true)
 	        @endif
 
             $('#role').change(function () {
                 let selected = $(this).find(":selected").val();
                 if (selected === 'technical_asseverator') {
+                    $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else if (selected === 'fiscal_asseverator') {
+                    $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else {
+                    $('#asseverator_business').hide()
                     $('input[id^="business_"]').attr('disabled', true)
                 }
             })

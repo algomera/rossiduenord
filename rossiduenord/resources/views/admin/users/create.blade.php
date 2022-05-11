@@ -101,14 +101,18 @@
 @push('scripts')
 	<script type="text/javascript">
         $(document).ready(function () {
+            $('#asseverator_business').hide()
             $('input[id^="business_"]').attr('disabled', true)
             $('#role').change(function () {
                 let selected = $(this).find(":selected").val();
                 if (selected === 'technical_asseverator') {
+                    $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else if (selected === 'fiscal_asseverator') {
+                    $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else {
+                    $('#asseverator_business').hide()
                     $('input[id^="business_"]').attr('disabled', true)
                 }
             })
