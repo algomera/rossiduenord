@@ -79,6 +79,7 @@ class RolesPermissionsSeeder extends Seeder
         $business->givePermissionTo([
             'access_practices',
             'create_practices',
+			'access_users',
             'create_collaborator_users',
             'create_consultant_users',
             'show_files',

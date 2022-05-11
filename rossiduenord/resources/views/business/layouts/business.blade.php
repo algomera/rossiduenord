@@ -44,9 +44,11 @@
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 ml-md-2 {{request()->is('business/anagrafiche*') ? 'activ' : ''}}" href="{{route('business.anagrafiche.index')}}">Anagrafiche</a>
                     </li>
+                    @can('access_users')
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Gestione Accessi</a>
                     </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link ml-4 ml-md-2  {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Società controllore</a>
                     </li>
