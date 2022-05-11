@@ -129,6 +129,8 @@ class UserController extends Controller
 
 	    if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator') {
 			    $user->business()->sync($request->business);
+	    } else {
+			$user->business()->detach();
 	    }
 
         return redirect()->route('admin.users.index')->with('message', "Utente aggiornato con successo!");
