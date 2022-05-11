@@ -104,6 +104,7 @@
 	<script type="text/javascript">
         $(document).ready(function () {
 	        @if($user->role === 'technical_asseverator' || $user->role === 'fiscal_asseverator')
+            $('#asseverator_business').show()
             $('input[id^="business_"]').attr('disabled', false)
 	        @else
             $('#asseverator_business').hide()
