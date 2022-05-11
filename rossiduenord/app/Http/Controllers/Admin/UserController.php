@@ -92,7 +92,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-	    $business = User::role('business')->get();
+	    $business = User::role('business')->get()->except($user->id);
 		$associated = $user->business->pluck('id');
         return view('admin.users.edit', compact('user', 'business', 'associated'));
     }
