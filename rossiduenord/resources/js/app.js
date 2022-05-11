@@ -101,7 +101,8 @@ const app = new Vue({
             this.isLoading = true;
         },
         showImage(path){
-            return this.path_photo = '/storage/' + path;
+            console.log(path);
+            return this.path_photo = window.location.origin + '/storage/' + path;
         },
     },
     

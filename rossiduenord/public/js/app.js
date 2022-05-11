@@ -71918,7 +71918,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
       this.isLoading = true;
     },
     showImage: function showImage(path) {
-      return this.path_photo = '/storage/' + path;
+      console.log(path);
+      return this.path_photo = window.location.origin + '/storage/' + path;
     }
   },
   mounted: function mounted() {
