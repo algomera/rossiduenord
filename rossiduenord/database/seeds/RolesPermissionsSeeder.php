@@ -81,6 +81,7 @@ class RolesPermissionsSeeder extends Seeder
 			'access_users',
             'access_practices',
 			'access_folders',
+	        'edit_practices',
         ]);
 	    // Bank base permissions
 	    $bank->givePermissionTo([

@@ -863,17 +863,7 @@
                     </div>
                 </div>
 
-                <div class="box-fixed" style="z-index: 1;">
-{{--                    @if($condominoId !== null)--}}
-{{--                        <div class="add-button position-relative ml-2" style="margin-right: auto" onclick="saveCondominoChanges({{ $towed_vw->practice->id }}, {{ $selected_condomino->id }})">Salva condomino</div>--}}
-{{--                    @endif--}}
-                    <a href="{{ route('asseverator.practice.index') }}" class="add-button" style="background-color: #818387" >
-                        {{ __('Annulla')}}
-                    </a>
-                    <button type="submit" class="add-button position-relative ml-2">
-                        {{ __('Conferma') }}
-                    </button>
-                </div>
+                @include('asseverator.layouts.partials.form_buttons')
             </form>
 
         </div>{{-- chiusura div box praticeNav--}}
