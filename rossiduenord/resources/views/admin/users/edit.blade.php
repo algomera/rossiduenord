@@ -103,7 +103,7 @@
 @push('scripts')
 	<script type="text/javascript">
         $(document).ready(function () {
-	        @if($user->role === 'technical_asseverator' || $user->role === 'fiscal_asseverator')
+	        @if($user->role === 'technical_asseverator' || $user->role === 'fiscal_asseverator' || $user->role === 'consultant')
             $('#asseverator_business').show()
             $('input[id^="business_"]').attr('disabled', false)
 	        @else
@@ -117,6 +117,9 @@
                     $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else if (selected === 'fiscal_asseverator') {
+                    $('#asseverator_business').show()
+                    $('input[id^="business_"]').attr('disabled', false)
+                } else if (selected === 'consultant') {
                     $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
                 } else {

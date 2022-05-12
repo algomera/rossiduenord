@@ -65,7 +65,7 @@ class UserController extends Controller
         $role = Role::findByName($validated['role']);
         $user->assignRole($role);
 
-		if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator') {
+		if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator' || $request->role === 'consultant') {
 			$user->business()->sync($request->business);
 		}
 
@@ -127,7 +127,7 @@ class UserController extends Controller
             $user->assignRole($validated['role']);
         }
 
-	    if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator') {
+	    if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator' || $request->role === 'consultant') {
 			    $user->business()->sync($request->business);
 	    } else {
 			$user->business()->detach();

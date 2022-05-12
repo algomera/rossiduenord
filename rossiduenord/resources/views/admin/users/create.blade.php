@@ -111,6 +111,9 @@
                 } else if (selected === 'fiscal_asseverator') {
                     $('#asseverator_business').show()
                     $('input[id^="business_"]').attr('disabled', false)
+                } else if (selected === 'consultant') {
+                    $('#asseverator_business').show()
+                    $('input[id^="business_"]').attr('disabled', false)
                 } else {
                     $('#asseverator_business').hide()
                     $('input[id^="business_"]').attr('disabled', true)
