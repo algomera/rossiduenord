@@ -75,14 +75,28 @@
 {{--                            <hr style="margin-top: 5px; background-color: rgb(33, 30, 22);">--}}
                         </div>
                             <div>
-                                @if($current_sub_folder->assev_t_status == 1 || $current_sub_folder->assev_f_status == 1 || $current_sub_folder->bank_status == 1)
+                                @php
+									switch (auth()->user()->role) {
+                                        case 'technical_asseverator':
+											$status = 'assev_t_status';
+											break;
+										case 'fiscal_asseverator':
+											$status = 'assev_f_status';
+											break;
+											case 'bank':
+											$status = 'bank_status';
+											break;
+									}
+                                @endphp
+
+                                @if($current_sub_folder->$status == 1)
                                 <a href="{{ route('asseverator.document.approve', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
                                     <button type="button" class="add-button mb-2">
                                         Approva
                                     </button>
                                 </a>
                                 @endif
-                                @if($current_sub_folder->assev_t_status == 2 || $current_sub_folder->assev_f_status == 2 || $current_sub_folder->bank_status == 2)
+                                @if($current_sub_folder->$status == 2)
                                     <a href="{{ route('asseverator.document.disapprove', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
                                         <button type="button" class="add-button mb-2">
                                             Non approvare
