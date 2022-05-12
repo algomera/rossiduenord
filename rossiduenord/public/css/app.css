@@ -14,6 +14,27 @@
   display: none;
 }
 
+.folder_document_status {
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 100%;
+  border: 2px solid #999;
+}
+.folder_document_status.not_viewed {
+  background-color: yellow;
+}
+.folder_document_status.not_approved {
+  background-color: red;
+  color: white;
+}
+.folder_document_status.approved {
+  background-color: green;
+  color: white;
+}
+
 input {
   font-weight: 600;
 }

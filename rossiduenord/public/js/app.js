@@ -21008,7 +21008,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.centered {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    z-index: 999;\n}\r\n", ""]);
+exports.push([module.i, "\n.centered {\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    z-index: 999;\n}\n", ""]);
 
 // exports
 
@@ -72560,8 +72560,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\admin\OneDrive\Desktop\Alkimia\rossiduenord\rossiduenord\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\admin\OneDrive\Desktop\Alkimia\rossiduenord\rossiduenord\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/fabioserembe/code/rossiduenord/rossiduenord/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/fabioserembe/code/rossiduenord/rossiduenord/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

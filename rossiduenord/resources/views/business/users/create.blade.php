@@ -15,8 +15,8 @@
                     <label for="role" class="text">Tipologia profilo</label>
                     <select style="height: 47px!important" class="form-control" name="role" id="role">
                     <optgroup label="Ruoli">
-                        @foreach($roles as $role)
-                            <option value="{{ $role }}">{{ ucfirst($role) }}</option>
+                        @foreach(config('gestione_accessi.' . auth()->user()->role) as $k => $role)
+                            <option value="{{ $k }}">{{ ucfirst($role) }}</option>
                         @endforeach
                     </optgroup>
                     </select>

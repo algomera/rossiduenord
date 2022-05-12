@@ -14,10 +14,10 @@ class CreateAsseveratorBusinessTable extends Migration
     public function up()
     {
         Schema::create('asseverator_business', function (Blueprint $table) {
-            $table->bigInteger('business_id')->unsigned();
-            $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('asseverator_id')->unsigned();
             $table->foreign('asseverator_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('business_id')->unsigned();
+            $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,12 +31,12 @@ class CreateAsseveratorBusinessTable extends Migration
     {
         Schema::dropIfExists('asseverator_business');
 
-        Schema::table('asseverator_business', function (Blueprint $table) {
-            $table->dropForeign(['business_id']);
-            $table->dropColumn('business_id');
-            $table->dropForeign(['asseverator_id']);
-            $table->dropColumn('asseverator_id');
-        });
+//        Schema::table('asseverator_business', function (Blueprint $table) {
+//            $table->dropForeign(['business_id']);
+//            $table->dropColumn('business_id');
+//            $table->dropForeign(['asseverator_id']);
+//            $table->dropColumn('asseverator_id');
+//        });
 
     }
 }

@@ -30,8 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all()->pluck(['name']);
-        return view('admin.users.create', compact('roles'));
+        $business = User::role('business')->get();
+        return view('admin.users.create', compact('business'));
     }
 
     /**
@@ -65,6 +65,10 @@ class UserController extends Controller
         $role = Role::findByName($validated['role']);
         $user->assignRole($role);
 
+		if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator' || $request->role === 'consultant') {
+			$user->business()->sync($request->business);
+		}
+
         return redirect()->route('admin.users.index')->with('message', "Nuovo utente inserito!");
 
     }
@@ -88,8 +92,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all()->pluck(['name']);
-        return view('admin.users.edit', compact('user', 'roles'));
+	    $business = User::role('business')->get()->except($user->id);
+		$associated = $user->business->pluck('id');
+        return view('admin.users.edit', compact('user', 'business', 'associated'));
     }
 
     /**
@@ -121,6 +126,12 @@ class UserController extends Controller
             $user->removeRole($user->getRoleNames()->first());
             $user->assignRole($validated['role']);
         }
+
+	    if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator' || $request->role === 'consultant') {
+			    $user->business()->sync($request->business);
+	    } else {
+			$user->business()->detach();
+	    }
 
         return redirect()->route('admin.users.index')->with('message', "Utente aggiornato con successo!");
     }
