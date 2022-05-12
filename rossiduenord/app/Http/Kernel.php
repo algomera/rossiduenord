@@ -73,5 +73,8 @@ class Kernel extends HttpKernel
         'provider' => \App\Http\Middleware\Provider::class,
         'agent' => \App\Http\Middleware\Agent::class,
         'condominium' => \App\Http\Middleware\Condominium::class,
+	    'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+	    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+	    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 }

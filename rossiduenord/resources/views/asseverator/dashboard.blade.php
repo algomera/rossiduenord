@@ -1,17 +1,17 @@
 @extends('asseverator.layouts.asseverator')
 
 @section('content')
-{{-- header --}}
-<div class="mb-2" style="padding: 10px 165px 10px 30px; border-bottom: 2px solid rgb(219, 220, 219);">
-    <h2 class="light-grey">Dashboard</h2> 
-</div>
+    {{-- header --}}
+    <div class="mb-2" style="padding: 10px 165px 10px 30px; border-bottom: 2px solid rgb(219, 220, 219);">
+        <h2 class="light-grey">Dashboard</h2>
+    </div>
 
-{{-- main --}}
+    {{-- main --}}
     <div class="col-8 bg-white ml-3">
         <div class="d-flex justify-content-between pt-4 pb-3 px-3">
             <div>
                 <label for="">
-                    <span class="fs-2">Conteggi</span> 
+                    <span class="fs-2">Conteggi</span>
                     <div class="text-dark"><h2>€ 250.273,00</h2></div>
                 </label>
             </div>
@@ -33,16 +33,16 @@
                     <option value="2022">2022</option>
                 </select>
             </div>
-            
+
         </div>
 
         {{-- <canvas id="myChart" class="py-3 px-3"></canvas> --}}
         <asseverator-chart></asseverator-chart>
     </div>
-  {{--  --}}
+    {{--  --}}
 
 
-@push('asseverator-scripts')
-    {{-- @include('asseverator.scripts.chart') --}}
-@endpush
+    @push('asseverator-scripts')
+        {{-- @include('asseverator.scripts.chart') --}}
+    @endpush
 @endsection
