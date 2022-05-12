@@ -15,9 +15,8 @@ class PracticeController extends Controller
      */
     public function index()
     {
-        $business = auth()->user()->asseverator->pluck('id');
-        $applicants = Applicant::whereIn('user_id', $business)->get();
-        $practices = Practice::query()->whereIn('applicant_id', $applicants)->get();
+        $business = auth()->user()->business->pluck('id');
+        $practices = Practice::query()->whereIn('user_id', $business)->get();
 
         return view('asseverator/practice.index', compact('practices'));
     }
