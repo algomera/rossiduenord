@@ -30,9 +30,9 @@
                     <li class="nav-item nav-pills">
                         <a class="nav-link ml-4 {{Route::currentRouteName() == 'asseverator.dashboard' ? 'activ' : ''}}" href="{{route('asseverator.dashboard')}}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-4  {{Route::currentRouteName() == 'business.users.index' ? 'activ' : ''}}" href="{{route('business.users.index')}}">Imprese</a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link ml-4  {{Route::currentRouteName() == 'asseverator.users.index' ? 'activ' : ''}}" href="{{route('asseverator.users.index')}}">Imprese</a>--}}
+{{--                    </li>--}}
                     <li class="nav-item" :class="{'selected-nav' : isListVisible}">
                         <a class="nav-link ml-4 clickable nav-parent {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}" @click="openList()"> Pratiche </a>
                         {{-- <ul class="nav flex-column"  v-if="isListVisible">
@@ -41,31 +41,31 @@
                                     <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Dati pratica</a>
                                 </li>
                                 <li class="nav-item">
-                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Dati Immobile</a>
+                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Dati Immobile</a>
                                  </li>
                                 <li class="nav-item">
-                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Soggetti</a>
+                                      <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Soggetti</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Importi</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Importi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Documentazione</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Documentazione</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Foto(NO GPS)</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Foto(NO GPS)</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Polizze assicurative</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Polizze assicurative</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Computo</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Computo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione tecnica</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Asseverazione tecnica</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('business.practice.index')}}">Asseverazione fiscale</a>
+                                    <a class="nav-link ml-4 {{Route::currentRouteName() == '' ? 'activ' : ''}}" href="{{route('asseverator.practice.index')}}">Asseverazione fiscale</a>
                                 </li>
                             </div>
                         </ul> --}}
@@ -74,10 +74,10 @@
             </nav>
 
             <div class="big-container">
-                @include('business.layouts.partials.header')
+                @include('asseverator.layouts.partials.header')
                 <main>
-                    @include('business.layouts.partials.error')
-                    @include('business.layouts.partials.message')
+                    @include('asseverator.layouts.partials.error')
+                    @include('asseverator.layouts.partials.message')
                     @yield('content')
                 </main>
             </div>
