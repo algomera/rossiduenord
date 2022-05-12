@@ -107,6 +107,13 @@ Route::middleware('bank')
 			$photos = Photo::where('practice_id', $practice)->get();
 			return PhotoResource::collection($photos);
 		});
+		Route::get('videos_practice', function(Request $request) {
+			$user = $request->user()->id;
+			$practice = Practice::where('user_id', $user)->pluck('id');
+			$videos = Video::where('practice_id', $practice)->get();
+
+			return VideoResource::collection($videos);
+		});
 		Route::post('/save_type_data/{type}', function ($type, Request $request) {
 			$pid = $request->get('practice');
 			$practice = Practice::find($pid);
