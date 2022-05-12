@@ -49,7 +49,7 @@
 			Route::resource('practice', 'PracticeController');
 		});
 	//Route Business
-	Route::middleware(['role_or_permission:business|access_practices'])->namespace('Business')->name('business.')->prefix('business')->group(function () {
+	Route::middleware(['role_or_permission:admin|business|access_practices'])->namespace('Business')->name('business.')->prefix('business')->group(function () {
 			Route::get('/dashboard', 'HomeController@businessHome')->name('dashboard');
 			Route::get('/data', 'HomeController@editbusinessData')->name('edit.data');
 			Route::put('/data', 'HomeController@updatebusinessData')->name('update.data');
@@ -353,7 +353,7 @@
 			Route::get('/dashboard', 'HomeController@consultantHome')->name('dashboard');
 		});
 	//Route Asseverator
-	Route::middleware(['role_or_permission:asseverator|access_practices'])->namespace('Asseverator')->name('asseverator.')->prefix('asseverator')->group(function () {
+	Route::middleware(['role_or_permission:admin|asseverator|access_practices'])->namespace('Asseverator')->name('asseverator.')->prefix('asseverator')->group(function () {
 			Route::get('/dashboard', 'HomeController@asseveratorHome')->name('dashboard');
 			Route::get('/data', 'HomeController@editbusinessData')->name('edit.data');
 			Route::put('/data', 'HomeController@updatebusinessData')->name('update.data');
