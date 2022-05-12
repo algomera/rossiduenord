@@ -37,7 +37,19 @@
                     <tbody>
                         @foreach($sub_folders as $sub_folder)
                             <tr class=" row_folder {{request()->route()->parameter('sub_folder') ? request()->route()->parameter('sub_folder')->name == $sub_folder->name ? 'selected_folder' : '' : ''}}">
-                                <td class="text-left">{{$sub_folder->status}}</td>
+                                <td class="text-left">
+                                    <div class="d-flex align-items-center justify-content-around">
+                                        <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->assev_t_status == 0) not_viewed @elseif($sub_folder->assev_t_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->assev_t_status == 0) Non visualizzato @elseif($sub_folder->assev_t_status == 1) Non approvato @else Approvato @endif dall' Assev. T">
+                                            T
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->assev_f_status == 0) not_viewed @elseif($sub_folder->assev_f_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->assev_f_status == 0) Non visualizzato @elseif($sub_folder->assev_f_status == 1) Non approvato @else Approvato @endif dall' Assev. F">
+                                            F
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->bank_status == 0) not_viewed @elseif($sub_folder->bank_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->bank_status == 0) Non visualizzato @elseif($sub_folder->bank_status == 1) Non approvato @else Approvato @endif dalla Banca">
+                                            B
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-left">{{$sub_folder->name}}</td>
                                 <td class="text-left">{{$sub_folder->role}}</td>
                                 <td class="text-center ">
