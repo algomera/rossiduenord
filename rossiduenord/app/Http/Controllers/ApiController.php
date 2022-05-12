@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\{Applicant, Practice, Photo, User, Video};
+use App\{Anagrafica, Applicant, Practice, Photo, User, Video};
+use App\Http\Resources\AnagraficheResource;
 use App\Http\Resources\PhotoResource;
 use App\Http\Resources\PracticeResource;
 use Illuminate\Support\Facades\Log;
@@ -84,7 +85,7 @@ class ApiController extends Controller
         
         return response()->json([
             'status' => 200,
-            'photo' => $videos
+            'video' => $videos
         ], 200);
     }
 
@@ -92,7 +93,7 @@ class ApiController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'video' => 'required|file',
+            'video' => 'required|mimes:mp4,avi',
             'description' => 'nullable',
             'reference' => 'nullable',
             'inspection_date' => 'nullable'
@@ -109,5 +110,12 @@ class ApiController extends Controller
         Video::create($validated);
 
         return response('Upload video success!');
+    }
+
+    public function get_anagrafiche()
+    {
+        $user = Auth::user()->id;
+        $anagrafiche = Anagrafica::where('user_id', $user)->get(); 
+        return AnagraficheResource::collection($anagrafiche);
     }
 }

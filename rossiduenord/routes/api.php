@@ -28,6 +28,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('videos', 'ApiController@get_video');
     Route::post('videos', 'ApiController@create_video');
 
+    Route::get('anagrafiche', 'ApiController@get_anagrafiche');
 });
 
 /**Route for login API */

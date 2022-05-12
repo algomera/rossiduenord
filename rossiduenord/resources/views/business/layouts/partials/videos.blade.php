@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="preview mt-2">
-                        <img src="{{asset('img/placeholder.png')}}" alt="" class="img-fluid">
+                        <video :src="`${path_video}`" style="width: 100%" controls preload="auto" poster="/img/placeholder.png"></video>
                     </div>
                 </div>
                 <div class="col-8">
@@ -26,17 +26,15 @@
                                 </tr>
                             </thead>
                             <tbody id="table_ContentList"> 
-                                @foreach ($videos as $video)
-                                    <tr>
-                                        <td>{{$video->created_at->format('d/m/y')}}</td> 
-                                        <td>{{$video->description}}</td> 
-                                        <td>Sal 1 </td> 
-                                        <td>{{$video->inspection_date}}</td> 
-                                        <td class="text-decoration-underline"><a href="" class="text-light"><ins>Apri</ins></a></td> 
-                                        <td>{{$video->name}}</td> 
-                                        <td><button class="add-button">Riproduci</button></td>
-                                    </tr>
-                                @endforeach   
+                                <tr v-for="video in videos">
+                                    <td>@{{video.date}}</td> 
+                                    <td>@{{video.description}}</td> 
+                                    <td>@{{video.reference}}</td> 
+                                    <td>@{{video.inspection_date}}</td> 
+                                    <td class="text-decoration-underline"><a href="" class="text-light"><ins>Apri</ins></a></td> 
+                                    <td>@{{video.name}}</td> 
+                                    <td><button @click="showVideo(video.video)" class="add-button">Riproduci</button></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

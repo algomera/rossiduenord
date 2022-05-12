@@ -1,14 +1,12 @@
 <?php
 
-use App\Condomini;
+use App\{Practice, Condomini, Photo, Video};
 use App\Helpers\Interventi;
-use App\Practice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use App\Photo;
-use App\Http\Resources\PhotoResource;
+use App\Http\Resources\{PhotoResource, VideoResource};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -144,6 +142,14 @@ Route::middleware('business')
          
         return PhotoResource::collection($photos);
      });
+     Route::get('videos_practice', function(Request $request) {
+        $user = $request->user()->id;
+        $practice = Practice::where('user_id', $user)->pluck('id');
+        $videos = Video::where('practice_id', $practice)->get(); 
+         
+        return VideoResource::collection($videos);
+     });
+     
     Route::post('/save_type_data/{type}', function ($type, Request $request) {
         $pid = $request->get('practice');
         $practice = Practice::find($pid);

@@ -72,7 +72,9 @@ const app = new Vue({
         isVideos: false,
         isLoading: false,
         photos:[],
-        path_photo: '/img/placeholder.png'
+        videos:[],
+        path_photo: '/img/placeholder.png',
+        path_video: ''
     },
     methods: {
         closeModal() {
@@ -101,19 +103,24 @@ const app = new Vue({
             this.isLoading = true;
         },
         showImage(path){
-            console.log(path);
             return this.path_photo = window.location.origin + '/storage/' + path;
         },
+        showVideo(path) {
+            return this.path_video = window.location.origin + '/storage/' + path;
+        }
     },
     
     mounted() {
-        const Urlphoto = "/business/photos_practice";
+        const Urlphoto = Axios.get("/business/photos_practice");
+        const Gps = Axios.get("/business/videos_practice");
 
-         Axios.get(Urlphoto).then(resp => {
-            console.log(resp);
-            this.photos = resp.data.data
-        }).catch(e =>{
-            console.log(e);
+        Axios.all([Urlphoto, Gps])
+        .then(resp => {
+            this.photos = resp[0].data.data;
+            this.videos = resp[1].data.data;
+        })
+        .catch(e =>{
+            console.error('Sorry: ' + e);
         })
  
     }

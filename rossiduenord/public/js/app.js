@@ -71889,7 +71889,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
     isVideos: false,
     isLoading: false,
     photos: [],
-    path_photo: '/img/placeholder.png'
+    videos: [],
+    path_photo: '/img/placeholder.png',
+    path_video: ''
   },
   methods: {
     closeModal: function closeModal() {
@@ -71918,19 +71920,22 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
       this.isLoading = true;
     },
     showImage: function showImage(path) {
-      console.log(path);
       return this.path_photo = window.location.origin + '/storage/' + path;
+    },
+    showVideo: function showVideo(path) {
+      return this.path_video = window.location.origin + '/storage/' + path;
     }
   },
   mounted: function mounted() {
     var _this = this;
 
-    var Urlphoto = "/business/photos_practice";
-    Axios.get(Urlphoto).then(function (resp) {
-      console.log(resp);
-      _this.photos = resp.data.data;
+    var Urlphoto = Axios.get("/business/photos_practice");
+    var Gps = Axios.get("/business/videos_practice");
+    Axios.all([Urlphoto, Gps]).then(function (resp) {
+      _this.photos = resp[0].data.data;
+      _this.videos = resp[1].data.data;
     })["catch"](function (e) {
-      console.log(e);
+      console.error('Sorry: ' + e);
     });
   }
 });

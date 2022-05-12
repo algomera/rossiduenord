@@ -31,7 +31,7 @@
                                     <td> @{{photo.description}}</td> 
                                     <td> @{{photo.reference}} </td> 
                                     <td><a :href="'../../storage/' + photo.image" download=""><ins>Download<i class="fa-solid fa-arrow-down"></i></ins></a></td> 
-                                    <td class="text-decoration-underline"><a href="" class="text-light"><ins></ins></a></td> 
+                                    <td class="text-decoration-underline"><a href="" class="text-light"><ins>Apri</ins></a></td> 
                                     <td>@{{photo.name}}</td> 
                                     <td><button @click="showImage(photo.image)" class="add-button">Vedi</button></td>
                                 </tr>
