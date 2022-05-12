@@ -67,6 +67,16 @@ class FolderDocumentController extends Controller
      */
     public function show_document(Request $request, Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder, Document $document)
     {
+	    if ($sub_folder->assev_t_status == 0 && auth()->user()->role === 'technical_asseverator') {
+		    $sub_folder->assev_t_status = 1;
+		    $sub_folder->save();
+	    } else if ($sub_folder->assev_f_status == 0 && auth()->user()->role === 'fiscal_asseverator') {
+		    $sub_folder->assev_f_status = 1;
+		    $sub_folder->save();
+	    } else if ($sub_folder->bank_status == 0 && auth()->user()->role === 'bank') {
+		    $sub_folder->bank_status = 1;
+		    $sub_folder->save();
+	    }
         //element fro the view
         $applicant = $practice->applicant;
         $subject = $practice->subject;
@@ -77,8 +87,39 @@ class FolderDocumentController extends Controller
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
         //dd($folder_documents);
         //dd($practice->id, $folder_document->id, $sub_folder->id, $document->id);
-        return view('asseverator.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders'));
+	    $current_sub_folder = $sub_folder;
+        return view('asseverator.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'current_sub_folder'));
     }
+
+	public function approve_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
+		if ($sub_folder->assev_t_status == 1 && auth()->user()->role === 'technical_asseverator') {
+			$sub_folder->assev_t_status = 2;
+			$sub_folder->save();
+		} else if ($sub_folder->assev_f_status == 1 && auth()->user()->role === 'fiscal_asseverator') {
+			$sub_folder->assev_f_status = 2;
+			$sub_folder->save();
+		} else if ($sub_folder->bank_status == 1 && auth()->user()->role === 'bank') {
+			$sub_folder->bank_status = 2;
+			$sub_folder->save();
+		}
+
+		return redirect()->back();
+	}
+
+	public function disapprove_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
+		if ($sub_folder->assev_t_status == 2 && auth()->user()->role === 'technical_asseverator') {
+			$sub_folder->assev_t_status = 1;
+			$sub_folder->save();
+		} else if ($sub_folder->assev_f_status == 2 && auth()->user()->role === 'fiscal_asseverator') {
+			$sub_folder->assev_f_status = 1;
+			$sub_folder->save();
+		} else if ($sub_folder->bank_status == 2 && auth()->user()->role === 'bank') {
+			$sub_folder->bank_status = 1;
+			$sub_folder->save();
+		}
+
+		return redirect()->back();
+	}
 
     public function downloadDocument($id){
         $file = Document::find($id);

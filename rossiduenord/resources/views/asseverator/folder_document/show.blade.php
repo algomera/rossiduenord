@@ -21,7 +21,7 @@
 
         {{-- column right --}}
         <div class="px-20 pb-20" style="width: 80%">
-            
+
             {{-- lista cartelle --}}
             <h3 style="border-bottom: 2px solid #f2f2f2;">Lista cartelle</h3>
             <div style="height: 420px; overflow: auto" class="overflow-custom">
@@ -37,10 +37,22 @@
                     <tbody>
                         @foreach($sub_folders as $sub_folder)
                             <tr class=" row_folder {{request()->route()->parameter('sub_folder') ? request()->route()->parameter('sub_folder')->name == $sub_folder->name ? 'selected_folder' : '' : ''}}">
-                                <td class="text-left">{{$sub_folder->status}}</td>
+                                <td class="text-left">
+                                    <div class="d-flex align-items-center justify-content-around">
+	                                    <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->assev_t_status == 0) not_viewed @elseif($sub_folder->assev_t_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->assev_t_status == 0) Non visualizzato @elseif($sub_folder->assev_t_status == 1) Non approvato @else Approvato @endif dall' Assev. T">
+                                            T
+                                        </div>
+	                                    <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->assev_f_status == 0) not_viewed @elseif($sub_folder->assev_f_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->assev_f_status == 0) Non visualizzato @elseif($sub_folder->assev_f_status == 1) Non approvato @else Approvato @endif dall' Assev. F">
+                                            F
+                                        </div>
+	                                    <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->bank_status == 0) not_viewed @elseif($sub_folder->bank_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->bank_status == 0) Non visualizzato @elseif($sub_folder->bank_status == 1) Non approvato @else Approvato @endif dalla Banca">
+                                            B
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-left">{{$sub_folder->name}}</td>
                                 <td class="text-left">{{$sub_folder->role}}</td>
-                                <td class="text-center ">
+                                <td class="text-center">
                                     <a href="{{ route('asseverator.document.show', [$practice, $sub_folder->folder_document, $sub_folder])}}">
                                         <button type="button" class="add-button mb-2">
                                             Visiona
@@ -56,10 +68,28 @@
             {{-- lista documenti --}}
             <div class="mt-3">
                 @if($documents ?? '')
-                    <div class="d-flex mt-3">
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                        <div class="d-flex">
                             <h4>Lista documenti:</h4>
                             <h6 class="mx-3 mt-1"> {{request()->route()->parameter('sub_folder')->name}}</h6>
-                            <hr style="margin-top: 5px; background-color: rgb(33, 30, 22);">
+{{--                            <hr style="margin-top: 5px; background-color: rgb(33, 30, 22);">--}}
+                        </div>
+                            <div>
+                                @if($current_sub_folder->assev_t_status == 1 || $current_sub_folder->assev_f_status == 1 || $current_sub_folder->bank_status == 1)
+                                <a href="{{ route('asseverator.document.approve', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
+                                    <button type="button" class="add-button mb-2">
+                                        Approva
+                                    </button>
+                                </a>
+                                @endif
+                                @if($current_sub_folder->assev_t_status == 2 || $current_sub_folder->assev_f_status == 2 || $current_sub_folder->bank_status == 2)
+                                    <a href="{{ route('asseverator.document.disapprove', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
+                                        <button type="button" class="add-button mb-2">
+                                            Non approvare
+                                        </button>
+                                    </a>
+                                @endif
+                            </div>
                     </div>
                     <table class="table_bonus" style="width: 100%">
                         <thead>
@@ -85,7 +115,7 @@
                                             <img style="width: 17px;" src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
                                             <p class="m-0" style="color: #818387; font-size: 12px">Elimina</p>
                                         </button>
-        
+
                                         <div class="modal fade" id="del{{$document->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -122,10 +152,10 @@
                         <a class="add-btn-custom" style="margin-left: 0" href="#FormDocument" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">+</a>
                         <h4 class="mt-2">Inserisci documento</h4>
                     </div>
-    
+
                     <form action="{{ route('asseverator.document.store', [$practice->id, $folder_document->id, $sub_folder->id] )}}" method="POST" enctype="multipart/form-data" class="collapse" id="FormDocument" style="background-color: #f2f2f2">
                         @csrf
-        
+
                         <div class="box_input">
                             <div class="row_input">
                                 <input type="hidden" name="practice_id" value="{{$practice->id}}">
@@ -215,3 +245,11 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+@endpush
