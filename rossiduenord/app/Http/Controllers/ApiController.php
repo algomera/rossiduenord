@@ -57,17 +57,13 @@ class ApiController extends Controller
     public function create_photo(Request $request) 
     {
         $validated = $request->validate([
+            'practice_id' => 'required',
             'name' => 'required|string',
             'image' => 'required|image',
             'description' => 'nullable',
             'reference' => 'nullable',
             'position' => 'nullable'
         ]);
-
-        $user = Auth::user()->id;
-        $practice = Practice::where('user_id', $user)->pluck('id')->toArray();
-        $id = implode("", $practice);
-        $validated['practice_id'] = $id;
 
         $extension = $request->file('image')->extension();
         $pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/images' , $request->name . '.' .  $extension);
@@ -92,17 +88,13 @@ class ApiController extends Controller
     public function create_video(Request $request)
     {
         $validated = $request->validate([
+            'practice_id' => 'required',
             'name' => 'required|string',
             'video' => 'required|mimes:mp4,avi',
             'description' => 'nullable',
             'reference' => 'nullable',
             'inspection_date' => 'nullable'
         ]);
-
-        $user = Auth::user()->id;
-        $practice = Practice::where('user_id', $user)->pluck('id')->toArray();
-        $id = implode("", $practice);
-        $validated['practice_id'] = $id;
 
         $extension = $request->file('video')->extension();
         $pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos' , $request->name . '.' .  $extension);
