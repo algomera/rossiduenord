@@ -27,7 +27,6 @@ class FolderDocumentController extends Controller
 
         $extension = $request->file('allega')->extension();
         $filename = pathinfo($request->file('allega')->getClientOriginalName(), PATHINFO_FILENAME);
-        //dd($extension, $filename);
         $folders = Sub_folder::all()->pluck('id');
         $s_folder = Sub_folder::find($request->route('sub_folder'));
 
@@ -56,7 +55,9 @@ class FolderDocumentController extends Controller
         $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
         $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->orderBy('created_at', 'DESC')->get();
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
-        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders'));
+        $id = Document::all()->pluck('sub_folder_id');
+
+        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders', 'id'));
     }
 
     /**
@@ -75,9 +76,8 @@ class FolderDocumentController extends Controller
         $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->latest()->get();
         //taking the documents
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
-        //dd($folder_documents);
-        //dd($practice->id, $folder_document->id, $sub_folder->id, $document->id);
-        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders'));
+        $id = Document::all()->pluck('sub_folder_id')->toArray();
+        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'id'));
     }
 
     public function downloadDocument($id){

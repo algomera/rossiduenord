@@ -31,6 +31,9 @@
                             <td style="width:10%;"><b>Stato</b></td>
                             <td style="width:60%;"><b>Descrizione</b></td>
                             <td style="width:20%;"><b>Ruolo</b></td>
+                            @if(request()->route()->parameter('sub_folder'))
+                                <td class="text-center" style="width: 10%"><b>File</b></td>
+                            @endif
                             <td class="text-center" style="width: 10%"><b>Apri</b></td>
                         </tr>
                     </thead>
@@ -52,6 +55,15 @@
                                 </td>
                                 <td class="text-left">{{$sub_folder->name}}</td>
                                 <td class="text-left">{{$sub_folder->role}}</td>
+                                @if(request()->route()->parameter('sub_folder'))
+                                    <td class="text-center">
+                                        @if (in_array($sub_folder->id, $id))
+                                            <div class="folder_document_status m-auto bg-green"></div>
+                                        @else
+                                            <div class="folder_document_status m-auto bg-blue"></div>
+                                        @endif
+                                    </td>
+                                @endif
                                 <td class="text-center ">
                                     <a href="{{ route('business.document.show', [$practice, $sub_folder->folder_document, $sub_folder])}}">
                                         <button type="button" class="add-button mb-2">
