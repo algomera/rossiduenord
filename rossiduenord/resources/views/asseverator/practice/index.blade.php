@@ -135,40 +135,8 @@
                             <td class="d-flex align-items-center" style="height: fit-content">
                                 <a href="{{route('asseverator.practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
                                     <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
-                                    <p class="m-0 " style="color: #818387">Modifica</p>
+                                    <p class="m-0 " style="color: #818387">Visiona</p>
                                 </a>
-
-                                <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                    <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                    <p class="m-0" style="color: #818387">Cancella</p>
-                                </button>
-
-                                <div class="modal fade" id="del{{$practice->applicant_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Conferma elimina pratica {{$practice->id}}</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Sei sicuro di volere eliminare la pratica e tutto il suo contenuto!
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
-
-                                                <form action="{{ Route('asseverator.practice.destroy', $practice->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn-custom white bg-red mr-0">
-                                                        Conferma
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </td>
                         </tr>
                     @empty
