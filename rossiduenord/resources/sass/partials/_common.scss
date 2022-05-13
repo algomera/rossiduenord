@@ -114,6 +114,42 @@ a {
     border-style: inset;
   }
 }
+.button-approve {
+  background-color: $logo-green !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid $logo-green;
+  border-radius: 5px;
+  text-align: center;
+
+  &:hover {
+    background-color: transparent !important;
+    color: $logo-green !important;
+    border: $logo-green 2px solid !important;
+    border-style: inset;
+  }
+}
+.button-disapprove {
+  background-color: $bg-bt-red !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid $bg-bt-red;
+  border-radius: 5px;
+  text-align: center;
+
+  &:hover {
+    background-color: transparent !important;
+    color: $bg-bt-red !important;
+    border: $bg-bt-red 2px solid !important;
+    border-style: inset;
+  }
+}
 
 .folder {
   background-color: #636362 !important;

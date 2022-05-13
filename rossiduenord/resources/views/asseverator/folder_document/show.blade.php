@@ -91,14 +91,14 @@
 
                                 @if($current_sub_folder->$status == 1)
                                 <a href="{{ route('asseverator.document.approve', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
-                                    <button type="button" class="add-button mb-2">
+                                    <button type="button" class="button-approve mb-2">
                                         Approva
                                     </button>
                                 </a>
                                 @endif
                                 @if($current_sub_folder->$status == 2)
                                     <a href="{{ route('asseverator.document.disapprove', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
-                                        <button type="button" class="add-button mb-2">
+                                        <button type="button" class="button-disapprove mb-2">
                                             Non approvare
                                         </button>
                                     </a>

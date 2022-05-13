@@ -108,6 +108,42 @@ a:hover {
   border-style: inset;
 }
 
+.button-approve {
+  background-color: #06b13e !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid #06b13e;
+  border-radius: 5px;
+  text-align: center;
+}
+.button-approve:hover {
+  background-color: transparent !important;
+  color: #06b13e !important;
+  border: #06b13e 2px solid !important;
+  border-style: inset;
+}
+
+.button-disapprove {
+  background-color: #e4003c !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid #e4003c;
+  border-radius: 5px;
+  text-align: center;
+}
+.button-disapprove:hover {
+  background-color: transparent !important;
+  color: #e4003c !important;
+  border: #e4003c 2px solid !important;
+  border-style: inset;
+}
+
 .folder {
   background-color: #636362 !important;
   padding: 10px 20px !important;
