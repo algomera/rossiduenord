@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use App\{Practice, Subject, Applicant, Building};
-use App\Http\Controllers\Controller;
+use App\{Applicant, Building, Practice};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BuildingController extends Controller
 {

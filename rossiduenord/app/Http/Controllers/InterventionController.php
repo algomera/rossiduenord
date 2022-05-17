@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
 use App\AbsorptionHeatPump;
 use App\BiomeGenerator;
 use App\CondensingBoiler;
 use App\HeatPump;
-use App\Http\Controllers\Controller;
 use App\HybridSystem;
 use App\MicrogenerationSystem;
 use App\SolarPanel;

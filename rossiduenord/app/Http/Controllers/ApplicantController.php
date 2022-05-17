@@ -1,24 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Business;
-use App\{FinalState,
-    Practice,
-    Subject,
-    Applicant,
-    Building,
-    Data_project,
-    FolderDocument,
-    Photo,
-    Policy,
-    TrainatedVertWall,
-    Variant,
-    VerticalWall,
-    Video,
-};
-use App\Helpers\folder_documents;
+namespace App\Http\Controllers;
+use App\{Applicant,
+	Building,
+	Data_project,
+	FinalState,
+	FolderDocument,
+	Practice,
+	Subject,
+	TrainatedVertWall,
+	Variant,
+	VerticalWall,};
 use App\Helpers\Contracts;
+use App\Helpers\folder_documents;
 use App\Helpers\Policies;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Business;
-
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 use App\Practice;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
@@ -14,8 +12,6 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Conditional;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class CondominiController extends Controller
 {

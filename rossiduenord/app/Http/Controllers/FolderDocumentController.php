@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
-use App\{Practice, FolderDocument, Sub_folder, Document};
-use App\Http\Controllers\Controller;
+use App\{Document, FolderDocument, Practice, Sub_folder};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

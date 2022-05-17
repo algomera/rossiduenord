@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
 use App\Contract;
-use App\Http\Controllers\Controller;
 use App\Practice;
 use App\Signed;
 use Illuminate\Http\Request;

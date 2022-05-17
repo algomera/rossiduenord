@@ -1,13 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 use App\Business;
-use App\Http\Controllers\Controller;
-use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {

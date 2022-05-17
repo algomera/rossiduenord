@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
-use App\{Anagrafica, Practice, Subject, Applicant, Building, Bonus, SubjectRole};
-use App\Http\Controllers\Controller;
+use App\{Applicant, Building, Practice, Subject};
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 

@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Modified;
 use App\Policy;
 use App\Practice;
-use App\Signed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

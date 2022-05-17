@@ -1,9 +1,8 @@
 <?php
 
-	namespace App\Http\Controllers\Business;
+	namespace App\Http\Controllers;
 
-	use App\{Practice, Subject, Applicant, Building};
-	use App\Http\Controllers\Controller;
+	use App\{Applicant, Building, Practice, Subject};
 	use Illuminate\Http\Request;
 
 	class PracticeController extends Controller

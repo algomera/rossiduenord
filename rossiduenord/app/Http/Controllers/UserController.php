@@ -1,11 +1,10 @@
 <?php
 
-	namespace App\Http\Controllers\Business;
+	namespace App\Http\Controllers;
 
-	use Spatie\Permission\Models\Role;
 	use App\{User, UserData};
-	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
+	use Spatie\Permission\Models\Role;
 
 	class UserController extends Controller
 	{

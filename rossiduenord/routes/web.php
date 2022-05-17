@@ -18,7 +18,7 @@
 		// Different Dashboard based on user role (es. [PageController::class, 'business'] => 'dashboards.business')
 		Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 		// Common routes protected by permissions (es. [Practice::class, 'index'] => 'access_practices')
-		Route::middleware(['permission:access_practices'])->namespace('Business')->group(function () {
+		Route::middleware(['permission:access_practices'])->group(function () {
 			/* Nav */ //dashboard
 			//			Route::get('/dashboard', 'HomeController@businessHome')->name('dashboard');
 			//data business
