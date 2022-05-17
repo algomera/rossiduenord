@@ -126,5 +126,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.hybrid_system', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
+    @include('pages.scripts.hybrid_system', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
 @endpush

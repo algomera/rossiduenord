@@ -16,7 +16,7 @@ class FolderController extends Controller
     public function index()
     {
         $folders = Folder::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(100);
-        return view('business.folder_file.index', compact('folders'));
+        return view('pages.folder_file.index', compact('folders'));
     }
 
     /**
@@ -26,7 +26,7 @@ class FolderController extends Controller
      */
     public function create()
     {
-        return view('business.folder_file.create');
+        return view('pages.folder_file.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class FolderController extends Controller
         $validated['created_by'] = auth()->user()->name;
         $folder = auth()->user()->folders()->create($validated);
 
-        return redirect()->route('business.folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
+        return redirect()->route('folder.index')->with('message', "Nuova Cartella: $folder->name inserita!");
     }
 
     /**
@@ -59,7 +59,7 @@ class FolderController extends Controller
     {
         $files = File::where('folder_id', '=', $folder->id)->orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('business.folder_file.show', compact('folder', 'files'));
+        return view('pages.folder_file.show', compact('folder', 'files'));
     }
 
     /**
@@ -70,7 +70,7 @@ class FolderController extends Controller
      */
     public function edit(Folder $folder)
     {
-        return view('business.folder_file.edit', compact('folder'));
+        return view('pages.folder_file.edit', compact('folder'));
     }
 
     /**
@@ -88,7 +88,7 @@ class FolderController extends Controller
         ]);
 
         $folder->update($validated);
-        return redirect()->route('business.folder.index')->with('message', "La cartella: $folder->name e stata modificata!");
+        return redirect()->route('folder.index')->with('message', "La cartella: $folder->name e stata modificata!");
     }
 
     /**

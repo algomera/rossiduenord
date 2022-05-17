@@ -18,12 +18,12 @@ class HomeController extends Controller
      */
     public function businessHome()
     {
-        return view('business.dashboard');
+        return view('pages.dashboard');
     }
 
     public function editbusinessData()
     {
-        return view('business.data');
+        return view('pages.data');
     }
 
     public function updatebusinessData(Request $request)
@@ -40,7 +40,7 @@ class HomeController extends Controller
         ]);
         $validated['c_f'] = strtoupper($validated['c_f']);
         $business->update($validated);
-        return redirect()->route('business.dashboard')->with('message', "Profilo completato!");
+        return redirect()->route('dashboard')->with('message', "Profilo completato!");
 
     }
 }

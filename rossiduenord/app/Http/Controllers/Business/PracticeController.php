@@ -41,7 +41,7 @@ class PracticeController extends Controller
         //importo sal finale
         $tot_sal = $practices->sum('import_sal');
         $expected_sal = $practices->sum('import');
-        return view('business/practice.index', compact('practices','tot_sal', 'expected_sal'));
+        return view('pages.practice.index', compact('practices','tot_sal', 'expected_sal'));
     }
 
     /**
@@ -51,7 +51,7 @@ class PracticeController extends Controller
      */
     public function create()
     {
-        return view('business.practice.create');
+        return view('pages.practice.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class PracticeController extends Controller
     {
 
         //Practice::create($validated);
-        return view('business.subject.show');
+        return view('pages.subject.show');
     }
 
     /**
@@ -102,7 +102,7 @@ class PracticeController extends Controller
             $practice['import_sal'] = number_format($practice['import_sal'], 2, ',', '.');
         }
 
-        return view('business.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
+        return view('pages.practice.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**
@@ -214,7 +214,7 @@ class PracticeController extends Controller
 
         $practice->update($validated);
 
-        return redirect()->route('business.subject.edit', $practice);
+        return redirect()->route('subject.edit', $practice);
     }
 
     /**

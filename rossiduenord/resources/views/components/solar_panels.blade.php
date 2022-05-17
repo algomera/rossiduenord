@@ -142,5 +142,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.solar_panel', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
+    @include('pages.scripts.solar_panel', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush

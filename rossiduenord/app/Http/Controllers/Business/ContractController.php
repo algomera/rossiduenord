@@ -29,7 +29,7 @@ class ContractController extends Controller
             $contracts = [];
         }
 
-        return view('business.contract.originalIndex', compact('practice','applicant','building', 'subject','videos','photos','contracts'));
+        return view('pages.contract.originalIndex', compact('practice','applicant','building', 'subject','videos','photos','contracts'));
     }
 
 
@@ -54,7 +54,7 @@ class ContractController extends Controller
             //creazione record nel db 
             Contract::create($new_contract);
         }
-        return redirect()->route('business.contracts.index', $practice);
+        return redirect()->route('contracts.index', $practice);
     }
 
     //download the contract file
@@ -79,7 +79,7 @@ class ContractController extends Controller
             $signeds = $contract->signeds;
         }
 
-        return view('business.contract.signedIndex',compact('signeds','practice','applicant','building','subject','photos','videos','contract'));
+        return view('pages.contract.signedIndex',compact('signeds','practice','applicant','building','subject','photos','videos','contract'));
     }
 
     public function signedStore(Request $request,Contract $contract){
@@ -106,12 +106,12 @@ class ContractController extends Controller
             $signed->update($update);
         }
         
-        return redirect()->route('business.signed.index', $contract);
+        return redirect()->route('signed.index', $contract);
     }
 
 
     public function signedShow(Signed $signed){
-        return view('business.contract.signedShow', compact('signed'));
+        return view('pages.contract.signedShow', compact('signed'));
     }
 
     public function signedDownload($id){
@@ -131,6 +131,6 @@ class ContractController extends Controller
         Storage::delete($files);
         // deleting the record in the db
         $signed->delete();
-        return redirect()->route('business.signed.index',compact('contract'));
+        return redirect()->route('signed.index',compact('contract'));
     }
 }

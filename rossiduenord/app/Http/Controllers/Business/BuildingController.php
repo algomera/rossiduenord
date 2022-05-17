@@ -27,7 +27,7 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        return view('business.building.create');
+        return view('pages.building.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class BuildingController extends Controller
         $document = $practice->folder_documents;
 
         //dd($document);
-        return view('business.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building','document'));
+        return view('pages.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building','document'));
     }
 
     /**
@@ -242,7 +242,7 @@ class BuildingController extends Controller
         $practice = $building->practice;
 
         if($request->get('condomini') > 0){
-            return redirect()->route('business.superbonus.index', [$practice]);
+            return redirect()->route('superbonus.index', [$practice]);
         }else{
             return back()->withErrors('Inserisci almeno un condomino!');
         }

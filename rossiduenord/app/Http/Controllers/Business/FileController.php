@@ -18,7 +18,7 @@ class FileController extends Controller
     public function create(File $file)
     {
         $folders = Folder::all();
-        return view('business.file_storage.create', compact('folders', 'file'));
+        return view('pages.file_storage.create', compact('folders', 'file'));
     }
 
     /**
@@ -47,7 +47,7 @@ class FileController extends Controller
         }
 
         File::create($validated);
-        return redirect()->route('business.folder.index')->with('message', "Nuovo file inserito!");
+        return redirect()->route('folder.index')->with('message', "Nuovo file inserito!");
     }
 
     /**
@@ -58,7 +58,7 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        return view('business.file_storage.show', compact('file'));
+        return view('pages.file_storage.show', compact('file'));
     }
 
     /**
@@ -70,7 +70,7 @@ class FileController extends Controller
     public function edit(File $file)
     {
         $folders = Folder::all();
-        return view('business.file_storage.edit', compact('file', 'folders'));
+        return view('pages.file_storage.edit', compact('file', 'folders'));
     }
 
     /**
@@ -96,7 +96,7 @@ class FileController extends Controller
 
         $file->update($validated);
         $folder = $validated['folder_id'];
-        return redirect()->route('business.folder.show', compact('folder'))->with('message', "file modificato!");
+        return redirect()->route('folder.show', compact('folder'))->with('message', "file modificato!");
     }
 
     /**

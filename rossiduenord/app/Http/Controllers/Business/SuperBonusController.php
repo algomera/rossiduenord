@@ -22,7 +22,7 @@ class SuperBonusController extends Controller
         $subject = $practice->subject;
         $data_project = $practice->data_project;
 
-        return view('business.superbonus.index', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
+        return view('pages.superbonus.index', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
     /**
@@ -37,7 +37,7 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $data_project = $practice->data_project;
-        return view('business.superbonus.data_project', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
+        return view('pages.superbonus.data_project', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
     }
 
     /**
@@ -62,7 +62,7 @@ class SuperBonusController extends Controller
         $biome_generators = $practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
         $solar_panels = $practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
         $surfaces = $practice->surfaces()->where('type', $type)->where('intervention', 'driving')->get();
-        return view('business.superbonus.driving_intervention.vertical_wall', compact(
+        return view('pages.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
             'water_heatpumps_installations',
@@ -107,7 +107,7 @@ class SuperBonusController extends Controller
         $biome_generators = $condominoId === 'common' ? $practice->biome_generators()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->biome_generators()->where('condomino_id', $condominoId)->get();
         $solar_panels = $condominoId === 'common' ? $practice->solar_panels()->where('condomino_id', $condominoId)->where('is_common', 1)->get() : $practice->solar_panels()->where('condomino_id', $condominoId)->get();
         $surfaces = $practice->surfaces()->where('type', $type)->where('intervention', 'towed')->where('condomino_id', $condominoId === 'common' ? null : $condominoId)->get();
-        return view('business.superbonus.towed_intervention.vertical_wall', compact(
+        return view('pages.superbonus.towed_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
             'water_heatpumps_installations',
@@ -142,7 +142,7 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $final_state = $practice->final_state;
-        return view('business.superbonus.final_state_data', compact('final_state','applicant', 'practice', 'building', 'subject'));
+        return view('pages.superbonus.final_state_data', compact('final_state','applicant', 'practice', 'building', 'subject'));
     }
 
     /**
@@ -156,7 +156,7 @@ class SuperBonusController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
         $subject = $practice->subject;
-        return view('business.superbonus.fees_declaration', compact('applicant', 'practice', 'building', 'subject'));
+        return view('pages.superbonus.fees_declaration', compact('applicant', 'practice', 'building', 'subject'));
     }
 
     /**
@@ -171,7 +171,7 @@ class SuperBonusController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
         $variant = $practice->variant;
-        return view('business.superbonus.variant.var_computation', compact('variant', 'applicant', 'practice', 'building', 'subject'));
+        return view('pages.superbonus.variant.var_computation', compact('variant', 'applicant', 'practice', 'building', 'subject'));
     }
 
     /**
@@ -232,7 +232,7 @@ class SuperBonusController extends Controller
 
         // Redirect to next tab
         $practice = $data_project->practice;
-        return redirect()->route('business.driving_intervention', [$practice]);
+        return redirect()->route('driving_intervention', [$practice]);
     }
 
     /**
@@ -327,7 +327,7 @@ class SuperBonusController extends Controller
         }
 
         // Redirect to next tab
-        return redirect()->route('business.towed_intervention', [$practice]);
+        return redirect()->route('towed_intervention', [$practice]);
     }
 
     /**
@@ -373,7 +373,7 @@ class SuperBonusController extends Controller
         }
 
         // Redirect to next tab
-        return redirect()->route('business.final_state', [$practice]);
+        return redirect()->route('final_state', [$practice]);
     }
 
     /**
@@ -389,7 +389,7 @@ class SuperBonusController extends Controller
         $practice->final_state()->update($request->except(['_token', '_method']));
 
         // Redirect to next tab
-        return redirect()->route('business.fees_declaration', [$practice]);
+        return redirect()->route('fees_declaration', [$practice]);
     }
 
     /**
@@ -406,11 +406,10 @@ class SuperBonusController extends Controller
 
         // Redirect to next tab
         $building = $practice->building;
-        return redirect()->route('business.superbonus.show', [$practice, $building])->with('message', 'Dati inseriti correttamente');
+        return redirect()->route('superbonus.show', [$practice, $building])->with('message', 'Dati inseriti correttamente');
     }
 
     public function delete_surface($id){
-        dd($id);
         $surface = Surface::find($id);
         $surface->delete();
     }

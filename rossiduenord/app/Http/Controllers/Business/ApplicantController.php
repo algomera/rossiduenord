@@ -32,7 +32,7 @@ class ApplicantController extends Controller
      */
     public function create()
     {
-        return view('business.applicant.create');
+        return view('pages.applicant.create');
     }
 
     /**
@@ -84,7 +84,7 @@ class ApplicantController extends Controller
         folder_documents::addFolders($practice_id, $folderDocument);
         Contracts::createInitialContracts($practice_id);
         Policies::createInitialPolicies($practice_id);
-        return redirect()->route('business.applicant.edit', $applicant);
+        return redirect()->route('applicant.edit', $applicant);
     }
 
     /**
@@ -110,7 +110,7 @@ class ApplicantController extends Controller
         $building = $practice->building;
         $subject = $practice->subject;
 
-        return view('business.applicant.edit', compact('practice', 'subject', 'applicant', 'building'));
+        return view('pages.applicant.edit', compact('practice', 'subject', 'applicant', 'building'));
     }
 
     /**
@@ -183,7 +183,7 @@ class ApplicantController extends Controller
 
         $applicant->update($validated);
 
-        return redirect()->route('business.practice.edit', $applicant);
+        return redirect()->route('practice.edit', $applicant);
     }
 
     /**

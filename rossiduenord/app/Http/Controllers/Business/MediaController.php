@@ -16,7 +16,7 @@ class MediaController extends Controller
          $applicant = $practice->applicant;
          $building = $practice->building;
          
-         return view ('business.media.index', compact('practice', 'photos','videos', 'applicant', 'building', 'subject'));
+         return view ('pages.media.index', compact('practice', 'photos','videos', 'applicant', 'building', 'subject'));
     }
 
 }

@@ -19,7 +19,7 @@
 			$users = User::whereHas('user_data', function ($q) {
 				$q->where('parent', auth()->user()->id);
 			})->get();
-			return view('business.users.index', compact('user', 'users'));
+			return view('pages.users.index', compact('user', 'users'));
 		}
 
 		/**
@@ -28,7 +28,7 @@
 		 * @return \Illuminate\Http\Response
 		 */
 		public function create() {
-			return view('business.users.create');
+			return view('pages.users.create');
 		}
 
 		/**
@@ -45,7 +45,7 @@
 			UserData::create(['user_id' => $user->id, 'parent' => auth()->user()->id, 'name' => $validated['name'],]);
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
-			return redirect()->route('business.users.index')->with('message', "Nuovo utente inserito!");
+			return redirect()->route('users.index')->with('message', "Nuovo utente inserito!");
 		}
 
 		/**
@@ -55,7 +55,7 @@
 		 * @return \Illuminate\Http\Response
 		 */
 		public function show(User $user) {
-			return view('business.users.show', compact('user'));
+			return view('pages.users.show', compact('user'));
 		}
 
 		/**
@@ -65,7 +65,7 @@
 		 * @return \Illuminate\Http\Response
 		 */
 		public function edit(User $user) {
-			return view('business.users.edit', compact('user'));
+			return view('pages.users.edit', compact('user'));
 		}
 
 		/**
@@ -83,7 +83,7 @@
 				$user->removeRole($user->getRoleNames()->first());
 				$user->assignRole($validated['role']);
 			}
-			return redirect()->route('business.users.index')->with('message', "Utente aggiornato con successo!");
+			return redirect()->route('users.index')->with('message', "Utente aggiornato con successo!");
 		}
 
 		/**

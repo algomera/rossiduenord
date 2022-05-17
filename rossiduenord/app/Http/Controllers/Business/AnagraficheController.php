@@ -14,12 +14,12 @@ class AnagraficheController extends Controller
 
         $subject_roles = SubjectRole::all()->except(21);
         $anagrafiche = auth()->user()->anagrafiche;
-        return view('business.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
+        return view('pages.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
     }
 
     public function create() {
         $subject_roles = SubjectRole::all();
-        return view('business.anagrafiche.create', compact('subject_roles'));
+        return view('pages.anagrafiche.create', compact('subject_roles'));
     }
 
     public function store(Request $request) {
@@ -55,12 +55,12 @@ class AnagraficheController extends Controller
             $anagrafica->roles()->attach($request->get('roles'));
         }
 
-        return redirect()->route('business.anagrafiche.index')->with('message', 'Anagrafica creata con successo');;
+        return redirect()->route('anagrafiche.index')->with('message', 'Anagrafica creata con successo');;
     }
 
     public function edit(Anagrafica $anagrafica) {
         $subject_roles = SubjectRole::all()->except(21);
-        return view('business.anagrafiche.edit', compact('subject_roles', 'anagrafica'));
+        return view('pages.anagrafiche.edit', compact('subject_roles', 'anagrafica'));
     }
 
     public function update(Anagrafica $anagrafica, Request $request) {
@@ -96,7 +96,7 @@ class AnagraficheController extends Controller
             $anagrafica->roles()->sync($request->get('roles'));
         }
 
-        return redirect()->route('business.anagrafiche.index')->with('message', 'Anagrafica aggiornata con successo');
+        return redirect()->route('anagrafiche.index')->with('message', 'Anagrafica aggiornata con successo');
     }
 
     public function loadModal($id) {

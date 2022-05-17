@@ -22,7 +22,7 @@ class PolicyController extends Controller
         $contracts = $practice->contracts;
         $policies = $practice->policies;
 
-        return view('business.policies.index', compact('subject','applicant','building','photos','videos','contracts','policies','practice'));
+        return view('pages.policies.index', compact('subject','applicant','building','photos','videos','contracts','policies','practice'));
     }
 
     public function policyDownload($id){
@@ -48,7 +48,7 @@ class PolicyController extends Controller
         }
 
 
-        return view('business.policies.signedIndex',compact('practice','subject','modifieds','applicant','building', 'photos', 'videos', 'contracts','policy'));
+        return view('pages.policies.signedIndex',compact('practice','subject','modifieds','applicant','building', 'photos', 'videos', 'contracts','policy'));
     }
 
     public function signedStore(Request $request, Policy $policy){
@@ -74,11 +74,11 @@ class PolicyController extends Controller
             $modified->update($update);
         }
         
-        return redirect()->route('business.policies.signed', $policy);
+        return redirect()->route('policies.signed', $policy);
     }
 
     public function modifiedShow(Modified $modified){
-        return view('business.policies.show',compact('modified'));
+        return view('pages.policies.show',compact('modified'));
     }
 
     public function modifiedDownload($id){
@@ -98,6 +98,6 @@ class PolicyController extends Controller
         Storage::delete($files);
         // deleting the record in the db
         $modified->delete();
-        return redirect()->route('business.policies.signed',compact('policy'));
+        return redirect()->route('policies.signed',compact('policy'));
     }
 }

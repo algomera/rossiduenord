@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
                 return redirect()->route('asseverator.dashboard');                
             }
 
-            return redirect(auth()->user()->role . '/dashboard');
+            return redirect()->route('dashboard');
         }
 
         return $next($request);

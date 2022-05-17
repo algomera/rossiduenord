@@ -26,7 +26,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('business.subject.create');
+        return view('pages.subject.create');
     }
 
     /**
@@ -117,7 +117,7 @@ class SubjectController extends Controller
             $q->where('subject_role_id', 20);
         })->get();
 
-        return view('business.subject.edit', compact(
+        return view('pages.subject.edit', compact(
             'consultant',
             'lending_bank',
             'general_contractor',
@@ -340,7 +340,7 @@ class SubjectController extends Controller
 
         $subject->update($validated);
 
-        return redirect()->route('business.building.edit', $subject);
+        return redirect()->route('building.edit', $subject);
     }
 
     /**

@@ -57,7 +57,7 @@ class FolderDocumentController extends Controller
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
         $id = Document::all()->pluck('sub_folder_id');
 
-        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders', 'id'));
+        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders', 'id'));
     }
 
     /**
@@ -77,7 +77,7 @@ class FolderDocumentController extends Controller
         //taking the documents
         $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
         $id = Document::all()->pluck('sub_folder_id')->toArray();
-        return view('business.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'id'));
+        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'id'));
     }
 
     public function downloadDocument($id){
