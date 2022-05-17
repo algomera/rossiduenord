@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-@include('layouts.partials.search')
+<x-app-layout>
     <div style="padding: 10px 165px 10px 30px; border-bottom: 2px solid #DBDCDB" class="d-flex align-items-center justify-content-between mb-2">
         <h2 class="light-grey">Pratiche</h2>
         <form class="position-relative" style="width: 600px" action="">
@@ -76,14 +73,14 @@
                             Ricerca
                         </button>
                     </div>
-{{--                    <input type="reset" style="margin: 0 5px; border: none; background: none" value="Reset" />--}}
+                    {{--                    <input type="reset" style="margin: 0 5px; border: none; background: none" value="Reset" />--}}
 
-{{--                    <div class="d-flex align-items-center mb-2">--}}
-{{--                        <div style="width: 10%">--}}
-{{--                            <span class="text-sm grey">N. Pratica</span>--}}
-{{--                            <input style="width: 50%"type="number">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="d-flex align-items-center mb-2">--}}
+                    {{--                        <div style="width: 10%">--}}
+                    {{--                            <span class="text-sm grey">N. Pratica</span>--}}
+                    {{--                            <input style="width: 50%"type="number">--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </form>
 
                 <div class="mt-4">
@@ -105,82 +102,81 @@
             <div class="table mt-2 ov-x">
                 <table class="table_bonus" style="width: 100%">
                     <thead>
-                        <tr style="border-top: 1px solid #707070">
-                            <th style="width: 10%">Piattaforma</th>
-                            <th style="width: 5%">Pratica</th>
-                            <th style="width: 10%">Data Pratica</th>
-                            <th style="width: 15%">Denominazione</th>
-                            <th style="width: 10%">Fase</th>
-                            <th style="width: 10%">Mese lav.110%</th>
-                            <th style="width: 10%">Lista incentivi</th>
-                            <th style="width: 15%">Richiedente</th>
-                            <th style="width: 15%">SAL</th>
-                            <th style="width: 5%">Notifiche</th>
-                            <th style="width: 10%"></th>
-                        </tr>
+                    <tr style="border-top: 1px solid #707070">
+                        <th style="width: 10%">Piattaforma</th>
+                        <th style="width: 5%">Pratica</th>
+                        <th style="width: 10%">Data Pratica</th>
+                        <th style="width: 15%">Denominazione</th>
+                        <th style="width: 10%">Fase</th>
+                        <th style="width: 10%">Mese lav.110%</th>
+                        <th style="width: 10%">Lista incentivi</th>
+                        <th style="width: 15%">Richiedente</th>
+                        <th style="width: 15%">SAL</th>
+                        <th style="width: 5%">Notifiche</th>
+                        <th style="width: 10%"></th>
+                    </tr>
                     </thead>
                     <tbody id="table_ContentList">
-                        @forelse ($practices as $practice)
-                            <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
-                                <td>{{$practice->applicant->user->user_data->name}}</td>
-                                <td>{{$practice->id}}</td>
-                                <td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
-                                <td>{{$practice->policy_name}}</td>
-                                <td>{{$practice->practical_phase}}</td>
-                                <td>{{$practice->month_processing}}</td>
-                                <td>{{$practice->bonus}}</td>
-                                <td>{{$practice->applicant->company_name}}</td>
-                                <td>{{$practice->import_sal ?? '-'}}</td>
-                                <td></td>
-                                <td class="d-flex align-items-center" style="height: fit-content">
-                                    <a href="{{route('practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                        <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
-                                        <p class="m-0 " style="color: #818387">Modifica</p>
-                                    </a>
+                    @forelse ($practices as $practice)
+                        <tr @if ($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
+                            <td>{{$practice->applicant->user->user_data->name}}</td>
+                            <td>{{$practice->id}}</td>
+                            <td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</td>
+                            <td>{{$practice->policy_name}}</td>
+                            <td>{{$practice->practical_phase}}</td>
+                            <td>{{$practice->month_processing}}</td>
+                            <td>{{$practice->bonus}}</td>
+                            <td>{{$practice->applicant->company_name}}</td>
+                            <td>{{$practice->import_sal ?? '-'}}</td>
+                            <td></td>
+                            <td class="d-flex align-items-center" style="height: fit-content">
+                                <a href="{{route('practice.edit', $practice->id) }}" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <img src="{{ asset('/img/icon/icona_modifica.svg') }}" alt="">
+                                    <p class="m-0 " style="color: #818387">Modifica</p>
+                                </a>
 
-                                    <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
-                                        <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
-                                        <p class="m-0" style="color: #818387">Cancella</p>
-                                    </button>
+                                <button type="button" data-toggle="modal" data-target="#del{{$practice->applicant_id}}" style="border: none; background-color: transparent;" class="d-flex flex-column align-items-center justify-content-center mr-3">
+                                    <img src="{{ asset('/img/icon/icona_cancella.svg') }}" alt="">
+                                    <p class="m-0" style="color: #818387">Cancella</p>
+                                </button>
 
-                                    <div class="modal fade" id="del{{$practice->applicant_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina pratica {{$practice->id}}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal fade" id="del{{$practice->applicant_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Conferma elimina pratica {{$practice->id}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Sei sicuro di volere eliminare la pratica e tutto il suo contenuto!
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di volere eliminare la pratica e tutto il suo contenuto!
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">indietro</button>
 
-                                                    <form action="{{ Route('practice.destroy', $practice->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-custom white bg-red mr-0">
-                                                            Conferma
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                <form action="{{ Route('practice.destroy', $practice->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-custom white bg-red mr-0">
+                                                        Conferma
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="10">Nessun risultato</td>
-                            </tr>
-                        @endforelse
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="10">Nessun risultato</td>
+                        </tr>
+                    @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
         @include('layouts.partials.practice_info')
     </div>
-@endsection
-
+</x-app-layout>
