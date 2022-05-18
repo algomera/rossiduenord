@@ -71929,8 +71929,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   mounted: function mounted() {
     var _this = this;
 
-    var Urlphoto = Axios.get("/business/photos_practice");
-    var Gps = Axios.get("/business/videos_practice");
+    var Urlphoto = Axios.get("/photos_practice");
+    var Gps = Axios.get("/videos_practice");
     Axios.all([Urlphoto, Gps]).then(function (resp) {
       _this.photos = resp[0].data.data;
       _this.videos = resp[1].data.data;
