@@ -1,6 +1,6 @@
 @props(['disabled' => false, 'required' => false, 'name', 'label' => false, 'append' => false, 'prepend' => false])
 @php
-	$n = ucwords(str_replace('_', ' ', $attributes->wire('model')->value())) ?: $name;
+	$n = $attributes->wire('model')->value() ?: $name;
 	$slug = $attributes->wire('model')->value() ?: $n;
 	$inputClass = 'w-full rounded-md shadow-sm sm:text-sm focus:ring focus:ring-opacity-50';
 @endphp
