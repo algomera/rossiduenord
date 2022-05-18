@@ -136,7 +136,7 @@
             $(document).on('click', '.viewAnagrafica', function(e){
                 e.preventDefault();
                 let id = $(this).data('id');
-                axios.get(`/business/anagrafiche/${id}/view`)
+                axios.get(`/anagrafiche/${id}/view`)
                     .then((res) => {
                         $('#subject_type').val('');
                         $('#subject_type').val(res.data.subject_type);

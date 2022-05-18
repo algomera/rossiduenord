@@ -17,4 +17,11 @@ class PageController extends Controller
         return view('auth.login');
     }
 
+	/**
+	 * Return user's role dashboard
+	 */
+	public function dashboard() {
+		return view('dashboards.' . auth()->user()->role);
+	}
+
 }

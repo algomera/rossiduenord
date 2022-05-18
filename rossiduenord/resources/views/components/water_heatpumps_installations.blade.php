@@ -99,5 +99,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.water_heatpumps_installation', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
+    @include('pages.scripts.water_heatpumps_installation', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])])
 @endpush

@@ -1,7 +1,7 @@
 @props(['vertwall', 'practice', 'surfaces', 'condomino', 'isCommon', 'type'])
 
 @php
-    $routeSurface = Route::currentRouteName() == 'business.driving_intervention' ? 'business.driving_intervention' : 'business.towed_intervention';
+    $routeSurface = Route::currentRouteName() == 'driving_intervention' ? 'driving_intervention' : 'towed_intervention';
 @endphp
 
 <div class="ov-x-none">
@@ -34,7 +34,7 @@
                 <div class="bord-trasp"></div>
             </div>        
         </a>
-        @if(Route::currentRouteName() == 'business.driving_intervention')
+        @if(Route::currentRouteName() == 'driving_intervention')
             <a href="{{route($routeSurface, ['practice' => $practice->id,$condomino ?? null, 'type' => 'POND'])}}" @if($type !== 'POND') onclick="saveTypeChange({{$practice->id}}, null, '{{$type}}')"@endif style="padding: 0">
                 <div class="d-flex align-items-center link text-nowrap {{$type == 'POND' ? 'frame' : ''}}" >
                     (POND) Cop. non disperdenti
@@ -174,7 +174,7 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.surface_add')
+    @include('pages.scripts.surface_add')
 
     <script type="text/javascript">
         
@@ -194,7 +194,7 @@
                 })
                 return n;
             })();
-            axios.post(`/business/save_type_data/${type}`, {
+            axios.post(`/save_type_data/${type}`, {
                 practice: pid,
                 surfaces: x,
             })

@@ -105,6 +105,6 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.condensing_boiler', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
+    @include('pages.scripts.condensing_boiler', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush
 

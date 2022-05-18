@@ -157,5 +157,5 @@
 </div>
 
 @push('scripts')
-    @include('business.scripts.microgeneration_system', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
+    @include('pages.scripts.microgeneration_system', ['condomino' => $condomino ?? '', 'is_common' => $isCommon])
 @endpush
