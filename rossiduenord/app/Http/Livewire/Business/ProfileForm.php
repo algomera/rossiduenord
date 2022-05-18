@@ -5,7 +5,7 @@
 	use App\UserData;
 	use Livewire\Component;
 
-	class Profile extends Component
+	class ProfileForm extends Component
 	{
 		public $type = '';
 		public $p_iva = '';
@@ -43,6 +43,6 @@
 		}
 
 		public function render() {
-			return view('livewire.business.profile');
+			return view('livewire.business.profile-form');
 		}
 	}

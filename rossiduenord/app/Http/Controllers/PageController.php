@@ -8,22 +8,23 @@ class PageController extends Controller
 {
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Return login page
      */
     public function index()
     {
         return view('auth.login');
     }
 
+	/**
+	 * Return user's profile page
+	 */
 	public function profile()
 	{
 		return view('pages.profile');
 	}
 
 	/**
-	 * Return user's role dashboard
+	 * Return user's role dashboard page
 	 */
 	public function dashboard() {
 		return view('dashboards.' . auth()->user()->role);
