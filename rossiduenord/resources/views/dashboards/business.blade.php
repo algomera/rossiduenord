@@ -1,8 +1,8 @@
 <x-app-layout>
-	<div>
+	<x-card>
 		<x-page-header>Dashboard</x-page-header>
 
-		<div class="space-y-5 mt-5">
+		<div class="space-y-5">
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('practice.index')}}">
 					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
@@ -54,5 +54,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</x-card>
 </x-app-layout>
