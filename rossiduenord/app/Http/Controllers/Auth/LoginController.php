@@ -45,7 +45,7 @@
 					$user = User::where('email', auth()->user()->email)->first();
 					$business_data = $user->user_data;
 					if (!$business_data->type || !$business_data->p_iva || !$business_data->c_f || !$business_data->legal_form || !$business_data->rea || !$business_data->c_ateco || !$business_data->reg_date) {
-						return redirect()->route('edit.data');
+						return redirect()->route('profile');
 					}
 				}
 				return redirect()->route('dashboard');

@@ -20,8 +20,7 @@
 		// Common routes protected by permissions (es. [Practice::class, 'index'] => 'access_practices')
 		Route::middleware(['permission:access_practices'])->group(function () {
 			// Profilo
-			Route::get('/data', 'HomeController@editbusinessData')->name('edit.data');
-			Route::put('/data', 'HomeController@updatebusinessData')->name('update.data');
+			Route::get('/profile', 'PageController@profile')->name('profile');
 
 			// Anagrafiche
 			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');

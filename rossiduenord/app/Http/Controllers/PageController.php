@@ -17,6 +17,11 @@ class PageController extends Controller
         return view('auth.login');
     }
 
+	public function profile()
+	{
+		return view('pages.profile');
+	}
+
 	/**
 	 * Return user's role dashboard
 	 */
