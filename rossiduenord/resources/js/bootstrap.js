@@ -1,5 +1,12 @@
 window._ = require('lodash');
 
+import Alpine from 'alpinejs'
+window.Alpine = Alpine
+Alpine.start()
+
+// import Vue from 'vue'
+// window.Vue = Vue;
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
