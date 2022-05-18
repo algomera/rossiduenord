@@ -35,7 +35,7 @@
                     <div style="width: 15%;" class="form-group">
                         <label for="import" class="text">{{ __('Importo stimato*') }}</label>
                         <div>
-                            <input id="import" type="text" step="0.01" min="0.00" style="height: 47px!important" class="form-control @error('import') is-invalid @enderror" name="import" value="{{old('import') ?? $practice->import }}" autocomplete="import" autofocus required>
+                            <input id="import" type="text" step="0.01" min="0.00" style="height: 47px!important" placeholder="€ 0,00" class="form-control @error('import') is-invalid @enderror" name="import" value="{{old('import') ?? $practice->import }}" autocomplete="import" autofocus required>
 
                             @error('import')
                             <span class="invalid-feedback" role="alert">

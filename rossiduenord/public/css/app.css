@@ -735,11 +735,11 @@ label {
 }
 
 .selected_folder {
-  border-left: #61a4d7 5px solid;
+  box-shadow: inset 4px 0px 0px 0px #61a4d7;
 }
 
 .row_folder:hover {
-  border-left: #61a4d7 5px solid;
+  box-shadow: inset 4px 0px 0px 0px #61a4d7;
 }
 
 .invisible-input {

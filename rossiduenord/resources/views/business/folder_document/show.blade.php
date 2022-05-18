@@ -24,22 +24,20 @@
             
             {{-- lista cartelle --}}
             <h3 style="border-bottom: 2px solid #f2f2f2;">Lista cartelle</h3>
-            <div style="height: 420px; overflow: auto" class="overflow-custom">
+            <div style="height: 430px; overflow: auto">
                 <table class="table_bonus" style="width: 100%">
                     <thead>
                         <tr>
                             <td style="width:10%;"><b>Stato</b></td>
                             <td style="width:60%;"><b>Descrizione</b></td>
                             <td style="width:20%;"><b>Ruolo</b></td>
-                            @if(request()->route()->parameter('sub_folder'))
-                                <td class="text-center" style="width: 10%"><b>File</b></td>
-                            @endif
+                            <td class="text-center" style="width: 10%"><b>File</b></td>
                             <td class="text-center" style="width: 10%"><b>Apri</b></td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($sub_folders as $sub_folder)
-                            <tr class=" row_folder {{request()->route()->parameter('sub_folder') ? request()->route()->parameter('sub_folder')->name == $sub_folder->name ? 'selected_folder' : '' : ''}}">
+                            <tr style="border-bottom-style: double; border-top-style: double;" class=" row_folder {{request()->route()->parameter('sub_folder') ? request()->route()->parameter('sub_folder')->name == $sub_folder->name ? 'selected_folder' : '' : ''}}">
                                 <td class="text-left">
                                     <div class="d-flex align-items-center justify-content-around">
                                         <div class="d-flex align-items-center justify-content-center folder_document_status @if($sub_folder->assev_t_status == 0) not_viewed @elseif($sub_folder->assev_t_status == 1) not_approved @else approved @endif" data-toggle="tooltip" data-placement="top" title="@if($sub_folder->assev_t_status == 0) Non visualizzato @elseif($sub_folder->assev_t_status == 1) Non approvato @else Approvato @endif dall' Assev. T">
@@ -55,15 +53,9 @@
                                 </td>
                                 <td class="text-left">{{$sub_folder->name}}</td>
                                 <td class="text-left">{{$sub_folder->role}}</td>
-                                @if(request()->route()->parameter('sub_folder'))
-                                    <td class="text-center">
-                                        @if (in_array($sub_folder->id, $id))
-                                            <div class="folder_document_status m-auto bg-green"></div>
-                                        @else
-                                            <div class="folder_document_status m-auto bg-blue"></div>
-                                        @endif
-                                    </td>
-                                @endif
+                                <td class="text-center">
+                                    <div class="folder_document_status m-auto white {{$sub_folder->documents->count() == 0 ? 'bg-blue' : 'bg-green'}}">{{$sub_folder->documents->count()}}</div>
+                                </td>
                                 <td class="text-center ">
                                     <a href="{{ route('business.document.show', [$practice, $sub_folder->folder_document, $sub_folder])}}">
                                         <button type="button" class="add-button mb-2">
