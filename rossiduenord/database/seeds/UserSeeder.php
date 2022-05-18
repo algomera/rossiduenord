@@ -38,6 +38,10 @@ class UserSeeder extends Seeder
             'email' => 'tasrl1202@gmail.com',
             'password' => bcrypt('mtmopx9m'),
         ]);
+        $mulas = User::create([
+            'email' => 'stefano.mulas@ibigroup.it',
+            'password' => bcrypt('stefano001'),
+        ]);
 
         // Creo UserData per admin
         UserData::create([
@@ -57,6 +61,13 @@ class UserSeeder extends Seeder
             'user_id' => $edrasis->id,
             'parent' => $admin->id,
             'name' => "Edrasis Group",
+            'referent' => $faker->name(),
+        ]);
+
+        UserData::create([
+            'user_id' => $mulas->id,
+            'parent' => $admin->id,
+            'name' => "Ibi Group",
             'referent' => $faker->name(),
         ]);
 
@@ -80,6 +91,9 @@ class UserSeeder extends Seeder
 
         // Assegno ruolo "business" all'utente "Edrasis"
         $edrasis->assignRole(Role::findByName('business'));
+
+        // Assegno ruolo "business" all'utente "Mulas"
+        $mulas->assignRole(Role::findByName('business'));
 
         // Assegno ruolo "bank" all'utente "Novello"
         $novello->assignRole(Role::findByName('bank'));
