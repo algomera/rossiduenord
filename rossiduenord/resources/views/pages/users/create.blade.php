@@ -14,21 +14,35 @@
                 <div class="form-group">
                     <label for="role" class="text">Tipologia profilo</label>
                     <select style="height: 47px!important" class="form-control" name="role" id="role">
-                    <optgroup label="Ruoli">
-                        @foreach(config('gestione_accessi.' . auth()->user()->role) as $k => $role)
-                            <option value="{{ $k }}">{{ ucfirst($role) }}</option>
-                        @endforeach
-                    </optgroup>
+                        <optgroup label="Ruoli">
+                            @foreach(config('gestione_accessi.' . auth()->user()->role) as $k => $role)
+                                <option value="{{ $k }}">{{ ucfirst($role) }}</option>
+                            @endforeach
+                        </optgroup>
                     </select>
+                </div>
+                <div id="asseverator_business" class="form-group">
+                    <label>A chi vuoi associare l'utente?</label>
+                    <div id="business" class="row">
+                        @foreach($business as $b)
+                            <div class="col-3">
+                                <input type="checkbox" id="business_{{ $b->id }}" name="business[]"
+                                       value="{{ $b->id }}">
+                                <label for="business_{{ $b->id }}"> {{ ucfirst($b->name) }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="name" class="text">{{ __('Nome') }}</label>
                     <div>
-                        <input id="name" type="text" style="height: 47px!important" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="name" type="text" style="height: 47px!important"
+                               class="form-control @error('name') is-invalid @enderror" name="name"
+                               value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -39,10 +53,12 @@
                     <label for="email" class="text">{{ __('E-Mail') }}</label>
 
                     <div>
-                        <input id="email" type="email" style="height: 47px!important" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="email" type="email" style="height: 47px!important"
+                               class="form-control @error('email') is-invalid @enderror" name="email"
+                               value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -53,10 +69,12 @@
                     <label for="password" class="text">{{ __('Password') }}</label>
 
                     <div>
-                        <input id="password" type="password" style="height: 47px!important" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        <input id="password" type="password" style="height: 47px!important"
+                               class="form-control @error('password') is-invalid @enderror" name="password" required
+                               autocomplete="new-password">
 
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -67,7 +85,8 @@
                     <label for="password-confirm" class="text">{{ __('Conferma Password') }}</label>
 
                     <div>
-                        <input id="password-confirm" type="password" style="height: 47px!important" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <input id="password-confirm" type="password" style="height: 47px!important" class="form-control"
+                               name="password_confirmation" required autocomplete="new-password">
                     </div>
                 </div>
 
@@ -78,3 +97,28 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#asseverator_business').hide()
+            $('input[id^="business_"]').attr('disabled', true)
+            $('#role').change(function () {
+                let selected = $(this).find(":selected").val();
+                if (selected === 'technical_asseverator') {
+                    $('#asseverator_business').show()
+                    $('input[id^="business_"]').attr('disabled', false)
+                } else if (selected === 'fiscal_asseverator') {
+                    $('#asseverator_business').show()
+                    $('input[id^="business_"]').attr('disabled', false)
+                } else if (selected === 'consultant') {
+                    $('#asseverator_business').show()
+                    $('input[id^="business_"]').attr('disabled', false)
+                } else {
+                    $('#asseverator_business').hide()
+                    $('input[id^="business_"]').attr('disabled', true)
+                }
+            })
+        })
+    </script>
+@endpush
