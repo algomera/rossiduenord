@@ -358,6 +358,7 @@
 	</div>
 </div>
 @stack('modals')
+@stack('notifications')
 @stack('scripts')
 <livewire:scripts/>
 </body>

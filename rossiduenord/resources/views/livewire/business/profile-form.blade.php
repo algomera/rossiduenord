@@ -14,3 +14,7 @@
 		<x-button>Salva</x-button>
 	</form>
 </div>
+
+@push('notifications')
+	<x-notification />
+@endpush

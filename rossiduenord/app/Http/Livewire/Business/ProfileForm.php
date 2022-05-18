@@ -39,7 +39,20 @@
 			$business = UserData::where('user_id', auth()->user()->id)->first();
 			$validated['c_f'] = strtoupper($validated['c_f']);
 			$business->update($validated);
-			return redirect()->route('dashboard')->with('message', "Profilo completato!");
+
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Profilo Salvato'),
+				'subtitle' => __('Hai salvato il tuo profilo con successo!'),
+//				'type' => 'success',
+//				'actions'  => [
+//					'primary' => [
+//						'label' => __('View'),
+//						'url'   => '#'
+//					]
+//				]
+			]);
+
+			return redirect()->route('dashboard');
 		}
 
 		public function render() {
