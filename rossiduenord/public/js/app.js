@@ -61578,35 +61578,42 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "opacity" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "bg-white rounded p-5 d-flex flex-column centered justify-content-center align-items-center",
-      },
-      [
-        _c("atom-spinner", {
-          attrs: { "animation-duration": 1000, size: 120, color: "#61a4d7" },
-        }),
-        _vm._v(" "),
-        _vm._m(0),
-      ],
-      1
-    ),
-  ])
+  return _c(
+    "div",
+    {
+      staticClass:
+        "absolute flex items-center justify-center inset-0 bg-black/70",
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full max-w-xl bg-white rounded p-8 flex flex-col items-center justify-center space-y-5",
+        },
+        [
+          _c("atom-spinner", {
+            attrs: { "animation-duration": 1000, size: 120, color: "#61a4d7" },
+          }),
+          _vm._v(" "),
+          _vm._m(0),
+        ],
+        1
+      ),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-100 mt-3" }, [
-      _c("h3", { staticClass: "text-center" }, [
+    return _c("div", { staticClass: "text-center space-y-3" }, [
+      _c("h3", { staticClass: "text-2xl font-semibold" }, [
         _vm._v("Stiamo generando una nuova pratica."),
       ]),
       _vm._v(" "),
-      _c("h5", { staticClass: "text-center" }, [
+      _c("h5", { staticClass: "text-lg" }, [
         _vm._v("Non chiudere la schermata 😁"),
       ]),
     ])
