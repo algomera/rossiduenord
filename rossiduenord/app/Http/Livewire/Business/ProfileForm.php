@@ -40,18 +40,6 @@
 			$validated['c_f'] = strtoupper($validated['c_f']);
 			$business->update($validated);
 
-			$this->dispatchBrowserEvent('open-notification', [
-				'title'    => __('Profilo Salvato'),
-				'subtitle' => __('Hai salvato il tuo profilo con successo!'),
-//				'type' => 'success',
-//				'actions'  => [
-//					'primary' => [
-//						'label' => __('View'),
-//						'url'   => '#'
-//					]
-//				]
-			]);
-
 			return redirect()->route('dashboard');
 		}
 

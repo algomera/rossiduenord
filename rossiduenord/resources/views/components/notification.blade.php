@@ -1,3 +1,17 @@
+{{--
+$this->dispatchBrowserEvent('open-notification', [
+	'title'    => __('Profilo Salvato'),
+	'subtitle' => __('Hai salvato il tuo profilo con successo!'),
+	'type' => 'success',
+	'actions'  => [
+		'primary' => [
+			'label' => __('View'),
+			'url'   => '#'
+		]
+	]
+]);
+--}}
+
 <div
 	x-data="{ open: false, data: '' }"
 	x-ref="notification"
