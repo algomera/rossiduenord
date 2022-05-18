@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="content-main">
-        <x-common.page-header>Completa il tuo Profilo</x-common.page-header>
+        <x-page-header>Completa il tuo Profilo</x-page-header>
         <div class="">
             @include('layouts.partials.error')
             <form action="{{ route('update.data', auth()->id()) }}" method="POST">

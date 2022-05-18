@@ -26,7 +26,7 @@
 	<livewire:styles/>
 </head>
 <body class="h-full overflow-hidden font-sans antialiased">
-<x-common.banner/>
+<x-banner/>
 <div x-data="{isOpen: false}" id="app" class="flex h-full">
 	{{-- Mobile Menu --}}
 	<div
@@ -149,10 +149,10 @@
 								class="inline-flex items-center justify-center p-2 text-gray-500 rounded-md hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 						>
 							<span class="sr-only">Open sidebar</span>
-							<x-common.icon
+							<x-icon
 									name="menu"
 									class="w-6 h-6"
-							></x-common.icon>
+							></x-icon>
 						</button>
 					</div>
 
@@ -163,7 +163,7 @@
 							<div class="flex items-center space-x-4">
 								{{-- Notification --}}
 								<div class="relative cursor-pointer">
-									<x-common.dropdown
+									<x-dropdown
 											align="right"
 											width="96"
 									>
@@ -171,10 +171,10 @@
 											<div class="relative">
 												{{-- new notification badge--}}
 												{{--<div class="absolute -top-0.5 right-0 w-2.5 h-2.5 bg-red-500 rounded-full"></div>--}}
-												<x-common.icon
+												<x-icon
 														name="bell"
 														class="w-5 h-5 text-gray-400"
-												></x-common.icon>
+												></x-icon>
 											</div>
 										</x-slot>
 
@@ -187,7 +187,7 @@
 													role="list"
 													class="divide-y divide-gray-200"
 											>
-												{{--<x-common.dropdown-link>--}}
+												{{--<x-dropdown-link>--}}
 												{{--	<li class="flex items-center py-2">--}}
 												{{--		<div--}}
 												{{--				class="w-3 h-3 mr-2 bg-gray-200 rounded-full ring-offset-1 hover:ring-2 hover:ring-gray-200">--}}
@@ -206,26 +206,26 @@
 												{{--			</p>--}}
 												{{--		</div>--}}
 												{{--	</li>--}}
-												{{--</x-common.dropdown-link>--}}
+												{{--</x-dropdown-link>--}}
 											</ul>
 
 											<div class="my-5 text-center">
-												<x-common.icon
+												<x-icon
 														name="bell"
 														class="w-12 h-12 mx-auto text-gray-300 transform rotate-12"
-												></x-common.icon>
+												></x-icon>
 												<h3 class="mt-2 text-sm font-medium text-gray-900">No notification</h3>
 												<p class="mt-1 text-sm text-gray-500">
 													There are no notification for you at the moment.
 												</p>
 											</div>
 										</x-slot>
-									</x-common.dropdown>
+									</x-dropdown>
 								</div>
 
 								<!-- Settings Dropdown -->
 								<div class="relative cursor-pointer">
-									<x-common.dropdown
+									<x-dropdown
 											align="right"
 											width="48"
 									>
@@ -260,9 +260,9 @@
 												{{ __('Manage Account') }}
 											</div>
 
-											<x-common.dropdown-link href="#">
+											<x-dropdown-link href="#">
 												{{ __('Profile') }}
-											</x-common.dropdown-link>
+											</x-dropdown-link>
 
 											<div class="border-t border-gray-100"></div>
 
@@ -273,16 +273,16 @@
 											>
 												@csrf
 
-												<x-common.dropdown-link
+												<x-dropdown-link
 														href="{{ route('logout') }}"
 														onclick="event.preventDefault();
 																																																																																																																				this.closest('form').submit();"
 												>
 													{{ __('Log Out') }}
-												</x-common.dropdown-link>
+												</x-dropdown-link>
 											</form>
 										</x-slot>
-									</x-common.dropdown>
+									</x-dropdown>
 								</div>
 							</div>
 						</div>
@@ -294,7 +294,7 @@
 							class="inline-flex items-center justify-center w-12 h-12 -mr-3 text-gray-500 rounded-md hover:text-gray-900"
 						>
 							<span class="sr-only">Open sidebar</span>
-							<x-common.icon
+							<x-icon
 								name="menu"
 								class="w-6 h-6"
 							></x-icon>

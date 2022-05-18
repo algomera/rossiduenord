@@ -19,21 +19,31 @@
 		Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 		// Common routes protected by permissions (es. [Practice::class, 'index'] => 'access_practices')
 		Route::middleware(['permission:access_practices'])->group(function () {
-			/* Nav */ //dashboard
-			//			Route::get('/dashboard', 'HomeController@businessHome')->name('dashboard');
-			//data business
+			// Profilo
 			Route::get('/data', 'HomeController@editbusinessData')->name('edit.data');
 			Route::put('/data', 'HomeController@updatebusinessData')->name('update.data');
-			//users
+
+			// Anagrafiche
+			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
+			Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
+			Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
+			Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
+			Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
+			Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
+
+			// Gestione Accessi
 			Route::resource('/users', 'UserController');
-			//folder/file
+
+			// Pratiche
+			Route::resource('/practice', 'PracticeController');
+
+			// Gestione Cartelle/File
 			Route::resource('/folder', 'FolderController');
 			Route::resource('/file', 'FileController');
+
 			/* Scheda Pratica */
 			//Richiedente
 			Route::resource('/applicant', 'ApplicantController');
-			//Pratica
-			Route::resource('/practice', 'PracticeController');
 			//Subappaltarori
 			Route::resource('/subject', 'SubjectController');
 			Route::get('/subject/{practice}', 'SubjectController@subject_edit')->where('practice', '[0-9]+')->name('subject_edit');
@@ -127,13 +137,6 @@
 			Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 			// condomini export
 			Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
-			// anagrafiche
-			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
-			Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
-			Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
-			Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
-			Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
-			Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
 			//contract
 			Route::get('/contracts/{practice}', 'ContractController@originalIndex')->name('contracts.index');
 			Route::get('/contracts/signed/{contract}', 'ContractController@signedIndex')->name('signed.index');

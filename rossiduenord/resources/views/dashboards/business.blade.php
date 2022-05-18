@@ -1,6 +1,6 @@
 <x-app-layout>
 	<div>
-		<x-common.page-header>Dashboard</x-common.page-header>
+		<x-page-header>Dashboard</x-page-header>
 
 		<div class="space-y-5 mt-5">
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
