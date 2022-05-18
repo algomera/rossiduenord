@@ -115,8 +115,8 @@ const app = new Vue({
     },
     
     mounted() {
-        const Urlphoto = Axios.get("/business/photos_practice");
-        const Gps = Axios.get("/business/videos_practice");
+        const Urlphoto = Axios.get("/photos_practice");
+        const Gps = Axios.get("/videos_practice");
 
         Axios.all([Urlphoto, Gps])
         .then(resp => {
