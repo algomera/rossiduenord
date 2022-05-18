@@ -22,6 +22,8 @@
 
 	<!-- Scripts -->
 	<script src="{{ mix('js/app.js') }}" defer></script>
+
+	<livewire:styles/>
 </head>
 <body class="h-full overflow-hidden font-sans antialiased">
 <x-common.banner/>
@@ -100,8 +102,7 @@
 						<img src="{{asset('img/edrasis_logo.png')}}" alt="Edrasis Logo" class="w-auto h-12">
 					@endif
 				</div>
-				{{--				@livewire('navigation')--}}
-				Lista voci menu
+				<livewire:navigation/>
 			</div>
 		</div>
 
@@ -130,8 +131,7 @@
 							@endif
 						</a>
 					</div>
-					{{--					@livewire('navigation')--}}
-					Lista voci menu
+					<livewire:navigation/>
 				</div>
 			</div>
 		</div>
@@ -448,5 +448,6 @@
 {{--</div>--}}
 @stack('modals')
 @stack('scripts')
+<livewire:scripts/>
 </body>
 </html>
