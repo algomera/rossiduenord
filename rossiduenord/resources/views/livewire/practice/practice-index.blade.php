@@ -1,3 +1,16 @@
+<x-slot name="header">
+	<x-page-header>
+		Pratiche
+		<x-slot name="actions">
+			<form class="relative w-full max-w-xl" action="">
+				<div>
+					<x-input type="text" placeholder="Cerca.." id="search" name="search"
+					         append="search"></x-input>
+				</div>
+			</form>
+		</x-slot>
+	</x-page-header>
+</x-slot>
 <x-card>
 	<x-card class="border rounded-md p-4">
 		<div>
@@ -129,7 +142,7 @@
 					<td></td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							<a href="#" class="text-indigo-600 hover:text-indigo-900">
+							<a href="{{route('practice.edit', $practice) }}" class="text-indigo-600 hover:text-indigo-900">
 								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
 							</a>
 							<!-- TODO: Cancellazione pratica -->

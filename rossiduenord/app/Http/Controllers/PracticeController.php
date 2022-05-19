@@ -21,9 +21,9 @@
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function create() {
-			return view('pages.practice.create');
-		}
+//		public function create() {
+//			return view('pages.practice.create');
+//		}
 
 		/**
 		 * Store a newly created resource in storage.

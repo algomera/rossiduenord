@@ -1,6 +1,12 @@
 <?php
 
-	use App\{Http\Controllers\PageController, Http\Livewire\Practice\PracticeIndex, Practice, Condomini, Photo, Video};
+	use App\{Http\Controllers\PageController,
+		Http\Livewire\Practice\PracticeEdit,
+		Http\Livewire\Practice\PracticeIndex,
+		Practice,
+		Condomini,
+		Photo,
+		Video};
 	use App\Helpers\Interventi;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Route;
@@ -36,7 +42,7 @@
 			// Pratiche
 			Route::name('practice.')->group(function() {
 				Route::get('/practice', [PracticeIndex::class, '__invoke'])->name('index');
-//				Route::get('/practice/{practice}', [PracticeShow::class, '__invoke'])->name('edit');
+				Route::get('/practice/{practice}', [PracticeEdit::class, '__invoke'])->name('edit');
 			});
 //			Route::resource('/practice', 'PracticeController');
 
