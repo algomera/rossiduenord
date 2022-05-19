@@ -25,12 +25,12 @@ class Practice extends Model
         return $this->hasOne(Data_project::class);
     }
 
-    public function verical_wall() {
-        return $this->hasOne(VerticalWall::class);
+    public function driving_intervention() {
+        return $this->hasOne(DrivingIntervention::class);
     }
 
-    public function trainated_vert_wall() {
-        return $this->hasOne(TrainatedVertWall::class);
+    public function towed_intervention() {
+        return $this->hasOne(TowedIntervention::class);
     }
 
     public function final_state() {

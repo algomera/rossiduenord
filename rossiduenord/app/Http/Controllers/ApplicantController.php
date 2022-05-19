@@ -8,9 +8,9 @@ use App\{Applicant,
 	FolderDocument,
 	Practice,
 	Subject,
-	TrainatedVertWall,
+	TowedIntervention,
 	Variant,
-	VerticalWall,};
+	DrivingIntervention,};
 use App\Helpers\Contracts;
 use App\Helpers\folder_documents;
 use App\Helpers\Policies;
@@ -38,48 +38,27 @@ class ApplicantController extends Controller
      */
     public function store(Request $request, Practice $practice, Applicant $applicant, FolderDocument $folderDocument)
     {
-
-        $validated = $request->validate([
-            'applicant' => 'nullable | string',
-            'company_name' => 'nullable | string | min:3 | max:100',
-//            'name' => 'nullable | string | min:3 | max:100',
-//            'lastName' => 'nullable | string | min:3 | max:100',
-            'c_f' => 'nullable | string | min:16 | max:16 ',
-            'phone' => 'nullable | integer | min:10 ',
-            'mobile_phone' => 'nullable | integer | min:10',
-            'email' => 'nullable | email',
-            'role' => 'nullable | string',
+        // Create new Applicant related by User
+        $applicant = auth()->user()->applicant()->create();
+        // Create new Practice
+        $practice = Practice::create([
+	        'applicant_id'=> $applicant->id,
+	        'user_id' => auth()->user()->id
         ]);
-
-        $user_id = Auth::user()->id;
-        $validated['user_id'] = $user_id;
-
-        //new applicant creation
-        $applicant = Applicant::create($validated);
-        //takig the id of new applicant
-        $applicant_id = $applicant['id'];
-        //insert into new practice
-        $practice_data= ['applicant_id'=> $applicant_id, 'user_id' => $user_id];
-        //new practice creation
-        $practice = Practice::create($practice_data);
-        $practice_id = $practice['id'];
-        $data = ['practice_id'=> $practice_id];
-        // subject creation
-        Subject::create($data);
-        // building creation
-        Building::create($data);
-        // superbonus creation
-        Data_project::create($data);
-        VerticalWall::create($data);
-        TrainatedVertWall::create($data);
-        FinalState::create($data);
-        Variant::create($data);
+		// Create all models related by Practice
+	    $practice->subject()->create();
+	    $practice->building()->create();
+		$practice->data_project()->create();
+		$practice->driving_intervention()->create();
+		$practice->towed_intervention()->create();
+		$practice->final_state()->create();
+		$practice->variant()->create();
 
         // folder document creation
-        folder_documents::addFolders($practice_id, $folderDocument);
-        Contracts::createInitialContracts($practice_id);
-        Policies::createInitialPolicies($practice_id);
-        return redirect()->route('applicant.edit', $applicant);
+        folder_documents::addFolders($practice->id);
+        Contracts::createInitialContracts($practice->id);
+        Policies::createInitialPolicies($practice->id);
+        return redirect()->route('practice.edit', $practice);
     }
 
     /**

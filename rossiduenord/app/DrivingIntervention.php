@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VerticalWall extends Model
+class DrivingIntervention extends Model
 {
     protected $fillable = [
         'practice_id',

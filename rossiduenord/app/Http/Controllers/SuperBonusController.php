@@ -49,7 +49,7 @@ class SuperBonusController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
         $subject = $practice->subject;
-        $vertwall = $practice->verical_wall;
+        $vertwall = $practice->driving_intervention;
         $condominoId = null;
         $condensing_boilers = $practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 0)->get();
         $heat_pumps = $practice->heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
@@ -91,7 +91,7 @@ class SuperBonusController extends Controller
         $applicant = $practice->applicant;
         $building = $practice->building;
         $subject = $practice->subject;
-        $towed_vw = $practice->trainated_vert_wall;
+        $towed_vw = $practice->towed_intervention;
         $condomini = $practice->condomini;
         $condominoId = $condomino;
         $selected_condomino = Condomini::find($condominoId);
@@ -282,19 +282,19 @@ class SuperBonusController extends Controller
     );
 
         // Update data
-        $practice->verical_wall->update($validated);
-        $practice->verical_wall->condensing_boiler = $request->get('condensing_boiler');
-        $practice->verical_wall->heat_pump = $request->get('heat_pump');
-        $practice->verical_wall->absorption_heat_pump = $request->get('absorption_heat_pump');
-        $practice->verical_wall->hybrid_system = $request->get('hybrid_system');
-        $practice->verical_wall->microgeneration_system = $request->get('microgeneration_system');
-        $practice->verical_wall->water_heatpumps_installation = $request->get('water_heatpumps_installation');
-        $practice->verical_wall->biome_generator = $request->get('biome_generator');
-        $practice->verical_wall->solar_panel = $request->get('solar_panel');
-        $practice->verical_wall->solar_panel_use_winter = $request->get('solar_panel_use_winter');
-        $practice->verical_wall->solar_panel_use_summer = $request->get('solar_panel_use_summer');
-        $practice->verical_wall->solar_panel_use_water = $request->get('solar_panel_use_water');
-        $practice->verical_wall->save();
+        $practice->driving_intervention->update($validated);
+        $practice->driving_intervention->condensing_boiler = $request->get('condensing_boiler');
+        $practice->driving_intervention->heat_pump = $request->get('heat_pump');
+        $practice->driving_intervention->absorption_heat_pump = $request->get('absorption_heat_pump');
+        $practice->driving_intervention->hybrid_system = $request->get('hybrid_system');
+        $practice->driving_intervention->microgeneration_system = $request->get('microgeneration_system');
+        $practice->driving_intervention->water_heatpumps_installation = $request->get('water_heatpumps_installation');
+        $practice->driving_intervention->biome_generator = $request->get('biome_generator');
+        $practice->driving_intervention->solar_panel = $request->get('solar_panel');
+        $practice->driving_intervention->solar_panel_use_winter = $request->get('solar_panel_use_winter');
+        $practice->driving_intervention->solar_panel_use_summer = $request->get('solar_panel_use_summer');
+        $practice->driving_intervention->solar_panel_use_water = $request->get('solar_panel_use_water');
+        $practice->driving_intervention->save();
 
         // Add Condensing Boiler
         Interventi::addCondensingBoiler($practice, $request->get('condensing_boilers'));
@@ -340,7 +340,7 @@ class SuperBonusController extends Controller
 
         // Update data
         // TODO: mancano il resto dei dati che cmq non corrispondono alla tabella, controllare!
-//        $practice->trainated_vert_wall()->update($request->except(['_token', '_method', 'condensing_boilers']));
+//        $practice->towed_intervention()->update($request->except(['_token', '_method', 'condensing_boilers']));
 
         // Add Condensing Boiler
         Interventi::addCondensingBoiler($practice, $request->get('condensing_boilers'));

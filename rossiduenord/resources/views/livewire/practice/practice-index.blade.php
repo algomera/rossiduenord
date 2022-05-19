@@ -104,7 +104,7 @@
 		<div class="flex items-center">
 			<form action="{{route('applicant.store') }}" method="post" @click="startLoading()">
 				@csrf
-				<x-button prepend="plus" iconColor="text-white">Nuovo</x-button>
+				<x-button prepend="plus" iconColor="text-white">Nuova</x-button>
 			</form>
 		</div>
 	</x-card>

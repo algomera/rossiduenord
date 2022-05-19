@@ -7,13 +7,14 @@
 	<div>
 		<div class="sm:hidden">
 			<label for="tabs" class="sr-only">Select a tab</label>
-			<!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
 			<select id="tabs" name="tabs"
 			        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
 				@foreach($tabs as $k => $tab)
 					<option @if($selectedTab === $k) selected @endif>{{ $tab }}</option>
 				@endforeach
+
 			</select>
+				{{ $selectedTab }}
 		</div>
 		<div class="hidden sm:block">
 			<div class="border-b border-gray-200">
@@ -34,7 +35,7 @@
 				Applicant Content
 				@break
 			@case('practice')
-				Practice Content
+				Practice Content {{ $practice->id }}
 				@break
 			@case('subjects')
 				Subjects Content

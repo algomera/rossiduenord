@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrainatedvertwallsTable extends Migration
+class CreateTowedInterventionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTrainatedvertwallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trainatedvertwalls', function (Blueprint $table) {
+        Schema::create('towed_interventions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
@@ -111,6 +111,6 @@ class CreateTrainatedvertwallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainatedvertwalls');
+        Schema::dropIfExists('towed_interventions');
     }
 }

@@ -8,9 +8,9 @@ use App\FolderDocument;
 use App\Practice;
 use App\Subject;
 use App\SubjectRole;
-use App\TrainatedVertWall;
+use App\TowedIntervention;
 use App\Variant;
-use App\VerticalWall;
+use App\DrivingIntervention;
 use Faker\Generator as faker;
 use App\Business;
 use App\User;
@@ -67,10 +67,10 @@ class TestSeeder extends Seeder
         Data_project::create([
             'practice_id' => $practice->id
         ]);
-        VerticalWall::create([
+        DrivingIntervention::create([
             'practice_id' => $practice->id
         ]);
-        TrainatedVertWall::create([
+        TowedIntervention::create([
             'practice_id' => $practice->id
         ]);
         FinalState::create([

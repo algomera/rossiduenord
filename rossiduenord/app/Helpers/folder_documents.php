@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class folder_documents
 
 {
-    public static function addFolders($practice_id, $folder_document)
+    public static function addFolders($practice_id)
     {
         $practice = Practice::find($practice_id);
         $session_folder = [

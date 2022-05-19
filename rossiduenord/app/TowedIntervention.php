@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TrainatedVertWall extends Model
+class TowedIntervention extends Model
 {
     protected $guarded = [];
-
-    protected $table = 'trainatedvertwalls';
 
     public function practice() {
         return $this->belongsTo(Practice::class);
