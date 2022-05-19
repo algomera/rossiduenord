@@ -14,7 +14,7 @@
 				@endforeach
 
 			</select>
-				{{ $selectedTab }}
+			{{ $selectedTab }}
 		</div>
 		<div class="hidden sm:block">
 			<div class="border-b border-gray-200">
@@ -32,7 +32,7 @@
 	<x-card class="border rounded-md p-4">
 		@switch($selectedTab)
 			@case('applicant')
-				<livewire:practice.tabs.applicant :practice="$practice" />
+				<livewire:practice.tabs.applicant  :applicant="$practice->applicant"/>
 				@break
 			@case('practice')
 				Practice Content {{ $practice->id }}

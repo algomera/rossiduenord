@@ -6,7 +6,6 @@
 
 	class Applicant extends Component
 	{
-		public $practice;
 		public $applicant;
 		public $applicant_type = 'impresa';
 		public $company_name = '';
@@ -47,9 +46,7 @@
 		];
 
 		public function mount() {
-			$this->applicant = $this->practice->applicant;
-
-			$this->applicant_type = $this->applicant->applicant;
+			$this->applicant_type = $this->applicant->applicant_type;
 			$this->company_name = $this->applicant->company_name;
 			$this->c_f = $this->applicant->c_f;
 			$this->phone = $this->applicant->phone;
@@ -61,17 +58,17 @@
 		public function save() {
 			$validated = $this->validate();
 			// phone number validation
-			if ($validated['phone'] != null) {
-				$validated['phone'] = str_replace(' ', '', $validated['phone']);
-				preg_match('/^(\d{3})(\d{3})(\d{4})$/', $validated['phone'], $matches);
-				$validated['phone'] = $matches[1] . ' ' . $matches[2] . ' ' . $matches[3];
-			}
-			if ($validated['mobile_phone'] != null) {
-				$validated['mobile_phone'] = str_replace(' ', '', $validated['mobile_phone']);
-				preg_match('/^(\d{3})(\d{3})(\d{4})$/', $validated['mobile_phone'], $matches);
-				$mobile_phone = $matches[1] . ' ' . $matches[2] . ' ' . $matches[3];
-				$validated['mobile_phone'] = $mobile_phone;
-			}
+//			if ($validated['phone'] != null) {
+//				$validated['phone'] = str_replace(' ', '', $validated['phone']);
+//				preg_match('/^(\d{3})(\d{3})(\d{4})$/', $validated['phone'], $matches);
+//				$validated['phone'] = $matches[1] . ' ' . $matches[2] . ' ' . $matches[3];
+//			}
+//			if ($validated['mobile_phone'] != null) {
+//				$validated['mobile_phone'] = str_replace(' ', '', $validated['mobile_phone']);
+//				preg_match('/^(\d{3})(\d{3})(\d{4})$/', $validated['mobile_phone'], $matches);
+//				$mobile_phone = $matches[1] . ' ' . $matches[2] . ' ' . $matches[3];
+//				$validated['mobile_phone'] = $mobile_phone;
+//			}
 			$validated['c_f'] = strtoupper($validated['c_f']);
 			$this->applicant->update($validated);
 //			return redirect()->route('practice.edit', $this->applicant);
