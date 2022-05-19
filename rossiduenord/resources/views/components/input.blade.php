@@ -1,4 +1,4 @@
-@props(['disabled' => false, 'required' => false, 'name', 'label' => false, 'append' => false, 'prepend' => false])
+@props(['disabled' => false, 'required' => false, 'name', 'label' => false, 'append' => false, 'prepend' => false, 'iconColor' => 'text-gray-800'])
 @php
 	$n = $attributes->wire('model')->value() ?: $name;
 	$slug = $attributes->wire('model')->value() ?: $n;
@@ -31,7 +31,7 @@
 		<div class="relative mt-1">
 			@if($prepend)
 				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-					<x-icon name="{{$prepend}}" class="w-5 h-5 text-blue-500"></x-icon>
+					<x-icon name="{{$prepend}}" class="{{ $iconColor }} w-5 h-5"></x-icon>
 				</div>
 			@endif
 			<input
@@ -51,7 +51,7 @@
 			@else
 				@if($append)
 					<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-						<x-icon name="{{$append}}" class="w-5 h-5 text-blue-500"></x-icon>
+						<x-icon name="{{$append}}" class="{{ $iconColor }} w-5 h-5"></x-icon>
 					</div>
 				@endif
 				@enderror

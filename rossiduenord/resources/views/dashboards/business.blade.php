@@ -1,7 +1,10 @@
 <x-app-layout>
+	<x-slot name="header">
+		<x-page-header>
+			Dashboard
+		</x-page-header>
+	</x-slot>
 	<x-card>
-		<x-page-header>Dashboard</x-page-header>
-
 		<div class="space-y-5">
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('practice.index')}}">

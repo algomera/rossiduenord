@@ -6,3 +6,10 @@
     display: none;
 }
 
+.new_practice td {
+    @apply opacity-50
+}
+
+.new_practice td:last-child {
+    @apply opacity-100
+}

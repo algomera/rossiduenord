@@ -335,6 +335,9 @@
 						class="absolute inset-0 z-10 h-screen bg-gray-500/75 xl:hidden"
 				></div>
 				<!-- Start main area-->
+				@isset($header)
+					{{ $header }}
+				@endisset
 				<div class="container mx-auto p-4">
 					{{ $slot }}
 				</div>
