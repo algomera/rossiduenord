@@ -12,9 +12,9 @@
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function index() {
-			return view('pages.practice.index');
-		}
+//		public function index() {
+//			return view('pages.practice.index');
+//		}
 
 		/**
 		 * Show the form for creating a new resource.

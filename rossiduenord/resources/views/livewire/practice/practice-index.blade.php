@@ -129,7 +129,7 @@
 					<td></td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							<a href="{{route('practice.edit', $practice->id) }}" class="text-indigo-600 hover:text-indigo-900">
+							<a href="#" class="text-indigo-600 hover:text-indigo-900">
 								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
 							</a>
 							<!-- TODO: Cancellazione pratica -->

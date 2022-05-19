@@ -34,8 +34,11 @@
 			Route::resource('/users', 'UserController');
 
 			// Pratiche
-			Route::get('/practice', [PracticeIndex::class]);
-			Route::resource('/practice', 'PracticeController');
+			Route::name('practice.')->group(function() {
+				Route::get('/practice', [PracticeIndex::class, '__invoke'])->name('index');
+//				Route::get('/practice/{practice}', [PracticeShow::class, '__invoke'])->name('edit');
+			});
+//			Route::resource('/practice', 'PracticeController');
 
 			// Gestione Cartelle/File
 			Route::resource('/folder', 'FolderController');
