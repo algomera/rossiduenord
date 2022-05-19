@@ -14,7 +14,6 @@
 		public $practices;
 		public $tot_sal;
 		public $expected_sal;
-
 		protected $listeners = [
 			'practice-deleted' => '$refresh',
 		];
@@ -50,8 +49,8 @@
 			$applicant = auth()->user()->applicant()->create();
 			// Create new Practice
 			$practice = Practice::create([
-				'applicant_id'=> $applicant->id,
-				'user_id' => auth()->user()->id
+				'applicant_id' => $applicant->id,
+				'user_id'      => auth()->user()->id
 			]);
 			// Create all models related by Practice
 			$practice->subject()->create();
@@ -61,24 +60,22 @@
 			$practice->towed_intervention()->create();
 			$practice->final_state()->create();
 			$practice->variant()->create();
-
-			// folder document creation
+			// Create Folder Document
 			folder_documents::addFolders($practice->id);
+			// Create Contracts
 			Contracts::createInitialContracts($practice->id);
+			// Create Policies
 			Policies::createInitialPolicies($practice->id);
 			return redirect()->route('practice.edit', $practice);
 		}
 
 		public function deletePractice($id) {
 			Practice::find($id)->delete();
-
 			$this->dispatchBrowserEvent('close-modal');
-
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Pratica Eliminata'),
 				'subtitle' => __('La pratica è stata eliminata con successo!')
 			]);
-
 			$this->emit('practice-deleted');
 		}
 

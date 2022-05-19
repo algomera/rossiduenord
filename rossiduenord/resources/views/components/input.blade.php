@@ -56,7 +56,5 @@
 				@endif
 				@enderror
 		</div>
-		@error($slug)
-		<p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-		@enderror
+		<x-input-error :for="$slug"></x-input-error>
 	</div>

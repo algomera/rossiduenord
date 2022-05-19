@@ -19,7 +19,7 @@ class PracticeEdit extends Component
 		'contracts' => 'Contratti',
 		'policies' => 'Polizze'
 	];
-	public $selectedTab = 'practice';
+	public $selectedTab = 'applicant';
 
 	public function mount(Practice $practice) {
 		$this->practice = $practice;
