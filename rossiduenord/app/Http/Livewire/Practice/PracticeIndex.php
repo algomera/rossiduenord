@@ -12,6 +12,10 @@
 		public $tot_sal;
 		public $expected_sal;
 
+		protected $listeners = [
+			'practice-deleted' => '$refresh',
+		];
+
 		public function mount(Request $request) {
 			//$this->authorize('access_practices');
 			if (auth()->user()->role === 'technical_asseverator' || auth()->user()->role === 'fiscal_asseverator') {
@@ -36,6 +40,19 @@
 			//importo sal finale
 			$this->tot_sal = $this->practices->sum('import_sal');
 			$this->expected_sal = $this->practices->sum('import');
+		}
+
+		public function deletePractice($id) {
+			Practice::find($id)->delete();
+
+			$this->dispatchBrowserEvent('close-modal');
+
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Pratica Eliminata'),
+				'subtitle' => __('La pratica è stata eliminata con successo!')
+			]);
+
+			$this->emit('practice-deleted');
 		}
 
 		public function render() {

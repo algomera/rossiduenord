@@ -8,6 +8,10 @@
 	{
 		public $practices;
 
+		protected $listeners = [
+			'practice-deleted' => '$refresh',
+		];
+
 		public function render() {
 			return view('livewire.practice-info');
 		}

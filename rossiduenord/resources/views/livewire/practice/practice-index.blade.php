@@ -145,16 +145,29 @@
 							<a href="{{route('practice.edit', $practice) }}" class="text-indigo-600 hover:text-indigo-900">
 								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
 							</a>
-							<!-- TODO: Cancellazione pratica -->
-							<a href="#" class="text-red-600 hover:text-red-900">
-								<x-icon name="trash" class="w-5 h-5"></x-icon>
-							</a>
+
+							<x-modal>
+								<x-slot name="trigger">
+									<div class="text-red-600 hover:text-red-900">
+										<x-icon name="trash" class="w-5 h-5"></x-icon>
+									</div>
+								</x-slot>
+								<x-slot name="title">
+									Conferma eliminazione
+								</x-slot>
+									Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
+								<x-slot name="footer">
+									<x-button class="ml-2" wire:click="deletePractice({{ $practice->id }})" wire:loading.attr="disabled">
+										Cancella la Pratica
+									</x-button>
+								</x-slot>
+							</x-modal>
 						</div>
 					</td>
 				</tr>
 			@empty
 				<tr>
-					<td colspan="10">Nessun risultato</td>
+					<td colspan="10" class="text-center text-gray-500 py-4">Nessun risultato</td>
 				</tr>
 			@endforelse
 			</tbody>
@@ -162,3 +175,7 @@
 	</x-card>
 	<livewire:practice-info :practices="$practices" />
 </x-card>
+
+@push('notifications')
+	<x-notification />
+@endpush
