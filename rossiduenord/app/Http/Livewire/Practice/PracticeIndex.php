@@ -2,6 +2,9 @@
 
 	namespace App\Http\Livewire\Practice;
 
+	use App\Helpers\Contracts;
+	use App\Helpers\folder_documents;
+	use App\Helpers\Policies;
 	use App\Practice;
 	use Illuminate\Http\Request;
 	use Livewire\Component;
@@ -40,6 +43,30 @@
 			//importo sal finale
 			$this->tot_sal = $this->practices->sum('import_sal');
 			$this->expected_sal = $this->practices->sum('import');
+		}
+
+		public function createPractice() {
+			// Create new Applicant related by User
+			$applicant = auth()->user()->applicant()->create();
+			// Create new Practice
+			$practice = Practice::create([
+				'applicant_id'=> $applicant->id,
+				'user_id' => auth()->user()->id
+			]);
+			// Create all models related by Practice
+			$practice->subject()->create();
+			$practice->building()->create();
+			$practice->data_project()->create();
+			$practice->driving_intervention()->create();
+			$practice->towed_intervention()->create();
+			$practice->final_state()->create();
+			$practice->variant()->create();
+
+			// folder document creation
+			folder_documents::addFolders($practice->id);
+			Contracts::createInitialContracts($practice->id);
+			Policies::createInitialPolicies($practice->id);
+			return redirect()->route('practice.edit', $practice);
 		}
 
 		public function deletePractice($id) {

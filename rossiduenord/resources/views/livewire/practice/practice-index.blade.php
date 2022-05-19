@@ -101,18 +101,18 @@
 			</form>
 		</div>
 
-		<div class="flex items-center">
-			<form action="{{route('applicant.store') }}" method="post" @click="startLoading()">
-				@csrf
-				<x-button prepend="plus" iconColor="text-white">Nuova</x-button>
-			</form>
+		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova</x-button>
+		<div wire:loading wire:target="createPractice" class="ml-2">
+			<span class="text-sm text-gray-400">Sto creando..</span>
 		</div>
 	</x-card>
 	<x-card class="border">
 		<table class="min-w-full divide-y divide-gray-300">
 			<thead class="bg-gray-50">
 			<tr>
-				<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Piattaforma</th>
+				<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+					Piattaforma
+				</th>
 				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Pratica</th>
 				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Data</th>
 				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Denominazione</th>
@@ -142,7 +142,8 @@
 					<td></td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							<a href="{{route('practice.edit', $practice) }}" class="text-indigo-600 hover:text-indigo-900">
+							<a href="{{route('practice.edit', $practice) }}"
+							   class="text-indigo-600 hover:text-indigo-900">
 								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
 							</a>
 
@@ -155,9 +156,10 @@
 								<x-slot name="title">
 									Conferma eliminazione
 								</x-slot>
-									Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
+								Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
 								<x-slot name="footer">
-									<x-button class="ml-2" wire:click="deletePractice({{ $practice->id }})" wire:loading.attr="disabled">
+									<x-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
+									          wire:loading.attr="disabled">
 										Cancella la Pratica
 									</x-button>
 								</x-slot>
@@ -173,9 +175,9 @@
 			</tbody>
 		</table>
 	</x-card>
-	<livewire:practice-info :practices="$practices" />
+	<livewire:practice-info :practices="$practices"/>
 </x-card>
 
 @push('notifications')
-	<x-notification />
+	<x-notification/>
 @endpush
