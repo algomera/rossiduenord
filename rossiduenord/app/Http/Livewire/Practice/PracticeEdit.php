@@ -1,32 +1,39 @@
 <?php
 
-namespace App\Http\Livewire\Practice;
+	namespace App\Http\Livewire\Practice;
 
-use App\Practice;
-use Livewire\Component;
+	use App\Practice;
+	use Livewire\Component;
 
-class PracticeEdit extends Component
-{
-	public $practice;
-	public $tabs = [
-		'applicant' => 'Richiedente',
-		'practice' => 'Pratica',
-		'subjects' => 'Subappaltatori',
-		'building' => 'Immobile',
-		'media' => 'Foto e Video',
-		'documents' => 'Documenti richiesti',
-		'superbonus' => 'Superbonus',
-		'contracts' => 'Contratti',
-		'policies' => 'Polizze'
-	];
-	public $selectedTab = 'applicant';
+	class PracticeEdit extends Component
+	{
+		public $practice;
+		public $tabs = [
+			'applicant'  => 'Richiedente',
+			'practice'   => 'Pratica',
+			'subjects'   => 'Subappaltatori',
+			'building'   => 'Immobile',
+			'media'      => 'Foto e Video',
+			'documents'  => 'Documenti richiesti',
+			'superbonus' => 'Superbonus',
+			'contracts'  => 'Contratti',
+			'policies'   => 'Polizze'
+		];
+		public $selectedTab = 'applicant';
 
-	public function mount(Practice $practice) {
-		$this->practice = $practice;
+		protected $listeners = [
+			'change-tab' => 'changeTab'
+		];
+
+		public function mount(Practice $practice) {
+			$this->practice = $practice;
+		}
+
+		public function changeTab($tab) {
+			$this->selectedTab = $tab;
+		}
+
+		public function render() {
+			return view('livewire.practice.practice-edit');
+		}
 	}
-
-    public function render()
-    {
-        return view('livewire.practice.practice-edit');
-    }
-}

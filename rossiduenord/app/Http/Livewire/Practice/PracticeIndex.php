@@ -26,8 +26,9 @@
 			} else {
 				$q = Practice::query()->where('user_id', auth()->id());
 			}
+
 			if ($request->get('practical_month') !== null) {
-				$q->where('month', '=', $request->get('practical_month'));
+				$q->whereMonth('created_at', '=', $request->get('practical_month'));
 			}
 			if ($request->get('practical_phase') !== null) {
 				$q->where('practical_phase', '=', $request->get('practical_phase'));

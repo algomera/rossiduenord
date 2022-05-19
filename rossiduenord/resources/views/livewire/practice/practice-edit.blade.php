@@ -14,7 +14,6 @@
 				@endforeach
 
 			</select>
-			{{ $selectedTab }}
 		</div>
 		<div class="hidden sm:block">
 			<div class="border-b border-gray-200">

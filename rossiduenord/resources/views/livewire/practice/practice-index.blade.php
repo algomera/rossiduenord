@@ -18,40 +18,40 @@
 				<div class="flex items-end space-x-4 mb-2">
 					<x-select name="practical_month" id="practical_month" label="Mese">
 						<option value="">Tutti</option>
-						<option value="gennaio" {{ request()->get('practical_month') === 'gennaio' ? 'selected' : '' }}>
+						<option value="01" {{ request()->get('practical_month') === '01' ? 'selected' : '' }}>
 							Gennaio
 						</option>
-						<option value="febbario" {{ request()->get('practical_month') === 'febbario' ? 'selected' : '' }}>
+						<option value="02" {{ request()->get('practical_month') === '02' ? 'selected' : '' }}>
 							Febbario
 						</option>
-						<option value="marzo" {{ request()->get('practical_month') === 'marzo' ? 'selected' : '' }}>
+						<option value="03" {{ request()->get('practical_month') === '03' ? 'selected' : '' }}>
 							Marzo
 						</option>
-						<option value="aprile" {{ request()->get('practical_month') === 'aprile' ? 'selected' : '' }}>
+						<option value="04" {{ request()->get('practical_month') === '04' ? 'selected' : '' }}>
 							Aprile
 						</option>
-						<option value="maggio" {{ request()->get('practical_month') === 'maggio' ? 'selected' : '' }}>
+						<option value="05" {{ request()->get('practical_month') === '05' ? 'selected' : '' }}>
 							Maggio
 						</option>
-						<option value="giugno" {{ request()->get('practical_month') === 'giugno' ? 'selected' : '' }}>
+						<option value="06" {{ request()->get('practical_month') === '06' ? 'selected' : '' }}>
 							Giugno
 						</option>
-						<option value="luglio" {{ request()->get('practical_month') === 'luglio' ? 'selected' : '' }}>
+						<option value="07" {{ request()->get('practical_month') === '07' ? 'selected' : '' }}>
 							Luglio
 						</option>
-						<option value="agosto" {{ request()->get('practical_month') === 'agosto' ? 'selected' : '' }}>
+						<option value="08" {{ request()->get('practical_month') === '08' ? 'selected' : '' }}>
 							Agosto
 						</option>
-						<option value="settembre" {{ request()->get('practical_month') === 'settembre' ? 'selected' : '' }}>
+						<option value="09" {{ request()->get('practical_month') === '09' ? 'selected' : '' }}>
 							Settembre
 						</option>
-						<option value="ottobre" {{ request()->get('practical_month') === 'ottobre' ? 'selected' : '' }}>
+						<option value="10" {{ request()->get('practical_month') === '10' ? 'selected' : '' }}>
 							Ottobre
 						</option>
-						<option value="novembre" {{ request()->get('practical_month') === 'novembre' ? 'selected' : '' }}>
+						<option value="11" {{ request()->get('practical_month') === '11' ? 'selected' : '' }}>
 							Novembre
 						</option>
-						<option value="dicembre" {{ request()->get('practical_month') === 'dicembre' ? 'selected' : '' }}>
+						<option value="12" {{ request()->get('practical_month') === '12' ? 'selected' : '' }}>
 							Dicembre
 						</option>
 					</x-select>
