@@ -1,6 +1,6 @@
 <?php
 
-	use App\{Http\Controllers\PageController, Practice, Condomini, Photo, Video};
+	use App\{Http\Controllers\PageController, Http\Livewire\Practice\PracticeIndex, Practice, Condomini, Photo, Video};
 	use App\Helpers\Interventi;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Route;
@@ -34,6 +34,7 @@
 			Route::resource('/users', 'UserController');
 
 			// Pratiche
+			Route::get('/practice', [PracticeIndex::class]);
 			Route::resource('/practice', 'PracticeController');
 
 			// Gestione Cartelle/File
