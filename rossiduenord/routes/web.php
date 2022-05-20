@@ -1,8 +1,8 @@
 <?php
 
 	use App\{Http\Controllers\PageController,
-		Http\Livewire\Practice\PracticeEdit,
-		Http\Livewire\Practice\PracticeIndex,
+		Http\Livewire\Practice\Index,
+		Http\Livewire\Practice\Show,
 		Practice,
 		Condomini,
 		Photo,
@@ -41,8 +41,8 @@
 
 			// Pratiche
 			Route::name('practice.')->group(function() {
-				Route::get('/practice', [PracticeIndex::class, '__invoke'])->name('index');
-				Route::get('/practice/{practice}', [PracticeEdit::class, '__invoke'])->name('edit');
+				Route::get('/practice', [Index::class, '__invoke'])->name('index');
+				Route::get('/practice/{practice}', [Show::class, '__invoke'])->name('edit');
 			});
 //			Route::resource('/practice', 'PracticeController');
 

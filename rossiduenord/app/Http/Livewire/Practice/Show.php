@@ -5,7 +5,7 @@
 	use App\Practice;
 	use Livewire\Component;
 
-	class PracticeEdit extends Component
+	class Show extends Component
 	{
 		public $practice;
 		public $tabs = [
@@ -34,6 +34,6 @@
 		}
 
 		public function render() {
-			return view('livewire.practice.practice-edit');
+			return view('livewire.practice.show');
 		}
 	}

@@ -9,7 +9,7 @@
 	use Illuminate\Http\Request;
 	use Livewire\Component;
 
-	class PracticeIndex extends Component
+	class Index extends Component
 	{
 		public $practices;
 		public $tot_sal;
@@ -81,6 +81,6 @@
 		}
 
 		public function render() {
-			return view('livewire.practice.practice-index');
+			return view('livewire.practice.index');
 		}
 	}
