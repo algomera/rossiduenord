@@ -8,6 +8,16 @@ class Practice extends Model
 {
     protected $guarded = [];
 
+	protected $casts = [
+		'import' => 'float',
+		'import_sal' => 'float',
+		'c_m' => 'float',
+		'assev_tecnica' => 'float',
+		'policy' => 'boolean',
+		'superbonus' => 'boolean',
+		'practice_ok' => 'boolean',
+	];
+
     public function applicant()
     {
         return $this->belongsTo(Applicant::class);

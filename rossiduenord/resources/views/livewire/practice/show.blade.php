@@ -31,10 +31,10 @@
 	<x-card class="border rounded-md p-4">
 		@switch($selectedTab)
 			@case('applicant')
-				<livewire:practice.tabs.applicant  :applicant="$practice->applicant"/>
+				<livewire:practice.tabs.applicant :applicant="$practice->applicant"/>
 				@break
 			@case('practice')
-				Practice Content {{ $practice->id }}
+				<livewire:practice.tabs.practice :practice="$practice" />
 				@break
 			@case('subjects')
 				Subjects Content

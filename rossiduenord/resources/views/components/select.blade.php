@@ -20,10 +20,6 @@
 			@isset($action)
 				{{ $action }}
 			@endisset
-			{{--		<span--}}
-			{{--				wire:click="$emit('openModal', 'teams.create-team-location')"--}}
-			{{--				class="text-sm text-indigo-500 cursor-pointer hover:text-indigo-400"--}}
-			{{--		>Crea</span>--}}
 		</div>
 		<select
 				{{ $attributes->merge(['class' => $inputClass]) }}
@@ -34,7 +30,5 @@
 		>
 			{{ $slot }}
 		</select>
-		@error($slug)
-		<p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-		@enderror
+		<x-input-error :for="$slug"></x-input-error>
 	</div>

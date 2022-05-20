@@ -40,9 +40,6 @@
 				$q->where('id', '=', $request->get('practical_number'));
 			}
 			$this->practices = $q->get();
-			//importo sal finale
-			$this->tot_sal = $this->practices->sum('import_sal');
-			$this->expected_sal = $this->practices->sum('import');
 		}
 
 		public function createPractice() {
