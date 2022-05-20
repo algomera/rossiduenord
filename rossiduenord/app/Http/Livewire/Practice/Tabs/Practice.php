@@ -105,12 +105,10 @@
 				$validated['assev_tecnica'] = Money::prepare($validated['assev_tecnica']);
 			}
 			$this->practice->update($validated);
-
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('La pratica è stata aggiornata con successo!')
 			]);
-
 			$this->emitUp('change-tab', 'subjects');
 		}
 
