@@ -2,7 +2,7 @@
 	<x-page-header>
 		Anagrafiche
 		<x-slot name="actions">
-			<x-button prepend="plus" iconColor="text-white" wire:click="$emit('openModal', 'anagrafica.create')">
+			<x-button prepend="plus" iconColor="text-white" x-on:click="Livewire.emit('openModal', 'anagrafica.create')">
 				Aggiungi
 			</x-button>
 		</x-slot>
