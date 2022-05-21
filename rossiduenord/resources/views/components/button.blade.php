@@ -23,10 +23,10 @@
 
 <button {{ $attributes->merge(['type' => 'submit', 'class' => $classes . ' disabled:opacity-25 transition']) }}>
 	@if($prepend)
-		<x-icon name="{{$prepend}}" class="{{$iconColor} => 'text-gray-800'} w-5 h-5 -ml-0.5 mr-2 h-4 w-4"></x-icon>
+		<x-icon name="{{$prepend}}" class="{{$iconColor ?: 'text-gray-800'}} w-5 h-5 -ml-0.5 mr-2 h-4 w-4"></x-icon>
 	@endif
 	{{ $slot }}
 	@if($append)
-			<x-icon name="{{$append}}" class="{{$iconColor} => 'text-gray-800'} w-5 h-5 ml-2 -mr-0.5 h-4 w-4"></x-icon>
+		<x-icon name="{{$append}}" class="{{$iconColor ?: 'text-gray-800'}} w-5 h-5 ml-2 -mr-0.5 h-4 w-4"></x-icon>
 	@endif
 </button>
