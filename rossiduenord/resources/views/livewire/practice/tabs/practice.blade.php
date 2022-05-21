@@ -1,14 +1,6 @@
 <form wire:submit.prevent="save" class="space-y-5">
 	<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
 		<div class="sm:col-span-4">
-			<x-label>N. Pratica</x-label>
-			<span>{{ $practice->id }}</span>
-		</div>
-		<div class="sm:col-span-4">
-			<x-label>Data Pratica</x-label>
-			<span>{{ $practice->created_at->format('d/m/Y') }}</span>
-		</div>
-		<div class="sm:col-span-4">
 			<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="import" name="import" id="import" type="text"
 			         label="Importo stimato" placeholder="0,00" required></x-input>
 		</div>
@@ -175,25 +167,25 @@
 			<x-input x-mask="999 9999999" wire:model.defer="referent_mobile" name="referent_mobile" id="referent_mobile" type="text"
 			         label="Cellulare di riferimento"></x-input>
 		</div>
-		<div class="sm:col-span-4">
+		<div class="sm:col-span-4" x-data="{ show: @entangle('policy') }">
 			<div class="flex items-center">
-				<input wire:model.defer="policy" id="policy" name="policy" type="checkbox"
+				<input wire:model="policy" id="policy" name="policy" type="checkbox"
 				       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 				<label for="policy" class="ml-3 block text-sm font-medium text-gray-700">Richiedi Polizza</label>
 			</div>
-			<div class="mt-1">
+			<div class="mt-1" x-show="show">
 				<x-input wire:model.defer="request_policy" id="request_policy" name="request_policy" type="text"
 				         placeholder="Richiedente"></x-input>
 			</div>
 		</div>
-		<div class="col-span-12 flex flex-col space-y-4">
+		<div class="col-span-12 flex flex-col space-y-4" x-data="{ show: @entangle('superbonus') }">
 			<div class="flex items-center space-x-3">
 				<x-label class="!mb-0">Tipologia intervento:</x-label>
-				<input wire:model.defer="superbonus" id="superbonus" name="superbonus" type="checkbox"
+				<input wire:model="superbonus" id="superbonus" name="superbonus" type="checkbox"
 				       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 				<label for="superbonus" class="block text-sm font-medium text-gray-700">Superbonus 110%</label>
 			</div>
-			<div class="flex items-center space-x-3">
+			<div class="flex items-center space-x-3" x-show="show">
 				<x-input wire:model.defer="superbonus_work_start" id="superbonus_work_start" name="superbonus_work_start" type="month"
 				         label="Data lavorazione"></x-input>
 				<x-select wire:model.defer="sal" id="sal" name="sal" label="SAL">
@@ -223,14 +215,7 @@
 
 	<div class="flex justify-end space-x-3">
 		<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-		<x-button class="hidden" wire:dirty.class.remove="hidden"
-		          wire:target="import, practical_phase, real_estate_type, policy_name, address, civic, common, province, region, cap, work_start, c_m, assev_tecnica, description, referent_email, referent_mobile, policy, request_policy, superbonus, superbonus_work_start, sal, import_sal, note, practice_ok">
-			Salva
-		</x-button>
-		<x-button type="button" wire:click="$emitUp('change-tab', 'subjects')" wire:dirty.class="hidden"
-		          wire:target="import, practical_phase, real_estate_type, policy_name, address, civic, common, province, region, cap, work_start, c_m, assev_tecnica, description, referent_email, referent_mobile, policy, request_policy, superbonus, superbonus_work_start, sal, import_sal, note, practice_ok">
-			Avanti
-		</x-button>
+		<x-button>Salva</x-button>
 	</div>
 </form>
 

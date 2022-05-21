@@ -86,6 +86,16 @@
 			$this->practice_ok = $this->practice->practice_ok;
 		}
 
+		public function updatingPolicy() {
+			$this->request_policy = null;
+		}
+
+		public function updatingSuperbonus() {
+			$this->superbonus_work_start = null;
+			$this->sal = null;
+			$this->import_sal = null;
+		}
+
 		public function save() {
 			$validated = $this->validate();
 			$validated['applicant_id'] = $this->practice->applicant->id;

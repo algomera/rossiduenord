@@ -80,12 +80,7 @@
 
 	<div class="flex justify-end space-x-3">
 		<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
-		<x-button class="hidden" wire:dirty.class.remove="hidden"
-		          wire:target="applicant_type, company_name, c_f, phone, mobile_phone, email, role">Salva
-		</x-button>
-		<x-button type="button" wire:click="$emitUp('change-tab', 'practice')" wire:dirty.class="hidden"
-		          wire:target="applicant_type, company_name, c_f, phone, mobile_phone, email, role">Avanti
-		</x-button>
+		<x-button>Salva</x-button>
 	</div>
 </form>
 

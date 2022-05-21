@@ -1,6 +1,19 @@
 <x-slot name="header">
 	<x-page-header>
 		Scheda Pratica
+		<x-slot name="subtitle">
+			<div class="flex items-center space-x-2 mt-1">
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">N. pratica:</span>
+					<span>{{ $practice->id }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">Data:</span>
+					<span>{{ $practice->created_at->format('d/m/Y') }}</span>
+				</p>
+			</div>
+		</x-slot>
 	</x-page-header>
 </x-slot>
 <x-card>
@@ -34,7 +47,7 @@
 				<livewire:practice.tabs.applicant :applicant="$practice->applicant"/>
 				@break
 			@case('practice')
-				<livewire:practice.tabs.practice :practice="$practice" />
+				<livewire:practice.tabs.practice :practice="$practice"/>
 				@break
 			@case('subjects')
 				Subjects Content
