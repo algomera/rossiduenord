@@ -9,6 +9,10 @@
 	{
 		public $anagrafiche;
 
+		protected $listeners = [
+			'anagrafica-added' => '$refresh',
+		];
+
 		public function mount() {
 			$this->subject_roles = SubjectRole::all()->except(21);
 			$this->anagrafiche = auth()->user()->anagrafiche;

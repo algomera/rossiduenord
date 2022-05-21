@@ -36,13 +36,14 @@
 						<div class="flex space-x-1">
 							@foreach($anagrafica->roles as $role)
 								{{-- background-color: {{ $role->color }}--}}
-								<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full"></div>
+								<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full" style="background: {{ $role->color }}"></div>
 							@endforeach
 						</div>
 					</td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							actions
+							<x-icon name="eye"></x-icon>
+							<x-icon name="pencil-alt"></x-icon>
 						</div>
 					</td>
 				</tr>

@@ -12,8 +12,6 @@
 	class Index extends Component
 	{
 		public $practices;
-		public $tot_sal;
-		public $expected_sal;
 		protected $listeners = [
 			'practice-deleted' => '$refresh',
 		];
