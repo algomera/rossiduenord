@@ -63,7 +63,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
             @else
                 <h5>Nessuna anagrafica al momento! </h5>

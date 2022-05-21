@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class AnagraficheController extends Controller
 {
-    public function index() {
-        //$this->authorize('access_anagrafiche');
-
-        $subject_roles = SubjectRole::all()->except(21);
-        $anagrafiche = auth()->user()->anagrafiche;
-        return view('pages.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
-    }
+//    public function index() {
+//        //$this->authorize('access_anagrafiche');
+//
+//        $subject_roles = SubjectRole::all()->except(21);
+//        $anagrafiche = auth()->user()->anagrafiche;
+//        return view('pages.anagrafiche.index', compact('subject_roles', 'anagrafiche'));
+//    }
 
     public function create() {
         $subject_roles = SubjectRole::all();

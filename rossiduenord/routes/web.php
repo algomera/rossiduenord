@@ -1,8 +1,9 @@
 <?php
 
 	use App\{Http\Controllers\PageController,
-		Http\Livewire\Practice\Index,
-		Http\Livewire\Practice\Show,
+		Http\Livewire\Practice\Index as PracticeIndex,
+		Http\Livewire\Practice\Show as PracticeShow,
+		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
 		Practice,
 		Condomini,
 		Photo,
@@ -27,24 +28,27 @@
 		Route::middleware(['permission:access_practices'])->group(function () {
 			// Profilo
 			Route::get('/profile', 'PageController@profile')->name('profile');
+			// Pratiche
+			Route::name('practice.')->group(function() {
+				Route::get('/practice', [PracticeIndex::class, '__invoke'])->name('index');
+				Route::get('/practice/{practice}', [PracticeShow::class, '__invoke'])->name('edit');
+			});
+			// Anagrafiche
+			Route::name('anagrafiche.')->group(function() {
+				Route::get('/anagrafiche', [AnagraficaIndex::class, '__invoke'])->name('index');
+//				Route::get('/anagrafiche/{anagrafica}', [Show::class, '__invoke'])->name('edit');
+			});
 
 			// Anagrafiche
-			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
-			Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
-			Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
-			Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
-			Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
-			Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
+//			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
+//			Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
+//			Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
+//			Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
+//			Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
+//			Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
 
 			// Gestione Accessi
 			Route::resource('/users', 'UserController');
-
-			// Pratiche
-			Route::name('practice.')->group(function() {
-				Route::get('/practice', [Index::class, '__invoke'])->name('index');
-				Route::get('/practice/{practice}', [Show::class, '__invoke'])->name('edit');
-			});
-//			Route::resource('/practice', 'PracticeController');
 
 			// Gestione Cartelle/File
 			Route::resource('/folder', 'FolderController');

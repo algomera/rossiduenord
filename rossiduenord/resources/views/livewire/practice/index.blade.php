@@ -101,17 +101,16 @@
 			</form>
 		</div>
 
-		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova
-		</x-button>
+		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova</x-button>
 		<div wire:loading wire:target="createPractice" class="ml-2">
-			<span class="text-sm text-gray-400">Sto creando..</span>
+			<span class="text-sm text-gray-400">Caricamento..</span>
 		</div>
 	</x-card>
 	<x-card class="border">
 		<table class="min-w-full divide-y divide-gray-300">
 			<thead class="bg-gray-50">
 			<tr>
-				<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 					Piattaforma
 				</th>
 				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Pratica</th>
