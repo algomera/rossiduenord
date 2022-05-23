@@ -63,7 +63,11 @@
 		}
 
 		public function mount($role = null) {
-			$this->roles[] = $role;
+			if ($role) {
+				foreach ($role as $r) {
+					$this->roles[] = $r;
+				}
+			}
 			$this->subject_roles = SubjectRole::all();
 		}
 
@@ -74,6 +78,7 @@
 			$this->closeModal();
 			// TODO: $this->emit non aggiorna la view "anagrafica.index"
 			$this->emit('anagrafica-added');
+			$this->emitTo('practice.tabs.subject', 'anagrafica-created', $anagrafica->id, $this->roles);
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Anagrafica Creata'),
 				'subtitle' => __('L\'anagrafica è stata creata con successo!')

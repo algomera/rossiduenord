@@ -26,7 +26,7 @@
 		                  :items="$fiscal_assev_list"></x-subject_select>
 		<x-subject_select label="Cessionario credito fiscale" name="phiscal_transferee" :subject="$subject"
 		                  :items="$phiscal_transferee_list"></x-subject_select>
-		<x-subject_select label="Banca finaziatrice" name="lending_bank" :subject="$subject"
+		<x-subject_select label="Banca finanziatrice" name="lending_bank" :subject="$subject"
 		                  :items="$lending_bank_list"></x-subject_select>
 		<x-subject_select label="Assicuratore" name="insurer" :subject="$subject" :items="$insurer_list"></x-subject_select>
 
@@ -39,7 +39,7 @@
 				<div class="sm:col-span-1">
 					<x-input type="text" readonly disabled name="project_manager" id="project_manager"
 					         label="Tipo di consulente"
-					         value="{{\App\Anagrafica::find($subject->consultant)->first()->consultant_type}}"></x-input>
+					         value="{{\App\Anagrafica::find($subject->consultant)->consultant_type}}"></x-input>
 				</div>
 			@endif
 			<div class="sm:col-span-1">

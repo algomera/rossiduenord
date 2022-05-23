@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Practice\Tabs;
 
+	use App\SubjectRole;
 	use Illuminate\Validation\Rule;
 	use Livewire\Component;
 
@@ -43,10 +44,18 @@
 		public $technician_energy_efficient_list;
 		public $technician_APE_Post_list;
 		public $metric_calc_technician_list;
-
 		protected $listeners = [
-			'subject-selected' => '$refresh'
+			'subject-selected'   => '$refresh',
+			'anagrafica-created' => '$refresh',
+			'anagrafica-created'   => 'setSubject'
 		];
+
+		public function setSubject($id, $role) {
+			$r = SubjectRole::find($role)->pluck('slug');
+			$this->practice->subject[$r[0]] = $id;
+			$this->practice->subject->save();
+			$this->emitSelf('subject-selected');
+		}
 
 		public function mount() {
 			$this->subject = $this->practice->subject;
@@ -101,7 +110,6 @@
 			$this->metric_calc_technician_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 20);
 			})->get();
-
 			$this->consultant = $this->practice->subject['consultant'];
 			$this->lending_bank = $this->practice->subject['lending_bank'];
 			$this->general_contractor = $this->practice->subject['general_contractor'];
@@ -248,11 +256,7 @@
 		}
 
 		public function updated($name, $value) {
-			if($value === '') {
-			$this->practice->subject[$name] = NULL;
-			} else {
-				$this->practice->subject[$name] = (int) $value;
-			}
+			$this->practice->subject[$name] = empty($value) ? null : (int)$value;
 			$this->practice->subject->save();
 			$this->emitSelf('subject-selected');
 		}

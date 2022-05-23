@@ -16,6 +16,7 @@ class CreateSubjectRolesTable extends Migration
         Schema::create('subject_roles', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+			$table->text('slug');
             $table->text('color');
             $table->timestamps();
         });
