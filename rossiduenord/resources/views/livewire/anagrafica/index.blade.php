@@ -41,7 +41,7 @@
 					</td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							<x-icon name="eye" class="w-5 h-5 flex-shrink-0"></x-icon>
+							<x-icon name="eye" class="w-5 h-5 flex-shrink-0" wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
 							<x-icon name="pencil-alt" class="w-5 h-5 flex-shrink-0"></x-icon>
 						</div>
 					</td>
