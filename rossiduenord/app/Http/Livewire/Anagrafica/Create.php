@@ -69,15 +69,13 @@
 		public function save() {
 			$validated = $this->validate();
 			$anagrafica = auth()->user()->anagrafiche()->create($validated);
-			$anagrafica->roles()->attach($this->roles);
-
-			// TODO: Fix closeModalWithEvents
+			$anagrafica->roles()->sync($this->roles);
 			$this->closeModalWithEvents([
 				Index::getName() => 'anagrafica-added',
 			]);
 			$this->dispatchBrowserEvent('open-notification', [
-				'title'    => __('Salvataggio'),
-				'subtitle' => __('L\' anagrafica è stata creata con successo!')
+				'title'    => __('Anagrafica Creata'),
+				'subtitle' => __('L\'anagrafica è stata creata con successo!')
 			]);
 		}
 

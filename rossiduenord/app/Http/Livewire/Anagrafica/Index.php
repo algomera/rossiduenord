@@ -11,6 +11,7 @@
 
 		protected $listeners = [
 			'anagrafica-added' => '$refresh',
+			'anagrafica-updated' => '$refresh',
 		];
 
 		public function mount() {
