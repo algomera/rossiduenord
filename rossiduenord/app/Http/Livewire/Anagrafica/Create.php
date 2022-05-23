@@ -70,9 +70,9 @@
 			$validated = $this->validate();
 			$anagrafica = auth()->user()->anagrafiche()->create($validated);
 			$anagrafica->roles()->sync($this->roles);
-			$this->closeModalWithEvents([
-				Index::getName() => 'anagrafica-added',
-			]);
+			$this->closeModal();
+			// TODO: $this->emit non aggiorna la view "anagrafica.index"
+			$this->emit('anagrafica-added');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Anagrafica Creata'),
 				'subtitle' => __('L\'anagrafica è stata creata con successo!')
