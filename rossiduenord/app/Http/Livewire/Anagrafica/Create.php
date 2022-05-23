@@ -62,7 +62,8 @@
 			return '7xl';
 		}
 
-		public function mount() {
+		public function mount($role = null) {
+			$this->roles[] = $role;
 			$this->subject_roles = SubjectRole::all();
 		}
 

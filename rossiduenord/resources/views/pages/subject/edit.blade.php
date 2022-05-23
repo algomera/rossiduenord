@@ -3,21 +3,6 @@
 @section('content')
     @include('layouts.partials.practiceNav')
 
-            <div class="px-20">
-                <ul class="nav nav-tabs pl-4" id="sectionSoggetti_pratiche" role="tablist">
-                    <li class="nav-item">
-                        <span class="nav-link blue frame" id="soggetti-tab" data-toggle="tab" href="#soggetti" role="tab" aria-controls="soggetti" aria-selected="true" style="color: #BBBCBC; font-weight:500; ">
-                            Soggetti
-                        </span>
-                    </li>
-{{--                     <li class="nav-item">
-                        <span  @click="active = !active" class="nav-link" :class="[!active ? 'blue' : '']" id="responsabili-tab" data-toggle="tab" href="#responsabili" role="tab" aria-controls="responsabili" aria-selected="false" style="color: #BBBCBC; font-weight:500; cursor: pointer;">
-                            Responsabili
-                        </span>
-                    </li>
- --}}                </ul>
-            </div>
-
             <div class="scroll">
                 {{-- start form --}}
                 <form action="{{ route('subject.update', $subject->id)}}" method="POST">

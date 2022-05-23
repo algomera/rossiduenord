@@ -50,7 +50,7 @@
 				<livewire:practice.tabs.practice :practice="$practice"/>
 				@break
 			@case('subjects')
-				Subjects Content
+				<livewire:practice.tabs.subject :practice="$practice"/>
 				@break
 			@case('building')
 				Building Content

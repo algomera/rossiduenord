@@ -11,7 +11,7 @@
 		public $tabs = [
 			'applicant'  => 'Richiedente',
 			'practice'   => 'Pratica',
-			'subjects'   => 'Subappaltatori',
+			'subjects'   => 'Soggetti',
 			'building'   => 'Immobile',
 			'media'      => 'Foto e Video',
 			'documents'  => 'Documenti richiesti',
@@ -19,7 +19,7 @@
 			'contracts'  => 'Contratti',
 			'policies'   => 'Polizze'
 		];
-		public $selectedTab = 'practice';
+		public $selectedTab = 'subjects';
 
 		protected $listeners = [
 			'change-tab' => 'changeTab'

@@ -9,48 +9,6 @@ use Illuminate\Validation\Rule;
 class SubjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('pages.subject.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subject $subject)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Subject  $subject
@@ -58,8 +16,6 @@ class SubjectController extends Controller
      */
     public function edit(Practice $practice, Subject $subject, Applicant $applicant, Building $building)
     {
-        //$this->authorize('edit-subject', [$subject, $applicant]);
-
         $practice = $subject->practice;
         $applicant = $practice->applicant;
         $building = $practice->building;
@@ -340,17 +296,6 @@ class SubjectController extends Controller
         $subject->update($validated);
 
         return redirect()->route('building.edit', $subject);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subject $subject)
-    {
-        //
     }
 
     public function setSubject(Practice $practice, Request $request) {
