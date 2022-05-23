@@ -46,10 +46,10 @@
 		public $metric_calc_technician_list;
 		protected $listeners = [
 			'subject-selected'   => '$refresh',
-			'anagrafica-created' => '$refresh',
 			'anagrafica-created'   => 'setSubject'
 		];
 
+		// TODO: Fix refresh/autoselect quando un'anagrafica viene creata
 		public function setSubject($id, $role) {
 			$r = SubjectRole::find($role)->pluck('slug');
 			$this->practice->subject[$r[0]] = $id;
