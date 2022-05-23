@@ -11,14 +11,9 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-	<!-- jQuery -->
-	{{--	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">--}}
-	{{--	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>--}}
-	{{--	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>--}}
-	{{--	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>--}}
-
 	<!-- Styles -->
 	<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+	<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
 
 	<!-- Scripts -->
 	<script src="{{ mix('js/app.js') }}" defer></script>

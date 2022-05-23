@@ -35,15 +35,14 @@
 					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
 						<div class="flex space-x-1">
 							@foreach($anagrafica->roles as $role)
-								{{-- background-color: {{ $role->color }}--}}
-								<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full" style="background: {{ $role->color }}"></div>
+								<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full" style="background: {{ $role->color }}" x-tooltip.raw="{{ $role->name }}"></div>
 							@endforeach
 						</div>
 					</td>
 					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 						<div class="flex items-center space-x-3">
-							<x-icon name="eye"></x-icon>
-							<x-icon name="pencil-alt"></x-icon>
+							<x-icon name="eye" class="w-5 h-5 flex-shrink-0"></x-icon>
+							<x-icon name="pencil-alt" class="w-5 h-5 flex-shrink-0"></x-icon>
 						</div>
 					</td>
 				</tr>

@@ -13,3 +13,10 @@
 .new_practice td:last-child {
     @apply opacity-100
 }
+
+.tooltip {
+    @apply mb-2
+}
+.tooltip-inner {
+    @apply bg-gray-800 text-white text-sm px-2 py-0.5 rounded-md
+}

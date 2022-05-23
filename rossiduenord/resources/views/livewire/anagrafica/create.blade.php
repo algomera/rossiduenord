@@ -90,10 +90,6 @@
 					<x-input x-mask="aa" wire:model.defer="province_of_birth" type="text" name="province_of_birth" id="province_of_birth"
 					         label="Provincia"></x-input>
 				</div>
-				<div class="sm:col-span-2">
-					<x-input x-mask="aa" wire:model.defer="province_of_birth" type="text" name="province_of_birth" id="province_of_birth"
-					         label="Provincia"></x-input>
-				</div>
 				<x-label class="col-span-12">Estremi iscrizione albo professionisti</x-label>
 				<div class="sm:col-span-6">
 					<x-input wire:model.defer="order_or_college" type="text" name="order_or_college" id="order_or_college"
