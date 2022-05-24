@@ -346,152 +346,46 @@
 				<li class="py-4 text-sm text-gray-500">Nessun condomino inserito</li>
 			@endforelse
 		</ul>
-		<div>
-			<x-button type="button" prepend="upload" iconColor="text-white">
-				Carica
-			</x-button>
-			<x-button type="button" prepend="download" iconColor="text-white">
-				Esporta
-			</x-button>
+		<div class="flex items-center justify-between">
+			<div class="flex items-center space-x-5">
+				<label class="block">
+					<span class="sr-only">Scegli..</span>
+					<input wire:model="imported_excel_file" type="file" class="block w-full text-sm text-slate-500
+			      file:mr-4 file:py-2 file:px-4
+			      file:rounded-full file:border-0
+			      file:text-sm file:font-semibold
+			      file:bg-indigo-50 file:text-indigo-700
+			      hover:file:bg-indigo-100
+			    "/>
+				</label>
+				@if($imported_excel_file)
+					<x-button wire:click="importExcel" type="button" prepend="upload" iconColor="text-white">
+						Carica file
+					</x-button>
+				@endif
+				<div wire:loading wire:target="imported_excel_file" class="ml-2">
+					<span class="text-sm text-gray-400">Caricamento..</span>
+				</div>
+			</div>
+			@if($building->imported_excel_file)
+				<div class="flex flex-col items-end space-y-2" id="imported_excel_file_box">
+					<div class="flex flex-col items-end">
+						<span class="text-xs text-gray-700">File caricato:</span>
+						<span class="text-sm text-indigo-400 font-italic font-bold">{{ basename($building->imported_excel_file) }}</span>
+					</div>
+					<div class="flex items-center space-x-3">
+						<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash" iconColor="text-white">Elimina</x-danger-button>
+						<x-button wire:click="exportExcel" size="xs" type="button" prepend="download" iconColor="text-white">
+							Esporta
+						</x-button>
+						<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download" iconColor="text-white">
+							Scarica
+						</x-button>
+					</div>
+				</div>
+			@endif
 		</div>
 	</div>
-
-
-
-	{{--	<div>--}}
-	{{--		<div class="mt-5">--}}{{-- table list condomini --}}
-	{{--			<div class="d-flex align-items-center mb-3">--}}
-
-	{{--				<h5 class="mb-0">Anagrafica e lista condomini</h5>--}}
-	{{--				<div class="btn bg-blue white ml-3" id="add_condomino_row" onclick="addRows(event)">+</div>--}}
-	{{--			</div>--}}
-	{{--			<div class="row">--}}
-	{{--				<div class="col-md"> <!-- Data table content -->--}}
-	{{--					<div class="ov-x">--}}
-	{{--						<table id="condominis_table" class="table_bonus px-5" style="width: 100%">--}}
-	{{--							<thead>--}}
-	{{--							<tr>--}}
-	{{--								<td class="text-center" style="width:5%;"><b>N.</b></td>--}}
-	{{--								<td style="width:10%;"><b>Nome/ <br>Rag. Sociale</b></td>--}}
-	{{--								<td style="width:10%;"><b>Cognome</b></td>--}}
-	{{--								<td style="width:15%;"><b>Telefono</b></td>--}}
-	{{--								<td style="width:15%;"><b>Email</b></td>--}}
-	{{--								<td style="width:15%;"><b>Cod. fiscale/P. IVA</b></td>--}}
-	{{--								<td style="width:5%;" class="text-center"><b>Millesimi</b></td>--}}
-	{{--								<td style="width:5%;"><b>Foglio</b></td>--}}
-	{{--								<td style="width:5%;"><b>Part.</b></td>--}}
-	{{--								<td style="width:5%;"><b>Sub</b></td>--}}
-	{{--								<td style="width:5%;" class="text-center"><b>Cat. catastale</b></td>--}}
-	{{--								<td style="width:5%;" class="text-center"><b>Sup. catastale</b></td>--}}
-	{{--								<td style="width:5%;" class="text-center"><b>Comproprietari</b></td>--}}
-	{{--							</tr>--}}
-	{{--							</thead>--}}
-	{{--							<tbody>--}}
-	{{--							@forelse($condomini as $i => $condomino)--}}
-	{{--								<tr>--}}
-	{{--									<td class="text-center">{{ $i + 1 }}</td>--}}
-	{{--									<td><input type="hidden" name="condomini[{{$i}}][id]"--}}
-	{{--									           value="{{$condomino->id}}"> <input type="text"--}}
-	{{--									                                              name="condomini[{{$i}}][name]"--}}
-	{{--									                                              value="{{ $condomino->name }}"--}}
-	{{--									                                              id="" class="invisible-input">--}}
-	{{--									</td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][surname]"--}}
-	{{--									           value="{{ $condomino->surname }}" id="" class="invisible-input"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][phone]"--}}
-	{{--									           value="{{ $condomino->phone }}" id="" class="invisible-input"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][email]"--}}
-	{{--									           value="{{ $condomino->email }}" id="" class="invisible-input"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][cf]" value="{{ $condomino->cf }}"--}}
-	{{--									           id="" class="invisible-input"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][millesimi_inv]"--}}
-	{{--									           value="{{ $condomino->millesimi_inv }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][foglio]"--}}
-	{{--									           value=" {{ $condomino->foglio }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][part]"--}}
-	{{--									           value="{{ $condomino->part }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][sub]"--}}
-	{{--									           value=" {{ $condomino->sub }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][categ_catastale]"--}}
-	{{--									           value="{{ $condomino->categ_catastale }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="text" name="condomini[{{$i}}][sup_catastale]"--}}
-	{{--									           value="{{ $condomino->sup_catastale }}" id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--									<td><input type="checkbox" name="condomini[{{$i}}][comproprietari]"--}}
-	{{--									           value="{{ $condomino->comproprietari }}"--}}
-	{{--									           {{$condomino->comproprietari == 1 ? 'checked' : ''}} id=""--}}
-	{{--									           class="invisible-input text-center"></td>--}}
-	{{--								</tr>--}}
-	{{--							@empty--}}
-	{{--								<tr id="no_data_row">--}}
-	{{--									<td colspan="12">Nessun condomine inserito</td>--}}
-	{{--								</tr>--}}
-	{{--							@endforelse--}}
-	{{--							</tbody>--}}
-	{{--						</table>--}}
-	{{--					</div>--}}
-
-	{{--					<a href="{{ route('condomini.export', $building->practice) }}"--}}
-	{{--					   class="btn bg-logo-green white mt-3">Esporta lista condomini <i--}}
-	{{--								class="fa-solid fa-file-arrow-down fa-1x"></i> </a>--}}
-	{{--					<div class="d-flex align-items-center py-1 position-relative">--}}
-	{{--						<label for="imported_excel_file" class="mt-2 up-5">--}}
-	{{--								<span class=" file-btn clickable py-2 px-2"> Carica lista condomini <i--}}
-	{{--											class="fa-solid fa-file-arrow-up"></i> </span>--}}
-	{{--						</label>--}}
-	{{--						<input type="file" name="imported_excel_file" id="imported_excel_file"--}}
-	{{--						       class="position-absolute" style="left: 98px;"--}}
-	{{--						       @if($building->imported_excel_file) hidden @endif />--}}
-
-
-	{{--						@if($building->imported_excel_file)--}}
-	{{--							<div class="d-flex" id="imported_excel_file_box">--}}
-	{{--								<div class="d-flex flex-column align-items-start ml-3 px-3 py-1"--}}
-	{{--								     style="border-left: 1px solid #ced4da;">--}}
-	{{--									<span style="font-size: 11px" class="mr-2">File caricato:</span>--}}
-	{{--									<a href="{{ route('downloadExcel', $building->practice) }}"--}}
-	{{--									   style="color: rgb(97, 164, 215) !important; text-decoration: underline !important;"--}}
-	{{--									   class="font-italic font-weight-bold">{{ basename($building->imported_excel_file) }}</a>--}}
-	{{--								</div>--}}
-	{{--								<div onclick="deleteExcel({{ $building->practice->id }})"--}}
-	{{--								     class="d-flex flex-column align-items-center justify-content-center mr-3"--}}
-	{{--								     style="border: none; background-color: transparent;">--}}
-	{{--									<img src="http://127.0.0.1:8000/img/icon/icona_cancella.svg" width="24"--}}
-	{{--									     height="24" alt="" class="clickable">--}}
-	{{--									<p class="m-0" style="color: rgb(129, 131, 135);">Cancella</p>--}}
-	{{--								</div>--}}
-	{{--							</div>--}}
-	{{--						@endif--}}
-	{{--					</div>--}}
-
-	{{--				</div>--}}
-	{{--			</div>--}}
-	{{--		</div>--}}
-
-	{{--		--}}{{----}}
-	{{--							<div class="row mt-5">--}}
-	{{--								<div class="col-md">--}}
-	{{--									<h6>Num. licenza/titolo</h6>--}}
-	{{--									<a class="col-md-3 mb-3" href="" style="display:block; border-radius:3px; height:218px; width:326px; border:1px solid #DBDCDB; background-color:#F2F2F2;" ><img src="../resources/img/image_rectangle.png" alt="" title="none" /></a>--}}
-	{{--									<div class="row">--}}
-	{{--										<div class="col-md-9">--}}
-	{{--											<input class="pl-3 pr-3" type="button" value="Esporta lista condomini" style="color:white; background-color:#383D3F; border:1px solid none; height:27px; width:189px; font-size:13px; font-weight:bold;" />--}}
-	{{--										</div>--}}
-	{{--										<div class="col-md-3" >--}}
-	{{--											<label >Tot. millesimi</label>--}}
-	{{--											<input type="text" value="1.000,00" style="border:1px solid #DBDCDB; border-radius:3px;" />--}}
-	{{--										</div>--}}
-	{{--									</div>--}}
-	{{--								</div>--}}
-	{{--							</div>--}}
-
-	{{--		--}}
-	{{--	</div>--}}
 
 	<div>
 		<x-section-heading>
@@ -550,3 +444,7 @@
 		<x-button>Salva</x-button>
 	</div>
 </form>
+
+@push('notifications')
+	<x-notification/>
+@endpush

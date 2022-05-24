@@ -35,7 +35,7 @@ class CreateBuildingsTable extends Migration
             $table->string('foil')->nullable();
             $table->string('particle')->nullable();
             $table->string('subaltern')->nullable();
-            $table->string('unit_builidg_number')->nullable();
+            $table->string('unit_building_number')->nullable();
             $table->string('pertinence_number')->nullable();
             $table->string('resolution_stairs')->nullable();
             $table->string('note')->nullable();
