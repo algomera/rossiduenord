@@ -6,6 +6,7 @@
 /public/js/app.js/
 /storage/*.key
 /vendor
+/storage/app/public/livewire-tmp
 .env
 .env.backup
 .phpunit.result.cache
