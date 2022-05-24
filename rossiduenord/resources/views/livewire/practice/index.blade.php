@@ -101,7 +101,8 @@
 			</form>
 		</div>
 
-		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova</x-button>
+		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova
+		</x-button>
 		<div wire:loading wire:target="createPractice" class="ml-2">
 			<span class="text-sm text-gray-400">Caricamento..</span>
 		</div>
@@ -159,10 +160,11 @@
 								</x-slot>
 								Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
 								<x-slot name="footer">
-									<x-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
-									          wire:loading.attr="disabled">
-										Cancella la Pratica
-									</x-button>
+									<x-link-button x-on:click="open = false">Annulla</x-link-button>
+									<x-danger-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
+									                 wire:loading.attr="disabled">
+										Elimina
+									</x-danger-button>
 								</x-slot>
 							</x-modal>
 						</div>

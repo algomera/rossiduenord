@@ -124,7 +124,7 @@
 					</div>
 				</div>
 				@isset($footer)
-					<div class="flex flex-col-reverse mt-5 space-y-2 space-y-reverse sm:space-y-0 sm:mt-6 sm:flex-row sm:space-x-3">
+					<div class="flex flex-col-reverse mt-5 space-y-2 space-x-0 space-y-reverse justify-center sm:space-y-0 sm:mt-6 sm:flex-row sm:space-x-3">
 						{{$footer}}
 					</div>
 				@endisset
