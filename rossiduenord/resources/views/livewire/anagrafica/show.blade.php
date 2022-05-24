@@ -62,6 +62,8 @@
 						{{ date('d/m/Y', strtotime($anagrafica->date_of_birth)) }} -
 						{{ $anagrafica->common_of_birth }}
 						({{ $anagrafica->province_of_birth }})
+					@else
+						{{ '-' }}
 					@endisset
 				</dd>
 			</div>
