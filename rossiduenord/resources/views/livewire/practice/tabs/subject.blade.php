@@ -28,20 +28,20 @@
 		                  :items="$phiscal_transferee_list"></x-subject_select>
 		<x-subject_select label="Banca finanziatrice" name="lending_bank" :subject="$subject"
 		                  :items="$lending_bank_list"></x-subject_select>
-		<x-subject_select label="Assicuratore" name="insurer" :subject="$subject" :items="$insurer_list"></x-subject_select>
+		<x-subject_select label="Assicuratore" name="insurer" :subject="$subject"
+		                  :items="$insurer_list"></x-subject_select>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 			<div class="sm:col-span-1">
 				<x-subject_select label="Consulente" name="consultant" :subject="$subject"
 				                  :items="$consultant_list"></x-subject_select>
 			</div>
-			@if($subject->consultant)
-				<div class="sm:col-span-1">
-					<x-input type="text" readonly disabled name="project_manager" id="project_manager"
-					         label="Tipo di consulente"
-					         value="{{\App\Anagrafica::find($subject->consultant)->consultant_type}}"></x-input>
-				</div>
-			@endif
+			<div class="sm:col-span-1">
+				<x-input type="text" readonly disabled name="project_manager" id="project_manager"
+				         class="bg-gray-100 text-gray-600"
+				         label="Tipo di consulente"
+				         value="{{ $subject->consultant ? \App\Anagrafica::find($subject->consultant)->consultant_type : null }}"></x-input>
+			</div>
 			<div class="sm:col-span-1">
 				<x-subject_select label="Area Manager" name="area_manager" :subject="$subject"
 				                  :items="$area_manager_list"></x-subject_select>

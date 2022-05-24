@@ -13,6 +13,10 @@
 			return '7xl';
 		}
 
+		protected $listeners = [
+			'anagrafica-updated' => '$refresh',
+		];
+
 		public function mount(Anagrafica $anagrafica) {
 			$this->anagrafica = $anagrafica;
 		}

@@ -14,6 +14,7 @@
 				<div class="sm:col-span-12">
 					<x-select wire:model.defer="consultant_type" name="consultant_type" id="consultant_type"
 					          label="Tipologia consulente">
+						<option value="" selected>Seleziona..</option>
 						@foreach(config('anagrafiche.consultant_types') as $consultant_type)
 							<option value="{{ $consultant_type }}">{{ $consultant_type }}</option>
 						@endforeach

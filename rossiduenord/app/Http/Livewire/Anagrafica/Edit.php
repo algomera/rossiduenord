@@ -55,9 +55,8 @@
 			$this->validate();
 			$this->anagrafica->update();
 			$this->anagrafica->roles()->sync($this->roles);
-			$this->closeModalWithEvents([
-				Index::getName() => 'anagrafica-updated',
-			]);
+			$this->closeModal();
+			$this->emit('anagrafica-updated');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Anagrafica Aggiornata'),
 				'subtitle' => __('L\'anagrafica è stata aggiornata con successo!')

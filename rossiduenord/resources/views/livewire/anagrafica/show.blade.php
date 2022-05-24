@@ -1,8 +1,11 @@
 <x-card class="space-y-0">
-	<div class="px-4 py-5 sm:px-6">
-		<h3 class="text-lg leading-6 font-medium text-gray-900">Dati Anagrafica</h3>
-		<p class="mt-1 max-w-2xl text-sm text-gray-500">{{ $anagrafica->company_name }}
-			• {{ $anagrafica->subject_type }}</p>
+	<div class="flex items-center justify-between px-4 py-5 sm:px-6">
+		<div>
+			<h3 class="text-lg leading-6 font-medium text-gray-900">Dati Anagrafica</h3>
+			<p class="mt-1 max-w-2xl text-sm text-gray-500">{{ $anagrafica->company_name }}
+				• {{ $anagrafica->subject_type }}</p>
+		</div>
+		<x-button wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})">Modifica</x-button>
 	</div>
 	<div class="border-t border-gray-200 px-4 py-5 sm:px-6">
 		<dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">

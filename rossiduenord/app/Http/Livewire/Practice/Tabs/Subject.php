@@ -47,7 +47,8 @@
 		public $metric_calc_technician_list;
 		protected $listeners = [
 			'subject-selected'   => '$refresh',
-			'anagrafica-created'   => 'setSubject'
+			'anagrafica-created'   => 'setSubject',
+			'anagrafica-updated' => '$refresh',
 		];
 
 		public function setSubject($id, $role) {
