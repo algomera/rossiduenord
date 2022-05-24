@@ -14,12 +14,8 @@
 			'anagrafica-updated' => '$refresh',
 		];
 
-		public function mount() {
-			$this->subject_roles = SubjectRole::all()->except(21);
-			$this->anagrafiche = auth()->user()->anagrafiche;
-		}
-
 		public function render() {
+			$this->anagrafiche = auth()->user()->anagrafiche;
 			return view('livewire.anagrafica.index');
 		}
 	}

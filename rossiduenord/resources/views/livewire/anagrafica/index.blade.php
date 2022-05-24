@@ -27,7 +27,7 @@
 			</thead>
 			<tbody class="divide-y divide-gray-200 bg-white">
 			@forelse ($anagrafiche as $anagrafica)
-				<tr>
+				<tr wire:key="{{ $loop->index }}">
 					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->subject_type}}</td>
 					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->company_name}}</td>
 					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->first_name}}</td>
