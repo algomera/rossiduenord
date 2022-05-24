@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Anagrafica;
 
+	use App\Http\Livewire\Practice\Tabs\Subject;
 	use App\SubjectRole;
 	use LivewireUI\Modal\ModalComponent;
 
@@ -75,8 +76,9 @@
 			$validated = $this->validate();
 			$anagrafica = auth()->user()->anagrafiche()->create($validated);
 			$anagrafica->roles()->sync($this->roles);
-			$this->closeModal();
+
 			// TODO: $this->emit non aggiorna la view "anagrafica.index"
+			$this->closeModal();
 			$this->emit('anagrafica-added');
 			$this->emitTo('practice.tabs.subject', 'anagrafica-created', $anagrafica->id, $this->roles);
 			$this->dispatchBrowserEvent('open-notification', [

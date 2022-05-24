@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Practice\Tabs;
 
+	use App\Anagrafica;
 	use App\SubjectRole;
 	use Illuminate\Validation\Rule;
 	use Livewire\Component;
@@ -49,11 +50,14 @@
 			'anagrafica-created'   => 'setSubject'
 		];
 
-		// TODO: Fix refresh/autoselect quando un'anagrafica viene creata
 		public function setSubject($id, $role) {
-			$r = SubjectRole::find($role)->pluck('slug');
-			$this->practice->subject[$r[0]] = $id;
+			$slug = SubjectRole::find($role)->pluck('slug');
+			$new_anagrafica = Anagrafica::find($id);
+			$this->practice->subject[$slug[0]] = $id;
 			$this->practice->subject->save();
+			$slug_list = $slug[0] . '_list';
+			$this->{$slug_list}[] = $new_anagrafica;
+			$this->{$slug[0]} = $new_anagrafica;
 			$this->emitSelf('subject-selected');
 		}
 
@@ -110,23 +114,7 @@
 			$this->metric_calc_technician_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 20);
 			})->get();
-			$this->consultant = $this->practice->subject['consultant'];
-			$this->lending_bank = $this->practice->subject['lending_bank'];
-			$this->general_contractor = $this->practice->subject['general_contractor'];
-			$this->construction_company = $this->practice->subject['construction_company'];
-			$this->hydrothermal_sanitary_company = $this->practice->subject['hydrothermal_sanitary_company'];
-			$this->photovoltaic_company = $this->practice->subject['photovoltaic_company'];
-			$this->technician_APE_Ante = $this->practice->subject['technician_APE_Ante'];
-			$this->structural_engineer = $this->practice->subject['structural_engineer'];
-			$this->work_director = $this->practice->subject['work_director'];
-			$this->technical_assev = $this->practice->subject['technical_assev'];
-			$this->fiscal_assev = $this->practice->subject['fiscal_assev'];
-			$this->phiscal_transferee = $this->practice->subject['phiscal_transferee'];
-			$this->insurer = $this->practice->subject['insurer'];
-			$this->area_manager = $this->practice->subject['area_manager'];
-			$this->technician_energy_efficient = $this->practice->subject['technician_energy_efficient'];
-			$this->technician_APE_Post = $this->practice->subject['technician_APE_Post'];
-			$this->metric_calc_technician = $this->practice->subject['metric_calc_technician'];
+
 		}
 
 		protected function rules() {
@@ -266,6 +254,23 @@
 		}
 
 		public function render() {
+			$this->consultant = $this->practice->subject['consultant'];
+			$this->lending_bank = $this->practice->subject['lending_bank'];
+			$this->general_contractor = $this->practice->subject['general_contractor'];
+			$this->construction_company = $this->practice->subject['construction_company'];
+			$this->hydrothermal_sanitary_company = $this->practice->subject['hydrothermal_sanitary_company'];
+			$this->photovoltaic_company = $this->practice->subject['photovoltaic_company'];
+			$this->technician_APE_Ante = $this->practice->subject['technician_APE_Ante'];
+			$this->structural_engineer = $this->practice->subject['structural_engineer'];
+			$this->work_director = $this->practice->subject['work_director'];
+			$this->technical_assev = $this->practice->subject['technical_assev'];
+			$this->fiscal_assev = $this->practice->subject['fiscal_assev'];
+			$this->phiscal_transferee = $this->practice->subject['phiscal_transferee'];
+			$this->insurer = $this->practice->subject['insurer'];
+			$this->area_manager = $this->practice->subject['area_manager'];
+			$this->technician_energy_efficient = $this->practice->subject['technician_energy_efficient'];
+			$this->technician_APE_Post = $this->practice->subject['technician_APE_Post'];
+			$this->metric_calc_technician = $this->practice->subject['metric_calc_technician'];
 			return view('livewire.practice.tabs.subject');
 		}
 	}

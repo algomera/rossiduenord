@@ -1,34 +1,34 @@
 <form wire:submit.prevent="save" class="space-y-5">
 	<div class="space-y-5">
 		<x-subject_select label="General Contractor" name="general_contractor" :subject="$subject"
-		                  :items="$general_contractor_list"></x-subject_select>
+		                  :items="$general_contractor_list" wire:key="general_contractor"></x-subject_select>
 		<x-subject_select label="Azienda edile" name="construction_company" :subject="$subject"
-		                  :items="$construction_company_list"></x-subject_select>
+		                  :items="$construction_company_list" wire:key="construction_company"></x-subject_select>
 		<x-subject_select label="Azienda imp. idrotermosanitari" name="hydrothermal_sanitary_company"
-		                  :subject="$subject" :items="$hydrothermal_sanitary_company_list"></x-subject_select>
+		                  :subject="$subject" :items="$hydrothermal_sanitary_company_list" wire:key="hydrothermal_sanitary_company"></x-subject_select>
 		<x-subject_select label="Azienda imp. elettrici/fotovoltaici" name="photovoltaic_company" :subject="$subject"
-		                  :items="$photovoltaic_company_list"></x-subject_select>
+		                  :items="$photovoltaic_company_list" wire:key="photovoltaic_company"></x-subject_select>
 		<x-subject_select label="Termotecnico APE Ante" name="technician_APE_Ante" :subject="$subject"
-		                  :items="$technician_APE_Ante_list"></x-subject_select>
+		                  :items="$technician_APE_Ante_list" wire:key="technician_APE_Ante"></x-subject_select>
 		<x-subject_select label="Termotecnico efficient. energetico" name="technician_energy_efficient"
-		                  :subject="$subject" :items="$technician_energy_efficient_list"></x-subject_select>
+		                  :subject="$subject" :items="$technician_energy_efficient_list" wire:key="technician_energy_efficient"></x-subject_select>
 		<x-subject_select label="Termotecnico APE Post" name="technician_APE_Post" :subject="$subject"
-		                  :items="$technician_APE_Post_list"></x-subject_select>
+		                  :items="$technician_APE_Post_list" wire:key="technician_APE_Post"></x-subject_select>
 		<x-subject_select label="Strutturista" name="structural_engineer" :subject="$subject"
-		                  :items="$structural_engineer_list"></x-subject_select>
+		                  :items="$structural_engineer_list" wire:key="structural_engineer"></x-subject_select>
 		<x-subject_select label="Tecnico Computo Metrico" name="metric_calc_technician" :subject="$subject"
-		                  :items="$metric_calc_technician_list"></x-subject_select>
+		                  :items="$metric_calc_technician_list" wire:key="metric_calc_technician"></x-subject_select>
 		<x-subject_select label="Direttore lavori" name="work_director" :subject="$subject"
-		                  :items="$work_director_list"></x-subject_select>
+		                  :items="$work_director_list" wire:key="work_director"></x-subject_select>
 		<x-subject_select label="Asseveratore tecnico" name="technical_assev" :subject="$subject"
-		                  :items="$technical_assev_list"></x-subject_select>
+		                  :items="$technical_assev_list" wire:key="technical_assev"></x-subject_select>
 		<x-subject_select label="Asseveratore fiscale" name="fiscal_assev" :subject="$subject"
-		                  :items="$fiscal_assev_list"></x-subject_select>
+		                  :items="$fiscal_assev_list" wire:key="fiscal_assev"></x-subject_select>
 		<x-subject_select label="Cessionario credito fiscale" name="phiscal_transferee" :subject="$subject"
-		                  :items="$phiscal_transferee_list"></x-subject_select>
+		                  :items="$phiscal_transferee_list" wire:key="phiscal_transferee"></x-subject_select>
 		<x-subject_select label="Banca finanziatrice" name="lending_bank" :subject="$subject"
-		                  :items="$lending_bank_list"></x-subject_select>
-		<x-subject_select label="Assicuratore" name="insurer" :subject="$subject" :items="$insurer_list"></x-subject_select>
+		                  :items="$lending_bank_list" wire:key="lending_bank"></x-subject_select>
+		<x-subject_select label="Assicuratore" name="insurer" :subject="$subject" :items="$insurer_list" wire:key="insurer"></x-subject_select>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 			<div class="sm:col-span-1">
