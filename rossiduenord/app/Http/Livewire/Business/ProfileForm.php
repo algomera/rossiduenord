@@ -7,13 +7,13 @@
 
 	class ProfileForm extends Component
 	{
-		public $type = '';
-		public $p_iva = '';
-		public $c_f = '';
-		public $legal_form = '';
-		public $rea = '';
-		public $c_ateco = '';
-		public $reg_date = '';
+		public $type;
+		public $p_iva;
+		public $c_f;
+		public $legal_form;
+		public $rea;
+		public $c_ateco;
+		public $reg_date;
 		protected $rules = [
 			'type'       => 'nullable|string',
 			'p_iva'      => 'nullable|string|min:11|max:11',

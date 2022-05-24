@@ -2,7 +2,6 @@
 
 	namespace App\Http\Livewire\Anagrafica;
 
-	use App\Http\Livewire\Practice\Tabs\Subject;
 	use App\SubjectRole;
 	use LivewireUI\Modal\ModalComponent;
 

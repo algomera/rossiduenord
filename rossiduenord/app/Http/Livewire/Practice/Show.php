@@ -19,7 +19,7 @@
 			'contracts'  => 'Contratti',
 			'policies'   => 'Polizze'
 		];
-		public $selectedTab = 'subjects';
+		public $selectedTab = 'building';
 
 		protected $listeners = [
 			'change-tab' => 'changeTab'

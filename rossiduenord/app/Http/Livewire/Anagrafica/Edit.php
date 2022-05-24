@@ -2,13 +2,13 @@
 
 	namespace App\Http\Livewire\Anagrafica;
 
-	use App\Anagrafica;
+	use App\Anagrafica as AnagraficaModel;
 	use App\SubjectRole;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Edit extends ModalComponent
 	{
-		public Anagrafica $anagrafica;
+		public AnagraficaModel $anagrafica;
 		public $roles = [];
 
 		protected function rules() {
@@ -43,7 +43,7 @@
 			return '7xl';
 		}
 
-		public function mount(Anagrafica $anagrafica) {
+		public function mount(AnagraficaModel $anagrafica) {
 			$this->anagrafica = $anagrafica;
 			foreach ($this->anagrafica->roles->pluck('id') as $role) {
 				$this->roles[] = $role;
