@@ -1,8 +1,9 @@
 @props(['label', 'subject', 'items', 'name'])
-<x-select wire:model.lazy="{{ $name }}" name="{{$name}}" label="{{$label}}">
-	<option value="" selected>Seleziona..</option>
+<x-select wire:key="{{$name}}" wire:model="{{ $name }}" name="{{$name}}" label="{{$label}}">
+	<option value="">Seleziona..</option>
 	@foreach($items as $item)
-		<option wire:key="{{ $loop->index }}" value="{{ (int) $item->id }}" {{ $subject[$name] === $item->id ? 'selected' : '' }}>
+		<option wire:key="{{ $loop->index }}"
+		        value="{{ $item->id }}">
 			{{ $item->company_name }} @if($name === 'consultant' && $item->consultant_type)
 				({{ $item->consultant_type }})
 			@endif
