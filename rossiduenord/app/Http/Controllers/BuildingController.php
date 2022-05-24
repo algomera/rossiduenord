@@ -9,68 +9,6 @@ use Illuminate\Support\Facades\Storage;
 class BuildingController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('pages.building.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\building  $building
-     * @return \Illuminate\Http\Response
-     */
-    public function show(building $building)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\building  $building
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(building $building, Applicant $applicant)
-    {
-        //$this->authorize('edit-building', [$building, $applicant]);
-
-        $practice = $building->practice;
-        $applicant = $practice->applicant;
-        $subject = $practice->subject;
-        $condomini = $practice->condomini;
-        $document = $practice->folder_documents;
-
-        //dd($document);
-        return view('pages.building.edit', compact('condomini', 'practice', 'subject', 'applicant', 'building','document'));
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -260,16 +198,5 @@ class BuildingController extends Controller
         $files = Storage::allFiles('practices/' . $id . '/excel');
 
         Storage::delete($files);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\building  $building
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(building $building)
-    {
-        //
     }
 }
