@@ -24,19 +24,19 @@ class UserSeeder extends Seeder
         // Utenti Impresa
         $primehub = User::create([
             'email' => 'info@primehub.it',
-            'password' => bcrypt('mtmopx9m'),
+            'password' => bcrypt('%5Bcontent'),
         ]);
         $edrasis = User::create([
             'email' => 'info@edrasis.it',
-            'password' => bcrypt('mtmopx9m'),
+            'password' => bcrypt('%5Bcontent'),
         ]);
         $novello = User::create([
             'email' => 'p.novello@integrabusiness.net',
-            'password' => bcrypt('mtmopx9m'),
+            'password' => bcrypt('%5Bcontent'),
         ]);
         $tasrl = User::create([
             'email' => 'tasrl1202@gmail.com',
-            'password' => bcrypt('mtmopx9m'),
+            'password' => bcrypt('%5Bcontent'),
         ]);
 
         // Creo UserData per admin

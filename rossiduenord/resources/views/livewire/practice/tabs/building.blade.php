@@ -289,7 +289,6 @@
 		</div>
 	</div>
 
-{{--	<livewire:components.condomini-section :practice="$practice" />--}}
 	<div>
 		<x-section-heading>
 			Anagrafica e lista dei condomini
