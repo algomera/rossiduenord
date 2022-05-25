@@ -51,8 +51,8 @@
 	<hr>
 	<div class="space-y-5">
 		<x-label>Contatti dei responsabili</x-label>
-		<x-input type="text" name="project_manager" id="project_manager" label="Project Manager"></x-input>
-		<x-input type="text" name="responsible_technician" id="responsible_technician"
+		<x-input wire:model.defer="project_manager" type="text" name="project_manager" id="project_manager" label="Project Manager"></x-input>
+		<x-input wire:model.defer="responsible_technician" type="text" name="responsible_technician" id="responsible_technician"
 		         label="Responsabile Tecnico"></x-input>
 	</div>
 	<div class="flex justify-end space-x-3">

@@ -73,3 +73,7 @@
 		@endswitch
 	</x-card>
 </x-card>
+
+@push('notifications')
+	<x-notification />
+@endpush

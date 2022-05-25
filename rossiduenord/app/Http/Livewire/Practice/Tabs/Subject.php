@@ -28,6 +28,8 @@
 		public $technician_energy_efficient;
 		public $technician_APE_Post;
 		public $metric_calc_technician;
+		public $project_manager;
+		public $responsible_technician;
 		public $consultant_list;
 		public $lending_bank_list;
 		public $general_contractor_list;
@@ -54,8 +56,8 @@
 		public function setSubject($id, $role) {
 			$slug = SubjectRole::find($role)->pluck('slug');
 			$new_anagrafica = Anagrafica::find($id);
-			$this->practice->subject[$slug[0]] = $id;
-			$this->practice->subject->save();
+			$this->subject[$slug[0]] = $id;
+			$this->subject->save();
 			$slug_list = $slug[0] . '_list';
 			$this->{$slug_list}[] = $new_anagrafica;
 			$this->{$slug[0]} = $new_anagrafica;
@@ -115,7 +117,8 @@
 			$this->metric_calc_technician_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 20);
 			})->get();
-
+			$this->project_manager = $this->subject->project_manager;
+			$this->responsible_technician = $this->subject->responsible_technician;
 		}
 
 		protected function rules() {
@@ -239,39 +242,50 @@
 						$q->where('user_id', auth()->id());
 					})
 				],
-				'project_manager'               => 'nullable | string | min:3 | max:100',
-				'responsible_technician'        => 'nullable | string | min:3 | max:100',
+				'project_manager'               => 'nullable|string',
+				'responsible_technician'        => 'nullable|string',
 			];
 		}
 
 		public function updated($name, $value) {
-			$this->practice->subject[$name] = empty($value) ? null : (int)$value;
-			$this->practice->subject->save();
+			$this->subject[$name] = empty($value) ? null : (int)$value;
+			$this->subject->save();
 			$this->emitSelf('subject-selected');
 		}
 
 		public function save() {
 			$this->validate();
+			$this->subject->update([
+				'project_manager' => $this->project_manager,
+				'responsible_technician' => $this->responsible_technician
+			]);
+
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Aggiornamento'),
+				'subtitle' => __('I soggetti sono stati aggiornati con successo!')
+			]);
+
+			$this->emitUp('change-tab', 'building');
 		}
 
 		public function render() {
-			$this->consultant = $this->practice->subject['consultant'];
-			$this->lending_bank = $this->practice->subject['lending_bank'];
-			$this->general_contractor = $this->practice->subject['general_contractor'];
-			$this->construction_company = $this->practice->subject['construction_company'];
-			$this->hydrothermal_sanitary_company = $this->practice->subject['hydrothermal_sanitary_company'];
-			$this->photovoltaic_company = $this->practice->subject['photovoltaic_company'];
-			$this->technician_APE_Ante = $this->practice->subject['technician_APE_Ante'];
-			$this->structural_engineer = $this->practice->subject['structural_engineer'];
-			$this->work_director = $this->practice->subject['work_director'];
-			$this->technical_assev = $this->practice->subject['technical_assev'];
-			$this->fiscal_assev = $this->practice->subject['fiscal_assev'];
-			$this->phiscal_transferee = $this->practice->subject['phiscal_transferee'];
-			$this->insurer = $this->practice->subject['insurer'];
-			$this->area_manager = $this->practice->subject['area_manager'];
-			$this->technician_energy_efficient = $this->practice->subject['technician_energy_efficient'];
-			$this->technician_APE_Post = $this->practice->subject['technician_APE_Post'];
-			$this->metric_calc_technician = $this->practice->subject['metric_calc_technician'];
+			$this->consultant = $this->subject['consultant'];
+			$this->lending_bank = $this->subject['lending_bank'];
+			$this->general_contractor = $this->subject['general_contractor'];
+			$this->construction_company = $this->subject['construction_company'];
+			$this->hydrothermal_sanitary_company = $this->subject['hydrothermal_sanitary_company'];
+			$this->photovoltaic_company = $this->subject['photovoltaic_company'];
+			$this->technician_APE_Ante = $this->subject['technician_APE_Ante'];
+			$this->structural_engineer = $this->subject['structural_engineer'];
+			$this->work_director = $this->subject['work_director'];
+			$this->technical_assev = $this->subject['technical_assev'];
+			$this->fiscal_assev = $this->subject['fiscal_assev'];
+			$this->phiscal_transferee = $this->subject['phiscal_transferee'];
+			$this->insurer = $this->subject['insurer'];
+			$this->area_manager = $this->subject['area_manager'];
+			$this->technician_energy_efficient = $this->subject['technician_energy_efficient'];
+			$this->technician_APE_Post = $this->subject['technician_APE_Post'];
+			$this->metric_calc_technician = $this->subject['metric_calc_technician'];
 			return view('livewire.practice.tabs.subject');
 		}
 	}
