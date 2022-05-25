@@ -2,7 +2,6 @@
 
 	namespace App\Http\Livewire\Modals\Condomino;
 
-	use App\Condomini;
 	use App\Practice as PracticeModel;
 	use LivewireUI\Modal\ModalComponent;
 
@@ -45,7 +44,7 @@
 			$validated = $this->validate();
 			$this->practice->condomini()->create($validated);
 			$this->closeModal();
-			$this->emitTo('components.condomini-section', 'condomino-created');
+			$this->emitTo('practice.tabs.building', 'condomino-created');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Creazione'),
 				'subtitle' => __('Il condomino è stato creato con successo!')

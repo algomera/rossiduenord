@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Practice\Tabs;
 
 	use App\Practice as PracticeModel;
+	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 	use Livewire\WithFileUploads;
 
@@ -13,6 +14,7 @@
 		public PracticeModel $practice;
 		public $condomini;
 		public $building;
+		public $tmp_excel_file;
 		protected $rules = [
 			//			'building.practice_id'              => 'nullable|numeric',
 			'building.intervention_name'        => 'required|string',
@@ -61,10 +63,53 @@
 			'building.administrator_email'      => 'nullable|string',
 			//			'building.imported_excel_file'      => 'nullable|file|mimes:xls,xlsx,csv|max:512'
 		];
+		protected $listeners = [
+			'condomino-created' => '$refresh'
+		];
 
 		public function mount() {
-			$this->condomini = $this->practice->condomini;
 			$this->building = $this->practice->building;
+		}
+
+		public function exportExcel() {
+			return redirect()->route('condomini.export', $this->practice->id);
+		}
+
+		public function importExcel() {
+			$extension = $this->tmp_excel_file->extension();
+			$filename = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_FILENAME);
+			// Dovendo avere un solo file caricato, cancello gli altri (se presenti) nella cartella
+			if (count(Storage::allFiles('practices/' . $this->practice->id . '/excel'))) {
+				$files = Storage::allFiles('practices/' . $this->practice->id . '/excel');
+				Storage::delete($files);
+			}
+			$path = $this->tmp_excel_file->storeAs('practices/' . $this->practice->id . '/excel', $filename . '.' . $extension);
+			$this->building->imported_excel_file = $path;
+			$this->building->update([
+				'imported_excel_file' => $path
+			]);
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Caricamento'),
+				'subtitle' => __('Il file è stato caricato con successo!')
+			]);
+			$this->tmp_excel_file = null;
+		}
+
+		public function downloadExcel() {
+			$file = $this->building->imported_excel_file;
+			return Storage::download($file);
+		}
+
+		public function deleteExcel() {
+			$this->building->update([
+				'imported_excel_file' => null
+			]);
+			$files = Storage::allFiles('practices/' . $this->practice->id . '/excel');
+			Storage::delete($files);
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Eliminazione'),
+				'subtitle' => __('Il file è stato eliminato con successo!')
+			]);
 		}
 
 		public function save() {
@@ -87,6 +132,7 @@
 		}
 
 		public function render() {
+			$this->condomini = $this->practice->condomini;
 			return view('livewire.practice.tabs.building');
 		}
 	}
