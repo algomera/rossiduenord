@@ -351,9 +351,6 @@
 			@endif
 		</div>
 	</div>
-	<div v-if="isLoading">
-		<practice-loader></practice-loader>
-	</div>
 </div>
 @stack('modals')
 @stack('notifications')
