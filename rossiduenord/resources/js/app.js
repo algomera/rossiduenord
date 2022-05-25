@@ -65,10 +65,10 @@ import Vue from "vue";
  */
 const app = new Vue({
     el: "#app",
-    
+
     data: {
         isModalVisible: false,
-        isPreventVisible: false,
+        isPreventVisible: true,
         isListVisible: false,
         isPhotos: true,
         isVideos: false,
