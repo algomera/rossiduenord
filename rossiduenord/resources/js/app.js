@@ -68,7 +68,7 @@ const app = new Vue({
 
     data: {
         isModalVisible: false,
-        isPreventVisible: true,
+        isPreventVisible: false,
         isListVisible: false,
         isPhotos: true,
         isVideos: false,

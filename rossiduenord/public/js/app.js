@@ -71884,7 +71884,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   el: "#app",
   data: {
     isModalVisible: false,
-    isPreventVisible: true,
+    isPreventVisible: false,
     isListVisible: false,
     isPhotos: true,
     isVideos: false,
