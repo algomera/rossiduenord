@@ -364,7 +364,7 @@
 			<div class="flex items-center space-x-5">
 				<label class="block">
 					<span class="sr-only">Scegli..</span>
-					<input wire:model="imported_excel_file" type="file" class="block w-full text-sm text-slate-500
+					<input wire:model="tmp_excel_file" type="file" class="block w-full text-sm text-slate-500
 			      file:mr-4 file:py-2 file:px-4
 			      file:rounded-full file:border-0
 			      file:text-sm file:font-semibold
@@ -372,12 +372,12 @@
 			      hover:file:bg-indigo-100
 			    "/>
 				</label>
-				@if($imported_excel_file)
+				@if($tmp_excel_file)
 					<x-button wire:click="importExcel" type="button" prepend="upload" iconColor="text-white">
 						Carica file
 					</x-button>
 				@endif
-				<div wire:loading wire:target="imported_excel_file" class="ml-2">
+				<div wire:loading wire:target="tmp_excel_file" class="ml-2">
 					<span class="text-sm text-gray-400">Caricamento..</span>
 				</div>
 			</div>

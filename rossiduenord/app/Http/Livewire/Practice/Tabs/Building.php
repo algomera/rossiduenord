@@ -14,7 +14,7 @@
 		public PracticeModel $practice;
 		public $condomini;
 		public $building;
-		public $imported_excel_file;
+		public $tmp_excel_file;
 		protected $rules = [
 			//			'building.practice_id'              => 'nullable|numeric',
 			'building.intervention_name'        => 'required|string',
@@ -74,14 +74,14 @@
 		}
 
 		public function importExcel() {
-			$extension = $this->imported_excel_file->extension();
-			$filename = pathinfo($this->imported_excel_file->getClientOriginalName(), PATHINFO_FILENAME);
+			$extension = $this->tmp_excel_file->extension();
+			$filename = pathinfo($this->tmp_excel_file->getClientOriginalName(), PATHINFO_FILENAME);
 			// Dovendo avere un solo file caricato, cancello gli altri (se presenti) nella cartella
 			if (count(Storage::allFiles('practices/' . $this->practice->id . '/excel'))) {
 				$files = Storage::allFiles('practices/' . $this->practice->id . '/excel');
 				Storage::delete($files);
 			}
-			$path = $this->imported_excel_file->storeAs('practices/' . $this->practice->id . '/excel', $filename . '.' . $extension);
+			$path = $this->tmp_excel_file->storeAs('practices/' . $this->practice->id . '/excel', $filename . '.' . $extension);
 			$this->building->imported_excel_file = $path;
 			$this->building->update([
 				'imported_excel_file' => $path
@@ -90,23 +90,20 @@
 				'title'    => __('Caricamento'),
 				'subtitle' => __('Il file è stato caricato con successo!')
 			]);
-			$this->imported_excel_file = null;
+			$this->tmp_excel_file = null;
 		}
 
 		public function downloadExcel() {
-			$file = $this->practice->building->imported_excel_file;
+			$file = $this->building->imported_excel_file;
 			return Storage::download($file);
 		}
 
 		public function deleteExcel() {
-			$this->practice->building->imported_excel_file = '';
-			$this->practice->building->update([
+			$this->building->update([
 				'imported_excel_file' => null
 			]);
 			$files = Storage::allFiles('practices/' . $this->practice->id . '/excel');
 			Storage::delete($files);
-			// TODO: Aggiornare pagina con elminazione del file
-			$this->imported_excel_file = null;
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Eliminazione'),
 				'subtitle' => __('Il file è stato eliminato con successo!')
@@ -115,7 +112,6 @@
 
 		public function save() {
 			$validated = $this->validate();
-
 			if (!$this->condomini->count()) {
 				$this->addError('condomini', 'Inserisci almeno un condomino.');
 				$this->dispatchBrowserEvent('open-notification', [
