@@ -294,9 +294,9 @@
 						Aggiungi
 					</x-button>
 					@if($condomini->count())
-					<x-button wire:click="exportExcel" type="button" prepend="download" iconColor="text-white">
-						Esporta
-					</x-button>
+						<x-button wire:click="exportExcel" type="button" prepend="download" iconColor="text-white">
+							Esporta
+						</x-button>
 					@endif
 				</div>
 			</x-slot>
@@ -381,8 +381,11 @@
 						<span class="text-sm text-indigo-400 font-italic font-bold">{{ basename($building->imported_excel_file) }}</span>
 					</div>
 					<div class="flex items-center space-x-3">
-						<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash" iconColor="text-white">Elimina</x-danger-button>
-						<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download" iconColor="text-white">
+						<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash"
+						                 iconColor="text-white">Elimina
+						</x-danger-button>
+						<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download"
+						          iconColor="text-white">
 							Scarica
 						</x-button>
 					</div>
