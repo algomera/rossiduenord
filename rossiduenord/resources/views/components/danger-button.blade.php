@@ -1,7 +1,7 @@
 @props(['size' => 'md', 'append' => false, 'prepend' => false, 'iconColor' => 'text-gray-800'])
 
 @php
-	$classes = 'inline-flex items-center border border-transparent font-medium shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500';
+	$classes = 'inline-flex items-center justify-center border border-transparent font-medium shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500';
 		switch ($size) {
 			case 'xs':
 				$classes .= ' px-2.5 py-1.5 text-xs rounded';
