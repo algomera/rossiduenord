@@ -15,7 +15,7 @@
 			'building'   => 'Immobile',
 			'media'      => 'Foto e Video',
 			'documents'  => 'Documenti richiesti',
-			'superbonus' => 'Superbonus',
+			'superbonus' => 'Superbonus 110%',
 			'contracts'  => 'Contratti',
 			'policies'   => 'Polizze'
 		];

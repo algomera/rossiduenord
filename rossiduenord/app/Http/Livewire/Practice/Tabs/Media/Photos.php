@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Practice\Tabs\Media;
+	namespace App\Http\Livewire\Practice\Tabs\Media;
 
-use Livewire\Component;
+	use App\Practice as PracticeModel;
+	use Livewire\Component;
 
-class Photos extends Component
-{
-    public function render()
-    {
-        return view('livewire.practice.tabs.media.photos');
-    }
-}
+	class Photos extends Component
+	{
+		public PracticeModel $practice;
+		public $photos;
+
+		public function render() {
+			$this->photos = $this->practice->photos;
+			return view('livewire.practice.tabs.media.photos');
+		}
+	}

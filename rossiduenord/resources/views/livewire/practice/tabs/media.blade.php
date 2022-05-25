@@ -16,10 +16,10 @@
 	<x-card class="py-4">
 		@switch($selectedTab)
 			@case('photos')
-				<livewire:practice.tabs.media.photos />
+				<livewire:practice.tabs.media.photos :practice="$practice" />
 				@break
 			@case('videos')
-				<livewire:practice.tabs.media.videos />
+				<livewire:practice.tabs.media.videos :practice="$practice" />
 				@break
 		@endswitch
 	</x-card>

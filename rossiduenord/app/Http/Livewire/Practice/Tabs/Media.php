@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Practice\Tabs;
+	namespace App\Http\Livewire\Practice\Tabs;
 
-use Livewire\Component;
+	use App\Practice as PracticeModel;
+	use Livewire\Component;
 
-class Media extends Component
-{
-	public $tabs = [
-		'photos'  => 'Foto',
-		'videos'   => 'Videoispezioni',
-	];
-	public $selectedTab = 'photos';
+	class Media extends Component
+	{
+		public PracticeModel $practice;
+		public $tabs = [
+			'photos' => 'Foto',
+			'videos' => 'Videoispezioni',
+		];
+		public $selectedTab = 'photos';
 
-    public function render()
-    {
-        return view('livewire.practice.tabs.media');
-    }
-}
+		public function render() {
+			return view('livewire.practice.tabs.media');
+		}
+	}
