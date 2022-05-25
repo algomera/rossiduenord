@@ -83,7 +83,3 @@
 		<x-button>Salva</x-button>
 	</div>
 </form>
-
-@push('notifications')
-	<x-notification/>
-@endpush

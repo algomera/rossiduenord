@@ -13,7 +13,7 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="{{ mix('css/app.css') }}">
-	<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+	<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
 
 	<!-- Scripts -->
 	<script src="{{ mix('js/app.js') }}" defer></script>
