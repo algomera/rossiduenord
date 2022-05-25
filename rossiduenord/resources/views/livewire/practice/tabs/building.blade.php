@@ -288,13 +288,20 @@
 		<x-section-heading>
 			Anagrafica e lista dei condomini
 			<x-slot name="actions">
-				<x-button type="button" prepend="plus" iconColor="text-white"
-				          wire:click="$emit('openModal', 'anagrafica.create')">
-					Aggiungi
-				</x-button>
+				<div class="flex items-center justify-between w-full">
+					<x-button type="button" prepend="plus" iconColor="text-white"
+					          wire:click="$emit('openModal', 'anagrafica.create')">
+						Aggiungi
+					</x-button>
+					@if($condomini->count())
+					<x-button wire:click="exportExcel" type="button" prepend="download" iconColor="text-white">
+						Esporta
+					</x-button>
+					@endif
+				</div>
 			</x-slot>
 		</x-section-heading>
-		<ul role="list" class="divide-y divide-gray-200">
+		<ul role="list" class="border-y border-gray-100 divide-y divide-gray-200">
 			@forelse($condomini as $i => $condomino)
 				<li class="py-4 flex">
 					<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full">
@@ -346,7 +353,7 @@
 				<li class="py-4 text-sm text-gray-500">Nessun condomino inserito</li>
 			@endforelse
 		</ul>
-		<div class="flex items-center justify-between">
+		<div class="flex items-center justify-between mt-5">
 			<div class="flex items-center space-x-5">
 				<label class="block">
 					<span class="sr-only">Scegli..</span>
@@ -375,9 +382,6 @@
 					</div>
 					<div class="flex items-center space-x-3">
 						<x-danger-button wire:click="deleteExcel" size="xs" type="button" prepend="trash" iconColor="text-white">Elimina</x-danger-button>
-						<x-button wire:click="exportExcel" size="xs" type="button" prepend="download" iconColor="text-white">
-							Esporta
-						</x-button>
 						<x-button wire:click="downloadExcel" size="xs" type="button" prepend="download" iconColor="text-white">
 							Scarica
 						</x-button>
