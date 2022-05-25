@@ -8,6 +8,10 @@ class Condomini extends Model
 {
     protected $guarded = [];
 
+	public function setCFAttribute($value) {
+		$this->attributes['cf'] = strtoupper($value);
+	}
+
     public function practice() {
         return $this->belongsTo(Practice::class);
     }
