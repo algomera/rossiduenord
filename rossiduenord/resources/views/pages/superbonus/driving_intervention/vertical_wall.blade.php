@@ -3,8 +3,9 @@
 @section('content')
     @include('layouts.partials.practiceNav')
     @include('layouts.partials.nav_superbonus')
-
-
+    @include('layouts.modals.computo')
+    @include('layouts.modals.prevent_computo')
+    
     <form action="{{ route('update_driving_intervention', ['practice' => $practice]) }}" method="POST" class="ov-x-none">
         @csrf
         @method('PUT')
@@ -60,11 +61,12 @@
                         @enderror
                     </label>
                 </div>
+                <span @click="opencloseModal()" class="add-button">Computo</span>
             </div>
 
             <p class="m-0 mt-2 font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>
 
-            <div class="d-flex align-items-center mt-3" style="width:100%;">
+            <div class="d-flex align-items-center mt-3" style="width:80%;">
                 <p class="m-0">La spesa massima ammissibile dei lavori sulle parti opache è pari a</p>
                 <label for="max_possible_cost" class=" m-0 mr-4 black">
                     <input type="number" value="{{old('max_possible_cost') ?? $vertwall->max_possible_cost}}" name="max_possible_cost" id="max_possible_cost" style="width: 120px; background-color: #f2f2f2" class="border ml-2 px-2 text-right @error('max_possible_cost') is-invalid error @enderror">
@@ -279,7 +281,7 @@
                 </label>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between mt-3" style="width:80%;">
+            <div class="d-flex align-items-center justify-content-between mt-3" style="width:100%;">
                 <div class="d-flex align-items-center">
                     <p class="m-0">Il costo complessivo di progetto degli interventi sull’impianto ammonta a *</p>
                     <label for="total_acs_project_cost" class=" m-0 mr-4 black">
@@ -291,6 +293,7 @@
                         @enderror
                     </label>
                 </div>
+                <span @click="opencloseModal()" class="add-button">Computo</span>
             </div>
 
             <p class="font-italic">* Incluso iva e spese professionali (es. progettazione, direzione lavori, assservazione tecnica e fiscale)</p>

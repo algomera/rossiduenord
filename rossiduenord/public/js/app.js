@@ -71883,19 +71883,31 @@ vue__WEBPACK_IMPORTED_MODULE_4___default.a.component("AtomSpinner", epic_spinner
 var app = new vue__WEBPACK_IMPORTED_MODULE_4___default.a({
   el: "#app",
   data: {
-    isModalVisible: true,
+    isModalVisible: false,
+    isPreventVisible: false,
     isListVisible: false,
     isPhotos: true,
     isVideos: false,
     isLoading: false,
+    dropTrainanti: false,
+    dropTrainati: false,
     photos: [],
     videos: [],
     path_photo: '/img/placeholder.png',
     path_video: ''
   },
   methods: {
-    closeModal: function closeModal() {
-      this.isModalVisible = false;
+    openTrainanti: function openTrainanti() {
+      this.dropTrainanti = !this.dropTrainanti;
+    },
+    openTrainati: function openTrainati() {
+      this.dropTrainati = !this.dropTrainati;
+    },
+    opencloseModal: function opencloseModal() {
+      this.isModalVisible = !this.isModalVisible;
+    },
+    openclosePrevent: function openclosePrevent() {
+      this.isPreventVisible = !this.isPreventVisible;
     },
     openList: function openList() {
       if (this.isListVisible == false) {

@@ -33,7 +33,7 @@
                                 <th style="width: 25%">Nome cartella</th>
                                 <th style="width: 20%">Data creazione</th>
                                 <th style="width: 15%">Tipologia</th>
-                                <th style="whith: 10%">Utente</th>
+                                <th style="width: 10%">Utente</th>
                                 <th style="width: 350px"></th>
                             </tr>
                         </thead>

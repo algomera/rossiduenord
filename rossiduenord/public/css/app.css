@@ -821,7 +821,6 @@ main {
   bottom: 0;
   right: 0;
   box-shadow: 4px 2px 10px -5px;
-  z-index: 999;
 }
 
 .px-20 {
@@ -11009,6 +11008,140 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12;
+}
+.opacity .modal-full {
+  width: 95%;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+.opacity .modal-full-2 {
+  width: 95%;
+  height: 95%;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+.opacity .modal-full thead tr,
+.opacity .modal-full-2 thead tr {
+  font-weight: 600 !important;
+}
+.opacity .modal-full td,
+.opacity .modal-full-2 td {
+  padding: 5px 10px !important;
+}
+.opacity .modal-full td span:hover,
+.opacity .modal-full-2 td span:hover {
+  color: #61a4d7;
+}
+.opacity .header-modal .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid grey;
+  margin-bottom: 5px;
+}
+.opacity .body-modal .body-top,
+.opacity .body-modal .body-bottom {
+  display: flex;
+}
+.opacity .body-top .input-container {
+  width: 50%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.opacity .body-top .input-container input {
+  width: 80px;
+}
+.opacity .body-top .input-container-xl .EP {
+  width: 130px;
+  border: 1px solid;
+  margin-left: 10px;
+  padding: 5px;
+}
+.opacity .body-top .input-container-xl .description_EP {
+  border: 1px solid;
+  padding: 5px;
+}
+.opacity .footer-modal {
+  height: 60px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #f2f2f2;
+  border-top: 2px solid #61a4d7;
+  border-bottom: 2px solid #61a4d7;
+}
+
+.box-import {
+  border-top: 2px solid #61a4d7;
+  border-bottom: 2px solid #61a4d7;
+  margin-bottom: 5px;
+}
+.box-import input {
+  border: none;
+}
+
+.icon-center {
+  display: flex;
+  align-items: center;
+}
+
+.tronk-text {
+  height: 30px;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input_custom {
+  border: 1px solid grey;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.input_custom_s {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.dropdown-container {
+  width: 100%;
+}
+.dropdown-container button {
+  width: 100%;
+}
+.dropdown-container .dropdown-content {
+  width: 100%;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 0.9rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-clip: padding-box;
+}
+.dropdown-container .dropdown-content a {
+  color: black;
+  font-weight: 500;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid #f2f2f2;
+}
+.dropdown-container .dropdown-content a:hover {
+  background-color: rgba(97, 164, 215, 0.5);
+}
+.dropdown-container .dropdown-content a:active {
+  background-color: rgba(97, 164, 215, 0.5);
 }
 
 .practices-info {

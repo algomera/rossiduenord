@@ -66,19 +66,31 @@ import Vue from "vue";
 const app = new Vue({
     el: "#app",
     data: {
-        isModalVisible: true,
+        isModalVisible: false,
+        isPreventVisible: false,
         isListVisible: false,
         isPhotos: true,
         isVideos: false,
         isLoading: false,
+        dropTrainanti: false,
+        dropTrainati: false,        
         photos:[],
         videos:[],
         path_photo: '/img/placeholder.png',
         path_video: ''
     },
     methods: {
-        closeModal() {
-            this.isModalVisible = false;
+        openTrainanti(){
+            this.dropTrainanti = !this.dropTrainanti;
+        },
+        openTrainati(){
+            this.dropTrainati = !this.dropTrainati;
+        },
+        opencloseModal() {
+            this.isModalVisible = !this.isModalVisible;
+        },
+        openclosePrevent() {
+            this.isPreventVisible = !this.isPreventVisible;
         },
         openList() {
             if (this.isListVisible == false) {
