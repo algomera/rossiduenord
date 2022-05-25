@@ -16,16 +16,16 @@
 		public $building;
 		public $imported_excel_file;
 		protected $rules = [
-//			'building.practice_id'              => 'nullable|numeric',
+			//			'building.practice_id'              => 'nullable|numeric',
 			'building.intervention_name'        => 'required|string',
 			'building.company_role'             => 'required|string',
 			'building.intervention_tipology'    => 'required|accepted|boolean',
-//			'building.build_address'            => 'nullable|string|min:5|max:150',
-//			'building.build_civic_number'       => 'nullable|string',
-//			'building.common'                   => 'nullable|string|min:2|max:100',
-//			'building.province'                 => 'nullable|string|min:2|max:2',
-//			'building.region'                   => 'nullable|string',
-//			'building.cap'                      => 'nullable|numeric',
+			//			'building.build_address'            => 'nullable|string|min:5|max:150',
+			//			'building.build_civic_number'       => 'nullable|string',
+			//			'building.common'                   => 'nullable|string|min:2|max:100',
+			//			'building.province'                 => 'nullable|string|min:2|max:2',
+			//			'building.region'                   => 'nullable|string',
+			//			'building.cap'                      => 'nullable|numeric',
 			'building.fiscal_code'              => 'required|min:11|max:11',
 			'building.condominio'               => 'required|string',
 			// 'iban' => 'required|string|min:27|max:27|regex:/^([A-Z]{2}[ \-]?[0-9]{2})(?=(?:[ \-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([ \-]?[A-Z0-9]{1,3})?$/',
@@ -61,7 +61,7 @@
 			'building.administrator_telephone'  => 'nullable|string|min:10',
 			'building.administrator_cellphone'  => 'nullable|string|min:10',
 			'building.administrator_email'      => 'nullable|string',
-//			'building.imported_excel_file'      => 'nullable|file|mimes:xls,xlsx,csv|max:512'
+			//			'building.imported_excel_file'      => 'nullable|file|mimes:xls,xlsx,csv|max:512'
 		];
 
 		public function mount() {
@@ -90,7 +90,6 @@
 				'title'    => __('Caricamento'),
 				'subtitle' => __('Il file è stato caricato con successo!')
 			]);
-
 			$this->imported_excel_file = null;
 		}
 
@@ -105,12 +104,9 @@
 				'imported_excel_file' => null
 			]);
 			$files = Storage::allFiles('practices/' . $this->practice->id . '/excel');
-
 			Storage::delete($files);
-
 			// TODO: Aggiornare pagina con elminazione del file
 			$this->imported_excel_file = null;
-
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Eliminazione'),
 				'subtitle' => __('Il file è stato eliminato con successo!')
@@ -120,13 +116,21 @@
 		public function save() {
 			$validated = $this->validate();
 
-			$this->building->save($validated);
-
-			$this->dispatchBrowserEvent('open-notification', [
-				'title'    => __('Aggiornamento'),
-				'subtitle' => __('L\'immobile è stato aggiornato con successo!')
-			]);
-			$this->emitUp('change-tab', 'superbonus');
+			if (!$this->condomini->count()) {
+				$this->addError('condomini', 'Inserisci almeno un condomino.');
+				$this->dispatchBrowserEvent('open-notification', [
+					'title'    => __('Errore'),
+					'subtitle' => __('Controlla che i dati siano corretti e riprova!'),
+					'type'     => 'error'
+				]);
+			} else {
+				$this->building->save($validated);
+				$this->dispatchBrowserEvent('open-notification', [
+					'title'    => __('Aggiornamento'),
+					'subtitle' => __('L\'immobile è stato aggiornato con successo!')
+				]);
+				$this->emitUp('change-tab', 'superbonus');
+			}
 		}
 
 		public function render() {

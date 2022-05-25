@@ -32,7 +32,8 @@
 			</div>
 			{{-- Riga indirizzo pratica?! --}}
 			<div class="col-span-6">
-				<x-input x-mask="***********" wire:model.defer="building.fiscal_code" type="text" name="fiscal_code" id="fiscal_code" class="uppercase"
+				<x-input x-mask="***********" wire:model.defer="building.fiscal_code" type="text" name="fiscal_code"
+				         id="fiscal_code" class="uppercase"
 				         label="Codice Fiscale" required></x-input>
 			</div>
 			<div class="col-span-6">
@@ -281,7 +282,8 @@
 				         label="Data licenza/totolo"></x-input>
 			</div>
 			<div class="col-span-3">
-				<x-input x-mask="9999" wire:model.defer="building.construction_date" type="text" name="construction_date"
+				<x-input x-mask="9999" wire:model.defer="building.construction_date" type="text"
+				         name="construction_date"
 				         id="construction_date" label="Anno costruzione"></x-input>
 			</div>
 		</div>
@@ -352,7 +354,10 @@
 					</div>
 				</li>
 			@empty
-				<li class="py-4 text-sm text-gray-500">Nessun condomino inserito</li>
+				<li class="py-4 text-sm text-gray-500">
+					Nessun condomino inserito
+					<x-input-error for="condomini"></x-input-error>
+				</li>
 			@endforelse
 		</ul>
 		<div class="flex items-center justify-between mt-5">
@@ -415,7 +420,8 @@
 			</div>
 			<div class="col-span-6">
 				<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="building.administrator_fiscalcode" type="text"
-				         name="administrator_fiscalcode" id="administrator_fiscalcode" class="uppercase" label="Codice Fiscale"></x-input>
+				         name="administrator_fiscalcode" id="administrator_fiscalcode" class="uppercase"
+				         label="Codice Fiscale"></x-input>
 			</div>
 			<div class="col-start-1 col-span-6">
 				<x-input wire:model.defer="building.administrator_address" type="text" name="administrator_address"
@@ -426,19 +432,23 @@
 				         id="administrator_city" label="Città"></x-input>
 			</div>
 			<div class="col-span-1">
-				<x-input x-mask="aa" wire:model.defer="building.administrator_province" type="text" name="administrator_province"
+				<x-input x-mask="aa" wire:model.defer="building.administrator_province" type="text"
+				         name="administrator_province"
 				         id="administrator_province" class="uppercase" label="Provincia"></x-input>
 			</div>
 			<div class="col-span-2">
-				<x-input x-mask="99999" wire:model.defer="building.administrator_cap" type="text" name="administrator_cap"
+				<x-input x-mask="99999" wire:model.defer="building.administrator_cap" type="text"
+				         name="administrator_cap"
 				         id="administrator_cap" label="CAP"></x-input>
 			</div>
 			<div class="col-span-4">
-				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_telephone" type="text" name="administrator_telephone"
+				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_telephone" type="text"
+				         name="administrator_telephone"
 				         id="administrator_telephone" label="Telefono"></x-input>
 			</div>
 			<div class="col-span-4">
-				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_cellphone" type="text" name="administrator_cellphone"
+				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_cellphone" type="text"
+				         name="administrator_cellphone"
 				         id="administrator_cellphone" label="Cellulare"></x-input>
 			</div>
 			<div class="col-span-4">
