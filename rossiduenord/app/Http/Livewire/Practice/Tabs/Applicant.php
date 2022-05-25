@@ -57,7 +57,6 @@
 
 		public function save() {
 			$validated = $this->validate();
-			$validated['c_f'] = strtoupper($validated['c_f']);
 			$this->applicant->update($validated);
 
 			$this->dispatchBrowserEvent('open-notification', [

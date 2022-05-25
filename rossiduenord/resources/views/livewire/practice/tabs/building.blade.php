@@ -4,8 +4,6 @@
 			Dati dell'immobile
 		</x-section-heading>
 
-		<input type="hidden" id="practice_id" name="practice_id" value="{{ $building->practice_id}}">
-
 		<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
 			<div class="col-span-12">
 				<x-input wire:model.defer="building.intervention_name" type="text" name="intervention_name"
@@ -24,16 +22,17 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 flex items-center space-x-3">
-				<x-label class="!mb-0">Tipologia intervento:</x-label>
+				<x-label class="!mb-0" required>Tipologia intervento:</x-label>
 				<input wire:model="building.intervention_tipology" id="intervention_tipology"
 				       name="intervention_tipology" type="checkbox"
 				       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 				<label for="intervention_tipology" class="block text-sm font-medium text-gray-700">Superbonus
 					110%</label>
+				<x-input-error for="building.intervention_tipology"></x-input-error>
 			</div>
 			{{-- Riga indirizzo pratica?! --}}
 			<div class="col-span-6">
-				<x-input wire:model.defer="building.fiscal_code" type="text" name="fiscal_code" id="fiscal_code"
+				<x-input x-mask="***********" wire:model.defer="building.fiscal_code" type="text" name="fiscal_code" id="fiscal_code" class="uppercase"
 				         label="Codice Fiscale" required></x-input>
 			</div>
 			<div class="col-span-6">
@@ -227,17 +226,17 @@
 					</x-label>
 					<div class="flex items-center space-x-4">
 						<div class="flex items-center space-x-1">
-							<input wire:model="building.isUnderRenovation" type="radio" value="notDefine"
+							<input wire:model="building.nonMetan_area" type="radio" value="notDefine"
 							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 							<x-label class="mb-0">N.D</x-label>
 						</div>
 						<div class="flex items-center space-x-1">
-							<input wire:model="building.isUnderRenovation" type="radio" value="no"
+							<input wire:model="building.nonMetan_area" type="radio" value="no"
 							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 							<x-label class="mb-0">No</x-label>
 						</div>
 						<div class="flex items-center space-x-1">
-							<input wire:model="building.isUnderRenovation" type="radio" value="yes"
+							<input wire:model="building.nonMetan_area" type="radio" value="yes"
 							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 							<x-label class="mb-0">Si</x-label>
 						</div>
@@ -274,13 +273,16 @@
 				</div>
 			</div>
 			<div class="col-span-3">
-				<x-input type="text" name="license_number" id="license_number" label="N. licenza/totolo"></x-input>
+				<x-input wire:model.defer="building.license_number" type="text" name="license_number"
+				         id="license_number" label="N. licenza/totolo"></x-input>
 			</div>
 			<div class="col-span-3">
-				<x-input type="date" name="license_date" id="license_date" label="Data licenza/totolo"></x-input>
+				<x-input wire:model.defer="building.license_date" type="date" name="license_date" id="license_date"
+				         label="Data licenza/totolo"></x-input>
 			</div>
 			<div class="col-span-3">
-				<x-input type="text" name="construction_date" id="construction_date" label="Anno costruzione"></x-input>
+				<x-input x-mask="9999" wire:model.defer="building.construction_date" type="text" name="construction_date"
+				         id="construction_date" label="Anno costruzione"></x-input>
 			</div>
 		</div>
 	</div>
@@ -412,8 +414,8 @@
 				         id="administrator_surname" label="Cognome"></x-input>
 			</div>
 			<div class="col-span-6">
-				<x-input wire:model.defer="building.administrator_fiscalcode" type="text"
-				         name="administrator_fiscalcode" id="administrator_fiscalcode" label="Codice Fiscale"></x-input>
+				<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="building.administrator_fiscalcode" type="text"
+				         name="administrator_fiscalcode" id="administrator_fiscalcode" class="uppercase" label="Codice Fiscale"></x-input>
 			</div>
 			<div class="col-start-1 col-span-6">
 				<x-input wire:model.defer="building.administrator_address" type="text" name="administrator_address"
@@ -424,19 +426,19 @@
 				         id="administrator_city" label="Città"></x-input>
 			</div>
 			<div class="col-span-1">
-				<x-input wire:model.defer="building.administrator_province" type="text" name="administrator_province"
-				         id="administrator_province" label="Provincia"></x-input>
+				<x-input x-mask="aa" wire:model.defer="building.administrator_province" type="text" name="administrator_province"
+				         id="administrator_province" class="uppercase" label="Provincia"></x-input>
 			</div>
 			<div class="col-span-2">
-				<x-input wire:model.defer="building.administrator_cap" type="text" name="administrator_cap"
+				<x-input x-mask="99999" wire:model.defer="building.administrator_cap" type="text" name="administrator_cap"
 				         id="administrator_cap" label="CAP"></x-input>
 			</div>
 			<div class="col-span-4">
-				<x-input wire:model.defer="building.administrator_telephone" type="text" name="administrator_telephone"
+				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_telephone" type="text" name="administrator_telephone"
 				         id="administrator_telephone" label="Telefono"></x-input>
 			</div>
 			<div class="col-span-4">
-				<x-input wire:model.defer="building.administrator_cellphone" type="text" name="administrator_cellphone"
+				<x-input x-mask="999 9999999" wire:model.defer="building.administrator_cellphone" type="text" name="administrator_cellphone"
 				         id="administrator_cellphone" label="Cellulare"></x-input>
 			</div>
 			<div class="col-span-4">

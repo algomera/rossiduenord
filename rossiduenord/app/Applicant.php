@@ -17,6 +17,10 @@ class Applicant extends Model
 
     protected $primaryKey = 'id';
 
+	public function setCFAttribute($value) {
+		$this->attributes['c_f'] = strtoupper($value);
+	}
+
     public function user()
     {
         return $this->belongsTo(User::class);

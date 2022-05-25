@@ -32,6 +32,7 @@
 			Route::name('practice.')->group(function() {
 				Route::get('/practice', [PracticeIndex::class, '__invoke'])->name('index');
 				Route::get('/practice/{practice}', [PracticeShow::class, '__invoke'])->name('edit');
+				// Building
 				Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 			});
 			// Anagrafiche
