@@ -58,7 +58,7 @@
 				<livewire:practice.tabs.media :practice="$practice"/>
 				@break
 			@case('documents')
-				Documents Content
+				<livewire:practice.tabs.document :practice="$practice"/>
 				@break
 			@case('superbonus')
 				Superbonus Content
