@@ -20,12 +20,11 @@
 	<div>
 		<div class="sm:hidden">
 			<label for="tabs" class="sr-only">Select a tab</label>
-			<select id="tabs" name="tabs"
+			<select wire:model="selectedTab" wire:ignore id="tabs" name="tabs"
 			        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
 				@foreach($tabs as $k => $tab)
-					<option @if($selectedTab === $k) selected @endif>{{ $tab }}</option>
+					<option @if($selectedTab === $k) selected @endif value="{{ $k }}">{{ $tab }}</option>
 				@endforeach
-
 			</select>
 		</div>
 		<div class="hidden sm:block">
@@ -75,5 +74,5 @@
 </x-card>
 
 @push('notifications')
-	<x-notification />
+	<x-notification/>
 @endpush
