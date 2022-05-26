@@ -14,7 +14,9 @@
 						<p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{{ $video->name }}</p>
 						<p class="block text-xs font-medium text-gray-500 pointer-events-none">{{ $video->created_at->format('d/m/Y') }}</p>
 					</div>
+					@isset($video->position)
 					<x-icon name="location-marker" class="w-6 h-6 text-indigo-500"></x-icon>
+					@endisset
 				</div>
 			</div>
 		@empty
