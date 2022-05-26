@@ -13,7 +13,6 @@
 		</nav>
 	</div>
 	<div class="col-span-10 lg:col-span-8">
-		<x-section-heading class="!border-t-0 !pt-0">{{ $sub_folders->count() }} Sottocartelle:</x-section-heading>
 		<div class="bg-white">
 			<ul role="list" class="divide-y divide-gray-200">
 				@foreach($sub_folders as $sub_folder)
