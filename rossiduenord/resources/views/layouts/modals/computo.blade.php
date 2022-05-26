@@ -75,33 +75,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="border-bottom-style: double; border-top-style: double;" v-for="item in 5" :key="item">
-                                <td>1</td>
-                                <td>DEI20-R2</td>
-                                <td>DSR.3.01.001.A</td>
-                                <td class="text-left">
-                                    <p class="tronk-text">
-                                        Mascherina facciale con lato superiore dotato di filo interno per modellarlo al naso ed elastici auricolari:       
-                                    </p>
-                                </td>  
-                                <td></td>
-                                <td>cad</td>
-                                <td>40.000</td>
-                                <td>6.49</td>
-                                <td>0.00</td>
-                                <td>660.00</td>
-                                <td>112.50</td>
-                                <td class="d-flex" style="column-gap: 10px">
-                                    <div class="d-flex flex-column justify-content-center align-items-center" style="cursor: pointer">
-                                        <img src="{{asset('/img/icon/icona_modifica.svg')}}" alt="">
-                                        <span>Modifica</span>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center align-items-center" style="cursor: pointer">
-                                        <img src="{{asset('/img/icon/icona_cancella.svg')}}" alt="">
-                                        <span>Cancella</span>
-                                    </div>                    
-                                </td>
-                            </tr>
+                            @forelse ($computo_price_lists as $list)
+                                <tr style="border-bottom-style: double; border-top-style: double;">
+                                    <td>{{$list->id}}</td>
+                                    <td>{{$list->list}}</td>
+                                    <td>{{$list->e_p}}</td>
+                                    <td class="text-left">
+                                        <p class="tronk-text">{{$list->description}}</p>
+                                    </td>  
+                                    <td></td>
+                                    <td>{{$list->u_m}}</td>
+                                    <td></td>
+                                    <td>{{$list->price}}</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td class="d-flex" style="column-gap: 10px">
+                                        <div class="d-flex flex-column justify-content-center align-items-center" style="cursor: pointer">
+                                            <img src="{{asset('/img/icon/icona_modifica.svg')}}" alt="">
+                                            <span>Modifica</span>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center align-items-center" style="cursor: pointer">
+                                            <img src="{{asset('/img/icon/icona_cancella.svg')}}" alt="">
+                                            <span>Cancella</span>
+                                        </div>                    
+                                    </td>
+                                </tr>
+                            @empty
+                                
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -131,14 +133,16 @@
                 {{-- left --}}
                 <div class=" d-flex flex-column" style="width: 20%; height:400px">
                     <select class="btn btn-secondary " style="text-align: left" name="" id="">
-                        <option value="">Prezziario-1</option>
-                        <option value="">Prezziario-2</option>
-                        <option value="">Prezziario-3</option>
+                        @foreach ($computo_folders as $folder)
+                            <option value="">{{$folder->name}}</option>
+                        @endforeach
                     </select>
                     <div class="p-2" style="overflow: auto">
-                        <div v-for="item in 20" :key="item">
-                            <p><i style="color: #61a4d7" class="fa-solid fa-folder"></i> Cartella</p>
-                        </div>
+                        @forelse ($computo_sub_folders as $subFolder)
+                            <p><i style="color: #61a4d7" class="fa-solid fa-folder"></i>{{$subFolder->name}}</p>
+                        @empty
+                            <p>Nessun Prezziario</p>
+                        @endforelse
                     </div>
                 </div>
 
@@ -166,29 +170,31 @@
                                     <td style="width:10%;" class="text-center">Codice E.P.</td>
                                     <td style="width:55%;">Descrizione</td>
                                     <td style="width:5%;" class="text-center">U.M</td>
-                                    <td style="width:10%;" class="text-center">Prezzo</td>
+                                    <td style="width:10%;" class="text-center">Prezzo €</td>
                                     <td style="width:5%;" class="text-center">% Mat.</td>
                                     <td style="width:5%;"class="text-center"></td>
                                     <td style="width:5%;"class="text-center">Inserisci</td>                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="border-bottom-style: double; border-top-style: double" v-for="item in 15" :key="item">
-                                    <td></td>
-                                    <td>DSR.3.01.001.A</td>
-                                    <td class="text-left">
-                                        <p class="tronk-text">
-                                            Mascherina facciale con lato superiore dotato di filo interno per modellarlo al naso ed elastici auricolari:
-                                        </p>
-                                    </td>
-                                    <td>cad</td>
-                                    <td>40.000</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <button @click="openclosePrevent()" class="add-button bg-green" style="padding: 5px 20px!important"><i class="fa-solid fa-upload"></i></button>
-                                    </td>
-                                </tr>
+                                @forelse ($computo_price_lists as $list)
+                                    <tr style="border-bottom-style: double; border-top-style: double">
+                                        <td></td>
+                                        <td>{{$list->e_p}}</td>
+                                        <td class="text-left">
+                                            <p class="tronk-text">{{$list->description_extended}}</p>
+                                        </td>
+                                        <td>{{$list->u_m}}</td>
+                                        <td>{{$list->price}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button @click="openclosePrevent()" class="add-button bg-green" style="padding: 5px 20px!important"><i class="fa-solid fa-upload"></i></button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
