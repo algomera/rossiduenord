@@ -1,21 +1,26 @@
 <?php
 
-namespace App;
+	namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
-{
-    protected $fillable = [
-        'practice_id',
-        'name',
-        'video',
-        'description',
-        'reference',
-        'inspection_date',
-    ];
+	class Video extends Model
+	{
+		protected $fillable = [
+			'practice_id',
+			'name',
+			'video',
+			'description',
+			'reference',
+			'inspection_date',
+		];
 
-    public function practice(){
-        return $this->belongsTo(Practice::class);
-    }
-}
+		public function getNameAttribute($value) {
+			$v = explode('_#_', $value);
+			return $v[0];
+		}
+
+		public function practice() {
+			return $this->belongsTo(Practice::class);
+		}
+	}

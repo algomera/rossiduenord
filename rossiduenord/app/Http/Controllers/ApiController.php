@@ -66,7 +66,7 @@ class ApiController extends Controller
         ]);
 
         $extension = $request->file('image')->extension();
-        $pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/images' , $request->name . '.' .  $extension);
+        $pathFile = $request->file('image')->storeAs('practices/' . $validated['practice_id'] . '/images' , $request->name . '_#_' . now()->timestamp . '.' .  $extension);
         $validated['image'] = $pathFile;
         Photo::create($validated);
 
@@ -97,7 +97,7 @@ class ApiController extends Controller
         ]);
 
         $extension = $request->file('video')->extension();
-        $pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos' , $request->name . '.' .  $extension);
+        $pathFile = $request->file('video')->storeAs('practices/' . $validated['practice_id'] . '/videos' , $request->name . '_#_' . now()->timestamp . '.' .  $extension);
         $validated['video'] = $pathFile;
         Video::create($validated);
 
