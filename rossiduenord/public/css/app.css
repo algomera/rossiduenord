@@ -883,6 +883,9 @@ select {
 .ml-auto {
   margin-left: auto;
 }
+.\!mt-2 {
+  margin-top: 0.5rem !important;
+}
 .block {
   display: block;
 }
@@ -1272,6 +1275,11 @@ select {
   margin-right: calc(1.25rem * var(--tw-space-x-reverse));
   margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 1;
 }
@@ -1618,6 +1626,9 @@ select {
 }
 .\!pt-0 {
   padding-top: 0px !important;
+}
+.pb-3 {
+  padding-bottom: 0.75rem;
 }
 .text-left {
   text-align: left;

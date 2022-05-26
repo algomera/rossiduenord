@@ -16,7 +16,7 @@
 		<div class="bg-white">
 			<ul role="list" class="divide-y divide-gray-200">
 				@foreach($sub_folders as $sub_folder)
-					<li wire:click="$emit('openModal', '')">
+					<li wire:click="showFolderContent({{$sub_folder}})">
 						<div class="block hover:bg-gray-50 cursor-pointer">
 							<div class="px-4 py-4 flex items-center sm:px-6">
 								<div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">

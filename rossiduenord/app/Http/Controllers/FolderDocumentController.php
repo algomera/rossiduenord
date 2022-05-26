@@ -46,18 +46,18 @@ class FolderDocumentController extends Controller
      * @param  \App\FolderDocument  $folder_Document
      * @return \Illuminate\Http\Response
      */
-    public function show(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder, Document $document)
-    {
-        $applicant = $practice->applicant;
-        $subject = $practice->subject;
-        $building = $practice->building;
-        $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
-        $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->orderBy('created_at', 'DESC')->get();
-        $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
-        $id = Document::all()->pluck('sub_folder_id');
-
-        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders', 'id'));
-    }
+//    public function show(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder, Document $document)
+//    {
+//        $applicant = $practice->applicant;
+//        $subject = $practice->subject;
+//        $building = $practice->building;
+//        $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
+//        $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->orderBy('created_at', 'DESC')->get();
+//        $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
+//        $id = Document::all()->pluck('sub_folder_id');
+//
+//        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'sub_folders', 'id'));
+//    }
 
     /**
      * Display the specified resource.
@@ -67,63 +67,63 @@ class FolderDocumentController extends Controller
      */
     public function show_document(Request $request, Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder, Document $document)
     {
-	    if ($sub_folder->assev_t_status == 0 && auth()->user()->role === 'technical_asseverator') {
-		    $sub_folder->assev_t_status = 1;
-		    $sub_folder->save();
-	    } else if ($sub_folder->assev_f_status == 0 && auth()->user()->role === 'fiscal_asseverator') {
-		    $sub_folder->assev_f_status = 1;
-		    $sub_folder->save();
-	    } else if ($sub_folder->bank_status == 0 && auth()->user()->role === 'bank') {
-		    $sub_folder->bank_status = 1;
-		    $sub_folder->save();
-	    }
+//	    if ($sub_folder->assev_t_status == 0 && auth()->user()->role === 'technical_asseverator') {
+//		    $sub_folder->assev_t_status = 1;
+//		    $sub_folder->save();
+//	    } else if ($sub_folder->assev_f_status == 0 && auth()->user()->role === 'fiscal_asseverator') {
+//		    $sub_folder->assev_f_status = 1;
+//		    $sub_folder->save();
+//	    } else if ($sub_folder->bank_status == 0 && auth()->user()->role === 'bank') {
+//		    $sub_folder->bank_status = 1;
+//		    $sub_folder->save();
+//	    }
         //element fro the view
-        $applicant = $practice->applicant;
-        $subject = $practice->subject;
-        $building = $practice->building;
-        $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
-        $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->latest()->get();
-        //taking the documents
-        $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
-        $id = Document::all()->pluck('sub_folder_id')->toArray();
-	    $current_sub_folder = $sub_folder;
-        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'id', 'current_sub_folder'));
+//        $applicant = $practice->applicant;
+//        $subject = $practice->subject;
+//        $building = $practice->building;
+//        $folder_documents = FolderDocument::where('practice_id', '=', $practice->id)->get();
+//        $sub_folders = Sub_folder::where('practice_id', '=', $practice->id)->where('folder_type', '=', $folder_document->type)->latest()->get();
+//        //taking the documents
+//        $documents = Document::where('practice_id', '=', $practice->id)->where('sub_folder_id', '=', $sub_folder->id)->get();
+//        $id = Document::all()->pluck('sub_folder_id')->toArray();
+//	    $current_sub_folder = $sub_folder;
+//        return view('pages.folder_document.show', compact('folder_document','practice','applicant','subject', 'building','folder_documents','document', 'documents', 'sub_folders', 'id', 'current_sub_folder'));
     }
 
-	public function approve_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
-		if ($sub_folder->assev_t_status == 1 && auth()->user()->role === 'technical_asseverator') {
-			$sub_folder->assev_t_status = 2;
-			$sub_folder->save();
-		} else if ($sub_folder->assev_f_status == 1 && auth()->user()->role === 'fiscal_asseverator') {
-			$sub_folder->assev_f_status = 2;
-			$sub_folder->save();
-		} else if ($sub_folder->bank_status == 1 && auth()->user()->role === 'bank') {
-			$sub_folder->bank_status = 2;
-			$sub_folder->save();
-		}
+//	public function approve_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
+//		if ($sub_folder->assev_t_status == 1 && auth()->user()->role === 'technical_asseverator') {
+//			$sub_folder->assev_t_status = 2;
+//			$sub_folder->save();
+//		} else if ($sub_folder->assev_f_status == 1 && auth()->user()->role === 'fiscal_asseverator') {
+//			$sub_folder->assev_f_status = 2;
+//			$sub_folder->save();
+//		} else if ($sub_folder->bank_status == 1 && auth()->user()->role === 'bank') {
+//			$sub_folder->bank_status = 2;
+//			$sub_folder->save();
+//		}
+//
+//		return redirect()->back();
+//	}
 
-		return redirect()->back();
-	}
+//	public function disapprove_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
+//		if ($sub_folder->assev_t_status == 2 && auth()->user()->role === 'technical_asseverator') {
+//			$sub_folder->assev_t_status = 1;
+//			$sub_folder->save();
+//		} else if ($sub_folder->assev_f_status == 2 && auth()->user()->role === 'fiscal_asseverator') {
+//			$sub_folder->assev_f_status = 1;
+//			$sub_folder->save();
+//		} else if ($sub_folder->bank_status == 2 && auth()->user()->role === 'bank') {
+//			$sub_folder->bank_status = 1;
+//			$sub_folder->save();
+//		}
+//
+//		return redirect()->back();
+//	}
 
-	public function disapprove_sub_folder(Practice $practice, FolderDocument $folder_document, Sub_folder $sub_folder) {
-		if ($sub_folder->assev_t_status == 2 && auth()->user()->role === 'technical_asseverator') {
-			$sub_folder->assev_t_status = 1;
-			$sub_folder->save();
-		} else if ($sub_folder->assev_f_status == 2 && auth()->user()->role === 'fiscal_asseverator') {
-			$sub_folder->assev_f_status = 1;
-			$sub_folder->save();
-		} else if ($sub_folder->bank_status == 2 && auth()->user()->role === 'bank') {
-			$sub_folder->bank_status = 1;
-			$sub_folder->save();
-		}
-
-		return redirect()->back();
-	}
-
-    public function downloadDocument($id){
-        $file = Document::find($id);
-        return Storage::download($file->allega);
-    }
+//    public function downloadDocument($id){
+//        $file = Document::find($id);
+//        return Storage::download($file->allega);
+//    }
 
     /**
      * Remove the specified resource from storage.
@@ -131,11 +131,11 @@ class FolderDocumentController extends Controller
      * @param  \App\FolderDocument  $folder_Document
      * @return \Illuminate\Http\Response
      */
-    public function destroy($practice_id, $folder_document_id, $sub_folder_id,$document_id)
-    {
-        $document = Document::find($document_id);
-        Storage::delete($document->allega);
-        $document->delete();
-        return redirect()->back()->with('message', "Il documento e stato eliminato!");
-    }
+//    public function destroy($practice_id, $folder_document_id, $sub_folder_id,$document_id)
+//    {
+//        $document = Document::find($document_id);
+//        Storage::delete($document->allega);
+//        $document->delete();
+//        return redirect()->back()->with('message', "Il documento e stato eliminato!");
+//    }
 }
