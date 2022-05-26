@@ -5,6 +5,8 @@
 	use App\{User, UserData};
 	use Illuminate\Http\Request;
 	use Spatie\Permission\Models\Role;
+	use Illuminate\Support\Facades\Log;
+	use App\Notifications\CredentialEmailNotification;
 
 	class UserController extends Controller
 	{
@@ -47,6 +49,7 @@
 				'password' => 'required | string | min:8 | confirmed'
 			]);
 
+			$password = $validated['password'];
 			// Creazione Utente
 			$user = User::create([
 				'email' => $validated['email'],
@@ -66,6 +69,9 @@
 			if($request->role === 'technical_asseverator' || $request->role === 'fiscal_asseverator' || $request->role === 'consultant') {
 				$user->business()->sync($request->business);
 			}
+
+			Log::info($user);
+			$user->notify(new CredentialEmailNotification($user, $password));
 
 			return redirect()->route('users.index')->with('message', "Nuovo utente inserito!");
 
