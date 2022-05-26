@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Practice\Tabs\Document\Modals;
 
-use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class AddDocument extends Component
+class AddDocument extends ModalComponent
 {
     public function render()
     {
