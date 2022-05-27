@@ -14,7 +14,7 @@
 	</div>
 	<div class="col-span-10 lg:col-span-8">
 		<div class="bg-white">
-			<ul role="list" class="divide-y divide-gray-200">
+			<ul role="list" class="divide-y divide-gray-200 rounded-md overflow-hidden">
 				@foreach($sub_folders as $sub_folder)
 					<li wire:click="showFolderContent({{$sub_folder}})">
 						<div class="block hover:bg-gray-50 cursor-pointer">
