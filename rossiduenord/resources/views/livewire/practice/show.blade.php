@@ -64,10 +64,10 @@
 				Superbonus Content
 				@break
 			@case('contracts')
-				Contracts Content
+				<livewire:practice.tabs.contract :practice="$practice"/>
 				@break
 			@case('policies')
-				Policies Content
+				<livewire:practice.tabs.policies :practice="$practice"/>
 				@break
 		@endswitch
 	</x-card>
