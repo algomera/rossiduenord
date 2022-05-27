@@ -16,18 +16,6 @@
 					</div>
 				</a>
 
-				<form action="{{route('applicant.store') }}" method="post" v-on:click="startLoading()" class="flex items-center justify-center bg-white text-center border p-3">
-					@csrf
-					<button type="submit"  class="d-flex flex-column align-items-center justify-content-center" style="background-color: transparent; border: none;">
-						<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-							<div class="mb-2" >
-								<img src="{{asset('img/icon/ICONA NUOVA PRATICA.svg')}}" alt="" class="img-fluid">
-							</div>
-							<p><b>Nuova Pratica</b></p>
-						</div>
-					</button>
-				</form>
-
 				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('users.index')}}">
 					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
 						<div class="mb-2">
