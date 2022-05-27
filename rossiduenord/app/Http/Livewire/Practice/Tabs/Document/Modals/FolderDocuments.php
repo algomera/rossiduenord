@@ -14,6 +14,7 @@
 		protected $listeners = [
 			'status-changed'   => '$refresh',
 			'document-deleted' => '$refresh',
+			'document-added'   => '$refresh',
 		];
 
 		public function mount(Sub_folderModel $sub_folder) {

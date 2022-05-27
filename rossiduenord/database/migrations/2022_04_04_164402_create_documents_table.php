@@ -19,6 +19,7 @@ class CreateDocumentsTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('sub_folder_id')->unsigned();
             $table->foreign('sub_folder_id')->references('id')->on('sub_folders')->onDelete('cascade');
+			$table->string('name');
             $table->string('allega')->nullable();
             $table->string('note')->nullable();
             $table->string('type')->nullable();

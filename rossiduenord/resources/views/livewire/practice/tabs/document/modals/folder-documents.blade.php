@@ -9,7 +9,10 @@
 									class="font-semibold">{{ $sub_folder->documents->count() }}</span></p>
 					@endif
 				</div>
-				<x-button wire:click="$emit('openModal', 'practice.tabs.document.modals.add-document')" prepend="plus" iconColor="text-white">Aggiungi</x-button>
+				<x-button
+						wire:click="$emit('openModal', 'practice.tabs.document.modals.add-document', {{ json_encode([$sub_folder->id]) }})"
+						prepend="plus" iconColor="text-white">Aggiungi
+				</x-button>
 			</div>
 			@php
 				switch (auth()->user()->role) {
@@ -44,6 +47,7 @@
 							{{ $i + 1 }}
 						</div>
 						<div class="ml-3 w-full">
+							<p class="text-sm text-gray-500 font-semibold italic">{{ $document->name }}</p>
 							<p class="text-sm text-gray-500">{{ $document->note }}</p>
 							<div class="flex items-center justify-between mt-1 flex-wrap">
 								<p class="text-sm text-gray-500">
@@ -51,10 +55,23 @@
 									<span>{{ $document->created_at->format('d/m/Y') }}</span>
 								</p>
 								<div class="flex items-center space-x-3">
-									<x-icon name="download" wire:click="download({{ $document->id }})" class="text-indigo-500 w-4 h-4 cursor-pointer"></x-icon>
-									<x-icon name="trash" wire:click="delete({{ $document->id }})" class="text-red-500 w-4 h-4 cursor-pointer"></x-icon>
+									<x-icon name="download" wire:click="download({{ $document->id }})"
+									        class="text-indigo-500 w-4 h-4 cursor-pointer"></x-icon>
+									<x-icon name="trash" wire:click="delete({{ $document->id }})"
+									        class="text-red-500 w-4 h-4 cursor-pointer"></x-icon>
 								</div>
 							</div>
+							@if($document->type)
+								<hr class="!my-2 border-gray-100">
+								<div class="flex flex-col justify-start">
+									<span class="text-gray-500 uppercase text-xs font-semibold">Tags:</span>
+									<div class="-mx-1">
+										@foreach(explode(',', $document->type) as $type)
+											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium m-0.5 bg-gray-100 text-gray-800">{{ $type }}</span>
+										@endforeach
+									</div>
+								</div>
+							@endif
 						</div>
 					</li>
 				@empty

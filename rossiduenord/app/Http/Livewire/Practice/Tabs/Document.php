@@ -21,6 +21,7 @@
 		protected $listeners = [
 			'status-changed'    => '$refresh',
 			'document-deleted' => '$refresh',
+			'document-added'   => '$refresh',
 		];
 
 		public function showFolderContent(Sub_folder $sub_folder) {
