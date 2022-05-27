@@ -2,7 +2,7 @@
 
 	namespace App\Http\Livewire\Practice\Tabs;
 
-	use App\Policy;
+	use App\Policy as PolicyModel;
 	use App\Practice as PracticeModel;
 	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
@@ -45,7 +45,7 @@
 		}
 
 		public function delete($id) {
-			$file = Policy::find($id);
+			$file = PolicyModel::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;
 			$file->save();
