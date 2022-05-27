@@ -40,7 +40,8 @@
 			</div>
 		</div>
 	</div>
-	<x-card class="border rounded-md p-4">
+	{{-- border rounded-md p-4 --}}
+	<x-card>
 		@switch($selectedTab)
 			@case('applicant')
 				<livewire:practice.tabs.applicant :applicant="$practice->applicant"/>
