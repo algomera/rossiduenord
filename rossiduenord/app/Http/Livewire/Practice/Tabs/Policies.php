@@ -2,15 +2,58 @@
 
 	namespace App\Http\Livewire\Practice\Tabs;
 
+	use App\Policy;
 	use App\Practice as PracticeModel;
+	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
+	use Livewire\WithFileUploads;
 
 	class Policies extends Component
 	{
+		use WithFileUploads;
+
 		public PracticeModel $practice;
+		public $file_policy = [];
+		public $uploaded_policy = [];
+		protected $listeners = [
+			'document-added'   => '$refresh',
+			'document-removed' => '$refresh'
+		];
+		protected $rules = [
+			'file_policy.*' => 'file'
+		];
 
 		public function mount(PracticeModel $practice) {
 			$this->practice = $practice;
+			$this->file_policy = $practice->policies;
+		}
+
+		public function upload($id) {
+			$file = $this->uploaded_policy[$id];
+			$extension = $file->extension();
+			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+			$path = $file->storeAs('practices/' . $this->practice->id . '/policies/' . $id . '_document_request', $filename . '.' . $extension);
+			$this->practice->policies()->where('id', $id)->update([
+				'uploaded_path' => $path
+			]);
+			$this->emit('document-added');
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Aggiunta'),
+				'subtitle' => __('Il file è stato aggiunto con successo!')
+			]);
+			$this->uploaded_policy[$id] = null;
+		}
+
+		public function delete($id) {
+			$file = Policy::find($id);
+			Storage::delete($file->uploaded_path);
+			$file->uploaded_path = null;
+			$file->save();
+			$this->emit('document-removed');
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Rimozione'),
+				'subtitle' => __('Il file è stato eliminato con successo!')
+			]);
 		}
 
 		public function render() {

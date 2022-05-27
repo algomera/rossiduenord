@@ -58,35 +58,35 @@
 
 			/* Scheda Pratica */
 			//Richiedente
-			Route::resource('/applicant', 'ApplicantController');
+//			Route::resource('/applicant', 'ApplicantController');
 			//Subappaltarori
-			Route::resource('/subject', 'SubjectController');
-			Route::get('/subject/{practice}', 'SubjectController@subject_edit')->where('practice', '[0-9]+')->name('subject_edit');
-			Route::post('/subject/{practice}/set', 'SubjectController@setSubject');
+//			Route::resource('/subject', 'SubjectController');
+//			Route::get('/subject/{practice}', 'SubjectController@subject_edit')->where('practice', '[0-9]+')->name('subject_edit');
+//			Route::post('/subject/{practice}/set', 'SubjectController@setSubject');
 			//Immobile
-			Route::resource('/building', 'BuildingController');
+//			Route::resource('/building', 'BuildingController');
 			//Foto/Video
-			Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
-			Route::get('photos_practice', function (Request $request) {
-				$user = $request->user()->id;
-				$practice = Practice::where('user_id', $user)->pluck('id');
-				$photos = Photo::where('practice_id', $practice)->get();
-				return PhotoResource::collection($photos);
-			});
-			Route::get('videos_practice', function (Request $request) {
-				$user = $request->user()->id;
-				$practice = Practice::where('user_id', $user)->pluck('id');
-				$videos = Video::where('practice_id', $practice)->get();
-				return VideoResource::collection($videos);
-			});
+//			Route::get('/medias/{practice}', 'MediaController@index')->name('medias');
+//			Route::get('photos_practice', function (Request $request) {
+//				$user = $request->user()->id;
+//				$practice = Practice::where('user_id', $user)->pluck('id');
+//				$photos = Photo::where('practice_id', $practice)->get();
+//				return PhotoResource::collection($photos);
+//			});
+//			Route::get('videos_practice', function (Request $request) {
+//				$user = $request->user()->id;
+//				$practice = Practice::where('user_id', $user)->pluck('id');
+//				$videos = Video::where('practice_id', $practice)->get();
+//				return VideoResource::collection($videos);
+//			});
 			//Documenti Richiesti
-			Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folderDocument.show');
-			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}', 'FolderDocumentController@show_document')->name('document.show');
-			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}/approve', 'FolderDocumentController@approve_sub_folder')->name('document.approve');
-			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}/disapprove', 'FolderDocumentController@disapprove_sub_folder')->name('document.disapprove');
-			Route::post('/folder_document/{practice}/{folder_document}/{sub_folder}/store', 'FolderDocumentController@store')->name('document.store');
-			Route::get('/doument/download/{document}', 'FolderDocumentController@downloadDocument')->name('document.download');
-			Route::delete('/folder_document/{practice}/{folder_document}/{sub_folder}/{document}/delete', 'FolderDocumentController@destroy')->name('document.destroy');
+//			Route::get('/folder_document/{practice}/{folder_document}', 'FolderDocumentController@show')->name('folderDocument.show');
+//			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}', 'FolderDocumentController@show_document')->name('document.show');
+//			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}/approve', 'FolderDocumentController@approve_sub_folder')->name('document.approve');
+//			Route::get('/folder_document/{practice}/{folder_document}/{sub_folder}/disapprove', 'FolderDocumentController@disapprove_sub_folder')->name('document.disapprove');
+//			Route::post('/folder_document/{practice}/{folder_document}/{sub_folder}/store', 'FolderDocumentController@store')->name('document.store');
+//			Route::get('/doument/download/{document}', 'FolderDocumentController@downloadDocument')->name('document.download');
+//			Route::delete('/folder_document/{practice}/{folder_document}/{sub_folder}/{document}/delete', 'FolderDocumentController@destroy')->name('document.destroy');
 			//Superbonus
 			Route::get('/superbonus/{practice}', 'SuperBonusController@index')->where('practice', '[0-9]+')->name('superbonus.index');
 			Route::get('/superbonus/{practice}/{building}', 'SuperBonusController@show')->where('practice', '[0-9]+')->where('building', '[0-9]+')->name('superbonus.show');
@@ -139,8 +139,8 @@
 				return "updated";
 			});
 			//Excel condomini
-			Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
-			Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
+//			Route::get('/download/excel/{practiceId}', 'BuildingController@downloadExcel')->name('downloadExcel');
+//			Route::delete('/delete/excel/{practiceId}', 'BuildingController@deleteExcel')->name('deleteExcel');
 			// Intervention delete
 			Route::delete('/condensing_boilers/{id}/delete', 'InterventionController@deleteCondensingBoilers');
 			Route::delete('/heat_pumps/{id}/delete', 'InterventionController@deleteHeatPumps');
@@ -151,7 +151,7 @@
 			Route::delete('/biome_generators/{id}/delete', 'InterventionController@deleteBiomeGenerators');
 			Route::delete('/solar_panels/{id}/delete', 'InterventionController@deleteSolarPanels');
 			// condomini export
-			Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
+//			Route::get('/condomini_export/{practice}', 'CondominiController@export')->name('condomini.export');
 			//contract
 			Route::get('/contracts/{practice}', 'ContractController@originalIndex')->name('contracts.index');
 			Route::get('/contracts/signed/{contract}', 'ContractController@signedIndex')->name('signed.index');
