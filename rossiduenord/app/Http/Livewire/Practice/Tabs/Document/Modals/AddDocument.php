@@ -17,10 +17,14 @@
 		public $note;
 		public $type = [];
 
+		public static function destroyOnClose(): bool {
+			return true;
+		}
+
 		protected $rules = [
 			'allega' => 'required',
-			'note' => 'nullable',
-			'type' => 'nullable',
+			'note'   => 'nullable',
+			'type'   => 'nullable',
 		];
 
 		public function mount(Sub_folderModel $sub_folder) {
@@ -38,18 +42,14 @@
 
 		public function save() {
 			$validated = $this->validate();
-
 			$validated['practice_id'] = $this->sub_folder->practice->id;
-
 			$extension = $this->allega->extension();
 			$filename = pathinfo($this->allega->getClientOriginalName(), PATHINFO_FILENAME);
-			$path = $this->allega->storeAs('practices/' . $this->sub_folder->practice->id . '/business_folders/'. $this->sub_folder->folder_type . '_document_request', $filename . '.' . $extension);
+			$path = $this->allega->storeAs('practices/' . $this->sub_folder->practice->id . '/business_folders/' . $this->sub_folder->folder_type . '_document_request', $filename . '.' . $extension);
 			$validated['allega'] = $path;
 			$validated['name'] = $filename;
 			$validated['type'] = implode(',', $validated['type']);
-
 			$this->sub_folder->documents()->create($validated);
-
 			$this->emit('document-added');
 			$this->closeModal();
 			$this->dispatchBrowserEvent('open-notification', [

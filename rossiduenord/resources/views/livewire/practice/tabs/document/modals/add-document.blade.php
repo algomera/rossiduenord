@@ -47,6 +47,9 @@
 				</div>
 			</div>
 		</div>
-		<x-button>Carica</x-button>
+		<div class="sm:flex sm:items-center sm:justify-between space-y-2 sm:space-y-0">
+			<x-button class="w-full justify-center sm:w-auto">Carica</x-button>
+			<x-link-button wire:click="$emit('closeModal')">Annulla</x-link-button>
+		</div>
 	</form>
 </x-card>

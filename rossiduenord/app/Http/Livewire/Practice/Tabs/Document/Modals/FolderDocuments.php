@@ -62,8 +62,8 @@
 		}
 
 		public function delete(Document $document) {
-			Storage::delete($document->allega);
 			$document->delete();
+			Storage::delete($document->allega);
 			$this->emit('document-deleted');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Documento Eliminato'),
