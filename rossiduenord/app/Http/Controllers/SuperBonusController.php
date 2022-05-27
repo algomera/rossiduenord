@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\{Computo_folder, Condomini, Country, Helpers\Interventi, Practice, Surface, Computo_priceList, ComputoSubFolder};
+use App\{Computo_folder, Condomini, Country, Helpers\Interventi, Practice, Surface, Computo_priceList, ComputoSubFolder, TypeIntervention};
 use Illuminate\Http\Request;
 
 class SuperBonusController extends Controller
@@ -44,7 +44,7 @@ class SuperBonusController extends Controller
      * @param Practice $practice
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function driving_intervention(Practice $practice, $type = 'PV', Request $request) {
+    public function driving_intervention(Practice $practice, $type = 'PV', Request $request, TypeIntervention $typeIntervention) {
         $data_project = $practice->data_project;
         $applicant = $practice->applicant;
         $building = $practice->building;
@@ -63,6 +63,9 @@ class SuperBonusController extends Controller
         $computo_folders = Computo_folder::all();
         $computo_sub_folders = ComputoSubFolder::query()->where('computo_folder_id', 1);
         $computo_price_lists = Computo_priceList::all();
+        $typeCategories = TypeIntervention::all();
+        $categoryIntervention = $typeIntervention->categoryIntervetion;
+
         return view('pages.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -83,7 +86,9 @@ class SuperBonusController extends Controller
             'type',
             'computo_folders',
             'computo_sub_folders',
-            'computo_price_lists')
+            'computo_price_lists',
+            'typeCategories',
+            'categoryIntervention')
         );
     }
 

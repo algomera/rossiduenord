@@ -23,18 +23,22 @@
             {{--modal-top --}}
             <div class="body-top" style="height: 320px">
                 <div class=" d-flex flex-column px-2" style="width: 15%; height:320px; row-gap: 10px; overflow:auto">
-                    <div class="dropdown-container">
-                        <button @click="openTrainanti" class="btn btn-secondary icon-center">
-                            <i class="fa-solid fa-folder"></i> 
-                            Interventi Trainanti
-                        </button>
-                        <div v-show="dropTrainanti" id="dropdownTrainanti" class="dropdown-content">
-                            <a href="#">Isolamento termico</a>
-                            <a href="#">Sostituzione degli impianti</a>
-                            <a href="#">Interventi di miglioramento sismico</a>
+                    @foreach ($typeCategories as $ct)
+                        <div class="dropdown-container">
+                            <button onclick="openclose('but_{{$ct->id}}')" class="btn btn-secondary icon-center cat_{{$ct->id}}">
+                                <i class="fa-solid fa-folder"></i> 
+                                {{$ct->name}}
+                            </button>
+                            @dd($categoryIntervention, $typeCategories)
+                            <div id="but_{{$ct->id}}" class="dropdown-content d-none">
+                                @foreach ($categoryIntervention as $in)
+                                    <a href="#">{{$in->name}}</a>                                    
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                    <div class="dropdown-container">
+                    @endforeach
+
+{{--                     <div class="dropdown-container">
                         <button @click="openTrainati" class="btn btn-secondary icon-center">
                             <i class="fa-solid fa-folder"></i> 
                             Interventi Trainati
@@ -54,7 +58,7 @@
                             <a href="#">Eliminazione Barriere Architettoniche</a>
                         </div>
                     </div>
-                </div>
+ --}}                </div>
 
                 <div class="" style="width: 85%; height:100%;overflow:auto">
                     <table class="table_bonus" style="width: 100%">
@@ -134,10 +138,10 @@
                 <div class=" d-flex flex-column" style="width: 20%; height:400px">
                     <select class="btn btn-secondary " style="text-align: left" name="" id="">
                         @foreach ($computo_folders as $folder)
-                            <option value="">{{$folder->name}}</option>
+                            <option id="prezziario" value="">{{$folder->name}}</option>
                         @endforeach
                     </select>
-                    <div class="p-2" style="overflow: auto">
+                    <div id="result-list" class="p-2" style="overflow: auto">
                         @forelse ($computo_sub_folders as $subFolder)
                             <p><i style="color: #61a4d7" class="fa-solid fa-folder"></i>{{$subFolder->name}}</p>
                         @empty
@@ -203,3 +207,12 @@
         </div>
     </div>  
 </div>
+
+@push('scripts')
+    <script>
+        function openclose(id) {
+            let but = document.getElementById(id);
+            but.classList.toggle("d-none");
+        }    
+    </script>
+@endpush

@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ComputoFolderSeeder::class);
         $this->call(ComputoSubFolderSeeder::class);
         $this->call(ComputoPriceListSeeder::class);
+        $this->call(TypeInterventionSeeder::class);
+        $this->call(CategoryInterventionSeeder::class);
     }
 }
