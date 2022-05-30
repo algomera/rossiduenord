@@ -120,7 +120,7 @@
 				<x-table.th>Richiedente</x-table.th>
 				<x-table.th>SAL</x-table.th>
 				<x-table.th>Notifiche</x-table.th>
-				<x-table.th>Piattaforma</x-table.th>
+				<x-table.th></x-table.th>
 			</tr>
 		</x-table.thead>
 		<x-table.tbody>
