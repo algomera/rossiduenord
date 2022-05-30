@@ -1,11 +1,12 @@
 <x-card class="border p-4 rounded-md">
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
-			<div class="sm:col-span-4">
-				<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="import" name="import" id="import" type="text"
+			<div class="col-span-12 sm:col-span-4">
+				<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="import" name="import" id="import"
+				         type="text"
 				         label="Importo stimato" placeholder="0,00" required></x-input>
 			</div>
-			<div class="sm:col-span-4">
+			<div class="col-span-12 sm:col-span-4">
 				<x-select wire:model.defer="practical_phase" name="practical_phase" id="practical_phase"
 				          label="Fase Pratica" required>
 					<option selected value="">Nessuna</option>
@@ -41,7 +42,7 @@
 					</option>
 				</x-select>
 			</div>
-			<div class="sm:col-span-4">
+			<div class="col-span-12 sm:col-span-4">
 				<x-select wire:model.defer="real_estate_type" name="real_estate_type" id="real_estate_type"
 				          label="Tipo Immobile" required>
 					<option selected value="">Seleziona</option>
@@ -60,21 +61,23 @@
 				<x-input wire:model.defer="policy_name" name="policy_name" id="policy_name" type="text"
 				         label="Denominazione" required></x-input>
 			</div>
-			<div class="col-span-10 lg:col-span-4">
+			<div class="col-span-6 sm:col-span-10 lg:col-span-4">
 				<x-input wire:model.defer="address" name="address" id="address" type="text" label="Indirizzo"
 				         required></x-input>
 			</div>
-			<div class="col-span-2 lg:col-span-1">
+			<div class="col-span-6 sm:col-span-2 lg:col-span-1">
 				<x-input wire:model.defer="civic" name="civic" id="civic" type="text" label="N." required></x-input>
 			</div>
-			<div class="col-span-4 lg:col-span-2">
-				<x-input wire:model.defer="common" name="common" id="common" type="text" label="Comune" required></x-input>
-			</div>
-			<div class="col-span-2 lg:col-span-1">
-				<x-input x-mask="aa" wire:model.defer="province" name="province" id="province" type="text" label="Provincia"
+			<div class="col-span-6 sm:col-span-4 lg:col-span-2">
+				<x-input wire:model.defer="common" name="common" id="common" type="text" label="Comune"
 				         required></x-input>
 			</div>
-			<div class="col-span-4 lg:col-span-2">
+			<div class="col-span-6 sm:col-span-2 lg:col-span-1">
+				<x-input x-mask="aa" wire:model.defer="province" name="province" id="province" type="text"
+				         label="Provincia"
+				         required></x-input>
+			</div>
+			<div class="col-span-6 sm:col-span-4 lg:col-span-2">
 				<x-select wire:model.defer="region" name="region" id="region"
 				          label="Regione" required>
 					<option selected value="">Seleziona</option>
@@ -140,18 +143,20 @@
 					</option>
 				</x-select>
 			</div>
-			<div class="col-span-2 lg:col-span-2">
-				<x-input x-mask="99999" wire:model.defer="cap" name="cap" id="cap" type="text" label="CAP" required></x-input>
-			</div>
-			<div class="sm:col-span-4">
-				<x-input wire:model.defer="work_start" name="work_start" id="work_start" type="date" label="Inizio lavori"
+			<div class="col-span-6 sm:col-span-2 lg:col-span-2">
+				<x-input x-mask="99999" wire:model.defer="cap" name="cap" id="cap" type="text" label="CAP"
 				         required></x-input>
 			</div>
-			<div class="sm:col-span-4">
+			<div class="col-span-12 sm:col-span-4">
+				<x-input wire:model.defer="work_start" name="work_start" id="work_start" type="date"
+				         label="Inizio lavori"
+				         required></x-input>
+			</div>
+			<div class="col-span-12 sm:col-span-4">
 				<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="c_m" name="c_m" id="c_m" type="text"
 				         label="Importo C.M" placeholder="0,00" required></x-input>
 			</div>
-			<div class="sm:col-span-4">
+			<div class="col-span-12 sm:col-span-4">
 				<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="assev_tecnica" name="assev_tecnica"
 				         id="assev_tecnica" type="text" label="Assev. Tecnica (no IVA)" placeholder="0,00"
 				         required></x-input>
@@ -160,15 +165,16 @@
 				<x-textarea wire:model.defer="description" name="description" id="description" cols="30" rows="3"
 				            label="Descrizione"></x-textarea>
 			</div>
-			<div class="sm:col-span-4">
+			<div class="col-span-12 sm:col-span-4">
 				<x-input wire:model.defer="referent_email" name="referent_email" id="referent_email" type="email"
 				         label="Email di riferimento"></x-input>
 			</div>
-			<div class="sm:col-span-4">
-				<x-input x-mask="999 9999999" wire:model.defer="referent_mobile" name="referent_mobile" id="referent_mobile" type="text"
+			<div class="col-span-12 sm:col-span-4">
+				<x-input x-mask="999 9999999" wire:model.defer="referent_mobile" name="referent_mobile"
+				         id="referent_mobile" type="text"
 				         label="Cellulare di riferimento"></x-input>
 			</div>
-			<div class="sm:col-span-4" x-data="{ show: @entangle('policy') }">
+			<div class="col-span-12 sm:col-span-4" x-data="{ show: @entangle('policy') }">
 				<div class="flex items-center">
 					<input wire:model="policy" id="policy" name="policy" type="checkbox"
 					       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
@@ -186,22 +192,29 @@
 					       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 					<label for="superbonus" class="block text-sm font-medium text-gray-700">Superbonus 110%</label>
 				</div>
-				<div class="flex items-center space-x-3" x-show="show">
-					<x-input wire:model.defer="superbonus_work_start" id="superbonus_work_start" name="superbonus_work_start" type="month"
-					         label="Data lavorazione"></x-input>
-					<x-select wire:model.defer="sal" id="sal" name="sal" label="SAL">
-						<option {{ $practice->sal == 'Sal 1' ? 'selected' : ''}} {{old('sal') == 'Sal 1' ? 'selected' : ''}} value="Sal 1">
-							Sal 1
-						</option>
-						<option {{ $practice->sal == 'Sal 2' ? 'selected' : ''}} {{old('sal') == 'Sal 2' ? 'selected' : ''}} value="Sal 2">
-							Sal 2
-						</option>
-						<option {{ $practice->sal == 'Sal 3' ? 'selected' : ''}} {{old('sal') == 'Sal finale' ? 'selected' : ''}} value="Sal finale">
-							Sal 3
-						</option>
-					</x-select>
-					<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="import_sal" id="import_sal"
-					         name="import_sal" type="text" label="Importo SAL/Lavori" placeholder="0,00"></x-input>
+				<div class="grid grid-cols-1 sm:grid-cols-12 gap-4" x-show="show">
+					<div class="col-span-12 sm:col-span-4">
+						<x-input wire:model.defer="superbonus_work_start" id="superbonus_work_start"
+						         name="superbonus_work_start" type="month"
+						         label="Data lavorazione"></x-input>
+					</div>
+					<div class="col-span-12 sm:col-span-4">
+						<x-select wire:model.defer="sal" id="sal" name="sal" label="SAL">
+							<option {{ $practice->sal == 'Sal 1' ? 'selected' : ''}} {{old('sal') == 'Sal 1' ? 'selected' : ''}} value="Sal 1">
+								Sal 1
+							</option>
+							<option {{ $practice->sal == 'Sal 2' ? 'selected' : ''}} {{old('sal') == 'Sal 2' ? 'selected' : ''}} value="Sal 2">
+								Sal 2
+							</option>
+							<option {{ $practice->sal == 'Sal 3' ? 'selected' : ''}} {{old('sal') == 'Sal finale' ? 'selected' : ''}} value="Sal finale">
+								Sal 3
+							</option>
+						</x-select>
+					</div>
+					<div class="col-span-12 sm:col-span-4">
+						<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="import_sal" id="import_sal"
+						         name="import_sal" type="text" label="Importo SAL/Lavori" placeholder="0,00"></x-input>
+					</div>
 				</div>
 			</div>
 			<div class="col-span-12">
@@ -209,7 +222,8 @@
 				<div class="flex items-center mt-3">
 					<input wire:model.defer="practice_ok" id="practice_ok" name="practice_ok" type="checkbox"
 					       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-					<label for="practice_ok" class="ml-3 block text-sm font-medium text-gray-700">Pratica in regola</label>
+					<label for="practice_ok" class="ml-3 block text-sm font-medium text-gray-700">Pratica in
+						regola</label>
 				</div>
 			</div>
 		</div>
