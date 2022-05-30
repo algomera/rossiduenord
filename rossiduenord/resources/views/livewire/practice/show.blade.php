@@ -61,7 +61,7 @@
 				<livewire:practice.tabs.document :practice="$practice"/>
 				@break
 			@case('superbonus')
-				Superbonus Content
+				<livewire:practice.tabs.superbonus110.show :practice="$practice"/>
 				@break
 			@case('contracts')
 				<livewire:practice.tabs.contract :practice="$practice"/>

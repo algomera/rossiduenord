@@ -6,22 +6,22 @@ use Illuminate\Http\Request;
 
 class SuperBonusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Practice $practice)
-    {
-        //$this->authorize('edit-superbonus',  $practice->building);
-
-        $applicant = $practice->applicant;
-        $building = $practice->building;
-        $subject = $practice->subject;
-        $data_project = $practice->data_project;
-
-        return view('pages.superbonus.index', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
-    }
+//    /**
+//     * Display a listing of the resource.
+//     *
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function index(Practice $practice)
+//    {
+//        //$this->authorize('edit-superbonus',  $practice->building);
+//
+//        $applicant = $practice->applicant;
+//        $building = $practice->building;
+//        $subject = $practice->subject;
+//        $data_project = $practice->data_project;
+//
+//        return view('pages.superbonus.index', compact('applicant', 'practice', 'building', 'subject', 'data_project'));
+//    }
 
     /**
      * Display the specified resource.
