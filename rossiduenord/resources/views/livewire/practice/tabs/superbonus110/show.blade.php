@@ -25,7 +25,7 @@
 	<x-card>
 		@switch($selectedTab)
 			@case('data_project')
-				<livewire:practice.tabs.superbonus110.tabs.data-project />
+				<livewire:practice.tabs.superbonus110.tabs.data-project :practice="$practice" />
 				@break
 			@case('driving_intervention')
 				Driving Intervention

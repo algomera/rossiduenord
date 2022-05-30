@@ -22,13 +22,13 @@ class CreateDataProjectsTable extends Migration
             $table->string('filed_province')->nullable();
             $table->string('filed_date')->nullable();
             $table->string('filed_protocol')->nullable();     
-            $table->string('technical_report_exclusion')->nullable();
+            $table->boolean('technical_report_exclusion')->nullable();
             $table->string('work_start')->nullable();
             $table->string('end_of_works')->nullable();
             $table->string('type_building')->nullable();
             $table->string('building_unit')->nullable();
             $table->string('relevance')->nullable();
-            $table->string('centralized_system')->nullable();
+            $table->boolean('centralized_system')->nullable();
             $table->string('gross_surface_area')->nullable();
             $table->string('np')->nullable();
             $table->string('np_validated')->nullable();
