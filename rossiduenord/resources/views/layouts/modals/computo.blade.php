@@ -31,9 +31,9 @@
                             </button>
 
                             <div id="but_{{$ct->id}}" class="dropdown-content d-none">
-                                @dd($categoryIntervention)
-                                @foreach ($categoryIntervention as $in)
+                                @foreach ($ct->categoryIntervetion as $in)
                                     <a href="#">{{$in->name}}</a>
+                                    <!-- /aggiornaTabella/{{$in->id}} -->
                                 @endforeach
                             </div>
                         </div>
