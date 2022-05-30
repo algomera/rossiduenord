@@ -12,11 +12,11 @@
 	</x-page-header>
 </x-slot>
 <x-card>
-	<x-card class="border rounded-md p-4">
+	<x-card class="hidden border rounded-md p-4 sm:block">
 		<div>
 			<form action="" method="GET">
 				<div class="flex items-end space-x-4 mb-2">
-					<x-select name="practical_month" id="practical_month" label="Mese">
+					<x-select name="practical_month" id="practical_month" label="Mese" class="w-28">
 						<option value="">Tutti</option>
 						<option value="01" {{ request()->get('practical_month') === '01' ? 'selected' : '' }}>
 							Gennaio

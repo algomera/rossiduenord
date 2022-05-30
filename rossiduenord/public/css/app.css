@@ -1013,6 +1013,9 @@ select {
 .w-80 {
   width: 20rem;
 }
+.w-28 {
+  width: 7rem;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -2369,6 +2372,11 @@ select {
     margin-right: -1.5rem;
   }
 
+  .sm\:mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -2395,6 +2403,14 @@ select {
 
   .sm\:mt-6 {
     margin-top: 1.5rem;
+  }
+
+  .sm\:mr-5 {
+    margin-right: 1.25rem;
+  }
+
+  .sm\:mb-4 {
+    margin-bottom: 1rem;
   }
 
   .sm\:block {
@@ -2516,6 +2532,10 @@ select {
     flex-direction: row;
   }
 
+  .sm\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
   .sm\:items-start {
     align-items: flex-start;
   }
@@ -2592,6 +2612,10 @@ select {
     line-height: 2.25rem;
   }
 
+  .sm\:first\:ml-0:first-child {
+    margin-left: 0px;
+  }
+
   .first\:sm\:pl-6:first-child {
     padding-left: 1.5rem;
   }
@@ -2605,6 +2629,10 @@ select {
 
   .md\:col-span-6 {
     grid-column: span 6 / span 6;
+  }
+
+  .md\:block {
+    display: block;
   }
 
   .md\:flex {
@@ -2669,6 +2697,12 @@ select {
 
   .md\:justify-between {
     justify-content: space-between;
+  }
+
+  .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .md\:rounded-lg {
@@ -2794,6 +2828,12 @@ select {
     --tw-space-y-reverse: 0;
     margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+  }
+
+  .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
   .lg\:px-8 {

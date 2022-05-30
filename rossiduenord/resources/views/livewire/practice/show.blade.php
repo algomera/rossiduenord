@@ -40,7 +40,6 @@
 			</div>
 		</div>
 	</div>
-	{{-- border rounded-md p-4 --}}
 	<x-card>
 		@switch($selectedTab)
 			@case('applicant')

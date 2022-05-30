@@ -40,35 +40,35 @@
 		<div>
 			<x-label>Ruolo nella Pratica *</x-label>
 			<fieldset class="mt-2">
-				<div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-					<div class="flex items-center">
+				<div class="sm:flex sm:items-center sm:flex-wrap">
+					<div class="flex items-center sm:mr-5 mb-2">
 						<input wire:model.defer="role" id="persona_fisica" name="role" type="radio" value="persona_fisica"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="persona_fisica" class="ml-3 block text-sm font-medium text-gray-700">Persona
 							Fisica</label>
 					</div>
-					<div class="flex items-center">
+					<div class="flex items-center sm:mr-5 mb-2">
 						<input wire:model.defer="role" id="amministratore_condominio" name="role" type="radio"
 						       value="amministratore_condominio"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="amministratore_condominio" class="ml-3 block text-sm font-medium text-gray-700">Amministratore
 							di condominio</label>
 					</div>
-					<div class="flex items-center">
+					<div class="flex items-center sm:mr-5 mb-2">
 						<input wire:model.defer="role" id="condomino_incaricato" name="role" type="radio"
 						       value="condomino_incaricato"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="condomino_incaricato" class="ml-3 block text-sm font-medium text-gray-700">Condomino
 							incaricato</label>
 					</div>
-					<div class="flex items-center">
+					<div class="flex items-center sm:mr-5 mb-2">
 						<input wire:model.defer="role" id="unico_proprietario" name="role" type="radio"
 						       value="unico_proprietario"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="unico_proprietario" class="ml-3 block text-sm font-medium text-gray-700">Unico
 							proprietario di condominio</label>
 					</div>
-					<div class="flex items-center">
+					<div class="flex items-center sm:mr-5 mb-2">
 						<input wire:model.defer="role" id="titolare_ditta" name="role" type="radio" value="titolare_ditta"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="titolare_ditta" class="ml-3 block text-sm font-medium text-gray-700">Titolare
