@@ -13,7 +13,7 @@
                             <img src="{{asset('/img/icon/icona_esci.svg')}}" alt="exit">
                             <span>Esci</span>
                         </div>
-                    </div>        
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,13 +26,14 @@
                     @foreach ($typeCategories as $ct)
                         <div class="dropdown-container">
                             <button onclick="openclose('but_{{$ct->id}}')" class="btn btn-secondary icon-center cat_{{$ct->id}}">
-                                <i class="fa-solid fa-folder"></i> 
+                                <i class="fa-solid fa-folder"></i>
                                 {{$ct->name}}
                             </button>
-                            @dd($categoryIntervention, $typeCategories)
+
                             <div id="but_{{$ct->id}}" class="dropdown-content d-none">
+                                @dd($categoryIntervention)
                                 @foreach ($categoryIntervention as $in)
-                                    <a href="#">{{$in->name}}</a>                                    
+                                    <a href="#">{{$in->name}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -40,7 +41,7 @@
 
 {{--                     <div class="dropdown-container">
                         <button @click="openTrainati" class="btn btn-secondary icon-center">
-                            <i class="fa-solid fa-folder"></i> 
+                            <i class="fa-solid fa-folder"></i>
                             Interventi Trainati
                         </button>
                         <div v-show="dropTrainati" class="dropdown-content" aria-labelledby="dropdownTrainati">
@@ -86,7 +87,7 @@
                                     <td>{{$list->e_p}}</td>
                                     <td class="text-left">
                                         <p class="tronk-text">{{$list->description}}</p>
-                                    </td>  
+                                    </td>
                                     <td></td>
                                     <td>{{$list->u_m}}</td>
                                     <td></td>
@@ -102,11 +103,11 @@
                                         <div class="d-flex flex-column justify-content-center align-items-center" style="cursor: pointer">
                                             <img src="{{asset('/img/icon/icona_cancella.svg')}}" alt="">
                                             <span>Cancella</span>
-                                        </div>                    
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
-                                
+
                             @endforelse
                         </tbody>
                     </table>
@@ -162,7 +163,7 @@
                             <div class="d-flex flex-column justify-content-center align-items-center">
                                 <img src="{{asset('/img/icon/icona_excel.svg')}}" alt="">
                                 <span>Excel</span>
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
@@ -177,7 +178,7 @@
                                     <td style="width:10%;" class="text-center">Prezzo €</td>
                                     <td style="width:5%;" class="text-center">% Mat.</td>
                                     <td style="width:5%;"class="text-center"></td>
-                                    <td style="width:5%;"class="text-center">Inserisci</td>                                    
+                                    <td style="width:5%;"class="text-center">Inserisci</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -197,7 +198,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    
+
                                 @endforelse
                             </tbody>
                         </table>
@@ -205,7 +206,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </div>
 
 @push('scripts')
@@ -213,6 +214,6 @@
         function openclose(id) {
             let but = document.getElementById(id);
             but.classList.toggle("d-none");
-        }    
+        }
     </script>
 @endpush

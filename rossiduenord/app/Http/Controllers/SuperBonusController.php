@@ -64,7 +64,7 @@ class SuperBonusController extends Controller
         $computo_sub_folders = ComputoSubFolder::query()->where('computo_folder_id', 1);
         $computo_price_lists = Computo_priceList::all();
         $typeCategories = TypeIntervention::all();
-        $categoryIntervention = $typeIntervention->categoryIntervetion;
+        $categoryIntervention = $typeIntervention::find(1)->categoryIntervetion->get();
 
         return view('pages.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',

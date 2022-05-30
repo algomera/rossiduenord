@@ -16,8 +16,8 @@ class CreateComputoDetailsTable extends Migration
         Schema::create('computo_details', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('practice_id');
-            $table->integer('typeIntervetion_id');
-            $table->integer('typecategory_id');
+            $table->integer('type_intervetion_id');
+            $table->integer('category_intervention_id');
             $table->string('prezziario')->nullable();
             $table->string('e_p');
             $table->text('description');

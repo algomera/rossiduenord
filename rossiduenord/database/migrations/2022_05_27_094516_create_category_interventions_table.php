@@ -15,7 +15,7 @@ class CreateCategoryInterventionsTable extends Migration
     {
         Schema::create('category_interventions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('typeIntervention_id');
+            $table->bigInteger('type_intervention_id');
             $table->string('name');
             $table->timestamps();
         });

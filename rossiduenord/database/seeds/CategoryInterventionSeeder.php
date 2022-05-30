@@ -78,7 +78,7 @@ class CategoryInterventionSeeder extends Seeder
 
         for ($i = 0; $i < 15; $i++) {
             $d = new CategoryIntervention;
-            $d->typeIntervention_id = $name[$i]['type_id'];
+            $d->type_intervention_id = $name[$i]['type_id'];
             $d->name = $name[$i]['name'];
             $d->save();
         }

@@ -8,6 +8,6 @@ class CategoryIntervention extends Model
 {
     public function TypeIntervention()
     {
-        return $this->belongsTo(TypeIntervention::class, 'typeIntervention_id');
+        return $this->belongsTo(TypeIntervention::class, 'type_intervention_id');
     }
 }
