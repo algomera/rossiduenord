@@ -2,7 +2,8 @@
 	<x-page-header>
 		Anagrafiche
 		<x-slot name="actions">
-			<x-button prepend="plus" iconColor="text-white" x-on:click="Livewire.emit('openModal', 'anagrafica.create')">
+			<x-button prepend="plus" iconColor="text-white"
+			          x-on:click="Livewire.emit('openModal', 'anagrafica.create')">
 				Aggiungi
 			</x-button>
 		</x-slot>
@@ -10,49 +11,48 @@
 </x-slot>
 <x-card>
 	<x-card class="border">
-		<table class="min-w-full divide-y divide-gray-300">
-			<thead class="bg-gray-50">
-			<tr>
-				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-					Categoria
-				</th>
-				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Ragione Sociale</th>
-				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Nome</th>
-				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Cognome</th>
-				<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Ruoli</th>
-				<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-					<span class="sr-only">Azioni</span>
-				</th>
-			</tr>
-			</thead>
-			<tbody class="divide-y divide-gray-200 bg-white">
-			@forelse ($anagrafiche as $anagrafica)
-				<tr wire:key="{{ $loop->index }}">
-					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->subject_type}}</td>
-					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->company_name}}</td>
-					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->first_name}}</td>
-					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{$anagrafica->last_name}}</td>
-					<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
-						<div class="flex space-x-1">
-							@foreach($anagrafica->roles as $role)
-								<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full" style="background: {{ $role->color }}" x-tooltip.raw="{{ $role->name }}"></div>
-							@endforeach
-						</div>
-					</td>
-					<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-						<div class="flex items-center space-x-3">
-							<x-icon name="eye" class="w-5 h-5 flex-shrink-0" wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
-							<x-icon name="pencil-alt" class="w-5 h-5 flex-shrink-0" wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})"></x-icon>
-						</div>
-					</td>
-				</tr>
-			@empty
+		<x-table.table>
+			<x-table.thead>
 				<tr>
-					<td colspan="10" class="text-center text-gray-500 py-4">Nessun risultato</td>
+					<x-table.th>Categoria</x-table.th>
+					<x-table.th>Ragione Sociale</x-table.th>
+					<x-table.th>Nome</x-table.th>
+					<x-table.th>Cognome</x-table.th>
+					<x-table.th>Ruoli</x-table.th>
+					<x-table.th></x-table.th>
 				</tr>
-			@endforelse
-			</tbody>
-		</table>
+			</x-table.thead>
+			<x-table.tbody>
+				@forelse ($anagrafiche as $anagrafica)
+					<tr wire:key="{{ $loop->index }}">
+						<x-table.td>{{$anagrafica->subject_type}}</x-table.td>
+						<x-table.td>{{$anagrafica->company_name}}</x-table.td>
+						<x-table.td>{{$anagrafica->first_name}}</x-table.td>
+						<x-table.td>{{$anagrafica->last_name}}</x-table.td>
+						<x-table.td>
+							<div class="flex space-x-1">
+								@foreach($anagrafica->roles as $role)
+									<div class="flex-shrink-0 border border-gray-900 h-4 w-4 rounded-full"
+									     style="background: {{ $role->color }}" x-tooltip.raw="{{ $role->name }}"></div>
+								@endforeach
+							</div>
+						</x-table.td>
+						<x-table.td>
+							<div class="flex items-center space-x-3">
+								<x-icon name="eye" class="w-5 h-5 flex-shrink-0"
+								        wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
+								<x-icon name="pencil-alt" class="w-5 h-5 flex-shrink-0"
+								        wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})"></x-icon>
+							</div>
+						</x-table.td>
+					</tr>
+				@empty
+					<tr>
+						<x-table.td colspan="10" class="text-center text-gray-500 py-4">Nessun risultato</x-table.td>
+					</tr>
+				@endforelse
+			</x-table.tbody>
+		</x-table.table>
 	</x-card>
 </x-card>
 
