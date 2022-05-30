@@ -33,33 +33,13 @@
                             <div id="but_{{$ct->id}}" class="dropdown-content d-none">
                                 @foreach ($ct->categoryIntervetion as $in)
                                     <a href="#">{{$in->name}}</a>
-                                    <!-- /aggiornaTabella/{{$in->id}} -->
+
                                 @endforeach
                             </div>
                         </div>
                     @endforeach
 
-{{--                     <div class="dropdown-container">
-                        <button @click="openTrainati" class="btn btn-secondary icon-center">
-                            <i class="fa-solid fa-folder"></i>
-                            Interventi Trainati
-                        </button>
-                        <div v-show="dropTrainati" class="dropdown-content" aria-labelledby="dropdownTrainati">
-                            <a href="#">Isolamento termico</a>
-                            <a href="#">Sostituzione degli infissi</a>
-                            <a href="#">Schermature solari e chiusure oscuranti</a>
-                            <a href="#">Sostituzione degli impianti</a>
-                            <a href="#">Sistemi di microgenerazione</a>
-                            <a href="#">generatori a biomassa</a>
-                            <a href="#">Building Automation</a>
-                            <a href="#">Collettori solari</a>
-                            <a href="#">Fotovoltaico</a>
-                            <a href="#">Sistema di accumulo</a>
-                            <a href="#">Infrastrutture per ricarica</a>
-                            <a href="#">Eliminazione Barriere Architettoniche</a>
-                        </div>
-                    </div>
- --}}                </div>
+               </div>
 
                 <div class="" style="width: 85%; height:100%;overflow:auto">
                     <table class="table_bonus" style="width: 100%">
@@ -143,7 +123,7 @@
                         @endforeach
                     </select>
                     <div id="result-list" class="p-2" style="overflow: auto">
-                        @forelse ($computo_sub_folders as $subFolder)
+                        @forelse ($folder->subFolder as $subFolder)
                             <p><i style="color: #61a4d7" class="fa-solid fa-folder"></i>{{$subFolder->name}}</p>
                         @empty
                             <p>Nessun Prezziario</p>

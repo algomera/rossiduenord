@@ -420,4 +420,11 @@ class SuperBonusController extends Controller
         $surface = Surface::find($id);
         $surface->delete();
     }
+
+    public function createInterventionList($category, $pratica)
+    {
+        // ricerca su tabella prezziario per prezzi
+        // una volta generata la lista (anche come oggetto), la restituisco alla view --> magari via Ajax
+
+    }
 }
