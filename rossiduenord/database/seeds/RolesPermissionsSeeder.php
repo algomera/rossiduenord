@@ -104,5 +104,10 @@ class RolesPermissionsSeeder extends Seeder
 		    'access_practices',
 		    'access_folders',
 	    ]);
+        // Collaborator base permissions
+        $collaborator->givePermissionTo([
+            'access_practices',
+            'access_folders'
+        ]);
     }
 }
