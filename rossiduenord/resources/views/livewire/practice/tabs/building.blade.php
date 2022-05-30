@@ -5,7 +5,7 @@
 				Dati dell'immobile
 			</x-section-heading>
 
-			<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12">
 					<x-input wire:model.defer="building.intervention_name" type="text" name="intervention_name"
 					         id="intervention_name" label="Nome Intervento" required></x-input>
@@ -33,16 +33,16 @@
 					<x-input-error for="building.intervention_tipology"></x-input-error>
 				</div>
 				{{-- Riga indirizzo pratica?! --}}
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-input x-mask="***********" wire:model.defer="building.fiscal_code" type="text" name="fiscal_code"
 					         id="fiscal_code" class="uppercase"
 					         label="Codice Fiscale" required></x-input>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-input wire:model.defer="building.condominio" type="text" name="condominio" id="condominio"
 					         label="Nome Condominio" required></x-input>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-select wire:model.defer="building.build_type" name="build_type" id="build_type"
 					          label="Tipo di condominio" required>
 						<option value="">Seleziona</option>
@@ -51,7 +51,7 @@
 						<option value="Lusso">Lusso</option>
 					</x-select>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-select wire:model.defer="building.zone" name="zone" id="zone" label="Zona" required>
 						<option selected value="">Seleziona</option>
 						<option value="Centrale">Centrale</option>
@@ -59,31 +59,31 @@
 						<option value="Pregio">Pregio</option>
 					</x-select>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.section" type="text" name="section" id="section"
 					         label="Sezione"></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.foil" type="text" name="foil" id="foil" label="Foglio"
 					         required></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.particle" type="text" name="particle" id="particle"
 					         label="Particella" required></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.subaltern" type="text" name="subaltern" id="subaltern"
 					         label="Subalterno" required></x-input>
 				</div>
-				<div class="col-span-2">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.unit_building_number" type="text" name="unit_building_number"
-					         id="unit_building_number" label="N. unità immobiliari" required></x-input>
+					         id="unit_building_number" label="N. unità imm." required></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.pertinence_number" type="text" name="pertinence_number"
 					         id="pertinence_number" label="N. pertinenze" required></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
 					<x-input wire:model.defer="building.resolution_stairs" type="text" name="resolution_stairs"
 					         id="resolution_stairs" label="Scale delibere"></x-input>
 				</div>
@@ -248,25 +248,25 @@
 					<div class="flex flex-col p-4">
 						<x-label>Autorizzazione edilizia
 						</x-label>
-						<div class="flex items-center space-x-4">
-							<div class="flex items-center space-x-1">
+						<div class="flex items-center flex-wrap">
+							<div class="flex items-center space-x-1 mr-4 mb-2">
 								<input wire:model="building.building_authorization" type="radio" value="notDefine"
 								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 								<x-label class="mb-0">N.D</x-label>
 							</div>
-							<div class="flex items-center space-x-1">
+							<div class="flex items-center space-x-1 mr-4 mb-2">
 								<input wire:model="building.building_authorization" type="radio"
 								       value="Licenza/Titolo edilizio"
 								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 								<x-label class="mb-0">Licenza/Titolo edilizio</x-label>
 							</div>
-							<div class="flex items-center space-x-1">
+							<div class="flex items-center space-x-1 mr-4 mb-2">
 								<input wire:model="building.building_authorization" type="radio"
 								       value="Concessione in sanatoria"
 								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 								<x-label class="mb-0">Concessione in sanatoria</x-label>
 							</div>
-							<div class="flex items-center space-x-1">
+							<div class="flex items-center space-x-1 mr-4 mb-2">
 								<input wire:model="building.building_authorization" type="radio"
 								       value="Edificio storico senza titolo edilizio"
 								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
@@ -275,15 +275,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-span-3">
+				<div class="col-span-6 sm:col-span-3">
 					<x-input wire:model.defer="building.license_number" type="text" name="license_number"
-					         id="license_number" label="N. licenza/totolo"></x-input>
+					         id="license_number" label="N. licenza/titolo"></x-input>
 				</div>
-				<div class="col-span-3">
+				<div class="col-span-6 sm:col-span-3">
 					<x-input wire:model.defer="building.license_date" type="date" name="license_date" id="license_date"
-					         label="Data licenza/totolo"></x-input>
+					         label="Data licenza/titolo"></x-input>
 				</div>
-				<div class="col-span-3">
+				<div class="col-span-12 sm:col-span-3">
 					<x-input x-mask="9999" wire:model.defer="building.construction_date" type="text"
 					         name="construction_date"
 					         id="construction_date" label="Anno costruzione"></x-input>
@@ -311,45 +311,45 @@
 			<ul role="list" class="border-y border-gray-100 divide-y divide-gray-200">
 				@forelse($condomini as $i => $condomino)
 					<li class="py-4 flex">
-						<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full">
+						<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">
 							{{ $i + 1 }}
 						</div>
 						<div class="ml-3">
 							<p class="text-sm font-medium text-gray-900">{{ $condomino->name }} {{ $condomino->surname }}</p>
 							<p class="text-sm text-gray-500">{{ $condomino->cf }}</p>
 							<p class="text-sm text-gray-500">{{ $condomino->email }} • {{ $condomino->phone }}</p>
-							<div class="flex items-center space-x-2 mt-1 flex-wrap">
-								<p class="text-sm text-gray-500">
+							<div class="flex items-center mt-1 flex-wrap">
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Millesimi:</span>
 									<span>{{ $condomino->millesimi_inv }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Foglio:</span>
 									<span>{{ $condomino->foglio }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Part:</span>
 									<span>{{ $condomino->part }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Sub:</span>
 									<span>{{ $condomino->sub }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Categ. Catastale:</span>
 									<span>{{ $condomino->categ_catastale }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Sup. Catastale:</span>
 									<span>{{ $condomino->sup_catastale }}</span>
 								</p>
-								<span class="text-gray-500">&middot;</span>
-								<p class="text-sm text-gray-500">
+								<span class="text-gray-500 mr-1 mb-1">&middot;</span>
+								<p class="text-sm text-gray-500 mr-1 mb-1">
 									<span class="font-bold">Comproprietari:</span>
 									<span>{{ $condomino->comproprietari ? 'Si' : 'No' }}</span>
 								</p>
@@ -363,8 +363,8 @@
 					</li>
 				@endforelse
 			</ul>
-			<div class="flex items-center justify-between mt-5">
-				<div class="flex items-center space-x-5">
+			<div class="sm:flex mt-5 sm:items-center sm:justify-between sm:space-y-2">
+				<div class="space-y-2 sm:flex md:flex-row md:items-center sm:items-center sm:space-x-5 sm:space-y-0">
 					<label class="block">
 						<span class="sr-only">Scegli..</span>
 						<input wire:model="tmp_excel_file" type="file" class="block w-full text-sm text-slate-500
@@ -408,54 +408,54 @@
 			<x-section-heading>
 				Dati Amministrazione
 			</x-section-heading>
-			<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12">
 					<x-input wire:model.defer="building.administrator_fullname" type="text"
 					         name="administrator_fullname"
 					         id="administrator_fullname" label="Nominativo"></x-input>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-input wire:model.defer="building.administrator_name" type="text" name="administrator_name"
 					         id="administrator_name" label="Nome"></x-input>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-input wire:model.defer="building.administrator_surname" type="text" name="administrator_surname"
 					         id="administrator_surname" label="Cognome"></x-input>
 				</div>
-				<div class="col-span-6">
+				<div class="col-span-12 sm:col-span-6">
 					<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="building.administrator_fiscalcode" type="text"
 					         name="administrator_fiscalcode" id="administrator_fiscalcode" class="uppercase"
 					         label="Codice Fiscale"></x-input>
 				</div>
-				<div class="col-start-1 col-span-6">
+				<div class="col-span-7 sm:col-start-1 sm:col-span-5">
 					<x-input wire:model.defer="building.administrator_address" type="text" name="administrator_address"
 					         id="administrator_address" label="Indirizzo"></x-input>
 				</div>
-				<div class="col-span-3">
+				<div class="col-span-5 sm:col-span-3">
 					<x-input wire:model.defer="building.administrator_city" type="text" name="administrator_city"
 					         id="administrator_city" label="Città"></x-input>
 				</div>
-				<div class="col-span-1">
+				<div class="col-span-7 sm:col-span-2">
 					<x-input x-mask="aa" wire:model.defer="building.administrator_province" type="text"
 					         name="administrator_province"
 					         id="administrator_province" class="uppercase" label="Provincia"></x-input>
 				</div>
-				<div class="col-span-2">
+				<div class="col-span-5 sm:col-span-2">
 					<x-input x-mask="99999" wire:model.defer="building.administrator_cap" type="text"
 					         name="administrator_cap"
 					         id="administrator_cap" label="CAP"></x-input>
 				</div>
-				<div class="col-span-4">
+				<div class="col-span-6 sm:col-span-4">
 					<x-input x-mask="999 9999999" wire:model.defer="building.administrator_telephone" type="text"
 					         name="administrator_telephone"
 					         id="administrator_telephone" label="Telefono"></x-input>
 				</div>
-				<div class="col-span-4">
+				<div class="col-span-6 sm:col-span-4">
 					<x-input x-mask="999 9999999" wire:model.defer="building.administrator_cellphone" type="text"
 					         name="administrator_cellphone"
 					         id="administrator_cellphone" label="Cellulare"></x-input>
 				</div>
-				<div class="col-span-4">
+				<div class="col-span-12 sm:col-span-4">
 					<x-input wire:model.defer="building.administrator_email" type="email" name="administrator_email"
 					         id="administrator_email" label="Email"></x-input>
 				</div>
