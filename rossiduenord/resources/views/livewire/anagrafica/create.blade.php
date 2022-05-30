@@ -1,7 +1,7 @@
 <x-card class="p-4">
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="grid grid-cols-6 gap-6">
-			<div class="col-span-6 lg:col-span-4 grid grid-cols-1 sm:grid-cols-12 gap-4">
+			<div class="col-span-6 lg:col-span-4 grid sm:grid-cols-12 gap-4">
 				<div class="col-span-12">
 					<x-select wire:model.defer="subject_type" name="subject_type" id="subject_type"
 					          label="Tipologia soggetto" required>
