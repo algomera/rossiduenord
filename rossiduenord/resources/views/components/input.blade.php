@@ -1,4 +1,4 @@
-@props(['disabled' => false, 'required' => false, 'name', 'label' => false, 'append' => false, 'prepend' => false, 'iconColor' => 'text-gray-800'])
+@props(['disabled' => false, 'required' => false, 'name', 'label' => false, 'hint' => false, 'append' => false, 'prepend' => false, 'iconColor' => 'text-gray-800'])
 @php
 	$n = $attributes->wire('model')->value() ?: $name;
 	$slug = $attributes->wire('model')->value() ?: $n;
@@ -16,6 +16,11 @@
 	@if($prepend)
 		@php
 			$inputClass .= ' pl-10';
+		@endphp
+	@endif
+	@if($append)
+		@php
+			$inputClass .= ' pr-10';
 		@endphp
 	@endif
 
@@ -41,6 +46,9 @@
 					id="{{ $slug }}"
 					{{ $required ? 'required' : '' }}
 			>
+			@if($hint)
+				<p class="mt-1 text-xs text-gray-500">{{ $hint }}</p>
+			@endif
 			@error($slug)
 			<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
 				<x-icon
