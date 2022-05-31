@@ -9,7 +9,8 @@
 	{
 		public PracticeModel $practice;
 		public $driving_intervention;
-		public $currentSurface = 'pv';
+		public $currentSurface = 'PV';
+
 		protected $rules = [
 			'driving_intervention.thermical_isolation_intervention' => 'nullable|string',
 			'driving_intervention.total_vertical_walls'             => 'nullable',
@@ -48,11 +49,6 @@
 
 		public function mount() {
 			$this->driving_intervention = $this->practice->driving_intervention;
-		}
-
-		public function addInterventionSurface() {
-			//
-			dd("qui");
 		}
 
 		public function save() {
