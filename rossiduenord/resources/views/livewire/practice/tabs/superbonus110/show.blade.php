@@ -28,7 +28,7 @@
 				<livewire:practice.tabs.superbonus110.tabs.data-project :practice="$practice" />
 				@break
 			@case('driving_intervention')
-				Driving Intervention
+				<livewire:practice.tabs.superbonus110.tabs.driving-intervention :practice="$practice" />
 				@break
 			@case('towed_intervention')
 				Towed Intervention

@@ -28,7 +28,7 @@
 			'data_project.building_unit'              => 'nullable|string',
 			'data_project.relevance'                  => 'nullable|integer',
 			'data_project.centralized_system'         => 'nullable|boolean',
-			'data_project.gross_surface_area'         => 'nullable|integer',
+			'data_project.gross_surface_area'         => 'nullable|numeric|between:0,99999.99',
 			'data_project.np'                         => 'nullable',
 			'data_project.np_validated'               => 'nullable',
 			'data_project.np_not_validated'           => 'nullable',
@@ -41,7 +41,7 @@
 
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
-				'subtitle' => __('I dati di progetto sono stati aggiornati con successo!')
+				'subtitle' => __('Dati aggiornati con successo!')
 			]);
 			$this->emitTo('practice.tabs.superbonus110.show', 'change-tab', 'driving_intervention');
 		}

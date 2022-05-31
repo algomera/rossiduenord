@@ -49,10 +49,10 @@
 				<div class="col-span-12">
 					<div class="flex items-center mt-3">
 						<input wire:model="data_project.technical_report_exclusion"
-						       id="data_project.technical_report_exclusion"
-						       name="data_project.technical_report_exclusion" type="checkbox"
+						       id="technical_report_exclusion"
+						       name="technical_report_exclusion" type="checkbox"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-						<label for="data_project.technical_report_exclusion"
+						<label for="technical_report_exclusion"
 						       class="ml-3 block text-sm font-medium text-gray-700">Non
 							è stata depositata la relazione tecnica in quanto si ricade nei casi di esclusione previsti
 							dal comma 1 dell'art. 8 del D.lgs 192/05 e dal punto 2, paragrafo 2.2 dell'allegato 1 del
@@ -119,7 +119,7 @@
 			@endif
 		</div>
 		<div>
-			<x-input x-mask="9999" wire:model.defer="data_project.gross_surface_area" type="text" name="gross_surface_area"
+			<x-input wire:model.defer="data_project.gross_surface_area" type="text" name="gross_surface_area"
 			         id="gross_surface_area"
 			         class="w-36"
 			         label="La superficie lorta ante lavori complessiva disperdente è pari a m²"></x-input>

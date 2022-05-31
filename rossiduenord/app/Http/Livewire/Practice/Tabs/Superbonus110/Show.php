@@ -16,7 +16,7 @@
 			'fees_declaration'     => 'Spese e dichiarazione',
 			'variants'             => 'Varianti',
 		];
-		public $selectedTab = 'data_project';
+		public $selectedTab = 'driving_intervention';
 		protected $listeners = [
 			'change-tab' => 'changeTab'
 		];
