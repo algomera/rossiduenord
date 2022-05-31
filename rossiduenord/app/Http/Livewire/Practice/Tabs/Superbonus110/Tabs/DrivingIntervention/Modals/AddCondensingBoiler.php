@@ -2,7 +2,6 @@
 
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs\DrivingIntervention\Modals;
 
-	use App\CondensingBoiler;
 	use App\Practice as PracticeModel;
 	use LivewireUI\Modal\ModalComponent;
 
@@ -47,7 +46,7 @@
 				'title'    => __('Salvataggio'),
 				'subtitle' => __('Caldaia a condensazione salvata con successo!')
 			]);
-			$this->emitTo('practice.tabs.superbonus110.tabs.driving-intervention', 'condensing-boiler-added');
+			$this->emitTo('practice.tabs.superbonus110.intervention.condensing-boilers', 'condensing-boiler-added');
 		}
 
 		public function render() {

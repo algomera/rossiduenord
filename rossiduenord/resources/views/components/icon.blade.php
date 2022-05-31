@@ -514,6 +514,9 @@
 	@case('kW')
 		<span class="text-sm text-gray-500">kW</span>
 		@break
+	@case('KWh')
+		<span class="text-sm text-gray-500">KWh</span>
+		@break
 
 	@default
 

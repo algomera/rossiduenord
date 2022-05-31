@@ -23,14 +23,14 @@ class CreateHeatPumpsTable extends Migration
             $table->text('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->text('tipo_di_pdc')->nullable();
-            $table->text('tipo_roof_top')->nullable();
+            $table->boolean('tipo_roof_top')->default(false)->nullable();
             $table->double('potenza_nominale')->nullable();
             $table->double('p_elettrica_assorbita')->nullable();
-            $table->text('inverter')->nullable();
+            $table->boolean('inverter')->default(false)->nullable();
             $table->double('cop')->nullable();
-            $table->text('reversibile')->nullable();
+            $table->boolean('reversibile')->default(false)->nullable();
             $table->text('eer')->nullable();
-            $table->text('sonde_geotermiche')->nullable();
+            $table->boolean('sonde_geotermiche')->default(false)->nullable();
             $table->text('sup_riscaldata_dalla_pdc')->nullable();
             $table->timestamps();
         });

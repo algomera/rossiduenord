@@ -19,9 +19,7 @@
 		public $biome_generators = [];
 		public $solar_panels = [];
 		public $surfaces = [];
-		protected $listeners = [
-			'condensing-boiler-added' => '$refresh'
-		];
+
 		protected $rules = [
 			'driving_intervention.thermical_isolation_intervention' => 'nullable|boolean',
 			'driving_intervention.total_vertical_walls'             => 'nullable',
@@ -73,14 +71,6 @@
 		}
 
 		public function render() {
-			$this->condensing_boilers = $this->practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->heat_pumps = $this->practice->heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->absorption_heat_pumps = $this->practice->absorption_heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->hybrid_systems = $this->practice->hybrid_systems()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->microgeneration_systems = $this->practice->microgeneration_systems()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->water_heatpumps_installations = $this->practice->water_heatpumps_installations()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->biome_generators = $this->practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
-			$this->solar_panels = $this->practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
 			return view('livewire.practice.tabs.superbonus110.tabs.driving-intervention');
 		}
 	}

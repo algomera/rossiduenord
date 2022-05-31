@@ -6,7 +6,7 @@
 @endphp
 @error($slug)
 @php
-	$inputClass .= ' pr-10 border-red-300 focus:outline-none text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500';
+	$inputClass .= ' pr-11 border-red-300 focus:outline-none text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500';
 @endphp
 @else
 	@php
@@ -15,12 +15,12 @@
 	@enderror
 	@if($prepend)
 		@php
-			$inputClass .= ' pl-10';
+			$inputClass .= ' pl-11';
 		@endphp
 	@endif
 	@if($append)
 		@php
-			$inputClass .= ' pr-10';
+			$inputClass .= ' pr-11';
 		@endphp
 	@endif
 
@@ -46,9 +46,6 @@
 					id="{{ $slug }}"
 					{{ $required ? 'required' : '' }}
 			>
-			@if($hint)
-				<p class="mt-1 text-xs text-gray-500">{{ $hint }}</p>
-			@endif
 			@error($slug)
 			<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
 				<x-icon
@@ -64,5 +61,8 @@
 				@endif
 				@enderror
 		</div>
+		@if($hint)
+			<p class="mt-1 text-xs text-gray-500">{{ $hint }}</p>
+		@endif
 		<x-input-error :for="$slug"></x-input-error>
 	</div>
