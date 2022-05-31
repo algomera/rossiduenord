@@ -18,7 +18,7 @@ class CreateDrivingInterventionsTable extends Migration
             $table->bigInteger('practice_id')->unsigned();
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             // thermical isolation intervention
-            $table->string('thermical_isolation_intervention')->nullable();
+            $table->boolean('thermical_isolation_intervention')->default(false)->nullable();
             $table->string('start_date_payment')->nullable();
             // data
             $table->string('total_vertical_walls')->nullable();
@@ -36,21 +36,21 @@ class CreateDrivingInterventionsTable extends Migration
             $table->string('dispersing_covers')->nullable();
             $table->string('isolation_energetic_savings')->nullable();
             // air conditioning system replacing intervention
-            $table->string('winter_acs_replacing')->nullable();
+            $table->boolean('winter_acs_replacing')->default(false)->nullable();
             $table->string('total_power')->nullable();
             $table->string('generators')->nullable();
             // equipment
-            $table->string('condensing_boiler')->nullable();
-            $table->string('heat_pump')->nullable();
-            $table->string('absorption_heat_pump')->nullable();
-            $table->string('hybrid_system')->nullable();
-            $table->string('microgeneration_system')->nullable();
-            $table->string('water_heatpumps_installation')->nullable();
-            $table->string('biome_generator')->nullable();
-            $table->string('solar_panel')->nullable();
-            $table->string('solar_panel_use_winter')->nullable();
-            $table->string('solar_panel_use_summer')->nullable();
-            $table->string('solar_panel_use_water')->nullable();
+            $table->boolean('condensing_boiler')->default(false)->nullable();
+            $table->boolean('heat_pump')->default(false)->nullable();
+            $table->boolean('absorption_heat_pump')->default(false)->nullable();
+            $table->boolean('hybrid_system')->default(false)->nullable();
+            $table->boolean('microgeneration_system')->default(false)->nullable();
+            $table->boolean('water_heatpumps_installation')->default(false)->nullable();
+            $table->boolean('biome_generator')->default(false)->nullable();
+            $table->boolean('solar_panel')->default(false)->nullable();
+            $table->boolean('solar_panel_use_winter')->default(false)->nullable();
+            $table->boolean('solar_panel_use_summer')->default(false)->nullable();
+            $table->boolean('solar_panel_use_water')->default(false)->nullable();
             // project cost
             $table->string('total_acs_project_cost')->nullable();
             $table->string('total_cost_installations')->nullable();

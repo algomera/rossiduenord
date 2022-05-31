@@ -63,21 +63,27 @@
 			<div>
 				<x-label for="total_intervention_surface">Superficie totale oggetto dell'intervento *:</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="total_intervention_surface" type="text" name="total_intervention_surface" id="total_intervention_surface" append="m²"></x-input>
+					<x-input wire:model.defer="driving_intervention.total_intervention_surface" type="text" name="total_intervention_surface"
+					         id="total_intervention_surface" append="m²"></x-input>
 				</div>
-				<p class="mt-1 text-xs text-gray-500">* il POND non viene considerato nel calcolo per l'ammissibilità dell'intervento trainante sull'involucro (maggiore del 25% della sup. disperdente)</p>
+				<p class="mt-1 text-xs text-gray-500">* il POND non viene considerato nel calcolo per l'ammissibilità
+					dell'intervento trainante sull'involucro (maggiore del 25% della sup. disperdente)</p>
 			</div>
 			<div>
-				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:</x-label>
+				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:
+				</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="total_expected_cost" type="text" name="total_expected_cost" id="total_expected_cost" append="€"></x-input>
+					<x-input wire:model.defer="driving_intervention.total_expected_cost" type="text" name="total_expected_cost"
+					         id="total_expected_cost" append="€"></x-input>
 				</div>
-				<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione, direzione lavori, asseverazione tecnica e fiscale)</p>
+				<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione, direzione
+					lavori, asseverazione tecnica e fiscale)</p>
 			</div>
 			<div>
 				<x-label>La spesa massima ammissibile dei lavori sulle parti opache è pari a:</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="max_possible_cost" type="text" name="max_possible_cost" id="max_possible_cost" append="€"></x-input>
+					<x-input wire:model.defer="driving_intervention.max_possible_cost" type="text" name="max_possible_cost"
+					         id="max_possible_cost" append="€"></x-input>
 				</div>
 			</div>
 			<div>
@@ -85,11 +91,13 @@
 				<div class="grid grid-cols-12 gap-4">
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL n.1</x-label>
-						<x-input type="text" name="total_isolation_cost_1" id="total_isolation_cost_1" hint="almeno al 30%"></x-input>
+						<x-input type="text" name="total_isolation_cost_1" id="total_isolation_cost_1"
+						         hint="almeno al 30%"></x-input>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL n.2</x-label>
-						<x-input type="text" name="total_isolation_cost_2" id="total_isolation_cost_2" hint="almeno al 60%"></x-input>
+						<x-input type="text" name="total_isolation_cost_2" id="total_isolation_cost_2"
+						         hint="almeno al 60%"></x-input>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL F</x-label>
@@ -108,34 +116,41 @@
 			<div>
 				<x-label>Di cui per coperture non disperdenti:</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="dispersing_covers" type="text" name="dispersing_covers" id="dispersing_covers" append="€"></x-input>
+					<x-input wire:model.defer="driving_intervention.dispersing_covers" type="text" name="dispersing_covers"
+					         id="dispersing_covers" append="€"></x-input>
 				</div>
 			</div>
 			<div>
 				<x-label>Il risparmio di energia primaria non rinnovabile di progetto è:</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="isolation_energetic_savings" type="text" name="isolation_energetic_savings" id="isolation_energetic_savings" hint="KWh/anno"></x-input>
+					<x-input wire:model.defer="driving_intervention.isolation_energetic_savings" type="text"
+					         name="isolation_energetic_savings" id="isolation_energetic_savings"
+					         hint="KWh/anno"></x-input>
 				</div>
 			</div>
 			<div>
 				<div class="flex items-center mt-3">
-					<input id="winter_acs_replacing"
+					<input wire:model="driving_intervention.winter_acs_replacing"
+					       id="winter_acs_replacing"
 					       name="winter_acs_replacing" type="checkbox"
 					       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 					<label for="winter_acs_replacing"
-					       class="ml-3 block text-sm font-medium text-gray-700">Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</label>
+					       class="ml-3 block text-sm font-medium text-gray-700">Intervento di sostituzione degli
+						impianti di climatizzazione invernale esistenti</label>
 				</div>
 			</div>
 			<div>
 				<x-label>Potenza utile complessiva pari a:</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="total_power" type="text" name="total_power" id="total_power" hint="KWh"></x-input>
+					<x-input wire:model.defer="driving_intervention.total_power" type="text" name="total_power" id="total_power"
+					         hint="KWh"></x-input>
 				</div>
 			</div>
 			<div>
 				<x-label>Composto da n.</x-label>
 				<div class="w-32 mb-1">
-					<x-input wire:model.defer="generators" type="text" name="generators" id="generators" hint="Generatori di calore"></x-input>
+					<x-input wire:model.defer="driving_intervention.generators" type="text" name="generators" id="generators"
+					         hint="Generatori di calore"></x-input>
 				</div>
 			</div>
 			<div class="space-y-5">
@@ -148,14 +163,83 @@
 						<label for="condensing_boiler"
 						       class="flex items-center space-x-3 ml-3 block text-sm font-medium text-gray-700">
 							<span>CC. Caldaie a condensazione</span>
-							<x-button size="sm">
+							<x-button wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-condensing-boiler', {{ json_encode(['practice' => $practice->id, 'condomino_id' => null, 'is_common' => 0]) }})" type="button" size="sm">
 								<x-icon name="plus" class="w-3 h-3 text-white"></x-icon>
 							</x-button>
 						</label>
 					</div>
 				</div>
+				<div class="p-4 bg-gray-50 rounded-md">
+					<ul role="list" class="divide-y divide-gray-200">
+						@forelse($condensing_boilers as $i => $condensing_boiler)
+							<li class="py-4 flex">
+								<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">
+									{{ $i + 1 }}
+								</div>
+								<div class="ml-3">
+{{--									<p class="text-sm font-medium text-gray-900">{{ $condensing_boiler->name }} {{ $condensing_boiler->surname }}</p>--}}
+{{--									<p class="text-sm text-gray-500">{{ $condensing_boiler->cf }}</p>--}}
+{{--									<p class="text-sm text-gray-500">{{ $condensing_boiler->email }} • {{ $condensing_boiler->phone }}</p>--}}
+									<div class="flex flex-col mt-1 flex-wrap">
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Tipo sostituito:</span>
+											<span>{{ $condensing_boiler->tipo_sostituito ?: '-' }}</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">P. nom. sostituito:</span>
+											<span>{{ $condensing_boiler->p_nom_sostituito ?: '-' }} kW</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Potenza nominale:</span>
+											<span>{{ $condensing_boiler->potenza_nominale ?: '-' }} kW</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Rend. utile nom.:</span>
+											<span>{{ $condensing_boiler->rend_utile_nom ?: '-' }} %</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Destinazione d'uso:</span>
+											<span>{{ $condensing_boiler->use_destination ?: '-' }}</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Efficienza ns:</span>
+											<span>{{ $condensing_boiler->efficienza_ns ?: '-' }} %</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Efficienza ACS nwh:</span>
+											<span>{{ $condensing_boiler->efficienza_acs_nwh ?: '-' }} %</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Tipo di alimentazione:</span>
+											<span>{{ $condensing_boiler->tipo_di_alimentazione ?: '-' }}</span>
+										</p>
+										<p class="text-sm text-gray-500 mr-1 mb-1">
+											<span class="font-bold">Classe disp. termoregolazione evoluto:</span>
+											<span>{{ $condensing_boiler->classe_termo_evoluto ?: '-' }}</span>
+										</p>
+									</div>
+								</div>
+							</li>
+						@empty
+							<li class="py-4 text-sm text-gray-500">
+								Nessuna caldaia inserita
+							</li>
+						@endforelse
+					</ul>
+
+
+
+{{--					@forelse($condensing_boilers as $condensing_boiler)--}}
+{{--						{{ $condensing_boiler->tipo_sostituito }}--}}
+{{--					@empty--}}
+{{--						<span class="text-sm">Nessuna caldaia inserita</span>--}}
+{{--					@endforelse--}}
+				</div>
 			</div>
 		</div>
+
+		<hr>
+		{{ $errors }}
 
 		<div class="flex justify-end space-x-3">
 			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>

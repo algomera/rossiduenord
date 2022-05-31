@@ -10,9 +10,20 @@
 		public PracticeModel $practice;
 		public $driving_intervention;
 		public $currentSurface = 'PV';
-
+		public $condensing_boilers = [];
+		public $heat_pumps = [];
+		public $absorption_heat_pumps = [];
+		public $hybrid_systems = [];
+		public $microgeneration_systems = [];
+		public $water_heatpumps_installations = [];
+		public $biome_generators = [];
+		public $solar_panels = [];
+		public $surfaces = [];
+		protected $listeners = [
+			'condensing-boiler-added' => '$refresh'
+		];
 		protected $rules = [
-			'driving_intervention.thermical_isolation_intervention' => 'nullable|string',
+			'driving_intervention.thermical_isolation_intervention' => 'nullable|boolean',
 			'driving_intervention.total_vertical_walls'             => 'nullable',
 			'driving_intervention.vw_realized_1'                    => 'nullable|integer',
 			'driving_intervention.vw_realized_2'                    => 'nullable|integer',
@@ -25,20 +36,20 @@
 			'driving_intervention.final_isolation_cost'             => 'nullable|integer',
 			'driving_intervention.dispersing_covers'                => 'nullable|integer',
 			'driving_intervention.isolation_energetic_savings'      => 'nullable|integer',
-			'driving_intervention.winter_acs_replacing'             => 'nullable|string',
+			'driving_intervention.winter_acs_replacing'             => 'nullable|boolean',
 			'driving_intervention.total_power'                      => 'nullable|integer',
 			'driving_intervention.generators'                       => 'nullable|string',
-			'driving_intervention.condensing_boiler'                => 'nullable|string',
-			'driving_intervention.heat_pump'                        => 'nullable|string',
-			'driving_intervention.absorption_heat_pump'             => 'nullable|string',
-			'driving_intervention.hybrid_system'                    => 'nullable|string',
-			'driving_intervention.microgeneration_system'           => 'nullable|string',
-			'driving_intervention.water_heatpumps_installation'     => 'nullable|string',
-			'driving_intervention.biome_generator'                  => 'nullable|string',
-			'driving_intervention.solar_panel'                      => 'nullable|string',
-			'driving_intervention.solar_panel_use_winter'           => 'nullable|string',
-			'driving_intervention.solar_panel_use_summer'           => 'nullable|string',
-			'driving_intervention.solar_panel_use_water'            => 'nullable|string',
+			'driving_intervention.condensing_boiler'                => 'nullable|boolean',
+			'driving_intervention.heat_pump'                        => 'nullable|boolean',
+			'driving_intervention.absorption_heat_pump'             => 'nullable|boolean',
+			'driving_intervention.hybrid_system'                    => 'nullable|boolean',
+			'driving_intervention.microgeneration_system'           => 'nullable|boolean',
+			'driving_intervention.water_heatpumps_installation'     => 'nullable|boolean',
+			'driving_intervention.biome_generator'                  => 'nullable|boolean',
+			'driving_intervention.solar_panel'                      => 'nullable|boolean',
+			'driving_intervention.solar_panel_use_winter'           => 'nullable|boolean',
+			'driving_intervention.solar_panel_use_summer'           => 'nullable|boolean',
+			'driving_intervention.solar_panel_use_water'            => 'nullable|boolean',
 			'driving_intervention.total_acs_project_cost'           => 'nullable|integer',
 			'driving_intervention.total_cost_installations'         => 'nullable|integer',
 			'driving_intervention.total_replacing_cost_1'           => 'nullable|integer',
@@ -52,8 +63,8 @@
 		}
 
 		public function save() {
-//			$validated = $this->validate();
-
+			$validated = $this->validate();
+			dd($validated);
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('Dati aggiornati con successo!')
@@ -62,6 +73,14 @@
 		}
 
 		public function render() {
+			$this->condensing_boilers = $this->practice->condensing_boilers()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->heat_pumps = $this->practice->heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->absorption_heat_pumps = $this->practice->absorption_heat_pumps()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->hybrid_systems = $this->practice->hybrid_systems()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->microgeneration_systems = $this->practice->microgeneration_systems()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->water_heatpumps_installations = $this->practice->water_heatpumps_installations()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->biome_generators = $this->practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
+			$this->solar_panels = $this->practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
 			return view('livewire.practice.tabs.superbonus110.tabs.driving-intervention');
 		}
 	}

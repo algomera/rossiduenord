@@ -508,6 +508,12 @@
 	@case('€')
 		<span class="text-sm text-gray-500">€</span>
 		@break
+	@case('%')
+		<span class="text-sm text-gray-500">%</span>
+		@break
+	@case('kW')
+		<span class="text-sm text-gray-500">kW</span>
+		@break
 
 	@default
 
