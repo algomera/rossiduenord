@@ -36,7 +36,7 @@
 			</div>
 			<div class="col-span-12 sm:col-span-6">
 				<x-input wire:model.defer="p_elettrica_assorbita" type="text" name="p_elettrica_assorbita"
-				         id="p_elettrica_assorbita" label="Rend. utile nom." append="kW"></x-input>
+				         id="p_elettrica_assorbita" label="Potenza elettrica assorbita" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
 				<x-input wire:model.defer="cop" type="text" name="cop" id="cop" label="COP"></x-input>
