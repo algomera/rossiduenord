@@ -1,13 +1,13 @@
-<div class="mt-2">
+<div class="mt-3">
 	<x-table.table>
 		<x-table.thead>
 			<tr>
 				<x-table.th>N.</x-table.th>
 				<x-table.th>Descrizione</x-table.th>
-				<x-table.th>Superficie (mq)</x-table.th>
-				<x-table.th>Trasm. Ante (W/mqk)</x-table.th>
-				<x-table.th>Trasm. Post (W/mqk)</x-table.th>
-				<x-table.th>Trasm. Term. Period. YIE (W/mqk)</x-table.th>
+				<x-table.th>Superficie (m²)</x-table.th>
+				<x-table.th>Trasm. Ante (W/m²k)</x-table.th>
+				<x-table.th>Trasm. Post (W/m²k)</x-table.th>
+				<x-table.th>Trasm. Term. Period. YIE (W/m²k)</x-table.th>
 				<x-table.th>Confine</x-table.th>
 				<x-table.th>Coibentazione</x-table.th>
 				<x-table.th></x-table.th>
@@ -36,6 +36,14 @@
 					<x-table.td colspan="10" class="text-center">Nessuna superficie inserita</x-table.td>
 				</tr>
 			@endforelse
+			@if($surfaces)
+				<tr class="bg-gray-50">
+					<x-table.td colspan="10">Totale "pareti verticali": <span class="font-semibold">{{ $surfaces->sum('surface') }} m²</span>
+						di cui realizzati SAL n.1 <span class="font-semibold">? m²</span> SAL n.2 <span
+								class="font-semibold">? m²</span> SAL F. <span class="font-semibold">{{ $surfaces->sum('surface') }} m²</span>
+					</x-table.td>
+				</tr>
+			@endif
 		</x-table.tbody>
 	</x-table.table>
 </div>

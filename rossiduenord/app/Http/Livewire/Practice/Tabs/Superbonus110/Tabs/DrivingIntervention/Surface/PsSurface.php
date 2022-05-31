@@ -23,7 +23,7 @@
 
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Cancellazione'),
-				'subtitle' => __('La superficie è stat rimossa con successo!')
+				'subtitle' => __('La superficie è stata rimossa con successo!')
 			]);
 		}
 
