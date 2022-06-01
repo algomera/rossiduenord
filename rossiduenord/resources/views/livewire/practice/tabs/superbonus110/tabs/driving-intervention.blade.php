@@ -173,9 +173,6 @@
 			</div>
 		</div>
 
-		<hr>
-		{{ $errors }}
-
 		<div class="flex justify-end space-x-3">
 			<x-link-button href="{{route('dashboard')}}">Annulla</x-link-button>
 			<x-button>Salva</x-button>

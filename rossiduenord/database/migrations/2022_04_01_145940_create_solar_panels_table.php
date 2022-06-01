@@ -26,7 +26,7 @@ class CreateSolarPanelsTable extends Migration
             $table->text('certificazione_solar_keymark')->nullable();
             $table->text('tipo_di_collettori')->nullable();
             $table->text('tipo_di_installazione')->nullable();
-            $table->float('inclinazione')->nullable();
+            $table->double('inclinazione')->nullable();
             $table->text('orientamento')->nullable();
             $table->text('impianto_factory_made')->nullable();
             $table->double('q_col_q_sol')->nullable();

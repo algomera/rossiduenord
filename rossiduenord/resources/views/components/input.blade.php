@@ -2,7 +2,7 @@
 @php
 	$n = $attributes->wire('model')->value() ?: $name;
 	$slug = $attributes->wire('model')->value() ?: $n;
-	$inputClass = 'w-full rounded-md shadow-sm sm:text-sm focus:ring focus:ring-opacity-50';
+	$inputClass = 'appearance-none w-full rounded-md shadow-sm sm:text-sm focus:ring focus:ring-opacity-50';
 @endphp
 @error($slug)
 @php
@@ -41,6 +41,7 @@
 			@endif
 			<input
 					{{ $attributes->merge(['class' => $inputClass]) }}
+					{{ $attributes['type'] == 'number' && !$attributes['step'] ? 'step=0.001' : 'step=$attributes[\'step\']' }}
 					{{ $disabled ? 'disabled' : '' }}
 					name="{{ $slug }}"
 					id="{{ $slug }}"

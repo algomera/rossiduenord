@@ -2,16 +2,16 @@
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="grid grid-cols-12 gap-4">
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="sup_lorda_singolo_modulo" type="text" name="sup_lorda_singolo_modulo"
+				<x-input wire:model.defer="sup_lorda_singolo_modulo" type="number" name="sup_lorda_singolo_modulo"
 				         id="sup_lorda_singolo_modulo"
 				         label="Sup. lorda singolo modulo" append="m²"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="num_moduli" type="text" name="num_moduli" id="num_moduli"
+				<x-input wire:model.defer="num_moduli" type="number" step="1" name="num_moduli" id="num_moduli"
 				         label="N° di moduli"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="sup_totale" type="text" name="sup_totale" id="sup_totale"
+				<x-input wire:model.defer="sup_totale" type="number" name="sup_totale" id="sup_totale"
 				         label="Sup. totale" append="m²"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
@@ -31,7 +31,7 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="inclinazione" type="text" name="inclinazione"
+				<x-input wire:model.defer="inclinazione" type="number" name="inclinazione"
 				         id="inclinazione" label="Inclinazione" append="%"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
@@ -48,15 +48,15 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="q_col_q_sol" type="text" name="q_col_q_sol"
+				<x-input wire:model.defer="q_col_q_sol" type="number" name="q_col_q_sol"
 				         id="q_col_q_sol" label="Q col/Q sol" append="kWht"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="ql" type="text" name="ql"
+				<x-input wire:model.defer="ql" type="number" name="ql"
 				         id="ql" label="QL" append="MJ"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="accumulo_in_litri" type="text" name="accumulo_in_litri"
+				<x-input wire:model.defer="accumulo_in_litri" type="number" step="0.1" name="accumulo_in_litri"
 				         id="accumulo_in_litri" label="Accumulo" append="L"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
