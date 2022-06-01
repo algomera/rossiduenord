@@ -170,6 +170,78 @@
 				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"/>
+				<x-label>Destinati a:</x-label>
+				<div class="sm:flex sm:items-center sm:flex-wrap">
+					<div class="flex items-center sm:mr-5 mb-2">
+						<input wire:model="driving_intervention.use_winter"
+						       name="use_winter" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="use_winter"
+						       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione invernale</label>
+					</div>
+					<div class="flex items-center sm:mr-5 mb-2">
+						<input wire:model="driving_intervention.use_summer"
+						       name="use_summer" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="use_summer"
+						       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione estiva</label>
+					</div>
+					<div class="flex items-center sm:mr-5 mb-2">
+						<input wire:model="driving_intervention.use_water"
+						       name="use_water" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="use_water"
+						       class="ml-3 block text-sm font-medium text-gray-700">Produzione di acqua calda
+							sanitaria</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<x-label>Il costo complessivo di progetto degli interventi sull’impianto ammonta a *: <span
+							class="font-semibold">? €</span></x-label>
+				<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione, direzione
+					lavori, asseverazione tecnica e fiscale)</p>
+			</div>
+			<div>
+				<x-label>L'ammontare massimo dei lavori per la sostituzione degli impianti è pari a: <span
+							class="font-semibold">? €</span></x-label>
+			</div>
+			<div>
+				<x-label>Per un ammontare pari a</x-label>
+				<div class="grid grid-cols-12 gap-4">
+					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+						<x-label>SAL n.1</x-label>
+						<x-input type="text" name="total_isolation_cost_1" id="total_isolation_cost_1"
+						         hint="almeno al 30%"></x-input>
+					</div>
+					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+						<x-label>SAL n.2</x-label>
+						<x-input type="text" name="total_isolation_cost_2" id="total_isolation_cost_2"
+						         hint="almeno al 60%"></x-input>
+					</div>
+					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+						<x-label>SAL F</x-label>
+						<x-input type="text" name="final_isolation_cost" id="final_isolation_cost"></x-input>
+					</div>
+					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+						<x-label>SAL 1+2</x-label>
+						<x-input type="text" name="sal_1_2_total" disabled></x-input>
+					</div>
+					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+						<x-label>SAL 1+2 F</x-label>
+						<x-input type="text" name="final_sal_1_2_total" disabled></x-input>
+					</div>
+				</div>
+			</div>
+			<div>
+				<x-label for="total_intervention_surface">
+					Il risparmio di energia primaria non rinnovabile di progetto è
+				</x-label>
+				<div class="w-44 mb-1">
+					<x-input type="text"
+					         name="total_intervention_surface"
+					         id="total_intervention_surface" append="KWh" hint="all'anno"></x-input>
+				</div>
 			</div>
 		</div>
 
