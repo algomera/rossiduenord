@@ -88,8 +88,7 @@
 		</x-card>
 		<x-card class="p-4 border rounded-md">
 			<div class="space-y-3">
-				Schermate oscuranti
-				---
+				<livewire:practice.tabs.superbonus110.intervention.sunscreens :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
 				<div>
 					<x-label for="ss_project_cost">Le spese previste in progetto dei lavori al punto SS ammontano a *:</x-label>
 					<div class="w-44 mb-1">
@@ -127,14 +126,14 @@
 		</div>
 		<div class="space-y-5">
 			<x-label>Con impianti dotati di:</x-label>
-			<livewire:practice.tabs.superbonus110.intervention.condensing-boilers :practice="$practice"/>
-			{{-- GA MANCANTE --}}
-			<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice"/>
-			<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice"/>
-			<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice"/>
-			<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"/>
-			<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"/>
-			{{-- BA MANCANTE --}}
+			<livewire:practice.tabs.superbonus110.intervention.condensing-boilers :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.condensing-hot-air-generators :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			BA MANCANTE
 			<div>
 				<x-label>Destinati a:</x-label>
 				<div class="sm:flex sm:items-center sm:flex-wrap">
@@ -162,11 +161,11 @@
 					</div>
 				</div>
 			</div>
-			<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"/>
-			{{-- FV MANCANTE --}}
-			{{-- AC MANCANTE --}}
-			{{-- CR MANCANTE --}}
-			{{-- EBA MANCANTE --}}
+			<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+			FV MANCANTE
+			AC MANCANTE
+			CR MANCANTE
+			EBA MANCANTE
 		</div>
 	</div>
 
