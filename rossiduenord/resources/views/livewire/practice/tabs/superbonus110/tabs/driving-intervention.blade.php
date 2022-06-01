@@ -166,10 +166,10 @@
 				<livewire:practice.tabs.superbonus110.intervention.heat-pumps :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice"/>
-				<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice" />
-				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice" />
-				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice" />
-				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice" />
+				<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice"/>
+				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"/>
+				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"/>
+				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"/>
 			</div>
 		</div>
 

@@ -10,14 +10,6 @@
 		public PracticeModel $practice;
 		public $driving_intervention;
 		public $currentSurface = 'PV';
-		public $condensing_boilers = [];
-		public $heat_pumps = [];
-		public $absorption_heat_pumps = [];
-		public $hybrid_systems = [];
-		public $microgeneration_systems = [];
-		public $water_heatpumps_installations = [];
-		public $biome_generators = [];
-		public $solar_panels = [];
 		public $surfaces = [];
 
 		protected $rules = [
