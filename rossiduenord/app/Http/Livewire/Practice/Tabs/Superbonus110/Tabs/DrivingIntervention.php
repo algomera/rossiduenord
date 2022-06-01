@@ -10,7 +10,6 @@
 		public PracticeModel $practice;
 		public $driving_intervention;
 		public $currentSurface = 'PV';
-		public $surfaces = [];
 		protected $rules = [
 			'driving_intervention.thermical_isolation_intervention' => 'nullable|boolean',
 			'driving_intervention.total_vertical_walls'             => 'nullable',

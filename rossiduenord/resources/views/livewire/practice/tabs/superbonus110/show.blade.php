@@ -31,7 +31,7 @@
 				<livewire:practice.tabs.superbonus110.tabs.driving-intervention :practice="$practice" />
 				@break
 			@case('towed_intervention')
-				Towed Intervention
+				<livewire:practice.tabs.superbonus110.tabs.towed-intervention :practice="$practice" />
 				@break
 			@case('final_state')
 				Final State

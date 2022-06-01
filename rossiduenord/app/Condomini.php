@@ -12,6 +12,10 @@ class Condomini extends Model
 		$this->attributes['cf'] = strtoupper($value);
 	}
 
+	public function getFullNameAttribute() {
+		return $this->name . ' ' . $this->surname;
+	}
+
     public function practice() {
         return $this->belongsTo(Practice::class);
     }

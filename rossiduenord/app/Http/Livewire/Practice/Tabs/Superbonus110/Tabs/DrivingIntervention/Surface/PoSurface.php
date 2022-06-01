@@ -8,6 +8,8 @@
 	class PoSurface extends Component
 	{
 		public $currentSurface;
+		public $intervention;
+		public $condomino_id = null;
 		public $surfaces;
 
 		protected $listeners = [
@@ -28,7 +30,7 @@
 		}
 
 		public function render() {
-			$this->surfaces = Surface::where('type', $this->currentSurface)->get();
+			$this->surfaces = Surface::where('type', $this->currentSurface)->where('intervention', $this->intervention)->where('condomino_id', $this->condomino_id)->get();
 			return view('livewire.practice.tabs.superbonus110.tabs.driving-intervention.surface.po-surface');
 		}
 	}

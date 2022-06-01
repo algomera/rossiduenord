@@ -1,116 +1,96 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+	use Illuminate\Database\Migrations\Migration;
+	use Illuminate\Database\Schema\Blueprint;
+	use Illuminate\Support\Facades\Schema;
 
-class CreateTowedInterventionsTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('towed_interventions', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('practice_id')->unsigned();
-            $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
-            // thermical isolation intervention
-            $table->text('thermical_isolation_intervention')->nullable();
-            // data
-            $table->text('total_vertical_walls')->nullable();
-            $table->text('vw_realized_1')->nullable();
-            $table->text('vw_realized_2')->nullable();
-            $table->text('total_intervention_surface')->nullable();
-            $table->text('expected_project_cost')->nullable();
-            // fixture replacing intervention
-            $table->text('fixture_replacing_intervention')->nullable();
-            $table->text('fixture_expected_cost')->nullable();
-            $table->text('work_expected_cost')->nullable();
-            $table->text('max_possible_cost')->nullable();
-            $table->text('fixture_energetic_savings')->nullable();
-            //SS
-            $table->text('SS')->nullable();
-            $table->text('ss_project_cost')->nullable();
-            $table->text('ss_max_cost')->nullable();
-            $table->text('ss_energetic_savings')->nullable();
-            // winter air conditioning sistem replacement
-            $table->text('wacs_replacement')->nullable();
-            //with
-            $table->text('condensing_boiler')->nullable();
-            $table->text('condensing_generator')->nullable();
-            $table->text('absorption_heat_pumps')->nullable();
-            $table->text('hybrid_system')->nullable();
-            //SA
-            $table->text('water_heatpumps_installation')->nullable();
-            $table->text('SA_expected_cost')->nullable();
-            $table->text('SA_max_cost')->nullable();
-            $table->text('SA_nr_savings')->nullable();
-            //CO
-            $table->text('microgeneration_system')->nullable();
-            $table->text('CO_expected_cost')->nullable();
-            $table->text('CO_max_cost')->nullable();
-            $table->text('CO_nr_savings')->nullable();
-            //IB
-            $table->text('biome_generators')->nullable();
-            $table->text('IB_expected_cost')->nullable();
-            $table->text('IB_max_cost')->nullable();
-            $table->text('IB_nr_savings')->nullable();
-            //BA
-            $table->text('building_automation')->nullable();
-            $table->text('BA_winter_acs')->nullable();
-            $table->text('BA_summer_acs')->nullable();
-            $table->text('BA_hot_water_production')->nullable();
-            $table->text('BA_usable_area')->nullable();
-            $table->text('BA_expected_cost')->nullable();
-            $table->text('BA_max_cost')->nullable();
-            $table->text('BA_nr_savings')->nullable();
-            //BA DESTINATION
-            $table->text('winter_acs')->nullable();
-            $table->text('summer_acs')->nullable();
-            $table->text('hot_water_production')->nullable();
-            //TS
-            $table->text('TS')->nullable();
-            $table->text('TS_expected_cost')->nullable();
-            $table->text('TS_max_cost')->nullable();
-            $table->text('TS_nr_savings')->nullable();
-            //FV
-            $table->text('FV')->nullable();
-            $table->text('POD_code')->nullable();
-            $table->text('max_power')->nullable();
-            $table->text('FV_expected_cost')->nullable();
-            $table->text('FV_max_cost')->nullable();
-            //AC
-            $table->text('AC')->nullable();
-            $table->text('capacity')->nullable();
-            $table->text('AC_expected_cost')->nullable();
-            $table->text('AC_max_cost')->nullable();
-            //CR
-            $table->text('CR')->nullable();
-            $table->text('CR_expected_cost')->nullable();
-            $table->text('CR_installed_columns')->nullable();
-            $table->text('CR_max_cost')->nullable();
-            //EBA
-            $table->text('EBA')->nullable();
-            $table->text('EBA_expected_cost')->nullable();
-            $table->text('EBA_sismic_cost')->nullable();
-            $table->text('EBA_barr_deleting_cost')->nullable();
-            $table->text('EBA_max_cost')->nullable();
-            $table->text('EBA_cost_1')->nullable();
-            $table->text('EBA_cost_2')->nullable();
-            $table->timestamps();
-        });
-    }
+	class CreateTowedInterventionsTable extends Migration
+	{
+		/**
+		 * Run the migrations.
+		 *
+		 * @return void
+		 */
+		public function up() {
+			Schema::create('towed_interventions', function (Blueprint $table) {
+				$table->id();
+				$table->bigInteger('practice_id')->unsigned();
+				$table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+				$table->boolean('thermical_isolation_intervention')->default(false)->nullable();
+				$table->text('total_vertical_walls')->nullable();
+				$table->text('vw_realized_1')->nullable();
+				$table->text('vw_realized_2')->nullable();
+				$table->text('total_intervention_surface')->nullable();
+				$table->text('expected_project_cost')->nullable();
+				//            $table->text('fixture_replacing_intervention')->nullable();
+				$table->text('in_project_cost')->nullable();
+				$table->text('in_max_cost')->nullable();
+				$table->text('in_energetic_savings')->nullable();
+				//            $table->text('SS')->nullable();
+				$table->text('ss_project_cost')->nullable();
+				$table->text('ss_max_cost')->nullable();
+				$table->text('ss_energetic_savings')->nullable();
+				$table->boolean('wacs_replacement')->default(false)->nullable();
+				$table->text('sa_project_cost')->nullable();
+				$table->text('sa_max_cost')->nullable();
+				$table->text('sa_energetic_savings')->nullable();
+				//CO
+				$table->text('co_project_cost')->nullable();
+				$table->text('co_max_cost')->nullable();
+				$table->text('co_energetic_savings')->nullable();
+				//IB
+				$table->text('ib_project_cost')->nullable();
+				$table->text('ib_max_cost')->nullable();
+				$table->text('ib_energetic_savings')->nullable();
+				//BA
+				$table->boolean('ba')->default(false)->nullable();
+				$table->text('ba_winter_acs')->nullable();
+				$table->text('ba_summer_acs')->nullable();
+				$table->text('ba_hot_water_production')->nullable();
+				$table->text('ba_usable_area')->nullable();
+				$table->text('ba_project_cost')->nullable();
+				$table->text('ba_max_cost')->nullable();
+				$table->text('ba_energetic_savings')->nullable();
+				//DESTINATION
+				$table->boolean('use_winter')->default(false)->nullable();
+				$table->boolean('use_summer')->default(false)->nullable();
+				$table->boolean('use_water')->default(false)->nullable();
+				//ST
+				$table->text('st_project_cost')->nullable();
+				$table->text('st_max_cost')->nullable();
+				$table->text('st_energetic_savings')->nullable();
+				//FV
+				$table->boolean('fv')->default(false)->nullable();
+				$table->text('fv_pod_code')->nullable();
+				$table->text('fv_max_power')->nullable();
+				$table->text('fv_project_cost')->nullable();
+				$table->text('fv_max_cost')->nullable();
+				//AC
+				$table->boolean('ac')->default(false)->nullable();
+				$table->text('ac_capacity')->nullable();
+				$table->text('ac_project_cost')->nullable();
+				$table->text('ac_max_cost')->nullable();
+				//CR
+				$table->boolean('cr')->default(false)->nullable();
+				$table->text('cr_project_cost')->nullable();
+				$table->text('cr_installed_columns')->nullable();
+				$table->text('cr_max_cost')->nullable();
+				//EBA
+				$table->boolean('eba')->default(false)->nullable();
+				$table->text('eba_project_cost')->nullable();
+				$table->text('eba_sismic_cost')->nullable();
+				$table->text('eba_barr_deleting_cost')->nullable();
+				$table->text('eba_max_cost')->nullable();
+				$table->timestamps();
+			});
+		}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('towed_interventions');
-    }
-}
+		/**
+		 * Reverse the migrations.
+		 *
+		 * @return void
+		 */
+		public function down() {
+			Schema::dropIfExists('towed_interventions');
+		}
+	}

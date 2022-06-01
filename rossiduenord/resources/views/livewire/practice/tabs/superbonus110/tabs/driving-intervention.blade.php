@@ -44,19 +44,19 @@
 				@switch($currentSurface)
 					@case('PV')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.pv-surface
-								:practice="$practice" :currentSurface="$currentSurface"/>
+								:practice="$practice" :currentSurface="$currentSurface" intervention="driving"/>
 						@break
 					@case('PO')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.po-surface
-								:practice="$practice" :currentSurface="$currentSurface"/>
+								:practice="$practice" :currentSurface="$currentSurface" intervention="driving"/>
 						@break
 					@case('PS')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.ps-surface
-								:practice="$practice" :currentSurface="$currentSurface"/>
+								:practice="$practice" :currentSurface="$currentSurface" intervention="driving"/>
 						@break
 					@case('POND')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.pond-surface
-								:practice="$practice" :currentSurface="$currentSurface"/>
+								:practice="$practice" :currentSurface="$currentSurface" intervention="driving"/>
 						@break
 				@endswitch
 			</div>
@@ -170,29 +170,31 @@
 				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"/>
 				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"/>
-				<x-label>Destinati a:</x-label>
-				<div class="sm:flex sm:items-center sm:flex-wrap">
-					<div class="flex items-center sm:mr-5 mb-2">
-						<input wire:model="driving_intervention.use_winter"
-						       name="use_winter" type="checkbox"
-						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-						<label for="use_winter"
-						       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione invernale</label>
-					</div>
-					<div class="flex items-center sm:mr-5 mb-2">
-						<input wire:model="driving_intervention.use_summer"
-						       name="use_summer" type="checkbox"
-						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-						<label for="use_summer"
-						       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione estiva</label>
-					</div>
-					<div class="flex items-center sm:mr-5 mb-2">
-						<input wire:model="driving_intervention.use_water"
-						       name="use_water" type="checkbox"
-						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-						<label for="use_water"
-						       class="ml-3 block text-sm font-medium text-gray-700">Produzione di acqua calda
-							sanitaria</label>
+				<div>
+					<x-label>Destinati a:</x-label>
+					<div class="sm:flex sm:items-center sm:flex-wrap">
+						<div class="flex items-center sm:mr-5 mb-2">
+							<input wire:model="driving_intervention.use_winter"
+							       name="use_winter" type="checkbox"
+							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+							<label for="use_winter"
+							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione invernale</label>
+						</div>
+						<div class="flex items-center sm:mr-5 mb-2">
+							<input wire:model="driving_intervention.use_summer"
+							       name="use_summer" type="checkbox"
+							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+							<label for="use_summer"
+							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione estiva</label>
+						</div>
+						<div class="flex items-center sm:mr-5 mb-2">
+							<input wire:model="driving_intervention.use_water"
+							       name="use_water" type="checkbox"
+							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+							<label for="use_water"
+							       class="ml-3 block text-sm font-medium text-gray-700">Produzione di acqua calda
+								sanitaria</label>
+						</div>
 					</div>
 				</div>
 			</div>
