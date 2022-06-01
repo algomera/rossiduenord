@@ -44,9 +44,6 @@
 
 		public function render() {
 			$this->condomini = $this->practice->condomini;
-			foreach ($this->condomini as $condomino) {
-				$this->tabs[$condomino->id] = $condomino->fullname;
-			}
 			return view('livewire.practice.tabs.superbonus110.tabs.towed-intervention');
 		}
 	}
