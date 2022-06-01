@@ -29,9 +29,9 @@ class CreateHeatPumpsTable extends Migration
             $table->boolean('inverter')->default(false)->nullable();
             $table->double('cop')->nullable();
             $table->boolean('reversibile')->default(false)->nullable();
-            $table->text('eer')->nullable();
+            $table->double('eer')->nullable();
             $table->boolean('sonde_geotermiche')->default(false)->nullable();
-            $table->text('sup_riscaldata_dalla_pdc')->nullable();
+            $table->double('sup_riscaldata_dalla_pdc')->nullable();
             $table->timestamps();
         });
     }

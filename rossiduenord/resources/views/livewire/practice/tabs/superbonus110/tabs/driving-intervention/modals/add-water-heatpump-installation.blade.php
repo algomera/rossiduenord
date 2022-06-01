@@ -9,19 +9,19 @@
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="pu_scaldacqua_sostituito" type="text" name="pu_scaldacqua_sostituito" id="pu_scaldacqua_sostituito"
+                <x-input wire:model.defer="pu_scaldacqua_sostituito" type="number" name="pu_scaldacqua_sostituito" id="pu_scaldacqua_sostituito"
                          label="Pu scaldacqua sostituito" append="kW"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="pu_scaldacqua_a_pdc" type="text" name="pu_scaldacqua_a_pdc" id="pu_scaldacqua_a_pdc"
+                <x-input wire:model.defer="pu_scaldacqua_a_pdc" type="number" name="pu_scaldacqua_a_pdc" id="pu_scaldacqua_a_pdc"
                          label="Pu scaldacqua a PDC" append="kW"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="cop_nuovo_scaldacqua" type="text" name="cop_nuovo_scaldacqua" id="cop_nuovo_scaldacqua"
+                <x-input wire:model.defer="cop_nuovo_scaldacqua" type="number" name="cop_nuovo_scaldacqua" id="cop_nuovo_scaldacqua"
                          label="COP nuovo scaldacqua"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="capacita_accumulo" type="text" name="capacita_accumulo"
+                <x-input wire:model.defer="capacita_accumulo" type="number" name="capacita_accumulo"
                          id="capacita_accumulo" label="Capacità accumulo" append="L"></x-input>
             </div>
         </div>

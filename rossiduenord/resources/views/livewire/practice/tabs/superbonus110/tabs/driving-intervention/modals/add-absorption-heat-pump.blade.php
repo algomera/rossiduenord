@@ -17,7 +17,7 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_nom_sostituito" type="text" name="p_nom_sostituito" id="p_nom_sostituito"
+				<x-input wire:model.defer="p_nom_sostituito" type="number" name="p_nom_sostituito" id="p_nom_sostituito"
 				         label="P. nom. sostituito" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
@@ -31,19 +31,19 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="potenza_nominale" type="text" name="potenza_nominale" id="potenza_nominale"
+				<x-input wire:model.defer="potenza_nominale" type="number" name="potenza_nominale" id="potenza_nominale"
 				         label="Potenza nominale" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="gueh" type="text" name="gueh"
+				<x-input wire:model.defer="gueh" type="number" name="gueh"
 				         id="gueh" label="GUEh"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="guec" type="text" name="guec"
+				<x-input wire:model.defer="guec" type="number" name="guec"
 				         id="guec" label="GUEc"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="sup_riscaldata_dalla_pdc" type="text" name="sup_riscaldata_dalla_pdc"
+				<x-input wire:model.defer="sup_riscaldata_dalla_pdc" type="number" name="sup_riscaldata_dalla_pdc"
 				         id="sup_riscaldata_dalla_pdc" label="Sup. riscaldata dalla PDC" append="m²"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-start-1 sm:col-span-6">

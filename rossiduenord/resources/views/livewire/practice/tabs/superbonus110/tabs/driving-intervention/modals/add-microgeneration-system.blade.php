@@ -15,23 +15,23 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_nom_sostituito" type="text" name="p_nom_sostituito" id="p_nom_sostituito"
+				<x-input wire:model.defer="p_nom_sostituito" type="number" name="p_nom_sostituito" id="p_nom_sostituito"
 				         label="P. nom. sostituito" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_elettrica" type="text" name="p_elettrica" id="p_elettrica"
+				<x-input wire:model.defer="p_elettrica" type="number" name="p_elettrica" id="p_elettrica"
 				         label="Potenza elettrica" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_immessa" type="text" name="p_immessa" id="p_immessa"
+				<x-input wire:model.defer="p_immessa" type="number" name="p_immessa" id="p_immessa"
 				         label="Potenza immessa" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_term_recuperata" type="text" name="p_term_recuperata"
+				<x-input wire:model.defer="p_term_recuperata" type="number" name="p_term_recuperata"
 				         id="p_term_recuperata" label="Potenza term. recuperata" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="pes" type="text" name="pes" id="pes" label="PES" append="%"></x-input>
+				<x-input wire:model.defer="pes" type="number" name="pes" id="pes" label="PES" append="%"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
 				<x-select wire:model.defer="tipo_di_alimentazione" name="tipo_di_alimentazione" label="Tipo di alimentazione">
@@ -47,10 +47,10 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="potenza_risc_suppl" type="text" name="potenza_risc_suppl" id="potenza_risc_suppl" label="Potenza risc. suppl." append="kW"></x-input>
+				<x-input wire:model.defer="potenza_risc_suppl" type="number" name="potenza_risc_suppl" id="potenza_risc_suppl" label="Potenza risc. suppl." append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="efficienza_ns" type="text" name="efficienza_ns" id="efficienza_ns" label="Efficienza ns" append="%"></x-input>
+				<x-input wire:model.defer="efficienza_ns" type="number" name="efficienza_ns" id="efficienza_ns" label="Efficienza ns" append="%"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
 				<x-select wire:model.defer="classe_energ" name="classe_energ" label="Classe energetica">

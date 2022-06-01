@@ -23,16 +23,16 @@ class CreateHybridSystemsTable extends Migration
             $table->text('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->double('condensing_potenza_nominale')->nullable();
-            $table->float('condensing_rend_utile_nom')->nullable();
-            $table->float('condensing_efficienza_ns')->nullable();
+            $table->double('condensing_rend_utile_nom')->nullable();
+            $table->double('condensing_efficienza_ns')->nullable();
             $table->text('tipo_di_alimentazione')->nullable();
             $table->text('heat_tipo_di_pdc')->nullable();
-            $table->text('heat_tipo_roof_top')->nullable();
+            $table->boolean('heat_tipo_roof_top')->default(false)->nullable();
             $table->double('heat_potenza_nominale')->nullable();
             $table->double('heat_p_elettrica_assorbita')->nullable();
-            $table->text('heat_inverter')->nullable();
+            $table->boolean('heat_inverter')->default(false)->nullable();
             $table->double('heat_cop')->nullable();
-            $table->text('heat_sonde_geotermiche')->nullable();
+            $table->boolean('heat_sonde_geotermiche')->default(false)->nullable();
             $table->timestamps();
         });
     }

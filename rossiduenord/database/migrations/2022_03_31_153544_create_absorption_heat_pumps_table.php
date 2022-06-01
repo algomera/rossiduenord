@@ -23,12 +23,12 @@ class CreateAbsorptionHeatPumpsTable extends Migration
             $table->text('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->text('tipo_di_pdc')->nullable();
-            $table->text('tipo_roof_top')->nullable();
+            $table->boolean('tipo_roof_top')->default(false)->nullable();
             $table->double('potenza_nominale')->nullable();
             $table->double('gueh')->nullable();
-            $table->text('reversibile')->nullable();
+            $table->boolean('reversibile')->default(false)->nullable();
             $table->double('guec')->nullable();
-            $table->text('sup_riscaldata_dalla_pdc')->nullable();
+            $table->double('sup_riscaldata_dalla_pdc')->nullable();
             $table->timestamps();
         });
     }

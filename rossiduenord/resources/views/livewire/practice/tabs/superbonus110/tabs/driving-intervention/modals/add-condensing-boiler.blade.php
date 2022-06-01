@@ -15,13 +15,13 @@
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="p_nom_sostituito" type="text" name="p_nom_sostituito" id="p_nom_sostituito" label="P. nom. sostituito" append="kW"></x-input>
+                <x-input wire:model.defer="p_nom_sostituito" type="number" name="p_nom_sostituito" id="p_nom_sostituito" label="P. nom. sostituito" append="kW"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="potenza_nominale" type="text" name="potenza_nominale" id="potenza_nominale" label="Potenza nominale" append="kW"></x-input>
+                <x-input wire:model.defer="potenza_nominale" type="number" name="potenza_nominale" id="potenza_nominale" label="Potenza nominale" append="kW"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="rend_utile_nom" type="text" name="rend_utile_nom" id="rend_utile_nom" label="Rend. utile nom." append="%"></x-input>
+                <x-input wire:model.defer="rend_utile_nom" type="number" name="rend_utile_nom" id="rend_utile_nom" label="Rend. utile nom." append="%"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
                 <x-select wire:model.defer="use_destination" name="use_destination" label="Destinazione d'uso">
@@ -30,10 +30,10 @@
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="efficienza_ns" type="text" name="efficienza_ns" id="efficienza_ns" label="Efficienza ns" append="%"></x-input>
+                <x-input wire:model.defer="efficienza_ns" type="number" name="efficienza_ns" id="efficienza_ns" label="Efficienza ns" append="%"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="efficienza_acs_nwh" type="text" name="efficienza_acs_nwh" id="efficienza_acs_nwh" label="Efficienza ACS nwh" append="%"></x-input>
+                <x-input wire:model.defer="efficienza_acs_nwh" type="number" name="efficienza_acs_nwh" id="efficienza_acs_nwh" label="Efficienza ACS nwh" append="%"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
                 <x-select wire:model.defer="tipo_di_alimentazione" name="tipo_di_alimentazione" label="Tipo di alimentazione">

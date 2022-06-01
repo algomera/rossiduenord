@@ -23,10 +23,10 @@ class CreateCondensingBoilersTable extends Migration
             $table->text('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->double('potenza_nominale')->nullable();
-            $table->float('rend_utile_nom')->nullable();
+            $table->double('rend_utile_nom')->nullable();
             $table->text('use_destination')->nullable();
-            $table->float('efficienza_ns')->nullable();
-            $table->float('efficienza_acs_nwh')->nullable();
+            $table->double('efficienza_ns')->nullable();
+            $table->double('efficienza_acs_nwh')->nullable();
             $table->text('tipo_di_alimentazione')->nullable();
             $table->text('classe_termo_evoluto')->nullable();
             $table->timestamps();

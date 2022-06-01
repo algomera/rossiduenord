@@ -15,7 +15,7 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_nom_sostituito" type="text" name="p_nom_sostituito" id="p_nom_sostituito"
+				<x-input wire:model.defer="p_nom_sostituito" type="number" name="p_nom_sostituito" id="p_nom_sostituito"
 				         label="P. nom. sostituito" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
@@ -44,19 +44,19 @@
 				</x-select>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_utile_nom" type="text" name="p_utile_nom"
+				<x-input wire:model.defer="p_utile_nom" type="number" name="p_utile_nom"
 				         id="p_utile_nom" label="Pot. utile nom." append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="p_al_focolare" type="text" name="p_al_focolare"
+				<x-input wire:model.defer="p_al_focolare" type="number" name="p_al_focolare"
 				         id="p_al_focolare" label="Pot. al focolare" append="kW"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="rend_utile_alla_pot_nom" type="text" name="rend_utile_alla_pot_nom"
+				<x-input wire:model.defer="rend_utile_alla_pot_nom" type="number" name="rend_utile_alla_pot_nom"
 				         id="rend_utile_alla_pot_nom" label="Rend. utile alla pot. nom." append="%"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="sup_riscaldata" type="text" name="sup_riscaldata"
+				<x-input wire:model.defer="sup_riscaldata" type="number" name="sup_riscaldata"
 				         id="sup_riscaldata" label="Sup. riscaldata" append="m²"></x-input>
 			</div>
 		</div>

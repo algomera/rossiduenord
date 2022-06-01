@@ -28,10 +28,10 @@ class CreateMicrogenerationSystemsTable extends Migration
             $table->double('pes')->nullable();
             $table->text('tipo_di_alimentazione')->nullable();
             $table->text('tipo_intervento')->nullable();
-            $table->text('a_celle_a_combustibile')->nullable();
-            $table->text('riscaldatore_suppl')->nullable();
+            $table->boolean('a_celle_a_combustibile')->default(false)->nullable();
+            $table->boolean('riscaldatore_suppl')->default(false)->nullable();
             $table->double('potenza_risc_suppl')->nullable();
-            $table->float('efficienza_ns')->nullable();
+            $table->double('efficienza_ns')->nullable();
             $table->text('classe_energ')->nullable();
             $table->timestamps();
         });

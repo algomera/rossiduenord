@@ -27,9 +27,9 @@ class CreateBiomeGeneratorsTable extends Migration
             $table->text('use_destination')->nullable();
             $table->text('tipo_di_alimentazione')->nullable();
             $table->double('p_utile_nom')->nullable();
-            $table->text('p_al_focolare')->nullable();
-            $table->text('rend_utile_alla_pot_nom')->nullable();
-            $table->text('sup_riscaldata')->nullable();
+            $table->double('p_al_focolare')->nullable();
+            $table->double('rend_utile_alla_pot_nom')->nullable();
+            $table->double('sup_riscaldata')->nullable();
             $table->timestamps();
         });
     }
