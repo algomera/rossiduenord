@@ -4,7 +4,7 @@
 
 	use Illuminate\Database\Eloquent\Model;
 
-	class Sunscreen extends Model
+	class BuildingAutomation extends Model
 	{
 		protected $guarded = [];
 

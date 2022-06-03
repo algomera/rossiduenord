@@ -51,4 +51,12 @@ class Condomini extends Model
     public function solar_panels() {
         return $this->hasMany(SolarPanel::class, 'condomino_id', 'id');
     }
+
+	public function sunscreens() {
+		return $this->hasMany(Sunscreen::class);
+	}
+
+	public function building_automations() {
+		return $this->hasMany(BuildingAutomation::class);
+	}
 }

@@ -91,6 +91,10 @@ class Practice extends Model
 		return $this->hasMany(Sunscreen::class);
 	}
 
+	public function building_automations() {
+		return $this->hasMany(BuildingAutomation::class);
+	}
+
     public function folder_documents()
     {
         return $this->hasMany(FolderDocument::class);

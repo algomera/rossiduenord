@@ -1703,6 +1703,9 @@ select {
 .font-bold {
   font-weight: 700;
 }
+.font-extrabold {
+  font-weight: 800;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -2489,6 +2492,10 @@ input[type=number] {
 
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:w-44 {
+    width: 11rem;
   }
 
   .sm\:max-w-sm {

@@ -156,7 +156,7 @@
 				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"
 				                                                                    :condomino_id="$condomino_id"
 				                                                                    :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.building-automation :practice="$practice"
+				<livewire:practice.tabs.superbonus110.intervention.building-automations :practice="$practice"
 				                                                                    :condomino_id="$condomino_id"
 				                                                                    :is_common="$is_common"/>
 				<div>
