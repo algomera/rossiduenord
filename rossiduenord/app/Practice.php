@@ -87,6 +87,10 @@ class Practice extends Model
         return $this->hasMany(SolarPanel::class);
     }
 
+	public function sunscreens() {
+		return $this->hasMany(Sunscreen::class);
+	}
+
     public function folder_documents()
     {
         return $this->hasMany(FolderDocument::class);

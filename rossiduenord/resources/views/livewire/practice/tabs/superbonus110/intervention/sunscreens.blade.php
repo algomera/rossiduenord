@@ -10,77 +10,89 @@
 			</x-button>
 		</label>
 	</div>
-{{--	<div class="mt-3 px-4 bg-gray-50 rounded-md">--}}
-{{--		<ul role="list" class="divide-y divide-gray-200">--}}
-{{--			@forelse($absorption_heat_pumps as $i => $absorption_heat_pump)--}}
-{{--				<li class="py-4 flex">--}}
-{{--					<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">--}}
-{{--						{{ $i + 1 }}--}}
-{{--					</div>--}}
-{{--					<div class="ml-3">--}}
-{{--						<div class="flex flex-col mt-1 flex-wrap">--}}
-{{--							@isset($absorption_heat_pump->tipo_sostituito)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Tipo sostituito:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->tipo_sostituito }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->p_nom_sostituito)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">P. nom. sostituito:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->p_nom_sostituito }} kW</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->tipo_di_pdc)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Tipo di PDC:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->tipo_di_pdc }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->potenza_nominale)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Potenza nominale:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->potenza_nominale }} kW</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->gueh)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">GUEh:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->gueh }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->guec)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">GUEc:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->guec }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->sup_riscaldata_dalla_pdc)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Sup. riscaldata dalla PDC:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->sup_riscaldata_dalla_pdc }} m²</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->tipo_roof_top)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Tipo Roof Top:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->tipo_roof_top ? 'Si' : 'No' }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--							@isset($absorption_heat_pump->reversibile)--}}
-{{--								<p class="text-sm text-gray-500 mr-1 mb-1">--}}
-{{--									<span class="font-bold">Reversibile:</span>--}}
-{{--									<span>{{ $absorption_heat_pump->reversibile ? 'Si' : 'No' }}</span>--}}
-{{--								</p>--}}
-{{--							@endisset--}}
-{{--						</div>--}}
-{{--					</div>--}}
-{{--				</li>--}}
-{{--			@empty--}}
-{{--				<li class="py-4 text-sm text-gray-500">--}}
-{{--					Nessuna pompa di calore inserita--}}
-{{--				</li>--}}
-{{--			@endforelse--}}
-{{--		</ul>--}}
-{{--	</div>--}}
+	<div class="mt-3 px-4 bg-gray-50 rounded-md">
+		<ul role="list" class="divide-y divide-gray-200">
+			@forelse($sunscreens as $i => $sunscreen)
+				<li class="py-4 flex">
+					<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">
+						{{ $i + 1 }}
+					</div>
+					<div class="ml-3">
+						<div class="flex flex-col mt-1 flex-wrap">
+							@isset($sunscreen->tipo_schermatura)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Tipo schermatura/chiusura:</span>
+									<span>{{ $sunscreen->tipo_schermatura }}</span>
+								</p>
+							@endisset
+							@isset($sunscreen->installazione)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Installazione:</span>
+									<span>{{ $sunscreen->installazione }}</span>
+								</p>
+							@endisset
+							@isset($sunscreen->sup_schermatura)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Sup. schermatura/chiusura oscurante:</span>
+									<span>{{ $sunscreen->sup_schermatura }} m²</span>
+								</p>
+							@endisset
+							@isset($sunscreen->sup_finestra_protetta)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Sup. finestra protetta:</span>
+									<span>{{ $sunscreen->sup_finestra_protetta }} m²</span>
+								</p>
+							@endisset
+							@isset($sunscreen->resist_termica_suppl)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Resist. termica suppl.:</span>
+									<span>{{ $sunscreen->resist_termica_suppl }} m²K/W</span>
+								</p>
+							@endisset
+							@isset($sunscreen->orientamento)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Orientamento:</span>
+									<span>{{ $sunscreen->orientamento }}</span>
+								</p>
+							@endisset
+							@isset($sunscreen->tipo_di_calcolo)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Tipo di calcolo:</span>
+									<span>{{ $sunscreen->tipo_di_calcolo }}</span>
+								</p>
+							@endisset
+							@isset($sunscreen->gtot)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Gtot</span>
+									<span>{{ $sunscreen->gtot }}</span>
+								</p>
+							@endisset
+							@isset($sunscreen->classe_scherm)
+								<p class="text-sm text-gray-500 mr-1 mb-1">
+									<span class="font-bold">Classe scherm.:</span>
+									<span>{{ $sunscreen->classe_scherm }}</span>
+								</p>
+							@endisset
+								@isset($sunscreen->materiale_scherm)
+									<p class="text-sm text-gray-500 mr-1 mb-1">
+										<span class="font-bold">Materiale scherm.:</span>
+										<span>{{ $sunscreen->materiale_scherm }}</span>
+									</p>
+								@endisset
+								@isset($sunscreen->meccanismo_reg)
+									<p class="text-sm text-gray-500 mr-1 mb-1">
+										<span class="font-bold">Meccanismo reg.:</span>
+										<span>{{ $sunscreen->meccanismo_reg }}</span>
+									</p>
+								@endisset
+						</div>
+					</div>
+				</li>
+			@empty
+				<li class="py-4 text-sm text-gray-500">
+					Nessuna schermatura/chiusura inserita
+				</li>
+			@endforelse
+		</ul>
+	</div>
 </div>

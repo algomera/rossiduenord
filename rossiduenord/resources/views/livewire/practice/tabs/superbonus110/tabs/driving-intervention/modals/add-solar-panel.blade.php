@@ -35,7 +35,7 @@
 				         id="inclinazione" label="Inclinazione" append="%"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-select wire:model.defer="orientamento" name="orientamento" label="Tipo di installazione">
+				<x-select wire:model.defer="orientamento" name="orientamento" label="Orientamento">
 					<option value="Nord">Nord</option>
 					<option value="Nord-Est">Nord-Est</option>
 					<option value="Est">Est</option>

@@ -14,7 +14,7 @@
 		];
 
 		public function render() {
-//			$this->biome_generators = $this->practice->biome_generators()->where('condomino_id', $this->condomino_id)->where('is_common', $this->is_common)->get();
+			$this->sunscreens = $this->practice->sunscreens()->where('condomino_id', $this->condomino_id)->where('is_common', $this->is_common)->get();
 			return view('livewire.practice.tabs.superbonus110.intervention.sunscreens');
 		}
 	}
