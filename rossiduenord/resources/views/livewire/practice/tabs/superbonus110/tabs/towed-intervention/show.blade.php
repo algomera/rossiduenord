@@ -1,11 +1,11 @@
 <div class="space-y-5">
+	<x-section-heading class="!py-0 !border-t-0">Interventi trainati oggetto dei lavori</x-section-heading>
 	@isset($condomino_id)
 		<x-card class="p-4 border rounded-md">
 			Dati condomino: {{ $condomino->fullname }}
 		</x-card>
 	@endisset
 	<form wire:submit.prevent="save" class="space-y-5">
-		<x-section-heading class="!py-0 border-t-0">Interventi trainati oggetto dei lavori</x-section-heading>
 		<div class="space-y-3">
 			<div class="flex items-center mt-3">
 				<input wire:model="towed_intervention.thermical_isolation_intervention"
@@ -81,7 +81,8 @@
 				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:
 				</x-label>
 				<div class="w-44 mb-1">
-					<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="towed_intervention.total_expected_cost"
+					<x-input x-mask:dynamic="$money($input, ',')"
+					         wire:model.defer="towed_intervention.total_expected_cost"
 					         name="total_expected_cost" id="total_expected_cost"
 					         type="text"
 					         label="Importo stimato" placeholder="0,00" append="€"></x-input>
@@ -94,11 +95,16 @@
 			</x-card>
 			<x-card class="p-4 border rounded-md">
 				<div class="space-y-3">
-					<livewire:practice.tabs.superbonus110.intervention.sunscreens :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+					<livewire:practice.tabs.superbonus110.intervention.sunscreens :practice="$practice"
+					                                                              :condomino_id="$condomino_id"
+					                                                              :is_common="$is_common"/>
 					<div>
-						<x-label for="ss_project_cost">Le spese previste in progetto dei lavori al punto SS ammontano a *:</x-label>
+						<x-label for="ss_project_cost">Le spese previste in progetto dei lavori al punto SS ammontano a
+							*:
+						</x-label>
 						<div class="w-44 mb-1">
-							<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="towed_intervention.ss_project_cost"
+							<x-input x-mask:dynamic="$money($input, ',')"
+							         wire:model.defer="towed_intervention.ss_project_cost"
 							         name="ss_project_cost" id="ss_project_cost"
 							         type="text" placeholder="0,00" append="€"></x-input>
 						</div>
@@ -106,13 +112,16 @@
 					<div>
 						<x-label for="ss_project_cost">La spesa massima ammissibile è pari a:</x-label>
 						<div class="w-44 mb-1">
-							<x-input x-mask:dynamic="$money($input, ',')" wire:model.defer="towed_intervention.ss_max_cost"
+							<x-input x-mask:dynamic="$money($input, ',')"
+							         wire:model.defer="towed_intervention.ss_max_cost"
 							         name="ss_max_cost" id="ss_max_cost"
 							         type="text" placeholder="0,00" append="€"></x-input>
 						</div>
 					</div>
 					<div>
-						<x-label for="ss_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è :</x-label>
+						<x-label for="ss_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è
+							:
+						</x-label>
 						<div class="w-44 mb-1">
 							<x-input wire:model.defer="towed_intervention.ss_energetic_savings"
 							         name="ss_energetic_savings" id="ss_energetic_savings"
@@ -128,17 +137,32 @@
 				       name="wacs_replacement" type="checkbox"
 				       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 				<label for="wacs_replacement"
-				       class="ml-3 block text-sm font-medium text-gray-700">2. Intervento di sostituzione degli impianti di climatizzazione invernale esistenti</label>
+				       class="ml-3 block text-sm font-medium text-gray-700">2. Intervento di sostituzione degli impianti
+					di climatizzazione invernale esistenti</label>
 			</div>
 			<div class="space-y-5">
 				<x-label>Con impianti dotati di:</x-label>
-				<livewire:practice.tabs.superbonus110.intervention.condensing-boilers :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.condensing-hot-air-generators :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.condensing-boilers :practice="$practice"
+				                                                                      :condomino_id="$condomino_id"
+				                                                                      :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.condensing-hot-air-generators :practice="$practice"
+				                                                                                 :condomino_id="$condomino_id"
+				                                                                                 :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice"
+				                                                                         :condomino_id="$condomino_id"
+				                                                                         :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice"
+				                                                                  :condomino_id="$condomino_id"
+				                                                                  :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice"
+				                                                                           :condomino_id="$condomino_id"
+				                                                                           :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"
+				                                                                                 :condomino_id="$condomino_id"
+				                                                                                 :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"
+				                                                                    :condomino_id="$condomino_id"
+				                                                                    :is_common="$is_common"/>
 				<strong>BA MANCANTE</strong>
 				<div>
 					<x-label>Destinati a:</x-label>
@@ -148,7 +172,8 @@
 							       name="use_winter" type="checkbox"
 							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 							<label for="use_winter"
-							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione invernale</label>
+							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione
+								invernale</label>
 						</div>
 						<div class="flex items-center sm:mr-5 mb-2">
 							<input wire:model="towed_intervention.use_summer"
@@ -167,7 +192,9 @@
 						</div>
 					</div>
 				</div>
-				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice" :condomino_id="$condomino_id" :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"
+				                                                                :condomino_id="$condomino_id"
+				                                                                :is_common="$is_common"/>
 				<strong>FV MANCANTE</strong><br>
 				<strong>AC MANCANTE</strong><br>
 				<strong>CR MANCANTE</strong><br>
