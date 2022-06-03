@@ -49,8 +49,8 @@
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-6">
-                <x-input wire:model.defer="gtot" type="text" name="gtot" id="gtot"
-                         label="Gtot"></x-input>
+                <x-input wire:model.defer="gtot" type="number" step="0.01" min="0" max="0.35" name="gtot" id="gtot"
+                         label="gTot" hint="Numero compreso tra 0 e 0.35"></x-input>
             </div>
             <div class="col-span-12 sm:col-span-6">
                 <x-input wire:model.defer="classe_scherm" type="text" name="classe_scherm" id="classe_scherm"

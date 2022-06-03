@@ -2,7 +2,7 @@
 	<div class="flex items-center">
 		<label for="condensing_boiler"
 		       class="flex items-center space-x-3 block text-sm font-medium text-gray-700">
-			<span>SS. Schermate solari e chiusure oscuranti</span>
+			<span>SS. Schermature solari e chiusure oscuranti</span>
 			<x-button
 					wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-sunscreen', {{ json_encode(['practice' => $practice->id, 'condomino_id' => $condomino_id, 'is_common' => $is_common]) }})"
 					type="button" size="sm">

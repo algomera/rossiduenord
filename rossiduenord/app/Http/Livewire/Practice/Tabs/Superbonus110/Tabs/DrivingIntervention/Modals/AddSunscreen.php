@@ -29,6 +29,9 @@
 		}
 
 		public function save() {
+			$this->validate([
+				'gtot' => 'numeric|between:0,0.35'
+			]);
 			$this->practice->sunscreens()->create([
 				'condomino_id'          => $this->condomino_id,
 				'is_common'             => $this->is_common,
