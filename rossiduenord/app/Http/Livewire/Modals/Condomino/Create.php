@@ -22,18 +22,18 @@
 		public $comproprietari = false;
 
 		protected $rules = [
-			'name'            => 'required|string',
-			'surname'         => 'required|string',
-			'phone'           => 'required|string',
-			'email'           => 'required|string',
-			'cf'              => 'required|string',
-			'millesimi_inv'   => 'required|string',
-			'foglio'          => 'required|string',
-			'part'            => 'required|string',
-			'sub'             => 'required|string',
-			'categ_catastale' => 'required|string',
-			'sup_catastale'   => 'required|string',
-			'comproprietari'  => 'boolean',
+			'name'             => 'required|string',
+			'surname'          => 'required|string',
+			'cf'               => 'required|string|size:16',
+			'phone'            => 'required|string',
+			'email'            => 'required|email:rfc,dns',
+			'millesimi_inv'    => 'required|numeric',
+			'foglio'           => 'required|string',
+			'part'             => 'required|string',
+			'sub'              => 'required|string',
+			'categ_catastale'  => 'required|string',
+			'sup_catastale'    => 'required|string',
+			'comproprietari'   => 'boolean',
 		];
 
 		public function mount(PracticeModel $practice) {

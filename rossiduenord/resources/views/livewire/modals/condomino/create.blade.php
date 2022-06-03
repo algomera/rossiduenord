@@ -22,15 +22,15 @@
                          label="Codice Fiscale" required required></x-input>
             </div>
             <div class="sm:col-span-4">
-                <x-input wire:model.defer="millesimi_inv" type="text" name="millesimi_inv" id="millesimi_inv"
+                <x-input wire:model.defer="millesimi_inv" type="number" name="millesimi_inv" id="millesimi_inv"
                          label="Millesimi" required></x-input>
             </div>
             <div class="sm:col-span-4">
-                <x-input wire:model.defer="foglio" type="text" name="foglio" id="foglio"
+                <x-input wire:model.defer="foglio" type="number" step="1" name="foglio" id="foglio"
                          label="Foglio" required></x-input>
             </div>
             <div class="sm:col-span-4">
-                <x-input wire:model.defer="part" type="text" name="part" id="part"
+                <x-input wire:model.defer="part" type="number" step="1" name="part" id="part"
                          label="Part." required></x-input>
             </div>
             <div class="sm:col-span-4">
@@ -52,8 +52,8 @@
                 </x-select>
             </div>
             <div class="sm:col-span-4">
-                <x-input wire:model.defer="sup_catastale" type="text" name="sup_catastale" id="sup_catastale"
-                         label="Sup. Catastale" required></x-input>
+                <x-input wire:model.defer="sup_catastale" type="number" name="sup_catastale" id="sup_catastale"
+                         label="Sup. Catastale" append="m²" required></x-input>
             </div>
             <div class="sm:col-span-12">
                 <div class="flex items-center">

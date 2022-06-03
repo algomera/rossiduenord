@@ -37,10 +37,9 @@ class CreateCondominisTable extends Migration
             $table->string('date_of_birth')->nullable();
             $table->string('nation_of_birth')->nullable();
             $table->string('common_of_birth')->nullable();
-            $table->string('P_IVA')->nullable();
             // residence
             $table->string('address')->nullable();
-            $table->string('CAP')->nullable();
+            $table->string('cap')->nullable();
             $table->string('common')->nullable();
             $table->string('prov')->nullable();
             $table->string('country')->nullable();
