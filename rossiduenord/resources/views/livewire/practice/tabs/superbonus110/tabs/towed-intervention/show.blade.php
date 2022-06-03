@@ -1,9 +1,7 @@
 <div class="space-y-5">
 	<x-section-heading class="!py-0 !border-t-0">Interventi trainati oggetto dei lavori</x-section-heading>
 	@isset($condomino_id)
-		<x-card class="p-4 border rounded-md">
-			Dati condomino: {{ $condomino->fullname }}
-		</x-card>
+		<livewire:practice.tabs.superbonus110.tabs.towed-intervention.condomino-section :condomino="$condomino"/>
 	@endisset
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="space-y-3">

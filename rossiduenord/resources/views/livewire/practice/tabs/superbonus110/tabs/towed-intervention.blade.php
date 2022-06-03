@@ -9,7 +9,8 @@
 						<option @if($selectedTab == $k) selected @endif value="{{ $k }}">{{ $tab }}</option>
 					@endforeach
 					@foreach($condomini as $condomino)
-						<option @if($condomino->id == $selectedTab) selected @endif value="{{ $condomino->id }}">{{ $condomino->fullname }}</option>
+						<option @if($condomino->id == $selectedTab) selected
+						        @endif value="{{ $condomino->id }}">{{ $condomino->fullname }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -48,12 +49,12 @@
 		<div class="col-span-10 lg:col-span-8">
 			@switch($selectedTab)
 				@case(0)
-					<livewire:practice.tabs.superbonus110.tabs.towed-intervention.show :practice="$practice"
+					<livewire:practice.tabs.superbonus110.tabs.towed-intervention.show :key="$selectedTab" :practice="$practice"
 					                                                                   :currentSurface="$currentSurface"
 					                                                                   :is_common="1"/>
 					@break
 				@default
-					<livewire:practice.tabs.superbonus110.tabs.towed-intervention.show :practice="$practice"
+					<livewire:practice.tabs.superbonus110.tabs.towed-intervention.show :key="$selectedTab" :practice="$practice"
 					                                                                   :currentSurface="$currentSurface"
 					                                                                   :condomino_id="$selectedTab"/>
 					@break
