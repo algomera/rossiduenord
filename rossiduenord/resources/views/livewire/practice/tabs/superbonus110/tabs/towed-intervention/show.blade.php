@@ -31,11 +31,6 @@
 					     class="flex items-center space-x-2 @if($currentSurface === 'PS') bg-gray-100 text-gray-700 @else text-gray-500 hover:text-gray-700 @endif px-3 py-2 font-medium text-sm rounded-md cursor-pointer">
 						<span>(PS) Pavimenti</span>
 					</div>
-
-					<div wire:click="$set('currentSurface', 'POND')"
-					     class="flex items-center space-x-2 @if($currentSurface === 'POND') bg-gray-100 text-gray-700 @else text-gray-500 hover:text-gray-700 @endif px-3 py-2 font-medium text-sm rounded-md cursor-pointer">
-						<span>(POND) Cop. non disperdenti</span>
-					</div>
 				</nav>
 				<x-button type="button"
 				          wire:click="$emit('openModal', 'practice.tabs.superbonus110.tabs.driving-intervention.modals.add-surface', {{ json_encode(['practice' => $practice->id, 'intervention' => 'towed', 'condomino_id' => $condomino_id, 'is_common' => $is_common, 'type' => $currentSurface]) }})"

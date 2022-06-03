@@ -20,6 +20,10 @@
 			$this->condomino = Condomini::find($this->condomino_id);
 		}
 
+		public function save() {
+			//
+		}
+
 		public function render() {
 			return view('livewire.practice.tabs.superbonus110.tabs.towed-intervention.show');
 		}

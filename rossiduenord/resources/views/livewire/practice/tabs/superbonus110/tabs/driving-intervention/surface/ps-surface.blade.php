@@ -26,8 +26,21 @@
 					<x-table.td>{{ $surface->insulation }}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							<x-icon name="trash" class="w-5 h-5 text-red-500 flex-shrink-0"
-							        wire:click="deleteSurface({{ $surface->id }})"></x-icon>
+							<x-modal>
+								<x-slot name="trigger">
+									<x-icon name="trash" class="w-5 h-5 text-red-500 flex-shrink-0"></x-icon>
+								</x-slot>
+								<x-slot name="title">
+									Conferma eliminazione
+								</x-slot>
+								Sei sicuro di voler eliminare la superficie?
+								<x-slot name="footer">
+									<x-link-button x-on:click="open = false">Annulla</x-link-button>
+									<x-danger-button class="ml-2" wire:click="deleteSurface({{ $surface->id }})">
+										Elimina
+									</x-danger-button>
+								</x-slot>
+							</x-modal>
 						</div>
 					</x-table.td>
 				</tr>
