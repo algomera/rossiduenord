@@ -156,7 +156,9 @@
 				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"
 				                                                                    :condomino_id="$condomino_id"
 				                                                                    :is_common="$is_common"/>
-				<strong>BA MANCANTE</strong>
+				<livewire:practice.tabs.superbonus110.intervention.building-automation :practice="$practice"
+				                                                                    :condomino_id="$condomino_id"
+				                                                                    :is_common="$is_common"/>
 				<div>
 					<x-label>Destinati a:</x-label>
 					<div class="sm:flex sm:items-center sm:flex-wrap">

@@ -722,6 +722,9 @@ select {
 .col-span-8 {
   grid-column: span 8 / span 8;
 }
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
 .m-0\.5 {
   margin: 0.125rem;
 }
@@ -1162,6 +1165,9 @@ select {
 }
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -2675,6 +2681,10 @@ input[type=number] {
     grid-column: span 6 / span 6;
   }
 
+  .md\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -2917,6 +2927,10 @@ input[type=number] {
 
   .xl\:order-last {
     order: 9999;
+  }
+
+  .xl\:col-span-1 {
+    grid-column: span 1 / span 1;
   }
 
   .xl\:flex {
