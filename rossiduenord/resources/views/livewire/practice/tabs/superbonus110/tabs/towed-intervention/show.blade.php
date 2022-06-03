@@ -157,8 +157,8 @@
 				                                                                    :condomino_id="$condomino_id"
 				                                                                    :is_common="$is_common"/>
 				<livewire:practice.tabs.superbonus110.intervention.building-automations :practice="$practice"
-				                                                                    :condomino_id="$condomino_id"
-				                                                                    :is_common="$is_common"/>
+				                                                                        :condomino_id="$condomino_id"
+				                                                                        :is_common="$is_common"/>
 				<div>
 					<x-label>Destinati a:</x-label>
 					<div class="sm:flex sm:items-center sm:flex-wrap">
@@ -187,13 +187,87 @@
 						</div>
 					</div>
 				</div>
-				<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"
-				                                                                :condomino_id="$condomino_id"
-				                                                                :is_common="$is_common"/>
-				<strong>FV MANCANTE</strong><br>
-				<strong>AC MANCANTE</strong><br>
-				<strong>CR MANCANTE</strong><br>
-				<strong>EBA MANCANTE</strong>
+				<x-card class="p-4 border rounded-md">
+					<div class="space-y-3">
+						<livewire:practice.tabs.superbonus110.intervention.solar-panels :practice="$practice"
+						                                                                :condomino_id="$condomino_id"
+						                                                                :is_common="$is_common"/>
+						<div>
+							<x-label for="ss_project_cost">Il costo previsto per i collettori solari ST ammonta a
+								*:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input x-mask:dynamic="$money($input, ',')"
+								         wire:model.defer="towed_intervention.st_project_cost"
+								         name="st_project_cost" id="st_project_cost"
+								         type="text" placeholder="0,00" append="€"></x-input>
+							</div>
+						</div>
+						<div>
+							<x-label for="st_project_cost">La spesa massima ammissibile è pari a:</x-label>
+							<div class="w-44 mb-1">
+								<x-input x-mask:dynamic="$money($input, ',')"
+								         wire:model.defer="towed_intervention.st_max_cost"
+								         name="st_max_cost" id="st_max_cost"
+								         type="text" placeholder="0,00" append="€"></x-input>
+							</div>
+						</div>
+						<div>
+							<x-label for="st_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input wire:model.defer="towed_intervention.st_energetic_savings"
+								         name="st_energetic_savings" id="st_energetic_savings"
+								         type="number" append="KWh" hint="all'anno"></x-input>
+							</div>
+						</div>
+					</div>
+				</x-card>
+				<x-card class="p-4 border rounded-md">
+					<div class="space-y-3">
+						<livewire:practice.tabs.superbonus110.intervention.photovoltaics :practice="$practice"
+						                                                                 :condomino_id="$condomino_id"
+						                                                                 :is_common="$is_common"/>
+						<div>
+							<x-label for="ss_project_cost">Il costo previsto per il fotovoltaico FV ammonta a
+								*:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input x-mask:dynamic="$money($input, ',')"
+								         wire:model.defer="towed_intervention.fv_project_cost"
+								         name="fv_project_cost" id="fv_project_cost"
+								         type="text" placeholder="0,00" append="€"></x-input>
+							</div>
+						</div>
+						<div>
+							<x-label for="fv_project_cost">La spesa massima ammissibile è pari a:</x-label>
+							<div class="w-44 mb-1">
+								<x-input x-mask:dynamic="$money($input, ',')"
+								         wire:model.defer="towed_intervention.fv_max_cost"
+								         name="fv_max_cost" id="fv_max_cost"
+								         type="text" placeholder="0,00" append="€"></x-input>
+							</div>
+						</div>
+						<div>
+							<x-label for="fv_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input wire:model.defer="towed_intervention.fv_energetic_savings"
+								         name="fv_energetic_savings" id="fv_energetic_savings"
+								         type="number" append="KWh" hint="all'anno"></x-input>
+							</div>
+						</div>
+					</div>
+				</x-card>
+				<livewire:practice.tabs.superbonus110.intervention.storage-systems :practice="$practice"
+				                                                                   :condomino_id="$condomino_id"
+				                                                                   :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.car-charge-infrastructures :practice="$practice"
+				                                                                              :condomino_id="$condomino_id"
+				                                                                              :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.delete-barriers :practice="$practice"
+				                                                                   :condomino_id="$condomino_id"
+				                                                                   :is_common="$is_common"/>
 			</div>
 		</div>
 

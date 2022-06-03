@@ -95,6 +95,10 @@ class Practice extends Model
 		return $this->hasMany(BuildingAutomation::class);
 	}
 
+	public function photovoltaics() {
+		return $this->hasMany(Photovoltaic::class);
+	}
+
     public function folder_documents()
     {
         return $this->hasMany(FolderDocument::class);

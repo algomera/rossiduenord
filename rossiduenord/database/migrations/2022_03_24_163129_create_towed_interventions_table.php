@@ -42,6 +42,15 @@
 				$table->text('ib_project_cost')->nullable();
 				$table->text('ib_max_cost')->nullable();
 				$table->text('ib_energetic_savings')->nullable();
+				//BA
+				$table->boolean('ba')->default(false)->nullable();
+				$table->text('ba_winter_acs')->nullable();
+				$table->text('ba_summer_acs')->nullable();
+				$table->text('ba_hot_water_production')->nullable();
+				$table->text('ba_usable_area')->nullable();
+				$table->text('ba_project_cost')->nullable();
+				$table->text('ba_max_cost')->nullable();
+				$table->text('ba_energetic_savings')->nullable();
 				//DESTINATION
 				$table->boolean('use_winter')->default(false)->nullable();
 				$table->boolean('use_summer')->default(false)->nullable();

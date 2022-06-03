@@ -56,6 +56,10 @@ class Condomini extends Model
 		return $this->hasMany(Sunscreen::class);
 	}
 
+	public function photovoltaics() {
+		return $this->hasMany(Photovoltaic::class);
+	}
+
 	public function building_automations() {
 		return $this->hasMany(BuildingAutomation::class);
 	}
