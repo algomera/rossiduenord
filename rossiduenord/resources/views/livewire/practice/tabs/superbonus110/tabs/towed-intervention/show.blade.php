@@ -248,15 +248,6 @@
 								         type="text" placeholder="0,00" append="€"></x-input>
 							</div>
 						</div>
-						<div>
-							<x-label for="fv_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è:
-							</x-label>
-							<div class="w-44 mb-1">
-								<x-input wire:model.defer="towed_intervention.fv_energetic_savings"
-								         name="fv_energetic_savings" id="fv_energetic_savings"
-								         type="number" append="KWh" hint="all'anno"></x-input>
-							</div>
-						</div>
 					</div>
 				</x-card>
 				<livewire:practice.tabs.superbonus110.intervention.storage-systems :practice="$practice"

@@ -63,4 +63,8 @@ class Condomini extends Model
 	public function building_automations() {
 		return $this->hasMany(BuildingAutomation::class);
 	}
+
+	public function towed_intervention() {
+		return $this->hasOne(TowedIntervention::class, 'condomino_id');
+	}
 }

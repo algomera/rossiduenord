@@ -53,7 +53,9 @@
 			$practice->building()->create();
 			$practice->data_project()->create();
 			$practice->driving_intervention()->create();
-			$practice->towed_intervention()->create();
+			$practice->towed_intervention()->create([
+				'is_common' => true
+			]);
 			$practice->final_state()->create();
 			$practice->variant()->create();
 			// Create Folder Document

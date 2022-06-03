@@ -40,7 +40,7 @@ class Practice extends Model
     }
 
     public function towed_intervention() {
-        return $this->hasOne(TowedIntervention::class);
+        return $this->hasMany(TowedIntervention::class);
     }
 
     public function final_state() {

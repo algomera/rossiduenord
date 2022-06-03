@@ -42,7 +42,11 @@
 
 		public function save() {
 			$validated = $this->validate();
-			$this->practice->condomini()->create($validated);
+			$condomino = $this->practice->condomini()->create($validated);
+			$this->practice->towed_intervention()->create([
+				'condomino_id' => $condomino->id,
+				'is_common' => 0
+			]);
 			$this->closeModal();
 			$this->emitTo('practice.tabs.building', 'condomino-created');
 			$this->dispatchBrowserEvent('open-notification', [

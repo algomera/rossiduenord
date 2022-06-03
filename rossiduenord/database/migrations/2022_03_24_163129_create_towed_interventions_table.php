@@ -16,11 +16,15 @@
 				$table->id();
 				$table->bigInteger('practice_id')->unsigned();
 				$table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
+				$table->bigInteger('condomino_id')->unsigned()->nullable();
+				$table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
+				$table->boolean('is_common')->default(false);
 				$table->boolean('thermical_isolation_intervention')->default(false)->nullable();
 				$table->text('total_vertical_walls')->nullable();
 				$table->text('vw_realized_1')->nullable();
 				$table->text('vw_realized_2')->nullable();
 				$table->text('total_intervention_surface')->nullable();
+				$table->text('total_expected_cost')->nullable();
 				$table->text('expected_project_cost')->nullable();
 				//            $table->text('fixture_replacing_intervention')->nullable();
 				$table->text('in_project_cost')->nullable();
