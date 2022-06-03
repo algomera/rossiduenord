@@ -19,7 +19,7 @@
             </div>
             <div class="sm:col-span-12">
                 <x-input x-mask="aaaaaa99a99a999a" wire:model.defer="cf" type="text" name="cf" id="cf"
-                         label="Codice Fiscale/P.IVA" required required></x-input>
+                         label="Codice Fiscale" required required></x-input>
             </div>
             <div class="sm:col-span-4">
                 <x-input wire:model.defer="millesimi_inv" type="text" name="millesimi_inv" id="millesimi_inv"
@@ -38,8 +38,18 @@
                          label="Sub." required></x-input>
             </div>
             <div class="sm:col-span-4">
-                <x-input wire:model.defer="categ_catastale" type="text" name="categ_catastale" id="categ_catastale"
-                         label="Cat. Catastale" required></x-input>
+                <x-select wire:model.defer="categ_catastale" name="categ_catastale" label="Cat. Catastale"
+                          required>
+                    <option value="A/2">A/2</option>
+                    <option value="A/3">A/3</option>
+                    <option value="A/4">A/4</option>
+                    <option value="A/5">A/5</option>
+                    <option value="A/6">A/6</option>
+                    <option value="A/7">A/7</option>
+                    <option value="A/11">A/11</option>
+                    <option value="C/4">C/4 solo spogliatoi</option>
+                    <option value="D/6">D/6 solo spogliatoi</option>
+                </x-select>
             </div>
             <div class="sm:col-span-4">
                 <x-input wire:model.defer="sup_catastale" type="text" name="sup_catastale" id="sup_catastale"

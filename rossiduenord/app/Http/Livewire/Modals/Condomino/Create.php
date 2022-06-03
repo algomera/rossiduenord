@@ -17,7 +17,7 @@
 		public $foglio;
 		public $part;
 		public $sub;
-		public $categ_catastale;
+		public $categ_catastale = 'A/2';
 		public $sup_catastale;
 		public $comproprietari = false;
 

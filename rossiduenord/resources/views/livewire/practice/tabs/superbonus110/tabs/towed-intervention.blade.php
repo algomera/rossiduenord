@@ -16,13 +16,13 @@
 			<nav class="hidden space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 lg:flex flex-row overflow-x-auto lg:flex-col"
 			     aria-label="Sidebar">
 				@foreach($tabs as $k => $tab)
-					<div wire:click="$set('selectedTab', {{$k}})"
+					<div wire:key="{{ $tab }}" wire:click="$set('selectedTab', {{$k}})"
 					     class="@if($selectedTab == $k) bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif flex flex-col items-start px-3 py-2 text-sm font-medium rounded-md cursor-pointer">
 						<span class="truncate">{{ $tab }}</span>
 					</div>
 				@endforeach
 				@foreach($condomini as $condomino)
-					<div wire:click="$set('selectedTab', {{$condomino->id}})"
+					<div wire:key="{{ $condomino->id }}" wire:click="$set('selectedTab', {{$condomino->id}})"
 					     class="@if($condomino->id == $selectedTab) bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif flex flex-col items-start px-3 py-2 text-sm font-medium rounded-md cursor-pointer">
 						<span class="truncate">{{ $condomino->fullname }}</span>
 						<div class="flex items-center">

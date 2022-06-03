@@ -15,6 +15,11 @@
 		public $selectedTab = 0;
 		public $currentSurface = 'PV';
 
+		protected $listeners = [
+			'condomino-deleted' => 'condominoDeleted',
+			'condomino-edited' => '$refresh',
+		];
+
 		protected $rules = [
 			'towed_intervention.thermical_isolation_intervention' => 'nullable|boolean',
 			'towed_intervention.total_vertical_walls'             => 'nullable',
@@ -42,6 +47,10 @@
 			'towed_intervention.replacing_energetic_savings'      => 'nullable|integer',
 		];
 
+		public function condominoDeleted() {
+			$this->selectedTab = 0;
+		}
+		
 		public function render() {
 			$this->condomini = $this->practice->condomini;
 			return view('livewire.practice.tabs.superbonus110.tabs.towed-intervention');
