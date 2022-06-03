@@ -1,6 +1,24 @@
 <x-card class="border rounded-md !space-y-0">
 	<x-page-header class="!border-b-0">
 		{{ $condomino->fullname }}
+		<x-slot name="subtitle">
+			<div class="flex items-center space-x-2 mt-1">
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">Codice Fiscale:</span>
+					<span class="uppercase">{{ $condomino->cf }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">Telefono:</span>
+					<span>{{ $condomino->phone }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">Email:</span>
+					<span>{{ $condomino->email }}</span>
+				</p>
+			</div>
+		</x-slot>
 		<x-slot name="actions">
 			<div class="flex items-center space-x-3">
 				<x-button
@@ -29,7 +47,4 @@
 			</div>
 		</x-slot>
 	</x-page-header>
-	<div class="px-4 pb-4">
-        {{ $condomino->foglio }}
-	</div>
 </x-card>

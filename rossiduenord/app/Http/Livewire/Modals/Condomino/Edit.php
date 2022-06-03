@@ -10,31 +10,34 @@
 	{
 		public CondominiModel $condomino;
 		public $countries;
-		protected $rules = [
-			'condomino.millesimi_inv'    => 'required|numeric',
-			'condomino.foglio'           => 'required|string',
-			'condomino.part'             => 'required|string',
-			'condomino.sub'              => 'required|string',
-			'condomino.categ_catastale'  => 'required|string',
-			'condomino.sup_catastale'    => 'required|string',
-			'condomino.comproprietari'   => 'boolean',
-			'condomino.type_beneficiary' => 'nullable|string',
-			'condomino.possession_title' => 'nullable|string',
-			'condomino.name'             => 'required|string',
-			'condomino.surname'          => 'required|string',
-			'condomino.sex'              => 'nullable|string',
-			'condomino.date_of_birth'    => 'date_format:Y-m-d|before:today',
-			'condomino.nation_of_birth'  => 'nullable|string',
-			'condomino.common_of_birth'  => 'nullable|string',
-			'condomino.cf'               => 'required|string|size:16',
-			'condomino.phone'            => 'required|string',
-			'condomino.email'            => 'required|email:rfc,dns|unique:condominis,email',
-			'condomino.country'          => 'nullable|string',
-			'condomino.common'           => 'nullable|string',
-			'condomino.prov'             => 'nullable|string|size:2',
-			'condomino.address'          => 'nullable|string',
-			'condomino.cap'              => 'nullable|string|size:5',
-		];
+
+		protected function rules() {
+			return [
+				'condomino.millesimi_inv'    => 'required|numeric',
+				'condomino.foglio'           => 'required|string',
+				'condomino.part'             => 'required|string',
+				'condomino.sub'              => 'required|string',
+				'condomino.categ_catastale'  => 'required|string',
+				'condomino.sup_catastale'    => 'required|string',
+				'condomino.comproprietari'   => 'boolean',
+				'condomino.type_beneficiary' => 'nullable|string',
+				'condomino.possession_title' => 'nullable|string',
+				'condomino.name'             => 'required|string',
+				'condomino.surname'          => 'required|string',
+				'condomino.sex'              => 'nullable|string',
+				'condomino.date_of_birth'    => 'date_format:Y-m-d|before:today',
+				'condomino.nation_of_birth'  => 'nullable|string',
+				'condomino.common_of_birth'  => 'nullable|string',
+				'condomino.cf'               => 'required|string|size:16',
+				'condomino.phone'            => 'required|string',
+				'condomino.email'            => 'required|email:rfc,dns|unique:condominis,email,' . $this->condomino->id,
+				'condomino.country'          => 'nullable|string',
+				'condomino.common'           => 'nullable|string',
+				'condomino.prov'             => 'nullable|string|size:2',
+				'condomino.address'          => 'nullable|string',
+				'condomino.cap'              => 'nullable|string|size:5',
+			];
+		}
 
 		public function mount(CondominiModel $condomino) {
 			$this->condomino = $condomino;
