@@ -10,7 +10,7 @@
                          label="Cognome" required required></x-input>
             </div>
             <div class="sm:col-span-6">
-                <x-input x-mask="999 9999999" wire:model.defer="phone" type="text" name="phone" id="phone"
+                <x-input x-mask="9999999999" wire:model.defer="phone" type="text" name="phone" id="phone"
                          label="Telefono" required></x-input>
             </div>
             <div class="sm:col-span-6">
