@@ -74,11 +74,8 @@
 				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:
 				</x-label>
 				<div class="w-44 mb-1">
-					<x-input x-mask:dynamic="$money($input, ',')"
-					         wire:model.defer="towed_intervention.total_expected_cost"
-					         name="total_expected_cost" id="total_expected_cost"
-					         type="text"
-					         label="Importo stimato" placeholder="0,00" append="€"></x-input>
+					<x-input-euro wire:model.defer="towed_intervention.total_expected_cost"
+					              name="total_expected_cost" id="total_expected_cost" label="Importo stimato"/>
 				</div>
 				<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione, direzione
 					lavori, asseverazione tecnica e fiscale)</p>
@@ -96,19 +93,15 @@
 							*:
 						</x-label>
 						<div class="w-44 mb-1">
-							<x-input x-mask:dynamic="$money($input, ',')"
-							         wire:model.defer="towed_intervention.ss_project_cost"
-							         name="ss_project_cost" id="ss_project_cost"
-							         type="text" placeholder="0,00" append="€"></x-input>
+							<x-input-euro wire:model.defer="towed_intervention.ss_project_cost"
+							              name="ss_project_cost" id="ss_project_cost"/>
 						</div>
 					</div>
 					<div>
 						<x-label for="ss_project_cost">La spesa massima ammissibile è pari a:</x-label>
 						<div class="w-44 mb-1">
-							<x-input x-mask:dynamic="$money($input, ',')"
-							         wire:model.defer="towed_intervention.ss_max_cost"
-							         name="ss_max_cost" id="ss_max_cost"
-							         type="text" placeholder="0,00" append="€"></x-input>
+							<x-input-euro wire:model.defer="towed_intervention.ss_max_cost"
+							              name="ss_max_cost" id="ss_max_cost"/>
 						</div>
 					</div>
 					<div>
@@ -197,23 +190,20 @@
 								*:
 							</x-label>
 							<div class="w-44 mb-1">
-								<x-input x-mask:dynamic="$money($input, ',')"
-								         wire:model.defer="towed_intervention.st_project_cost"
-								         name="st_project_cost" id="st_project_cost"
-								         type="text" placeholder="0,00" append="€"></x-input>
+								<x-input-euro wire:model.defer="towed_intervention.st_project_cost"
+								              name="st_project_cost" id="st_project_cost"/>
 							</div>
 						</div>
 						<div>
 							<x-label for="st_project_cost">La spesa massima ammissibile è pari a:</x-label>
 							<div class="w-44 mb-1">
-								<x-input x-mask:dynamic="$money($input, ',')"
-								         wire:model.defer="towed_intervention.st_max_cost"
-								         name="st_max_cost" id="st_max_cost"
-								         type="text" placeholder="0,00" append="€"></x-input>
+								<x-input-euro wire:model.defer="towed_intervention.st_max_cost"
+								              name="st_max_cost" id="st_max_cost"/>
 							</div>
 						</div>
 						<div>
-							<x-label for="st_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è:
+							<x-label for="st_project_cost">Il risparmio di energia primaria non rinnovabile di progetto
+								è:
 							</x-label>
 							<div class="w-44 mb-1">
 								<x-input wire:model.defer="towed_intervention.st_energetic_savings"
@@ -233,19 +223,15 @@
 								*:
 							</x-label>
 							<div class="w-44 mb-1">
-								<x-input x-mask:dynamic="$money($input, ',')"
-								         wire:model.defer="towed_intervention.fv_project_cost"
-								         name="fv_project_cost" id="fv_project_cost"
-								         type="text" placeholder="0,00" append="€"></x-input>
+								<x-input-euro wire:model.defer="towed_intervention.fv_project_cost"
+								              name="fv_project_cost" id="fv_project_cost"/>
 							</div>
 						</div>
 						<div>
 							<x-label for="fv_project_cost">La spesa massima ammissibile è pari a:</x-label>
 							<div class="w-44 mb-1">
-								<x-input x-mask:dynamic="$money($input, ',')"
-								         wire:model.defer="towed_intervention.fv_max_cost"
-								         name="fv_max_cost" id="fv_max_cost"
-								         type="text" placeholder="0,00" append="€"></x-input>
+								<x-input-euro wire:model.defer="towed_intervention.fv_max_cost"
+								              name="fv_max_cost" id="fv_max_cost"/>
 							</div>
 						</div>
 					</div>

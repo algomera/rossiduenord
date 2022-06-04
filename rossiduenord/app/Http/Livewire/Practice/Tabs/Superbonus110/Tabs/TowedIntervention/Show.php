@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs\TowedIntervention;
 
 	use App\Condomini;
+	use App\Helpers\Money;
 	use App\Practice as PracticeModel;
 	use Livewire\Component;
 
@@ -17,19 +18,19 @@
 		protected $rules = [
 			'towed_intervention.thermical_isolation_intervention' => 'nullable|boolean',
 			'towed_intervention.total_intervention_surface'       => 'nullable|string',
-			'towed_intervention.total_expected_cost'              => 'nullable|string',
-			'towed_intervention.ss_project_cost'                  => 'nullable|string',
-			'towed_intervention.ss_max_cost'                      => 'nullable|string',
+			'towed_intervention.total_expected_cost'              => 'nullable|numeric',
+			'towed_intervention.ss_project_cost'                  => 'nullable|numeric',
+			'towed_intervention.ss_max_cost'                      => 'nullable|numeric',
 			'towed_intervention.ss_energetic_savings'             => 'nullable|string',
 			'towed_intervention.wacs_replacement'                 => 'nullable|boolean',
 			'towed_intervention.use_winter'                       => 'nullable|boolean',
 			'towed_intervention.use_summer'                       => 'nullable|boolean',
 			'towed_intervention.use_water'                        => 'nullable|boolean',
-			'towed_intervention.st_project_cost'                  => 'nullable|string',
-			'towed_intervention.st_max_cost'                      => 'nullable|string',
+			'towed_intervention.st_project_cost'                  => 'nullable|numeric',
+			'towed_intervention.st_max_cost'                      => 'nullable|numeric',
 			'towed_intervention.st_energetic_savings'             => 'nullable|string',
-			'towed_intervention.fv_project_cost'                  => 'nullable|string',
-			'towed_intervention.fv_max_cost'                      => 'nullable|string',
+			'towed_intervention.fv_project_cost'                  => 'nullable|numeric',
+			'towed_intervention.fv_max_cost'                      => 'nullable|numeric',
 		];
 
 		public function mount() {
@@ -38,8 +39,8 @@
 		}
 
 		public function save() {
-			$this->validate();
-			$this->towed_intervention->update();
+			$validated = $this->validate();
+			$this->towed_intervention->update($validated['towed_intervention']);
 		}
 
 		public function render() {
