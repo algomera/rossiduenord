@@ -5,7 +5,7 @@
 				<div class="col-span-12">
 					<x-select wire:model.defer="subject_type" name="subject_type" id="subject_type"
 					          label="Tipologia soggetto" required>
-						<option value="" selected>Seleziona..</option>
+						<option value="null" selected disabled>Seleziona..</option>
 						@foreach(config('anagrafiche.subject_types') as $subject_type)
 							<option value="{{ $subject_type }}">{{ $subject_type }}</option>
 						@endforeach
@@ -14,7 +14,7 @@
 				<div class="col-span-12">
 					<x-select wire:model.defer="consultant_type" name="consultant_type" id="consultant_type"
 					          label="Tipologia consulente">
-						<option value="" selected>Seleziona..</option>
+						<option value="null" selected disabled>Seleziona..</option>
 						@foreach(config('anagrafiche.consultant_types') as $consultant_type)
 							<option value="{{ $consultant_type }}">{{ $consultant_type }}</option>
 						@endforeach
@@ -61,11 +61,11 @@
 					         label="Codice Fiscale"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">
-					<x-input x-mask="999 9999999" wire:model.defer="phone" type="text" name="phone" id="phone"
+					<x-input x-mask="9999999999" wire:model.defer="phone" type="text" name="phone" id="phone"
 					         label="Telefono"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">
-					<x-input wire:model.defer="fax" type="text" name="fax" id="fax"
+					<x-input x-mask="9999999999" wire:model.defer="fax" type="text" name="fax" id="fax"
 					         label="Fax"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-6">

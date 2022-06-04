@@ -1,6 +1,6 @@
 @props(['label', 'subject', 'items', 'name'])
 <x-select wire:key="{{$name}}" wire:model="{{ $name }}" name="{{$name}}" label="{{$label}}">
-	<option value="">Seleziona..</option>
+	<option value="null" selected disabled>Seleziona..</option>
 	@foreach($items as $item)
 		<option wire:key="{{ $loop->index }}"
 		        value="{{ $item->id }}">
