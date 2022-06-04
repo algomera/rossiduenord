@@ -13,7 +13,7 @@
 				<div class="col-span-12">
 					<x-select wire:model.defer="building.company_role" name="company_role" id="company_role"
 					          label="Ruolo dell'impresa" required>
-						<option value="">Seleziona</option>
+						<option value="null" selected disabled>Seleziona</option>
 						<option value="General Contractor/Coordinatore">General Contractor/Coordinatore</option>
 						<option value="Responsabile di un intervento trainante">Responsabile di un intervento trainante
 						</option>
@@ -45,7 +45,7 @@
 				<div class="col-span-12 sm:col-span-6">
 					<x-select wire:model.defer="building.build_type" name="build_type" id="build_type"
 					          label="Tipo di condominio" required>
-						<option value="">Seleziona</option>
+						<option value="null" selected disabled>Seleziona</option>
 						<option value="Standard">Standard</option>
 						<option value="Popolare">Popolare</option>
 						<option value="Lusso">Lusso</option>
@@ -53,7 +53,7 @@
 				</div>
 				<div class="col-span-12 sm:col-span-6">
 					<x-select wire:model.defer="building.zone" name="zone" id="zone" label="Zona" required>
-						<option selected value="">Seleziona</option>
+						<option value="null" selected disabled>Seleziona</option>
 						<option value="Centrale">Centrale</option>
 						<option value="Periferica">Periferica</option>
 						<option value="Pregio">Pregio</option>
@@ -446,12 +446,12 @@
 					         id="administrator_cap" label="CAP"></x-input>
 				</div>
 				<div class="col-span-6 sm:col-span-4">
-					<x-input x-mask="999 9999999" wire:model.defer="building.administrator_telephone" type="text"
+					<x-input x-mask="9999999999" wire:model.defer="building.administrator_telephone" type="text"
 					         name="administrator_telephone"
 					         id="administrator_telephone" label="Telefono"></x-input>
 				</div>
 				<div class="col-span-6 sm:col-span-4">
-					<x-input x-mask="999 9999999" wire:model.defer="building.administrator_cellphone" type="text"
+					<x-input x-mask="9999999999" wire:model.defer="building.administrator_cellphone" type="text"
 					         name="administrator_cellphone"
 					         id="administrator_cellphone" label="Cellulare"></x-input>
 				</div>
