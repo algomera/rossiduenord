@@ -32,11 +32,11 @@ class CreatePracticesTable extends Migration
             $table->string('work_start')->nullable();
             $table->float('c_m')->nullable();
             $table->float('assev_tecnica')->nullable();
-            $table->boolean('policy')->default(false);
-            $table->string('request_policy')->nullable();
+            $table->text('description')->nullable();
             $table->string('referent_email')->nullable();
             $table->string('referent_mobile')->nullable();
-            $table->text('description')->nullable();
+            $table->boolean('policy')->default(false);
+            $table->string('request_policy')->nullable();
             $table->boolean('superbonus')->default(false);
             $table->string('superbonus_work_start')->nullable();
             $table->string('sal')->nullable();
