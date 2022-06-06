@@ -21,6 +21,19 @@
 		public $classe_scherm;
 		public $materiale_scherm = 'Tessuto';
 		public $meccanismo_reg = 'Manuale';
+		protected $rules = [
+			'tipo_schermatura'      => 'nullable|string',
+			'installazione'         => 'nullable|string',
+			'sup_schermatura'       => 'nullable|numeric',
+			'sup_finestra_protetta' => 'nullable|numeric',
+			'resist_termica_suppl'  => 'nullable|numeric',
+			'orientamento'          => 'nullable|string',
+			'tipo_di_calcolo'       => 'nullable|string',
+			'gtot'                  => 'nullable|numeric|between:0,0.35',
+			'classe_scherm'         => 'nullable|string',
+			'materiale_scherm'      => 'nullable|string',
+			'meccanismo_reg'        => 'nullable|string',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

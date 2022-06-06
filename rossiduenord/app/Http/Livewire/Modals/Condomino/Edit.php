@@ -25,7 +25,7 @@
 				'condomino.name'             => 'required|string',
 				'condomino.surname'          => 'required|string',
 				'condomino.sex'              => 'nullable|string',
-				'condomino.date_of_birth'    => 'date_format:Y-m-d|before:today',
+				'condomino.date_of_birth'    => 'nullable|date|date_format:Y-m-d|before:today',
 				'condomino.nation_of_birth'  => 'nullable|string',
 				'condomino.common_of_birth'  => 'nullable|string',
 				'condomino.cf'               => 'required|string|size:16',

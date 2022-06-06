@@ -26,7 +26,7 @@
 				$table->double('resist_termica_suppl')->nullable();
 				$table->string('orientamento')->nullable();
 				$table->string('tipo_di_calcolo')->nullable();
-				$table->string('gtot')->nullable();
+				$table->double('gtot')->nullable();
 				$table->string('classe_scherm')->nullable();
 				$table->string('materiale_scherm')->nullable();
 				$table->string('meccanismo_reg')->nullable();

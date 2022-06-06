@@ -20,12 +20,12 @@ class CreateBiomeGeneratorsTable extends Migration
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
             $table->boolean('is_common')->default(false);
-            $table->text('tipo_sostituito')->nullable();
+            $table->string('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
-            $table->text('classe_generatore')->nullable();
-            $table->text('tipo_generatore')->nullable();
-            $table->text('use_destination')->nullable();
-            $table->text('tipo_di_alimentazione')->nullable();
+            $table->string('classe_generatore')->nullable();
+            $table->string('tipo_generatore')->nullable();
+            $table->string('use_destination')->nullable();
+            $table->string('tipo_di_alimentazione')->nullable();
             $table->double('p_utile_nom')->nullable();
             $table->double('p_al_focolare')->nullable();
             $table->double('rend_utile_alla_pot_nom')->nullable();

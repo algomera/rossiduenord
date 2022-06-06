@@ -23,6 +23,21 @@
 		public $heat_inverter;
 		public $heat_cop;
 		public $heat_sonde_geotermiche;
+		protected $rules = [
+			'tipo_sostituito'             => 'nullable|string',
+			'p_nom_sostituito'            => 'nullable|numeric',
+			'condensing_potenza_nominale' => 'nullable|numeric',
+			'condensing_rend_utile_nom'   => 'nullable|numeric',
+			'condensing_efficienza_ns'    => 'nullable|numeric',
+			'tipo_di_alimentazione'       => 'nullable|string',
+			'heat_tipo_di_pdc'            => 'nullable|string',
+			'heat_tipo_roof_top'          => 'nullable|boolean',
+			'heat_potenza_nominale'       => 'nullable|numeric',
+			'heat_p_elettrica_assorbita'  => 'nullable|numeric',
+			'heat_inverter'               => 'nullable|boolean',
+			'heat_cop'                    => 'nullable|string',
+			'heat_sonde_geotermiche'      => 'nullable|boolean',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

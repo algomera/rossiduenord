@@ -24,6 +24,22 @@
 		public $tipo_impianto_integrato_o_sostituito = 'Boiler elettrico';
 		public $certificazione_solar_keymark;
 		public $impianto_factory_made = 'notDefine';
+		protected $rules = [
+			'sup_lorda_singolo_modulo'             => 'nullable|numeric',
+			'num_moduli'                           => 'nullable|numeric',
+			'sup_totale'                           => 'nullable|numeric',
+			'tipo_di_collettori'                   => 'nullable|string',
+			'tipo_di_installazione'                => 'nullable|string',
+			'inclinazione'                         => 'nullable|numeric',
+			'orientamento'                         => 'nullable|string',
+			'q_col_q_sol'                          => 'nullable|numeric',
+			'ql'                                   => 'nullable|numeric',
+			'accumulo_in_litri'                    => 'nullable|numeric',
+			'destinazione_calore'                  => 'nullable|string',
+			'tipo_impianto_integrato_o_sostituito' => 'nullable|string',
+			'certificazione_solar_keymark'         => 'nullable|boolean',
+			'impianto_factory_made'                => 'nullable|string',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

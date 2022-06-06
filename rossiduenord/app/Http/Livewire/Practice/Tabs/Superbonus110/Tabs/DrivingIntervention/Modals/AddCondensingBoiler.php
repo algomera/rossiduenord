@@ -19,6 +19,17 @@
 		public $efficienza_acs_nwh;
 		public $tipo_di_alimentazione = 'Metano';
 		public $classe_termo_evoluto = 'V';
+		protected $rules = [
+			'tipo_sostituito'       => 'nullable|string',
+			'p_nom_sostituito'      => 'nullable|numeric',
+			'potenza_nominale'      => 'nullable|numeric',
+			'rend_utile_nom'        => 'nullable|numeric',
+			'use_destination'       => 'nullable|string',
+			'efficienza_ns'         => 'nullable|numeric',
+			'efficienza_acs_nwh'    => 'nullable|numeric',
+			'tipo_di_alimentazione' => 'nullable|string',
+			'classe_termo_evoluto'  => 'nullable|string',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;
@@ -40,7 +51,6 @@
 				'tipo_di_alimentazione' => $this->tipo_di_alimentazione,
 				'classe_termo_evoluto'  => $this->classe_termo_evoluto,
 			]);
-
 			$this->closeModal();
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Salvataggio'),

@@ -20,15 +20,15 @@ class CreateCondensingBoilersTable extends Migration
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
             $table->boolean('is_common')->default(false);
-            $table->text('tipo_sostituito')->nullable();
+            $table->string('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
             $table->double('potenza_nominale')->nullable();
             $table->double('rend_utile_nom')->nullable();
-            $table->text('use_destination')->nullable();
+            $table->string('use_destination')->nullable();
             $table->double('efficienza_ns')->nullable();
             $table->double('efficienza_acs_nwh')->nullable();
-            $table->text('tipo_di_alimentazione')->nullable();
-            $table->text('classe_termo_evoluto')->nullable();
+            $table->string('tipo_di_alimentazione')->nullable();
+            $table->string('classe_termo_evoluto')->nullable();
             $table->timestamps();
         });
     }

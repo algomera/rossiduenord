@@ -23,17 +23,17 @@ class CreateSolarPanelsTable extends Migration
             $table->double('sup_lorda_singolo_modulo')->nullable();
             $table->integer('num_moduli')->nullable();
             $table->double('sup_totale')->nullable();
-            $table->text('certificazione_solar_keymark')->nullable();
-            $table->text('tipo_di_collettori')->nullable();
-            $table->text('tipo_di_installazione')->nullable();
+            $table->string('certificazione_solar_keymark')->nullable();
+            $table->string('tipo_di_collettori')->nullable();
+            $table->string('tipo_di_installazione')->nullable();
             $table->double('inclinazione')->nullable();
-            $table->text('orientamento')->nullable();
-            $table->text('impianto_factory_made')->nullable();
+            $table->string('orientamento')->nullable();
+            $table->string('impianto_factory_made')->nullable();
             $table->double('q_col_q_sol')->nullable();
             $table->double('ql')->nullable();
             $table->double('accumulo_in_litri')->nullable();
-            $table->text('destinazione_calore')->nullable();
-            $table->text('tipo_impianto_integrato_o_sostituito')->nullable();
+            $table->string('destinazione_calore')->nullable();
+            $table->string('tipo_impianto_integrato_o_sostituito')->nullable();
             $table->timestamps();
         });
     }

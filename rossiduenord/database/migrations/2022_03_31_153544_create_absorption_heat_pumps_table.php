@@ -20,9 +20,9 @@ class CreateAbsorptionHeatPumpsTable extends Migration
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
             $table->boolean('is_common')->default(false);
-            $table->text('tipo_sostituito')->nullable();
+            $table->string('tipo_sostituito')->nullable();
             $table->double('p_nom_sostituito')->nullable();
-            $table->text('tipo_di_pdc')->nullable();
+            $table->string('tipo_di_pdc')->nullable();
             $table->boolean('tipo_roof_top')->default(false)->nullable();
             $table->double('potenza_nominale')->nullable();
             $table->double('gueh')->nullable();

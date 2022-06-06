@@ -22,6 +22,20 @@
 		public $eer;
 		public $sonde_geotermiche;
 		public $sup_riscaldata_dalla_pdc;
+		protected $rules = [
+			'tipo_sostituito'          => 'nullable|string',
+			'p_nom_sostituito'         => 'nullable|numeric',
+			'tipo_di_pdc'              => 'nullable|string',
+			'tipo_roof_top'            => 'nullable|boolean',
+			'potenza_nominale'         => 'nullable|numeric',
+			'p_elettrica_assorbita'    => 'nullable|numeric',
+			'inverter'                 => 'nullable|boolean',
+			'cop'                      => 'nullable|string',
+			'reversibile'              => 'nullable|boolean',
+			'eer'                      => 'nullable|string',
+			'sonde_geotermiche'        => 'nullable|boolean',
+			'sup_riscaldata_dalla_pdc' => 'nullable|numeric',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

@@ -20,6 +20,18 @@
 		public $p_al_focolare;
 		public $rend_utile_alla_pot_nom;
 		public $sup_riscaldata;
+		protected $rules = [
+			'tipo_sostituito'         => 'nullable|string',
+			'p_nom_sostituito'        => 'nullable|numeric',
+			'classe_generatore'       => 'nullable|string',
+			'tipo_generatore'         => 'nullable|string',
+			'use_destination'         => 'nullable|string',
+			'tipo_di_alimentazione'   => 'nullable|string',
+			'p_utile_nom'             => 'nullable|numeric',
+			'p_al_focolare'           => 'nullable|numeric',
+			'rend_utile_alla_pot_nom' => 'nullable|numeric',
+			'sup_riscaldata'          => 'nullable|numeric',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

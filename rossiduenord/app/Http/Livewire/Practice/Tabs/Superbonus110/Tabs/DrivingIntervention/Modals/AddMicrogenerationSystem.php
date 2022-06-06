@@ -23,6 +23,21 @@
 		public $classe_energ = 'B';
 		public $a_celle_a_combustibile;
 		public $riscaldatore_suppl;
+		protected $rules = [
+			'tipo_sostituito'        => 'nullable|string',
+			'p_nom_sostituito'       => 'nullable|numeric',
+			'p_elettrica'            => 'nullable|numeric',
+			'p_immessa'              => 'nullable|numeric',
+			'p_term_recuperata'      => 'nullable|numeric',
+			'pes'                    => 'nullable|numeric',
+			'tipo_di_alimentazione'  => 'nullable|string',
+			'tipo_intervento'        => 'nullable|string',
+			'potenza_risc_suppl'     => 'nullable|numeric',
+			'efficienza_ns'          => 'nullable|numeric',
+			'classe_energ'           => 'nullable|string',
+			'a_celle_a_combustibile' => 'nullable|boolean',
+			'riscaldatore_suppl'     => 'nullable|boolean',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

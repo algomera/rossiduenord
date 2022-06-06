@@ -22,13 +22,13 @@
 		public $insulation;
 		protected $rules = [
 			'type'                => 'nullable',
-			'description_surface' => 'nullable',
-			'surface'             => 'nullable|numeric|between:0,99999.99',
-			'trasm_ante'          => 'nullable|numeric|between:0,99999.99',
-			'trasm_post'          => 'nullable|numeric|between:0,99999.99',
-			'trasm_term'          => 'nullable|numeric|between:0,99999.99',
-			'confine'             => 'nullable',
-			'insulation'          => 'nullable',
+			'description_surface' => 'nullable|string',
+			'surface'             => 'nullable|numeric',
+			'trasm_ante'          => 'nullable|numeric',
+			'trasm_post'          => 'nullable|numeric',
+			'trasm_term'          => 'nullable|numeric',
+			'confine'             => 'nullable|string',
+			'insulation'          => 'nullable|string',
 		];
 
 		public function mount(PracticeModel $practice, $intervention, $condomino_id, $is_common, $type) {

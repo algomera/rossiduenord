@@ -15,6 +15,13 @@
 		public $pu_scaldacqua_a_pdc;
 		public $cop_nuovo_scaldacqua;
 		public $capacita_accumulo;
+		protected $rules = [
+			'tipo_scaldacqua_sostituito' => 'nullable|string',
+			'pu_scaldacqua_sostituito'   => 'nullable|numeric',
+			'pu_scaldacqua_a_pdc'        => 'nullable|numeric',
+			'cop_nuovo_scaldacqua'       => 'nullable|numeric',
+			'capacita_accumulo'          => 'nullable|numeric',
+		];
 
 		public function mount(PracticeModel $practice, $condomino_id, $is_common) {
 			$this->practice = $practice;

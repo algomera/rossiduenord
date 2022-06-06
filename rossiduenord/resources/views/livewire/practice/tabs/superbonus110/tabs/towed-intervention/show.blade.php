@@ -71,7 +71,8 @@
 				</div>
 			</div>
 			<div>
-				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:
+				<x-label for="total_expected_cost">Il costo complessivo previsto in progetto dei lavori sulle pratiche
+					opache ammonta a *:
 				</x-label>
 				<div class="w-44 mb-1">
 					<x-input-euro wire:model.defer="towed_intervention.total_expected_cost"
@@ -81,7 +82,52 @@
 					lavori, asseverazione tecnica e fiscale)</p>
 			</div>
 			<x-card class="p-4 border rounded-md">
-				Sezione Infissi
+				<div class="space-y-3">
+					Sezione Infissi
+					<div>
+						<x-label for="in_project_cost">Le spese previste in progetto dei lavori al punto IN ammontano a
+							*:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.in_project_cost"
+							              name="in_project_cost" id="in_project_cost"/>
+						</div>
+						<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione,
+							direzione
+							lavori, asseverazione tecnica e fiscale)</p>
+					</div>
+					<div>
+						<x-label for="work_expected_cost">La spesa prevista per gli interventi di cui ai punti PV, PO,
+							PS e IN ammonta a
+							*:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.work_expected_cost"
+							              name="work_expected_cost" id="work_expected_cost"/>
+						</div>
+						<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione,
+							direzione
+							lavori, asseverazione tecnica e fiscale)</p>
+					</div>
+					<div>
+						<x-label for="in_max_cost">La spesa massima ammissibile è pari a:</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.in_max_cost"
+							              name="in_max_cost" id="in_max_cost"/>
+						</div>
+					</div>
+					<div>
+						<x-label for="in_energetic_savings">Il risparmio di energia primaria non rinnovabile di progetto
+							è
+							:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input wire:model.defer="towed_intervention.in_energetic_savings"
+							         name="in_energetic_savings" id="in_energetic_savings"
+							         type="number" append="KWh" hint="all'anno"></x-input>
+						</div>
+					</div>
+				</div>
 			</x-card>
 			<x-card class="p-4 border rounded-md">
 				<div class="space-y-3">
@@ -98,14 +144,15 @@
 						</div>
 					</div>
 					<div>
-						<x-label for="ss_project_cost">La spesa massima ammissibile è pari a:</x-label>
+						<x-label for="ss_max_cost">La spesa massima ammissibile è pari a:</x-label>
 						<div class="w-44 mb-1">
 							<x-input-euro wire:model.defer="towed_intervention.ss_max_cost"
 							              name="ss_max_cost" id="ss_max_cost"/>
 						</div>
 					</div>
 					<div>
-						<x-label for="ss_project_cost">Il risparmio di energia primaria non rinnovabile di progetto è
+						<x-label for="ss_energetic_savings">Il risparmio di energia primaria non rinnovabile di progetto
+							è
 							:
 						</x-label>
 						<div class="w-44 mb-1">
@@ -134,21 +181,135 @@
 				<livewire:practice.tabs.superbonus110.intervention.condensing-hot-air-generators :practice="$practice"
 				                                                                                 :condomino_id="$condomino_id"
 				                                                                                 :is_common="$is_common"/>
+				<livewire:practice.tabs.superbonus110.intervention.heat-pumps :practice="$practice"
+				                                                              :condomino_id="$condomino_id"
+				                                                              :is_common="$is_common"/>
 				<livewire:practice.tabs.superbonus110.intervention.absorption-heat-pumps :practice="$practice"
 				                                                                         :condomino_id="$condomino_id"
 				                                                                         :is_common="$is_common"/>
 				<livewire:practice.tabs.superbonus110.intervention.hybrid-systems :practice="$practice"
 				                                                                  :condomino_id="$condomino_id"
 				                                                                  :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice"
-				                                                                           :condomino_id="$condomino_id"
-				                                                                           :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations :practice="$practice"
-				                                                                                 :condomino_id="$condomino_id"
-				                                                                                 :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"
-				                                                                    :condomino_id="$condomino_id"
-				                                                                    :is_common="$is_common"/>
+				<x-card class="border p-4 rounded-md">
+					<div class="space-y-3">
+						<livewire:practice.tabs.superbonus110.intervention.water-heatpumps-installations
+								:practice="$practice"
+								:condomino_id="$condomino_id"
+								:is_common="$is_common"/>
+						<div>
+							<x-label for="sa_project_cost">Il costo complessivo previsto degli interventi sull'impianto
+								(Punto 2) ammonta a
+								*:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.sa_project_cost"
+								              name="sa_project_cost" id="sa_project_cost"/>
+							</div>
+							<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es.
+								progettazione, direzione
+								lavori, asseverazione tecnica e fiscale)</p>
+						</div>
+						<div>
+							<x-label for="sa_max_cost">La spesa massima ammissibile per la sostituzione degli
+								impianti è pari a:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.sa_max_cost"
+								              name="sa_max_cost" id="sa_max_cost"/>
+							</div>
+						</div>
+						<div>
+							<x-label for="sa_energetic_savings">Il risparmio di energia primaria non rinnovabile di
+								progetto
+								è
+								:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input wire:model.defer="towed_intervention.sa_energetic_savings"
+								         name="sa_energetic_savings" id="sa_energetic_savings"
+								         type="number" append="KWh" hint="all'anno"></x-input>
+							</div>
+						</div>
+					</div>
+				</x-card>
+				<x-card class="border p-4 rounded-md">
+					<div class="space-y-3">
+						<livewire:practice.tabs.superbonus110.intervention.microgeneration-systems :practice="$practice"
+						                                                                           :condomino_id="$condomino_id"
+						                                                                           :is_common="$is_common"/>
+						<div>
+							<x-label for="co_project_cost">Il costo previsto per i sistemi di microgenerazione CO
+								ammonta a *:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.co_project_cost"
+								              name="co_project_cost" id="co_project_cost"/>
+							</div>
+							<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es.
+								progettazione, direzione
+								lavori, asseverazione tecnica e fiscale)</p>
+						</div>
+						<div>
+							<x-label for="co_max_cost">La spesa massima ammissibile per l'intervento è pari a:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.co_max_cost"
+								              name="co_max_cost" id="co_max_cost"/>
+							</div>
+						</div>
+						<div>
+							<x-label for="co_energetic_savings">Il risparmio di energia primaria non rinnovabile di
+								progetto
+								è
+								:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input wire:model.defer="towed_intervention.co_energetic_savings"
+								         name="co_energetic_savings" id="co_energetic_savings"
+								         type="number" append="KWh" hint="all'anno"></x-input>
+							</div>
+						</div>
+					</div>
+				</x-card>
+				<x-card class="border p-4 rounded-md">
+					<div class="space-y-3">
+						<livewire:practice.tabs.superbonus110.intervention.biome-generators :practice="$practice"
+						                                                                    :condomino_id="$condomino_id"
+						                                                                    :is_common="$is_common"/>
+						<div>
+							<x-label for="ib_project_cost">Il costo previsto per i generatori a biomassa IB
+								ammonta a *:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.ib_project_cost"
+								              name="ib_project_cost" id="ib_project_cost"/>
+							</div>
+							<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es.
+								progettazione, direzione
+								lavori, asseverazione tecnica e fiscale)</p>
+						</div>
+						<div>
+							<x-label for="ib_max_cost">La spesa massima ammissibile per l'intervento è pari a:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input-euro wire:model.defer="towed_intervention.ib_max_cost"
+								              name="ib_max_cost" id="ib_max_cost"/>
+							</div>
+						</div>
+						<div>
+							<x-label for="ib_energetic_savings">Il risparmio di energia primaria non rinnovabile di
+								progetto
+								è
+								:
+							</x-label>
+							<div class="w-44 mb-1">
+								<x-input wire:model.defer="towed_intervention.ib_energetic_savings"
+								         name="ib_energetic_savings" id="ib_energetic_savings"
+								         type="number" append="KWh" hint="all'anno"></x-input>
+							</div>
+						</div>
+					</div>
+				</x-card>
 				<livewire:practice.tabs.superbonus110.intervention.building-automations :practice="$practice"
 				                                                                        :condomino_id="$condomino_id"
 				                                                                        :is_common="$is_common"/>
@@ -193,6 +354,9 @@
 								<x-input-euro wire:model.defer="towed_intervention.st_project_cost"
 								              name="st_project_cost" id="st_project_cost"/>
 							</div>
+							<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es.
+								progettazione, direzione
+								lavori, asseverazione tecnica e fiscale)</p>
 						</div>
 						<div>
 							<x-label for="st_project_cost">La spesa massima ammissibile è pari a:</x-label>
@@ -234,11 +398,13 @@
 								              name="fv_max_cost" id="fv_max_cost"/>
 							</div>
 						</div>
+						<hr>
+						<livewire:practice.tabs.superbonus110.intervention.storage-systems :practice="$practice"
+						                                                                   :condomino_id="$condomino_id"
+						                                                                   :is_common="$is_common"/>
 					</div>
 				</x-card>
-				<livewire:practice.tabs.superbonus110.intervention.storage-systems :practice="$practice"
-				                                                                   :condomino_id="$condomino_id"
-				                                                                   :is_common="$is_common"/>
+
 				<livewire:practice.tabs.superbonus110.intervention.car-charge-infrastructures :practice="$practice"
 				                                                                              :condomino_id="$condomino_id"
 				                                                                              :is_common="$is_common"/>
