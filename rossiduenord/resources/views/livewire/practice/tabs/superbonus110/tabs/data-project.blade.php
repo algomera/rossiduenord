@@ -34,7 +34,8 @@
 					         id="filed_common" label="Comune"></x-input>
 				</div>
 				<div class="col-span-5 sm:col-span-2">
-					<x-input x-mask="aa" wire:model.defer="data_project.filed_province" type="text" name="filed_province"
+					<x-input x-mask="aa" wire:model.defer="data_project.filed_province" type="text"
+					         name="filed_province"
 					         id="filed_province" class="uppercase" label="Prov."></x-input>
 				</div>
 				<div class="col-span-7 sm:col-span-3">
@@ -99,11 +100,12 @@
 			@if($data_project->type_building === 'condominium')
 				<div class="grid grid-cols-12 gap-4">
 					<div class="col-span-6 sm:col-span-3">
-						<x-input wire:model.defer="data_project.building_unit" type="text" name="building_unit"
+						<x-input wire:model.defer="data_project.building_unit" type="number" step="1"
+						         name="building_unit"
 						         id="building_unit" label="N. unità"></x-input>
 					</div>
 					<div class="col-span-6 sm:col-span-3">
-						<x-input wire:model.defer="data_project.relevance" type="text" name="relevance"
+						<x-input wire:model.defer="data_project.relevance" type="number" step="1" name="relevance"
 						         id="relevance" label="N. Pertinenze"></x-input>
 					</div>
 					<div class="col-span-12 sm:col-span-6">
@@ -119,26 +121,29 @@
 			@endif
 		</div>
 		<div>
-			<x-input wire:model.defer="data_project.gross_surface_area" type="text" name="gross_surface_area"
-			         id="gross_surface_area"
-			         class="w-36"
-			         label="La superficie lorta ante lavori complessiva disperdente è pari a m²"></x-input>
+			<x-label for="gross_surface_area">La superficie lorta ante lavori complessiva disperdente è pari a:
+			</x-label>
+			<div class="w-36">
+				<x-input wire:model.defer="data_project.gross_surface_area" type="number" name="gross_surface_area"
+				         id="gross_surface_area"
+				         append="m²"></x-input>
+			</div>
 		</div>
 		<div>
 			<x-section-heading>Informazioni relative ai nuovi prezzi utilizzati nel computo metrico</x-section-heading>
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12 sm:col-span-4">
-					<x-input wire:model.defer="data_project.np" type="text" name="np"
+					<x-input wire:model.defer="data_project.np" type="number" step="1" name="np"
 					         id="np" label="N. voci NP utilizzate"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-4">
 					<x-label for="np_validated" class="text-green-500">Di cui da validare</x-label>
-					<x-input wire:model.defer="data_project.np_validated" type="text" name="np_validated"
+					<x-input wire:model.defer="data_project.np_validated" type="number" step="1" name="np_validated"
 					         id="np_validated"></x-input>
 				</div>
 				<div class="col-span-12 sm:col-span-4">
 					<x-label for="np_validated" class="text-red-500">Di cui ancora da validare</x-label>
-					<x-input wire:model.defer="data_project.np_not_validated" type="text" name="np_not_validated"
+					<x-input wire:model.defer="data_project.np_not_validated" type="number" step="1" name="np_not_validated"
 					         id="np_not_validated"></x-input>
 				</div>
 			</div>

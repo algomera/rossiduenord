@@ -16,24 +16,24 @@
 
 		<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
 			<div class="col-span-12">
-				<x-input wire:model.defer="company_name" id="company_name" type="text" name="company_name" required
+				<x-input wire:model.defer="company_name" id="company_name" type="text" name="company_name"
 				         label="Dati impresa"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="c_f" id="c_f" type="text" name="c_f" required
+				<x-input x-mask="aaaaaa99a99a999a" wire:model.defer="c_f" id="c_f" type="text" name="c_f"
 				         label="Codice Fiscale" class="uppercase"></x-input>
 			</div>
 			<div class="col-span-12 md:col-span-6">
-				<x-input x-mask="999 9999999" wire:model.defer="phone" id="phone" type="text" name="phone" required
+				<x-input x-mask="9999999999" wire:model.defer="phone" id="phone" type="text" name="phone"
 				         label="Telefono"></x-input>
 			</div>
 			<div class="col-span-12 md:col-span-6">
-				<x-input x-mask="999 9999999" wire:model.defer="mobile_phone" id="mobile_phone" type="text"
-				         name="mobile_phone" required
+				<x-input x-mask="9999999999" wire:model.defer="mobile_phone" id="mobile_phone" type="text"
+				         name="mobile_phone"
 				         label="Cellulare"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="email" id="email" type="email" name="email" required label="Email"></x-input>
+				<x-input wire:model.defer="email" id="email" type="email" name="email" label="Email"></x-input>
 			</div>
 		</div>
 
@@ -42,7 +42,8 @@
 			<fieldset class="mt-2">
 				<div class="sm:flex sm:items-center sm:flex-wrap">
 					<div class="flex items-center sm:mr-5 mb-2">
-						<input wire:model.defer="role" id="persona_fisica" name="role" type="radio" value="persona_fisica"
+						<input wire:model.defer="role" id="persona_fisica" name="role" type="radio"
+						       value="persona_fisica"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="persona_fisica" class="ml-3 block text-sm font-medium text-gray-700">Persona
 							Fisica</label>
@@ -69,7 +70,8 @@
 							proprietario di condominio</label>
 					</div>
 					<div class="flex items-center sm:mr-5 mb-2">
-						<input wire:model.defer="role" id="titolare_ditta" name="role" type="radio" value="titolare_ditta"
+						<input wire:model.defer="role" id="titolare_ditta" name="role" type="radio"
+						       value="titolare_ditta"
 						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
 						<label for="titolare_ditta" class="ml-3 block text-sm font-medium text-gray-700">Titolare
 							Ditta</label>
