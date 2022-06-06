@@ -13,22 +13,22 @@
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function index(User $user) {
-			//$this->authorize('access_users');
-			$users = User::whereHas('user_data', function ($q) {
-				$q->where('parent', auth()->user()->id);
-			})->get();
-			return view('pages.users.index', compact('user', 'users'));
-		}
+//		public function index(User $user) {
+//			//$this->authorize('access_users');
+//			$users = User::whereHas('user_data', function ($q) {
+//				$q->where('parent', auth()->user()->id);
+//			})->get();
+//			return view('pages.users.index', compact('user', 'users'));
+//		}
 
 		/**
 		 * Show the form for creating a new resource.
 		 *
 		 * @return \Illuminate\Http\Response
 		 */
-		public function create() {
-			return view('pages.users.create');
-		}
+//		public function create() {
+//			return view('pages.users.create');
+//		}
 
 		/**
 		 * Store a newly created resource in storage.
@@ -37,7 +37,12 @@
 		 * @return \Illuminate\Http\Response
 		 */
 		public function store(Request $request) {
-			$validated = $request->validate(['role' => 'required | string', 'name' => 'required | string | min:3 | max:100', 'email' => 'required | string | email | max:100 | unique:users', 'password' => 'required | string | min:8 | confirmed']);
+			$validated = $request->validate([
+				'role' => 'required | string',
+				'name' => 'required | string | min:3 | max:100',
+				'email' => 'required | string | email | max:100 | unique:users',
+				'password' => 'required | string | min:8 | confirmed']
+			);
 			// Creazione Utente
 			$user = User::create(['email' => $validated['email'], 'password' => bcrypt($validated['password'])]);
 			// Crazione UserData

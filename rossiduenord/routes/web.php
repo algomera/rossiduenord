@@ -4,6 +4,7 @@
 		Http\Livewire\Practice\Index as PracticeIndex,
 		Http\Livewire\Practice\Show as PracticeShow,
 		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
+		Http\Livewire\Users\Index as UserIndex,
 		Practice,
 		Condomini,
 		Photo,
@@ -38,19 +39,13 @@
 			// Anagrafiche
 			Route::name('anagrafiche.')->group(function() {
 				Route::get('/anagrafiche', [AnagraficaIndex::class, '__invoke'])->name('index');
-//				Route::get('/anagrafiche/{anagrafica}', [Show::class, '__invoke'])->name('edit');
 			});
 
-			// Anagrafiche
-//			Route::get('/anagrafiche', 'AnagraficheController@index')->name('anagrafiche.index');
-//			Route::post('/anagrafiche', 'AnagraficheController@store')->name('anagrafiche.store');
-//			Route::get('/anagrafiche/create', 'AnagraficheController@create')->name('anagrafiche.create');
-//			Route::get('/anagrafiche/{anagrafica}/edit', 'AnagraficheController@edit')->name('anagrafiche.edit');
-//			Route::put('/anagrafiche/{anagrafica}', 'AnagraficheController@update')->name('anagrafiche.update');
-//			Route::get('/anagrafiche/{anagrafica:id}/view', 'AnagraficheController@loadModal')->name('anagrafiche.view');
-
 			// Gestione Accessi
-			Route::resource('/users', 'UserController');
+			Route::name('users.')->group(function() {
+				Route::get('/users', [UserIndex::class, '__invoke'])->name('index');
+			});
+//			Route::resource('/users', 'UserController');
 
 			// Gestione Cartelle/File
 			Route::resource('/folder', 'FolderController');

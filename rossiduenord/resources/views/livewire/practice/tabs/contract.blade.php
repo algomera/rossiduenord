@@ -4,7 +4,7 @@
 		<x-table.thead>
 			<tr>
 				<x-table.th>#</x-table.th>
-				<x-table.th>Polizza</x-table.th>
+				<x-table.th>Contratto</x-table.th>
 				<x-table.th>Stato</x-table.th>
 				<x-table.th></x-table.th>
 			</tr>

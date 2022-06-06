@@ -71,11 +71,11 @@ class User extends Authenticatable
 
 	public function business()
 	{
-		return $this->belongsToMany(User::class, 'asseverator_business', 'asseverator_id', 'business_id');
+		return $this->belongsToMany(User::class, 'users_businesses', 'user_id', 'business_id');
 	}
 
-    public function asseverator()
+    public function user()
     {
-        return $this->belongsToMany(User::class, 'asseverator_business', 'business_id', 'asseverator_id');
+        return $this->belongsToMany(User::class, 'users_businesses', 'business_id', 'user_id');
     }
 }
