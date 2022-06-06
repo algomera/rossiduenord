@@ -40,6 +40,7 @@
 			'towed_intervention.ba_winter_acs'                    => 'nullable|string',
 			'towed_intervention.ba_summer_acs'                    => 'nullable|string',
 			'towed_intervention.ba_hot_water_production'          => 'nullable|string',
+			'towed_intervention.ba_usable_area'                   => 'nullable|numeric',
 			'towed_intervention.ba_project_cost'                  => 'nullable|numeric',
 			'towed_intervention.ba_max_cost'                      => 'nullable|numeric',
 			'towed_intervention.ba_energetic_savings'             => 'nullable|string',
