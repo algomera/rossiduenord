@@ -87,6 +87,11 @@
 				$table->float('eba_sismic_cost')->nullable();
 				$table->float('eba_barr_deleting_cost')->nullable();
 				$table->float('eba_max_cost')->nullable();
+				//Total
+				$table->float('total_towed_cost_1')->nullable();
+				$table->float('total_towed_cost_2')->nullable();
+				$table->float('final_towed_cost')->nullable();
+				$table->float('max_towed_cost')->nullable();
 				$table->timestamps();
 			});
 		}

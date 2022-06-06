@@ -44,7 +44,9 @@
 
 		public function save() {
 			$validated = $this->validate();
-			dd($validated);
+
+			$this->driving_intervention->update();
+
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Aggiornamento'),
 				'subtitle' => __('Dati aggiornati con successo!')

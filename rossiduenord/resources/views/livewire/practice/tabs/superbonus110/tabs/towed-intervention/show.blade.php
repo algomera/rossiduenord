@@ -314,10 +314,13 @@
 				{{--								                                                                        :condomino_id="$condomino_id"--}}
 				{{--								                                                                        :is_common="$is_common"/>--}}
 				<x-card class="border p-4 rounded-md">
-					<div class="flex items-center">
-						<label class="flex items-center space-x-3 block text-sm font-medium text-gray-700">
-							<span>BA. Building Automation</span>
-						</label>
+					<div class="flex items-center mt-3">
+						<input wire:model="towed_intervention.ba"
+						       id="ba"
+						       name="ba" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="ba"
+						       class="ml-3 block text-sm font-medium text-gray-700">BA. Building Automation</label>
 					</div>
 					<div class="grid grid-cols-3 gap-4 mt-2">
 						<fieldset class="col-span-12">
@@ -427,7 +430,7 @@
 						</x-label>
 						<div class="w-full sm:w-44 mb-1">
 							<x-input-euro wire:model.defer="towed_intervention.ba_project_cost"
-							name="ba_project_cost" id="ba_project_cost"></x-input-euro>
+							              name="ba_project_cost" id="ba_project_cost"></x-input-euro>
 						</div>
 						<p class="mt-1 text-xs text-gray-500">* Incluso iva e spese professionali (es. progettazione,
 							direzione
@@ -487,7 +490,7 @@
 						                                                                :condomino_id="$condomino_id"
 						                                                                :is_common="$is_common"/>
 						<div>
-							<x-label for="ss_project_cost">Il costo previsto per i collettori solari ST ammonta a
+							<x-label for="st_project_cost">Il costo previsto per i collettori solari ST ammonta a
 								*:
 							</x-label>
 							<div class="w-44 mb-1">
@@ -499,14 +502,15 @@
 								lavori, asseverazione tecnica e fiscale)</p>
 						</div>
 						<div>
-							<x-label for="st_project_cost">La spesa massima ammissibile è pari a:</x-label>
+							<x-label for="st_max_cost">La spesa massima ammissibile è pari a:</x-label>
 							<div class="w-44 mb-1">
 								<x-input-euro wire:model.defer="towed_intervention.st_max_cost"
 								              name="st_max_cost" id="st_max_cost"/>
 							</div>
 						</div>
 						<div>
-							<x-label for="st_project_cost">Il risparmio di energia primaria non rinnovabile di progetto
+							<x-label for="st_energetic_savings">Il risparmio di energia primaria non rinnovabile di
+								progetto
 								è:
 							</x-label>
 							<div class="w-44 mb-1">
@@ -517,40 +521,196 @@
 						</div>
 					</div>
 				</x-card>
-				<x-card class="p-4 border rounded-md">
-					<div class="space-y-3">
-						<livewire:practice.tabs.superbonus110.intervention.photovoltaics :practice="$practice"
-						                                                                 :condomino_id="$condomino_id"
-						                                                                 :is_common="$is_common"/>
-						<div>
-							<x-label for="ss_project_cost">Il costo previsto per il fotovoltaico FV ammonta a
+				<x-card class="border p-4 rounded-md">
+					<div class="flex items-center">
+						<input wire:model="towed_intervention.fv"
+						       id="fv"
+						       name="fv" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="fv"
+						       class="ml-3 block text-sm font-medium text-gray-700">FV. Fotovoltaico</label>
+					</div>
+					<div class="grid grid-cols-12 gap-4">
+						<div class="col-span-12 sm:col-span-6">
+							<x-input wire:model.defer="towed_intervention.fv_pod_code" type="text" name="fv_pod_code"
+							         id="fv_pod_code"
+							         label="Codice POD"></x-input>
+						</div>
+						<div class="col-span-12 sm:col-span-6">
+							<x-input wire:model.defer="towed_intervention.fv_max_power" type="number"
+							         name="fv_max_power" id="fv_max_power"
+							         label="Potenza di picco" append="kW"></x-input>
+						</div>
+					</div>
+					<div>
+						<x-label for="fv_project_cost">Il costo previsto per il fotovoltaico FV ammonta a
+							*:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.fv_project_cost"
+							              name="fv_project_cost" id="fv_project_cost"></x-input-euro>
+						</div>
+					</div>
+					<div>
+						<x-label for="fv_project_cost">La spesa massima ammissibile è pari a:</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.fv_max_cost"
+							              name="fv_max_cost" id="fv_max_cost"></x-input-euro>
+						</div>
+					</div>
+					<hr>
+					<div class="pl-4 space-y-5">
+						<div class="flex items-center">
+							<input wire:model="towed_intervention.ac"
+							       id="ac"
+							       name="ac" type="checkbox"
+							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+							<label for="ac"
+							       class="ml-3 block text-sm font-medium text-gray-700">AC. Sistema di accumulo</label>
+						</div>
+						<div class="grid grid-cols-12 gap-4 mt-3">
+							<div class="col-span-12 sm:col-span-6">
+								<x-input wire:model.defer="towed_intervention.ac_capacity" type="number"
+								         name="ac_capacity" id="ac_capacity"
+								         label="Capacità" append="KWh"></x-input>
+							</div>
+						</div>
+						<div class="space-y-3">
+							<x-label for="ac_project_cost">Il costo previsto per il sistema di accumulo AC ammonta a
 								*:
 							</x-label>
 							<div class="w-44 mb-1">
-								<x-input-euro wire:model.defer="towed_intervention.fv_project_cost"
-								              name="fv_project_cost" id="fv_project_cost"/>
+								<x-input-euro wire:model.defer="towed_intervention.ac_project_cost"
+								              name="ac_project_cost" id="ac_project_cost"/>
 							</div>
+							<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es.
+								progettazione, direzione
+								lavori, asseverazione tecnica e fiscale)</p>
 						</div>
 						<div>
-							<x-label for="fv_project_cost">La spesa massima ammissibile è pari a:</x-label>
+							<x-label for="ac_max_cost">La spesa massima ammissibile è pari a:</x-label>
 							<div class="w-44 mb-1">
-								<x-input-euro wire:model.defer="towed_intervention.fv_max_cost"
-								              name="fv_max_cost" id="fv_max_cost"/>
+								<x-input-euro wire:model.defer="towed_intervention.ac_max_cost"
+								              name="ac_max_cost" id="ac_max_cost"/>
 							</div>
 						</div>
-						<hr>
-						<livewire:practice.tabs.superbonus110.intervention.storage-systems :practice="$practice"
-						                                                                   :condomino_id="$condomino_id"
-						                                                                   :is_common="$is_common"/>
+					</div>
+				</x-card>
+				<x-card class="border p-4 rounded-md">
+					<div class="flex items-center">
+						<input wire:model="towed_intervention.cr"
+						       id="cr"
+						       name="cr" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="cr"
+						       class="ml-3 block text-sm font-medium text-gray-700">CR. Infrastrutture per la ricarica
+							di veicoli elettrici</label>
+					</div>
+					<div>
+						<x-label for="cr_project_cost">Il costo previsto per le infrastrutture CR ammonta a
+							*:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.cr_project_cost"
+							              name="cr_project_cost" id="cr_project_cost"></x-input-euro>
+						</div>
+					</div>
+					<div>
+						<div class="w-44 mb-1">
+							<x-input wire:model.defer="towed_intervention.cr_installed_columns" type="number" step="1"
+							         name="cr_installed_columns"
+							         id="cr_installed_columns"
+							         label="Numero di colonnine installate"></x-input>
+						</div>
+					</div>
+					<div>
+						<x-label for="cr_project_cost">La spesa massima ammissibile è pari a:</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.cr_max_cost"
+							              name="cr_max_cost" id="cr_max_cost"></x-input-euro>
+						</div>
 					</div>
 				</x-card>
 
-				<livewire:practice.tabs.superbonus110.intervention.car-charge-infrastructures :practice="$practice"
-				                                                                              :condomino_id="$condomino_id"
-				                                                                              :is_common="$is_common"/>
-				<livewire:practice.tabs.superbonus110.intervention.delete-barriers :practice="$practice"
-				                                                                   :condomino_id="$condomino_id"
-				                                                                   :is_common="$is_common"/>
+				<x-card class="border p-4 rounded-md">
+					<div class="flex items-center">
+						<input wire:model="towed_intervention.eba"
+						       id="eba"
+						       name="eba" type="checkbox"
+						       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+						<label for="eba"
+						       class="ml-3 block text-sm font-medium text-gray-700">EBA. Eliminazione delle barriere
+							architettoniche</label>
+					</div>
+					<div>
+						<x-label for="eba_project_cost">a) Il costo omnicomprensivo previsto in progetto dell'intervento
+							di cui all'articolo 16-bis, comma 1, lettera e), del testo unico di cui al decreto del
+							Presidente della Repubblica 22 dicembre 1986, n.917 anche ove effettuati in favore di
+							persone di età superiore a sessantacinque anni è di:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.eba_project_cost"
+							              name="eba_project_cost" id="eba_project_cost"></x-input-euro>
+						</div>
+					</div>
+					<div>
+						<x-label for="eba_sismic_cost">b) Per le stesse unità immobiliari sono previste spese
+							complessive relative ad interventi antisismici di cui al comma 4 dell'art.119 del D.L.
+							34/2020 e successive modificazioni e ad altri interventi di cui all'art. 16 bis del DPR
+							917/86, pari a:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.eba_sismic_cost"
+							              name="eba_sismic_cost" id="eba_sismic_cost"></x-input-euro>
+						</div>
+					</div>
+					<div>
+						<x-label for="eba_barr_deleting_cost">Fermo restando che la spesa massima ammissibile per tutti
+							gli interventi di cui ai precedenti punti a) e b) non può superare 96.000 € per unità
+							immobiliare, la spesa massima ammissibile disponibile per l'eliminazione delle barriere
+							architettoniche è pertanto pari a:
+						</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.eba_barr_deleting_cost"
+							              name="eba_barr_deleting_cost" id="eba_barr_deleting_cost"></x-input-euro>
+						</div>
+					</div>
+					<div>
+						<x-label for="eba_project_cost">La spesa ammessa a progetto è pari a:</x-label>
+						<div class="w-44 mb-1">
+							<x-input-euro wire:model.defer="towed_intervention.eba_max_cost"
+							              name="eba_max_cost" id="eba_max_cost"></x-input-euro>
+						</div>
+					</div>
+				</x-card>
+				<div>
+					<x-label>Per un ammontare pari a</x-label>
+					<div class="grid grid-cols-12 gap-4">
+						<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+							<x-label for="total_towed_cost_1">SAL n.1</x-label>
+							<x-input-euro wire:model.defer="towed_intervention.total_towed_cost_1"
+							              name="total_towed_cost_1" id="total_towed_cost_1"></x-input-euro>
+						</div>
+						<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+							<x-label for="total_towed_cost_2">SAL n.2</x-label>
+							<x-input-euro wire:model.defer="towed_intervention.total_towed_cost_2"
+							              name="total_towed_cost_2" id="total_towed_cost_2"></x-input-euro>
+						</div>
+						<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+							<x-label for="final_towed_cost">SAL F</x-label>
+							<x-input-euro wire:model.defer="towed_intervention.final_towed_cost"
+							              name="final_towed_cost" id="final_towed_cost"></x-input-euro>
+						</div>
+					</div>
+				</div>
+				<div>
+					<x-label for="total_intervention_surface">
+						La spesa ammessa è pari a:
+					</x-label>
+					<div class="w-44 mb-1">
+						<x-input-euro wire:model.defer="towed_intervention.max_towed_cost"></x-input-euro>
+					</div>
+				</div>
 			</div>
 		</div>
 

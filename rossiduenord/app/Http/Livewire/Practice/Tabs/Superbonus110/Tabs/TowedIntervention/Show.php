@@ -68,6 +68,10 @@
 			'towed_intervention.eba_sismic_cost'                  => 'nullable|numeric',
 			'towed_intervention.eba_barr_deleting_cost'           => 'nullable|numeric',
 			'towed_intervention.eba_max_cost'                     => 'nullable|numeric',
+			'towed_intervention.total_towed_cost_1'               => 'nullable|numeric',
+			'towed_intervention.total_towed_cost_2'               => 'nullable|numeric',
+			'towed_intervention.final_towed_cost'                 => 'nullable|numeric',
+			'towed_intervention.max_towed_cost'                   => 'nullable|numeric',
 		];
 
 		public function mount() {
@@ -77,7 +81,13 @@
 
 		public function save() {
 			$validated = $this->validate();
-			$this->towed_intervention->update($validated['towed_intervention']);
+			$this->towed_intervention->update();
+
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Aggiornamento'),
+				'subtitle' => __('Dati aggiornati con successo!')
+			]);
+			$this->emitTo('practice.tabs.superbonus110.show', 'change-tab', 'final_state');
 		}
 
 		public function render() {

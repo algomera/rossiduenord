@@ -216,19 +216,19 @@
 				<div class="grid grid-cols-12 gap-4">
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label for="total_replacing_cost_1">SAL n.1</x-label>
-						<x-input-euro wire:model.defer="driving.intervention.total_replacing_cost_1"
+						<x-input-euro wire:model.defer="driving_intervention.total_replacing_cost_1"
 						              name="total_replacing_cost_1" id="total_replacing_cost_1"
 						              hint="almeno al 30%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label for="total_replacing_cost_2">SAL n.2</x-label>
-						<x-input-euro wire:model.defer="driving.intervention.total_replacing_cost_2"
+						<x-input-euro wire:model.defer="driving_intervention.total_replacing_cost_2"
 						              name="total_replacing_cost_2" id="total_replacing_cost_2"
 						              hint="almeno al 60%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label for="final_replacing_cost">SAL F</x-label>
-						<x-input-euro wire:model.defer="driving.intervention.final_replacing_cost"
+						<x-input-euro wire:model.defer="driving_intervention.final_replacing_cost"
 						              name="final_replacing_cost" id="final_replacing_cost"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -246,7 +246,7 @@
 					Il risparmio di energia primaria non rinnovabile di progetto è
 				</x-label>
 				<div class="w-44 mb-1">
-					<x-input type="number"
+					<x-input wire:model.defer="driving_intervention.replacing_energetic_savings" type="number"
 					         name="total_intervention_surface"
 					         id="total_intervention_surface" append="KWh" hint="all'anno"></x-input>
 				</div>
