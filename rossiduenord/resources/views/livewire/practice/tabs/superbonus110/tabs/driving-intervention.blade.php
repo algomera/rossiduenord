@@ -63,7 +63,7 @@
 			<div>
 				<x-label for="total_intervention_surface">Superficie totale oggetto dell'intervento *:</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.total_intervention_surface" type="text"
+					<x-input wire:model.defer="driving_intervention.total_intervention_surface" type="number"
 					         name="total_intervention_surface"
 					         id="total_intervention_surface" append="m²"></x-input>
 				</div>
@@ -71,40 +71,43 @@
 					dell'intervento trainante sull'involucro (maggiore del 25% della sup. disperdente)</p>
 			</div>
 			<div>
-				<x-label>Il costo complessivo previsto in progetto dei lavori sulle pratiche opache ammonta a *:
+				<x-label for="total_expected_cost">Il costo complessivo previsto in progetto dei lavori sulle pratiche
+					opache ammonta a *:
 				</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.total_expected_cost" type="text"
-					         name="total_expected_cost"
-					         id="total_expected_cost" append="€"></x-input>
+					<x-input-euro wire:model.defer="driving_intervention.total_expected_cost" name="total_expected_cost"
+					              id="total_expected_cost"></x-input-euro>
 				</div>
 				<p class="mt-1 text-xs text-gray-500">* Incluso IVA e spese professionali (es. progettazione, direzione
 					lavori, asseverazione tecnica e fiscale)</p>
 			</div>
 			<div>
-				<x-label>La spesa massima ammissibile dei lavori sulle parti opache è pari a:</x-label>
+				<x-label for="max_possible_cost">La spesa massima ammissibile dei lavori sulle parti opache è pari a:
+				</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.max_possible_cost" type="text"
-					         name="max_possible_cost"
-					         id="max_possible_cost" append="€"></x-input>
+					<x-input-euro wire:model.defer="driving_intervention.max_possible_cost" name="max_possible_cost"
+					              id="max_possible_cost"></x-input-euro>
 				</div>
 			</div>
 			<div>
 				<x-label>Il costo dei lavori realizzati è pari a</x-label>
 				<div class="grid grid-cols-12 gap-4">
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL n.1</x-label>
-						<x-input type="text" name="total_isolation_cost_1" id="total_isolation_cost_1"
-						         hint="almeno al 30%"></x-input>
+						<x-label for="total_isolation_cost_1">SAL n.1</x-label>
+						<x-input-euro wire:model.defer="driving_intervention.total_isolation_cost_1"
+						              id="total_isolation_cost_1"
+						              hint="almeno al 30%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL n.2</x-label>
-						<x-input type="text" name="total_isolation_cost_2" id="total_isolation_cost_2"
-						         hint="almeno al 60%"></x-input>
+						<x-label for="total_isolation_cost_2">SAL n.2</x-label>
+						<x-input-euro wire:model.defer="driving_intervention.total_isolation_cost_2"
+						              id="total_isolation_cost_2"
+						              hint="almeno al 60%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL F</x-label>
-						<x-input type="text" name="final_isolation_cost" id="final_isolation_cost"></x-input>
+						<x-label for="final_isolation_cost">SAL F</x-label>
+						<x-input-euro wire:model.defer="driving_intervention.final_isolation_cost"
+						              id="final_isolation_cost"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL 1+2</x-label>
@@ -119,15 +122,14 @@
 			<div>
 				<x-label>Di cui per coperture non disperdenti:</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.dispersing_covers" type="text"
-					         name="dispersing_covers"
-					         id="dispersing_covers" append="€"></x-input>
+					<x-input-euro wire:model.defer="driving_intervention.dispersing_covers" name="dispersing_covers"
+					              id="dispersing_covers"></x-input-euro>
 				</div>
 			</div>
 			<div>
 				<x-label>Il risparmio di energia primaria non rinnovabile di progetto è:</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.isolation_energetic_savings" type="text"
+					<x-input wire:model.defer="driving_intervention.isolation_energetic_savings" type="number"
 					         name="isolation_energetic_savings" id="isolation_energetic_savings"
 					         append="KWh"
 					         hint="all'anno"></x-input>
@@ -147,7 +149,7 @@
 			<div>
 				<x-label>Potenza utile complessiva pari a:</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.total_power" type="text" name="total_power"
+					<x-input wire:model.defer="driving_intervention.total_power" type="number" name="total_power"
 					         id="total_power"
 					         append="KWh"></x-input>
 				</div>
@@ -155,7 +157,7 @@
 			<div>
 				<x-label>Composto da n.</x-label>
 				<div class="w-44 mb-1">
-					<x-input wire:model.defer="driving_intervention.generators" type="text" name="generators"
+					<x-input wire:model.defer="driving_intervention.generators" type="number" step="1" name="generators"
 					         id="generators"
 					         hint="Generatori di calore"></x-input>
 				</div>
@@ -178,7 +180,8 @@
 							       name="use_winter" type="checkbox"
 							       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 							<label for="use_winter"
-							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione invernale</label>
+							       class="ml-3 block text-sm font-medium text-gray-700">Climatizzazione
+								invernale</label>
 						</div>
 						<div class="flex items-center sm:mr-5 mb-2">
 							<input wire:model="driving_intervention.use_summer"
@@ -212,26 +215,29 @@
 				<x-label>Per un ammontare pari a</x-label>
 				<div class="grid grid-cols-12 gap-4">
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL n.1</x-label>
-						<x-input type="text" name="total_isolation_cost_1" id="total_isolation_cost_1"
-						         hint="almeno al 30%"></x-input>
+						<x-label for="total_replacing_cost_1">SAL n.1</x-label>
+						<x-input-euro wire:model.defer="driving.intervention.total_replacing_cost_1"
+						              name="total_replacing_cost_1" id="total_replacing_cost_1"
+						              hint="almeno al 30%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL n.2</x-label>
-						<x-input type="text" name="total_isolation_cost_2" id="total_isolation_cost_2"
-						         hint="almeno al 60%"></x-input>
+						<x-label for="total_replacing_cost_2">SAL n.2</x-label>
+						<x-input-euro wire:model.defer="driving.intervention.total_replacing_cost_2"
+						              name="total_replacing_cost_2" id="total_replacing_cost_2"
+						              hint="almeno al 60%"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
-						<x-label>SAL F</x-label>
-						<x-input type="text" name="final_isolation_cost" id="final_isolation_cost"></x-input>
+						<x-label for="final_replacing_cost">SAL F</x-label>
+						<x-input-euro wire:model.defer="driving.intervention.final_replacing_cost"
+						              name="final_replacing_cost" id="final_replacing_cost"></x-input-euro>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL 1+2</x-label>
-						<x-input type="text" name="sal_1_2_total" disabled></x-input>
+						<x-input type="text" name="sal_1_2_replacing_total" disabled></x-input>
 					</div>
 					<div class="col-span-6 sm:col-span-3 lg:col-span-2">
 						<x-label>SAL 1+2 F</x-label>
-						<x-input type="text" name="final_sal_1_2_total" disabled></x-input>
+						<x-input type="text" name="final_sal_1_2_replacing_total" disabled></x-input>
 					</div>
 				</div>
 			</div>
@@ -240,7 +246,7 @@
 					Il risparmio di energia primaria non rinnovabile di progetto è
 				</x-label>
 				<div class="w-44 mb-1">
-					<x-input type="text"
+					<x-input type="number"
 					         name="total_intervention_surface"
 					         id="total_intervention_surface" append="KWh" hint="all'anno"></x-input>
 				</div>
