@@ -68,7 +68,7 @@
 		}
 
 		public function deletePractice($id) {
-			Practice::find($id)->delete();
+			Practice::destroy($id);
 			$this->dispatchBrowserEvent('close-modal');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Pratica Eliminata'),

@@ -12,7 +12,19 @@
 		protected $listeners = [
 			'user-added'   => '$refresh',
 			'user-updated' => '$refresh',
+			'user-deleted' => '$refresh',
 		];
+
+		public function deleteUser($id) {
+			User::destroy($id);
+
+			$this->dispatchBrowserEvent('close-modal');
+			$this->emitSelf('user-deleted');
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Utente Eliminato'),
+				'subtitle' => __('L\'utente è stato eliminato con successo!')
+			]);
+		}
 
 		public function render() {
 			if (auth()->user()->role === 'admin') {

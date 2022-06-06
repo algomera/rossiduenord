@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Anagrafica;
 
 	use App\SubjectRole;
+	use App\User;
 	use Livewire\Component;
 
 	class Index extends Component
