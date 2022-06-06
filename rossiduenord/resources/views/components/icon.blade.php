@@ -534,6 +534,9 @@
 	@case('kWht')
 		<span class="text-sm text-gray-500">kWht</span>
 		@break
+	@case('W/m²k')
+		<span class="text-sm text-gray-500">W/m²k</span>
+		@break
 	@case('L')
 		<span class="text-sm text-gray-500">L</span>
 		@break
