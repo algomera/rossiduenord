@@ -113,5 +113,6 @@
 </div>
 @stack('modals')
 @stack('scripts')
+@include('pages.scripts.input_replace')
 </body>
 </html>
