@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\{Condomini, Country, Helpers\Interventi, Practice, Surface};
+use App\{Computo_folder, Condomini, Country, Helpers\Interventi, Practice, Surface, Computo_priceList, ComputoSubFolder, TypeIntervention};
 use Illuminate\Http\Request;
 
 class SuperBonusController extends Controller
@@ -44,7 +44,7 @@ class SuperBonusController extends Controller
      * @param Practice $practice
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function driving_intervention(Practice $practice, $type = 'PV', Request $request) {
+    public function driving_intervention(Practice $practice, $type = 'PV', Request $request, TypeIntervention $typeIntervention) {
         $data_project = $practice->data_project;
         $applicant = $practice->applicant;
         $building = $practice->building;
@@ -60,6 +60,11 @@ class SuperBonusController extends Controller
         $biome_generators = $practice->biome_generators()->where('condomino_id', null)->where('is_common', 0)->get();
         $solar_panels = $practice->solar_panels()->where('condomino_id', null)->where('is_common', 0)->get();
         $surfaces = $practice->surfaces()->where('type', $type)->where('intervention', 'driving')->get();
+        $computo_folders = Computo_folder::all();
+        $computo_sub_folders = ComputoSubFolder::query()->where('computo_folder_id', 1);
+        $computo_price_lists = Computo_priceList::all();
+        $typeCategories = TypeIntervention::all();
+
         return view('pages.superbonus.driving_intervention.vertical_wall', compact(
             'solar_panels',
             'biome_generators',
@@ -77,7 +82,11 @@ class SuperBonusController extends Controller
             'data_project',
             'condominoId',
             'surfaces',
-            'type')
+            'type',
+            'computo_folders',
+            'computo_sub_folders',
+            'computo_price_lists',
+            'typeCategories')
         );
     }
 
@@ -410,5 +419,12 @@ class SuperBonusController extends Controller
     public function delete_surface($id){
         $surface = Surface::find($id);
         $surface->delete();
+    }
+
+    public function createInterventionList($category, $pratica)
+    {
+        // ricerca su tabella prezziario per prezzi
+        // una volta generata la lista (anche come oggetto), la restituisco alla view --> magari via Ajax
+
     }
 }

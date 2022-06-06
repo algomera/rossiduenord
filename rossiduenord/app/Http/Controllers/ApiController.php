@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\{Anagrafica, Applicant, Practice, Photo, User, Video};
+use App\{Anagrafica, Applicant, Document, Practice, Photo, Video, Sub_folder};
 use App\Http\Resources\AnagraficheResource;
 use App\Http\Resources\PhotoResource;
 use App\Http\Resources\PracticeResource;
-use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
@@ -109,5 +108,19 @@ class ApiController extends Controller
         $user = Auth::user()->id;
         $anagrafiche = Anagrafica::where('user_id', $user)->get(); 
         return AnagraficheResource::collection($anagrafiche);
+    }
+
+    public function get_ape()
+    {
+        $user = Auth::user()->id;
+        $practice = Practice::where('user_id', $user)->pluck('id');
+        $sub_folder = Sub_folder::where('practice_id', $practice)->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->pluck('id'); 
+        $ape = Document::where('practice_id', $practice)->where('sub_folder_id', $sub_folder)->get();
+
+        return response()->json([
+            'status' => 200,
+            'subFolder' => $ape
+        ], 200);
+
     }
 }
