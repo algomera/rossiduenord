@@ -53,7 +53,11 @@
                                         {{ $user->role }}
                                     </div>
                                 </td>
-                                <td>{{$user->parent->name}}</td>
+                                @if($user->parent)
+                                    <td>{{$user->parent->name}}</td>
+                                    @else
+                                    <td>-</td>
+                                @endif
                                 <td class="">
                                     <a href="{{route('users.show', $user)}}" class="btn white bg-green">
                                         Vedi

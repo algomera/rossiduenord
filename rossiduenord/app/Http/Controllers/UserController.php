@@ -17,9 +17,15 @@
 		 */
 		public function index(User $user)
 		{
-			$users = User::whereHas('user_data', function($q) {
-				$q->where('parent', auth()->user()->id);
-			})->get();
+			if(auth()->user()->role === 'admin'){
+				$users = User::all(); 
+			}else{
+
+				$users = User::whereHas('user_data', function($q) {
+					$q->where('parent', auth()->user()->id);
+				})->get();
+			}
+			//dd($users);
 			return view('pages.users.index', compact('user', 'users'));
 		}
 
