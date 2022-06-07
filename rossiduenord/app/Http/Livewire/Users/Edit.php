@@ -72,7 +72,7 @@
 			}
 
 			$this->closeModal();
-			$this->emitTo('users.index', 'user-added');
+			$this->emitTo('users.index', 'user-updated');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Utente Aggiornato'),
 				'subtitle' => __('L\'utente è stato aggiornato con successo!')
