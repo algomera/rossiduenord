@@ -18,7 +18,7 @@
 			'business' => 'Impresa', // se creata da bank, viene automaticamente associata SOLO ad essa
 		],
 		'business' => [
-			'collaborator' => 'Collaboratore',
+			'collaborator' => 'Collaboratore', // se creato da business, viene automaticamente associato SOLO ad esso
 		],
 		'collaborator' => [
 			//

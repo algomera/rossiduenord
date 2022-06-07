@@ -18,6 +18,7 @@
 		public $showBusiness = false;
 		public $business;
 		public $selectedBusiness = [];
+		public $parents = [];
 
 		protected function rules() {
 			return [
@@ -36,15 +37,21 @@
 		}
 
 		public function updatingRole($value) {
-			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
-				$this->showBusiness = false;
-			} else {
-				if (in_array($value, config('users_businesses.to'))) {
+			$this->parents = [];
+			if (config('users_businesses.' . $value)) {
+				$p = config('users_businesses.' . $value);
+				foreach ($p as $k => $name) {
+					$this->parents[$name] = User::role($k)->get();
+				}
+				if (config('users_businesses.' . $value)) {
 					$this->showBusiness = true;
 				} else {
 					$this->showBusiness = false;
 					$this->selectedBusiness = [];
 				}
+			} else {
+				$this->showBusiness = false;
+				$this->selectedBusiness = [];
 			}
 		}
 
@@ -65,19 +72,7 @@
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
 			// Assegnazione User/Business
-			$roles = [
-				'technical_asseverator',
-				'fiscal_asseverator',
-				'collaborator',
-				'consultant'
-			];
-			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
-				$user->business()->sync(auth()->user()->id);
-			} else {
-				if (in_array($this->role, config('users_businesses.to'))) {
-					$user->business()->sync($this->selectedBusiness);
-				}
-			}
+			$user->business()->sync($this->selectedBusiness);
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-added');
 			$this->dispatchBrowserEvent('open-notification', [

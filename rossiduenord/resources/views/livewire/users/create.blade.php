@@ -13,16 +13,26 @@
 			<div class="col-span-12" x-data="{ show: @entangle('showBusiness') }" x-show="show">
 				<div>
 					<x-label>A chi vuoi associare questo utente?</x-label>
-					<div class="sm:flex sm:items-center sm:flex-wrap">
-						@foreach($business as $b)
-							<div class="flex items-center sm:mr-5 mb-2">
-								<input wire:model="selectedBusiness"
-								       name="business[]" id="business_{{ $b->id }}" type="checkbox"
-								       value="{{ $b->id }}"
-								       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-								<label for="business_{{ $b->id }}"
-								       class="ml-3 block text-sm font-medium text-gray-700">{{ ucfirst($b->name) }}</label>
-							</div>
+					<div>
+						@foreach($parents as $name => $parent)
+							@if(count($parent) > 0)
+								<div wire:key="{{ $loop->index }}">
+									<x-label class="font-extrabold">{{ $name }}</x-label>
+									<div class="sm:flex sm:items-center sm:flex-wrap">
+										@foreach($parent as $item)
+											<div wire:key="{{ $loop->index }}" class="flex items-center sm:mr-5 mb-2">
+												<input wire:model="selectedBusiness"
+												       name="selectedBusiness[]" id="business_{{ $item['id'] }}"
+												       type="checkbox"
+												       value="{{ $item['id'] }}"
+												       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+												<label for="business_{{ $item['id'] }}"
+												       class="ml-3 block text-sm font-medium text-gray-700">{{ ucfirst($item['user_data']['name']) }}</label>
+											</div>
+										@endforeach
+									</div>
+								</div>
+							@endif
 						@endforeach
 					</div>
 					<x-input-error for="selectedBusiness"></x-input-error>

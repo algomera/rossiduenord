@@ -18,7 +18,6 @@ class CreateUsersBusinessesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('business_id')->unsigned();
             $table->foreign('business_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
