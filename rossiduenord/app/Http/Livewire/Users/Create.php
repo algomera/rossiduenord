@@ -40,14 +40,19 @@
 			$this->parents = [];
 			if (config('users_businesses.' . $value)) {
 				$p = config('users_businesses.' . $value);
-				foreach ($p as $k => $name) {
-					$this->parents[$name] = User::role($k)->get();
-				}
-				if (config('users_businesses.' . $value)) {
-					$this->showBusiness = true;
-				} else {
+				if (in_array(auth()->user()->role, array_keys($p))) {
 					$this->showBusiness = false;
-					$this->selectedBusiness = [];
+					$this->selectedBusiness = auth()->user()->id;
+				} else {
+					foreach ($p as $k => $name) {
+						$this->parents[$name] = User::role($k)->get();
+					}
+					if (config('users_businesses.' . $value)) {
+						$this->showBusiness = true;
+					} else {
+						$this->showBusiness = false;
+						$this->selectedBusiness = [];
+					}
 				}
 			} else {
 				$this->showBusiness = false;

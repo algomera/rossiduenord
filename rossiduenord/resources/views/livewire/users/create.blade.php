@@ -13,11 +13,11 @@
 			<div class="col-span-12" x-data="{ show: @entangle('showBusiness') }" x-show="show">
 				<div>
 					<x-label>A chi vuoi associare questo utente?</x-label>
-					<div>
+					<div class="grid grid-cols-2 gap-4 mt-2">
 						@foreach($parents as $name => $parent)
 							@if(count($parent) > 0)
-								<div wire:key="{{ $loop->index }}">
-									<x-label class="font-extrabold">{{ $name }}</x-label>
+								<div wire:key="{{ $loop->index }}" class="border p-2 rounded-md">
+									<x-label class="font-bold">{{ $name }}</x-label>
 									<div class="sm:flex sm:items-center sm:flex-wrap">
 										@foreach($parent as $item)
 											<div wire:key="{{ $loop->index }}" class="flex items-center sm:mr-5 mb-2">

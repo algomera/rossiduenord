@@ -1,33 +1,20 @@
 <?php
-	//	return [
-	//		// Lista dei ruoli a cui viene automaticamente associato un utente creato
-	//		'from' => [
-	//			'business',
-	//		],
-	//		// Lista dei ruoli selezionabili per far vedere la lista delle imprese a cui associarli
-	//		'to' => [
-	//			'technical_asseverator',
-	//			'fiscal_asseverator',
-	//			'collaborator',
-	//			'consultant'
-	//		],
-	//	];
 	return [
 		'collaborator'          => [
-			'business' => 'Impresa'
+			'business' => 'Imprese'
 		],
 		'consultant'            => [
-			'business' => 'Impresa'
+			'business' => 'Imprese'
 		],
 		'technical_asseverator' => [
-			'business' => 'Impresa'
+			'business' => 'Imprese'
 		],
 		'fiscal_asseverator'    => [
-			'business' => 'Impresa'
+			'business' => 'Imprese'
 		],
 		'financial'             => [],
 		'business'              => [
-			'bank'      => 'Banca',
-			'financial' => 'Soc. Finanziaria',
+			'bank'      => 'Banche',
+			'financial' => 'Soc. Finanziarie',
 		],
 	];
