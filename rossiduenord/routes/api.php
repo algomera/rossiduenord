@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('anagrafiche', 'ApiController@get_anagrafiche');
 
     Route::get('ape', 'ApiController@get_ape');
+    
 });
 
 /**Route for login API */
