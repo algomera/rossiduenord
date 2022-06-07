@@ -32,11 +32,15 @@
 		}
 
 		public function updatingRole($value) {
-			if (in_array($value, config('users_businesses'))) {
-				$this->showBusiness = true;
-			} else {
+			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
 				$this->showBusiness = false;
-				$this->selectedBusiness = [];
+			} else {
+				if (in_array($value, config('users_businesses.to'))) {
+					$this->showBusiness = true;
+				} else {
+					$this->showBusiness = false;
+					$this->selectedBusiness = [];
+				}
 			}
 		}
 
@@ -63,8 +67,12 @@
 				'collaborator',
 				'consultant'
 			];
-			if (in_array($this->role, config('users_businesses'))) {
-				$user->business()->sync($this->selectedBusiness);
+			if (auth()->user()->role === 'business') {
+				$user->business()->sync(auth()->user()->id);
+			} else {
+				if (in_array($this->role, config('users_businesses.to'))) {
+					$user->business()->sync($this->selectedBusiness);
+				}
 			}
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-added');
@@ -72,7 +80,9 @@
 				'title'    => __('Utente Creato'),
 				'subtitle' => __('L\'utente è stato creato con successo!')
 			]);
-			$user->notify(new CredentialEmailNotification($user, $this->password));
+			if (app()->isProduction()) {
+				$user->notify(new CredentialEmailNotification($user, $this->password));
+			}
 		}
 
 		public function render() {
