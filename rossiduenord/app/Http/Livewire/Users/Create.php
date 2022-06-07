@@ -18,14 +18,18 @@
 		public $showBusiness = false;
 		public $business;
 		public $selectedBusiness = [];
-		protected $rules = [
-			'role'                  => 'required|string',
-			'name'                  => 'required|string',
-			'email'                 => 'required|email:rfc,dns|unique:users,email',
-			'password'              => 'required|string|min:8|confirmed',
-			'password_confirmation' => 'required|same:password',
-			'business'              => 'nullable'
-		];
+
+		protected function rules() {
+			return [
+				'role'                  => 'required|string',
+				'name'                  => 'required|string',
+				'email'                 => 'required|email:rfc,dns|unique:users,email',
+				'password'              => 'required|string|min:8|confirmed',
+				'password_confirmation' => 'required|same:password',
+				'business'              => 'nullable',
+				'selectedBusiness'      => $this->showBusiness ? 'required' : 'nullable',
+			];
+		}
 
 		public function mount() {
 			$this->business = User::role('business')->get();
@@ -67,7 +71,7 @@
 				'collaborator',
 				'consultant'
 			];
-			if (auth()->user()->role === 'business') {
+			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
 				$user->business()->sync(auth()->user()->id);
 			} else {
 				if (in_array($this->role, config('users_businesses.to'))) {

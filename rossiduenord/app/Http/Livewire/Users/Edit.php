@@ -25,7 +25,7 @@
 				'password'              => 'sometimes|nullable|min:8|confirmed',
 				'password_confirmation' => 'sometimes|same:password',
 				'business'              => 'nullable',
-				'selectedBusiness'      => 'sometimes',
+				'selectedBusiness'      => $this->showBusiness ? 'required' : 'nullable',
 			];
 		}
 
@@ -38,17 +38,21 @@
 				$this->selectedBusiness[] = $business->id;
 			}
 			$this->business = UserModel::role('business')->get();
-			if (in_array($this->role, config('users_businesses'))) {
+			if (in_array($this->role, config('users_businesses.to'))) {
 				$this->showBusiness = true;
 			}
 		}
 
 		public function updatingRole($value) {
-			if (in_array($value, config('users_businesses'))) {
-				$this->showBusiness = true;
-			} else {
+			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
 				$this->showBusiness = false;
-				$this->selectedBusiness = [];
+			} else {
+				if (in_array($value, config('users_businesses.to'))) {
+					$this->showBusiness = true;
+				} else {
+					$this->showBusiness = false;
+					$this->selectedBusiness = [];
+				}
 			}
 		}
 
@@ -64,13 +68,11 @@
 				$user->removeRole($user->getRoleNames()->first());
 				$user->assignRole($validated['role']);
 			}
-
-			if (in_array($this->role, config('users_businesses'))) {
+			if (in_array($this->role, config('users_businesses.to'))) {
 				$user->business()->sync($this->selectedBusiness);
 			} else {
 				$user->business()->detach();
 			}
-
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-updated');
 			$this->dispatchBrowserEvent('open-notification', [

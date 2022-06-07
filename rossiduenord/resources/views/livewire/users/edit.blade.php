@@ -25,6 +25,7 @@
 							</div>
 						@endforeach
 					</div>
+					<x-input-error for="selectedBusiness"></x-input-error>
 				</div>
 			</div>
 
