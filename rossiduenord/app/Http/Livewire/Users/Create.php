@@ -6,6 +6,7 @@
 	use App\UserData;
 	use LivewireUI\Modal\ModalComponent;
 	use Spatie\Permission\Models\Role;
+	use App\Notifications\CredentialEmailNotification;
 
 	class Create extends ModalComponent
 	{
@@ -71,6 +72,7 @@
 				'title'    => __('Utente Creato'),
 				'subtitle' => __('L\'utente è stato creato con successo!')
 			]);
+			$user->notify(new CredentialEmailNotification($user, $this->password));
 		}
 
 		public function render() {

@@ -35,11 +35,11 @@
 					</x-table.td>
 					<x-table.td>
 						@if($user->business->count())
-						@foreach($user->business as $business)
-							<div>
-								{{ $business->name }}
-							</div>
-						@endforeach
+							@foreach($user->business as $business)
+								<div>
+									{{ $business->name }}
+								</div>
+							@endforeach
 						@else
 							-
 						@endif
@@ -47,7 +47,9 @@
 					<x-table.td>{{$user->parent->name ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})" name="pencil-alt" class="w-5 h-5"></x-icon>
+							<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
+							        name="pencil-alt"
+							        class="w-5 h-5 cursor-pointer text-indigo-500 hover:text-indigo-800"></x-icon>
 
 							<x-modal>
 								<x-slot name="trigger">

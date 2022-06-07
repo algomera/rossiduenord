@@ -44,6 +44,6 @@
 			</div>
 		</div>
 
-		<x-button>Salva</x-button>
+		<x-button>Crea e invia credenziali</x-button>
 	</form>
 </x-card>
