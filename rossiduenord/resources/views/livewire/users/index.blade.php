@@ -43,11 +43,7 @@
 					<x-table.td>{{$user->parent->name ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							{{-- route('user.edit', $user) --}}
-							<a href="#"
-							   class="text-indigo-600 hover:text-indigo-900">
-								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
-							</a>
+							<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})" name="pencil-alt" class="w-5 h-5"></x-icon>
 
 							<x-modal>
 								<x-slot name="trigger">

@@ -20,7 +20,7 @@
 		protected $rules = [
 			'role'                  => 'required|string',
 			'name'                  => 'required|string',
-			'email'                 => 'required|string|email:rfc,dns|unique:users,email',
+			'email'                 => 'required|email:rfc,dns|unique:users,email',
 			'password'              => 'required|string|min:8|confirmed',
 			'password_confirmation' => 'required|same:password',
 			'business'              => 'nullable'
@@ -69,7 +69,7 @@
 			$this->emitTo('users.index', 'user-added');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Utente Creato'),
-				'subtitle' => __('L\'utente è stata creato con successo!')
+				'subtitle' => __('L\'utente è stato creato con successo!')
 			]);
 		}
 

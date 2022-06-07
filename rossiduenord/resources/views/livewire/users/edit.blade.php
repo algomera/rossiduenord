@@ -35,15 +35,14 @@
 				<x-input wire:model.defer="email" type="email" name="email" id="email" label="Email" required></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
-				<x-input wire:model.defer="password" type="password" name="password" id="password" label="Password"
-				         required></x-input>
+				<x-input wire:model.defer="password" type="password" name="password" id="password" label="Password"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">
 				<x-input wire:model.defer="password_confirmation" type="password" name="password_confirmation"
-				         id="password_confirmation" label="Conferma Password" required></x-input>
+				         id="password_confirmation" label="Conferma Password"></x-input>
 			</div>
 		</div>
 
-		<x-button>Salva</x-button>
+		<x-button>Aggiorna</x-button>
 	</form>
 </x-card>
