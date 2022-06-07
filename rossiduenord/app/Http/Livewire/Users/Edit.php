@@ -24,7 +24,8 @@
 				'email'                 => 'required|email:rfc,dns|unique:users,email,' . $this->user_id,
 				'password'              => 'sometimes|nullable|min:8|confirmed',
 				'password_confirmation' => 'sometimes|same:password',
-				'business'              => 'nullable'
+				'business'              => 'nullable',
+				'selectedBusiness'      => 'sometimes',
 			];
 		}
 
@@ -33,7 +34,13 @@
 			$this->role = $user->role;
 			$this->name = $user->name;
 			$this->email = $user->email;
+			foreach ($user->business as $business) {
+				$this->selectedBusiness[] = $business->id;
+			}
 			$this->business = UserModel::role('business')->get();
+			if (in_array($this->role, config('users_businesses'))) {
+				$this->showBusiness = true;
+			}
 		}
 
 		public function updatingRole($value) {
@@ -49,7 +56,7 @@
 			$validated = $this->validate();
 			$user = UserModel::find($this->user_id);
 			$user->update([
-				'email' => $validated['email'],
+				'email'    => $validated['email'],
 				'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
 			]);
 			$user->user_data()->update(['name' => $validated['name']]);
@@ -57,6 +64,13 @@
 				$user->removeRole($user->getRoleNames()->first());
 				$user->assignRole($validated['role']);
 			}
+
+			if (in_array($this->role, config('users_businesses'))) {
+				$user->business()->sync($this->selectedBusiness);
+			} else {
+				$user->business()->detach();
+			}
+
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-added');
 			$this->dispatchBrowserEvent('open-notification', [

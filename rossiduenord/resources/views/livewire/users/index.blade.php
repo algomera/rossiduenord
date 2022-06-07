@@ -34,11 +34,15 @@
 						</div>
 					</x-table.td>
 					<x-table.td>
+						@if($user->business->count())
 						@foreach($user->business as $business)
 							<div>
 								{{ $business->name }}
 							</div>
 						@endforeach
+						@else
+							-
+						@endif
 					</x-table.td>
 					<x-table.td>{{$user->parent->name ?? '-'}}</x-table.td>
 					<x-table.td>
