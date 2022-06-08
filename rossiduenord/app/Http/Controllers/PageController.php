@@ -37,6 +37,8 @@ class PageController extends Controller
 					'total_import' => Practice::sum('import'),
 					'total_business' => User::role('business')->count(),
 				];
+			default:
+				$data = [];
 		}
 		return view('dashboards.' . auth()->user()->role->name)->with('data', $data);
 	}
