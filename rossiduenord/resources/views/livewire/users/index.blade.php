@@ -17,7 +17,9 @@
 				<x-table.th>Nome</x-table.th>
 				<x-table.th>Email</x-table.th>
 				<x-table.th>Tipologia</x-table.th>
-				<x-table.th>Associato a</x-table.th>
+				@if(auth()->user()->isAdmin())
+					<x-table.th>Associato a</x-table.th>
+				@endif
 				<x-table.th>Creato da</x-table.th>
 				<x-table.th></x-table.th>
 			</tr>
@@ -33,20 +35,22 @@
 							{{ $user->role->label }}
 						</div>
 					</x-table.td>
-					<x-table.td>
-						@if($user->parents->count())
-							@foreach($user->parents as $parent)
-								<div>
-									{{ $parent->name }}
-								</div>
-							@endforeach
-						@else
-							-
-						@endif
-					</x-table.td>
+					@if(auth()->user()->isAdmin())
+						<x-table.td>
+							@if($user->parents->count())
+								@foreach($user->parents as $parent)
+									<div>
+										{{ $parent->name }}
+									</div>
+								@endforeach
+							@else
+								-
+							@endif
+						</x-table.td>
+					@endif
 					<x-table.td>{{$user->created_by->name ?? '-'}}</x-table.td>
 					<x-table.td>
-						@if($user->created_by->id === auth()->user()->id)
+						@if(auth()->user()->isAdmin() || $user->created_by->id === auth()->user()->id)
 							<div class="flex items-center space-x-3">
 								<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
 								        name="pencil-alt"
