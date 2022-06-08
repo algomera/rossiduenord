@@ -10,7 +10,7 @@
 				</x-select>
 			</div>
 
-			<div class="col-span-12" x-data="{ show: @entangle('showBusiness') }" x-show="show">
+			<div class="col-span-12" x-data="{ show: @entangle('showParents') }" x-show="show">
 				<div>
 					<x-label>A chi vuoi associare questo utente?</x-label>
 					<div class="grid grid-cols-2 gap-4 mt-2">
@@ -21,12 +21,12 @@
 									<div class="sm:flex sm:items-center sm:flex-wrap">
 										@foreach($parent as $item)
 											<div wire:key="{{ $loop->index }}" class="flex items-center sm:mr-5 mb-2">
-												<input wire:model="selectedBusiness"
-												       name="selectedBusiness[]" id="business_{{ $item['id'] }}"
+												<input wire:model="selectedParents"
+												       name="selectedParents[]" id="parent_{{ $item['id'] }}"
 												       type="checkbox"
 												       value="{{ $item['id'] }}"
 												       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-												<label for="business_{{ $item['id'] }}"
+												<label for="parent_{{ $item['id'] }}"
 												       class="ml-3 block text-sm font-medium text-gray-700">{{ ucfirst($item['user_data']['name']) }}</label>
 											</div>
 										@endforeach
@@ -35,7 +35,7 @@
 							@endif
 						@endforeach
 					</div>
-					<x-input-error for="selectedBusiness"></x-input-error>
+					<x-input-error for="selectedParents"></x-input-error>
 				</div>
 			</div>
 

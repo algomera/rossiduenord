@@ -15,9 +15,8 @@
 		public $email;
 		public $password;
 		public $password_confirmation;
-		public $showBusiness = false;
-		public $business;
-		public $selectedBusiness = [];
+		public $showParents = false;
+		public $selectedParents = [];
 		public $parents = [];
 
 		protected function rules() {
@@ -27,8 +26,7 @@
 				'email'                 => 'required|email:rfc,dns|unique:users,email',
 				'password'              => 'required|string|min:8|confirmed',
 				'password_confirmation' => 'required|same:password',
-				'business'              => 'nullable',
-				'selectedBusiness'      => in_array($this->role, [
+				'selectedParents'      => in_array($this->role, [
 					'collaborator',
 					'consultant',
 					'technical_asseverator',
@@ -37,31 +35,27 @@
 			];
 		}
 
-		public function mount() {
-			$this->business = User::role('business')->get();
-		}
-
 		public function updatingRole($value) {
 			$this->parents = [];
 			if (config('users_businesses.' . $value)) {
 				$p = config('users_businesses.' . $value);
 				if (in_array(auth()->user()->role->name, array_keys($p))) {
-					$this->showBusiness = false;
-					$this->selectedBusiness = auth()->user()->id;
+					$this->showParents = false;
+					$this->selectedParents = auth()->user()->id;
 				} else {
 					foreach ($p as $k => $name) {
 						$this->parents[$name] = User::role($k)->get();
 					}
 					if (config('users_businesses.' . $value)) {
-						$this->showBusiness = true;
+						$this->showParents = true;
 					} else {
-						$this->showBusiness = false;
-						$this->selectedBusiness = [];
+						$this->showParents = false;
+						$this->selectedParents = [];
 					}
 				}
 			} else {
-				$this->showBusiness = false;
-				$this->selectedBusiness = [];
+				$this->showParents = false;
+				$this->selectedParents = [];
 			}
 		}
 
@@ -75,14 +69,14 @@
 			// Creazione UserData
 			UserData::create([
 				'user_id' => $user->id,
-				'parent'  => auth()->user()->id,
+				'created_by'  => auth()->user()->id,
 				'name'    => $validated['name'],
 			]);
 			// Assegnazione ruolo
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
 			// Assegnazione User/Business
-			$user->business()->sync($this->selectedBusiness);
+			$user->parents()->sync($this->selectedParents);
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-added');
 			$this->dispatchBrowserEvent('open-notification', [

@@ -34,17 +34,17 @@
 						</div>
 					</x-table.td>
 					<x-table.td>
-						@if($user->business->count())
-							@foreach($user->business as $business)
+						@if($user->parents->count())
+							@foreach($user->parents as $parent)
 								<div>
-									{{ $business->name }}
+									{{ $parent->name }}
 								</div>
 							@endforeach
 						@else
 							-
 						@endif
 					</x-table.td>
-					<x-table.td>{{$user->parent->name ?? '-'}}</x-table.td>
+					<x-table.td>{{$user->created_by->name ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
 							<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
@@ -60,7 +60,7 @@
 								<x-slot name="title">
 									Conferma eliminazione
 								</x-slot>
-								Sei sicuro di voler eliminare l'utente {{ $user->name }}?
+								Sei sicuro di voler eliminare l'utente <span class="font-bold">{{ $user->name }}</span>?
 								<x-slot name="footer">
 									<x-link-button x-on:click="open = false">Annulla</x-link-button>
 									<x-danger-button class="ml-2" wire:click="deleteUser({{ $user->id }})"
