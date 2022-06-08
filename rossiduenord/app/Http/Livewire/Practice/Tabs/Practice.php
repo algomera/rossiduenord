@@ -27,36 +27,42 @@
 		public $policy;
 		public $request_policy;
 		public $superbonus;
-		public $superbonus_work_start;
-		public $sal;
-		public $import_sal;
+		public $sal_1_work_start;
+		public $sal_1_import;
+		public $sal_2_work_start;
+		public $sal_2_import;
+		public $sal_f_work_start;
+		public $sal_f_import;
 		public $note;
 		public $practice_ok;
 		protected $rules = [
-			'import'                => 'required|numeric',
-			'practical_phase'       => 'required|string',
-			'real_estate_type'      => 'required|string',
-			'policy_name'           => 'required|string',
-			'address'               => 'required|string',
-			'civic'                 => 'required|string',
-			'common'                => 'required|string',
-			'province'              => 'required|string|size:2',
-			'region'                => 'required|string',
-			'cap'                   => 'required|string|size:5',
-			'work_start'            => 'required|string',
-			'c_m'                   => 'required|numeric',
-			'assev_tecnica'         => 'nullable|numeric',
-			'description'           => 'nullable|string',
-			'referent_email'        => 'nullable|email:rfc,dns',
-			'referent_mobile'       => 'nullable|string',
-			'policy'                => 'boolean',
-			'request_policy'        => 'nullable|string',
-			'superbonus'            => 'boolean',
-			'superbonus_work_start' => 'nullable',
-			'sal'                   => 'nullable|string',
-			'import_sal'            => 'nullable|numeric',
-			'note'                  => 'nullable|string',
-			'practice_ok'           => 'boolean',
+			'import'           => 'required|numeric',
+			'practical_phase'  => 'required|string',
+			'real_estate_type' => 'required|string',
+			'policy_name'      => 'required|string',
+			'address'          => 'required|string',
+			'civic'            => 'required|string',
+			'common'           => 'required|string',
+			'province'         => 'required|string|size:2',
+			'region'           => 'required|string',
+			'cap'              => 'required|string|size:5',
+			'work_start'       => 'required|string',
+			'c_m'              => 'required|numeric',
+			'assev_tecnica'    => 'nullable|numeric',
+			'description'      => 'nullable|string',
+			'referent_email'   => 'nullable|email:rfc,dns',
+			'referent_mobile'  => 'nullable|string',
+			'policy'           => 'boolean',
+			'request_policy'   => 'nullable|string',
+			'superbonus'       => 'boolean',
+			'sal_1_work_start' => 'nullable',
+			'sal_1_import'     => 'nullable|numeric',
+			'sal_2_work_start' => 'nullable',
+			'sal_2_import'     => 'nullable|numeric',
+			'sal_f_work_start' => 'nullable',
+			'sal_f_import'     => 'nullable|numeric',
+			'note'             => 'nullable|string',
+			'practice_ok'      => 'boolean',
 		];
 
 		public function mount() {
@@ -79,9 +85,12 @@
 			$this->policy = $this->practice->policy;
 			$this->request_policy = $this->practice->request_policy;
 			$this->superbonus = $this->practice->superbonus;
-			$this->superbonus_work_start = $this->practice->superbonus_work_start;
-			$this->sal = $this->practice->sal;
-			$this->import_sal = $this->practice->import_sal;
+			$this->sal_1_work_start = $this->practice->sal_1_work_start;
+			$this->sal_1_import = $this->practice->sal_1_import;
+			$this->sal_2_work_start = $this->practice->sal_2_work_start;
+			$this->sal_2_import = $this->practice->sal_2_import;
+			$this->sal_f_work_start = $this->practice->sal_f_work_start;
+			$this->sal_f_import = $this->practice->sal_f_import;
 			$this->note = $this->practice->note;
 			$this->practice_ok = $this->practice->practice_ok;
 		}

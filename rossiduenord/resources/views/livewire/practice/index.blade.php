@@ -1,13 +1,33 @@
 <x-slot name="header">
 	<x-page-header>
 		Pratiche
-		<x-slot name="actions">
-			<form class="relative w-full max-w-xl" action="">
-				<div>
-					<x-input type="text" placeholder="Cerca.." id="search" name="search"
-					         append="search"></x-input>
-				</div>
-			</form>
+		<x-slot name="subtitle">
+			<div class="flex items-center space-x-2 mt-1">
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">N. pratiche:</span>
+					<span>{{ $practices->count() }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">Importo stimato:</span>
+					<span>{{ Money::format($practices->sum('import')) }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">SAL 1:</span>
+					<span>{{ Money::format($practices->sum('sal_1_import')) }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">SAL 2:</span>
+					<span>{{ Money::format($practices->sum('sal_2_import')) }}</span>
+				</p>
+				<span class="text-gray-500">&middot;</span>
+				<p class="text-sm text-gray-500">
+					<span class="font-bold">SAL F:</span>
+					<span>{{ Money::format($practices->sum('sal_f_import')) }}</span>
+				</p>
+			</div>
 		</x-slot>
 	</x-page-header>
 </x-slot>
@@ -118,8 +138,7 @@
 				<x-table.th>Mese lav. 110%</x-table.th>
 				<x-table.th>Lista incentivi</x-table.th>
 				<x-table.th>Richiedente</x-table.th>
-				<x-table.th>SAL</x-table.th>
-				<x-table.th>Notifiche</x-table.th>
+				<x-table.th>Importo stimato</x-table.th>
 				<x-table.th></x-table.th>
 			</tr>
 		</x-table.thead>
@@ -134,8 +153,7 @@
 				<x-table.td>{{$practice->month_processing}}</x-table.td>
 				<x-table.td>{{$practice->bonus}}</x-table.td>
 				<x-table.td>{{$practice->applicant->company_name}}</x-table.td>
-				<x-table.td>{{Money::format($practice->import_sal) ?? '-'}}</x-table.td>
-				<x-table.td></x-table.td>
+				<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
 				<x-table.td>
 					<div class="flex items-center space-x-3">
 						<a href="{{route('practice.edit', $practice) }}"
@@ -171,7 +189,6 @@
 			@endforelse
 		</x-table.tbody>
 	</x-table.table>
-	<livewire:practice-info :practices="$practices"/>
 </x-card>
 
 @push('notifications')

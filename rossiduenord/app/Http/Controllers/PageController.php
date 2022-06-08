@@ -36,6 +36,9 @@ class PageController extends Controller
 					'total_practices' => Practice::count(),
 					'total_import' => Practice::sum('import'),
 					'total_business' => User::role('business')->count(),
+					'total_sal_1_import' => Practice::sum('sal_1_import'),
+					'total_sal_2_import' => Practice::sum('sal_2_import'),
+					'total_sal_f_import' => Practice::sum('sal_f_import'),
 				];
 				break;
 			default:

@@ -40,7 +40,8 @@
 				         required></x-input>
 			</div>
 			<div class="col-span-6 sm:col-span-2 lg:col-span-1">
-				<x-input wire:model.defer="civic" name="civic" id="civic" class="uppercase" type="text" label="N." required></x-input>
+				<x-input wire:model.defer="civic" name="civic" id="civic" class="uppercase" type="text" label="N."
+				         required></x-input>
 			</div>
 			<div class="col-span-6 sm:col-span-4 lg:col-span-2">
 				<x-input wire:model.defer="common" name="common" id="common" type="text" label="Comune"
@@ -125,23 +126,49 @@
 					       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
 					<label for="superbonus" class="block text-sm font-medium text-gray-700">Superbonus 110%</label>
 				</div>
-				<div class="grid grid-cols-1 sm:grid-cols-12 gap-4" x-show="show">
-					<div class="col-span-12 sm:col-span-4">
-						<x-input wire:model.defer="superbonus_work_start" id="superbonus_work_start"
-						         name="superbonus_work_start" type="month"
-						         label="Data lavorazione"></x-input>
-					</div>
-					<div class="col-span-12 sm:col-span-4">
-						<x-select wire:model.defer="sal" id="sal" name="sal" label="SAL">
-							<option value="Sal 1">Sal 1</option>
-							<option value="Sal 2">Sal 2</option>
-							<option value="Sal finale">Sal 3</option>
-						</x-select>
-					</div>
-					<div class="col-span-12 sm:col-span-4">
-						<x-input-euro wire:model.defer="import_sal" name="import_sal" id="import_sal"
-						              label="Importo SAL/Lavori"></x-input-euro>
-					</div>
+				<div x-show="show" class="col-span-12 space-y-3">
+					<x-card class="border p-4 rounded-md">
+						<x-label>SAL 1:</x-label>
+						<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+							<div class="col-span-12 sm:col-span-4">
+								<x-input wire:model.defer="sal_1_work_start" id="sal_1_work_start"
+								         name="sal_1_work_start" type="month"
+								         label="Data lavorazione"></x-input>
+							</div>
+							<div class="col-span-12 sm:col-span-4">
+								<x-input-euro wire:model.defer="sal_1_import" name="sal_1_import" id="sal_1_import"
+								              label="Importo SAL/Lavori"></x-input-euro>
+							</div>
+						</div>
+					</x-card>
+					<x-card class="border p-4 rounded-md">
+						<x-label>SAL 2:</x-label>
+						<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+							<div class="col-span-12 sm:col-span-4">
+								<x-input wire:model.defer="sal_2_work_start" id="sal_2_work_start"
+								         name="sal_2_work_start" type="month"
+								         label="Data lavorazione"></x-input>
+							</div>
+							<div class="col-span-12 sm:col-span-4">
+								<x-input-euro wire:model.defer="sal_2_import" name="sal_2_import" id="sal_2_import"
+								              label="Importo SAL/Lavori"></x-input-euro>
+							</div>
+						</div>
+					</x-card>
+					<x-card class="border p-4 rounded-md">
+						<x-label>SAL F:</x-label>
+						<div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+							<div class="col-span-12 sm:col-span-4">
+								<x-input wire:model.defer="sal_f_work_start" id="sal_f_work_start"
+								         name="sal_f_work_start" type="month"
+								         label="Data lavorazione"></x-input>
+							</div>
+							<div class="col-span-12 sm:col-span-4">
+								<x-input-euro wire:model.defer="sal_f_import" name="sal_f_import" id="sal_f_import"
+								              label="Importo SAL/Lavori"></x-input-euro>
+							</div>
+						</div>
+					</x-card>
 				</div>
 			</div>
 			<div class="col-span-12">
