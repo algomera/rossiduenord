@@ -722,6 +722,15 @@ select {
 .col-span-8 {
   grid-column: span 8 / span 8;
 }
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
 .m-1 {
   margin: 0.25rem;
 }
@@ -889,6 +898,9 @@ select {
 }
 .mr-0\.5 {
   margin-right: 0.125rem;
+}
+.\!mt-5 {
+  margin-top: 1.25rem !important;
 }
 .block {
   display: block;
@@ -1510,6 +1522,22 @@ select {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.bg-\[\#aed36e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(174 211 110 / var(--tw-bg-opacity));
+}
+.bg-\[\#6a9ac2\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(106 154 194 / var(--tw-bg-opacity));
+}
+.bg-\[\#ba5663\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(186 86 99 / var(--tw-bg-opacity));
+}
+.bg-\[\#141d4a\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 29 74 / var(--tw-bg-opacity));
 }
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
@@ -2597,6 +2625,10 @@ input[type=number] {
 
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .sm\:flex-row {
