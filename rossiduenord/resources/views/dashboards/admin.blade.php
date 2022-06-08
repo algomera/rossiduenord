@@ -5,45 +5,44 @@
 		</x-page-header>
 	</x-slot>
 	<x-card>
-		<div class="space-y-5">
-			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('practice.index')}}">
-					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-						<div class="mb-2">
-							<img src="{{asset('img/icon/ICONA LISTA PRATICHE.svg')}}" alt="" class="img-fluid">
-						</div>
-						<p><b>Lista Pratiche</b></p>
-					</div>
-				</a>
-
-				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('users.index')}}">
-					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-						<div class="mb-2">
-							<img src="{{asset('img/icon/ICONA GESTIONE ACCESSI.svg')}}" alt="" class="img-fluid">
-						</div>
-						<p><b>Gestione Accessi</b></p>
-					</div>
-				</a>
-				<a class="flex items-center justify-center bg-white text-center border p-3" href="{{route('folder.index')}}">
-					<div class="dash-box d-flex flex-column align-items-center justify-content-center mx-2">
-						<div class="mb-2">
-							<img src="{{asset('img/icon/ICONA GESTIONE FILE.svg')}}" alt="" class="img-fluid">
-						</div>
-						<p><b>Gestione File</b></p>
-					</div>
-				</a>
-			</div>
-			<div class="space-y-2">
-				<h4 class="font-semibold">Scarica l'app</h4>
-				<div class="flex">
-					<a href="#">
-						<img src="{{asset('img/icon/BUTTON_APP_STORE.svg')}}" alt="" class="w-auto h-20">
-					</a>
-					<a href="#">
-						<img src="{{asset('img/icon/BUTTON_GOOGLE_PLAY.svg')}}" alt="" class="w-auto h-20">
-					</a>
+		<div>
+			<h3 class="text-lg leading-6 font-medium text-gray-900">Statistiche:</h3>
+			<dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">Pratiche</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">{{ $data['total_practices'] }}</dd>
 				</div>
-			</div>
+
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">Importo Totale</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">{{ Money::format($data['total_import']) }}</dd>
+				</div>
+
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">Imprese Iscritte</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">{{ $data['total_business'] }}</dd>
+				</div>
+			</dl>
+		</div>
+		<hr>
+		<div>
+			<h3 class="text-lg leading-6 font-medium text-gray-900">SAL:</h3>
+			<dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">SAL 1</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">71,897</dd>
+				</div>
+
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">SAL 2</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">58000,16</dd>
+				</div>
+
+				<div class="px-4 py-5 bg-white border rounded-lg overflow-hidden sm:p-6">
+					<dt class="text-sm font-medium text-gray-500 truncate">SAL Finale</dt>
+					<dd class="mt-1 text-3xl font-semibold text-gray-900">24.57%</dd>
+				</div>
+			</dl>
 		</div>
 	</x-card>
 </x-app-layout>

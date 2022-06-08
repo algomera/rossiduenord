@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Practice;
+use App\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -27,7 +29,16 @@ class PageController extends Controller
 	 * Return user's role dashboard page
 	 */
 	public function dashboard() {
-		return view('dashboards.' . auth()->user()->role->name);
+
+		switch (auth()->user()->role->name) {
+			case 'admin':
+				$data = [
+					'total_practices' => Practice::count(),
+					'total_import' => Practice::sum('import'),
+					'total_business' => User::role('business')->count(),
+				];
+		}
+		return view('dashboards.' . auth()->user()->role->name)->with('data', $data);
 	}
 
 }
