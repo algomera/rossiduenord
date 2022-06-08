@@ -30,7 +30,7 @@
 					<x-table.td>{{$user->email}}</x-table.td>
 					<x-table.td>
 						<div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 uppercase">
-							{{ $user->role }}
+							{{ $user->role->label }}
 						</div>
 					</x-table.td>
 					<x-table.td>

@@ -15,39 +15,39 @@
 			// ROLES
 			$admin = Role::create([
 				'name'  => 'admin',
-//				'label' => 'Amministratore'
+				'label' => 'Amministratore'
 			]);
 			$financial = Role::create([
 				'name'  => 'financial',
-//				'label' => 'Società Finanziaria'
+				'label' => 'Società Finanziaria'
 			]);
 			$bank = Role::create([
 				'name'  => 'bank',
-//				'label' => 'Banca'
+				'label' => 'Banca'
 			]);
 			$business = Role::create([
 				'name'  => 'business',
-//				'label' => 'Impresa'
+				'label' => 'Impresa'
 			]);
 			$collaborator = Role::create([
 				'name'  => 'collaborator',
-//				'label' => 'Collaboratore'
+				'label' => 'Collaboratore'
 			]);
 			$consultant = Role::create([
 				'name'  => 'consultant',
-//				'label' => 'Consulente'
+				'label' => 'Consulente'
 			]);
 			$technical_asseverator = Role::create([
 				'name'  => 'technical_asseverator',
-//				'label' => 'Asseveratore Tecnico'
+				'label' => 'Asseveratore Tecnico'
 			]);
 			$fiscal_asseverator = Role::create([
 				'name'  => 'fiscal_asseverator',
-//				'label' => 'Asseveratore Fiscale'
+				'label' => 'Asseveratore Fiscale'
 			]);
 			$manager = Role::create([
 				'name'  => 'manager',
-//				'label' => 'Manager'
+				'label' => 'Manager'
 			]);
 			//        $provider = Role::create(['name' => 'provider']);
 			//        $lv1_agent = Role::create(['name' => 'lv1_agent']);

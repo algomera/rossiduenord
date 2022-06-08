@@ -4,7 +4,7 @@
 			<div class="col-span-12">
 				<x-select wire:model="role" name="role" id="role" label="Tipologia Profilo" required>
 					<option value="null" selected disabled>Seleziona..</option>
-					@foreach(config('gestione_accessi.' . auth()->user()->role) as $k => $role)
+					@foreach(config('gestione_accessi.' . auth()->user()->role->name) as $k => $role)
 						<option value="{{ $k }}" wire:key="{{$loop->index}}">{{ ucfirst($role) }}</option>
 					@endforeach
 				</x-select>
@@ -16,7 +16,7 @@
 					<div class="grid grid-cols-2 gap-4 mt-2">
 						@foreach($parents as $name => $parent)
 							@if(count($parent) > 0)
-								<div wire:key="{{ $loop->index }}" class="border p-2 rounded-md">
+								<div wire:key="{{ $name }}" class="border p-2 rounded-md">
 									<x-label class="font-bold">{{ $name }}</x-label>
 									<div class="sm:flex sm:items-center sm:flex-wrap">
 										@foreach($parent as $item)

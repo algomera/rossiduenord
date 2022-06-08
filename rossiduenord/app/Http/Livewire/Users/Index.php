@@ -27,7 +27,7 @@
 		}
 
 		public function render() {
-			if (auth()->user()->role === 'admin') {
+			if (auth()->user()->role->name === 'admin') {
 				$this->users = User::all();
 			} else {
 				$this->users = User::whereHas('user_data', function ($q) {

@@ -27,7 +27,7 @@ class PageController extends Controller
 	 * Return user's role dashboard page
 	 */
 	public function dashboard() {
-		return view('dashboards.' . auth()->user()->role);
+		return view('dashboards.' . auth()->user()->role->name);
 	}
 
 }

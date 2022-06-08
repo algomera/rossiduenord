@@ -2,7 +2,7 @@
 
 	namespace App\Http\Livewire\Users;
 
-	use App\User as UserModel;
+	use App\User;
 	use LivewireUI\Modal\ModalComponent;
 
 	class Edit extends ModalComponent
@@ -16,6 +16,7 @@
 		public $showBusiness = false;
 		public $business;
 		public $selectedBusiness = [];
+		public $parents = [];
 
 		protected function rules() {
 			return [
@@ -25,29 +26,29 @@
 				'password'              => 'sometimes|nullable|min:8|confirmed',
 				'password_confirmation' => 'sometimes|same:password',
 				'business'              => 'nullable',
-				'selectedBusiness'      => $this->showBusiness ? 'required' : 'nullable',
+				'selectedBusiness'      => in_array($this->role, [
+					'collaborator',
+					'consultant',
+					'technical_asseverator',
+					'fiscal_asseverator'
+				]) ? 'required' : 'nullable',
 			];
 		}
 
-		public function mount(UserModel $user) {
+		public function mount(User $user) {
 			$this->user_id = $user->id;
-			$this->role = $user->role;
+			$this->role = $user->role->name;
 			$this->name = $user->name;
 			$this->email = $user->email;
 			foreach ($user->business as $business) {
 				$this->selectedBusiness[] = $business->id;
 			}
-			$this->business = UserModel::role('business')->get();
-			if (in_array($this->role, config('users_businesses.to'))) {
-				$this->showBusiness = true;
-			}
-		}
-
-		public function updatingRole($value) {
-			if (in_array(auth()->user()->role, config('users_businesses.from'))) {
-				$this->showBusiness = false;
-			} else {
-				if (in_array($value, config('users_businesses.to'))) {
+			if (config('users_businesses.' . $user->role->name)) {
+				$p = config('users_businesses.' . $user->role->name);
+				foreach ($p as $k => $name) {
+					$this->parents[$name] = User::role($k)->get();
+				}
+				if (config('users_businesses.' . $user->role->name)) {
 					$this->showBusiness = true;
 				} else {
 					$this->showBusiness = false;
@@ -56,23 +57,39 @@
 			}
 		}
 
+		public function updatingRole($value) {
+			$this->selectedBusiness = [];
+			$this->parents = [];
+			if (config('users_businesses.' . $value)) {
+				$p = config('users_businesses.' . $value);
+				foreach ($p as $k => $name) {
+					$this->parents[$name] = User::role($k)->get();
+				}
+				if (config('users_businesses.' . $value)) {
+					$this->showBusiness = true;
+				} else {
+					$this->showBusiness = false;
+					$this->selectedBusiness = [];
+				}
+			} else {
+				$this->showBusiness = false;
+				$this->selectedBusiness = [];
+			}
+		}
+
 		public function save() {
 			$validated = $this->validate();
-			$user = UserModel::find($this->user_id);
+			$user = User::find($this->user_id);
 			$user->update([
 				'email'    => $validated['email'],
 				'password' => $validated['password'] ? bcrypt($validated['password']) : $user->getAuthPassword()
 			]);
 			$user->user_data()->update(['name' => $validated['name']]);
-			if ($user->getRoleNames()->first() !== $validated['role']) {
-				$user->removeRole($user->getRoleNames()->first());
+			if ($user->role->name !== $validated['role']) {
+				$user->removeRole($user->role->name);
 				$user->assignRole($validated['role']);
 			}
-			if (in_array($this->role, config('users_businesses.to'))) {
-				$user->business()->sync($this->selectedBusiness);
-			} else {
-				$user->business()->detach();
-			}
+			$user->business()->sync($this->selectedBusiness);
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-updated');
 			$this->dispatchBrowserEvent('open-notification', [

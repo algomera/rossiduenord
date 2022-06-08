@@ -28,7 +28,12 @@
 				'password'              => 'required|string|min:8|confirmed',
 				'password_confirmation' => 'required|same:password',
 				'business'              => 'nullable',
-				'selectedBusiness'      => $this->showBusiness ? 'required' : 'nullable',
+				'selectedBusiness'      => in_array($this->role, [
+					'collaborator',
+					'consultant',
+					'technical_asseverator',
+					'fiscal_asseverator'
+				]) ? 'required' : 'nullable',
 			];
 		}
 
@@ -40,7 +45,7 @@
 			$this->parents = [];
 			if (config('users_businesses.' . $value)) {
 				$p = config('users_businesses.' . $value);
-				if (in_array(auth()->user()->role, array_keys($p))) {
+				if (in_array(auth()->user()->role->name, array_keys($p))) {
 					$this->showBusiness = false;
 					$this->selectedBusiness = auth()->user()->id;
 				} else {
