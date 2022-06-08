@@ -13,9 +13,8 @@
 		public $email;
 		public $password;
 		public $password_confirmation;
-		public $showBusiness = false;
-		public $business;
-		public $selectedBusiness = [];
+		public $showParents = false;
+		public $selectedParents = [];
 		public $parents = [];
 
 		protected function rules() {
@@ -25,8 +24,7 @@
 				'email'                 => 'required|email:rfc,dns|unique:users,email,' . $this->user_id,
 				'password'              => 'sometimes|nullable|min:8|confirmed',
 				'password_confirmation' => 'sometimes|same:password',
-				'business'              => 'nullable',
-				'selectedBusiness'      => in_array($this->role, [
+				'selectedParents'      => in_array($this->role, [
 					'collaborator',
 					'consultant',
 					'technical_asseverator',
@@ -40,8 +38,8 @@
 			$this->role = $user->role->name;
 			$this->name = $user->name;
 			$this->email = $user->email;
-			foreach ($user->business as $business) {
-				$this->selectedBusiness[] = $business->id;
+			foreach ($user->parents as $parent) {
+				$this->selectedParents[] = $parent->id;
 			}
 			if (config('users_businesses.' . $user->role->name)) {
 				$p = config('users_businesses.' . $user->role->name);
@@ -49,16 +47,16 @@
 					$this->parents[$name] = User::role($k)->get();
 				}
 				if (config('users_businesses.' . $user->role->name)) {
-					$this->showBusiness = true;
+					$this->showParents = true;
 				} else {
-					$this->showBusiness = false;
-					$this->selectedBusiness = [];
+					$this->showParents = false;
+					$this->selectedParents = [];
 				}
 			}
 		}
 
 		public function updatingRole($value) {
-			$this->selectedBusiness = [];
+			$this->selectedParents = [];
 			$this->parents = [];
 			if (config('users_businesses.' . $value)) {
 				$p = config('users_businesses.' . $value);
@@ -66,14 +64,14 @@
 					$this->parents[$name] = User::role($k)->get();
 				}
 				if (config('users_businesses.' . $value)) {
-					$this->showBusiness = true;
+					$this->showParents = true;
 				} else {
-					$this->showBusiness = false;
-					$this->selectedBusiness = [];
+					$this->showParents = false;
+					$this->selectedParents = [];
 				}
 			} else {
-				$this->showBusiness = false;
-				$this->selectedBusiness = [];
+				$this->showParents = false;
+				$this->selectedParents = [];
 			}
 		}
 
@@ -89,7 +87,7 @@
 				$user->removeRole($user->role->name);
 				$user->assignRole($validated['role']);
 			}
-			$user->business()->sync($this->selectedBusiness);
+			$user->parents()->sync($this->selectedParents);
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-updated');
 			$this->dispatchBrowserEvent('open-notification', [
