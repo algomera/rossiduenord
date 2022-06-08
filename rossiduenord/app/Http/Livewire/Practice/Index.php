@@ -17,7 +17,6 @@
 		];
 
 		public function mount(Request $request) {
-			//$this->authorize('access_practices');
 			if (auth()->user()->role === 'technical_asseverator' || auth()->user()->role === 'fiscal_asseverator') {
 				$business = auth()->user()->business->pluck('id');
 				$q = Practice::query()->whereIn('user_id', $business);
