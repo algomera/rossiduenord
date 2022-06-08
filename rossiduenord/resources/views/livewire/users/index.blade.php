@@ -46,30 +46,33 @@
 					</x-table.td>
 					<x-table.td>{{$user->created_by->name ?? '-'}}</x-table.td>
 					<x-table.td>
-						<div class="flex items-center space-x-3">
-							<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
-							        name="pencil-alt"
-							        class="w-5 h-5 cursor-pointer text-indigo-500 hover:text-indigo-800"></x-icon>
+						@if($user->created_by->id === auth()->user()->id)
+							<div class="flex items-center space-x-3">
+								<x-icon wire:click="$emit('openModal', 'users.edit', {{ json_encode([$user->id]) }})"
+								        name="pencil-alt"
+								        class="w-5 h-5 cursor-pointer text-indigo-500 hover:text-indigo-800"></x-icon>
 
-							<x-modal>
-								<x-slot name="trigger">
-									<div class="text-red-600 hover:text-red-900">
-										<x-icon name="trash" class="w-5 h-5"></x-icon>
-									</div>
-								</x-slot>
-								<x-slot name="title">
-									Conferma eliminazione
-								</x-slot>
-								Sei sicuro di voler eliminare l'utente <span class="font-bold">{{ $user->name }}</span>?
-								<x-slot name="footer">
-									<x-link-button x-on:click="open = false">Annulla</x-link-button>
-									<x-danger-button class="ml-2" wire:click="deleteUser({{ $user->id }})"
-									                 wire:loading.attr="disabled">
-										Elimina
-									</x-danger-button>
-								</x-slot>
-							</x-modal>
-						</div>
+								<x-modal>
+									<x-slot name="trigger">
+										<div class="text-red-600 hover:text-red-900">
+											<x-icon name="trash" class="w-5 h-5"></x-icon>
+										</div>
+									</x-slot>
+									<x-slot name="title">
+										Conferma eliminazione
+									</x-slot>
+									Sei sicuro di voler eliminare l'utente <span
+											class="font-bold">{{ $user->name }}</span>?
+									<x-slot name="footer">
+										<x-link-button x-on:click="open = false">Annulla</x-link-button>
+										<x-danger-button class="ml-2" wire:click="deleteUser({{ $user->id }})"
+										                 wire:loading.attr="disabled">
+											Elimina
+										</x-danger-button>
+									</x-slot>
+								</x-modal>
+							</div>
+						@endif
 					</x-table.td>
 				</tr>
 			@empty

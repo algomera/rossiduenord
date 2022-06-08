@@ -27,11 +27,13 @@
 		}
 
 		public function render() {
-			if (auth()->user()->role->name === 'admin') {
+			if (auth()->user()->isAdmin()) {
 				$this->users = User::all();
 			} else {
 				$this->users = User::whereHas('user_data', function ($q) {
-					$q->where('parent', auth()->user()->id);
+					$q->where('created_by', auth()->user()->id);
+				})->OrwhereHas('parents', function ($q) {
+					$q->where('parent_id', auth()->user()->id);
 				})->get();
 			}
 			$this->business = User::role('business')->get();

@@ -53,6 +53,10 @@
 			return $user;
 		}
 
+		public function isAdmin() {
+			return $this->role->name === 'admin';
+		}
+
 		public function getRoleAttribute() {
 			return $this->roles[0];
 		}

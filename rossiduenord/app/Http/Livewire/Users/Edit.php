@@ -46,11 +46,11 @@
 				foreach ($p as $k => $name) {
 					$this->parents[$name] = User::role($k)->get();
 				}
-				if (config('users_businesses.' . $user->role->name)) {
+				if (config('users_businesses.' . $user->role->name) && auth()->user()->isAdmin()) {
 					$this->showParents = true;
 				} else {
 					$this->showParents = false;
-					$this->selectedParents = [];
+					$this->selectedParents[] = auth()->user()->id;
 				}
 			}
 		}
