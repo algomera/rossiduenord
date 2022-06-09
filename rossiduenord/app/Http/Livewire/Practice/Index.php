@@ -17,13 +17,13 @@
 		];
 
 		public function mount(Request $request) {
-			if (auth()->user()->role === 'technical_asseverator' || auth()->user()->role === 'fiscal_asseverator') {
-				$business = auth()->user()->business->pluck('id');
-				$q = Practice::query()->whereIn('user_id', $business);
+			if (auth()->user()->isAdmin()) {
+				$q = Practice::query();
 			} else {
-				$q = Practice::query()->where('user_id', auth()->id());
+				if(config('users_matrioska.' . auth()->user()->role->name)) {
+					$q = Practice::withParents(auth()->user()->parents->pluck('id'));
+				}
 			}
-
 			if ($request->get('practical_month') !== null) {
 				$q->whereMonth('created_at', '=', $request->get('practical_month'));
 			}
