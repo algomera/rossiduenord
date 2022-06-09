@@ -17,15 +17,7 @@
 		 *
 		 * @var array
 		 */
-		protected $fillable = [
-			'referent',
-			'referent_phone',
-			'name',
-			'email',
-			'password',
-			'role',
-			'created_by',
-		];
+		protected $guarded = [];
 		/**
 		 * The attributes that should be hidden for arrays.
 		 *
