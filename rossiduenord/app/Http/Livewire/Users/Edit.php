@@ -41,12 +41,12 @@
 			foreach ($user->parents as $parent) {
 				$this->selectedParents[] = $parent->id;
 			}
-			if (config('users_businesses.' . $user->role->name)) {
-				$p = config('users_businesses.' . $user->role->name);
+			if (config('users_matrioska.' . $user->role->name)) {
+				$p = config('users_matrioska.' . $user->role->name);
 				foreach ($p as $k => $name) {
 					$this->parents[$name] = User::role($k)->get();
 				}
-				if (config('users_businesses.' . $user->role->name) && auth()->user()->isAdmin()) {
+				if (config('users_matrioska.' . $user->role->name) && auth()->user()->isAdmin()) {
 					$this->showParents = true;
 				} else {
 					$this->showParents = false;
@@ -58,12 +58,12 @@
 		public function updatingRole($value) {
 			$this->selectedParents = [];
 			$this->parents = [];
-			if (config('users_businesses.' . $value)) {
-				$p = config('users_businesses.' . $value);
+			if (config('users_matrioska.' . $value)) {
+				$p = config('users_matrioska.' . $value);
 				foreach ($p as $k => $name) {
 					$this->parents[$name] = User::role($k)->get();
 				}
-				if (config('users_businesses.' . $value)) {
+				if (config('users_matrioska.' . $value)) {
 					$this->showParents = true;
 				} else {
 					$this->showParents = false;

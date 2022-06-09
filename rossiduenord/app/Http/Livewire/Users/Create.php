@@ -37,8 +37,8 @@
 
 		public function updatingRole($value) {
 			$this->parents = [];
-			if (config('users_businesses.' . $value)) {
-				$p = config('users_businesses.' . $value);
+			if (config('users_matrioska.' . $value)) {
+				$p = config('users_matrioska.' . $value);
 				if (in_array(auth()->user()->role->name, array_keys($p))) {
 					$this->showParents = false;
 					$this->selectedParents = auth()->user()->id;
@@ -46,7 +46,7 @@
 					foreach ($p as $k => $name) {
 						$this->parents[$name] = User::role($k)->get();
 					}
-					if (config('users_businesses.' . $value)) {
+					if (config('users_matrioska.' . $value)) {
 						$this->showParents = true;
 					} else {
 						$this->showParents = false;
