@@ -30,11 +30,7 @@
 			if (auth()->user()->isAdmin()) {
 				$this->users = User::all();
 			} else {
-				$this->users = User::whereHas('user_data', function ($q) {
-					$q->where('created_by', auth()->user()->id);
-				})->OrwhereHas('parents', function ($q) {
-					$q->where('parent_id', auth()->user()->id);
-				})->get();
+				$this->users = User::withAssociated()->get();
 			}
 			$this->business = User::role('business')->get();
 			return view('livewire.users.index');

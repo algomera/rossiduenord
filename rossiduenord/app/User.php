@@ -44,6 +44,14 @@
 			'email_verified_at' => 'datetime',
 		];
 
+		public function scopeWithAssociated($query) {
+			return $query->whereHas('user_data', function ($q) {
+				$q->where('created_by', auth()->user()->id);
+			})->OrwhereHas('parents', function ($q) {
+				$q->where('parent_id', auth()->user()->id);
+			});
+		}
+
 		public function getNameAttribute() {
 			return $this->user_data->name;
 		}
