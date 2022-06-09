@@ -115,6 +115,7 @@
 				'access_users',
 				'access_practices',
 				'access_folders',
+				'access_contractual_documents',
 			]);
 			// Technical Asseverator base permissions
 			$technical_asseverator->givePermissionTo([
@@ -122,6 +123,7 @@
 				'access_users',
 				'access_practices',
 				'access_folders',
+				'access_contractual_documents',
 			]);
 			// Fiscal Asseverator base permissions
 			$fiscal_asseverator->givePermissionTo([
@@ -129,6 +131,7 @@
 				'access_users',
 				'access_practices',
 				'access_folders',
+				'access_contractual_documents',
 			]);
 		}
 	}

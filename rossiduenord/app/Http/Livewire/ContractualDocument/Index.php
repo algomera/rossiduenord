@@ -1,35 +1,41 @@
 <?php
 
-	namespace App\Http\Livewire\Practice\Tabs;
+	namespace App\Http\Livewire\ContractualDocument;
 
 	use App\Contract as ContractModel;
-	use App\Practice as PracticeModel;
+	use App\ContractualDocument;
 	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 	use Livewire\WithFileUploads;
 
-	class Contract extends Component
+	class Index extends Component
 	{
 		use WithFileUploads;
 
-		public PracticeModel $practice;
-		public $file_contract = [];
-		public $uploaded_contract = [];
+		public $selected;
+		public $tabs = [];
+		public $contractual_documents = [];
+		public $file_document = [];
+		public $uploaded_contractual_document = [];
 		protected $listeners = [
 			'document-added'   => '$refresh',
 			'document-removed' => '$refresh'
 		];
 		protected $rules = [
-			'file_contract.*' => 'file'
+			'file_document.*' => 'file'
 		];
 
-		public function mount(PracticeModel $practice) {
-			$this->practice = $practice;
-			$this->file_contract = $practice->contracts;
+		public function mount() {
+			if (auth()->user()->role->name === 'business') {
+				$this->selected = auth()->user()->id;
+			} else if (auth()->user()->childs) {
+				$this->selected = auth()->user()->childs->first()->id;
+				$this->tabs = auth()->user()->childs;
+			}
 		}
 
 		public function upload($id) {
-			$file = $this->uploaded_contract[$id];
+			$file = $this->uploaded_contractual_document[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 			$path = $file->storeAs('practices/' . $this->practice->id . '/contracts/' . $id . '_document_request', $filename . '.' . $extension);
@@ -41,7 +47,7 @@
 				'title'    => __('Aggiunta'),
 				'subtitle' => __('Il file è stato aggiunto con successo!')
 			]);
-			$this->uploaded_contract[$id] = null;
+			$this->uploaded_contractual_document[$id] = null;
 		}
 
 		public function delete($id) {
@@ -57,6 +63,7 @@
 		}
 
 		public function render() {
-			return view('livewire.practice.tabs.contract');
+			$this->contractual_documents = ContractualDocument::all();
+			return view('livewire.contractual-document.index');
 		}
 	}

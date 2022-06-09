@@ -27,7 +27,7 @@ class Policies{
 
         foreach ($data as $d) {
             Policy::create($d);
-        };
+        }
     }
 }
 

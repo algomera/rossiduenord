@@ -69,7 +69,7 @@
 				</tr>
 			@empty
 				<tr>
-					<x-table.td>Nessuna polizza inserita</x-table.td>
+					<x-table.td colspan="10" class="text-center">Nessuna polizza inserita</x-table.td>
 				</tr>
 			@endforelse
 		</x-table.tbody>
