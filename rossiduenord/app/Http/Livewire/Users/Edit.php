@@ -70,7 +70,7 @@
 					$this->selectedParents = [];
 				}
 			} else {
-				$this->showParents = false;
+				$this->showParents = true;
 				$this->selectedParents = [];
 			}
 		}
