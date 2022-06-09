@@ -2,7 +2,7 @@
 	<form wire:submit.prevent="save" class="space-y-5">
 		<div class="grid grid-cols-12 gap-4">
 			<div class="col-span-12">
-				<x-input wire:model.defer="description_surface" type="number" name="description_surface"
+				<x-input wire:model.defer="description_surface" type="text" name="description_surface"
 				         id="description_surface" label="Descrizione"></x-input>
 			</div>
 			<div class="col-span-12 sm:col-span-6">

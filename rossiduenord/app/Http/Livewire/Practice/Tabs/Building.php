@@ -64,7 +64,7 @@
 		}
 
 		public function exportExcel() {
-			return redirect()->route('condomini.export', $this->practice->id);
+			return redirect()->route('practice.condomini.export', $this->practice->id);
 		}
 
 		public function importExcel() {
