@@ -45,11 +45,17 @@
 			Route::name('users.')->group(function() {
 				Route::get('/users', [UserIndex::class, '__invoke'])->name('index');
 			});
-//			Route::resource('/users', 'UserController');
 
 			// Gestione Cartelle/File
 			Route::resource('/folder', 'FolderController');
 			Route::resource('/file', 'FileController');
+
+			// Documenti contrattuali
+			Route::name('contractual_documents.')->group(function() {
+				Route::get('/contractual_documents', function () {
+					return "Documenti contrattuali";
+				})->name('index');
+			});
 
 			/* Scheda Pratica */
 			//Richiedente

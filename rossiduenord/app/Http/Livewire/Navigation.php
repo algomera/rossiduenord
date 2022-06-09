@@ -50,6 +50,13 @@ class Navigation extends Component
 				'icon' => 'folder',
 				'permission' => 'access_folders'
 			],
+			[
+				'name' => 'Documenti Contrattuali',
+				'url' => route('contractual_documents.index'),
+				'active' => $this->isActiveRoute('contractual_documents*'),
+				'icon' => 'document-text',
+				'permission' => 'access_contractual_documents'
+			],
 		];
 	}
 

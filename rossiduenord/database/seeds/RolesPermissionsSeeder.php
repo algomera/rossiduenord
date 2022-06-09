@@ -92,6 +92,8 @@
 				'show_folders',
 				'delete_folders',
 				'access_folders',
+				// Contractual Documents
+				'access_contractual_documents',
 			];
 			foreach ($permissions as $permission) {
 				Permission::create([
@@ -105,6 +107,7 @@
 				'access_practices',
 				'access_folders',
 				'edit_practices',
+				'access_contractual_documents',
 			]);
 			// Bank base permissions
 			$bank->givePermissionTo([

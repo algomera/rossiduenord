@@ -75,7 +75,8 @@
 			// Assegnazione ruolo
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
-			// Assegnazione User/Business
+			// TODO: Assegnazione eventuali permessi
+			// Assegnazione User/Parents
 			$user->parents()->sync($this->selectedParents);
 			$this->closeModal();
 			$this->emitTo('users.index', 'user-added');
