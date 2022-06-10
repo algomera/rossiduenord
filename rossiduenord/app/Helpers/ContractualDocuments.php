@@ -1,17 +1,12 @@
 <?php
 
-	use App\ContractualDocument;
-	use Illuminate\Database\Seeder;
+	namespace App\Helpers;
 
-	class ContractualDocumentsSeeder extends Seeder
+	use App\ContractualDocument;
+
+	class ContractualDocuments
 	{
-		/**
-		 * Run the database seeds.
-		 *
-		 * @return void
-		 */
-		public function run() {
-			ContractualDocument::truncate();
+		public static function createInitialContractualDocuments($id) {
 			$documents = [
 				'Questionario Antiriciclaggio',
 				'Atto Costitutivo',
@@ -25,9 +20,11 @@
 			];
 			foreach ($documents as $document) {
 				ContractualDocument::create([
-					'name' => $document,
-					'slug' => \Illuminate\Support\Str::slug($document),
+					'user_id' => $id,
+					'name' => $document
 				]);
 			}
 		}
 	}
+
+	?>

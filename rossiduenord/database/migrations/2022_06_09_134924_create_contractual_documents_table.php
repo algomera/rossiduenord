@@ -14,8 +14,10 @@
 		public function up() {
 			Schema::create('contractual_documents', function (Blueprint $table) {
 				$table->id();
+				$table->bigInteger('user_id')->unsigned();
+				$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 				$table->string('name');
-				$table->string('slug');
+				$table->string('uploaded_path')->nullable();
 				$table->timestamps();
 			});
 		}

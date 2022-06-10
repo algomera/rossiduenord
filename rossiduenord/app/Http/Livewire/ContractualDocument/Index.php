@@ -14,15 +14,14 @@
 
 		public $selected;
 		public $tabs = [];
-		public $contractual_documents = [];
-		public $file_document = [];
+		public $contractual_document = [];
 		public $uploaded_contractual_document = [];
 		protected $listeners = [
 			'document-added'   => '$refresh',
 			'document-removed' => '$refresh'
 		];
 		protected $rules = [
-			'file_document.*' => 'file'
+			'contractual_document.*' => 'file'
 		];
 
 		public function mount() {
@@ -31,8 +30,7 @@
 			} else if (auth()->user()->childs->count()) {
 				$this->selected = auth()->user()->childs->first()->id;
 				$this->tabs = auth()->user()->childs;
-			}
-			else if (auth()->user()->parents->count()) {
+			} else if (auth()->user()->parents->count()) {
 				$this->selected = auth()->user()->parents->first()->id;
 				$this->tabs = auth()->user()->parents;
 			}
@@ -42,8 +40,8 @@
 			$file = $this->uploaded_contractual_document[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-			$path = $file->storeAs('practices/' . $this->practice->id . '/contracts/' . $id . '_document_request', $filename . '.' . $extension);
-			$this->practice->contracts()->where('id', $id)->update([
+			$path = $file->storeAs('business/' . auth()->user()->id . '/contractual_documents/', $filename . '_#_' . now()->timestamp . '.' . $extension);
+			auth()->user()->contractual_documents()->where('id', $id)->update([
 				'uploaded_path' => $path
 			]);
 			$this->emit('document-added');
@@ -55,7 +53,7 @@
 		}
 
 		public function delete($id) {
-			$file = ContractModel::find($id);
+			$file = ContractualDocument::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;
 			$file->save();
@@ -67,7 +65,13 @@
 		}
 
 		public function render() {
-			$this->contractual_documents = ContractualDocument::all();
+			if (auth()->user()->role->name === 'business') {
+				$this->contractual_document = auth()->user()->contractual_documents;
+			} else if (auth()->user()->childs->count()) {
+				$this->contractual_document = ContractualDocument::where('user_id', $this->selected)->get();
+			} else if (auth()->user()->parents->count()) {
+				$this->contractual_document = ContractualDocument::where('user_id', $this->selected)->get();
+			}
 			return view('livewire.contractual-document.index');
 		}
 	}

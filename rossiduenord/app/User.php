@@ -84,4 +84,8 @@
 		public function childs() {
 			return $this->belongsToMany(User::class, 'childs_parents', 'parent_id', 'child_id');
 		}
+
+		public function contractual_documents() {
+			return $this->hasMany(ContractualDocument::class);
+		}
 	}

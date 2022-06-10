@@ -1,6 +1,7 @@
 <?php
 
-use App\UserData;
+	use App\Helpers\ContractualDocuments;
+	use App\UserData;
 use Illuminate\Database\Seeder;
 use Faker\Generator as faker;
 use App\User;
@@ -86,5 +87,9 @@ class UserSeeder extends Seeder
 
         // Assegno ruolo "bank" all'utente "Ta S.r.l"
         $tasrl->assignRole(Role::findByName('bank'));
+
+		// Creo Documenti Contrattuali per ogni "impresa" creata
+		ContractualDocuments::createInitialContractualDocuments($primehub->id);
+	    ContractualDocuments::createInitialContractualDocuments($edrasis->id);
     }
 }

@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Users;
 
+	use App\Helpers\ContractualDocuments;
 	use App\User;
 	use App\UserData;
 	use LivewireUI\Modal\ModalComponent;
@@ -75,6 +76,10 @@
 			// Assegnazione ruolo
 			$role = Role::findByName($validated['role']);
 			$user->assignRole($role);
+
+			if($user->role->name === 'business') {
+				ContractualDocuments::createInitialContractualDocuments($user->id);
+			}
 			// TODO: Assegnazione eventuali permessi
 			// Assegnazione User/Parents
 			$user->parents()->sync($this->selectedParents);

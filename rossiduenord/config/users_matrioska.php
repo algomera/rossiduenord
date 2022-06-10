@@ -12,7 +12,10 @@
 		'fiscal_asseverator'    => [
 			'business' => 'Imprese'
 		],
-		'financial'             => [],
+		'financial'             => [
+			'bank'      => 'Banche',
+			'business' => 'Imprese',
+		],
 		'business'              => [
 			'bank'      => 'Banche',
 			'financial' => 'Soc. Finanziarie',
