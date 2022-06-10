@@ -4,6 +4,7 @@
 
 	use App\Contract as ContractModel;
 	use App\ContractualDocument;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 	use Livewire\WithFileUploads;
@@ -11,6 +12,7 @@
 	class Index extends Component
 	{
 		use WithFileUploads;
+		use AuthorizesRequests;
 
 		public $selected;
 		public $tabs = [];
@@ -37,6 +39,7 @@
 		}
 
 		public function upload($id) {
+			$this->authorize('upload_contractual_documents');
 			$file = $this->uploaded_contractual_document[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -52,7 +55,13 @@
 			$this->uploaded_contractual_document[$id] = null;
 		}
 
+		public function download($doc) {
+			$this->authorize('download_contractual_documents');
+			return Storage::disk('public')->download($doc['uploaded_path'], $doc['name']);
+		}
+
 		public function delete($id) {
+			$this->authorize('delete_contractual_documents');
 			$file = ContractualDocument::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;

@@ -94,6 +94,9 @@
 				'access_folders',
 				// Contractual Documents
 				'access_contractual_documents',
+				'upload_contractual_documents',
+				'download_contractual_documents',
+				'delete_contractual_documents',
 			];
 			foreach ($permissions as $permission) {
 				Permission::create([
@@ -108,6 +111,9 @@
 				'access_folders',
 				'edit_practices',
 				'access_contractual_documents',
+				'upload_contractual_documents',
+				'download_contractual_documents',
+				'delete_contractual_documents',
 			]);
 			// Bank base permissions
 			$bank->givePermissionTo([
@@ -116,6 +122,7 @@
 				'access_practices',
 				'access_folders',
 				'access_contractual_documents',
+				'download_contractual_documents',
 			]);
 			// Technical Asseverator base permissions
 			$technical_asseverator->givePermissionTo([
@@ -124,6 +131,7 @@
 				'access_practices',
 				'access_folders',
 				'access_contractual_documents',
+				'download_contractual_documents',
 			]);
 			// Fiscal Asseverator base permissions
 			$fiscal_asseverator->givePermissionTo([
@@ -132,6 +140,7 @@
 				'access_practices',
 				'access_folders',
 				'access_contractual_documents',
+				'download_contractual_documents',
 			]);
 		}
 	}
