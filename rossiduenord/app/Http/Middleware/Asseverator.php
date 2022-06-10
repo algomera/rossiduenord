@@ -15,7 +15,7 @@ class Asseverator
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->role == 'fiscal_asseverator' || auth()->user()->role == 'technical_asseverator') {
+        if (auth()->user()->role->name == 'fiscal_asseverator' || auth()->user()->role->name == 'technical_asseverator') {
             return $next($request);
         }
         return redirect('login');

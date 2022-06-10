@@ -41,7 +41,7 @@
 			$credentials = $request->validate(['email' => 'required|email', 'password' => 'required',]);
 			if (Auth::attempt($credentials, $request->has('remember'))) {
 				$request->session()->regenerate();
-				if (auth()->user()->role === 'business') {
+				if (auth()->user()->role->name === 'business') {
 					$user = User::where('email', auth()->user()->email)->first();
 					$business_data = $user->user_data;
 					if (!$business_data->type || !$business_data->p_iva || !$business_data->c_f || !$business_data->legal_form || !$business_data->rea || !$business_data->c_ateco || !$business_data->reg_date) {

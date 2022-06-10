@@ -22,13 +22,13 @@
 		}
 
 		public function approve() {
-			if ($this->sub_folder->assev_t_status == 1 && auth()->user()->role === 'technical_asseverator') {
+			if ($this->sub_folder->assev_t_status == 1 && auth()->user()->role->name === 'technical_asseverator') {
 				$this->sub_folder->assev_t_status = 2;
 				$this->sub_folder->save();
-			} else if ($this->sub_folder->assev_f_status == 1 && auth()->user()->role === 'fiscal_asseverator') {
+			} else if ($this->sub_folder->assev_f_status == 1 && auth()->user()->role->name === 'fiscal_asseverator') {
 				$this->sub_folder->assev_f_status = 2;
 				$this->sub_folder->save();
-			} else if ($this->sub_folder->bank_status == 1 && auth()->user()->role === 'bank') {
+			} else if ($this->sub_folder->bank_status == 1 && auth()->user()->role->name === 'bank') {
 				$this->sub_folder->bank_status = 2;
 				$this->sub_folder->save();
 			}
@@ -40,13 +40,13 @@
 		}
 
 		public function disapprove() {
-			if ($this->sub_folder->assev_t_status == 2 && auth()->user()->role === 'technical_asseverator') {
+			if ($this->sub_folder->assev_t_status == 2 && auth()->user()->role->name === 'technical_asseverator') {
 				$this->sub_folder->assev_t_status = 1;
 				$this->sub_folder->save();
-			} else if ($this->sub_folder->assev_f_status == 2 && auth()->user()->role === 'fiscal_asseverator') {
+			} else if ($this->sub_folder->assev_f_status == 2 && auth()->user()->role->name === 'fiscal_asseverator') {
 				$this->sub_folder->assev_f_status = 1;
 				$this->sub_folder->save();
-			} else if ($this->sub_folder->bank_status == 2 && auth()->user()->role === 'bank') {
+			} else if ($this->sub_folder->bank_status == 2 && auth()->user()->role->name === 'bank') {
 				$this->sub_folder->bank_status = 1;
 				$this->sub_folder->save();
 			}

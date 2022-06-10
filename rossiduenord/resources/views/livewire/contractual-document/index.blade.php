@@ -31,7 +31,6 @@
 			</div>
 		</div>
 	@endif
-	<p class="text-blue-400 italic text-sm">Scarica i documenti necessari, compilali e caricali</p>
 	<x-table.table>
 		<x-table.thead>
 			<tr>

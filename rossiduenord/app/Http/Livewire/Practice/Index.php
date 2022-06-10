@@ -20,9 +20,7 @@
 			if (auth()->user()->isAdmin()) {
 				$q = Practice::query();
 			} else {
-				if(config('users_matrioska.' . auth()->user()->role->name)) {
-					$q = Practice::withParents(auth()->user()->parents->pluck('id'));
-				}
+				$q = Practice::withParents(auth()->user()->parents->pluck('id'));
 			}
 			if ($request->get('practical_month') !== null) {
 				$q->whereMonth('created_at', '=', $request->get('practical_month'));

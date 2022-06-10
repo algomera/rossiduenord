@@ -15,7 +15,7 @@
 				</x-button>
 			</div>
 			@php
-				switch (auth()->user()->role) {
+				switch (auth()->user()->role->name) {
 					case 'technical_asseverator':
 						$status = 'assev_t_status';
 						break;
@@ -27,7 +27,7 @@
 						break;
 				}
 			@endphp
-			@if($current_sub_folder->documents->count() && auth()->user()->role === 'technical_asseverator' || auth()->user()->role === 'fiscal_asseverator' || auth()->user()->role === 'bank')
+			@if($current_sub_folder->documents->count() && auth()->user()->role->name === 'technical_asseverator' || auth()->user()->role->name === 'fiscal_asseverator' || auth()->user()->role->name === 'bank')
 				<div class="flex justify-end items-center space-x-3">
 					@if($current_sub_folder->$status == 1)
 						<x-button wire:click="approve" size="xs">Approva</x-button>

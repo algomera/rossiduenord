@@ -28,9 +28,13 @@
 		public function mount() {
 			if (auth()->user()->role->name === 'business') {
 				$this->selected = auth()->user()->id;
-			} else if (auth()->user()->childs) {
+			} else if (auth()->user()->childs->count()) {
 				$this->selected = auth()->user()->childs->first()->id;
 				$this->tabs = auth()->user()->childs;
+			}
+			else if (auth()->user()->parents->count()) {
+				$this->selected = auth()->user()->parents->first()->id;
+				$this->tabs = auth()->user()->parents;
 			}
 		}
 

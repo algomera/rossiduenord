@@ -59,31 +59,31 @@
 						<option value="Pregio">Pregio</option>
 					</x-select>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.section" type="text" name="section" id="section"
 					         label="Sezione"></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.foil" type="text" name="foil" id="foil" label="Foglio"
 					         required></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.particle" type="text" name="particle" id="particle"
 					         label="Particella" required></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.subaltern" type="text" name="subaltern" id="subaltern"
 					         label="Subalterno" required></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.unit_building_number" type="text" name="unit_building_number"
 					         id="unit_building_number" label="N. unità imm." required></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.pertinence_number" type="text" name="pertinence_number"
 					         id="pertinence_number" label="N. pertinenze" required></x-input>
 				</div>
-				<div class="col-span-4 sm:col-span-2 lg:col-span-1">
+				<div class="col-span-4 sm:col-span-4 md:col-span-2">
 					<x-input wire:model.defer="building.resolution_stairs" type="text" name="resolution_stairs"
 					         id="resolution_stairs" label="Scale delibere"></x-input>
 				</div>

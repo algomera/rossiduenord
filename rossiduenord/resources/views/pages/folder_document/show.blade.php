@@ -94,7 +94,7 @@
 						</div>
 						<div>
 							@php
-								switch (auth()->user()->role) {
+								switch (auth()->user()->role->name) {
 									case 'technical_asseverator':
 										$status = 'assev_t_status';
 										break;
@@ -107,7 +107,7 @@
 								}
 							@endphp
 
-							@if(auth()->user()->role === 'technical_asseverator' || auth()->user()->role === 'fiscal_asseverator' || auth()->user()->role === 'bank')
+							@if(auth()->user()->role->name === 'technical_asseverator' || auth()->user()->role->name === 'fiscal_asseverator' || auth()->user()->role->name === 'bank')
 								@if($current_sub_folder->$status == 1)
 									<a href="{{ route('document.approve', [$practice, $current_sub_folder->folder_document, $current_sub_folder])}}">
 										<button type="button" class="button-approve mb-2">
