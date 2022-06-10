@@ -9,10 +9,6 @@
 	{
 		protected $guarded = [];
 
-		public function exist($user_id) {
-			return Storage::disk('public')->has('business/' . $user_id . '/contractual_documents/' . $this->slug);
-		}
-
 		public function user() {
 			return $this->belongsTo(User::class);
 		}

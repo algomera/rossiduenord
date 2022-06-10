@@ -59,7 +59,8 @@
 					</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-5">
-							<x-button wire:click="download({{ $document }})" size="xs" :disabled="!$document->uploaded_path">
+							<x-button wire:click="download({{ $document }})" size="xs"
+							          :disabled="!$document->uploaded_path">
 								<x-icon name="download" class="w-4 h-4 text-white"></x-icon>
 							</x-button>
 							@can(['upload_contractual_documents', 'delete_contractual_documents'])
