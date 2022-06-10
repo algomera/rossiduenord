@@ -7,7 +7,7 @@
 /storage/*.key
 /vendor
 /storage/app/public/livewire-tmp
-/storage/app/public/business
+/storage/app/public/business/*
 .env
 .env.backup
 .phpunit.result.cache
