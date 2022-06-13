@@ -23,9 +23,9 @@
 <body class="h-full overflow-hidden font-sans antialiased @impersonating($guard = null) pb-12 @endImpersonating">
 @impersonating($guard = null)
 <div class="relative bg-indigo-600">
-	<div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+	<div class="max-w-7xl mx-auto py-1 px-3 sm:px-6 lg:px-8">
 		<div class="pr-16 sm:text-center sm:px-16">
-			<p class="font-medium text-white">
+			<p class="text-white">
 				<span class="tracking-wide text-xs md:text-sm">Stai impersonando l'utente <span class="font-bold">"{{ auth()->user()->name }}"</span></span>
 			</p>
 		</div>
@@ -266,32 +266,34 @@
 										</x-slot>
 
 										<x-slot name="content">
-											<!-- Account Management -->
-											<div class="block px-4 py-2 text-xs text-gray-400">
-												{{ __('Manage Account') }}
-											</div>
+											<div class="divide-y">
+												@role('business')
+												<!-- Account Management -->
+												<div class="block px-4 py-2 text-xs text-gray-400">
+													{{ __('Manage Account') }}
+												</div>
 
-											<x-dropdown-link href="{{ route('profile') }}">
-												{{ __('Profile') }}
-											</x-dropdown-link>
-
-											<div class="border-t border-gray-100"></div>
-
-											<!-- Authentication -->
-											<form
-													method="POST"
-													action="{{ route('logout') }}"
-											>
-												@csrf
-
-												<x-dropdown-link
-														href="{{ route('logout') }}"
-														onclick="event.preventDefault();
-																																																																																																																				this.closest('form').submit();"
-												>
-													{{ __('Log Out') }}
+												<x-dropdown-link href="{{ route('profile') }}" class="!border-t-0">
+													{{ __('Profile') }}
 												</x-dropdown-link>
-											</form>
+												@endrole
+
+												<!-- Authentication -->
+												<form
+														method="POST"
+														action="{{ route('logout') }}"
+												>
+													@csrf
+
+													<x-dropdown-link
+															href="{{ route('logout') }}"
+															onclick="event.preventDefault();
+																																																																																																																				this.closest('form').submit();"
+													>
+														{{ __('Log Out') }}
+													</x-dropdown-link>
+												</form>
+											</div>
 										</x-slot>
 									</x-dropdown>
 								</div>
