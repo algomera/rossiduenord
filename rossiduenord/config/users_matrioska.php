@@ -16,6 +16,9 @@
 			'bank'      => 'Banche',
 			'business' => 'Imprese',
 		],
+		'bank' => [
+			'business' => 'Imprese',
+		],
 		'business'              => [
 			'bank'      => 'Banche',
 			'financial' => 'Soc. Finanziarie',
