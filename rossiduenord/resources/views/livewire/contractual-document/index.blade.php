@@ -72,7 +72,7 @@
 													<x-button type="button"
 													          wire:click="upload({{ $contractual_document[$loop->index]->id }})"
 													          size="xs"
-													          class="bg-green-600 hover:!bg-green-700 focus:ring-green-500">
+													          class="!bg-green-600 hover:!bg-green-700 focus:ring-green-500">
 														<x-icon name="upload" class="w-4 h-4 text-white"></x-icon>
 													</x-button>
 												@endif

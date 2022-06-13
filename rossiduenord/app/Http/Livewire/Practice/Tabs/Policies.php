@@ -4,6 +4,7 @@
 
 	use App\Policy as PolicyModel;
 	use App\Practice as PracticeModel;
+	use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 	use Illuminate\Support\Facades\Storage;
 	use Livewire\Component;
 	use Livewire\WithFileUploads;
@@ -11,6 +12,7 @@
 	class Policies extends Component
 	{
 		use WithFileUploads;
+		use AuthorizesRequests;
 
 		public PracticeModel $practice;
 		public $file_policy = [];
@@ -29,6 +31,7 @@
 		}
 
 		public function upload($id) {
+			$this->authorize('upload_policies');
 			$file = $this->uploaded_policy[$id];
 			$extension = $file->extension();
 			$filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -44,7 +47,13 @@
 			$this->uploaded_policy[$id] = null;
 		}
 
+		public function download($doc) {
+			$this->authorize('download_policies');
+			return Storage::disk('public')->download($doc['path'], $doc['name']);
+		}
+
 		public function delete($id) {
+			$this->authorize('delete_policies');
 			$file = PolicyModel::find($id);
 			Storage::delete($file->uploaded_path);
 			$file->uploaded_path = null;
