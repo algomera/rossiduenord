@@ -15,10 +15,11 @@
 			</div>
 		</x-slot>
 		<x-slot name="actions">
-		{{-- TODO: Creazione del computo metrico --}}
-			<x-button type="button" x-on:click="Livewire.emit('openModal', 'modals.computo-metrico')">
-				Computo metrico
-			</x-button>
+			@can('create_computo')
+				<x-button type="button" x-on:click="Livewire.emit('openModal', 'practice.modals.computo.computo')">
+					Computo metrico
+				</x-button>
+			@endcan
 		</x-slot>
 	</x-page-header>
 </x-slot>

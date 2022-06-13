@@ -20,7 +20,7 @@
 
 	<livewire:styles/>
 </head>
-<body class="h-full overflow-hidden font-sans antialiased @impersonating($guard = null) pb-12 @endImpersonating">
+<body class="h-full overflow-hidden font-sans antialiased @impersonating($guard = null) pb-8 @endImpersonating">
 @impersonating($guard = null)
 <div class="relative bg-indigo-600">
 	<div class="max-w-7xl mx-auto py-1 px-3 sm:px-6 lg:px-8">

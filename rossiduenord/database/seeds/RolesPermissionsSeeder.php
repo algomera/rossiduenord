@@ -56,25 +56,31 @@
 			// PERMISSIONS
 			$permissions = [
 				// Practice
-				'create_practices',
-				'edit_practices',
-				'show_practices',
-				'show_child_practices',
-				'delete_practices',
 				'access_practices',
+				'create_practices',
+				'read_practices',
+				'update_practices',
+				'delete_practices',
+				'read_child_practices',
+				// Computo
+				'create_computo',
+				'download_computo',
+				// Contracts
 				'upload_contracts',
 				'download_contracts',
 				'delete_contracts',
+				// Policies
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
 				// Anagrafiche
-				'create_anagrafiche',
-				'edit_anagrafiche',
-				'show_anagrafiche',
-				'delete_anagrafiche',
 				'access_anagrafiche',
+				'create_anagrafiche',
+				'read_anagrafiche',
+				'update_anagrafiche',
+				'delete_anagrafiche',
 				// Users
+				'access_users',
 				'create_admin_users',
 				'create_financial_users',
 				'create_bank_users',
@@ -83,21 +89,20 @@
 				'create_technical_asseverator_users',
 				'create_fiscal_asseverator_users',
 				'create_manager_users',
-				'access_users',
 				// Files
+				'access_files',
 				'create_files',
-				'edit_files',
-				'show_files',
+				'read_files',
+				'update_files',
 				'delete_files',
 				'download_files',
 				'upload_files',
-				'access_files',
 				// Folders
-				'create_folders',
-				'edit_folders',
-				'show_folders',
-				'delete_folders',
 				'access_folders',
+				'create_folders',
+				'read_folders',
+				'update_folders',
+				'delete_folders',
 				// Contractual Documents
 				'access_contractual_documents',
 				'upload_contractual_documents',
@@ -111,17 +116,30 @@
 			}
 			// Business base permissions
 			$business->givePermissionTo([
+				// Anagrafiche
 				'access_anagrafiche',
+				// Users
 				'access_users',
+				// Practices
 				'access_practices',
-				'access_folders',
-				'edit_practices',
+				'create_practices',
+				'read_practices',
+				'update_practices',
+				'delete_practices',
+				// Computo
+				'create_computo',
+				'download_computo',
+				// Contracts
 				'upload_contracts',
 				'download_contracts',
 				'delete_contracts',
+				// Policies
 				'upload_policies',
 				'download_policies',
 				'delete_policies',
+				// Folders
+				'access_folders',
+				// Contractual Documents
 				'access_contractual_documents',
 				'upload_contractual_documents',
 				'download_contractual_documents',
@@ -129,28 +147,44 @@
 			]);
 			// Bank base permissions
 			$bank->givePermissionTo([
+				// Anagrafiche
 				'access_anagrafiche',
+				// Users
 				'access_users',
+				// Practices
 				'access_practices',
 				'access_folders',
+				// Contractual Documents
 				'access_contractual_documents',
 				'download_contractual_documents',
 			]);
 			// Technical Asseverator base permissions
 			$technical_asseverator->givePermissionTo([
+				// Anagrafiche
 				'access_anagrafiche',
+				// Users
 				'access_users',
+				// Practices
 				'access_practices',
+				'read_practices',
+				// Folders
 				'access_folders',
+				// Contractual Documents
 				'access_contractual_documents',
 				'download_contractual_documents',
 			]);
 			// Fiscal Asseverator base permissions
 			$fiscal_asseverator->givePermissionTo([
+				// Anagrafiche
 				'access_anagrafiche',
+				// Users
 				'access_users',
+				// Practices
 				'access_practices',
+				'read_practices',
+				// Folders
 				'access_folders',
+				// Contractual Documents
 				'access_contractual_documents',
 				'download_contractual_documents',
 			]);

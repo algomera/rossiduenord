@@ -121,11 +121,14 @@
 			</form>
 		</div>
 
-		<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">Nuova
-		</x-button>
-		<div wire:loading wire:target="createPractice" class="ml-2">
-			<span class="text-sm text-gray-400">Caricamento..</span>
-		</div>
+		@can('create_practices')
+			<x-button wire:click="createPractice" wire:loading.attr="disabled" prepend="plus" iconColor="text-white">
+				Nuova
+			</x-button>
+			<div wire:loading wire:target="createPractice" class="ml-2">
+				<span class="text-sm text-gray-400">Caricamento..</span>
+			</div>
+		@endcan
 	</x-card>
 	<x-table.table>
 		<x-table.thead>
@@ -156,34 +159,40 @@
 					<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							<a href="{{route('practice.edit', $practice) }}"
-							   class="text-indigo-600 hover:text-indigo-900">
-								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
-							</a>
+							@can('read_practices')
+								<a href="{{route('practice.edit', $practice) }}"
+								   class="text-indigo-600 hover:text-indigo-900">
+									<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
+								</a>
+							@endcan
 
-							<x-modal>
-								<x-slot name="trigger">
-									<div class="text-red-600 hover:text-red-900">
-										<x-icon name="trash" class="w-5 h-5"></x-icon>
-									</div>
-								</x-slot>
-								<x-slot name="title">
-									Conferma eliminazione
-								</x-slot>
-								Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
-								<x-slot name="footer">
-									<x-link-button x-on:click="open = false">Annulla</x-link-button>
-									<x-danger-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
-									                 wire:loading.attr="disabled">
-										Elimina
-									</x-danger-button>
-								</x-slot>
-							</x-modal>
-							{{-- TODO: Visualizza solo se c'è il computo metrico --}}
-							<a href="#"
-							   class="text-indigo-600 hover:text-indigo-900">
-								<x-icon name="download" class="w-5 h-5"></x-icon>
-							</a>
+							@can('delete_practices')
+								<x-modal>
+									<x-slot name="trigger">
+										<div class="text-red-600 hover:text-red-900">
+											<x-icon name="trash" class="w-5 h-5"></x-icon>
+										</div>
+									</x-slot>
+									<x-slot name="title">
+										Conferma eliminazione
+									</x-slot>
+									Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
+									<x-slot name="footer">
+										<x-link-button x-on:click="open = false">Annulla</x-link-button>
+										<x-danger-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
+										                 wire:loading.attr="disabled">
+											Elimina
+										</x-danger-button>
+									</x-slot>
+								</x-modal>
+							@endcan
+							@can('download_computo')
+								{{-- TODO: Visualizza solo se c'è il computo metrico --}}
+								<a href="#"
+								   class="text-indigo-600 hover:text-indigo-900">
+									<x-icon name="download" class="w-5 h-5"></x-icon>
+								</a>
+							@endcan
 						</div>
 					</x-table.td>
 				</tr>
