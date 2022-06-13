@@ -75,6 +75,14 @@
 										</x-danger-button>
 									</x-slot>
 								</x-modal>
+								@can('impersonate_users')
+									@canImpersonate($guard = null)
+									<a href="{{ route('impersonate', $user->id) }}">
+										<x-icon name="sparkles"
+										        class="w-5 h-5 cursor-pointer text-yellow-500 hover:text-yellow-800"></x-icon>
+									</a>
+									@endCanImpersonate
+								@endcan
 							</div>
 						@endif
 					</x-table.td>

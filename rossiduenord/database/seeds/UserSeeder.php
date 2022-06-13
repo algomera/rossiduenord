@@ -105,6 +105,11 @@
 			// Assegno ruolo "business" all'utente "Edrasis" e creo Documenti Contrattuali
 			$edrasis->assignRole(Role::findByName('business'));
 			ContractualDocuments::createInitialContractualDocuments($edrasis->id);
+			// Assegno ruolo "*_asseverator" agli utenti "Assev. Tecnico" e "Assev. Fiscale"
+			$asst->assignRole(Role::findByName('technical_asseverator'));
+			$assf->assignRole(Role::findByName('fiscal_asseverator'));
+			// Assegno ruolo "bank" all'utente "Banca"
+			$banca->assignRole(Role::findByName('bank'));
 			// Assegno ruolo "bank" all'utente "Novello"
 			$novello->assignRole(Role::findByName('bank'));
 			// Assegno ruolo "bank" all'utente "Ta S.r.l"

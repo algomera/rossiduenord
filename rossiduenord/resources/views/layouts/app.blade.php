@@ -21,6 +21,22 @@
 	<livewire:styles/>
 </head>
 <body class="h-full overflow-hidden font-sans antialiased">
+@impersonating($guard = null)
+<div class="relative bg-indigo-600">
+	<div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+		<div class="pr-16 sm:text-center sm:px-16">
+			<p class="font-medium text-white">
+				<span class="underline text-xs md:text-sm">Stai impersonando l'utente "{{ auth()->user()->name }}"</span>
+			</p>
+		</div>
+		<div class="absolute inset-y-0 right-0 pr-3 flex items-center sm:pr-2">
+			<a href="{{ route('impersonate.leave') }}" class="text-sm text-white font-semibold">
+				Esci
+			</a>
+		</div>
+	</div>
+</div>
+@endImpersonating
 <x-banner/>
 <div x-data="{isOpen: false}" id="app" class="flex h-full">
 	{{-- Mobile Menu --}}

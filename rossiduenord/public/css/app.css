@@ -1676,6 +1676,15 @@ select {
 .pb-2 {
   padding-bottom: 0.5rem;
 }
+.pr-16 {
+  padding-right: 4rem;
+}
+.pt-1 {
+  padding-top: 0.25rem;
+}
+.pr-1 {
+  padding-right: 0.25rem;
+}
 .text-left {
   text-align: left;
 }
@@ -1866,6 +1875,14 @@ select {
 .text-green-400 {
   --tw-text-opacity: 1;
   color: rgb(74 222 128 / var(--tw-text-opacity));
+}
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+.underline {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -2199,6 +2216,11 @@ input[type=number] {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-indigo-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
@@ -2232,6 +2254,11 @@ input[type=number] {
 .hover\:text-indigo-500:hover {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
+.hover\:text-yellow-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(133 77 14 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -2485,6 +2512,10 @@ input[type=number] {
     margin-top: 1.5rem;
   }
 
+  .sm\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2682,6 +2713,23 @@ input[type=number] {
     padding-right: 1.5rem;
   }
 
+  .sm\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .sm\:pt-1 {
+    padding-top: 0.25rem;
+  }
+
+  .sm\:pr-2 {
+    padding-right: 0.5rem;
+  }
+
+  .sm\:text-center {
+    text-align: center;
+  }
+
   .sm\:align-middle {
     vertical-align: middle;
   }
@@ -2715,8 +2763,16 @@ input[type=number] {
     grid-column: span 6 / span 6;
   }
 
+  .md\:inline {
+    display: inline;
+  }
+
   .md\:flex {
     display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:min-w-0 {
@@ -2790,6 +2846,11 @@ input[type=number] {
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
