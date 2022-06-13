@@ -38,7 +38,7 @@
 		}
 
 		public function login(Request $request) {
-			$credentials = $request->validate(['email' => 'required|email', 'password' => 'required',]);
+			$credential = $request->validate(['email' => 'required|email', 'password' => 'required',]);
 			if (Auth::attempt($credentials, $request->has('remember'))) {
 				$request->session()->regenerate();
 				if (auth()->user()->role === 'business') {
