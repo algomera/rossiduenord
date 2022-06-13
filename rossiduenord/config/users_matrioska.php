@@ -13,10 +13,10 @@
 			'business' => 'Imprese'
 		],
 		'financial'             => [
-			'bank'      => 'Banche',
+			'bank'     => 'Banche',
 			'business' => 'Imprese',
 		],
-		'bank' => [
+		'bank'                  => [
 			'business' => 'Imprese',
 		],
 		'business'              => [
