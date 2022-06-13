@@ -144,44 +144,49 @@
 		</x-table.thead>
 		<x-table.tbody>
 			@forelse ($practices as $practice)
-			<tr @if($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
-				<x-table.td>{{$practice->applicant->user->user_data->name}}</x-table.td>
-				<x-table.td>{{$practice->id}}</x-table.td>
-				<x-table.td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</x-table.td>
-				<x-table.td>{{$practice->policy_name}}</x-table.td>
-				<x-table.td>{{$practice->practical_phase}}</x-table.td>
-				<x-table.td>{{$practice->month_processing}}</x-table.td>
-				<x-table.td>{{$practice->bonus}}</x-table.td>
-				<x-table.td>{{$practice->applicant->company_name}}</x-table.td>
-				<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
-				<x-table.td>
-					<div class="flex items-center space-x-3">
-						<a href="{{route('practice.edit', $practice) }}"
-						   class="text-indigo-600 hover:text-indigo-900">
-							<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
-						</a>
+				<tr @if($practice->applicant->company_name == '' || $practice->policy_name == '' ) class="new_practice" @endif>
+					<x-table.td>{{$practice->applicant->user->user_data->name}}</x-table.td>
+					<x-table.td>{{$practice->id}}</x-table.td>
+					<x-table.td>{{ date('d/m/Y', strtotime($practice->created_at)) }}</x-table.td>
+					<x-table.td>{{$practice->policy_name}}</x-table.td>
+					<x-table.td>{{$practice->practical_phase}}</x-table.td>
+					<x-table.td>{{$practice->month_processing}}</x-table.td>
+					<x-table.td>{{$practice->bonus}}</x-table.td>
+					<x-table.td>{{$practice->applicant->company_name}}</x-table.td>
+					<x-table.td>{{Money::format($practice->import) ?? '-'}}</x-table.td>
+					<x-table.td>
+						<div class="flex items-center space-x-3">
+							<a href="{{route('practice.edit', $practice) }}"
+							   class="text-indigo-600 hover:text-indigo-900">
+								<x-icon name="pencil-alt" class="w-5 h-5"></x-icon>
+							</a>
 
-						<x-modal>
-							<x-slot name="trigger">
-								<div class="text-red-600 hover:text-red-900">
-									<x-icon name="trash" class="w-5 h-5"></x-icon>
-								</div>
-							</x-slot>
-							<x-slot name="title">
-								Conferma eliminazione
-							</x-slot>
-							Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
-							<x-slot name="footer">
-								<x-link-button x-on:click="open = false">Annulla</x-link-button>
-								<x-danger-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
-								                 wire:loading.attr="disabled">
-									Elimina
-								</x-danger-button>
-							</x-slot>
-						</x-modal>
-					</div>
-				</x-table.td>
-			</tr>
+							<x-modal>
+								<x-slot name="trigger">
+									<div class="text-red-600 hover:text-red-900">
+										<x-icon name="trash" class="w-5 h-5"></x-icon>
+									</div>
+								</x-slot>
+								<x-slot name="title">
+									Conferma eliminazione
+								</x-slot>
+								Sei sicuro di voler eliminare la pratica n. {{ $practice->id }}?
+								<x-slot name="footer">
+									<x-link-button x-on:click="open = false">Annulla</x-link-button>
+									<x-danger-button class="ml-2" wire:click="deletePractice({{ $practice->id }})"
+									                 wire:loading.attr="disabled">
+										Elimina
+									</x-danger-button>
+								</x-slot>
+							</x-modal>
+							{{-- TODO: Visualizza solo se c'è il computo metrico --}}
+							<a href="#"
+							   class="text-indigo-600 hover:text-indigo-900">
+								<x-icon name="download" class="w-5 h-5"></x-icon>
+							</a>
+						</div>
+					</x-table.td>
+				</tr>
 			@empty
 				<tr>
 					<x-table.td colspan="10" class="text-center text-gray-500 py-4">Nessun risultato</x-table.td>

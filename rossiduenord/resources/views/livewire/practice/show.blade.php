@@ -14,6 +14,12 @@
 				</p>
 			</div>
 		</x-slot>
+		<x-slot name="actions">
+		{{-- TODO: Creazione del computo metrico --}}
+			<x-button type="button" x-on:click="Livewire.emit('openModal', 'modals.computo-metrico')">
+				Computo metrico
+			</x-button>
+		</x-slot>
 	</x-page-header>
 </x-slot>
 <x-card>
