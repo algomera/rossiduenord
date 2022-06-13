@@ -66,55 +66,55 @@
 
 		public function mount() {
 			$this->subject = $this->practice->subject;
-			$this->consultant_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->consultant_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 3);
 			})->get();
-			$this->lending_bank_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->lending_bank_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 4);
 			})->get();
-			$this->general_contractor_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->general_contractor_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 5);
 			})->get();
-			$this->construction_company_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->construction_company_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 6);
 			})->get();
-			$this->hydrothermal_sanitary_company_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->hydrothermal_sanitary_company_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 7);
 			})->get();
-			$this->photovoltaic_company_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->photovoltaic_company_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 8);
 			})->get();
-			$this->technician_APE_Ante_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->technician_APE_Ante_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 9);
 			})->get();
-			$this->structural_engineer_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->structural_engineer_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 10);
 			})->get();
-			$this->work_director_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->work_director_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 11);
 			})->get();
-			$this->technical_assev_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->technical_assev_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 12);
 			})->get();
-			$this->fiscal_assev_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->fiscal_assev_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 13);
 			})->get();
-			$this->phiscal_transferee_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->phiscal_transferee_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 15);
 			})->get();
-			$this->insurer_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->insurer_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 16);
 			})->get();
-			$this->area_manager_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->area_manager_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 17);
 			})->get();
-			$this->technician_energy_efficient_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->technician_energy_efficient_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 18);
 			})->get();
-			$this->technician_APE_Post_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->technician_APE_Post_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 19);
 			})->get();
-			$this->metric_calc_technician_list = auth()->user()->anagrafiche()->whereHas('roles', function ($q) {
+			$this->metric_calc_technician_list = Anagrafica::withParents()->whereHas('roles', function ($q) {
 				$q->where('subject_role_id', 20);
 			})->get();
 			$this->project_manager = $this->subject->project_manager;

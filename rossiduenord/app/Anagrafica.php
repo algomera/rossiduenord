@@ -9,8 +9,8 @@ class Anagrafica extends Model
     protected $guarded = [];
     protected $table = 'anagrafiche';
 
-	public function scopeWithParents($query, $ids) {
-		return $query->whereIn('user_id', $ids)->orWhere('user_id', auth()->id());
+	public function scopeWithParents($query) {
+		return $query->whereIn('user_id', auth()->user()->parents->pluck('id'))->orWhere('user_id', auth()->id());
 	}
 
     public function roles() {

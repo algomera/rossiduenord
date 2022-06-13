@@ -79,12 +79,12 @@
 				case 'fiscal_asseverator':
 				case 'bank':
 					$data = [
-						'total_practices'    => Practice::withParents(auth()->user()->parents->pluck('id'))->count(),
+						'total_practices'    => Practice::withParents()->count(),
 						'total_business'     => auth()->user()->parents()->role('business')->count(),
-						'total_import'       => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('import'),
-						'total_sal_1_import' => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('sal_1_import'),
-						'total_sal_2_import' => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('sal_2_import'),
-						'total_sal_f_import' => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('sal_f_import'),
+						'total_import'       => Practice::withParents()->sum('import'),
+						'total_sal_1_import' => Practice::withParents()->sum('sal_1_import'),
+						'total_sal_2_import' => Practice::withParents()->sum('sal_2_import'),
+						'total_sal_f_import' => Practice::withParents()->sum('sal_f_import'),
 						'months'             => $months,
 						'regions'            => $regions,
 					];
