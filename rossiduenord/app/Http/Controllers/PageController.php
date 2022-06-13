@@ -80,7 +80,7 @@
 				case 'bank':
 					$data = [
 						'total_practices'    => Practice::withParents(auth()->user()->parents->pluck('id'))->count(),
-						'total_business'     => auth()->user()->parents()->count(),
+						'total_business'     => auth()->user()->parents()->role('business')->count(),
 						'total_import'       => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('import'),
 						'total_sal_1_import' => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('sal_1_import'),
 						'total_sal_2_import' => Practice::withParents(auth()->user()->parents->pluck('id'))->sum('sal_2_import'),

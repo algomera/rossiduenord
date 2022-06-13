@@ -38,9 +38,9 @@
 					</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-3">
-							<x-icon name="eye" class="w-5 h-5 flex-shrink-0"
+							<x-icon name="eye" class="w-5 h-5 text-indigo-500 flex-shrink-0"
 							        wire:click="$emit('openModal', 'anagrafica.show', {{ json_encode([$anagrafica->id]) }})"></x-icon>
-							<x-icon name="pencil-alt" class="w-5 h-5 flex-shrink-0"
+							<x-icon name="pencil-alt" class="w-5 h-5 text-indigo-500 flex-shrink-0"
 							        wire:click="$emit('openModal', 'anagrafica.edit', {{ json_encode([$anagrafica->id]) }})"></x-icon>
 						</div>
 					</x-table.td>

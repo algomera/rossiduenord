@@ -2,6 +2,7 @@
 
 	namespace App\Http\Livewire\Anagrafica;
 
+	use App\Anagrafica;
 	use App\SubjectRole;
 	use App\User;
 	use Livewire\Component;
@@ -16,7 +17,7 @@
 		];
 
 		public function render() {
-			$this->anagrafiche = auth()->user()->anagrafiche;
+			$this->anagrafiche = Anagrafica::withParents(auth()->user()->parents)->get();
 			return view('livewire.anagrafica.index');
 		}
 	}
