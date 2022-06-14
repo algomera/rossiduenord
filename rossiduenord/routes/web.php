@@ -6,6 +6,7 @@
 		Http\Livewire\Anagrafica\Index as AnagraficaIndex,
 		Http\Livewire\Users\Index as UserIndex,
 		Http\Livewire\ContractualDocument\Index as ContractualDocumentIndex,
+		Http\Livewire\PriceList\Index as PriceListIndex,
 		Practice,
 		Condomini,
 		Photo,
@@ -54,6 +55,10 @@
 			// Documenti contrattuali
 			Route::name('contractual_documents.')->group(function() {
 				Route::get('/contractual_documents', [ContractualDocumentIndex::class, '__invoke'])->name('index');
+			});
+
+			Route::name('price_list.')->group(function() {
+				Route::get('/price_list', [PriceListIndex::class, '__invoke'])->name('index');
 			});
 
 			/* Scheda Pratica */

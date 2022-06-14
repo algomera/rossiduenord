@@ -9,6 +9,6 @@
 		protected $guarded = [];
 
 		public function price_row() {
-			return $this->hasMany(ComputoPriceListRow::class);
+			return $this->hasMany(ComputoPriceListRow::class, 'folder_id', 'id');
 		}
 	}

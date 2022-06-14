@@ -1,12 +1,6 @@
 <x-slot name="header">
 	<x-page-header>
 		Documenti Contrattuali
-		{{--		<x-slot name="actions">--}}
-		{{--			<x-button prepend="plus" iconColor="text-white"--}}
-		{{--			          x-on:click="Livewire.emit('openModal', 'anagrafica.create')">--}}
-		{{--				Aggiungi--}}
-		{{--			</x-button>--}}
-		{{--		</x-slot>--}}
 	</x-page-header>
 </x-slot>
 <x-card>
@@ -114,3 +108,7 @@
 		</x-table.tbody>
 	</x-table.table>
 </x-card>
+
+@push('notifications')
+	<x-notification/>
+@endpush

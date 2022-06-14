@@ -57,6 +57,13 @@ class Navigation extends Component
 				'icon' => 'document-text',
 				'permission' => 'access_contractual_documents'
 			],
+			[
+				'name' => 'Prezzari DEI',
+				'url' => route('price_list.index'),
+				'active' => $this->isActiveRoute('price_list*'),
+				'icon' => 'clipboard-list',
+				'permission' => 'access_price_list'
+			],
 		];
 	}
 
