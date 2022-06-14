@@ -6,7 +6,27 @@
 
 	class Computo extends Component
 	{
-		public $intervention_types = [];
+		public $intervention_types = [
+			[
+				'key'    => 'interventi_trainanti',
+				'label'  => 'Interventi Trainanti',
+				'childs' => [
+					[
+						'key'   => 'isolamento_termico',
+						'label' => 'Isolamento Termico'
+					],
+					[
+						'key'   => 'sostituzione_degli_impianti',
+						'label' => 'Sostituzione degli impianti'
+					],
+					[
+						'key'   => 'interventi_di_miglioramento_sismico',
+						'label' => 'Interventi di miglioramento sismico'
+					],
+				]
+			]
+		];
+		public $selectedTab = null;
 		public $selectedInterventionType = null;
 
 		public function render() {

@@ -25,6 +25,10 @@
 			$this->practice = $practice;
 		}
 
+		public function changeTab($tab) {
+			$this->selectedTab = $tab;
+		}
+
 		public function render() {
 			return view('livewire.practice.tabs.superbonus110.show');
 		}
