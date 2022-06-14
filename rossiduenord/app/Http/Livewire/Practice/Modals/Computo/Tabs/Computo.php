@@ -11,10 +11,6 @@
 		public $selectedTab = null;
 
 		public function mount() {
-
-		}
-
-		public function render() {
 			$folders = ComputoInterventionFolder::all();
 			foreach ($folders as $k => $folder) {
 				$this->intervention_types[$k] = $folder;
@@ -22,6 +18,9 @@
 					$this->intervention_types[$k]['childs'] = $folder->folders;
 				}
 			}
+		}
+
+		public function render() {
 			return view('livewire.practice.modals.computo.tabs.computo');
 		}
 	}

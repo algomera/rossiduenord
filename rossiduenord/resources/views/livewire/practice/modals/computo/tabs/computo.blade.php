@@ -1,10 +1,10 @@
 <x-card>
 	<div class="grid grid-cols-10 gap-4">
 		<div class="col-span-10 lg:col-span-2">
-			<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 flex flex-row overflow-x-auto lg:flex-col"
+			<nav wire:ignore class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 flex flex-row overflow-x-auto lg:flex-col"
 			     aria-label="Sidebar">
 				@foreach($intervention_types as $k => $intervention_type)
-					@if($intervention_type->childs)
+					@if(isset($intervention_type->childs))
 						<div wire:key="{{ $k }}" x-data="{open: false}">
 							<div @isset($intervention_type->childs) x-on:click="open = !open"
 							     @else wire:click="$set('selectedTab', '{{$intervention_type->id}}')" @endisset
@@ -18,7 +18,7 @@
 								@endisset
 							</div>
 							@endif
-							@if($intervention_type->childs)
+							@if(isset($intervention_type->childs))
 								<div x-show="open" x-collapse class="pl-2">
 									@foreach($intervention_type->childs as $kk => $child)
 										<div wire:click="$set('selectedTab', '{{ $child->id }}')"
