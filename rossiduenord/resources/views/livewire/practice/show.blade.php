@@ -16,7 +16,7 @@
 		</x-slot>
 		<x-slot name="actions">
 			@can('create_computo')
-				<x-button type="button" x-on:click="Livewire.emit('openModal', 'practice.modals.computo.computo')">
+				<x-button type="button" x-on:click="Livewire.emit('openModal', 'practice.modals.computo.show')">
 					Computo metrico
 				</x-button>
 			@endcan

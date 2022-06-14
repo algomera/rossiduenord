@@ -25,13 +25,13 @@
 	<x-card>
 		@switch($selectedTab)
 			@case('computo')
-				Computo tab
+				<livewire:practice.modals.computo.tabs.computo/>
 				@break
 			@case('fees')
-				IVA e spese professionali tab
+				<livewire:practice.modals.computo.tabs.fees/>
 				@break
 			@case('recap')
-				Riepilogo massimali tab
+				<livewire:practice.modals.computo.tabs.recap/>
 				@break
 		@endswitch
 	</x-card>

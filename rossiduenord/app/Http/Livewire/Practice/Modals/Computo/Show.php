@@ -4,7 +4,7 @@
 
 	use LivewireUI\Modal\ModalComponent;
 
-	class Computo extends ModalComponent
+	class Show extends ModalComponent
 	{
 		public $tabs = [
 			'computo'  => 'Computo Metrico',
@@ -22,6 +22,6 @@
 		}
 
 		public function render() {
-			return view('livewire.practice.modals.computo.computo');
+			return view('livewire.practice.modals.computo.show');
 		}
 	}
