@@ -9,20 +9,19 @@
 	{
 		public $intervention_types = [];
 		public $selectedTab = null;
-		public $selectedInterventionType = null;
 
 		public function mount() {
-			$folders = ComputoInterventionFolder::all();
-			foreach ($folders as $folder) {
-				if($folder->parent_id !== null) {
-					$this->intervention_types[$folder->parent_id]['childs'][] = $folder->name;
-				} else {
-					$this->intervention_types[$folder->id]['label'] = $folder->name;
-				}
-			}
+
 		}
 
 		public function render() {
+			$folders = ComputoInterventionFolder::all();
+			foreach ($folders as $k => $folder) {
+				$this->intervention_types[$k] = $folder;
+				if ($folder->folders->count()) {
+					$this->intervention_types[$k]['childs'] = $folder->folders;
+				}
+			}
 			return view('livewire.practice.modals.computo.tabs.computo');
 		}
 	}
