@@ -12,8 +12,14 @@
 				'label'  => 'Interventi Trainanti',
 				'childs' => [
 					[
-						'key'   => 'isolamento_termico',
-						'label' => 'Isolamento Termico'
+						'key'    => 'isolamento_termico',
+						'label'  => 'Isolamento Termico',
+						'childs' => [
+							[
+								'key'   => 'child_1',
+								'label' => 'Child 1'
+							],
+						],
 					],
 					[
 						'key'   => 'sostituzione_degli_impianti',
