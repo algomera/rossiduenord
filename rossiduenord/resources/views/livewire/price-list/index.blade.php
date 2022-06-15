@@ -1,6 +1,12 @@
 <x-slot name="header">
 	<x-page-header>
 		Prezzari DEI
+		<x-slot name="actions">
+			<x-button prepend="plus" iconColor="text-white"
+			          x-on:click="Livewire.emit('openModal', 'price-list.create')">
+				Crea nuovo
+			</x-button>
+		</x-slot>
 	</x-page-header>
 </x-slot>
 <x-card>
@@ -57,7 +63,7 @@
 										</x-danger-button>
 									@endcan
 								@endif
-							</div>
+						</div>
 						@endcan
 						</div>
 					</x-table.td>
