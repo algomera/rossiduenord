@@ -8,6 +8,7 @@ use App\{Anagrafica, Applicant, Document, Practice, Photo, Video, Sub_folder};
 use App\Http\Resources\AnagraficheResource;
 use App\Http\Resources\PhotoResource;
 use App\Http\Resources\PracticeResource;
+use Illuminate\Support\Facades\Storage;
 
 class ApiController extends Controller
 {
@@ -48,12 +49,12 @@ class ApiController extends Controller
     {
         $user = Auth::user()->id;
         $practice = Practice::where('user_id', $user)->pluck('id');
-        $photos = Photo::where('practice_id', $practice)->get(); 
-        
+        $photos = Photo::where('practice_id', $practice)->get();
+
         return PhotoResource::collection($photos);
     }
 
-    public function create_photo(Request $request) 
+    public function create_photo(Request $request)
     {
         $validated = $request->validate([
             'practice_id' => 'required',
@@ -76,8 +77,8 @@ class ApiController extends Controller
     {
         $user = Auth::user()->id;
         $practice = Practice::where('user_id', $user)->pluck('id');
-        $videos = Video::where('practice_id', $practice)->get(); 
-        
+        $videos = Video::where('practice_id', $practice)->get();
+
         return response()->json([
             'status' => 200,
             'video' => $videos
@@ -106,20 +107,20 @@ class ApiController extends Controller
     public function get_anagrafiche()
     {
         $user = Auth::user()->id;
-        $anagrafiche = Anagrafica::where('user_id', $user)->get(); 
+        $anagrafiche = Anagrafica::where('user_id', $user)->get();
         return AnagraficheResource::collection($anagrafiche);
     }
 
-    public function get_ape()
+    public function get_ape(Request $request)
     {
-        $user = Auth::user()->id;
-        $practice = Practice::where('user_id', $user)->pluck('id');
-        $sub_folder = Sub_folder::where('practice_id', $practice)->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->pluck('id'); 
-        $ape = Document::where('practice_id', $practice)->where('sub_folder_id', $sub_folder)->get();
+        $practice_id = $request->get('practice_id');
+        $practice = Practice::find($practice_id);
+        $sub_folder = $practice->sub_folder()->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->first();
+        $ape = $sub_folder->documents()->first()->pluck('allega');
 
         return response()->json([
             'status' => 200,
-            'subFolder' => $ape
+            'document_link' => Storage::url($ape[0])
         ], 200);
 
     }
