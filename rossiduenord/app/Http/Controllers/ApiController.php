@@ -9,6 +9,7 @@ use App\Http\Resources\AnagraficheResource;
 use App\Http\Resources\PhotoResource;
 use App\Http\Resources\PracticeResource;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
@@ -113,15 +114,21 @@ class ApiController extends Controller
 
     public function get_ape(Request $request)
     {
+        dd($_SERVER['SERVER_NAME']);
         $practice_id = $request->get('practice_id');
         $practice = Practice::find($practice_id);
         $sub_folder = $practice->sub_folder()->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->first();
         $ape = $sub_folder->documents()->first()->pluck('allega');
 
-        return response()->json([
-            'status' => 200,
-            'document_link' => Storage::url($ape[0])
-        ], 200);
+        if(Storage::url($ape[0])){
+            return response()->json([
+                'status' => 200,
+                'document_link' => 'https://creditiprime.it/storage/' . $ape[0]
+            ], 200);
+        }else{
+            print('no document');
+            log('no document');
+        }
 
     }
 }
