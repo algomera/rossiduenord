@@ -123,7 +123,7 @@ class ApiController extends Controller
         if(Storage::url($ape[0])){
             return response()->json([
                 'status' => 200,
-                'document_link' => $_SERVER['SERVER_NAME'] . '/storage/' . $ape[0]
+                'document_link' => 'https://' . $_SERVER['SERVER_NAME'] . '/storage/' . $ape[0]
             ], 200);
         }else{
             print('no document');
