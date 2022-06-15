@@ -114,7 +114,7 @@ class ApiController extends Controller
 
     public function get_ape(Request $request)
     {
-        dd($_SERVER['SERVER_NAME']);
+        //dd($_SERVER['SERVER_NAME']);
         $practice_id = $request->get('practice_id');
         $practice = Practice::find($practice_id);
         $sub_folder = $practice->sub_folder()->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->first();
@@ -123,7 +123,7 @@ class ApiController extends Controller
         if(Storage::url($ape[0])){
             return response()->json([
                 'status' => 200,
-                'document_link' => 'https://creditiprime.it/storage/' . $ape[0]
+                'document_link' => $_SERVER['SERVER_NAME'] . '/storage/' . $ape[0]
             ], 200);
         }else{
             print('no document');
