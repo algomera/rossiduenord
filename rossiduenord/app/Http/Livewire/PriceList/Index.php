@@ -32,7 +32,8 @@
 				foreach ($p as $k => $item) {
 					$extension = explode('.', $item->getClientOriginalName())[1];
 					$filename = pathinfo($item->getClientOriginalName(), PATHINFO_FILENAME);
-					$path = $item->storeAs('price_lists', $filename . '.' . $extension);
+					$user = auth()->user()->isAdmin() ? 'common' : auth()->user()->id;
+					$path = $item->storeAs('price_lists/'. $user .'/' . $id, $filename . '.' . $extension);
 					$spreadsheet = $reader->load(Storage::disk('public')->path($path));
 					$worksheet = $spreadsheet->getActiveSheet();
 					$data = [];
@@ -47,7 +48,7 @@
 					foreach ($data as $d) {
 						$a = explode('.', $d[0]);
 						if (isset($a[0])) {
-							$first_lvl = ComputoPriceListRow::where('code', $a[0])->first() ?: ComputoPriceListRow::create([
+							$first_lvl = ComputoPriceListRow::where('code', $a[0])->where('folder_id', $id)->first() ?: ComputoPriceListRow::create([
 								'parent_id'         => null,
 								'folder_id'         => $id,
 								'code'              => $d[0],
@@ -60,7 +61,7 @@
 							]);
 						}
 						if (isset($a[1])) {
-							$second_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1])->first() ?: ComputoPriceListRow::create([
+							$second_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1])->where('folder_id', $id)->first() ?: ComputoPriceListRow::create([
 								'parent_id'         => $first_lvl->id,
 								'folder_id'         => $id,
 								'code'              => $d[0],
@@ -73,7 +74,7 @@
 							]);
 						}
 						if (isset($a[2])) {
-							$third_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2])->first() ?: ComputoPriceListRow::create([
+							$third_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2])->where('folder_id', $id)->first() ?: ComputoPriceListRow::create([
 								'parent_id'         => $second_lvl->id,
 								'folder_id'         => $id,
 								'code'              => $d[0],
@@ -86,7 +87,7 @@
 							]);
 						}
 						if (isset($a[3])) {
-							$fourth_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2] . '.' . $a[3])->first() ?: ComputoPriceListRow::create([
+							$fourth_lvl = ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2] . '.' . $a[3])->where('folder_id', $id)->first() ?: ComputoPriceListRow::create([
 								'parent_id'         => $third_lvl->id,
 								'folder_id'         => $id,
 								'code'              => $d[0],
@@ -99,7 +100,7 @@
 							]);
 						}
 						if (isset($a[4])) {
-							ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2] . '.' . $a[3] . '.' . $a[4])->first() ?: ComputoPriceListRow::create([
+							ComputoPriceListRow::where('code', $a[0] . '.' . $a[1] . '.' . $a[2] . '.' . $a[3] . '.' . $a[4])->where('folder_id', $id)->first() ?: ComputoPriceListRow::create([
 								'parent_id'         => $fourth_lvl->id,
 								'folder_id'         => $id,
 								'code'              => $d[0],

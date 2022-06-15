@@ -4,7 +4,7 @@
 		<x-slot name="actions">
 			<x-button prepend="plus" iconColor="text-white"
 			          x-on:click="Livewire.emit('openModal', 'price-list.create')">
-				Crea nuovo
+				Nuovo
 			</x-button>
 		</x-slot>
 	</x-page-header>
