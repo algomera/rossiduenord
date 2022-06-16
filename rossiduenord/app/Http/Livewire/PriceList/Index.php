@@ -126,7 +126,9 @@
 		public function delete($id) {
 			$this->authorize('delete_price_list');
 			$price_list = ComputoPriceList::find($id);
-			$price_list->delete();
+			if(auth()->user()->isAdmin() || $price_list->user_id === auth()->user()->id) {
+				$price_list->delete();
+			}
 			$this->emit('document-removed');
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Eliminazione'),
@@ -135,7 +137,11 @@
 		}
 
 		public function render() {
-			$this->price_lists = ComputoPriceList::all();
+			if(auth()->user()->isAdmin()) {
+			$this->price_lists = ComputoPriceList::where('user_id', null)->get();
+			} else {
+				$this->price_lists = ComputoPriceList::where('user_id', auth()->user()->id)->get();
+			}
 			return view('livewire.price-list.index');
 		}
 	}
