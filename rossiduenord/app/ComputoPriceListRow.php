@@ -13,6 +13,6 @@
 		}
 
 		public function parent() {
-			return $this->belongsTo(ComputoPriceList::class, 'parent_id', 'id');
+			return $this->belongsTo(self::class, 'parent_id');
 		}
 	}
