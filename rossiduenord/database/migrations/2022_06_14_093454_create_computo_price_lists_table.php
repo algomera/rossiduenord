@@ -15,8 +15,8 @@ class CreateComputoPriceListsTable extends Migration
     {
         Schema::create('computo_price_lists', function (Blueprint $table) {
 			$table->id();
-	        $table->bigInteger('parent_id')->nullable()->unsigned();
-	        $table->foreign('parent_id')->references('id')->on('computo_price_lists')->onDelete('cascade');
+	        $table->bigInteger('user_id')->nullable()->unsigned();
+	        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 	        $table->string('code')->nullable();
 			$table->string('name');
             $table->timestamps();

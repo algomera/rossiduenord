@@ -1,15 +1,18 @@
 <x-slot name="header">
 	<x-page-header>
 		Prezzari DEI
-		<x-slot name="actions">
-			<x-button prepend="plus" iconColor="text-white"
-			          x-on:click="Livewire.emit('openModal', 'price-list.create')">
-				Nuovo
-			</x-button>
-		</x-slot>
+		@can('create_price_lists')
+			<x-slot name="actions">
+				<x-button prepend="plus" iconColor="text-white"
+				          x-on:click="Livewire.emit('openModal', 'price-list.create')">
+					Nuovo
+				</x-button>
+			</x-slot>
 	</x-page-header>
+	@endcan
 </x-slot>
 <x-card>
+	<p class="text-blue-400 italic text-sm">Per ogni prezzario, carica TUTTI documenti in una sola volta</p>
 	<x-table.table>
 		<x-table.thead>
 			<tr>
@@ -25,9 +28,9 @@
 					<x-table.td class="w-full">{{ $price_list->name }}</x-table.td>
 					<x-table.td>
 						<div class="flex items-center space-x-5">
-							@can(['upload_price_list', 'delete_price_list'])
+							@can(['upload_price_lists', 'delete_price_lists'])
 								@if($price_list->price_row->count() === 0)
-									@can('upload_price_list')
+									@can('upload_price_lists')
 										@isset($uploaded_price_lists[$price_lists[$loop->index]->id])
 											@if($uploaded_price_lists[$price_lists[$loop->index]->id])
 												<x-button type="button"
@@ -55,12 +58,30 @@
 										@endisset
 									@endcan
 								@else
-									@can('delete_price_list')
-										<x-danger-button type="button"
-										                 wire:click="delete({{ $price_lists[$loop->index]->id }})"
-										                 size="xs">
-											<x-icon name="trash" class="w-4 h-4 text-white"></x-icon>
-										</x-danger-button>
+									@can('delete_price_lists')
+
+										<x-modal type="warning">
+											<x-slot name="trigger">
+												<x-danger-button type="button" size="xs">
+													<x-icon name="trash" class="w-4 h-4 text-white"></x-icon>
+												</x-danger-button>
+											</x-slot>
+											<x-slot name="title">
+												Conferma eliminazione
+											</x-slot>
+											<div>
+												<p>Sei sicuro di voler eliminare il prezzario?</p>
+												<strong>Il prezzario e le voci collegate presenti nelle pratiche saranno eliminate definitivamente!</strong>
+											</div>
+											<x-slot name="footer">
+												<x-link-button x-on:click="open = false">Annulla</x-link-button>
+												<x-danger-button class="ml-2"
+												                 wire:click="delete({{ $price_lists[$loop->index]->id }})"
+												                 wire:loading.attr="disabled">
+													Elimina definitivamente
+												</x-danger-button>
+											</x-slot>
+										</x-modal>
 									@endcan
 								@endif
 						</div>

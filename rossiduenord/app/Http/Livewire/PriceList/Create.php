@@ -14,6 +14,7 @@
 
 		public function save() {
 			ComputoPriceList::create([
+				'user_id' => auth()->user()->isAdmin() ? null : auth()->user()->id,
 				'name' => $this->name
 			]);
 

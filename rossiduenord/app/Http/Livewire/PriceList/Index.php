@@ -129,7 +129,7 @@
 			$price_list->delete();
 			$this->emit('document-removed');
 			$this->dispatchBrowserEvent('open-notification', [
-				'title'    => __('Rimozione'),
+				'title'    => __('Eliminazione'),
 				'subtitle' => __('Il prezzario è stato eliminato con successo!')
 			]);
 		}

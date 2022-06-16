@@ -62,7 +62,7 @@ class Navigation extends Component
 				'url' => route('price_list.index'),
 				'active' => $this->isActiveRoute('price_list*'),
 				'icon' => 'clipboard-list',
-				'permission' => 'access_price_list'
+				'permission' => 'access_price_lists'
 			],
 		];
 	}

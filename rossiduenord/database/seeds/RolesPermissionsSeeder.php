@@ -108,6 +108,11 @@
 				'upload_contractual_documents',
 				'download_contractual_documents',
 				'delete_contractual_documents',
+				// Price Lists
+				'access_price_lists',
+				'create_price_lists',
+				'upload_price_lists',
+				'delete_price_lists',
 			];
 			foreach ($permissions as $permission) {
 				Permission::create([
@@ -144,6 +149,11 @@
 				'upload_contractual_documents',
 				'download_contractual_documents',
 				'delete_contractual_documents',
+				// Price Lists
+				'access_price_lists',
+				'create_price_lists',
+				'upload_price_lists',
+				'delete_price_lists',
 			]);
 			// Bank base permissions
 			$bank->givePermissionTo([
