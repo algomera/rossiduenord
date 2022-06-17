@@ -12,14 +12,34 @@
 	</div>
 	<div class="col-span-10 lg:col-span-8">
 		<div class="bg-white">
-			Prezzario selezionato: {{ $selectedPriceList }}
-			<br>
-			Cartella selezionata: {{ $selected }}
-			<br>
-			Voce selezionata: {{ $selectedLeaf }}
-			@foreach($price_list_rows as $row)
-				<p wire:click="$set('selectedLeaf', {{ $row->id }})">{{ $row->code }}</p>
-			@endforeach
+			@if($selected)
+			<x-table.table>
+				<x-table.thead>
+					<x-table.th>Codice E.P.</x-table.th>
+					<x-table.th>Descrizione</x-table.th>
+					<x-table.th>U.M.</x-table.th>
+					<x-table.th>Prezzo</x-table.th>
+					<x-table.th>% Mat.</x-table.th>
+				</x-table.thead>
+				<x-table.tbody>
+					@foreach($price_list_rows as $k => $row)
+					<tr wire:key="{{ $k }}-{{ $row->id }}" wire:click="$set('selectedLeaf', {{ $row->id }})">
+						<x-table.td>
+							<div class="w-40">
+								{{ $row->code }}
+							</div>
+						</x-table.td>
+						<x-table.td>{{ $row->short_description }}</x-table.td>
+						<x-table.td>{{ $row->um }}</x-table.td>
+						<x-table.td>{{ $row->price }}</x-table.td>
+						<x-table.td>{{ $row->mat }}</x-table.td>
+					</tr>
+					@endforeach
+				</x-table.tbody>
+			</x-table.table>
+			@else
+				asd
+			@endif
 		</div>
 	</div>
 </div>
