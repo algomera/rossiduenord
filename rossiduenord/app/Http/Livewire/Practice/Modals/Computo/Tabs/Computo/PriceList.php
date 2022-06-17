@@ -23,13 +23,15 @@
 
 		public function updatingSelectedPriceList() {
 			$this->selected = null;
+			$this->price_list_rows = [];
 		}
 
 		public function render() {
-			$items = ComputoPriceListRow::tree(3)->get();
+			$items = ComputoPriceListRow::where('folder_id', $this->selectedPriceList)->tree(3)->get();
 			$this->tree = $items->toTree();
-			$this->price_list_rows = ComputoPriceListRow::where('parent_id', $this->selected)->get();
-
+			if ($this->selected) {
+				$this->price_list_rows = ComputoPriceListRow::where('parent_id', $this->selected)->get();
+			}
 			return view('livewire.practice.modals.computo.tabs.computo.price-list');
 		}
 	}

@@ -2,7 +2,7 @@
 	<div class="col-span-10 lg:col-span-2">
 		<x-select wire:model="selectedPriceList" name="price_list" id="price_list">
 			@foreach($price_lists as $k => $price_list)
-				<option wire:key="{{$k}}" value="{{$price_list->id}}">{{$price_list->name}}</option>
+				<option  wire:ignore wire:key="{{$price_list->id}}" value="{{$price_list->id}}">{{$price_list->name}}</option>
 			@endforeach
 		</x-select>
 		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 flex flex-row overflow-x-auto lg:flex-col"
