@@ -13,8 +13,8 @@
 		public function run() {
 			$folders = [
 				[
-					'name'   => 'Interventi Trainanti',
-					'childs' => [
+					'name'     => 'Interventi Trainanti',
+					'children' => [
 						[
 							'name' => 'Isolamento Termico',
 						],
@@ -27,8 +27,8 @@
 					],
 				],
 				[
-					'name'   => 'Interventi Trainati',
-					'childs' => [
+					'name'     => 'Interventi Trainati',
+					'children' => [
 						[
 							'name' => 'Isolamento Termico',
 						],
@@ -72,9 +72,10 @@
 				$f = ComputoInterventionFolder::create([
 					'name' => $folder['name']
 				]);
-				foreach ($folder['childs'] as $child) {
-					$f->folders()->create([
-						'name' => $child['name']
+				foreach ($folder['children'] as $child) {
+					ComputoInterventionFolder::create([
+						'parent_id' => $f->id,
+						'name'      => $child['name']
 					]);
 				}
 			}

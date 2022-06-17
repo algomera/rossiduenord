@@ -15,8 +15,7 @@ class CreateComputoInterventionFoldersTable extends Migration
     {
         Schema::create('computo_intervention_folders', function (Blueprint $table) {
             $table->id();
-	        $table->bigInteger('parent_id')->nullable()->unsigned();
-	        $table->foreign('parent_id')->references('id')->on('computo_intervention_folders')->onDelete('cascade');
+	        $table->unsignedBigInteger('parent_id')->nullable();
 			$table->string('name')->nullable();
             $table->timestamps();
         });

@@ -11,13 +11,8 @@
 		public $selected = null;
 
 		public function mount() {
-			$folders = ComputoInterventionFolder::all();
-			foreach ($folders as $k => $folder) {
-				$this->tree[$k] = $folder;
-				if ($folder->folders->count()) {
-					$this->tree[$k]['childs'] = $folder->folders;
-				}
-			}
+			$items = ComputoInterventionFolder::tree()->get();
+			$this->tree = $items->toTree();
 		}
 
 		public function render() {
