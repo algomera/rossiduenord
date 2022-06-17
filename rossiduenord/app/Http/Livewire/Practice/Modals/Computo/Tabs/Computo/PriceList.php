@@ -12,6 +12,7 @@
 		public $tree = [];
 		public $selected = null;
 		public $selectedPriceList;
+		public $selectedLeaf = null;
 		public $price_list_rows = [];
 
 		public function mount() {
@@ -23,6 +24,11 @@
 
 		public function updatingSelectedPriceList() {
 			$this->selected = null;
+			$this->selectedLeaf = null;
+			$this->price_list_rows = [];
+		}
+		public function updatingSelected() {
+			$this->selectedLeaf = null;
 			$this->price_list_rows = [];
 		}
 

@@ -7,18 +7,18 @@
 		</x-select>
 		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 flex flex-row overflow-x-auto lg:flex-col"
 		     aria-label="Sidebar">
-			<x-computo-folder-loop :items="$tree" :selected="$selected"></x-computo-folder-loop>
+			<x-price-list-folder-loop :items="$tree" :selected="$selected"></x-price-list-folder-loop>
 		</nav>
 	</div>
 	<div class="col-span-10 lg:col-span-8">
 		<div class="bg-white">
 			Prezzario selezionato: {{ $selectedPriceList }}
 			<br>
-			Voce selezionata: {{ $selected }}
-			----
+			Cartella selezionata: {{ $selected }}
 			<br>
+			Voce selezionata: {{ $selectedLeaf }}
 			@foreach($price_list_rows as $row)
-				<p>{{ $row->code }}</p>
+				<p wire:click="$set('selectedLeaf', {{ $row->id }})">{{ $row->code }}</p>
 			@endforeach
 		</div>
 	</div>
