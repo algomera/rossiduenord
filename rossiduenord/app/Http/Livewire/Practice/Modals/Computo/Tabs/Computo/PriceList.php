@@ -12,6 +12,7 @@
 		public $tree = [];
 		public $selected = null;
 		public $selectedPriceList;
+		public $price_list_rows = [];
 
 		public function mount() {
 			$this->price_lists = ComputoPriceList::where('user_id', null)->orWhere('user_id', auth()->user()->id)->get();
@@ -25,6 +26,10 @@
 		}
 
 		public function render() {
+			$items = ComputoPriceListRow::tree(3)->get();
+			$this->tree = $items->toTree();
+			$this->price_list_rows = ComputoPriceListRow::where('parent_id', $this->selected)->get();
+
 			return view('livewire.practice.modals.computo.tabs.computo.price-list');
 		}
 	}

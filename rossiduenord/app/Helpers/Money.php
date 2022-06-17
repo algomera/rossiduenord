@@ -1,6 +1,7 @@
 <?php
 
 	namespace App\Helpers;
+
 	use NumberFormatter;
 
 	class Money
@@ -12,7 +13,6 @@
 		public static function prepare($value) {
 			$value = str_replace('.', '', $value);
 			$value = str_replace(',', '.', $value);
-
 			return $value;
 		}
 	}

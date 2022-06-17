@@ -15,8 +15,7 @@ class CreateComputoPriceListRowsTable extends Migration
     {
         Schema::create('computo_price_list_rows', function (Blueprint $table) {
             $table->id();
-	        $table->bigInteger('parent_id')->nullable()->unsigned();
-	        $table->foreign('parent_id')->references('id')->on('computo_price_list_rows')->onDelete('cascade');
+	        $table->unsignedBigInteger('parent_id')->nullable();
 	        $table->bigInteger('folder_id')->nullable()->unsigned();
 	        $table->foreign('folder_id')->references('id')->on('computo_price_lists')->onDelete('cascade');
 			$table->string('code')->nullable();

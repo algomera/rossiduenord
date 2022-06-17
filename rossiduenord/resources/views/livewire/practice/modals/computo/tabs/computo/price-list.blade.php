@@ -7,7 +7,7 @@
 		</x-select>
 		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-2 flex flex-row overflow-x-auto lg:flex-col"
 		     aria-label="Sidebar">
-			lista
+			<x-computo-folder-loop :items="$tree" :selected="$selected"></x-computo-folder-loop>
 		</nav>
 	</div>
 	<div class="col-span-10 lg:col-span-8">
@@ -15,6 +15,11 @@
 			Prezzario selezionato: {{ $selectedPriceList }}
 			<br>
 			Voce selezionata: {{ $selected }}
+			----
+			<br>
+			@foreach($price_list_rows as $row)
+				<p>{{ $row->code }}</p>
+			@endforeach
 		</div>
 	</div>
 </div>
