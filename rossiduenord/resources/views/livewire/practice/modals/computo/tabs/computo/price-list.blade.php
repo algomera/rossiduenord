@@ -1,4 +1,4 @@
-<div class="grid grid-cols-10 gap-4 h-[70%] overflow-hidden">
+<div class="grid grid-cols-10 gap-4 overflow-hidden border-t pt-4">
 	<div class="col-span-10 lg:col-span-2 border-r pr-4">
 		<x-select wire:model="selectedPriceList" name="price_list" id="price_list">
 			@foreach($price_lists as $k => $price_list)
