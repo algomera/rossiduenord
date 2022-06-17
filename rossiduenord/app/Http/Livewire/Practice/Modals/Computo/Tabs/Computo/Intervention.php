@@ -13,6 +13,7 @@
 		public function mount() {
 			$items = ComputoInterventionFolder::tree()->get();
 			$this->tree = $items->toTree();
+			$this->selected = 2;
 		}
 
 		public function render() {
