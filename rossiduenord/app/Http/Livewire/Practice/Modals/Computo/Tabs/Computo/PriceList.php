@@ -32,6 +32,11 @@
 			$this->price_list_rows = [];
 		}
 
+		public function selectLeaf($row) {
+			$this->selectedLeaf = $row['id'];
+			$this->emit('openModal', 'practice.modals.computo.tabs.computo.add-details', ["row" => $row['id']]);
+		}
+
 		public function render() {
 			$items = ComputoPriceListRow::where('folder_id', $this->selectedPriceList)->tree(3)->get();
 			$this->tree = $items->toTree();
