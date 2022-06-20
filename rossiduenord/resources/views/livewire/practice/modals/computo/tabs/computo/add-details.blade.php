@@ -85,3 +85,11 @@
 		</div>
 	</div>
 </x-card>
+<div class="fixed bottom-0 inset-x-0 border-t w-full py-2 px-4 flex items-center justify-between">
+	<div>
+		<x-button prepend="plus" iconColor="text-white">Dettaglio</x-button>
+	</div>
+	<div class="flex items-center space-x-3">
+		<x-button wire:click="$emit('closeModal')">Salva ed esci</x-button>
+	</div>
+</div>

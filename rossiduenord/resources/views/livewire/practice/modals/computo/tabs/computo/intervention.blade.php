@@ -10,7 +10,7 @@
 			<x-table.table>
 				<x-table.thead>
 					<tr class="divide-x divide-gray-200">
-						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Num.</x-table.th>
+						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">N.</x-table.th>
 						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Prezzario</x-table.th>
 						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Codice E.P.</x-table.th>
 						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Descrizione</x-table.th>
