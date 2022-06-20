@@ -1,95 +1,125 @@
-<x-card class="p-4">
-	<div class="grid grid-cols-10 gap-8">
-		<div class="col-span-10 lg:col-span-2">
-			<div class="flex flex-col space-y-3">
-				<div class="flex items-center justify-between">
-					<span class="text-sm font-medium text-gray-500">Num. prog.</span>
-					<span class="text-sm font-semibold text-gray-900">{{ $progressive_number }}</span>
-				</div>
-				<div class="flex items-center justify-between">
-					<span class="text-sm font-medium text-gray-500">U.M.</span>
-					<span class="text-sm font-semibold text-gray-900">{{ $row->um }}</span>
-				</div>
-				<div class="flex items-center justify-between">
-					<span class="text-sm font-medium text-gray-500">Prezzo un.</span>
-					<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->price) }}</span>
-				</div>
-				<div class="flex items-center justify-between">
-					<span class="text-sm font-medium text-gray-500">Sconto un.</span>
-					<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->mat) }}</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-span-10 lg:col-span-8">
-			<div class="flex flex-col space-y-3">
-				<div class="flex items-center space-x-4">
-					<span class="text-sm font-medium text-gray-500">Codice E.P.</span>
-					<span class="text-sm font-semibold text-gray-900">{{ strtoupper($row->code) }}</span>
-				</div>
-				<div class="flex flex-col">
-					<span class="text-sm font-medium text-gray-500">Descrizione E.P.</span>
-					<div class="text-sm text-gray-900">
-						{{ $row->parent->short_description }}<br>{{ $row->short_description }}
+<div>
+	<x-card class="p-4">
+		<div class="grid grid-cols-10 gap-8">
+			<div class="col-span-10 lg:col-span-2">
+				<div class="flex flex-col space-y-3">
+					<div class="flex items-center justify-between">
+						<span class="text-sm font-medium text-gray-500">Num. prog.</span>
+						<span class="text-sm font-semibold text-gray-900">{{ $progressive_number }}</span>
 					</div>
-				</div>
-				<hr>
-				<div class="flex flex-col">
-					<span class="text-sm font-medium text-gray-500">Selected Intervention</span>
-					<div class="text-sm text-gray-900">
-                        {{ $selectedIntervention }}
+					<div class="flex items-center justify-between">
+						<span class="text-sm font-medium text-gray-500">U.M.</span>
+						<span class="text-sm font-semibold text-gray-900">{{ $row->um }}</span>
 					</div>
-				</div>
-				<div class="flex flex-col">
-					<span class="text-sm font-medium text-gray-500">Selected Leaf</span>
-					<div class="text-sm text-gray-900">
-						{{ $row['id'] }}
+					<div class="flex items-center justify-between">
+						<span class="text-sm font-medium text-gray-500">Prezzo un.</span>
+						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->price) }}</span>
 					</div>
-				</div>
-				<div class="flex flex-col">
-					<span class="text-sm font-medium text-gray-500">Practice ID</span>
-					<div class="text-sm text-gray-900">
-						{{ $practice_id }}
+					<div class="flex items-center justify-between">
+						<span class="text-sm font-medium text-gray-500">Sconto un.</span>
+						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->mat) }}</span>
 					</div>
 				</div>
 			</div>
+			<div class="col-span-10 lg:col-span-8">
+				<div class="flex flex-col space-y-3">
+					<div class="flex items-center space-x-4">
+						<span class="text-sm font-medium text-gray-500">Codice E.P.</span>
+						<span class="text-sm font-semibold text-gray-900">{{ strtoupper($row->code) }}</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-sm font-medium text-gray-500">Descrizione E.P.</span>
+						<div class="text-sm text-gray-900">
+							{{ $row->parent->short_description }}<br>{{ $row->short_description }}
+						</div>
+					</div>
+					<hr>
+					<div class="flex flex-col">
+						<span class="text-sm font-medium text-gray-500">Selected Intervention</span>
+						<div class="text-sm text-gray-900">
+							{{ $selectedIntervention }}
+						</div>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-sm font-medium text-gray-500">Selected Leaf</span>
+						<div class="text-sm text-gray-900">
+							{{ $row['id'] }}
+						</div>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-sm font-medium text-gray-500">Practice ID</span>
+						<div class="text-sm text-gray-900">
+							{{ $practice_id }}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<hr class="my-3">
-	<div class="grid grid-cols-10 gap-4">
-		<div class="col-span-10 lg:col-span-10">
-			<div class="bg-white">
+		<hr class="my-3">
+		<div class="grid grid-cols-10 gap-4">
+			<div class="col-span-10 lg:col-span-10">
 				<x-table.table>
 					<x-table.thead>
-						<tr>
-							<x-table.th>N.</x-table.th>
-							<x-table.th>Commento</x-table.th>
-							<x-table.th>Espressione</x-table.th>
-							<x-table.th>NPS</x-table.th>
-							<x-table.th>Lunghezza</x-table.th>
-							<x-table.th>Larghezza</x-table.th>
-							<x-table.th>H-P-S</x-table.th>
-							<x-table.th>Totale</x-table.th>
+						<tr class="divide-x divide-gray-200">
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">N.</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Commento</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Espressione
+							</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">NPS</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Lunghezza</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Larghezza</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">H-P-S</x-table.th>
+							<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">Totale</x-table.th>
 						</tr>
 					</x-table.thead>
 					<x-table.tbody>
 						@foreach($details as $k => $detail)
-							<tr>
-								<x-table.td>{{ $loop->index + 1 }}</x-table.td>
-							</tr>
+							@foreach($detail->details as $d)
+								<tr class="divide-x divide-gray-200">
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $loop->index + 1 }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $d->note }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 uppercase">
+										{{ $d->expression }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $d->nps }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $d->length }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $d->width }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										{{ $d->hps }}
+									</x-table.td>
+									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+										---
+									</x-table.td>
+								</tr>
+							@endforeach
 						@endforeach
 					</x-table.tbody>
 				</x-table.table>
+				<br>
 				<hr>
 				Totali vari
 			</div>
 		</div>
-	</div>
-</x-card>
-<div class="fixed bottom-0 inset-x-0 border-t w-full py-2 px-4 flex items-center justify-between">
-	<div>
-		<x-button prepend="plus" iconColor="text-white">Dettaglio</x-button>
-	</div>
-	<div class="flex items-center space-x-3">
-		<x-button wire:click="$emit('closeModal')">Salva ed esci</x-button>
+	</x-card>
+	<div class="fixed bottom-0 inset-x-0 border-t w-full py-2 px-4 flex items-center justify-between">
+		<div>
+			<x-button
+					wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
+					prepend="plus" iconColor="text-white">Dettaglio
+			</x-button>
+		</div>
+		<div class="flex items-center space-x-3">
+			<x-button wire:click="$emit('closeModal')">Salva ed esci</x-button>
+		</div>
 	</div>
 </div>

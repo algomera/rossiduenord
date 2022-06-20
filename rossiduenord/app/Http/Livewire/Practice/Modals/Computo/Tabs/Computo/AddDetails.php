@@ -12,6 +12,9 @@
 		public $selectedIntervention = null;
 		public $practice_id;
 		public $details = [];
+		protected $listeners = [
+			'detail-row-added' => '$refresh'
+		];
 
 		public static function modalMaxWidth(): string {
 			return 'full';
@@ -37,6 +40,7 @@
 		}
 
 		public function render() {
+			$this->details = ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->where('price_row_id', $this->row->id)->get();
 			return view('livewire.practice.modals.computo.tabs.computo.add-details');
 		}
 	}
