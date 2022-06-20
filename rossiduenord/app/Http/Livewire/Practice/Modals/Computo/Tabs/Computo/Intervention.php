@@ -19,7 +19,6 @@
 
 		public function changeInterventionFolder($id) {
 			$this->selected = $id;
-			$this->emit('$refresh');
 		}
 
 		public function mount($selectedIntervention, $practice_id) {
@@ -27,10 +26,6 @@
 			$this->tree = $items->toTree();
 			$this->selected = $selectedIntervention;
 			$this->practice_id = $practice_id;
-		}
-
-		public function setIntervention($id) {
-			$this->emit('changeInterventionFolder', $id);
 		}
 
 		public function render() {
