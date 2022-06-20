@@ -25,13 +25,13 @@
 	<x-card class="h-[745px]">
 		@switch($selectedTab)
 			@case('computo')
-				<livewire:practice.modals.computo.tabs.computo/>
+				<livewire:practice.modals.computo.tabs.computo :practice_id="$practice_id"/>
 				@break
 			@case('fees')
-				<livewire:practice.modals.computo.tabs.fees/>
+				<livewire:practice.modals.computo.tabs.fees :practice_id="$practice_id"/>
 				@break
 			@case('recap')
-				<livewire:practice.modals.computo.tabs.recap/>
+				<livewire:practice.modals.computo.tabs.recap :practice_id="$practice_id"/>
 				@break
 		@endswitch
 	</x-card>

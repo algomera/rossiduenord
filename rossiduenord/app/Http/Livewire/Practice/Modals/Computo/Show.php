@@ -6,6 +6,7 @@
 
 	class Show extends ModalComponent
 	{
+		public $practice_id;
 		public $tabs = [
 			'computo'  => 'Computo Metrico',
 			'fees'   => 'IVA e spese professionali',
@@ -16,6 +17,10 @@
 		protected $listeners = [
 			'change-tab' => 'changeTab'
 		];
+
+		public function mount($practice_id) {
+			$this->practice_id = $practice_id;
+		}
 
 		public static function modalMaxWidth(): string {
 			return 'full';

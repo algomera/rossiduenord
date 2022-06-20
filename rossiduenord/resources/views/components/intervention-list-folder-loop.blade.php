@@ -5,7 +5,7 @@
 				<div wire:key="{{ $k }}-{{ $item->id }}" x-data="{open: false}">
 					@endif
 					<div @if($item->children->count()) x-on:click="open = !open"
-					     @else wire:click="$set('selected', '{{$item->id}}')" @endif
+					     @else wire:click="setIntervention({{$item->id}})" @endif
 					     class="@if($item->id == $selected) bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif flex items-center px-3 py-1.5 text-xs font-medium rounded-md cursor-pointer">
 						<x-icon name="folder" class="w-4 h-4 mr-2 flex-shrink-0"></x-icon>
 						<span class="truncate" x-tooltip.raw="{{ $item->name }}">{{ $item->name }}</span>

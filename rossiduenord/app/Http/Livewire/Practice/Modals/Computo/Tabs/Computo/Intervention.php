@@ -3,20 +3,38 @@
 	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Computo;
 
 	use App\ComputoInterventionFolder;
+	use App\ComputoInterventionRow;
 	use Livewire\Component;
 
 	class Intervention extends Component
 	{
+		public $rows = [];
 		public $tree = [];
 		public $selected = null;
+		public $practice_id;
 
-		public function mount() {
+		protected $listeners = [
+			'changeInterventionFolder',
+		];
+
+		public function changeInterventionFolder($id) {
+			$this->selected = $id;
+			$this->emit('$refresh');
+		}
+
+		public function mount($selectedIntervention, $practice_id) {
 			$items = ComputoInterventionFolder::tree()->get();
 			$this->tree = $items->toTree();
-			$this->selected = 2;
+			$this->selected = $selectedIntervention;
+			$this->practice_id = $practice_id;
+		}
+
+		public function setIntervention($id) {
+			$this->emit('changeInterventionFolder', $id);
 		}
 
 		public function render() {
+			$this->rows = ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selected)->get();
 			return view('livewire.practice.modals.computo.tabs.computo.intervention');
 		}
 	}

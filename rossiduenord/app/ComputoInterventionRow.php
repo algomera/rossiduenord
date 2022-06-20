@@ -21,7 +21,7 @@
 		}
 
 		public function details() {
-			return $this->hasMany(ComputoInterventionRowDetail::class);
+			return $this->hasMany(ComputoInterventionRowDetail::class, 'parent_id' ,'id');
 		}
 
 		public function price_row() {

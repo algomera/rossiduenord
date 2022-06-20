@@ -14,12 +14,23 @@
 		public $selectedPriceList;
 		public $selectedLeaf = null;
 		public $price_list_rows = [];
+		public $selectedIntervention = null;
 
-		public function mount() {
+		protected $listeners = [
+			'changeInterventionFolder',
+		];
+
+		public function changeInterventionFolder($id) {
+			$this->selectedIntervention = $id;
+		}
+
+		public function mount($selectedIntervention, $practice_id) {
 			$this->price_lists = ComputoPriceList::where('user_id', null)->orWhere('user_id', auth()->user()->id)->get();
 			if ($this->price_lists->count() > 0) {
 				$this->selectedPriceList = $this->price_lists[0]->id;
 			}
+			$this->selectedIntervention = $selectedIntervention;
+			$this->practice_id = $practice_id;
 		}
 
 		public function updatingSelectedPriceList() {
@@ -34,7 +45,11 @@
 
 		public function selectLeaf($row) {
 			$this->selectedLeaf = $row['id'];
-			$this->emit('openModal', 'practice.modals.computo.tabs.computo.add-details', ["row" => $row['id']]);
+			$this->emit('openModal', 'practice.modals.computo.tabs.computo.add-details', [
+				"row" => $row['id'],
+				"selectedIntervention" => $this->selectedIntervention,
+				"practice_id" => $this->practice_id,
+			]);
 		}
 
 		public function render() {
