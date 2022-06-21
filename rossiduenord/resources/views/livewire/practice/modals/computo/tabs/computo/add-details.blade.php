@@ -74,34 +74,32 @@
 					</x-table.thead>
 					<x-table.tbody>
 						@foreach($details as $k => $detail)
-							@foreach($detail->details as $d)
-								<tr class="divide-x divide-gray-200">
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $loop->index + 1 }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $d->note }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 uppercase">
-										{{ $d->expression }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $d->nps }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $d->length }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $d->width }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										{{ $d->hps }}
-									</x-table.td>
-									<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-										---
-									</x-table.td>
-								</tr>
-							@endforeach
+							<tr class="divide-x divide-gray-200">
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $loop->index + 1 }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $detail->note }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 uppercase">
+									{{ $detail->expression }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $detail->nps }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $detail->length }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $detail->width }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									{{ $detail->hps }}
+								</x-table.td>
+								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									---
+								</x-table.td>
+							</tr>
 						@endforeach
 					</x-table.tbody>
 				</x-table.table>
@@ -114,12 +112,12 @@
 	<div class="fixed bottom-0 inset-x-0 border-t w-full py-2 px-4 flex items-center justify-between">
 		<div>
 			<x-button
-					wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
+					wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['intervention_row_id' => $intervention_row->id,'practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
 					prepend="plus" iconColor="text-white">Dettaglio
 			</x-button>
 		</div>
 		<div class="flex items-center space-x-3">
-			<x-button wire:click="$emit('closeModal')">Salva ed esci</x-button>
+			<x-button wire:click="save">Salva ed esci</x-button>
 		</div>
 	</div>
 </div>

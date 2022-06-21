@@ -8,6 +8,7 @@
 
 	class AddDetail extends ModalComponent
 	{
+		public $intervention_row_id;
 		public $practice_id;
 		public $selectedIntervention;
 		public $row;
@@ -38,7 +39,8 @@
 			return true;
 		}
 
-		public function mount($practice_id, $selectedIntervention, $row) {
+		public function mount($intervention_row_id, $practice_id, $selectedIntervention, $row) {
+			$this->intervention_row_id = $intervention_row_id;
 			$this->practice_id = $practice_id;
 			$this->selectedIntervention = $selectedIntervention;
 			$this->row = $row;
@@ -46,11 +48,12 @@
 
 		public function save() {
 			$validated = $this->validate();
-			$intervention_row = ComputoInterventionRow::create([
-				'practice_id'            => $this->practice_id,
-				'intervention_folder_id' => $this->selectedIntervention,
-				'price_row_id'           => $this->row,
-			]);
+//			$intervention_row = ComputoInterventionRow::updateOrCreate([
+//				'practice_id'            => $this->practice_id,
+//				'intervention_folder_id' => $this->selectedIntervention,
+//				'price_row_id'           => $this->row,
+//			]);
+			$intervention_row = ComputoInterventionRow::where('id', $this->intervention_row_id)->where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->where('price_row_id', $this->row)->first();
 			$intervention_row->details()->create([
 				'note'       => $validated['note'],
 				'expression' => $validated['expression'],

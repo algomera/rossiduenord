@@ -1,13 +1,13 @@
-<div class="grid grid-cols-10 h-[30%] overflow-hidden">
-	<div class="col-span-10 lg:col-span-2 pr-4">
-		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-1 flex flex-row h-[300px] overflow-y-auto mt-3 lg:flex-col"
+<div class="grid grid-cols-10 overflow-hidden h-[250px]">
+	<div class="col-span-10 lg:col-span-2 pr-4 overflow-y-auto relative">
+		<nav class="space-y-0 space-x-2 lg:space-x-0 lg:space-y-1 flex flex-row h-[250px] mt-3 lg:flex-col"
 		     aria-label="Sidebar">
 			<x-intervention-list-folder-loop :items="$tree" :selected="$selected"></x-intervention-list-folder-loop>
 		</nav>
 	</div>
-	<div class="col-span-10 lg:col-span-8 overflow-y-auto">
+	<div class="col-span-10 lg:col-span-8 overflow-y-auto relative">
 		@if($selected)
-			<x-table.table>
+			<x-table.table class="h-[250px]">
 				<x-table.thead>
 					<tr class="divide-x divide-gray-200">
 						<x-table.th class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">N.</x-table.th>
