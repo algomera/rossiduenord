@@ -8,16 +8,18 @@
 	class Create extends ModalComponent
 	{
 		public $name;
+		public $code;
 		protected $rules = [
-			'name' => 'required|string'
+			'name' => 'required|string',
+			'code' => 'required|string'
 		];
 
 		public function save() {
 			ComputoPriceList::create([
 				'user_id' => auth()->user()->isAdmin() ? null : auth()->user()->id,
-				'name' => $this->name
+				'name'    => $this->name,
+				'code'    => $this->code,
 			]);
-
 			$this->closeModal();
 			$this->emitTo('price-list.index', 'price_list-added');
 			$this->dispatchBrowserEvent('open-notification', [
