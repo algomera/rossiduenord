@@ -21,6 +21,11 @@
 			return 'full';
 		}
 
+		public static function closeModalOnEscape(): bool
+		{
+			return false;
+		}
+
 		public static function closeModalOnEscapeIsForceful(): bool {
 			return false;
 		}
