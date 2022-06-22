@@ -4,10 +4,6 @@
 			<div class="col-span-10 lg:col-span-2">
 				<div class="flex flex-col space-y-3">
 					<div class="flex items-center justify-between">
-						<span class="text-sm font-medium text-gray-500">Num. prog.</span>
-						<span class="text-sm font-semibold text-gray-900">{{ $progressive_number }}</span>
-					</div>
-					<div class="flex items-center justify-between">
 						<span class="text-sm font-medium text-gray-500">U.M.</span>
 						<span class="text-sm font-semibold text-gray-900">{{ $row->price_row->um }}</span>
 					</div>
