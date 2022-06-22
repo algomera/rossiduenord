@@ -6,23 +6,23 @@
 				         label="Commento"></x-textarea>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="expression" type="text" name="expression" id="expression"
+				<x-input wire:model.debounce="expression" type="text" name="expression" id="expression"
 				         label="Espressione"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="nps" type="text" name="nps" id="nps"
+				<x-input wire:keydown="resetExpression" wire:model.debounce="nps" type="text" name="nps" id="nps"
 				         label="NPS"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="length" type="text" name="length" id="length"
+				<x-input wire:keydown="resetExpression" wire:model.debounce="length" type="text" name="length" id="length"
 				         label="Lunghezza"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="width" type="text" name="width" id="width"
+				<x-input wire:keydown="resetExpression" wire:model.debounce="width" type="text" name="width" id="width"
 				         label="Larghezza"></x-input>
 			</div>
 			<div class="col-span-12">
-				<x-input wire:model.defer="hps" type="text" name="hps" id="hps"
+				<x-input wire:keydown="resetExpression" wire:model.debounce="hps" type="text" name="hps" id="hps"
 				         label="H-P-S"></x-input>
 			</div>
 			<div class="col-span-12">

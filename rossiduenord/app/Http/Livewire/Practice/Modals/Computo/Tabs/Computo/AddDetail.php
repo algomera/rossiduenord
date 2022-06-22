@@ -39,6 +39,17 @@
 			return true;
 		}
 
+		public function updatingExpression() {
+			$this->nps = null;
+			$this->length = null;
+			$this->width = null;
+			$this->hps = null;
+		}
+
+		public function resetExpression() {
+			$this->expression = null;
+		}
+
 		public function mount($intervention_row_id, $practice_id, $selectedIntervention, $row) {
 			$this->intervention_row_id = $intervention_row_id;
 			$this->practice_id = $practice_id;
