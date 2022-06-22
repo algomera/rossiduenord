@@ -97,27 +97,33 @@
 									{{ $detail->hps }}
 								</x-table.td>
 								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                                    {{ $detail->total }}
+									{{ $detail->total }}
 								</x-table.td>
 							</tr>
 						@endforeach
 					</x-table.tbody>
 				</x-table.table>
-				<br>
-				<hr>
-				Totali vari
 			</div>
 		</div>
 	</x-card>
-	<div class="fixed bottom-0 inset-x-0 border-t w-full py-2 px-4 flex items-center justify-between">
-		<div>
-			<x-button
-					wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['intervention_row_id' => $intervention_row->id,'practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
-					prepend="plus" iconColor="text-white">Dettaglio
-			</x-button>
+	<div class="fixed bottom-0 inset-x-0 w-full">
+		<div class="col-span-10 bg-gray-50 px-4 py-2 flex items-center justify-end">
+			<div class="flex space-x-8">
+				<span class="text-sm">Prezzo un.: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price) }}</span></span>
+				<span class="text-sm">Quantità: <span class="font-semibold">{{ $row->um }}</span></span>
+				<span class="text-sm">Totale immissione: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price * $details->sum('total')) }}</span></span>
+			</div>
 		</div>
-		<div class="flex items-center space-x-3">
-			<x-button wire:click="save">Salva ed esci</x-button>
+		<div class="py-2 px-4 flex items-center justify-between">
+			<div>
+				<x-button
+						wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['intervention_row_id' => $intervention_row->id,'practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
+						prepend="plus" iconColor="text-white">Dettaglio
+				</x-button>
+			</div>
+			<div class="flex items-center space-x-3">
+				<x-button wire:click="save">Salva ed esci</x-button>
+			</div>
 		</div>
 	</div>
 </div>
