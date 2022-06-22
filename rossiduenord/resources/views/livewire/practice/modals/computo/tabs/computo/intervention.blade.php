@@ -30,7 +30,7 @@
 								{{ $loop->index + 1 }}
 							</x-table.td>
 							<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-                                {{ $row->price_row->price_list->code }}
+								{{ $row->price_row->price_list->code }}
 							</x-table.td>
 							<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900 uppercase">
 								{{ $row->price_row->code }}
@@ -62,5 +62,11 @@
 				</x-table.tbody>
 			</x-table.table>
 		@endif
+	</div>
+	<div class="col-span-10 bg-gray-50 px-4 py-1.5 flex items-center justify-end">
+		<div class="flex space-x-8">
+			<span class="text-sm">Totale selezionato: <span class="font-semibold">--- €</span></span>
+			<span class="text-sm">Totale lavori C.M.: <span class="font-semibold">--- €</span></span>
+		</div>
 	</div>
 </div>

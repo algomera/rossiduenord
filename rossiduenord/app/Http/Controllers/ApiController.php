@@ -110,4 +110,22 @@ class ApiController extends Controller
         $anagrafiche = Anagrafica::where('user_id', $user)->get(); 
         return AnagraficheResource::collection($anagrafiche);
     }
+
+	public function get_ape(Request $request)
+	{
+		$practice_id = $request->get('practice_id');
+		$practice = Practice::find($practice_id);
+		$sub_folder = $practice->sub_folder()->where('name', 'APE Ante timbrato dal professionista e post di progetto timbrato dal professionista')->first();
+		$ape = $sub_folder->documents()->first()->pluck('allega');
+
+		if($ape != null){
+			return response()->json([
+				'status' => 200,
+				'document_link' => 'https://' . $_SERVER['SERVER_NAME'] . '/storage/' . $ape[0]
+			], 200);
+		}else{
+			print 'no document';
+		}
+
+	}
 }
