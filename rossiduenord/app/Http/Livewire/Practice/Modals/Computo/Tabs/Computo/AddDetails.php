@@ -21,8 +21,7 @@
 			return 'full';
 		}
 
-		public static function closeModalOnEscape(): bool
-		{
+		public static function closeModalOnEscape(): bool {
 			return false;
 		}
 
@@ -47,11 +46,16 @@
 				'practice_id'            => $this->practice_id,
 				'intervention_folder_id' => $this->selectedIntervention,
 				'price_row_id'           => $this->row->id,
+				'total'                  => 0
 			]);
 		}
 
 		public function save() {
 			if ($this->intervention_row->details->count()) {
+				$this->intervention_row->update([
+					'total' => $this->intervention_row->price_row->price * $this->intervention_row->details->sum('total')
+				]);
+				$this->emitTo('practice.modals.computo.tabs.computo.intervention', 'detail-row-added');
 				$this->closeModal();
 			} else {
 				$this->intervention_row->delete();

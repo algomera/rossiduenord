@@ -65,8 +65,7 @@
 	</div>
 	<div class="col-span-10 bg-gray-50 px-4 py-1.5 flex items-center justify-end">
 		<div class="flex space-x-8">
-			<span class="text-sm">Totale selezionato: <span class="font-semibold">--- €</span></span>
-			<span class="text-sm">Totale lavori C.M.: <span class="font-semibold">--- €</span></span>
+			<span class="text-sm">Totale lavori C.M.: <span class="font-semibold">{{ \App\Helpers\Money::format($rows->sum('total')) }}</span></span>
 		</div>
 	</div>
 </div>
