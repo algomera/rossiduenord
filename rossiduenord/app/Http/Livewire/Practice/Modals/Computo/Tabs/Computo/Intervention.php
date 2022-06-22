@@ -29,6 +29,14 @@
 			$this->practice_id = $practice_id;
 		}
 
+		public function selectInterventionRow($row) {
+			$this->emit('openModal', 'practice.modals.computo.tabs.computo.edit-details', [
+				"row" => $row['id'],
+				"selectedIntervention" => $this->selected,
+				"practice_id" => $this->practice_id,
+			]);
+		}
+
 		public function render() {
 			$this->rows = ComputoInterventionRow::where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selected)->get();
 			return view('livewire.practice.modals.computo.tabs.computo.intervention');

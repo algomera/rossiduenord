@@ -9,15 +9,15 @@
 					</div>
 					<div class="flex items-center justify-between">
 						<span class="text-sm font-medium text-gray-500">U.M.</span>
-						<span class="text-sm font-semibold text-gray-900">{{ $row->um }}</span>
+						<span class="text-sm font-semibold text-gray-900">{{ $row->price_row->um }}</span>
 					</div>
 					<div class="flex items-center justify-between">
 						<span class="text-sm font-medium text-gray-500">Prezzo un.</span>
-						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->price) }}</span>
+						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->price_row->price) }}</span>
 					</div>
 					<div class="flex items-center justify-between">
 						<span class="text-sm font-medium text-gray-500">Sconto un.</span>
-						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->mat) }}</span>
+						<span class="text-sm font-semibold text-gray-900">{{ \App\Helpers\Money::format($row->price_row->mat) }}</span>
 					</div>
 				</div>
 			</div>
@@ -25,12 +25,12 @@
 				<div class="flex flex-col space-y-3">
 					<div class="flex items-center space-x-4">
 						<span class="text-sm font-medium text-gray-500">Codice E.P.</span>
-						<span class="text-sm font-semibold text-gray-900">{{ strtoupper($row->code) }}</span>
+						<span class="text-sm font-semibold text-gray-900">{{ strtoupper($row->price_row->code) }}</span>
 					</div>
 					<div class="flex flex-col">
 						<span class="text-sm font-medium text-gray-500">Descrizione E.P.</span>
 						<div class="text-sm text-gray-900">
-							{{ $row->parent->short_description }}<br>{{ $row->short_description }}
+							{{ $row->price_row->parent->short_description }}<br>{{ $row->short_description }}
 						</div>
 					</div>
 				</div>
@@ -94,15 +94,15 @@
 	<div class="fixed bottom-0 inset-x-0 w-full">
 		<div class="col-span-10 bg-gray-50 px-4 py-2 flex items-center justify-end">
 			<div class="flex space-x-8">
-				<span class="text-sm">Prezzo un.: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price) }}</span></span>
-				<span class="text-sm">Quantità: <span class="font-semibold">{{ $row->um }}</span></span>
-				<span class="text-sm">Totale immissione: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price * $details->sum('total')) }}</span></span>
+				<span class="text-sm">Prezzo un.: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price) }}</span></span>
+				<span class="text-sm">Quantità: <span class="font-semibold">{{ $row->price_row->um }}</span></span>
+				<span class="text-sm">Totale immissione: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price * $details->sum('total')) }}</span></span>
 			</div>
 		</div>
 		<div class="py-2 px-4 flex items-center justify-between">
 			<div>
 				<x-button
-						wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['intervention_row_id' => $intervention_row->id,'practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row['id']]) }})"
+						wire:click="$emit('openModal', 'practice.modals.computo.tabs.computo.add-detail', {{ json_encode(['intervention_row_id' => $row->id, 'practice_id' => $practice_id, 'selectedIntervention' => $selectedIntervention, 'row' => $row->price_row->id]) }})"
 						prepend="plus" iconColor="text-white">Dettaglio
 				</x-button>
 			</div>

@@ -119,6 +119,7 @@
 				'subtitle' => __('Dettaglio salvato con successo!')
 			]);
 			$this->emitTo('practice.modals.computo.tabs.computo.add-details', 'detail-row-added');
+			$this->emitTo('practice.modals.computo.tabs.computo.edit-details', 'detail-row-added');
 			$this->emitTo('practice.modals.computo.tabs.computo.intervention', 'detail-row-added');
 		}
 
