@@ -81,8 +81,28 @@
 								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
 									{{ $detail->total }}
 								</x-table.td>
-								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-
+								<x-table.td class="w-0 whitespace-nowrap px-2 py-2 text-sm text-gray-900">
+									<div class="flex items-center space-x-3">
+										<x-modal>
+											<x-slot name="trigger">
+												<div class="text-red-600 hover:text-red-900">
+													<x-icon name="trash" class="w-5 h-5"></x-icon>
+												</div>
+											</x-slot>
+											<x-slot name="title">
+												Conferma eliminazione
+											</x-slot>
+											Sei sicuro di voler eliminare questo dettaglio?
+											<x-slot name="footer">
+												<x-link-button x-on:click="open = false">Annulla</x-link-button>
+												<x-danger-button class="ml-2"
+												                 wire:click="deleteDetail({{ $detail->id }})"
+												                 wire:loading.attr="disabled">
+													Elimina
+												</x-danger-button>
+											</x-slot>
+										</x-modal>
+									</div>
 								</x-table.td>
 							</tr>
 						@endforeach
@@ -94,9 +114,11 @@
 	<div class="fixed bottom-0 inset-x-0 w-full">
 		<div class="col-span-10 bg-gray-50 px-4 py-2 flex items-center justify-end">
 			<div class="flex space-x-8">
-				<span class="text-sm">Prezzo un.: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price) }}</span></span>
+				<span class="text-sm">Prezzo un.: <span
+							class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price) }}</span></span>
 				<span class="text-sm">Quantità: <span class="font-semibold">{{ $row->price_row->um }}</span></span>
-				<span class="text-sm">Totale immissione: <span class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price * $details->sum('total')) }}</span></span>
+				<span class="text-sm">Totale immissione: <span
+							class="font-semibold">{{ \App\Helpers\Money::format($row->price_row->price * $details->sum('total')) }}</span></span>
 			</div>
 		</div>
 		<div class="py-2 px-4 flex items-center justify-between">

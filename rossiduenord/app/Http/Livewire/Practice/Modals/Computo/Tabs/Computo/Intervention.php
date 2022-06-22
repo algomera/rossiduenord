@@ -15,7 +15,8 @@
 
 		protected $listeners = [
 			'changeInterventionFolder',
-			'detail-row-added' => '$refresh'
+			'detail-row-added' => '$refresh',
+			'detail-row-deleted' => '$refresh'
 		];
 
 		public function changeInterventionFolder($id) {

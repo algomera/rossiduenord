@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Computo;
 
 	use App\ComputoInterventionRow;
+	use App\ComputoInterventionRowDetail;
 	use App\ComputoPriceListRow;
 	use LivewireUI\Modal\ModalComponent;
 
@@ -14,7 +15,8 @@
 		public $details = [];
 		public $intervention_row;
 		protected $listeners = [
-			'detail-row-added' => '$refresh'
+			'detail-row-added' => '$refresh',
+			'detail-row-deleted' => '$refresh'
 		];
 
 		public static function modalMaxWidth(): string {
@@ -55,12 +57,23 @@
 				$this->intervention_row->update([
 					'total' => $this->intervention_row->price_row->price * $this->intervention_row->details->sum('total')
 				]);
-				$this->emitTo('practice.modals.computo.tabs.computo.intervention', 'detail-row-added');
+				$this->emit('detail-row-added');
 				$this->closeModal();
 			} else {
 				$this->intervention_row->delete();
+				$this->emit('detail-row-deleted');
 				$this->closeModal();
 			}
+		}
+
+		public function deleteDetail($id) {
+			ComputoInterventionRowDetail::destroy($id);
+			$this->dispatchBrowserEvent('close-modal');
+			$this->dispatchBrowserEvent('open-notification', [
+				'title'    => __('Dettaglio Eliminato'),
+				'subtitle' => __('Il dettaglio è stato eliminato con successo!')
+			]);
+			$this->emit('detail-row-deleted');
 		}
 
 		public function render() {
