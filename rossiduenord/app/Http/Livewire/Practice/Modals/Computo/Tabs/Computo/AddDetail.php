@@ -3,7 +3,7 @@
 	namespace App\Http\Livewire\Practice\Modals\Computo\Tabs\Computo;
 
 	use App\ComputoInterventionRow;
-	use App\ComputoInterventionRowDetail;
+	use App\Rules\ValidExpression;
 	use LivewireUI\Modal\ModalComponent;
 	use NXP\MathExecutor;
 
@@ -20,14 +20,43 @@
 		public $width;
 		public $hps;
 		public $total = 0;
-		protected $rules = [
-			'note'       => 'string',
-			'expression' => 'string',
-			'nps'        => 'string',
-			'length'     => 'string',
-			'width'      => 'string',
-			'hps'        => 'string',
-		];
+
+		protected function rules() {
+			return [
+				'note'       => 'string|nullable',
+				'expression' => [
+					'nullable',
+					'string',
+					'not_regex:/[a-zA-Z]/',
+					new ValidExpression()
+				],
+				'nps'        => [
+					'nullable',
+					'string',
+					'not_regex:/[a-zA-Z]/',
+					new ValidExpression()
+				],
+				'length'     => [
+					'nullable',
+					'string',
+					'not_regex:/[a-zA-Z]/',
+					new ValidExpression()
+				],
+				'width'      => [
+					'nullable',
+					'string',
+					'not_regex:/[a-zA-Z]/',
+					new ValidExpression()
+				],
+				'hps'        => [
+					'nullable',
+					'string',
+					'not_regex:/[a-zA-Z]/',
+					new ValidExpression()
+				],
+				'total'      => 'nullable'
+			];
+		}
 
 		public static function closeModalOnEscapeIsForceful(): bool {
 			return false;
@@ -54,6 +83,7 @@
 		}
 
 		public function calculate() {
+			$this->validate();
 			$executor = new MathExecutor();
 			$this->expression = str_replace(',', '.', $this->expression);
 			$this->nps = str_replace(',', '.', $this->nps);
@@ -67,7 +97,7 @@
 			if ($this->nps || $this->length || $this->width || $this->hps) {
 				$expression = "{$nps} * {$length} * {$width} * {$hps}";
 				$this->total = round($executor->execute($expression), 2);
-			} elseif($this->expression) {
+			} else if ($this->expression) {
 				$this->total = round($executor->execute($this->expression), 2);
 			}
 		}
@@ -80,21 +110,9 @@
 		}
 
 		public function save() {
-			$validated = $this->validate();
-			//			$intervention_row = ComputoInterventionRow::updateOrCreate([
-			//				'practice_id'            => $this->practice_id,
-			//				'intervention_folder_id' => $this->selectedIntervention,
-			//				'price_row_id'           => $this->row,
-			//			]);
+			$this->calculate();
 			$intervention_row = ComputoInterventionRow::where('id', $this->intervention_row_id)->where('practice_id', $this->practice_id)->where('intervention_folder_id', $this->selectedIntervention)->where('price_row_id', $this->row)->first();
-			$intervention_row->details()->create([
-				'note'       => $validated['note'],
-				'expression' => $validated['expression'],
-				'nps'        => $validated['nps'],
-				'length'     => $validated['length'],
-				'width'      => $validated['width'],
-				'hps'        => $validated['hps'],
-			]);
+			$intervention_row->details()->create($this->validate());
 			$this->closeModal();
 			$this->dispatchBrowserEvent('open-notification', [
 				'title'    => __('Salvataggio'),

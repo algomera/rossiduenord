@@ -97,7 +97,7 @@
 									{{ $detail->hps }}
 								</x-table.td>
 								<x-table.td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900">
-									---
+                                    {{ $detail->total }}
 								</x-table.td>
 							</tr>
 						@endforeach
