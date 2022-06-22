@@ -119,8 +119,6 @@
 				'subtitle' => __('Dettaglio salvato con successo!')
 			]);
 			$this->emit('detail-row-added');
-			$this->emit('detail-row-added');
-			$this->emit('detail-row-added');
 		}
 
 		public function render() {
