@@ -52,8 +52,8 @@
 			@if($surfaces)
 				<tr class="bg-gray-50">
 					<x-table.td colspan="10">Totale "Coperture": <span class="font-semibold">{{ $surfaces->sum('surface') }} m²</span>
-						di cui realizzati SAL n.1 <span class="font-semibold">? m²</span> SAL n.2 <span
-								class="font-semibold">? m²</span> SAL F. <span class="font-semibold">{{ $surfaces->sum('surface') }} m²</span>
+						di cui realizzati SAL n.1 <span class="font-semibold">{{ $sal->sal_1 ?? '-' }} m²</span> SAL n.2 <span
+								class="font-semibold">{{ $sal->sal_2 ?? '-' }} m²</span> SAL F. <span class="font-semibold">{{ $sal->sal_f ?? '-' }} m²</span>
 					</x-table.td>
 				</tr>
 			@endif

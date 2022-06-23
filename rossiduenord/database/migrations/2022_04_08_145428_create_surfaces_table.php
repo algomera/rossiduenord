@@ -19,9 +19,9 @@ class CreateSurfacesTable extends Migration
             $table->foreign('practice_id')->references('id')->on('practices')->onDelete('cascade');
             $table->bigInteger('condomino_id')->unsigned()->nullable();
             $table->foreign('condomino_id')->references('id')->on('condominis')->onDelete('cascade');
+            $table->boolean('is_common')->nullable();
             $table->string('intervention')->nullable();
             $table->string('type')->nullable();
-            $table->boolean('is_common')->nullable();
             $table->string('description_surface')->nullable();
             $table->double('surface')->nullable();
             $table->double('trasm_ante')->nullable();

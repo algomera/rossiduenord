@@ -3,6 +3,7 @@
 	namespace App\Http\Livewire\Practice\Tabs\Superbonus110\Tabs\DrivingIntervention\Surface;
 
 	use App\Surface;
+	use App\SurfaceSal;
 	use Livewire\Component;
 
 	class PvSurface extends Component
@@ -31,6 +32,7 @@
 
 		public function render() {
 			$this->surfaces = Surface::where('type', $this->currentSurface)->where('intervention', $this->intervention)->where('condomino_id', $this->condomino_id)->get();
-			return view('livewire.practice.tabs.superbonus110.tabs.driving-intervention.surface.pv-surface');
+			$sal = SurfaceSal::where('type', $this->currentSurface)->where('intervention', $this->intervention)->where('condomino_id', $this->condomino_id)->first();
+			return view('livewire.practice.tabs.superbonus110.tabs.driving-intervention.surface.pv-surface', compact('sal'));
 		}
 	}
