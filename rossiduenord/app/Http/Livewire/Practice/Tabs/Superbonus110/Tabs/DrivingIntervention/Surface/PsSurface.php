@@ -46,9 +46,9 @@
 
 		public function saveSurfaceSal() {
 			$this->sals->update([
-				'sal_1' => $this->sal_1,
-				'sal_2' => $this->sal_2,
-				'sal_f' => $this->sal_f,
+				'sal_1' => round($this->sal_1, 3),
+				'sal_2' => round($this->sal_2, 3),
+				'sal_f' => round($this->sal_f, 3),
 			]);
 		}
 
