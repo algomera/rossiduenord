@@ -83,7 +83,9 @@
 			</div>
 			<x-card class="p-4 border rounded-md">
 				<div class="space-y-3">
-					Sezione Infissi
+					<livewire:practice.tabs.superbonus110.intervention.fixtures :practice="$practice"
+					                                                            :condomino_id="$condomino_id"
+					                                                            :is_common="$is_common"/>
 					<div>
 						<x-label for="in_project_cost">Le spese previste in progetto dei lavori al punto IN ammontano a
 							*:

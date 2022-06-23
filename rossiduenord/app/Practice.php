@@ -59,6 +59,10 @@ class Practice extends Model
         return $this->hasMany(Condomini::class);
     }
 
+	public function fixtures() {
+		return $this->hasMany(Fixture::class);
+	}
+
     public function condensing_boilers() {
         return $this->hasMany(CondensingBoiler::class);
     }
