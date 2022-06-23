@@ -25,15 +25,17 @@
 	@endif
 
 	<div>
-		<div class="flex items-center justify-between">
-			@if ($label)
-				<x-label :for="$name" :required="$required">{{ $label }}</x-label>
-			@endif
-			@isset($action)
-				{{ $action }}
-			@endisset
-		</div>
-		<div class="relative mt-1">
+		@if($label || isset($action))
+			<div class="flex items-center justify-between">
+				@if ($label)
+					<x-label :for="$name" :required="$required">{{ $label }}</x-label>
+				@endif
+				@isset($action)
+					{{ $action }}
+				@endisset
+			</div>
+		@endif
+		<div class="relative @if($label || isset($action)) mt-1 @endif">
 			@if($prepend)
 				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 					<x-icon name="{{$prepend}}" class="{{ $iconColor }} w-5 h-5"></x-icon>
