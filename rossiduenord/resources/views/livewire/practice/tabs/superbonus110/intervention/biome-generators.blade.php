@@ -16,8 +16,28 @@
 		<ul role="list" class="divide-y divide-gray-200">
 			@forelse($biome_generators as $i => $biome_generator)
 				<li class="py-4 flex">
-					<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">
-						{{ $i + 1 }}
+					<div class="flex flex-col items-center space-y-3">
+						<div class="flex items-center justify-center text-sm bg-gray-50 border border-gray-200 font-semibold h-8 w-8 rounded-full flex-shrink-0">
+							{{ $i + 1 }}
+						</div>
+						<x-modal>
+							<x-slot name="trigger">
+								<div class="text-red-600 hover:text-red-900">
+									<x-icon name="trash" class="w-5 h-5"></x-icon>
+								</div>
+							</x-slot>
+							<x-slot name="title">
+								Conferma eliminazione
+							</x-slot>
+							Sei sicuro di voler eliminare l'intervento?
+							<x-slot name="footer">
+								<x-link-button x-on:click="open = false">Annulla</x-link-button>
+								<x-danger-button type="button" class="ml-2" wire:click="deleteBiomeGenerator({{ $biome_generator->id }})"
+								                 wire:loading.attr="disabled">
+									Elimina
+								</x-danger-button>
+							</x-slot>
+						</x-modal>
 					</div>
 					<div class="ml-3">
 						<div class="flex flex-col mt-1 flex-wrap">

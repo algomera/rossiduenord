@@ -63,6 +63,10 @@ class Practice extends Model
 		return $this->hasMany(Fixture::class);
 	}
 
+	public function condensing_hot_air_generators() {
+		return $this->hasMany(CondensingHotAirGenerator::class);
+	}
+
     public function condensing_boilers() {
         return $this->hasMany(CondensingBoiler::class);
     }
