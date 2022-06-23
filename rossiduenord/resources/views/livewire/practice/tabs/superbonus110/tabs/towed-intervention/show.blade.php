@@ -43,22 +43,22 @@
 					@case('PV')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.pv-surface
 								:practice="$practice" :currentSurface="$currentSurface" intervention="towed"
-								:condomino_id="$condomino_id"/>
+								:condomino_id="$condomino_id" :is_common="$is_common"/>
 						@break
 					@case('PO')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.po-surface
 								:practice="$practice" :currentSurface="$currentSurface" intervention="towed"
-								:condomino_id="$condomino_id"/>
+								:condomino_id="$condomino_id" :is_common="$is_common"/>
 						@break
 					@case('PS')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.ps-surface
 								:practice="$practice" :currentSurface="$currentSurface" intervention="towed"
-								:condomino_id="$condomino_id"/>
+								:condomino_id="$condomino_id" :is_common="$is_common"/>
 						@break
 					@case('POND')
 						<livewire:practice.tabs.superbonus110.tabs.driving-intervention.surface.pond-surface
 								:practice="$practice" :currentSurface="$currentSurface" intervention="towed"
-								:condomino_id="$condomino_id"/>
+								:condomino_id="$condomino_id" :is_common="$is_common"/>
 						@break
 				@endswitch
 			</div>

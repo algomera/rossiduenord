@@ -59,21 +59,24 @@
 							<div>
 								<span>di cui realizzati SAL n.1 </span>
 								<div class="inline-block w-32">
-									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model="sal_1" type="number" class="py-1 font-bold" name="sal_1"
+									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model.defer="sal_1" type="number"
+									         class="py-1 font-bold" name="sal_1"
 									         append="m²">{{ $sal_1 ?? '-' }}</x-input>
 								</div>
 							</div>
 							<div>
 								<span>SAL n.2 </span>
 								<div class="inline-block w-32">
-									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model="sal_2" type="number" class="py-1 font-bold" name="sal_2"
+									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model.defer="sal_2" type="number"
+									         class="py-1 font-bold" name="sal_2"
 									         append="m²">{{ $sal_2 ?? '-' }}</x-input>
 								</div>
 							</div>
 							<div>
 								<span>SAL F. </span>
 								<div class="inline-block w-32">
-									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model="sal_f" type="number" class="py-1 font-bold" name="sal_f"
+									<x-input x-on:blur="$wire.saveSurfaceSal()" wire:model.defer="sal_f" type="number"
+									         class="py-1 font-bold" name="sal_f"
 									         append="m²">{{ $sal_f ?? '-' }}</x-input>
 								</div>
 							</div>

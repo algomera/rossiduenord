@@ -21,9 +21,15 @@
 			'surface-added' => '$refresh'
 		];
 
-		public function mount($currentSurface) {
+		public function mount($practice, $currentSurface, $is_common = 0) {
 			$this->currentSurface = $currentSurface;
-			$this->sals = SurfaceSal::where('type', $this->currentSurface)->where('intervention', $this->intervention)->where('condomino_id', $this->condomino_id)->first();
+			$this->sals = SurfaceSal::firstOrCreate([
+				'practice_id' => $practice->id,
+				'type' => $this->currentSurface,
+				'intervention' => $this->intervention,
+				'condomino_id' => $this->condomino_id,
+				'is_common' => $is_common,
+			]);
 			$this->sal_1 = $this->sals->sal_1;
 			$this->sal_2 = $this->sals->sal_2;
 			$this->sal_f = $this->sals->sal_f;
